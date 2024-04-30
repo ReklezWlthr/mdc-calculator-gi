@@ -7,11 +7,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.4",
     "@tanstack/react-query": "^4.28.0",
     "axios": "^0.24.0",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.3",
     "lodash": "^4.17.15",
+    "mobx": "6.6.0",
+    "mobx-react-lite": "3.4.0",
     "next": "13.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

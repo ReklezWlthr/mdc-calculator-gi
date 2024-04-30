@@ -1,3 +1,15 @@
-[{
-  "name": ""
-}]
+[
+  {
+    "name": "Albedo",
+    "baseAtk": 19.551,
+    "baseHp": 1029.5856,
+    "baseDef": 68.2062,
+    "ascAtk": 80.28111,
+    "ascHp": 4228.035,
+    "ascDef": 280.098,
+    "rarity": 5,
+    "ascStat": 1,
+    "region": 5,
+    "constellation": "Princeps Cretaceus"
+  }
+]
