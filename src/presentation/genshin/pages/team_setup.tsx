@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
+import { observer } from 'mobx-react-lite'
 
 const CharacterSelect = ({ onClick }: { onClick: () => void }) => {
   return (
@@ -10,7 +11,7 @@ const CharacterSelect = ({ onClick }: { onClick: () => void }) => {
   )
 }
 
-export const TeamSetup = () => {
+export const TeamSetup = observer(() => {
   const [selected, setSelected] = useState(0)
   const [team, setTeam] = useState(Array(4))
 
@@ -23,8 +24,8 @@ export const TeamSetup = () => {
             <CharacterSelect onClick={() => setSelected(index)} />
           ))}
         </div>
-        <CharacterBlock name={""} />
+        <CharacterBlock index={selected} />
       </div>
     </div>
   )
-}
+})

@@ -2,9 +2,10 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import classNames from 'classnames'
 import { useCallback } from 'react'
 import { CharacterModal } from './character_modal'
+import { observer } from 'mobx-react-lite'
 
 interface CharacterBlockProps {
-  name: string
+  index: number
 }
 
 const PillInput = ({ value, onClick }: { value: string; onClick: () => void }) => {
@@ -21,11 +22,11 @@ const PillInput = ({ value, onClick }: { value: string; onClick: () => void }) =
   )
 }
 
-export const CharacterBlock = (props: CharacterBlockProps) => {
-  const { modalStore } = useStore()
+export const CharacterBlock = observer((props: CharacterBlockProps) => {
+  const { modalStore, teamStore } = useStore()
 
   const onOpenModal = useCallback(() => {
-    modalStore.openModal(<CharacterModal onChange={() => null} />)
+    modalStore.openModal(<CharacterModal index={props.index} />)
   }, [modalStore])
 
   return (
@@ -37,7 +38,7 @@ export const CharacterBlock = (props: CharacterBlockProps) => {
           <p className="text-sm font-semibold">Name</p>
           <div className="flex gap-1">
             <div className="w-full">
-              <PillInput onClick={onOpenModal} value={props.name} />
+              <PillInput onClick={onOpenModal} value={teamStore.characters[props.index]?.name} />
             </div>
             <PillInput onClick={() => null} value={'E0'} />
           </div>
@@ -46,3 +47,4 @@ export const CharacterBlock = (props: CharacterBlockProps) => {
     </div>
   )
 }
+)
