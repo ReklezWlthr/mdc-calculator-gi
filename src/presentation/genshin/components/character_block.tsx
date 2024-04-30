@@ -34,7 +34,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
       <div className="flex justify-center px-5 py-3 text-xl bg-primary-lighter">Character</div>
       <div className="flex gap-x-2">
         <div className="w-1/2"></div>
-        <div className="w-1/2 space-y-1">
+        <div className="w-1/2 px-2 py-3 space-y-1">
           <p className="text-sm font-semibold">Name</p>
           <div className="flex gap-1">
             <div className="w-full">
