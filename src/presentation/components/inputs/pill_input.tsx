@@ -12,7 +12,7 @@ export const PillInput = ({
   return (
     <div
       className={classNames(
-        'border-primary-light px-2 py-0.5 border rounded-lg hover:border-primary-lighter duration-300 cursor-pointer font-normal w-full truncate text-sm',
+        'border-primary-light px-2 py-1 border rounded-lg hover:border-primary-lighter duration-300 cursor-pointer font-normal w-full truncate text-sm',
         value ? 'text-white' : 'text-gray',
         style
       )}
