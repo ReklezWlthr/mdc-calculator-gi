@@ -12,6 +12,7 @@ export interface ICharacterStats {
   ascAtk: number
   ascHp: number
   ascDef: number
+  ascStat: string
 }
 
 export interface ICharacter {
@@ -23,6 +24,22 @@ export interface ICharacter {
   cons: number
   rarity: number
   stat: ICharacterStats
+  equipments: {
+    weapon: IWeapon
+    artifacts: []
+  }
+}
+
+export interface IWeapon {
+  name: string
+  rarity: number
+  tier: number
+  ascStat: string
+  level: number
+  ascension: number
+  refinement: number
+  baseStat: number
+  baseAtk: number
 }
 
 export enum WeaponType {
@@ -69,14 +86,14 @@ export const AscensionStat = Object.freeze({
   5: 'CRIT DMG',
   6: 'Energy Recharge',
   7: 'Elemental Mastery',
-  8: 'Physical DMG Bonus',
-  9: 'Pyro DMG Bonus',
-  10: 'Hydro DMG Bonus',
-  11: 'Cryo DMG Bonus',
-  12: 'Electro DMG Bonus',
-  13: 'Dendro DMG Bonus',
-  14: 'Geo DMG Bonus',
-  15: 'Anemo DMG Bonus',
+  8: 'Physical DMG%',
+  9: 'Pyro DMG%',
+  10: 'Hydro DMG%',
+  11: 'Cryo DMG%',
+  12: 'Electro DMG%',
+  13: 'Dendro DMG%',
+  14: 'Geo DMG%',
+  15: 'Anemo DMG%',
 })
 
 export const Region = Object.freeze({
