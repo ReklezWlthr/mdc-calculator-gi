@@ -1,17 +1,53 @@
 [
   {
     "name": "Albedo",
-    "baseAtk": 19.551,
-    "baseHp": 1029.5856,
-    "baseDef": 68.2062,
-    "ascAtk": 80.28111,
-    "ascHp": 4228.035,
-    "ascDef": 280.098,
+    "stat": {
+      "baseAtk": 19.551,
+      "baseHp": 1029.5856,
+      "baseDef": 68.2062,
+      "ascAtk": 80.28111,
+      "ascHp": 4228.035,
+      "ascDef": 280.098,
+      "ascStat": "HP%"
+    },
     "rarity": 5,
-    "ascStat": "HP",
-    "region": "Fontaine",
+    "region": "Monstadt",
     "constellation": "Princeps Cretaceus",
     "weapon": "SWORD",
     "element": "GEO"
+  },
+  {
+    "name": "Alhaitham",
+    "stat": {
+      "baseAtk": 24.3922,
+      "baseHp": 1039.1188,
+      "baseDef": 60.84711,
+      "ascAtk": 100.16024,
+      "ascHp": 4267.1836,
+      "ascDef": 249.8769,
+      "ascStat": "Dendro DMG%"
+    },
+    "rarity": 5,
+    "region": "Sumeru",
+    "constellation": "Vultur Volans",
+    "weapon": "SWORD",
+    "element": "DENDRO"
+  },
+  {
+    "name": "Chevreuse",
+    "stat": {
+      "baseAtk": 16.2052803,
+      "baseHp": 1002.970093,
+      "baseDef": 50.70135117,
+      "ascAtk": 57.98356247,
+      "ascHp": 3588.609131,
+      "ascDef": 181.408493,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Fontaine",
+    "constellation": "Sclopetum Ensiferum",
+    "weapon": "POLEARM",
+    "element": "PYRO"
   }
 ]

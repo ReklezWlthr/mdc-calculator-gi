@@ -1,30 +1,21 @@
-import { Element, WeaponType } from '@src/domain/genshin'
+import { Element, ICharacter, WeaponType } from '@src/domain/genshin/constant'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 
 enableStaticRendering(typeof window === 'undefined')
 
-interface Character {
-  name: string
-  weapon: WeaponType
-  element: Element
-  level: number
-  ascension: number
-  cons: number
-}
-
 export interface TeamStoreType {
-  characters: Character[]
-  setMember: (index: number, character: Character) => void
-  setMemberInfo: (index: number, info: Partial<Character>) => void
+  characters: ICharacter[]
+  setMember: (index: number, character: ICharacter) => void
+  setMemberInfo: (index: number, info: Partial<ICharacter>) => void
   hydrate: (data: TeamStoreType) => void
 }
 
 export class Team {
-  characters: Character[]
+  characters: ICharacter[]
 
   constructor() {
-    this.characters = Array<Character>(4)
+    this.characters = Array<ICharacter>(4)
 
     makeAutoObservable(this)
   }
@@ -33,12 +24,12 @@ export class Team {
     this[key] = value
   }
 
-  setMember = (index: number, character: Character) => {
+  setMember = (index: number, character: ICharacter) => {
     if (index < 0 || index > 4) return
     this.characters[index] = character
   }
 
-  setMemberInfo = (index: number, info: Partial<Character>) => {
+  setMemberInfo = (index: number, info: Partial<ICharacter>) => {
     if (index < 0 || index > 4) return
     this.characters[index] = { ...this.characters[index], ...info }
   }

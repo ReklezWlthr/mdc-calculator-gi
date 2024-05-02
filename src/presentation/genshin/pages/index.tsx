@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Sidebar } from '../components/sidebar'
 import { TeamSetup } from './team_setup'
-import { GenshinPage } from '@src/domain/genshin'
+import { GenshinPage } from '@src/domain/genshin/constant'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
   switch (page) {

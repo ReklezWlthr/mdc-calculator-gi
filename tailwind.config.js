@@ -19,7 +19,7 @@ module.exports = {
         error: "#990100",
         genshin: {
           anemo: '#a5ffd7',
-          electro: '#b13fe6',
+          electro: '#b19fe6',
           dendro: '#92d050',
           pyro: '#df6665',
           hydro: '#6fa8dd',

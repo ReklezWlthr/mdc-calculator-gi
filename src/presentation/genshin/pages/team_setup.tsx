@@ -3,6 +3,8 @@ import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
+import { StatBlock } from '../components/stat_block'
+import { WeaponBlock } from '../components/weapon_block'
 
 const CharacterSelect = ({ onClick, isSelected }: { onClick: () => void; isSelected: boolean }) => {
   return (
@@ -23,7 +25,7 @@ export const TeamSetup = observer(() => {
 
   return (
     <div className="flex w-5/6 gap-5 p-5 overflow-y-scroll">
-      <div className="w-1/4">
+      <div className="w-1/3">
         <p className="flex justify-center font-semibold text-white">Team Members</p>
         <div className="flex w-full gap-2 pt-1 pb-3">
           {_.map(team, (item, index) => (
@@ -35,6 +37,11 @@ export const TeamSetup = observer(() => {
           ))}
         </div>
         <CharacterBlock index={selected} />
+        <div className="h-5" />
+        <StatBlock index={selected} />
+      </div>
+      <div className="w-1/5">
+        <WeaponBlock index={selected} />
       </div>
     </div>
   )

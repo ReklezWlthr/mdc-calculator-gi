@@ -1,4 +1,4 @@
-import { GenshinPage } from '@src/domain/genshin'
+import { GenshinPage } from '@src/domain/genshin/constant'
 
 const Pill = ({ name, onClick }: { name: string; onClick: () => void }) => {
   return (

@@ -5,6 +5,26 @@ export enum GenshinPage {
   IMPORT = 'import',
 }
 
+export interface ICharacterStats {
+  baseAtk: number
+  baseHp: number
+  baseDef: number
+  ascAtk: number
+  ascHp: number
+  ascDef: number
+}
+
+export interface ICharacter {
+  name: string
+  weapon: WeaponType
+  element: Element
+  level: number
+  ascension: number
+  cons: number
+  rarity: number
+  stat: ICharacterStats
+}
+
 export enum WeaponType {
   SWORD = 'Sword',
   BOW = 'Bow',
@@ -96,6 +116,29 @@ export const AscensionOptions = [
   },
   {
     name: 'A6',
+    value: '6',
+  },
+]
+
+export const ConstellationOptions = [
+  {
+    name: 'C0',
+    value: '0',
+  },
+  {
+    name: 'C1',
+    value: '1',
+  },
+  {
+    name: 'C2',
+    value: '2',
+  },
+  {
+    name: 'C4',
+    value: '4',
+  },
+  {
+    name: 'C6',
     value: '6',
   },
 ]

@@ -2,7 +2,7 @@ import _ from 'lodash'
 import mock from '@src/data/mock.json'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { Element, ElementIcon, WeaponIcon, WeaponType } from '@src/domain/genshin'
+import { Element, ElementIcon, WeaponIcon, WeaponType } from '@src/domain/genshin/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
@@ -66,7 +66,10 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
             className="rounded-lg cursor-pointer bg-primary"
             onClick={() => {
               teamStore.setMemberInfo(index, {
-                name: item.name,
+                level: 1,
+                ascension: 0,
+                ...teamStore.characters[index],
+                ...item,
                 element: Element[item.element],
                 weapon: WeaponType[item.weapon],
               })
