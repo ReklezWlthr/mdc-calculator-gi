@@ -8,11 +8,15 @@ interface Character {
   name: string
   weapon: WeaponType
   element: Element
+  level: number
+  ascension: number
+  cons: number
 }
 
 export interface TeamStoreType {
   characters: Character[]
   setMember: (index: number, character: Character) => void
+  setMemberInfo: (index: number, info: Partial<Character>) => void
   hydrate: (data: TeamStoreType) => void
 }
 
@@ -32,6 +36,11 @@ export class Team {
   setMember = (index: number, character: Character) => {
     if (index < 0 || index > 4) return
     this.characters[index] = character
+  }
+
+  setMemberInfo = (index: number, info: Partial<Character>) => {
+    if (index < 0 || index > 4) return
+    this.characters[index] = { ...this.characters[index], ...info }
   }
 
   hydrate = (data: TeamStoreType) => {

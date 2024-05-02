@@ -18,13 +18,13 @@ export const TextInput = (props: TextInputProps) => {
   return (
     <div
       className={classnames(
-        'rounded-lg w-full flex items-center transition-colors duration-200 relative overflow-hidden hover:border-primary-lighter border-primary-light border bg-transparent'
+        'rounded-lg w-full flex items-center transition-colors duration-200 relative overflow-hidden hover:border-primary-lighter border-primary-light border bg-primary-darker font-normal'
       )}
     >
       {props.iconLeading && (
         <i
           className={classnames(
-            `w-4 h-4 absolute left-3 text-TextInput-colorTextDefault `,
+            `w-4 h-4 absolute left-3 text-TextInput-colorTextDefault`,
             props?.iconLeading
           )}
         />
@@ -38,7 +38,7 @@ export const TextInput = (props: TextInputProps) => {
         placeholder={props.placeholder}
         data-cy={props['data-cy']}
         className={classnames(
-          ' w-full rounded-lg outline-none px-2 py-1 placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent text-sm',
+          'w-full rounded-lg outline-none px-2 py-1 placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent text-sm',
           {
             'pl-10': props.iconLeading,
             'pr-10': props.iconTailing,
