@@ -5,6 +5,24 @@ export enum GenshinPage {
   IMPORT = 'import',
 }
 
+export enum WeaponType {
+  SWORD = 'Sword',
+  BOW = 'Bow',
+  CATALYST = 'Catalyst',
+  POLEARM = 'Polearm',
+  CLAYMORE = 'Claymore',
+}
+
+export enum Element {
+  PYRO = 'Pyro',
+  CRYO = 'Cryo',
+  HYDRO = 'Hydro',
+  ELECTRO = 'Electro',
+  ANEMO = 'Anemo',
+  GEO = 'Geo',
+  DENDRO = 'Dendro',
+}
+
 export const AscensionStat = Object.freeze({
   1: 'HP',
   2: 'ATK',

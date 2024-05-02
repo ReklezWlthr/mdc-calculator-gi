@@ -2,10 +2,16 @@ import { useState } from 'react'
 import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
+import classNames from 'classnames'
 
-const CharacterSelect = ({ onClick }: { onClick: () => void }) => {
+const CharacterSelect = ({ onClick, isSelected }: { onClick: () => void; isSelected: boolean }) => {
   return (
-    <div className="w-full rounded-lg cursor-pointer bg-primary-dark" onClick={onClick}>
+    <div
+      className={classNames('w-full rounded-lg cursor-pointer bg-primary-dark duration-200', {
+        'ring-2 ring-offset-2 ring-offset-transparent ring-primary-lighter': isSelected,
+      })}
+      onClick={onClick}
+    >
       1
     </div>
   )
@@ -21,7 +27,11 @@ export const TeamSetup = observer(() => {
         <p className="flex justify-center font-semibold text-white">Team Members</p>
         <div className="flex w-full gap-2 pt-1 pb-3">
           {_.map(team, (item, index) => (
-            <CharacterSelect onClick={() => setSelected(index)} />
+            <CharacterSelect
+              key={`char_select_${index}`}
+              onClick={() => setSelected(index)}
+              isSelected={index === selected}
+            />
           ))}
         </div>
         <CharacterBlock index={selected} />

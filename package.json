@@ -2,7 +2,7 @@
   "name": "almanac_frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev --port=5000",
+    "dev": "next dev --port=3333",
     "build": "next build",
     "start": "next start"
   },

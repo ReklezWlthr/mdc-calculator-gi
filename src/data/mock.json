@@ -8,8 +8,10 @@
     "ascHp": 4228.035,
     "ascDef": 280.098,
     "rarity": 5,
-    "ascStat": 1,
-    "region": 5,
-    "constellation": "Princeps Cretaceus"
+    "ascStat": "HP",
+    "region": "Fontaine",
+    "constellation": "Princeps Cretaceus",
+    "weapon": "SWORD",
+    "element": "GEO"
   }
 ]

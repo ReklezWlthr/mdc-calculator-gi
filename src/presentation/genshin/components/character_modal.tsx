@@ -2,6 +2,7 @@ import _ from 'lodash'
 import mock from '@src/data/mock.json'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
+import { Element, WeaponType } from '@src/domain/genshin'
 
 interface CharacterModalProps {
   index: number
@@ -18,7 +19,11 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           <div
             className="rounded-lg cursor-pointer bg-primary"
             onClick={() => {
-              teamStore.setMember(index, { name: item.name })
+              teamStore.setMember(index, {
+                name: item.name,
+                element: Element[item.element],
+                weapon: WeaponType[item.weapon],
+              })
               modalStore.closeModal()
             }}
             key={item.name}

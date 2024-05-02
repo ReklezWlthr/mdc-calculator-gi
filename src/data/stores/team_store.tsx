@@ -1,3 +1,4 @@
+import { Element, WeaponType } from '@src/domain/genshin'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 
@@ -5,6 +6,8 @@ enableStaticRendering(typeof window === 'undefined')
 
 interface Character {
   name: string
+  weapon: WeaponType
+  element: Element
 }
 
 export interface TeamStoreType {

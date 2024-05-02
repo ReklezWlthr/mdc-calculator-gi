@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
     <StoreProvider {...pageProps}>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Athiti:wght@200;300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
         <link href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" rel="stylesheet" />
