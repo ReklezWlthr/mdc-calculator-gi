@@ -6,14 +6,18 @@ enableStaticRendering(typeof window === 'undefined')
 
 export interface TeamStoreType {
   characters: ITeamChar[]
+  hydrated: boolean
+  setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setMember: (index: number, character: ITeamChar) => void
   setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
   setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
+  hydrateCharacters: (data: ITeamChar[]) => void
   hydrate: (data: TeamStoreType) => void
 }
 
 export class Team {
   characters: ITeamChar[]
+  hydrated: boolean = false
 
   constructor() {
     this.characters = Array(4).fill({
@@ -51,6 +55,11 @@ export class Team {
   setWeapon = (index: number, info: Partial<IWeaponEquip>) => {
     if (index < 0 || index > 4) return
     this.characters[index].equipments.weapon = { ...this.characters[index].equipments.weapon, ...info }
+  }
+
+  hydrateCharacters = (data: ITeamChar[]) => {
+    if (!data) return
+    this.characters = data
   }
 
   hydrate = (data: TeamStoreType) => {

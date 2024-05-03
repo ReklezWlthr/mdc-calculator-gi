@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Sidebar } from '../components/sidebar'
 import { TeamSetup } from './team_setup'
 import { GenshinPage } from '@src/domain/genshin/constant'
+import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
+import { observer } from 'mobx-react-lite'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
   switch (page) {
@@ -12,8 +14,10 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
   }
 }
 
-export const GenshinHome = () => {
+export const GenshinHome = observer(() => {
   const [page, setPage] = useState<GenshinPage>(GenshinPage.TEAM)
+
+  useLocalUpdater('genshin')
 
   return (
     <div className="flex w-full h-[calc(100vh-68px)]">
@@ -21,4 +25,4 @@ export const GenshinHome = () => {
       <InternalPage page={page} />
     </div>
   )
-}
+})
