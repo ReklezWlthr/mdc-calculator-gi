@@ -21,6 +21,7 @@ export interface ICharacter {
   element: string
   rarity: number
   stat: ICharacterStats
+  codeName: string
 }
 
 export interface ITeamChar {
@@ -40,6 +41,7 @@ export interface IWeapon {
   tier: number
   ascStat: string
   baseStat: number
+  icon: string
 }
 
 export interface IWeaponEquip {

@@ -6,6 +6,8 @@ import { Element, ElementIcon, WeaponIcon, WeaponType } from '@src/domain/genshi
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
+import { RarityGauge } from '@src/presentation/components/rarity_gauge'
+import { useMemo } from 'react'
 
 interface CharacterModalProps {
   index: number
@@ -18,6 +20,19 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
     element: [],
     weapon: [],
   })
+
+  const filteredChar = useMemo(
+    () =>
+      _.filter(mock, (item) => {
+        const regex = new RegExp(params.searchWord, 'i')
+        const nameMatch = item.name.match(regex)
+        const elmMatch = _.size(params.element) ? _.includes(params.element, Element[item.element]) : true
+        const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, WeaponType[item.weapon]) : true
+
+        return nameMatch && elmMatch && weaponMatch
+      }),
+    [params]
+  )
 
   const FilterIcon = ({ type, value }: { type: 'element' | 'weapon'; value: Element | WeaponType }) => {
     const array = type === 'element' ? params.element : params.weapon
@@ -60,10 +75,10 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           <FilterIcon type="weapon" value={WeaponType.CATALYST} />
         </div>
       </div>
-      <div className="grid w-full grid-cols-10 gap-x-2">
-        {_.map(mock, (item) => (
+      <div className="grid w-full grid-cols-10 gap-4">
+        {_.map(filteredChar, (item) => (
           <div
-            className="rounded-lg cursor-pointer bg-primary"
+            className="text-xs border rounded-lg cursor-pointer bg-primary border-primary-border"
             onClick={() => {
               teamStore.setMemberInfo(index, {
                 data: item,
@@ -72,7 +87,17 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
             }}
             key={item.name}
           >
-            <p className="flex justify-center">{item.name}</p>
+            <div className="relative">
+              <img src={ElementIcon[Element[item.element]]} className="absolute w-8 h-8 top-0.5 left-1" />
+              <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
+                <RarityGauge rarity={item.rarity} />
+              </div>
+              <img
+                src={`https://enka.network/ui/UI_AvatarIcon_${item.codeName || 'PlayerGirl'}.png`}
+                className="rounded-t-lg bg-primary-darker"
+              />
+            </div>
+            <p className="flex justify-center px-2 py-1 truncate">{item.name}</p>
           </div>
         ))}
       </div>

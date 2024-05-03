@@ -16,6 +16,7 @@ import { findBaseLevel } from '@src/core/utils/data_format'
 import _ from 'lodash'
 import { findMaxLevel } from '../../../core/utils/data_format'
 import classNames from 'classnames'
+import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 
 interface CharacterBlockProps {
   index: number
@@ -49,8 +50,15 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-3 text-xl rounded-t-lg bg-primary-lighter">Character</div>
-      <div className="flex gap-x-3">
-        <div className="w-1/2"></div>
+      <div className="flex">
+        <div className="w-1/2 px-5 py-3">
+          <img
+            src={`https://enka.network/ui/UI_AvatarIcon_${
+              teamStore.characters[props.index]?.data?.codeName || 'PlayerGirl'
+            }.png`}
+            className="w-full h-full border rounded-lg bg-primary-darker border-primary-border"
+          />
+        </div>
         <div className="w-1/2 px-2 py-3 space-y-2">
           <div className="space-y-1">
             <p className="text-sm font-semibold">Name</p>
@@ -97,16 +105,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 <img src={WeaponIcon[WeaponType[teamStore.characters[props.index]?.data?.weapon]]} />
               </div>
             </div>
-            <div
-              className={classNames('text-[10px]', {
-                'text-genshin-electro': rarity === 4,
-                'text-genshin-geo': rarity === 5,
-              })}
-            >
-              {_.map(Array(rarity || 0), () => (
-                <span>✦</span>
-              ))}
-            </div>
+            <RarityGauge rarity={rarity} />
             <div className="flex gap-0.5">
               <div className="w-10 h-10 rounded-lg bg-primary-light">
                 <img src={ElementIcon[Element[teamStore.characters[props.index]?.data?.element]]} />

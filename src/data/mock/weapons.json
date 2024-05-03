@@ -4,20 +4,23 @@
     "rarity": 4,
     "tier": 2,
     "ascStat": "Elemental Mastery",
-    "baseStat": 36
+    "baseStat": 36,
+    "icon": "UI_EquipIcon_Bow_Proto"
   },
   {
     "name": "Wolf's Gravestone",
-    "rarity": 5,
+    "rarity": 5,  
     "tier": 2,
     "ascStat": "ATK%",
-    "baseStat": 0.108
+    "baseStat": 0.108,
+    "icon": "UI_EquipIcon_Claymore_Wolfmound"
   },
   {
     "name": "White Tassel",
     "rarity": 3,
     "tier": 2,
     "ascStat": "CRIT Rate",
-    "baseStat": 0.051
+    "baseStat": 0.051,
+    "icon": "UI_EquipIcon_Pole_Ruby"
   }
 ]

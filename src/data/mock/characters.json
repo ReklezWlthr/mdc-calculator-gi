@@ -14,7 +14,8 @@
     "region": "Monstadt",
     "constellation": "Princeps Cretaceus",
     "weapon": "SWORD",
-    "element": "GEO"
+    "element": "GEO",
+    "codeName": "Albedo"
   },
   {
     "name": "Alhaitham",
@@ -31,7 +32,8 @@
     "region": "Sumeru",
     "constellation": "Vultur Volans",
     "weapon": "SWORD",
-    "element": "DENDRO"
+    "element": "DENDRO",
+    "codeName": "Alhatham"
   },
   {
     "name": "Chevreuse",
@@ -48,6 +50,7 @@
     "region": "Fontaine",
     "constellation": "Sclopetum Ensiferum",
     "weapon": "POLEARM",
-    "element": "PYRO"
+    "element": "PYRO",
+    "codeName": "Chevreuse"
   }
 ]
