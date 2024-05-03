@@ -42,7 +42,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-1/2">
-      <div className="flex justify-center px-5 py-3 text-xl rounded-t-lg bg-primary-lighter">Weapon</div>
+      <div className="flex justify-center px-5 py-2 text-xl rounded-t-lg bg-primary-lighter">Weapon</div>
       <div className="flex gap-x-3">
         <div className="w-1/2"></div>
         <div className="w-1/2 px-2 py-3 space-y-2">
