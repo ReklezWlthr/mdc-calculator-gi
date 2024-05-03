@@ -81,7 +81,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
       <div className="grid w-full grid-cols-10 gap-4">
         {_.map(filteredChar, (item) => (
           <div
-            className="text-xs border rounded-lg cursor-pointer bg-primary border-primary-border"
+            className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
             onClick={() => {
               teamStore.setMemberInfo(index, {
                 data: item,
