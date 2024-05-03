@@ -23,14 +23,17 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
 
   const filteredChar = useMemo(
     () =>
-      _.filter(mock, (item) => {
-        const regex = new RegExp(params.searchWord, 'i')
-        const nameMatch = item.name.match(regex)
-        const elmMatch = _.size(params.element) ? _.includes(params.element, Element[item.element]) : true
-        const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, WeaponType[item.weapon]) : true
+      _.filter(
+        mock.sort((a, b) => a.name.localeCompare(b.name)),
+        (item) => {
+          const regex = new RegExp(params.searchWord, 'i')
+          const nameMatch = item.name.match(regex)
+          const elmMatch = _.size(params.element) ? _.includes(params.element, Element[item.element]) : true
+          const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, WeaponType[item.weapon]) : true
 
-        return nameMatch && elmMatch && weaponMatch
-      }),
+          return nameMatch && elmMatch && weaponMatch
+        }
+      ),
     [params]
   )
 
