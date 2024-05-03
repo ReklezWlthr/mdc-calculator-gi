@@ -7,6 +7,8 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
+import { WeaponModal } from './weapon_modal'
+import { useStat } from '@src/core/hooks/useStat'
 
 interface StatBlockProps {
   index: number
@@ -14,10 +16,13 @@ interface StatBlockProps {
 
 export const WeaponBlock = observer((props: StatBlockProps) => {
   const { modalStore, teamStore } = useStore()
-  const ascension = teamStore.characters[props.index]?.ascension || 0
-  const level = teamStore.characters[props.index]?.level || 1
-  const cons = teamStore.characters[props.index]?.cons || 0
-  const rarity = teamStore.characters[props.index]?.rarity
+  const weapon = teamStore.characters[props.index]?.equipments?.weapon
+  const ascension = weapon?.ascension || 0
+  const level = weapon?.level || 1
+  const refinement = weapon?.refinement || 1
+  const rarity = weapon?.rarity
+
+  const { weaponBaseAtk } = useStat(props.index)
 
   const levels = useMemo(
     () =>
@@ -31,7 +36,9 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
     [ascension]
   )
 
-  const onOpenModal = useCallback(() => {}, [modalStore, props.index])
+  const onOpenModal = useCallback(() => {
+    modalStore.openModal(<WeaponModal index={props.index} />)
+  }, [modalStore, props.index])
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
@@ -53,23 +60,19 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
                 ))}
               </div>
             </div>
-            <PillInput
-              onClick={onOpenModal}
-              value={teamStore.characters[props.index]?.name}
-              disabled={!teamStore.characters[props.index]?.name}
-            />
+            <PillInput onClick={onOpenModal} value={weapon?.name} disabled={!teamStore.characters[props.index]?.name} />
           </div>
           <div className="space-y-1">
             <p className="w-full text-sm font-semibold">Level</p>
             <div className="flex w-full gap-2">
               <SelectInput
-                onChange={(value) => teamStore.setMemberInfo(props.index, { level: parseInt(value) || 0 })}
+                onChange={(value) => teamStore.setWeapon(props.index, { level: parseInt(value) || 0 })}
                 options={levels}
                 value={level?.toString()}
               />
               <SelectInput
                 onChange={(value) =>
-                  teamStore.setMemberInfo(props.index, {
+                  teamStore.setWeapon(props.index, {
                     ascension: parseInt(value) || 0,
                     level: findBaseLevel(parseInt(value) || 0),
                   })
@@ -78,6 +81,18 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
                 value={ascension?.toString()}
                 style="w-fit"
               />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 text-xs">
+              <p className="shrink-0">Base ATK</p>
+              <hr className="w-full border border-primary-border" />
+              <p className="font-normal text-gray">{weaponBaseAtk}</p>
+            </div>
+            <div className="flex items-center gap-2 text-xs">
+              <p className="shrink-0">{weapon?.ascStat}</p>
+              <hr className="w-full border border-primary-border" />
+              <p className="font-normal text-gray">{0}</p>
             </div>
           </div>
         </div>

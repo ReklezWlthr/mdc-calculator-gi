@@ -1,4 +1,4 @@
-import { AscensionScaling, FiveStarScaling, FourStarScaling } from '@src/domain/genshin/scaling'
+import { AscensionScaling, FiveStarScaling, FourStarScaling, WeaponScaling } from '@src/domain/genshin/scaling'
 import _ from 'lodash'
 
 export const findBaseLevel = (ascension: number) => {
@@ -25,4 +25,12 @@ export const getBaseStat = (base: number, level: number, ascBonus: number, ascen
   if (rarity !== 4 && rarity !== 5) return 0
   const scaling = rarity === 4 ? FourStarScaling : FiveStarScaling
   return _.floor(base * scaling[level - 1] + ascBonus * AscensionScaling[ascension])
+}
+
+export const getWeaponBase = (tier: number, level: number, ascension: number, rarity: number) => {
+  if (!_.includes([3, 4, 5], rarity)) return 0
+  const base = WeaponScaling[rarity]?.base?.[tier - 1]
+  const ascBonus = WeaponScaling[rarity]?.ascension?.[ascension]
+  const scaling = WeaponScaling[rarity]?.level?.[tier]?.[level - 1]
+  return _.floor(base * scaling + ascBonus)
 }

@@ -1,38 +1,48 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { getBaseStat } from '@src/core/utils/data_format'
+import { getBaseStat, getWeaponBase } from '@src/core/utils/data_format'
 import _ from 'lodash'
 import { toPercentage } from '@src/core/utils/converter'
+import { useStat } from '@src/core/hooks/useStat'
 
 interface StatBlockProps {
   index: number
 }
 
 export const StatBlock = observer((props: StatBlockProps) => {
-  const { teamStore } = useStore()
-  const char = teamStore.characters[props.index]
+  const stat = useStat(props.index)
 
   const DataRow = ({ title, value }: { title: string; value: number | string }) => {
     return (
       <div className="flex items-center gap-2 text-xs">
         <p className="shrink-0">{title}</p>
         <hr className="w-full border border-primary-border" />
-        <p className="font-normal text-gray">{value}</p>
+        <p className="font-normal text-gray">{value.toLocaleString()}</p>
+      </div>
+    )
+  }
+
+  const ExtraDataRow = ({ title, base, bonus }: { title: string; base: number; bonus: number }) => {
+    return (
+      <div className="flex items-center gap-2 text-xs">
+        <p className="shrink-0">{title}</p>
+        <hr className="w-full border border-primary-border" />
+        <div className="flex flex-col items-end shrink-0">
+          <p className="font-normal text-gray">{(base + bonus).toLocaleString()}</p>
+          <p className="font-normal text-neutral-400 text-[9px]">
+            {base.toLocaleString()}
+            <span className="text-genshin-hydro">{` (+${bonus.toLocaleString()})`}</span>
+          </p>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-10 gap-y-3 gap-x-5 bg-primary-dark">
-      <DataRow title="HP" value={getBaseStat(char?.stat?.baseHp, char?.level, char?.stat?.ascHp, char?.ascension, char?.rarity)} />
-      <DataRow
-        title="ATK"
-        value={getBaseStat(char?.stat?.baseAtk, char?.level, char?.stat?.ascAtk, char?.ascension, char?.rarity)}
-      />
-      <DataRow
-        title="DEF"
-        value={getBaseStat(char?.stat?.baseDef, char?.level, char?.stat?.ascDef, char?.ascension, char?.rarity)}
-      />
+    <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-10 gap-y-1 gap-x-5 bg-primary-dark">
+      <ExtraDataRow title="HP" base={stat?.baseHp} bonus={0} />
+      <ExtraDataRow title="ATK" base={stat?.baseAtk} bonus={0} />
+      <ExtraDataRow title="DEF" base={stat?.baseDef} bonus={0} />
       <DataRow title="Elemental Mastery" value={0} />
       <DataRow title="CRIT Rate" value={toPercentage(0.05)} />
       <DataRow title="CRIT DMG" value={toPercentage(0.5)} />
