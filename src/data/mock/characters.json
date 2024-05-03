@@ -52,5 +52,23 @@
     "weapon": "POLEARM",
     "element": "PYRO",
     "codeName": "Chevreuse"
+  },
+  {
+    "name": "Sangonomiya Kokomi",
+    "stat": {
+      "baseAtk": 18.2476,
+      "baseHp": 1048.652,
+      "baseDef": 51.15465,
+      "ascAtk": 74.92904,
+      "ascHp": 4306.332,
+      "ascDef": 210.0735,
+      "ascStat": "Hydro DMG%"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Dracaena Somnolenta",
+    "weapon": "CATALYST",
+    "element": "HYDRO",
+    "codeName": "Kokomi"
   }
 ]
