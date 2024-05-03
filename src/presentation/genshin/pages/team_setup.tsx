@@ -25,7 +25,7 @@ export const TeamSetup = observer(() => {
   const [team, setTeam] = useState(Array(4))
 
   return (
-    <div className="flex w-5/6 gap-5 p-5 overflow-y-scroll">
+    <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-scroll">
       <div className="w-1/3">
         <p className="flex justify-center font-semibold text-white">Team Members</p>
         <div className="flex w-full gap-2 pt-1 pb-3">
