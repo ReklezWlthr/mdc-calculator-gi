@@ -70,5 +70,59 @@
     "weapon": "CATALYST",
     "element": "HYDRO",
     "codeName": "Kokomi"
+  },
+  {
+    "name": "Fischl",
+    "stat": {
+      "baseAtk": 20.4792,
+      "baseHp": 770.4634,
+      "baseDef": 49.78575,
+      "ascAtk": 73.27593,
+      "ascHp": 2756.704,
+      "ascDef": 178.1325,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Corvus",
+    "weapon": "BOW",
+    "element": "ELECTRO",
+    "codeName": "Fischl"
+  },
+  {
+    "name": "Eula",
+    "stat": {
+      "baseAtk": 26.6266,
+      "baseHp": 1029.5856,
+      "baseDef": 58.45391,
+      "ascAtk": 109.33523,
+      "ascHp": 4228.035,
+      "ascDef": 240.0489,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Monstadt",
+    "constellation": "Aphros Delos",
+    "weapon": "CLAYMORE",
+    "element": "CRYO",
+    "codeName": "Eula"
+  },
+  {
+    "name": "Wanderer",
+    "stat": {
+      "baseAtk": 25.5094,
+      "baseHp": 791.2556,
+      "baseDef": 47.2657,
+      "ascAtk": 104.747734,
+      "ascHp": 3249.3232,
+      "ascDef": 194.103,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Sumeru",
+    "constellation": "Peregrinus",
+    "weapon": "CATALYST",
+    "element": "ANEMO",
+    "codeName": "Wanderer"
   }
 ]
