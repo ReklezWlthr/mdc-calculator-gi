@@ -1,6 +1,6 @@
 import { findBaseLevel, findMaxLevel } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { AscensionOptions } from '@src/domain/genshin/constant'
+import { AscensionOptions, RefinementOptions } from '@src/domain/genshin/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import classNames from 'classnames'
@@ -42,65 +42,81 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-1/2">
-      <div className="flex justify-center px-5 py-2 text-xl rounded-t-lg bg-primary-lighter">Weapon</div>
-      <div className="flex gap-x-3">
-        <div className="w-1/2"></div>
-        <div className="w-1/2 px-2 py-3 space-y-2">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <p className="text-sm font-semibold">Name</p>
-              <div
-                className={classNames('text-[10px]', {
-                  'text-genshin-electro': rarity === 4,
-                  'text-genshin-geo': rarity === 5,
-                })}
-              >
-                {_.map(Array(rarity || 0), () => (
-                  <span>✦</span>
-                ))}
-              </div>
+      <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Weapon</div>
+      <div className="flex flex-col p-3 gap-y-2">
+        <div className="flex items-center gap-2">
+          {/* <p className="text-sm font-semibold">Name</p> */}
+          <PillInput
+            onClick={onOpenModal}
+            value={weapon?.data?.name}
+            disabled={!teamStore.characters[props.index]?.data}
+          />
+          <SelectInput
+            onChange={(value) =>
+              teamStore.setWeapon(props.index, {
+                refinement: parseInt(value) || 1,
+              })
+            }
+            options={RefinementOptions}
+            value={refinement?.toString()}
+            style="w-fit"
+            disabled={!weapon?.data}
+          />
+        </div>
+        <div className="flex">
+          <div className="flex flex-col justify-between w-1/2">
+            <div className="h-full" />
+            <div
+              className={classNames('text-xs w-full flex justify-center', {
+                'text-genshin-hydro': rarity === 3,
+                'text-genshin-electro': rarity === 4,
+                'text-genshin-geo': rarity === 5,
+              })}
+            >
+              {_.map(Array(rarity || 0), () => (
+                <span>✦</span>
+              ))}
             </div>
-            <PillInput
-              onClick={onOpenModal}
-              value={weapon?.data?.name}
-              disabled={!teamStore.characters[props.index]?.data}
-            />
           </div>
-          <div className="space-y-1">
-            <p className="w-full text-sm font-semibold">Level</p>
-            <div className="flex w-full gap-2">
-              <SelectInput
-                onChange={(value) => teamStore.setWeapon(props.index, { level: parseInt(value) || 0 })}
-                options={levels}
-                value={level?.toString()}
-              />
-              <SelectInput
-                onChange={(value) =>
-                  teamStore.setWeapon(props.index, {
-                    ascension: parseInt(value) || 0,
-                    level: findBaseLevel(parseInt(value) || 0),
-                  })
-                }
-                options={AscensionOptions}
-                value={ascension?.toString()}
-                style="w-fit"
-              />
+          <div className="w-1/2 space-y-2">
+            <div className="space-y-1">
+              <p className="text-sm font-semibold">Level</p>
+              <div className="flex items-center w-full gap-2">
+                <SelectInput
+                  onChange={(value) => teamStore.setWeapon(props.index, { level: parseInt(value) || 0 })}
+                  options={levels}
+                  value={level?.toString()}
+                  disabled={!weapon?.data}
+                />
+                <SelectInput
+                  onChange={(value) =>
+                    teamStore.setWeapon(props.index, {
+                      ascension: parseInt(value) || 0,
+                      level: findBaseLevel(parseInt(value) || 0),
+                    })
+                  }
+                  options={AscensionOptions}
+                  value={ascension?.toString()}
+                  style="w-fit"
+                  disabled={!weapon?.data}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="px-4 pb-3 space-y-2">
-            <div className="flex items-center gap-2 text-xs">
-              <p className="shrink-0">Base ATK</p>
-              <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{weaponBaseAtk}</p>
-            </div>
-            <div className="flex items-center gap-2 text-xs">
-              <p className="shrink-0">{weapon?.data?.ascStat || 'N/A'}</p>
-              <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
-            </div>
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-xs">
+            <p className="shrink-0">Base ATK</p>
+            <hr className="w-full border border-primary-border" />
+            <p className="font-normal text-gray">{weaponBaseAtk}</p>
           </div>
+          <div className="flex items-center gap-2 text-xs">
+            <p className="shrink-0">{weapon?.data?.ascStat || 'N/A'}</p>
+            <hr className="w-full border border-primary-border" />
+            <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 })

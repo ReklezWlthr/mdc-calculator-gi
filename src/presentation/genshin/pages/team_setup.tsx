@@ -6,30 +6,30 @@ import classNames from 'classnames'
 import { StatBlock } from '../components/stat_block'
 import { WeaponBlock } from '../components/weapon_block'
 import { ArtifactBlock } from '../components/artifact_block'
+import { useStore } from '@src/data/providers/app_store_provider'
 
 const CharacterSelect = ({ onClick, isSelected }: { onClick: () => void; isSelected: boolean }) => {
   return (
     <div
-      className={classNames('w-full rounded-lg cursor-pointer bg-primary-dark duration-200', {
-        'ring-2 ring-offset-2 ring-offset-transparent ring-primary-lighter': isSelected,
-      })}
+      className={classNames(
+        'w-12 h-12 rounded-full cursor-pointer bg-primary-dark duration-200',
+        isSelected ? 'ring-4 ring-primary-lighter' : 'hover:ring-2 ring-primary-light'
+      )}
       onClick={onClick}
-    >
-      1
-    </div>
+    ></div>
   )
 }
 
 export const TeamSetup = observer(() => {
   const [selected, setSelected] = useState(0)
-  const [team, setTeam] = useState(Array(4))
+
+  const { teamStore } = useStore()
 
   return (
     <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-scroll">
       <div className="w-1/3">
-        <p className="flex justify-center font-semibold text-white">Team Members</p>
-        <div className="flex w-full gap-2 pt-1 pb-3">
-          {_.map(team, (item, index) => (
+        <div className="flex justify-center w-full gap-4 pt-1 pb-3">
+          {_.map(teamStore?.characters, (item, index) => (
             <CharacterSelect
               key={`char_select_${index}`}
               onClick={() => setSelected(index)}

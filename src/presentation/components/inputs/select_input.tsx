@@ -36,12 +36,10 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
         <Listbox.Button
           className={({ open }) =>
             classNames(
-              'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full bg-primary-darker',
-              { 'text-white border-primary-light': value },
-              {
-                'bg-light-3 border-dark-4 cursor-not-allowed text-dark-4': disabled,
-              },
-              { 'cursor-pointer hover:border-primary-lighter': !disabled },
+              'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full',
+              { 'cursor-not-allowed bg-primary-bg border-primary text-primary-light': disabled },
+              { 'cursor-pointer hover:border-primary-lighter bg-primary-darker border-primary-light': !disabled },
+              { 'text-gray': value },
               { 'text-primary-light': !value }
             )
           }
@@ -52,7 +50,7 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
                 <img src={valueFinder(value)?.img} className="object-cover w-6 h-6 mr-3 rounded-full" />
               )}
               <div>{value && <i className={icon} />}</div>
-              <div className="text-sm truncate text-gray">{value ? valueFinder(value)?.name : placeholder}</div>
+              <div className="text-sm truncate">{value ? valueFinder(value)?.name : placeholder}</div>
             </div>
           )}
         </Listbox.Button>

@@ -27,7 +27,7 @@ export class Team {
           ascension: 0,
           refinement: 1,
         },
-        artifacts: [],
+        artifacts: Array(5),
       },
     })
 

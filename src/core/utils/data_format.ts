@@ -38,7 +38,7 @@ export const getWeaponBase = (tier: number, level: number, ascension: number, ra
   const base = WeaponScaling[rarity]?.base?.[tier - 1]
   const ascBonus = WeaponScaling[rarity]?.ascension?.[ascension]
   const scaling = WeaponScaling[rarity]?.level?.[tier]?.[level - 1]
-  return _.floor(base * scaling + ascBonus)
+  return _.round(base * scaling + ascBonus)
 }
 
 export const getWeaponBonus = (base: number, level: number) => {

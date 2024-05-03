@@ -36,7 +36,7 @@ export const useStat = (index: number) => {
       raw: weaponSecondary,
       formatted:
         weapon?.data?.ascStat === Stats.EM
-          ? weaponSecondary.toLocaleString()
+          ? _.round(weaponSecondary).toLocaleString()
           : toPercentage(weaponSecondary || 0),
     },
     baseAtk: charBaseAtk + weaponBaseAtk,
@@ -59,5 +59,6 @@ export const useStat = (index: number) => {
     pDef: getTotalStat(Stats.P_DEF),
     cRate: 0.05 + getTotalStat(Stats.CRIT_RATE),
     cDmg: 0.5 + getTotalStat(Stats.CRIT_DMG),
+    em: getTotalStat(Stats.EM),
   }
 }

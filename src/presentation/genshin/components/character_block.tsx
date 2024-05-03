@@ -28,6 +28,8 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   const cons = teamStore.characters[props.index]?.cons || 0
   const rarity = teamStore.characters[props.index]?.data?.rarity
 
+  const isEmpty = !teamStore.characters[props.index]?.data
+
   const levels = useMemo(
     () =>
       _.map(
@@ -61,6 +63,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 onChange={(value) => teamStore.setMemberInfo(props.index, { level: parseInt(value) || 0 })}
                 options={levels}
                 value={level?.toString()}
+                disabled={isEmpty}
               />
               <SelectInput
                 onChange={(value) =>
@@ -72,6 +75,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 options={AscensionOptions}
                 value={ascension?.toString()}
                 style="w-fit"
+                disabled={isEmpty}
               />
               <SelectInput
                 onChange={(value) =>
@@ -82,10 +86,11 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 options={ConstellationOptions}
                 value={cons?.toString()}
                 style="w-fit"
+                disabled={isEmpty}
               />
             </div>
           </div>
-          <div className="flex items-center justify-center gap-2 pt-1">
+          <div className="flex items-center justify-between gap-2 px-1 pt-1">
             <div className="flex gap-0.5">
               <p className="[writing-mode:vertical-rl] rotate-180 text-[10px]">Weapon</p>
               <div className="w-10 h-10 rounded-lg bg-primary-light">

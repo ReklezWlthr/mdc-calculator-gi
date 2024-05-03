@@ -116,56 +116,36 @@ export const Region = Object.freeze({
   7: 'Scheznaya',
 })
 
+export const ArtifactPiece = Object.freeze({
+  1: 'Flower of Life',
+  2: 'Plume of Death',
+  3: 'Sands of Eon',
+  4: 'Goblet of Eonothem',
+  5: 'Circlet of Logos',
+})
+
 export const AscensionOptions = [
-  {
-    name: 'A0',
-    value: '0',
-  },
-  {
-    name: 'A1',
-    value: '1',
-  },
-  {
-    name: 'A2',
-    value: '2',
-  },
-  {
-    name: 'A3',
-    value: '3',
-  },
-  {
-    name: 'A4',
-    value: '4',
-  },
-  {
-    name: 'A5',
-    value: '5',
-  },
-  {
-    name: 'A6',
-    value: '6',
-  },
+  { name: 'A0', value: '0' },
+  { name: 'A1', value: '1' },
+  { name: 'A2', value: '2' },
+  { name: 'A3', value: '3' },
+  { name: 'A4', value: '4' },
+  { name: 'A5', value: '5' },
+  { name: 'A6', value: '6' },
 ]
 
 export const ConstellationOptions = [
-  {
-    name: 'C0',
-    value: '0',
-  },
-  {
-    name: 'C1',
-    value: '1',
-  },
-  {
-    name: 'C2',
-    value: '2',
-  },
-  {
-    name: 'C4',
-    value: '4',
-  },
-  {
-    name: 'C6',
-    value: '6',
-  },
+  { name: 'C0', value: '0' },
+  { name: 'C1', value: '1' },
+  { name: 'C2', value: '2' },
+  { name: 'C4', value: '4' },
+  { name: 'C6', value: '6' },
+]
+
+export const RefinementOptions = [
+  { name: 'R1', value: '1' },
+  { name: 'R2', value: '2' },
+  { name: 'R3', value: '3' },
+  { name: 'R4', value: '4' },
+  { name: 'R5', value: '5' },
 ]
