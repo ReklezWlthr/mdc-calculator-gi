@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
 import { StatBlock } from '../components/stat_block'
 import { WeaponBlock } from '../components/weapon_block'
+import { ArtifactBlock } from '../components/artifact_block'
 
 const CharacterSelect = ({ onClick, isSelected }: { onClick: () => void; isSelected: boolean }) => {
   return (
@@ -40,8 +41,17 @@ export const TeamSetup = observer(() => {
         <div className="h-5" />
         <StatBlock index={selected} />
       </div>
-      <div className="w-1/5">
+      <div className="w-1/5 space-y-5">
         <WeaponBlock index={selected} />
+        <ArtifactBlock index={selected} piece={3} />
+      </div>
+      <div className="w-1/5 space-y-5">
+        <ArtifactBlock index={selected} piece={1} />
+        <ArtifactBlock index={selected} piece={4} />
+      </div>
+      <div className="w-1/5 space-y-5">
+        <ArtifactBlock index={selected} piece={2} />
+        <ArtifactBlock index={selected} piece={5} />
       </div>
     </div>
   )

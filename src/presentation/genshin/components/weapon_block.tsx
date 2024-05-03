@@ -41,7 +41,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
   }, [modalStore, props.index])
 
   return (
-    <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
+    <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-1/2">
       <div className="flex justify-center px-5 py-3 text-xl rounded-t-lg bg-primary-lighter">Weapon</div>
       <div className="flex gap-x-3">
         <div className="w-1/2"></div>
@@ -87,7 +87,9 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
               />
             </div>
           </div>
-          <div className="space-y-2">
+        </div>
+      </div>
+      <div className="px-4 pb-3 space-y-2">
             <div className="flex items-center gap-2 text-xs">
               <p className="shrink-0">Base ATK</p>
               <hr className="w-full border border-primary-border" />
@@ -99,8 +101,6 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
               <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
             </div>
           </div>
-        </div>
-      </div>
     </div>
   )
 })

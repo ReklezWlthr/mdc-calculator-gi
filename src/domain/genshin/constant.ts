@@ -85,23 +85,26 @@ export const ElementIcon = {
   [Element.DENDRO]: '/icons/element_dendro.png',
 }
 
-export const AscensionStat = Object.freeze({
-  1: 'HP',
-  2: 'ATK',
-  3: 'DEF',
-  4: 'CRIT Rate',
-  5: 'CRIT DMG',
-  6: 'Energy Recharge',
-  7: 'Elemental Mastery',
-  8: 'Physical DMG%',
-  9: 'Pyro DMG%',
-  10: 'Hydro DMG%',
-  11: 'Cryo DMG%',
-  12: 'Electro DMG%',
-  13: 'Dendro DMG%',
-  14: 'Geo DMG%',
-  15: 'Anemo DMG%',
-})
+export enum Stats {
+  HP = 'HP',
+  ATK = 'ATK',
+  DEF = 'DEF',
+  P_HP = 'HP%',
+  P_ATK = 'ATK%',
+  P_DEF = 'DEF%',
+  CRIT_RATE = 'CRIT Rate',
+  CRIT_DMG = 'CRIT DMG',
+  ER = 'Energy Recharge',
+  EM = 'Elemental Mastery',
+  PHYSICAL_DMG = 'Physical DMG%',
+  PYRO_DMG = 'Pyro DMG%',
+  HYDRO_DMG = 'Hydro DMG%',
+  CRYO_DMG = 'Cryo DMG%',
+  ELECTROL_DMG = 'Electro DMG%',
+  DENDRO_DMG = 'Dendro DMG%',
+  GEO_DMG = 'Geo DMG%',
+  ANEMO_DMG = 'Anemo DMG%',
+}
 
 export const Region = Object.freeze({
   1: 'Monstadt',
