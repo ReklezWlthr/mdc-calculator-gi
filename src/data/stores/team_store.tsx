@@ -1,25 +1,26 @@
-import { Element, ICharacter, IWeapon, WeaponType } from '@src/domain/genshin/constant'
+import { Element, ITeamChar, IWeapon, IWeaponEquip, WeaponType } from '@src/domain/genshin/constant'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 
 enableStaticRendering(typeof window === 'undefined')
 
 export interface TeamStoreType {
-  characters: ICharacter[]
-  setMember: (index: number, character: ICharacter) => void
-  setMemberInfo: (index: number, info: Partial<ICharacter>) => void
-  setWeapon: (index: number, info: Partial<IWeapon>) => void
+  characters: ITeamChar[]
+  setMember: (index: number, character: ITeamChar) => void
+  setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
+  setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
   hydrate: (data: TeamStoreType) => void
 }
 
 export class Team {
-  characters: ICharacter[]
+  characters: ITeamChar[]
 
   constructor() {
     this.characters = Array(4).fill({
       level: 1,
       ascension: 0,
       cons: 0,
+      character: null,
       equipments: {
         weapon: {
           level: 1,
@@ -37,17 +38,17 @@ export class Team {
     this[key] = value
   }
 
-  setMember = (index: number, character: ICharacter) => {
+  setMember = (index: number, character: ITeamChar) => {
     if (index < 0 || index > 4) return
     this.characters[index] = character
   }
 
-  setMemberInfo = (index: number, info: Partial<ICharacter>) => {
+  setMemberInfo = (index: number, info: Partial<ITeamChar>) => {
     if (index < 0 || index > 4) return
     this.characters[index] = { ...this.characters[index], ...info }
   }
 
-  setWeapon = (index: number, info: Partial<IWeapon>) => {
+  setWeapon = (index: number, info: Partial<IWeaponEquip>) => {
     if (index < 0 || index > 4) return
     this.characters[index].equipments.weapon = { ...this.characters[index].equipments.weapon, ...info }
   }

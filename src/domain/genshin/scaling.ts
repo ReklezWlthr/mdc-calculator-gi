@@ -18,6 +18,11 @@ export const FiveStarScaling = [
 
 export const AscensionScaling = [0, 0.2087912088, 0.3571428571, 0.5549450549, 0.7032967033, 0.8516483516, 1]
 
+export const WeaponSecondaryScaling = [
+  1, 1.162, 1.363, 1.565, 1.767, 1.969, 2.171, 2.373, 2.575, 2.777, 2.979, 3.181, 3.383, 3.585, 3.786, 3.988, 4.19,
+  4.392, 4.594,
+]
+
 export const WeaponScaling = {
   3: {
     base: [37.6075, 38.7413, 39.8751],

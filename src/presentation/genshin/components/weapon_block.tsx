@@ -20,9 +20,9 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
   const ascension = weapon?.ascension || 0
   const level = weapon?.level || 1
   const refinement = weapon?.refinement || 1
-  const rarity = weapon?.rarity
+  const rarity = weapon?.data?.rarity
 
-  const { weaponBaseAtk } = useStat(props.index)
+  const { weaponBaseAtk, weaponSecondary } = useStat(props.index)
 
   const levels = useMemo(
     () =>
@@ -60,7 +60,11 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
                 ))}
               </div>
             </div>
-            <PillInput onClick={onOpenModal} value={weapon?.name} disabled={!teamStore.characters[props.index]?.name} />
+            <PillInput
+              onClick={onOpenModal}
+              value={weapon?.data?.name}
+              disabled={!teamStore.characters[props.index]?.data}
+            />
           </div>
           <div className="space-y-1">
             <p className="w-full text-sm font-semibold">Level</p>
@@ -90,9 +94,9 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
               <p className="font-normal text-gray">{weaponBaseAtk}</p>
             </div>
             <div className="flex items-center gap-2 text-xs">
-              <p className="shrink-0">{weapon?.ascStat}</p>
+              <p className="shrink-0">{weapon?.data?.ascStat || 'N/A'}</p>
               <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{0}</p>
+              <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
             </div>
           </div>
         </div>

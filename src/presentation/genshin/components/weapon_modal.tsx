@@ -30,10 +30,10 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
       <div className="grid w-full grid-cols-10 gap-x-2">
         {_.map(mock, (item) => (
           <div
-            className="rounded-lg cursor-pointer bg-primary"
+            className="text-sm rounded-lg cursor-pointer bg-primary"
             onClick={() => {
               teamStore.setWeapon(index, {
-                ...item,
+                data: item,
               })
               modalStore.closeModal()
             }}

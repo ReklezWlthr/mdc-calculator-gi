@@ -3,7 +3,14 @@ import { useCallback, useMemo } from 'react'
 import { CharacterModal } from './character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
-import { AscensionOptions, ConstellationOptions, ElementIcon, WeaponIcon } from '@src/domain/genshin/constant'
+import {
+  AscensionOptions,
+  ConstellationOptions,
+  Element,
+  ElementIcon,
+  WeaponIcon,
+  WeaponType,
+} from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { findBaseLevel } from '@src/core/utils/data_format'
 import _ from 'lodash'
@@ -19,7 +26,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   const ascension = teamStore.characters[props.index]?.ascension || 0
   const level = teamStore.characters[props.index]?.level || 1
   const cons = teamStore.characters[props.index]?.cons || 0
-  const rarity = teamStore.characters[props.index]?.rarity
+  const rarity = teamStore.characters[props.index]?.data?.rarity
 
   const levels = useMemo(
     () =>
@@ -45,7 +52,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
         <div className="w-1/2 px-2 py-3 space-y-2">
           <div className="space-y-1">
             <p className="text-sm font-semibold">Name</p>
-            <PillInput onClick={onOpenModal} value={teamStore.characters[props.index]?.name} />
+            <PillInput onClick={onOpenModal} value={teamStore.characters[props.index]?.data?.name} />
           </div>
           <div className="space-y-1">
             <p className="w-full text-sm font-semibold">Level</p>
@@ -82,7 +89,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             <div className="flex gap-0.5">
               <p className="[writing-mode:vertical-rl] rotate-180 text-[10px]">Weapon</p>
               <div className="w-10 h-10 rounded-lg bg-primary-light">
-                <img src={WeaponIcon[teamStore.characters[props.index]?.weapon]} />
+                <img src={WeaponIcon[WeaponType[teamStore.characters[props.index]?.data?.weapon]]} />
               </div>
             </div>
             <div
@@ -97,7 +104,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             </div>
             <div className="flex gap-0.5">
               <div className="w-10 h-10 rounded-lg bg-primary-light">
-                <img src={ElementIcon[teamStore.characters[props.index]?.element]} />
+                <img src={ElementIcon[Element[teamStore.characters[props.index]?.data?.element]]} />
               </div>
               <p className="[writing-mode:vertical-rl] text-[10px]">Element</p>
             </div>

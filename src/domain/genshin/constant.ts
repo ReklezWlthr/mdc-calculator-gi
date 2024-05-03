@@ -17,15 +17,19 @@ export interface ICharacterStats {
 
 export interface ICharacter {
   name: string
-  weapon: WeaponType
-  element: Element
+  weapon: string
+  element: string
+  rarity: number
+  stat: ICharacterStats
+}
+
+export interface ITeamChar {
   level: number
   ascension: number
   cons: number
-  rarity: number
-  stat: ICharacterStats
+  data: ICharacter
   equipments: {
-    weapon: IWeapon
+    weapon: IWeaponEquip
     artifacts: []
   }
 }
@@ -35,11 +39,14 @@ export interface IWeapon {
   rarity: number
   tier: number
   ascStat: string
+  baseStat: number
+}
+
+export interface IWeaponEquip {
   level: number
   ascension: number
   refinement: number
-  baseStat: number
-  baseAtk: number
+  data: IWeapon
 }
 
 export enum WeaponType {

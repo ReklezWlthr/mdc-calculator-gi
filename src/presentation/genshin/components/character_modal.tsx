@@ -66,10 +66,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
             className="rounded-lg cursor-pointer bg-primary"
             onClick={() => {
               teamStore.setMemberInfo(index, {
-                ...teamStore.characters[index],
-                ...item,
-                element: Element[item.element],
-                weapon: WeaponType[item.weapon],
+                data: item,
               })
               modalStore.closeModal()
             }}
