@@ -8,15 +8,25 @@ import { WeaponBlock } from '../components/weapon_block'
 import { ArtifactBlock } from '../components/artifact_block'
 import { useStore } from '@src/data/providers/app_store_provider'
 
-const CharacterSelect = ({ onClick, isSelected }: { onClick: () => void; isSelected: boolean }) => {
+const CharacterSelect = ({
+  onClick,
+  isSelected,
+  codeName,
+}: {
+  onClick: () => void
+  isSelected: boolean
+  codeName: string
+}) => {
   return (
     <div
       className={classNames(
-        'w-12 h-12 rounded-full cursor-pointer bg-primary-dark duration-200',
+        'w-12 h-12 rounded-full cursor-pointer bg-primary duration-200 relative shrink-0',
         isSelected ? 'ring-4 ring-primary-lighter' : 'hover:ring-2 ring-primary-light'
       )}
       onClick={onClick}
-    ></div>
+    >
+      <img src={`https://enka.network/ui/UI_AvatarIcon_Side_${codeName || 'PlayerGirl'}.png`} className="absolute scale-150 bottom-3" />
+    </div>
   )
 }
 
@@ -34,6 +44,7 @@ export const TeamSetup = observer(() => {
               key={`char_select_${index}`}
               onClick={() => setSelected(index)}
               isSelected={index === selected}
+              codeName={item.data?.codeName}
             />
           ))}
         </div>

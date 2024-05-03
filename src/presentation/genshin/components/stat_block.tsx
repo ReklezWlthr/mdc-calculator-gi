@@ -31,7 +31,7 @@ export const StatBlock = observer((props: StatBlockProps) => {
           <p className="font-normal text-gray">{_.floor(base + bonus).toLocaleString()}</p>
           <p className="font-normal text-neutral-400 text-[9px]">
             {base.toLocaleString()}
-            <span className="text-genshin-hydro">{` (+${_.floor(bonus).toLocaleString()})`}</span>
+            <span className="text-genshin-cryo">{` +${_.floor(bonus).toLocaleString()}`}</span>
           </p>
         </div>
       </div>
