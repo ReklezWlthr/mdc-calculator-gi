@@ -38,7 +38,7 @@ export class Team {
   hydrated: boolean = false
 
   constructor() {
-    this.characters = Array(4).fill(DefaultCharacter)
+    this.characters = Array(4).fill({DefaultCharacter})
 
     makeAutoObservable(this)
   }

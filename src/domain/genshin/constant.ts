@@ -25,6 +25,9 @@ export interface ICharacter {
 }
 
 export interface ITeamChar {
+  // l_###### for local characters
+  // c_###### for account characters
+  id: string
   level: number
   ascension: number
   cons: number
