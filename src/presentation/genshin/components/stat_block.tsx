@@ -46,18 +46,18 @@ export const StatBlock = observer((props: StatBlockProps) => {
       <DataRow title="Elemental Mastery" value={_.round(stat?.em)} />
       <DataRow title="CRIT Rate" value={toPercentage(stat?.cRate)} />
       <DataRow title="CRIT DMG" value={toPercentage(stat?.cDmg)} />
-      <DataRow title="Healing Bonus" value={toPercentage(0)} />
+      <DataRow title="Healing Bonus" value={toPercentage(stat?.heal)} />
       <DataRow title="Incoming Healing" value={toPercentage(0)} />
-      <DataRow title="Energy Recharge" value={toPercentage(1)} />
+      <DataRow title="Energy Recharge" value={toPercentage(stat?.er)} />
       <DataRow title="CD Reduction" value={toPercentage(0)} />
-      <DataRow title="Physical DMG%" value={toPercentage(0)} />
-      <DataRow title="Pyro DMG%" value={toPercentage(0)} />
-      <DataRow title="Hydro DMG%" value={toPercentage(0)} />
-      <DataRow title="Cryo DMG%" value={toPercentage(0)} />
-      <DataRow title="Electro DMG%" value={toPercentage(0)} />
-      <DataRow title="Anemo DMG%" value={toPercentage(0)} />
-      <DataRow title="Geo DMG%" value={toPercentage(0)} />
-      <DataRow title="Dendro DMG%" value={toPercentage(0)} />
+      <DataRow title="Physical DMG%" value={toPercentage(stat?.physical)} />
+      <DataRow title="Pyro DMG%" value={toPercentage(stat?.pyro)} />
+      <DataRow title="Hydro DMG%" value={toPercentage(stat?.hydro)} />
+      <DataRow title="Cryo DMG%" value={toPercentage(stat?.cryo)} />
+      <DataRow title="Electro DMG%" value={toPercentage(stat?.electro)} />
+      <DataRow title="Anemo DMG%" value={toPercentage(stat?.anemo)} />
+      <DataRow title="Geo DMG%" value={toPercentage(stat?.geo)} />
+      <DataRow title="Dendro DMG%" value={toPercentage(stat?.dendro)} />
       <DataRow title="DMG%" value={toPercentage(0)} />
       <DataRow title="Shield Strength" value={toPercentage(0)} />
     </div>

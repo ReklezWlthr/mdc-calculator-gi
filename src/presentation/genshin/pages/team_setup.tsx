@@ -25,7 +25,7 @@ const CharacterSelect = ({
       )}
       onClick={onClick}
     >
-      <img src={`https://enka.network/ui/UI_AvatarIcon_Side_${codeName || 'PlayerGirl'}.png`} className="absolute scale-150 bottom-3" />
+      <img src={codeName ? `https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png` : ''} className="absolute scale-150 bottom-3" />
     </div>
   )
 }
@@ -54,15 +54,15 @@ export const TeamSetup = observer(() => {
       </div>
       <div className="w-1/5 space-y-5">
         <WeaponBlock index={selected} />
-        <ArtifactBlock index={selected} piece={3} />
+        <ArtifactBlock index={selected} piece={5} />
       </div>
       <div className="w-1/5 space-y-5">
-        <ArtifactBlock index={selected} piece={1} />
         <ArtifactBlock index={selected} piece={4} />
+        <ArtifactBlock index={selected} piece={1} />
       </div>
       <div className="w-1/5 space-y-5">
         <ArtifactBlock index={selected} piece={2} />
-        <ArtifactBlock index={selected} piece={5} />
+        <ArtifactBlock index={selected} piece={3} />
       </div>
     </div>
   )

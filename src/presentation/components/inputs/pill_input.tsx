@@ -14,7 +14,7 @@ export const PillInput = ({
   return (
     <div
       className={classNames(
-        ' px-2 py-1 border rounded-lg  duration-300  font-normal w-full truncate text-sm',
+        ' px-2 py-1 border rounded-lg  duration-300  font-normal w-full truncate text-sm peer',
         value && !disabled ? 'text-gray' : 'text-primary-light',
         disabled
           ? 'cursor-not-allowed bg-primary-bg border-primary'

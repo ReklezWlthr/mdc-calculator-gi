@@ -1,3 +1,5 @@
+import { Stats } from './constant'
+
 export const FourStarScaling = [
   1, 1.083, 1.165, 1.248, 1.33, 1.413, 1.495, 1.578, 1.661, 1.743, 1.826, 1.908, 1.991, 2.073, 2.156, 2.239, 2.321,
   2.404, 2.486, 2.569, 2.651, 2.734, 2.817, 2.899, 2.982, 3.064, 3.147, 3.229, 3.312, 3.394, 3.477, 3.56, 3.642, 3.725,
@@ -130,4 +132,23 @@ export const WeaponScaling = {
       ],
     },
   },
+}
+
+export const AscensionGrowth = {
+  [Stats.P_ATK]: [0.06, 0.072],
+  [Stats.P_HP]: [0.06, 0.072],
+  [Stats.P_DEF]: [0.075, 0],
+  [Stats.EM]: [24, 28.8],
+  [Stats.ER]: [0.067, 0.08],
+  [Stats.HEAL]: [0, 0.055],
+  [Stats.CRIT_RATE]: [0, 0.048],
+  [Stats.CRIT_DMG]: [0, 0.096],
+  [Stats.PHYSICAL_DMG]: [0.075, 0],
+  [Stats.PYRO_DMG]: [0.06, 0.072],
+  [Stats.HYDRO_DMG]: [0.06, 0.072],
+  [Stats.CRYO_DMG]: [0.06, 0.072],
+  [Stats.ELECTROL_DMG]: [0.06, 0.072],
+  [Stats.DENDRO_DMG]: [0.06, 0.072],
+  [Stats.GEO_DMG]: [0.06, 0.072],
+  [Stats.ANEMO_DMG]: [0.06, 0.072],
 }

@@ -75,7 +75,7 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
                 }
                 value={item.value}
               >
-                {item.img && <img src={item.img} className="object-cover w-6 h-6 mr-3 rounded-full" />}
+                {item.img && <img src={item.img} className="object-cover w-6 h-6 mr-2" />}
                 <span className="block truncate">{item.name}</span>
               </Listbox.Option>
             ))}

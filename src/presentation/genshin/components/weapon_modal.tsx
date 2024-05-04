@@ -44,10 +44,10 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           />
         </div>
       </div>
-      <div className="grid w-full grid-cols-10 gap-x-2">
+      <div className="grid w-full grid-cols-9 gap-4">
         {_.map(filteredWeapon, (item) => (
           <div
-            className="w-full text-xs rounded-lg cursor-pointer bg-primary"
+            className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
             onClick={() => {
               teamStore.setWeapon(index, {
                 data: item,
@@ -65,7 +65,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
                 className="rounded-t-lg bg-primary-darker"
               />
             </div>
-            <p className="flex justify-center w-full px-2 py-1">{item.name}</p>
+            <p className="flex justify-center w-full px-2 py-1 text-center line-clamp-2">{item.name}</p>
           </div>
         ))}
       </div>

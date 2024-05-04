@@ -8,7 +8,7 @@
       "ascAtk": 80.28111,
       "ascHp": 4228.035,
       "ascDef": 280.098,
-      "ascStat": "HP%"
+      "ascStat": "Geo DMG%"
     },
     "rarity": 5,
     "region": "Monstadt",
@@ -124,5 +124,42 @@
     "weapon": "CATALYST",
     "element": "ANEMO",
     "codeName": "Wanderer"
+  },
+  {
+    "name": "Kirara",
+    "stat": {
+      "baseAtk": 18.6984,
+      "baseHp": 1021.2059,
+      "baseDef": 45.78,
+      "ascAtk": 66.90411377,
+      "ascHp": 3653.856445,
+      "ascDef": 163.8,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Inazuma",
+    "constellation": "Arcella",
+    "weapon": "SWORD",
+    "element": "DENDRO",
+    "codeName": "Momoka"
+  }
+  ,
+  {
+    "name": "Furina",
+    "stat": {
+      "baseAtk": 18.9924,
+      "baseHp": 1191.65,
+      "baseDef": 54.14614868,
+      "ascAtk": 77.98736572,
+      "ascHp": 4893.559082,
+      "ascDef": 222.3585052,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Fontaine",
+    "constellation": "Animula Choragi",
+    "weapon": "SWORD",
+    "element": "HYDRO",
+    "codeName": "Furina"
   }
 ]

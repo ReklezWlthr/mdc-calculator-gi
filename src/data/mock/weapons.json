@@ -43,5 +43,14 @@
     "baseStat": 0.12,
     "icon": "UI_EquipIcon_Catalyst_Troupe",
     "type": "CATALYST"
+  },
+  {
+    "name": "Splendor of Tranquil Waters",
+    "rarity": 5,
+    "tier": 1,
+    "ascStat": "CRIT DMG",
+    "baseStat": 0.192,
+    "icon": "UI_EquipIcon_Sword_Regalis",
+    "type": "SWORD"
   }
 ]

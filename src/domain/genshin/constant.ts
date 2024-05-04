@@ -107,6 +107,8 @@ export enum Stats {
   DENDRO_DMG = 'Dendro DMG%',
   GEO_DMG = 'Geo DMG%',
   ANEMO_DMG = 'Anemo DMG%',
+  HEAL = 'Healing Bonus',
+  I_HEALING = 'Incoming Healing',
 }
 
 export const Region = Object.freeze({
@@ -120,11 +122,11 @@ export const Region = Object.freeze({
 })
 
 export const ArtifactPiece = Object.freeze({
-  1: 'Flower of Life',
+  1: 'Goblet of Eonothem',
   2: 'Plume of Death',
-  3: 'Sands of Eon',
-  4: 'Goblet of Eonothem',
-  5: 'Circlet of Logos',
+  3: 'Circlet of Logos',
+  4: 'Flower of Life',
+  5: 'Sands of Eon',
 })
 
 export const AscensionOptions = [

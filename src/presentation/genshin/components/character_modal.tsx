@@ -79,7 +79,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           <FilterIcon type="weapon" value={WeaponType.CATALYST} />
         </div>
       </div>
-      <div className="grid w-full grid-cols-10 gap-4">
+      <div className="grid w-full grid-cols-9 gap-4">
         {_.map(filteredChar, (item) => (
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"

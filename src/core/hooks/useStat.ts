@@ -4,6 +4,7 @@ import { toPercentage } from '../utils/converter'
 import { useCallback } from 'react'
 import _ from 'lodash'
 import { Stats } from '@src/domain/genshin/constant'
+import { AscensionGrowth } from '@src/domain/genshin/scaling'
 
 export const useStat = (index: number) => {
   const { teamStore } = useStore()
@@ -23,9 +24,12 @@ export const useStat = (index: number) => {
   const getTotalStat = useCallback(
     (stat: string) => {
       const fromWeapon = weapon?.data?.ascStat === stat ? weaponSecondary : 0
-      return _.sum([fromWeapon])
+      const fromAscension =
+        (char?.data?.stat?.ascStat === stat ? _.max([0, char?.ascension - 2]) : 0) *
+        AscensionGrowth[char?.data?.stat?.ascStat]?.[char?.data?.rarity - 4]
+      return _.sum([fromWeapon, fromAscension])
     },
-    [weapon]
+    [weapon, char]
   )
 
   return {
@@ -57,8 +61,18 @@ export const useStat = (index: number) => {
     pAtk: getTotalStat(Stats.P_ATK),
     pHp: getTotalStat(Stats.P_HP),
     pDef: getTotalStat(Stats.P_DEF),
-    cRate: 0.05 + getTotalStat(Stats.CRIT_RATE),
+    cRate: 0.05 + getTotalStat(Stats.CRIT_RATE) - (char?.data?.codeName === 'Kokomi' ? 1 : 0),
     cDmg: 0.5 + getTotalStat(Stats.CRIT_DMG),
     em: getTotalStat(Stats.EM),
+    er: 1 + getTotalStat(Stats.ER),
+    heal: getTotalStat(Stats.HEAL) + (char?.data?.codeName === 'Kokomi' ? 0.25 : 0),
+    physical: getTotalStat(Stats.PHYSICAL_DMG),
+    pyro: getTotalStat(Stats.PYRO_DMG),
+    hydro: getTotalStat(Stats.HYDRO_DMG),
+    cryo: getTotalStat(Stats.CRYO_DMG),
+    electro: getTotalStat(Stats.ELECTROL_DMG),
+    geo: getTotalStat(Stats.GEO_DMG),
+    dendro: getTotalStat(Stats.DENDRO_DMG),
+    anemo: getTotalStat(Stats.ANEMO_DMG),
   }
 }
