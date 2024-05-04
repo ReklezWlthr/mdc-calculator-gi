@@ -52,5 +52,14 @@
     "baseStat": 0.192,
     "icon": "UI_EquipIcon_Sword_Regalis",
     "type": "SWORD"
+  },
+  {
+    "name": "Crimson Moon's Semblance",
+    "rarity": 5,
+    "tier": 3,
+    "ascStat": "CRIT Rate",
+    "baseStat": 0.048,
+    "icon": "UI_EquipIcon_Pole_BloodMoon",
+    "type": "POLEARM"
   }
 ]

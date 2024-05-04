@@ -25,8 +25,8 @@ export interface ICharacter {
 }
 
 export interface ITeamChar {
-  // l_###### for local characters
-  // c_###### for account characters
+  // l_####### for local characters
+  // c_####### for account characters
   id: string
   level: number
   ascension: number
@@ -34,8 +34,25 @@ export interface ITeamChar {
   data: ICharacter
   equipments: {
     weapon: IWeaponEquip
-    artifacts: []
+    artifacts: string[]
   }
+}
+
+export interface IArtifact {
+  id: number
+  name: string
+  icon: string
+  rarity: (3 | 4 | 5)[]
+}
+
+export interface IArtifactEquip {
+  id: string
+  data: IArtifact
+  level: number
+  type: number
+  main: Stats
+  quality: number
+  subList: string[]
 }
 
 export interface IWeapon {

@@ -142,8 +142,7 @@
     "weapon": "SWORD",
     "element": "DENDRO",
     "codeName": "Momoka"
-  }
-  ,
+  },
   {
     "name": "Furina",
     "stat": {
@@ -161,5 +160,41 @@
     "weapon": "SWORD",
     "element": "HYDRO",
     "codeName": "Furina"
+  },
+  {
+    "name": "Arlecchino",
+    "stat": {
+      "baseAtk": 26.63,
+      "baseHp": 1020,
+      "baseDef": 59.53,
+      "ascAtk": 109.3104,
+      "ascHp": 4189.22,
+      "ascDef": 244.4773,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Snezhnaya",
+    "constellation": "Ignis Purgatorius",
+    "weapon": "POLEARM",
+    "element": "PYRO",
+    "codeName": "Arlecchino"
+  },
+  {
+    "name": "Bennett",
+    "stat": {
+      "baseAtk": 16.0272,
+      "baseHp": 1039.4418,
+      "baseDef": 64.66425,
+      "ascAtk": 57.34638  ,
+      "ascHp": 3719.104,
+      "ascDef": 231.3675,
+      "ascStat": "Energy Recharge"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Rota Calamitas",
+    "weapon": "SWORD",
+    "element": "PYRO",
+    "codeName": "Bennett"
   }
 ]

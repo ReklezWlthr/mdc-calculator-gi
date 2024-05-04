@@ -1,4 +1,5 @@
-import { Element, ITeamChar, IWeapon, IWeaponEquip, WeaponType } from '@src/domain/genshin/constant'
+import { Element, IArtifactEquip, ITeamChar, IWeapon, IWeaponEquip, WeaponType } from '@src/domain/genshin/constant'
+import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 
@@ -29,6 +30,7 @@ export interface TeamStoreType {
   setMember: (index: number, character: ITeamChar) => void
   setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
   setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
+  setArtifact: (cId: string, type: number, aId: string) => void
   hydrateCharacters: (data: ITeamChar[]) => void
   hydrate: (data: TeamStoreType) => void
 }
@@ -38,7 +40,7 @@ export class Team {
   hydrated: boolean = false
 
   constructor() {
-    this.characters = Array(4).fill({DefaultCharacter})
+    this.characters = Array(4).fill(DefaultCharacter)
 
     makeAutoObservable(this)
   }
@@ -60,6 +62,13 @@ export class Team {
   setWeapon = (index: number, info: Partial<IWeaponEquip>) => {
     if (index < 0 || index > 4) return
     this.characters[index].equipments.weapon = { ...this.characters[index].equipments.weapon, ...info }
+    this.characters[index] = { ...this.characters[index] }
+  }
+
+  setArtifact = (cId: string, type: number, aId: string) => {
+    const index = _.findIndex(this.characters, ['id', cId])
+    if (index < 0) return
+    this.characters[index].equipments.artifacts[type - 1] = aId
     this.characters[index] = { ...this.characters[index] }
   }
 

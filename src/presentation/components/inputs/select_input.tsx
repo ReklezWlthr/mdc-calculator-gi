@@ -9,7 +9,7 @@ type SelectInputProps = {
   placeholder?: string
   onChange: (value: string) => void
   options: {
-    name: string
+    name: React.ReactNode
     img?: string
     value: string
   }[]
@@ -34,9 +34,9 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
         })}
       >
         <Listbox.Button
-          className={({ open }) =>
+          className={() =>
             classNames(
-              'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full',
+              'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full min-h-[30px]',
               { 'cursor-not-allowed bg-primary-bg border-primary text-primary-light': disabled },
               { 'cursor-pointer hover:border-primary-lighter bg-primary-darker border-primary-light': !disabled },
               { 'text-gray': value },
@@ -44,7 +44,7 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
             )
           }
         >
-          {({ open }) => (
+          {() => (
             <div className="flex items-center">
               {value && valueFinder(value)?.img && (
                 <img src={valueFinder(value)?.img} className="object-cover w-6 h-6 mr-3 rounded-full" />
