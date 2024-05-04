@@ -65,7 +65,7 @@ export class Team {
     this.characters[index] = { ...this.characters[index] }
   }
 
-  setArtifact = (cId: string, type: number, aId: string) => {
+  setArtifact = (cId: string, type: number, aId: string | null) => {
     const index = _.findIndex(this.characters, ['id', cId])
     if (index < 0) return
     this.characters[index].equipments.artifacts[type - 1] = aId

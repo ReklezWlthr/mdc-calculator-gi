@@ -13,12 +13,13 @@ interface ArtifactBlockProps {
 export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
   const pieceName = ArtifactPiece[props.piece]
 
-  const { modalStore, teamStore } = useStore()
-  const artifact = teamStore.characters[props.index]?.equipments?.artifacts?.[props.piece - 1]
+  const { modalStore, teamStore, artifactStore } = useStore()
+  const aId = teamStore.characters[props.index]?.equipments?.artifacts?.[props.piece - 1]
+  const artifact = _.find(artifactStore.artifacts, ['id', aId])
 
   const onOpenModal = useCallback(() => {
-    modalStore.openModal(<ArtifactModal type={props.piece} cId={teamStore.characters[props.index]?.id} aId={artifact} />)
-  }, [modalStore, props.index, artifact])
+    modalStore.openModal(<ArtifactModal type={props.piece} cId={teamStore.characters[props.index]?.id} aId={aId} />)
+  }, [modalStore, props.index, aId])
 
   return (
     <div
@@ -29,8 +30,10 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
         <img src={`/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
         <p>{pieceName}</p>
       </div>
-      {artifact ? (
-        <p>Have</p>
+      {aId ? (
+        <p>
+          <img src={`https://enka.network/ui/${artifact.data.icon}_${artifact.type}.png`} className="w-20 h-20" />
+        </p>
       ) : (
         <div className="flex items-center justify-center w-full h-full">
           <p className="text-gray">Click to Add</p>

@@ -21,20 +21,18 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
       level: 20,
       main: Stats.ATK,
       type,
+      subList: [],
     },
   })
   const values = watch()
 
   useEffect(() => {
     if (aId) {
-      const { level, main, subList, type, quality, data } = _.find(artifactStore.artifacts, ['id', aId])
+      const { data, ...rest } = _.find(artifactStore.artifacts, ['id', aId])
 
       if (data.id) {
         reset({
-          level,
-          main,
-          type,
-          quality,
+          ...rest,
           set: {
             name: data.name,
             value: data.id.toString(),
@@ -60,13 +58,17 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
   }
 
   const onSubmit = handleSubmit(({ set, ...rest }) => {
-    const id = `l_${_.random(9999999).toString().padStart(7, '0')}`
+    const id = aId || `l_${_.random(9999999).toString().padStart(7, '0')}`
     const setData = _.find(ArtifactSets, ['id', _.parseInt(set?.value)])
 
     const data = { id, ...rest, data: setData, subList: [] }
 
+    const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
     const pass = aId ? artifactStore.editArtifact(aId, data) : artifactStore.addArtifact(data)
-    if (pass) teamStore.setArtifact(cId, type, id)
+    if (pass) {
+      teamStore.setArtifact(cId, rest.type, id)
+      if (rest.type !== oldType && oldType) teamStore.setArtifact(cId, oldType, null)
+    }
     modalStore.closeModal()
   })
 
