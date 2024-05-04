@@ -35,9 +35,9 @@ export const MainStat = {
     Stats.GEO_DMG,
     Stats.DENDRO_DMG,
   ],
-  2: [Stats.HP],
+  2: [Stats.ATK],
   3: [Stats.P_HP, Stats.P_ATK, Stats.P_DEF, Stats.CRIT_RATE, Stats.CRIT_DMG, Stats.EM, Stats.HEAL],
-  4: [Stats.ATK],
+  4: [Stats.HP],
   5: [Stats.P_HP, Stats.P_ATK, Stats.P_DEF, Stats.EM, Stats.ER],
 }
 
