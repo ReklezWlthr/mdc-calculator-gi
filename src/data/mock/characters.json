@@ -185,7 +185,7 @@
       "baseAtk": 16.0272,
       "baseHp": 1039.4418,
       "baseDef": 64.66425,
-      "ascAtk": 57.34638  ,
+      "ascAtk": 57.34638,
       "ascHp": 3719.104,
       "ascDef": 231.3675,
       "ascStat": "Energy Recharge"
@@ -196,5 +196,1247 @@
     "weapon": "SWORD",
     "element": "PYRO",
     "codeName": "Bennett"
+  },
+  {
+    "name": "Aloy",
+    "stat": {
+      "baseAtk": 18.21036,
+      "baseHp": 848.4548,
+      "baseDef": 52.6504,
+      "ascAtk": 74.77612,
+      "ascHp": 3484.214,
+      "ascDef": 216.216,
+      "ascStat": "Cryo DMG%"
+    },
+    "rarity": 5,
+    "region": "Unknown",
+    "constellation": "Nora Fortis",
+    "weapon": "BOW",
+    "element": "CRYO",
+    "codeName": "Aloy"
+  },
+  {
+    "name": "Amber",
+    "stat": {
+      "baseAtk": 18.6984,
+      "baseHp": 793.2582,
+      "baseDef": 50.358,
+      "ascAtk": 66.90411,
+      "ascHp": 2838.2634,
+      "ascDef": 180.18,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Lepus",
+    "weapon": "BOW",
+    "element": "PYRO",
+    "codeName": "Ambor"
+  },
+  {
+    "name": "Arataki Itto",
+    "stat": {
+      "baseAtk": 17.689,
+      "baseHp": 1000.986,
+      "baseDef": 74.66784,
+      "ascAtk": 72.63529,
+      "ascHp": 4110.59,
+      "ascDef": 306.6336,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Taurus Iracundus",
+    "weapon": "CLAYMORE",
+    "element": "GEO",
+    "codeName": "Itto"
+  },
+  {
+    "name": "Baizhu",
+    "stat": {
+      "baseAtk": 14.9891,
+      "baseHp": 1039.1188,
+      "baseDef": 38.8895,
+      "ascAtk": 61.54885,
+      "ascHp": 4267.1836,
+      "ascDef": 159.705,
+      "ascStat": "HP%"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Legenaria",
+    "weapon": "CATALYST",
+    "element": "DENDRO",
+    "codeName": "Baizhuer"
+  },
+  {
+    "name": "Barbara",
+    "stat": {
+      "baseAtk": 13.356,
+      "baseHp": 820.6119,
+      "baseDef": 56.0805,
+      "ascAtk": 47.78865,
+      "ascHp": 2936.1348,
+      "ascDef": 200.655,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Crater",
+    "weapon": "CATALYST",
+    "element": "HYDRO",
+    "codeName": "Barbara"
+  },
+  {
+    "name": "Beidou",
+    "stat": {
+      "baseAtk": 18.87648,
+      "baseHp": 1094.1492,
+      "baseDef": 54.36375,
+      "ascAtk": 67.54129,
+      "ascHp": 3914.8462,
+      "ascDef": 194.5125,
+      "ascStat": "Electro DMG%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Victor Mare",
+    "weapon": "CLAYMORE",
+    "element": "ELECTRO",
+    "codeName": "Beidou"
+  },
+  {
+    "name": "Candace",
+    "stat": {
+      "baseAtk": 17.808,
+      "baseHp": 911.791,
+      "baseDef": 57.225,
+      "ascAtk": 63.7182,
+      "ascHp": 3262.3718,
+      "ascDef": 204.75,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Sumeru",
+    "constellation": "Sagitta Scutum",
+    "weapon": "POLEARM",
+    "element": "HYDRO",
+    "codeName": "Candace"
+  },
+  {
+    "name": "Charlotte",
+    "stat": {
+      "baseAtk": 14.51352024,
+      "baseHp": 902.6730957,
+      "baseDef": 45.78,
+      "ascAtk": 51.93033218,
+      "ascHp": 3229.748047,
+      "ascDef": 163.8,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Fontaine",
+    "constellation": "Hualina Veritas",
+    "weapon": "CATALYST",
+    "element": "CRYO",
+    "codeName": "Charlotte"
+  },
+  {
+    "name": "Chiori",
+    "stat": {
+      "baseAtk": 25.137,
+      "baseHp": 890.4,
+      "baseDef": 74.19,
+      "ascAtk": 103.2185669,
+      "ascHp": 3656.467285,
+      "ascDef": 304.6679993,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Cisoria",
+    "weapon": "SWORD",
+    "element": "GEO",
+    "codeName": "Chiori"
+  },
+  {
+    "name": "Chongyun",
+    "stat": {
+      "baseAtk": 18.6984,
+      "baseHp": 920.90894,
+      "baseDef": 54.36375,
+      "ascAtk": 66.90411,
+      "ascHp": 3294.9956,
+      "ascDef": 194.5125,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Nubis Caesor",
+    "weapon": "CLAYMORE",
+    "element": "CRYO",
+    "codeName": "Chongyun"
+  },
+  {
+    "name": "Collei",
+    "stat": {
+      "baseAtk": 16.73952,
+      "baseHp": 820.6119,
+      "baseDef": 50.358,
+      "ascAtk": 59.895107,
+      "ascHp": 2936.1348,
+      "ascDef": 180.18,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Sumeru",
+    "constellation": "Leptailurus Cervarius",
+    "weapon": "BOW",
+    "element": "DENDRO",
+    "codeName": "Collei"
+  },
+  {
+    "name": "Cyno",
+    "stat": {
+      "baseAtk": 24.7646,
+      "baseHp": 972.3864,
+      "baseDef": 66.88994,
+      "ascAtk": 101.68941,
+      "ascHp": 3993.1443,
+      "ascDef": 274.6926,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Sumeru",
+    "constellation": "Lupus Aureus",
+    "weapon": "POLEARM",
+    "element": "ELECTRO",
+    "codeName": "Cyno"
+  },
+  {
+    "name": "Dehya",
+    "stat": {
+      "baseAtk": 20.6682,
+      "baseHp": 1220.2496,
+      "baseDef": 48.88111,
+      "ascAtk": 84.8686,
+      "ascHp": 5011.0044,
+      "ascDef": 200.7369,
+      "ascStat": "HP%"
+    },
+    "rarity": 5,
+    "region": "Sumeru",
+    "constellation": "Mantichora",
+    "weapon": "CLAYMORE",
+    "element": "PYRO",
+    "codeName": "Dehya"
+  },
+  {
+    "name": "Diluc",
+    "stat": {
+      "baseAtk": 26.068,
+      "baseHp": 1010.5192,
+      "baseDef": 61.0266,
+      "ascAtk": 107.04148,
+      "ascHp": 4149.7383,
+      "ascDef": 250.614,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Monstadt",
+    "constellation": "Noctua",
+    "weapon": "CLAYMORE",
+    "element": "PYRO",
+    "codeName": "Diluc"
+  },
+  {
+    "name": "Diona",
+    "stat": {
+      "baseAtk": 17.808,
+      "baseHp": 802.3761,
+      "baseDef": 50.358,
+      "ascAtk": 63.7182,
+      "ascHp": 2870.8872,
+      "ascDef": 180.18,
+      "ascStat": "Cryo DMG%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Feles",
+    "weapon": "BOW",
+    "element": "CRYO",
+    "codeName": "Diona"
+  },
+  {
+    "name": "Dori",
+    "stat": {
+      "baseAtk": 18.6984,
+      "baseHp": 1039.4418,
+      "baseDef": 60.6585,
+      "ascAtk": 66.90411,
+      "ascHp": 3719.104,
+      "ascDef": 217.035,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Sumeru",
+    "constellation": "Magicae Lucerna",
+    "weapon": "CLAYMORE",
+    "element": "ELECTRO",
+    "codeName": "Dori"
+  },
+  {
+    "name": "Faruzan",
+    "stat": {
+      "baseAtk": 16.4724,
+      "baseHp": 802.3761,
+      "baseDef": 52.647,
+      "ascAtk": 58.939335,
+      "ascHp": 2870.8872,
+      "ascDef": 188.37,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Sumeru",
+    "constellation": "Flosculi Implexi",
+    "weapon": "BOW",
+    "element": "ANEMO",
+    "codeName": "Faruzan"
+  },
+  {
+    "name": "Freminet",
+    "stat": {
+      "baseAtk": 21.3696003,
+      "baseHp": 1012.088013,
+      "baseDef": 59.39955139,
+      "ascAtk": 76.46183777,
+      "ascHp": 3621.232666,
+      "ascDef": 212.5305023,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Fontaine",
+    "constellation": "Automaton",
+    "weapon": "CLAYMORE",
+    "element": "CRYO",
+    "codeName": "Freminet"
+  },
+  {
+    "name": "Gaming",
+    "stat": {
+      "baseAtk": 25.28735924,
+      "baseHp": 957.3805542,
+      "baseDef": 58.94174957,
+      "ascAtk": 90.47984314,
+      "ascHp": 3425.490479,
+      "ascDef": 210.8925018,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Leo Expergiscens",
+    "weapon": "CLAYMORE",
+    "element": "PYRO",
+    "codeName": "Gaming"
+  },
+  {
+    "name": "Ganyu",
+    "stat": {
+      "baseAtk": 26.068,
+      "baseHp": 762.656,
+      "baseDef": 49.0606,
+      "ascAtk": 107.04148,
+      "ascHp": 3131.878,
+      "ascDef": 201.474,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Sinae Unicornis",
+    "weapon": "BOW",
+    "element": "CRYO",
+    "codeName": "Ganyu"
+  },
+  {
+    "name": "Gorou",
+    "stat": {
+      "baseAtk": 15.31488,
+      "baseHp": 802.3761,
+      "baseDef": 54.36375,
+      "ascAtk": 54.797653,
+      "ascHp": 2870.8872,
+      "ascDef": 194.5125,
+      "ascStat": "Geo DMG%"
+    },
+    "rarity": 4,
+    "region": "Inazuma",
+    "constellation": "Canis Bellatoris",
+    "weapon": "BOW",
+    "element": "GEO",
+    "codeName": "Gorou"
+  },
+  {
+    "name": "Hu Tao",
+    "stat": {
+      "baseAtk": 8.2859,
+      "baseHp": 1210.7164,
+      "baseDef": 68.2062,
+      "ascAtk": 34.0239,
+      "ascHp": 4971.856,
+      "ascDef": 280.098,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Papilio Charontis",
+    "weapon": "POLEARM",
+    "element": "PYRO",
+    "codeName": "Hutao"
+  },
+  {
+    "name": "Jean",
+    "stat": {
+      "baseAtk": 18.62,
+      "baseHp": 1143.984,
+      "baseDef": 59.83,
+      "ascAtk": 76.4582,
+      "ascHp": 4697.817,
+      "ascDef": 245.7,
+      "ascStat": "ATK%"
+    },
+    "rarity": 5,
+    "region": "Monstadt",
+    "constellation": "Leo Minor",
+    "weapon": "SWORD",
+    "element": "ANEMO",
+    "codeName": "Qin"
+  },
+  {
+    "name": "Kaedehara Kazuha",
+    "stat": {
+      "baseAtk": 23.0888,
+      "baseHp": 1039.1188,
+      "baseDef": 62.8215,
+      "ascAtk": 94.80817,
+      "ascHp": 4267.1836,
+      "ascDef": 257.985,
+      "ascStat": "Elemental Mastery"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Acer Palmatum",
+    "weapon": "SWORD",
+    "element": "ANEMO",
+    "codeName": "Kazuha"
+  },
+  {
+    "name": "Kaeya",
+    "stat": {
+      "baseAtk": 18.6984,
+      "baseHp": 975.6164,
+      "baseDef": 66.381,
+      "ascAtk": 66.90411,
+      "ascHp": 3490.7378,
+      "ascDef": 237.51,
+      "ascStat": "Energy Recharge"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Pavo Ocellus",
+    "weapon": "SWORD",
+    "element": "CRYO",
+    "codeName": "Kaeya"
+  },
+  {
+    "name": "Kamisato Ayaka",
+    "stat": {
+      "baseAtk": 26.6266,
+      "baseHp": 1000.986,
+      "baseDef": 61.0266,
+      "ascAtk": 109.33523,
+      "ascHp": 4110.59,
+      "ascDef": 250.614,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Grus Nivus",
+    "weapon": "SWORD",
+    "element": "CRYO",
+    "codeName": "Ayaka"
+  },
+  {
+    "name": "Kamisato Ayato",
+    "stat": {
+      "baseAtk": 23.275,
+      "baseHp": 1067.7184,
+      "baseDef": 59.83,
+      "ascAtk": 95.57275,
+      "ascHp": 4384.629,
+      "ascDef": 245.7,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Cypressus Custos",
+    "weapon": "SWORD",
+    "element": "HYDRO",
+    "codeName": "Ayato"
+  },
+  {
+    "name": "Kaveh",
+    "stat": {
+      "baseAtk": 19.5888,
+      "baseHp": 1002.9701,
+      "baseDef": 62.9475,
+      "ascAtk": 70.09002,
+      "ascHp": 3588.6091,
+      "ascDef": 225.225,
+      "ascStat": "Elemental Mastery"
+    },
+    "rarity": 4,
+    "region": "Sumeru",
+    "constellation": "Paradisaea",
+    "weapon": "CLAYMORE",
+    "element": "DENDRO",
+    "codeName": "Kaveh"
+  },
+  {
+    "name": "Keqing",
+    "stat": {
+      "baseAtk": 25.137,
+      "baseHp": 1020.0524,
+      "baseDef": 62.2232,
+      "ascAtk": 103.21857,
+      "ascHp": 4188.8867,
+      "ascDef": 255.528,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Trulla Cementarii",
+    "weapon": "SWORD",
+    "element": "ELECTRO",
+    "codeName": "Keqing"
+  },
+  {
+    "name": "Klee",
+    "stat": {
+      "baseAtk": 24.206,
+      "baseHp": 800.7888,
+      "baseDef": 47.864,
+      "ascAtk": 99.39566,
+      "ascHp": 3288.4717,
+      "ascDef": 196.56,
+      "ascStat": "Pyro DMG%"
+    },
+    "rarity": 5,
+    "region": "Monstadt",
+    "constellation": "Trifolium",
+    "weapon": "CATALYST",
+    "element": "PYRO",
+    "codeName": "Klee"
+  },
+  {
+    "name": "Kujou Sara",
+    "stat": {
+      "baseAtk": 16.38336,
+      "baseHp": 802.3761,
+      "baseDef": 52.647,
+      "ascAtk": 58.620743,
+      "ascHp": 2870.8872,
+      "ascDef": 188.37,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Inazuma",
+    "constellation": "Flabellum",
+    "weapon": "BOW",
+    "element": "ELECTRO",
+    "codeName": "Sara"
+  },
+  {
+    "name": "Kuki Shinobu",
+    "stat": {
+      "baseAtk": 17.808,
+      "baseHp": 1030.3239,
+      "baseDef": 62.9475,
+      "ascAtk": 63.7182,
+      "ascHp": 3686.4802,
+      "ascDef": 225.225,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Inazuma",
+    "constellation": "Tribulatio Demptio",
+    "weapon": "SWORD",
+    "element": "ELECTRO",
+    "codeName": "Shinobu"
+  },
+  {
+    "name": "Layla",
+    "stat": {
+      "baseAtk": 18.16416,
+      "baseHp": 930.0268,
+      "baseDef": 54.936,
+      "ascAtk": 64.99256,
+      "ascHp": 3327.6194,
+      "ascDef": 196.56,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Sumeru",
+    "constellation": "Luscinia",
+    "weapon": "SWORD",
+    "element": "CRYO",
+    "codeName": "Layla"
+  },
+  {
+    "name": "Lisa",
+    "stat": {
+      "baseAtk": 19.41072,
+      "baseHp": 802.3761,
+      "baseDef": 48.069,
+      "ascAtk": 69.452835,
+      "ascHp": 2870.8872,
+      "ascDef": 171.99,
+      "ascStat": "Elemental Mastery"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Tempus Fugit",
+    "weapon": "CATALYST",
+    "element": "ELECTRO",
+    "codeName": "Lisa"
+  },
+  {
+    "name": "Lynette",
+    "stat": {
+      "baseAtk": 19.41072,
+      "baseHp": 1039.441772,
+      "baseDef": 59.68567657,
+      "ascAtk": 69.45283508,
+      "ascHp": 3719.104,
+      "ascDef": 213.554245,
+      "ascStat": "Anemo DMG%"
+    },
+    "rarity": 4,
+    "region": "Fontaine",
+    "constellation": "Felis Alba",
+    "weapon": "SWORD",
+    "element": "ANEMO",
+    "codeName": "Linette"
+  },
+  {
+    "name": "Lyney",
+    "stat": {
+      "baseAtk": 24.7646,
+      "baseHp": 857.987976,
+      "baseDef": 41.881,
+      "ascAtk": 101.6894,
+      "ascHp": 3523.362549,
+      "ascDef": 171.99,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Fontaine",
+    "constellation": "Felis Fuscus",
+    "weapon": "BOW",
+    "element": "PYRO",
+    "codeName": "Liney"
+  },
+  {
+    "name": "Mika",
+    "stat": {
+      "baseAtk": 18.6984,
+      "baseHp": 1048.5597,
+      "baseDef": 59.800125,
+      "ascAtk": 66.90411,
+      "ascHp": 3751.7275,
+      "ascDef": 213.96375,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Palumbus",
+    "weapon": "POLEARM",
+    "element": "CRYO",
+    "codeName": "Mika"
+  },
+  {
+    "name": "Mona",
+    "stat": {
+      "baseAtk": 22.344,
+      "baseHp": 810.322,
+      "baseDef": 50.8555,
+      "ascAtk": 91.74984,
+      "ascHp": 3327.62,
+      "ascDef": 208.845,
+      "ascStat": "Energy Recharge"
+    },
+    "rarity": 5,
+    "region": "Monstadt",
+    "constellation": "Astrolabos",
+    "weapon": "CATALYST",
+    "element": "HYDRO",
+    "codeName": "Mona"
+  },
+  {
+    "name": "Nahida",
+    "stat": {
+      "baseAtk": 23.275,
+      "baseHp": 806.5087,
+      "baseDef": 49.0606,
+      "ascAtk": 95.57275,
+      "ascHp": 3311.961,
+      "ascDef": 201.474,
+      "ascStat": "Elemental Mastery"
+    },
+    "rarity": 5,
+    "region": "Sumeru",
+    "constellation": "Sapientia Oromantis",
+    "weapon": "CATALYST",
+    "element": "DENDRO",
+    "codeName": "Nahida"
+  },
+  {
+    "name": "Navia",
+    "stat": {
+      "baseAtk": 27.3714,
+      "baseHp": 984.78,
+      "baseDef": 61.74456,
+      "ascAtk": 112.3935547,
+      "ascHp": 4044.037354,
+      "ascDef": 253.5623932,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Fontaine",
+    "constellation": "Rosa Multiflora",
+    "weapon": "CLAYMORE",
+    "element": "GEO",
+    "codeName": "Navia"
+  },
+  {
+    "name": "Neuvillette",
+    "stat": {
+      "baseAtk": 16.218,
+      "baseHp": 1143.984,
+      "baseDef": 44.8725,
+      "ascAtk": 66.595,
+      "ascHp": 4697.8169,
+      "ascDef": 184.275,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Fontaine",
+    "constellation": "Leviathan Judicator",
+    "weapon": "CATALYST",
+    "element": "HYDRO",
+    "codeName": "Neuvillette"
+  },
+  {
+    "name": "Nilou",
+    "stat": {
+      "baseAtk": 17.8752,
+      "baseHp": 1182.1168,
+      "baseDef": 56.71884,
+      "ascAtk": 73.39987,
+      "ascHp": 4854.4106,
+      "ascDef": 232.9236,
+      "ascStat": "HP%"
+    },
+    "rarity": 5,
+    "region": "Sumeru",
+    "constellation": "Lotos Somno",
+    "weapon": "SWORD",
+    "element": "HYDRO",
+    "codeName": "Nilou"
+  },
+  {
+    "name": "Ningguang",
+    "stat": {
+      "baseAtk": 17.808,
+      "baseHp": 820.6119,
+      "baseDef": 48.069,
+      "ascAtk": 63.7182,
+      "ascHp": 2936.1348,
+      "ascDef": 171.99,
+      "ascStat": "Geo DMG%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Opus Aequilibrium",
+    "weapon": "CATALYST",
+    "element": "GEO",
+    "codeName": "Ningguang"
+  },
+  {
+    "name": "Noelle",
+    "stat": {
+      "baseAtk": 16.0272,
+      "baseHp": 1012.088,
+      "baseDef": 66.95325,
+      "ascAtk": 57.34638,
+      "ascHp": 3621.2327,
+      "ascDef": 239.5575,
+      "ascStat": "DEF%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Parma Cordis",
+    "weapon": "CLAYMORE",
+    "element": "GEO",
+    "codeName": "Noel"
+  },
+  {
+    "name": "Qiqi",
+    "stat": {
+      "baseAtk": 22.344,
+      "baseHp": 962.8532,
+      "baseDef": 71.796,
+      "ascAtk": 91.74984,
+      "ascHp": 3953.9958,
+      "ascDef": 294.84,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Pristina Nola",
+    "weapon": "SWORD",
+    "element": "CRYO",
+    "codeName": "Qiqi"
+  },
+  {
+    "name": "Raiden Shogun",
+    "stat": {
+      "baseAtk": 26.2542,
+      "baseHp": 1004.79926,
+      "baseDef": 61.44541,
+      "ascAtk": 107.80606,
+      "ascHp": 4126.249,
+      "ascDef": 252.3339,
+      "ascStat": "Energy Recharge"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Imperatrix Umbrosa",
+    "weapon": "POLEARM",
+    "element": "ELECTRO",
+    "codeName": "Shougun"
+  },
+  {
+    "name": "Razor",
+    "stat": {
+      "baseAtk": 19.5888,
+      "baseHp": 1002.9701,
+      "baseDef": 62.9475,
+      "ascAtk": 70.09002,
+      "ascHp": 3588.6091,
+      "ascDef": 225.225,
+      "ascStat": "Physical DMG%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Lupus Minor",
+    "weapon": "CLAYMORE",
+    "element": "ELECTRO",
+    "codeName": "Razor"
+  },
+  {
+    "name": "Rosaria",
+    "stat": {
+      "baseAtk": 20.12304,
+      "baseHp": 1030.3239,
+      "baseDef": 59.514,
+      "ascAtk": 72.001564,
+      "ascHp": 3686.4802,
+      "ascDef": 212.94,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Spinae Corona",
+    "weapon": "POLEARM",
+    "element": "CRYO",
+    "codeName": "Rosaria"
+  },
+  {
+    "name": "Sayu",
+    "stat": {
+      "baseAtk": 20.4792,
+      "baseHp": 993.8522,
+      "baseDef": 62.432476,
+      "ascAtk": 73.27593,
+      "ascHp": 3555.9854,
+      "ascDef": 223.38225,
+      "ascStat": "Elemental Mastery"
+    },
+    "rarity": 4,
+    "region": "Inazuma",
+    "constellation": "Nyctereutes Minor",
+    "weapon": "CLAYMORE",
+    "element": "ANEMO",
+    "codeName": "Sayu"
+  },
+  {
+    "name": "Shenhe",
+    "stat": {
+      "baseAtk": 23.6474,
+      "baseHp": 1011.47253,
+      "baseDef": 64.6164,
+      "ascAtk": 97.10191,
+      "ascHp": 4153.653,
+      "ascDef": 265.356,
+      "ascStat": "ATK%"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Crista Doloris",
+    "weapon": "POLEARM",
+    "element": "CRYO",
+    "codeName": "Shenhe"
+  },
+  {
+    "name": "Shikanoin Heizou",
+    "stat": {
+      "baseAtk": 18.87648,
+      "baseHp": 893.5552,
+      "baseDef": 57.33945,
+      "ascAtk": 67.54129,
+      "ascHp": 3197.1245,
+      "ascDef": 205.1595,
+      "ascStat": "Anemo DMG%"
+    },
+    "rarity": 4,
+    "region": "Inazuma",
+    "constellation": "Cervus Minor",
+    "weapon": "CATALYST",
+    "element": "ANEMO",
+    "codeName": "Heizo"
+  },
+  {
+    "name": "Sucrose",
+    "stat": {
+      "baseAtk": 14.2464,
+      "baseHp": 775.02234,
+      "baseDef": 58.94175,
+      "ascAtk": 50.97456,
+      "ascHp": 2773.016,
+      "ascDef": 210.8925,
+      "ascStat": "Anemo DMG%"
+    },
+    "rarity": 4,
+    "region": "Monstadt",
+    "constellation": "Ampulla",
+    "weapon": "CATALYST",
+    "element": "ANEMO",
+    "codeName": "Sucrose"
+  },
+  {
+    "name": "Tartaglia",
+    "stat": {
+      "baseAtk": 23.4612,
+      "baseHp": 1020.0524,
+      "baseDef": 63.4198,
+      "ascAtk": 96.33733,
+      "ascHp": 4188.8867,
+      "ascDef": 260.442,
+      "ascStat": "Hydro DMG%"
+    },
+    "rarity": 5,
+    "region": "Snezhnaya",
+    "constellation": "Monoceros Caeli",
+    "weapon": "BOW",
+    "element": "HYDRO",
+    "codeName": "Tartaglia"
+  },
+  {
+    "name": "Thoma",
+    "stat": {
+      "baseAtk": 16.9176,
+      "baseHp": 866.2015,
+      "baseDef": 62.9475,
+      "ascAtk": 60.53229,
+      "ascHp": 3099.2532,
+      "ascDef": 225.225,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Inazuma",
+    "constellation": "Rebeum Scutum",
+    "weapon": "POLEARM",
+    "element": "PYRO",
+    "codeName": "Tohma"
+  },
+  {
+    "name": "Tighnari",
+    "stat": {
+      "baseAtk": 20.8544,
+      "baseHp": 844.64154,
+      "baseDef": 49.0606,
+      "ascAtk": 85.63319,
+      "ascHp": 3468.5547,
+      "ascDef": 201.474,
+      "ascStat": "Dendro DMG%"
+    },
+    "rarity": 5,
+    "region": "Sumeru",
+    "constellation": "Vulpes Zerda",
+    "weapon": "BOW",
+    "element": "DENDRO",
+    "codeName": "Tighnari"
+  },
+  {
+    "name": "Venti",
+    "stat": {
+      "baseAtk": 20.482,
+      "baseHp": 819.8552,
+      "baseDef": 52.0521,
+      "ascAtk": 84.10402,
+      "ascHp": 3366.7688,
+      "ascDef": 213.759,
+      "ascStat": "Energy Recharge"
+    },
+    "rarity": 5,
+    "region": "Monstadt",
+    "constellation": "Carmen Dei",
+    "weapon": "BOW",
+    "element": "ANEMO",
+    "codeName": "Venti"
+  },
+  {
+    "name": "Wriothesley",
+    "stat": {
+      "baseAtk": 24.206,
+      "baseHp": 1058.18518,
+      "baseDef": 59.41119,
+      "ascAtk": 99.39566,
+      "ascHp": 4345.48,
+      "ascDef": 243.9801,
+      "ascStat": "CRIT DMG"
+    },
+    "rarity": 5,
+    "region": "Fontaine",
+    "constellation": "Cerberus",
+    "weapon": "CATALYST",
+    "element": "CRYO",
+    "codeName": "Wriothesley"
+  },
+  {
+    "name": "Xiangling",
+    "stat": {
+      "baseAtk": 18.87648,
+      "baseHp": 911.791,
+      "baseDef": 56.0805,
+      "ascAtk": 67.54129,
+      "ascHp": 3262.3718,
+      "ascDef": 200.655,
+      "ascStat": "Elemental Mastery"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Trulla",
+    "weapon": "POLEARM",
+    "element": "PYRO",
+    "codeName": "Xiangling"
+  },
+  {
+    "name": "Xianyun",
+    "stat": {
+      "baseAtk": 26.06800079,
+      "baseHp": 810.3220215,
+      "baseDef": 44.573349,
+      "ascAtk": 107.041481,
+      "ascHp": 3327.620117,
+      "ascDef": 183.0464935,
+      "ascStat": "ATK%"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Grus Serena",
+    "weapon": "CATALYST",
+    "element": "ANEMO",
+    "codeName": "Liuyun"
+  },
+  {
+    "name": "Xiao",
+    "stat": {
+      "baseAtk": 27.1852,
+      "baseHp": 991.4528,
+      "baseDef": 62.2232,
+      "ascAtk": 111.628975,
+      "ascHp": 4071.4412,
+      "ascDef": 255.528,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Alatus Nemeseos",
+    "weapon": "POLEARM",
+    "element": "ANEMO",
+    "codeName": "Xiao"
+  },
+  {
+    "name": "Xingqiu",
+    "stat": {
+      "baseAtk": 16.9176,
+      "baseHp": 857.08356,
+      "baseDef": 63.51975,
+      "ascAtk": 60.53229,
+      "ascHp": 3066.6296,
+      "ascDef": 227.2725,
+      "ascStat": "Hydro DMG%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Fabulae Textile",
+    "weapon": "SWORD",
+    "element": "HYDRO",
+    "codeName": "Xingqiu"
+  },
+  {
+    "name": "Xinyan",
+    "stat": {
+      "baseAtk": 20.83536,
+      "baseHp": 939.1447,
+      "baseDef": 66.95325,
+      "ascAtk": 74.55029,
+      "ascHp": 3360.243,
+      "ascDef": 239.5575,
+      "ascStat": "ATK%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Fila Ignium",
+    "weapon": "CLAYMORE",
+    "element": "PYRO",
+    "codeName": "Xinyan"
+  },
+  {
+    "name": "Yae Miko",
+    "stat": {
+      "baseAtk": 26.4404,
+      "baseHp": 807.46204,
+      "baseDef": 44.2742,
+      "ascAtk": 108.57064,
+      "ascHp": 3315.8757,
+      "ascDef": 181.818,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Divina Vulpes",
+    "weapon": "CATALYST",
+    "element": "ELECTRO",
+    "codeName": "Yae"
+  },
+  {
+    "name": "Yanfei",
+    "stat": {
+      "baseAtk": 20.12304,
+      "baseHp": 784.14026,
+      "baseDef": 49.2135,
+      "ascAtk": 72.001564,
+      "ascHp": 2805.64,
+      "ascDef": 176.085,
+      "ascStat": "Pyro DMG%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Bestia Iustitia",
+    "weapon": "CATALYST",
+    "element": "PYRO",
+    "codeName": "Feiyan"
+  },
+  {
+    "name": "Yaoyao",
+    "stat": {
+      "baseAtk": 17.808,
+      "baseHp": 1030.3239,
+      "baseDef": 62.9475,
+      "ascAtk": 63.7182,
+      "ascHp": 3686.4802,
+      "ascDef": 225.225,
+      "ascStat": "HP%"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Osmanthus",
+    "weapon": "POLEARM",
+    "element": "DENDRO",
+    "codeName": "Yaoyao"
+  },
+  {
+    "name": "Yelan",
+    "stat": {
+      "baseAtk": 18.9924,
+      "baseHp": 1124.9176,
+      "baseDef": 42.65879,
+      "ascAtk": 77.987366,
+      "ascHp": 4619.52,
+      "ascDef": 175.1841,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Umbrabilis Orchis",
+    "weapon": "BOW",
+    "element": "HYDRO",
+    "codeName": "Yelan"
+  },
+  {
+    "name": "Yoimiya",
+    "stat": {
+      "baseAtk": 25.137,
+      "baseHp": 791.2556,
+      "baseDef": 47.864,
+      "ascAtk": 103.21857,
+      "ascHp": 3249.3232,
+      "ascDef": 196.56,
+      "ascStat": "CRIT Rate"
+    },
+    "rarity": 5,
+    "region": "Inazuma",
+    "constellation": "Carassius Auratus",
+    "weapon": "BOW",
+    "element": "PYRO",
+    "codeName": "Yoimiya"
+  },
+  {
+    "name": "Yun Jin",
+    "stat": {
+      "baseAtk": 16.0272,
+      "baseHp": 893.5552,
+      "baseDef": 61.5741,
+      "ascAtk": 57.34638,
+      "ascHp": 3197.1245,
+      "ascDef": 220.311,
+      "ascStat": "Energy Recharge"
+    },
+    "rarity": 4,
+    "region": "Liyue",
+    "constellation": "Opera Grandis",
+    "weapon": "POLEARM",
+    "element": "GEO",
+    "codeName": "Yunjin"
+  },
+  {
+    "name": "Zhongli",
+    "stat": {
+      "baseAtk": 19.551,
+      "baseHp": 1143.984,
+      "baseDef": 57.4368,
+      "ascAtk": 80.2811,
+      "ascHp": 4697.817,
+      "ascDef": 235.872,
+      "ascStat": "Geo DMG%"
+    },
+    "rarity": 5,
+    "region": "Liyue",
+    "constellation": "Lapis Dei",
+    "weapon": "POLEARM",
+    "element": "GEO",
+    "codeName": "Zhongli"
   }
 ]
