@@ -42,6 +42,7 @@ export interface IWeapon {
   ascStat: string
   baseStat: number
   icon: string
+  type: string
 }
 
 export interface IWeaponEquip {

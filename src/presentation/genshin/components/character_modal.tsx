@@ -8,6 +8,7 @@ import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { useMemo } from 'react'
+import { DefaultWeapon } from '@src/data/stores/team_store'
 
 interface CharacterModalProps {
   index: number
@@ -86,6 +87,9 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
               teamStore.setMemberInfo(index, {
                 data: item,
               })
+              console.log(item.weapon !== teamStore.characters[index]?.equipments?.weapon?.data?.type)
+              if (item.weapon !== teamStore.characters[index]?.equipments?.weapon?.data?.type)
+                teamStore.setWeapon(index, DefaultWeapon)
               modalStore.closeModal()
             }}
             key={item.name}

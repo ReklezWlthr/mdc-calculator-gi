@@ -1,19 +1,21 @@
 [
   {
-    "name": "Cloudweaver",
+    "name": "The Stringless",
     "rarity": 4,
     "tier": 2,
     "ascStat": "Elemental Mastery",
     "baseStat": 36,
-    "icon": "UI_EquipIcon_Bow_Proto"
+    "icon": "UI_EquipIcon_Bow_Troupe",
+    "type": "BOW"
   },
   {
     "name": "Wolf's Gravestone",
-    "rarity": 5,  
+    "rarity": 5,
     "tier": 2,
     "ascStat": "ATK%",
     "baseStat": 0.108,
-    "icon": "UI_EquipIcon_Claymore_Wolfmound"
+    "icon": "UI_EquipIcon_Claymore_Wolfmound",
+    "type": "CLAYMORE"
   },
   {
     "name": "White Tassel",
@@ -21,6 +23,25 @@
     "tier": 2,
     "ascStat": "CRIT Rate",
     "baseStat": 0.051,
-    "icon": "UI_EquipIcon_Pole_Ruby"
+    "icon": "UI_EquipIcon_Pole_Ruby",
+    "type": "POLEARM"
+  },
+  {
+    "name": "Light of Foliar Incision",
+    "rarity": 5,
+    "tier": 1,
+    "ascStat": "CRIT DMG",
+    "baseStat": 0.192,
+    "icon": "UI_EquipIcon_Sword_Ayus",
+    "type": "SWORD"
+  },
+  {
+    "name": "The Widsith",
+    "rarity": 4,
+    "tier": 2,
+    "ascStat": "CRIT DMG",
+    "baseStat": 0.12,
+    "icon": "UI_EquipIcon_Catalyst_Troupe",
+    "type": "CATALYST"
   }
 ]

@@ -4,6 +4,24 @@ import { enableStaticRendering } from 'mobx-react-lite'
 
 enableStaticRendering(typeof window === 'undefined')
 
+export const DefaultWeapon = {
+  level: 1,
+  ascension: 0,
+  refinement: 1,
+  data: null,
+}
+
+export const DefaultCharacter = {
+  level: 1,
+  ascension: 0,
+  cons: 0,
+  character: null,
+  equipments: {
+    weapon: DefaultWeapon,
+    artifacts: Array(5),
+  },
+}
+
 export interface TeamStoreType {
   characters: ITeamChar[]
   hydrated: boolean
@@ -20,20 +38,7 @@ export class Team {
   hydrated: boolean = false
 
   constructor() {
-    this.characters = Array(4).fill({
-      level: 1,
-      ascension: 0,
-      cons: 0,
-      character: null,
-      equipments: {
-        weapon: {
-          level: 1,
-          ascension: 0,
-          refinement: 1,
-        },
-        artifacts: Array(5),
-      },
-    })
+    this.characters = Array(4).fill(DefaultCharacter)
 
     makeAutoObservable(this)
   }
@@ -55,6 +60,7 @@ export class Team {
   setWeapon = (index: number, info: Partial<IWeaponEquip>) => {
     if (index < 0 || index > 4) return
     this.characters[index].equipments.weapon = { ...this.characters[index].equipments.weapon, ...info }
+    this.characters[index] = { ...this.characters[index] }
   }
 
   hydrateCharacters = (data: ITeamChar[]) => {

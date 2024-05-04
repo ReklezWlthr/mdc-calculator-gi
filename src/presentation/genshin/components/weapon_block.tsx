@@ -65,7 +65,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
           />
         </div>
         <div className="flex gap-2">
-          <div className="flex flex-col justify-between w-7/12 gap-1">
+          <div className="flex flex-col justify-between w-1/2 gap-1">
             <img
               src={`https://enka.network/ui/${weapon?.data?.icon || 'UI_EquipIcon_Sword_Blunt'}${
                 ascension >= 2 ? '_Awaken' : ''
@@ -74,7 +74,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
             />
             <RarityGauge rarity={rarity} />
           </div>
-          <div className="w-5/12 space-y-2">
+          <div className="w-1/2 space-y-2">
             <div className="space-y-1">
               <p className="text-sm font-semibold">Level</p>
               <div className="flex items-center w-full gap-2">

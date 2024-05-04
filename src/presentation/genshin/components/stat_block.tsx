@@ -43,7 +43,7 @@ export const StatBlock = observer((props: StatBlockProps) => {
       <ExtraDataRow title="HP" base={stat?.baseHp} bonus={stat?.baseHp * stat?.pHp} />
       <ExtraDataRow title="ATK" base={stat?.baseAtk} bonus={stat?.baseAtk * stat?.pAtk} />
       <ExtraDataRow title="DEF" base={stat?.baseDef} bonus={stat?.baseDef * stat?.pDef} />
-      <DataRow title="Elemental Mastery" value={_.floor(stat?.em)} />
+      <DataRow title="Elemental Mastery" value={_.round(stat?.em)} />
       <DataRow title="CRIT Rate" value={toPercentage(stat?.cRate)} />
       <DataRow title="CRIT DMG" value={toPercentage(stat?.cDmg)} />
       <DataRow title="Healing Bonus" value={toPercentage(0)} />
