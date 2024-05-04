@@ -32,7 +32,7 @@ export const useStat = (index: number) => {
         _.map(char?.equipments?.artifacts, (aId) => _.find(artifactStore.artifacts, ['id', aId])),
         (item) => item?.main === stat
       )
-      const fromMainStat = _.sum(_.map(artifacts, item => getMainStat(item.main, item.quality, item.level)))
+      const fromMainStat = _.sum(_.map(artifacts, (item) => getMainStat(item.main, item.quality, item.level)))
 
       return _.sum([fromWeapon, fromAscension, fromMainStat])
     },
@@ -68,6 +68,9 @@ export const useStat = (index: number) => {
     pAtk: getTotalStat(Stats.P_ATK),
     pHp: getTotalStat(Stats.P_HP),
     pDef: getTotalStat(Stats.P_DEF),
+    fAtk: getTotalStat(Stats.ATK),
+    fHp: getTotalStat(Stats.HP),
+    fDef: getTotalStat(Stats.DEF),
     cRate: 0.05 + getTotalStat(Stats.CRIT_RATE) - (char?.data?.codeName === 'Kokomi' ? 1 : 0),
     cDmg: 0.5 + getTotalStat(Stats.CRIT_DMG),
     em: getTotalStat(Stats.EM),

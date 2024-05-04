@@ -43,7 +43,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
                 src={`https://enka.network/ui/${artifact.data.icon}_${artifact.type}.png`}
                 className="w-full h-full"
               />
-              <div className="absolute flex items-center justify-center px-2 py-1 text-xs rounded-full -bottom-1 -right-4 bg-primary-light">
+              <div className="absolute flex items-center justify-center px-2 py-1 text-xs rounded-full -bottom-0 -right-4 bg-primary-light">
                 +{artifact?.level}
               </div>
             </div>

@@ -47,7 +47,7 @@ export const Modal = observer(() => {
             >
               <div
                 className={classNames(
-                  'z-50 flex justify-center mt-[10vh] w-screen h-screen overflow-y-auto pointer-events-none',
+                  'z-50 flex justify-center mt-[10vh] w-screen h-screen pointer-events-none',
                   store.modalStore.style
                 )}
               >

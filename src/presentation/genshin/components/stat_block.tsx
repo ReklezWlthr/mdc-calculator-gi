@@ -40,9 +40,9 @@ export const StatBlock = observer((props: StatBlockProps) => {
 
   return (
     <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-10 gap-y-1 gap-x-5 bg-primary-dark">
-      <ExtraDataRow title="HP" base={stat?.baseHp} bonus={stat?.baseHp * stat?.pHp} />
-      <ExtraDataRow title="ATK" base={stat?.baseAtk} bonus={stat?.baseAtk * stat?.pAtk} />
-      <ExtraDataRow title="DEF" base={stat?.baseDef} bonus={stat?.baseDef * stat?.pDef} />
+      <ExtraDataRow title="HP" base={stat?.baseHp} bonus={stat?.baseHp * stat?.pHp + stat?.fHp} />
+      <ExtraDataRow title="ATK" base={stat?.baseAtk} bonus={stat?.baseAtk * stat?.pAtk + stat?.fAtk} />
+      <ExtraDataRow title="DEF" base={stat?.baseDef} bonus={stat?.baseDef * stat?.pDef + stat?.fDef} />
       <DataRow title="Elemental Mastery" value={_.round(stat?.em)} />
       <DataRow title="CRIT Rate" value={toPercentage(stat?.cRate)} />
       <DataRow title="CRIT DMG" value={toPercentage(stat?.cDmg)} />

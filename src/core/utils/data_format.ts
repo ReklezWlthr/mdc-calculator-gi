@@ -32,7 +32,7 @@ export const isLevelInRange = (ascension: number, level: number) => {
 export const getBaseStat = (base: number, level: number, ascBonus: number, ascension: number, rarity: number) => {
   if (rarity !== 4 && rarity !== 5) return 0
   const scaling = rarity === 4 ? FourStarScaling : FiveStarScaling
-  return _.floor(base * scaling[level - 1] + ascBonus * AscensionScaling[ascension])
+  return _.round(base * scaling[level - 1] + ascBonus * AscensionScaling[ascension])
 }
 
 export const getWeaponBase = (tier: number, level: number, ascension: number, rarity: number) => {
