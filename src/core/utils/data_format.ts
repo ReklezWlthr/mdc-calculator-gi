@@ -1,3 +1,5 @@
+import { MainStatValue } from '@src/domain/genshin/artifact'
+import { Stats } from '@src/domain/genshin/constant'
 import {
   AscensionScaling,
   FiveStarScaling,
@@ -45,4 +47,9 @@ export const getWeaponBonus = (base: number, level: number) => {
   const index = _.floor(level / 5)
   const scaling = WeaponSecondaryScaling[index]
   return base * scaling
+}
+
+export const getMainStat = (main: Stats, quality: number, level: number) => {
+  const entry = _.find(MainStatValue, (item) => item.rarity === quality && _.includes(item.stat, main))
+  return entry?.values?.[level]
 }

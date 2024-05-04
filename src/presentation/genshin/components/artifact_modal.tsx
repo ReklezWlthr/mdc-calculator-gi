@@ -1,5 +1,7 @@
+import { toPercentage } from '@src/core/utils/converter'
+import { getMainStat } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { ArtifactSets } from '@src/domain/genshin/artifact'
+import { ArtifactSets, MainStat, MainStatValue } from '@src/domain/genshin/artifact'
 import { Stats } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
@@ -19,12 +21,14 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
       set: null,
       quality: 5,
       level: 20,
-      main: Stats.ATK,
+      main: _.head(MainStat[type]),
       type,
       subList: [],
     },
   })
   const values = watch()
+  const mainStat = getMainStat(values.main, values.quality, values.level)
+  const maxLevel = 20 - (5 - values.quality) * 4
 
   useEffect(() => {
     if (aId) {
@@ -73,7 +77,7 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
   })
 
   return (
-    <div className="w-[300px] p-4 space-y-3 font-semibold text-white rounded-xl bg-primary-dark">
+    <div className="w-[300px] p-4 space-y-4 font-semibold text-white rounded-xl bg-primary-dark">
       <div className="flex justify-center gap-2">
         <TypeButton icon="/icons/flower_of_life.png" buttonType={4} />
         <TypeButton icon="/icons/plume_of_death.png" buttonType={2} />
@@ -117,7 +121,7 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
           render={({ field }) => (
             <SelectInput
               value={field.value.toString()}
-              options={_.map(Array(21), (_, index) => ({
+              options={_.map(Array(maxLevel + 1), (_, index) => ({
                 name: '+' + index,
                 value: index.toString(),
               }))}
@@ -139,10 +143,41 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
                 value: (item + index).toString(),
               }))}
               style="w-[70px]"
-              onChange={(value) => field.onChange(_.parseInt(value))}
+              onChange={(value) => {
+                const quality = _.parseInt(value)
+                field.onChange(quality)
+                if (values.level > 20 - (5 - quality) * 4) setValue('level', 20 - (5 - quality) * 4)
+              }}
             />
           )}
         />
+      </div>
+      <div className="space-y-1">
+        <p className="text-xs">Main Stat</p>
+        <div className="flex items-center justify-center gap-3">
+          <Controller
+            name="main"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <SelectInput
+                value={field.value}
+                options={_.map(MainStat[values.type], (item) => ({
+                  name: item,
+                  value: item,
+                }))}
+                style="w-3/4"
+                onChange={field.onChange}
+                disabled={_.includes([4, 2], values.type)}
+              />
+            )}
+          />
+          <div className="w-1/4 px-3 py-1 text-sm border rounded-lg border-primary-light bg-primary-darker">
+            {_.includes([Stats.HP, Stats.ATK, Stats.EM], values?.main)
+              ? _.round(mainStat).toLocaleString()
+              : toPercentage(mainStat)}
+          </div>
+        </div>
       </div>
       <div className="flex justify-end gap-2">
         <p onClick={onSubmit}>Confirm</p>

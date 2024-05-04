@@ -147,7 +147,7 @@ export const AscensionGrowth = {
   [Stats.PYRO_DMG]: [0.06, 0.072],
   [Stats.HYDRO_DMG]: [0.06, 0.072],
   [Stats.CRYO_DMG]: [0.06, 0.072],
-  [Stats.ELECTROL_DMG]: [0.06, 0.072],
+  [Stats.ELECTRO_DMG]: [0.06, 0.072],
   [Stats.DENDRO_DMG]: [0.06, 0.072],
   [Stats.GEO_DMG]: [0.06, 0.072],
   [Stats.ANEMO_DMG]: [0.06, 0.072],

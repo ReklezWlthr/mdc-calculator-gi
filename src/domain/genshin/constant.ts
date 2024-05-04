@@ -123,7 +123,7 @@ export enum Stats {
   PYRO_DMG = 'Pyro DMG%',
   HYDRO_DMG = 'Hydro DMG%',
   CRYO_DMG = 'Cryo DMG%',
-  ELECTROL_DMG = 'Electro DMG%',
+  ELECTRO_DMG = 'Electro DMG%',
   DENDRO_DMG = 'Dendro DMG%',
   GEO_DMG = 'Geo DMG%',
   ANEMO_DMG = 'Anemo DMG%',

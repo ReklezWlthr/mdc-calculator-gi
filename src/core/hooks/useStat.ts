@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { getBaseStat, getWeaponBase, getWeaponBonus } from '../utils/data_format'
+import { getBaseStat, getMainStat, getWeaponBase, getWeaponBonus } from '../utils/data_format'
 import { toPercentage } from '../utils/converter'
 import { useCallback } from 'react'
 import _ from 'lodash'
@@ -7,7 +7,7 @@ import { Stats } from '@src/domain/genshin/constant'
 import { AscensionGrowth } from '@src/domain/genshin/scaling'
 
 export const useStat = (index: number) => {
-  const { teamStore } = useStore()
+  const { teamStore, artifactStore } = useStore()
   const char = teamStore.characters[index]
   const weapon = teamStore.characters[index]?.equipments?.weapon
 
@@ -27,7 +27,14 @@ export const useStat = (index: number) => {
       const fromAscension =
         (char?.data?.stat?.ascStat === stat ? _.max([0, char?.ascension - 2]) : 0) *
         AscensionGrowth[char?.data?.stat?.ascStat]?.[char?.data?.rarity - 4]
-      return _.sum([fromWeapon, fromAscension])
+
+      const artifacts = _.filter(
+        _.map(char?.equipments?.artifacts, (aId) => _.find(artifactStore.artifacts, ['id', aId])),
+        (item) => item?.main === stat
+      )
+      const fromMainStat = _.sum(_.map(artifacts, item => getMainStat(item.main, item.quality, item.level)))
+
+      return _.sum([fromWeapon, fromAscension, fromMainStat])
     },
     [weapon, char]
   )
@@ -70,7 +77,7 @@ export const useStat = (index: number) => {
     pyro: getTotalStat(Stats.PYRO_DMG),
     hydro: getTotalStat(Stats.HYDRO_DMG),
     cryo: getTotalStat(Stats.CRYO_DMG),
-    electro: getTotalStat(Stats.ELECTROL_DMG),
+    electro: getTotalStat(Stats.ELECTRO_DMG),
     geo: getTotalStat(Stats.GEO_DMG),
     dendro: getTotalStat(Stats.DENDRO_DMG),
     anemo: getTotalStat(Stats.ANEMO_DMG),
