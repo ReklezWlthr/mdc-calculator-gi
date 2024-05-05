@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import mock from '@src/data/mock/characters.json'
+import { Characters } from '@src/data/db/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
 import { Element, ElementIcon, WeaponIcon, WeaponType } from '@src/domain/genshin/constant'
@@ -25,12 +25,12 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
   const filteredChar = useMemo(
     () =>
       _.filter(
-        mock.sort((a, b) => a.name.localeCompare(b.name)),
+        Characters.sort((a, b) => a.name.localeCompare(b.name)),
         (item) => {
           const regex = new RegExp(params.searchWord, 'i')
           const nameMatch = item.name.match(regex)
-          const elmMatch = _.size(params.element) ? _.includes(params.element, Element[item.element]) : true
-          const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, WeaponType[item.weapon]) : true
+          const elmMatch = _.size(params.element) ? _.includes(params.element, item.element) : true
+          const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, item.weapon) : true
 
           return nameMatch && elmMatch && weaponMatch
         }
@@ -99,7 +99,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
             key={item.name}
           >
             <div className="relative">
-              <img src={ElementIcon[Element[item.element]]} className="absolute w-8 h-8 top-0.5 left-1" />
+              <img src={ElementIcon[item.element]} className="absolute w-8 h-8 top-0.5 left-1" />
               <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                 <RarityGauge rarity={item.rarity} />
               </div>

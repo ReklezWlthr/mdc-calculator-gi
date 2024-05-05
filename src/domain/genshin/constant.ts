@@ -17,8 +17,8 @@ export interface ICharacterStats {
 
 export interface ICharacter {
   name: string
-  weapon: string
-  element: string
+  weapon: WeaponType
+  element: Element
   rarity: number
   stat: ICharacterStats
   codeName: string

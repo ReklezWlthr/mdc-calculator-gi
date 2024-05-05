@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import mock from '@src/data/mock/weapons.json'
+import { Weapons } from '@src/data/db/weapons'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
@@ -23,7 +23,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
   const filteredWeapon = useMemo(
     () =>
       _.filter(
-        mock.sort((a, b) => a.name.localeCompare(b.name)),
+        Weapons.sort((a, b) => a.name.localeCompare(b.name)),
         (item) => {
           const regex = new RegExp(params.searchWord, 'i')
           const nameMatch = item.name.match(regex)

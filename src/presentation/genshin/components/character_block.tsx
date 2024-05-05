@@ -102,13 +102,13 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             <div className="flex gap-0.5">
               {/* <p className="[writing-mode:vertical-rl] rotate-180 text-[10px]">Weapon</p> */}
               <div className="p-1 rounded-full w-11 h-11 bg-primary">
-                <img src={WeaponIcon[WeaponType[teamStore.characters[props.index]?.data?.weapon]]} />
+                <img src={WeaponIcon[teamStore.characters[props.index]?.data?.weapon]} />
               </div>
             </div>
             <RarityGauge rarity={rarity} />
             <div className="flex gap-0.5">
               <div className="p-1 rounded-full w-11 h-11 bg-primary">
-                <img src={ElementIcon[Element[teamStore.characters[props.index]?.data?.element]]} />
+                <img src={ElementIcon[teamStore.characters[props.index]?.data?.element]} />
               </div>
               {/* <p className="[writing-mode:vertical-rl] text-[10px]">Element</p> */}
             </div>
