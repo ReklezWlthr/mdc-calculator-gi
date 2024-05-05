@@ -1,4 +1,4 @@
-import { Stats, WeaponType } from "@src/domain/genshin/constant";
+import { Stats, WeaponType } from '@src/domain/genshin/constant'
 
 export const Weapons = [
   {
@@ -324,5 +324,14 @@ export const Weapons = [
     baseStat: 48,
     icon: 'UI_EquipIcon_Catalyst_Fossil',
     type: WeaponType.CATALYST,
+  },
+  {
+    name: `"Ultimate Overlord's Mega Magic Sword"`,
+    rarity: 4,
+    tier: 3,
+    ascStat: Stats.ER,
+    baseStat: 0.067,
+    icon: 'UI_EquipIcon_Claymore_Champion',
+    type: WeaponType.CLAYMORE,
   },
 ]
