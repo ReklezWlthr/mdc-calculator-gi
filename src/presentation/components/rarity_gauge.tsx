@@ -1,10 +1,19 @@
 import classNames from 'classnames'
 import _ from 'lodash'
 
-export const RarityGauge = ({ rarity, textSize = 'text-xs' }: { rarity: number; textSize?: string }) => {
+export const RarityGauge = ({
+  rarity,
+  textSize = 'text-xs',
+  isSpecial,
+}: {
+  rarity: number
+  textSize?: string
+  isSpecial?: boolean
+}) => {
   return (
     <div
       className={classNames('w-full flex justify-center', textSize, {
+        'text-genshin-pyro': isSpecial,
         'text-genshin-dendro': rarity === 2,
         'text-genshin-hydro': rarity === 3,
         'text-genshin-electro': rarity === 4,

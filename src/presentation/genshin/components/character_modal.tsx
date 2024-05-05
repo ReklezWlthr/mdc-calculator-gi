@@ -101,7 +101,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
             <div className="relative">
               <img src={ElementIcon[item.element]} className="absolute w-8 h-8 top-0.5 left-1" />
               <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
-                <RarityGauge rarity={item.rarity} />
+                <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
               </div>
               <img
                 src={`https://enka.network/ui/UI_AvatarIcon_${item.codeName || 'PlayerGirl'}.png`}
