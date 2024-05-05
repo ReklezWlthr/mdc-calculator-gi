@@ -95,7 +95,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
               </div>
               <img
                 src={`https://enka.network/ui/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
-                className="rounded-t-lg bg-primary-darker"
+                className="object-contain rounded-t-lg bg-primary-darker aspect-square"
               />
             </div>
             <p className="flex justify-center w-full px-2 py-1 text-center line-clamp-2">{item.name}</p>
