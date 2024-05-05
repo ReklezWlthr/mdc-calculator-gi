@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite'
 import { useCallback } from 'react'
 import { ArtifactModal } from './artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
-import { getMainStat } from '@src/core/utils/data_format'
+import { getMainStat, getRolls } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatIcons } from '../../../domain/genshin/constant'
 
@@ -72,6 +72,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
                 <img className="w-4 h-4" src={`/icons/${StatIcons[item.stat]}`} />
                 {item.stat}
               </div>
+              <div>{getRolls(item.stat, item.value)}</div>
               <hr className="w-full border border-primary-border" />
               <p className="font-normal text-gray">
                 {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.EM], item.stat)

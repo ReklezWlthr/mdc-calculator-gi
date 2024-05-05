@@ -54,6 +54,13 @@ export const getMainStat = (main: Stats, quality: number, level: number) => {
   return entry?.values?.[level]
 }
 
+export const getRolls = (stat: Stats, value: number) => {
+  const low = _.find(SubStatMap, (item) => item.stat === stat)?.max * 0.7
+  const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], stat) ? 1 : 100)
+
+  return _.max([roundValue > 0 ? 1 : 0, _.floor(roundValue / low)])
+}
+
 export const correctSubStat = (stat: Stats, value: number) => {
   const data = _.find(SubStatMap, (item) => item.stat === stat)
   const max = data?.max
@@ -62,10 +69,9 @@ export const correctSubStat = (stat: Stats, value: number) => {
 
   const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], stat) ? 1 : 100)
 
-  const rolls = _.max([roundValue > 0 ? 1 : 0, _.floor(roundValue / low)])
+  const rolls = getRolls(stat, value)
   const accLow = low * rolls
   const bonusRolls = _.round((_.max([roundValue, accLow]) % accLow) / bonus)
 
-  console.log(stat, accLow, rolls, bonusRolls, accLow + bonus * bonusRolls)
   return accLow + bonus * bonusRolls
 }
