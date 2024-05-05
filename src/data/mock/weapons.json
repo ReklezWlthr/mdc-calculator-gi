@@ -313,5 +313,14 @@
     "baseStat": 0.048,
     "icon": "UI_EquipIcon_Pole_Morax",
     "type": "POLEARM"
+  },
+  {
+    "name": "Sacrificial Fragments",
+    "rarity": 4,
+    "tier": 1,
+    "ascStat": "Elemental Mastery",
+    "baseStat": 48,
+    "icon": "UI_EquipIcon_Catalyst_Fossil",
+    "type": "CATALYST"
   }
 ]

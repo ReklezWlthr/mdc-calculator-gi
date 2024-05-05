@@ -6,6 +6,8 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import { useMemo } from 'react'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
+import { StatIcons, Stats } from '@src/domain/genshin/constant'
+import classNames from 'classnames'
 
 interface WeaponModalProps {
   index: number
@@ -15,6 +17,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
   const { teamStore, modalStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
+    stat: [],
   })
 
   const filteredWeapon = useMemo(
@@ -25,12 +28,28 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           const regex = new RegExp(params.searchWord, 'i')
           const nameMatch = item.name.match(regex)
           const typeMatch = teamStore.characters[index]?.data?.weapon === item.type
+          const statMatch = _.size(params.stat) ? _.includes(params.stat, item.ascStat) : true
 
-          return nameMatch && typeMatch
+          return nameMatch && typeMatch && statMatch
         }
       ),
     [params]
   )
+
+  const FilterIcon = ({ stat }: { stat: Stats }) => {
+    const checked = _.includes(params.stat, stat)
+    return (
+      <div
+        className={classNames('w-8 h-8 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
+          'bg-primary-light': checked,
+        })}
+        onClick={() => setParams({ stat: checked ? _.without(params.stat, stat) : [...params.stat, stat] })}
+        title={stat}
+      >
+        <img src={`/icons/${StatIcons[stat]}`} className="p-1" />
+      </div>
+    )
+  }
 
   return (
     <div className="w-[85vw] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
@@ -42,6 +61,16 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
             value={params.searchWord}
             placeholder="Search Weapon Name"
           />
+        </div>
+        <div className="flex gap-2">
+          <FilterIcon stat={Stats.P_HP} />
+          <FilterIcon stat={Stats.P_ATK} />
+          <FilterIcon stat={Stats.P_DEF} />
+          <FilterIcon stat={Stats.EM} />
+          <FilterIcon stat={Stats.ER} />
+          <FilterIcon stat={Stats.CRIT_RATE} />
+          <FilterIcon stat={Stats.CRIT_DMG} />
+          <FilterIcon stat={Stats.PHYSICAL_DMG} />
         </div>
       </div>
       <div className="grid w-full grid-cols-9 gap-4">
@@ -57,6 +86,10 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
             key={item.name}
           >
             <div className="relative">
+              <img
+                src={`/icons/${StatIcons[item.ascStat]}`}
+                className="absolute p-1 rounded-full w-7 h-7 top-2 left-2 bg-primary"
+              />
               <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                 <RarityGauge rarity={item.rarity} />
               </div>

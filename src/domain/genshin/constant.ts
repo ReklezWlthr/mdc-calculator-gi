@@ -131,6 +131,28 @@ export enum Stats {
   I_HEALING = 'Incoming Healing',
 }
 
+export const StatIcons = {
+  [Stats.P_HP]: 'stat_p_hp.png',
+  [Stats.P_ATK]: 'stat_p_atk.png',
+  [Stats.P_DEF]: 'stat_p_def.png',
+  [Stats.EM]: 'stat_em.png',
+  [Stats.PHYSICAL_DMG]: 'stat_physical.png',
+  [Stats.PYRO_DMG]: 'element_pyro.png',
+  [Stats.HYDRO_DMG]: 'element_hydro.png',
+  [Stats.ELECTRO_DMG]: 'element_electro.png',
+  [Stats.CRYO_DMG]: 'element_cryo.png',
+  [Stats.ANEMO_DMG]: 'element_anemo.png',
+  [Stats.GEO_DMG]: 'element_geo.png',
+  [Stats.DENDRO_DMG]: 'element_dendro.png',
+  [Stats.ATK]: 'stat_atk.png',
+  [Stats.HP]: 'stat_hp.png',
+  [Stats.DEF]: 'stat_def.png',
+  [Stats.CRIT_RATE]: 'stat_crit_rate.png',
+  [Stats.CRIT_DMG]: 'stat_crit_dmg.png',
+  [Stats.HEAL]: 'stat_heal.png',
+  [Stats.ER]: 'stat_er.png',
+}
+
 export const Region = Object.freeze({
   1: 'Monstadt',
   2: 'Liyue',
