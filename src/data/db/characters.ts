@@ -166,12 +166,12 @@ export const Characters = [
   {
     name: 'Arlecchino',
     stat: {
-      baseAtk: 26.63,
-      baseHp: 1020,
-      baseDef: 59.53,
-      ascAtk: 109.3104,
-      ascHp: 4189.22,
-      ascDef: 244.4773,
+      baseAtk: 26.6266002655029,
+      baseHp: 1020.0524291992188,
+      baseDef: 59.5308494567871,
+      ascAtk: 109.3352279663086,
+      ascHp: 4188.88671875,
+      ascDef: 244.4714965820313,
       ascStat: Stats.CRIT_DMG,
     },
     rarity: 5,

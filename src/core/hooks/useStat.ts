@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { getBaseStat, getMainStat, getWeaponBase, getWeaponBonus } from '../utils/data_format'
+import { correctSubStat, getBaseStat, getMainStat, getWeaponBase, getWeaponBonus } from '../utils/data_format'
 import { toPercentage } from '../utils/converter'
 import { useCallback } from 'react'
 import _ from 'lodash'
@@ -36,8 +36,11 @@ export const useStat = (index: number) => {
         )
       )
       const fromSubStat =
-        _.sum(_.map(artifacts, (item) => _.sumBy(_.filter(item?.subList, ['stat', stat]), (sub) => sub.value))) /
-        (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], stat) ? 1 : 100)
+        _.sum(
+          _.map(artifacts, (item) =>
+            _.sumBy(_.filter(item?.subList, ['stat', stat]), (sub) => correctSubStat(sub.stat, sub.value))
+          )
+        )
 
       return _.sum([fromWeapon, fromAscension, fromMainStat, fromSubStat])
     },

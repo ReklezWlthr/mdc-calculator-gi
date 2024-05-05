@@ -1,4 +1,4 @@
-import { MainStatValue } from '@src/domain/genshin/artifact'
+import { MainStatValue, SubStatMap } from '@src/domain/genshin/artifact'
 import { Stats } from '@src/domain/genshin/constant'
 import {
   AscensionScaling,
@@ -52,4 +52,20 @@ export const getWeaponBonus = (base: number, level: number) => {
 export const getMainStat = (main: Stats, quality: number, level: number) => {
   const entry = _.find(MainStatValue, (item) => item.rarity === quality && _.includes(item.stat, main))
   return entry?.values?.[level]
+}
+
+export const correctSubStat = (stat: Stats, value: number) => {
+  const data = _.find(SubStatMap, (item) => item.stat === stat)
+  const max = data?.max
+  const low = max * 0.7
+  const bonus = max * 0.1
+
+  const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], stat) ? 1 : 100)
+
+  const rolls = _.max([roundValue > 0 ? 1 : 0, _.floor(roundValue / low)])
+  const accLow = low * rolls
+  const bonusRolls = _.round((_.max([roundValue, accLow]) % accLow) / bonus)
+
+  console.log(stat, accLow, rolls, bonusRolls, accLow + bonus * bonusRolls)
+  return accLow + bonus * bonusRolls
 }
