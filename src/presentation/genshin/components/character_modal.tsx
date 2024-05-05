@@ -105,7 +105,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
               </div>
               <img
                 src={`https://enka.network/ui/UI_AvatarIcon_${item.codeName || 'PlayerGirl'}.png`}
-                className="rounded-t-lg bg-primary-darker"
+                className="object-contain rounded-t-lg bg-primary-darker aspect-square"
               />
             </div>
             <p className="flex justify-center px-2 py-1 truncate">{item.name}</p>

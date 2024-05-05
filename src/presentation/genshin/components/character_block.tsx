@@ -56,7 +56,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             src={`https://enka.network/ui/UI_AvatarIcon_${
               teamStore.characters[props.index]?.data?.codeName || 'Paimon'
             }.png`}
-            className="w-full border rounded-lg bg-primary-darker border-primary-border"
+            className="object-contain w-full border rounded-lg bg-primary-darker border-primary-border aspect-square"
           />
         </div>
         <div className="w-1/2 px-2 py-3 space-y-2">
