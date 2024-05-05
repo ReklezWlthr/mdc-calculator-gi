@@ -21,7 +21,7 @@ export const GenshinHome = observer(() => {
 
   return (
     <div className="flex w-full h-[calc(100vh-68px)]">
-      <Sidebar onChange={setPage} />
+      <Sidebar onChange={setPage} currentPage={page} />
       <InternalPage page={page} />
     </div>
   )

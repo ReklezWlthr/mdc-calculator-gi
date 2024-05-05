@@ -7,6 +7,7 @@ import { ArtifactModal } from './artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { getMainStat } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
+import { StatIcons } from '../../../domain/genshin/constant'
 
 interface ArtifactBlockProps {
   index: number
@@ -28,7 +29,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
 
   return (
     <div
-      className="flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-1/2 hover:scale-[97%] cursor-pointer"
+      className="flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[300px] hover:scale-[97%] cursor-pointer"
       onClick={onOpenModal}
     >
       <div className="flex items-center justify-center gap-1 px-5 py-2 rounded-t-lg bg-primary-light">
@@ -43,7 +44,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
                 src={`https://enka.network/ui/${artifact.data.icon}_${artifact.type}.png`}
                 className="w-full h-full"
               />
-              <div className="absolute flex items-center justify-center px-2 py-1 text-xs rounded-full -bottom-0 -right-4 bg-primary-light">
+              <div className="absolute flex items-center justify-center px-2 py-1 text-xs bg-opacity-75 rounded-full -bottom-0 -right-4 bg-primary-light">
                 +{artifact?.level}
               </div>
             </div>
@@ -53,7 +54,10 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs">
-            <p className="shrink-0">{artifact?.main}</p>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <img className="w-4 h-4" src={`/icons/${StatIcons[artifact?.main]}`} />
+              {artifact?.main}
+            </div>
             <hr className="w-full border border-primary-border" />
             <p className="font-normal text-gray">
               {_.includes([Stats.HP, Stats.ATK, Stats.EM], artifact?.main)
@@ -61,6 +65,21 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
                 : toPercentage(mainStat)}
             </p>
           </div>
+          <p className="flex items-center justify-center text-xs text-primary-lighter">✦✦✦✦✦</p>
+          {_.map(artifact?.subList, (item) => (
+            <div className="flex items-center gap-2 text-xs" key={item.stat}>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <img className="w-4 h-4" src={`/icons/${StatIcons[item.stat]}`} />
+                {item.stat}
+              </div>
+              <hr className="w-full border border-primary-border" />
+              <p className="font-normal text-gray">
+                {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.EM], item.stat)
+                  ? _.round(item.value).toLocaleString()
+                  : toPercentage(item.value / 100)}
+              </p>
+            </div>
+          ))}
         </div>
       ) : (
         <div className="flex items-center justify-center w-full h-full">

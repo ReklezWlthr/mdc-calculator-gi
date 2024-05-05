@@ -1,6 +1,6 @@
 import { findBaseLevel, findMaxLevel } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { AscensionOptions, RefinementOptions } from '@src/domain/genshin/constant'
+import { AscensionOptions, RefinementOptions, StatIcons, Stats } from '@src/domain/genshin/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import classNames from 'classnames'
@@ -42,11 +42,10 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
   }, [modalStore, props.index])
 
   return (
-    <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-1/2">
+    <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[300px]">
       <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Weapon</div>
-      <div className="flex flex-col p-3 gap-y-2">
+      <div className="flex flex-col p-3 gap-y-3">
         <div className="flex items-center gap-2">
-          {/* <p className="text-sm font-semibold">Name</p> */}
           <PillInput
             onClick={onOpenModal}
             value={weapon?.data?.name}
@@ -61,7 +60,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
             options={RefinementOptions}
             value={refinement?.toString()}
             style="w-fit"
-            disabled={!weapon?.data}
+            disabled={!weapon?.data || weapon?.data?.name === 'Kagotsurube Isshin'}
           />
         </div>
         <div className="flex gap-2">
@@ -100,14 +99,20 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
             </div>
           </div>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs">
-            <p className="shrink-0">Base ATK</p>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <img className="w-4 h-4" src={`/icons/${StatIcons[Stats.ATK]}`} />
+              <p>Base ATK</p>
+            </div>
             <hr className="w-full border border-primary-border" />
             <p className="font-normal text-gray">{weaponBaseAtk}</p>
           </div>
           <div className="flex items-center gap-2 text-xs">
-            <p className="shrink-0">{weapon?.data?.ascStat || 'N/A'}</p>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <img className="w-4 h-4" src={`/icons/${StatIcons[weapon?.data?.ascStat]}`} />
+              {weapon?.data?.ascStat || 'N/A'}
+            </div>
             <hr className="w-full border border-primary-border" />
             <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
           </div>

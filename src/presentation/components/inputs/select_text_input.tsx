@@ -1,15 +1,15 @@
 import { Combobox, Transition } from '@headlessui/react'
 import classNames from 'classnames'
 import _ from 'lodash'
-import { Fragment, useCallback, useMemo } from 'react'
+import { Fragment, useCallback, useMemo, useRef, useState } from 'react'
 
 type OptionType = { name: string; img?: string; value: string }
 
 type SelectTextInputProps = {
-  searchWord: string
+  // searchWord: string
   value: string
-  onChange: (name: string, value: string) => void
-  onType: (value: string) => void
+  onChange: (value: OptionType) => void
+  // onType: (value: string) => void
   options: OptionType[]
   disabled?: boolean
   placeholder?: string
@@ -18,16 +18,21 @@ type SelectTextInputProps = {
 
 export const SelectTextInput = (props: SelectTextInputProps) => {
   const valueFinder = useCallback((value: string) => _.find(props.options, ['value', value]), [props.options])
+  
+  const [searchWord, setSearchWord] = useState(valueFinder(props.value)?.name || '')
 
   const filteredOptions = useMemo(() => {
-    const regex = new RegExp(props.searchWord, 'i')
+    const regex = new RegExp(searchWord, 'i')
     return _.filter(props.options, (option) => !!option.name.match(regex))
-  }, [props.options, props.searchWord])
+  }, [props.options, searchWord])
 
   return (
     <Combobox
-      value={props.value || ''}
-      onChange={(value) => props.onChange(valueFinder(value)?.name, value)}
+      value={valueFinder(props.value) || null}
+      onChange={(value) => {
+        props.onChange(value)
+        setSearchWord(value?.name)
+      }}
       disabled={props.disabled}
       as="div"
       className={classNames(
@@ -35,7 +40,7 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
         props.style || 'w-full'
       )}
     >
-      <Combobox.Button as={Fragment}>
+      <Combobox.Button as="div">
         <Combobox.Input
           className={classNames(
             'w-full outline-none placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent text-sm truncate',
@@ -45,9 +50,9 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
                 props.disabled,
             }
           )}
-          displayValue={(item: OptionType) => item.name}
+          displayValue={(item: OptionType) => item?.name}
           placeholder={props.placeholder}
-          onChange={(event) => props.onType(event.target.value)}
+          onChange={(event) => setSearchWord(event.target.value)}
         />
       </Combobox.Button>
       <Transition
@@ -63,9 +68,9 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
           {_.map(filteredOptions, (item, i) => (
             <Combobox.Option
               key={`${item.value}_${i}`}
-              className={({ active, selected }) =>
+              className={({ active }) =>
                 classNames('relative z-50 cursor-pointer select-none px-2 py-1 flex items-center', {
-                  'bg-primary': active || selected,
+                  'bg-primary': active,
                   flex: item.img,
                 })
               }

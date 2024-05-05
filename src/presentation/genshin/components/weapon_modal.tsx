@@ -78,9 +78,8 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
             onClick={() => {
-              teamStore.setWeapon(index, {
-                data: item,
-              })
+              teamStore.setWeapon(index, { data: item })
+              if (item.name === 'Kagotsurube Isshin') teamStore.setWeapon(index, { refinement: 1 })
               modalStore.closeModal()
             }}
             key={item.name}

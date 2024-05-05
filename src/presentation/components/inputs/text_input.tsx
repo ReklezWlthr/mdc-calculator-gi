@@ -9,6 +9,8 @@ export interface TextInputProps {
   disabled?: boolean
   required?: boolean
   onChange: (value: string) => void
+  style?: string
+  type?: 'text' | 'number'
 }
 
 export const TextInput = (props: TextInputProps) => {
@@ -18,7 +20,11 @@ export const TextInput = (props: TextInputProps) => {
   return (
     <div
       className={classNames(
-        'rounded-lg w-full flex items-center transition-colors px-2 py-1 duration-200 relative overflow-hidden hover:border-primary-lighter border-primary-light border bg-primary-darker font-normal'
+        'rounded-lg w-full flex items-center transition-colors px-2 py-1 duration-200 relative overflow-hidden border font-normal',
+        props.disabled
+          ? 'bg-primary-bg border-primary'
+          : 'bg-primary-darker hover:border-primary-lighter border-primary-light',
+        props.style
       )}
     >
       {props.iconLeading && <img src={props.iconLeading} className="object-cover w-6 h-6 mr-2 rounded-full" />}
@@ -26,7 +32,9 @@ export const TextInput = (props: TextInputProps) => {
         value={props?.value}
         disabled={props.disabled}
         onChange={(e) => {
-          !props?.disabled && props.onChange(e.target?.value)
+          if (props?.disabled) return
+          if (props?.type === 'number' && !e.target?.value?.match(/\d*/)) return
+          props.onChange(e.target?.value)
         }}
         placeholder={props.placeholder}
         data-cy={props['data-cy']}

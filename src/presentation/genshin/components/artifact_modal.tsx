@@ -1,20 +1,19 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { getMainStat } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { ArtifactSets, MainStat, MainStatValue } from '@src/domain/genshin/artifact'
+import { ArtifactSets, MainStat, MainStatValue, SubStat } from '@src/domain/genshin/artifact'
 import { Stats } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
+import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { useEffect, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { Controller, useFieldArray, useForm } from 'react-hook-form'
 
 export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; aId?: string }) => {
   const { teamStore, artifactStore, modalStore } = useStore()
-
-  const [searchWord, setSearchWord] = useState('')
 
   const { watch, control, setValue, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -23,27 +22,29 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
       level: 20,
       main: _.head(MainStat[type]),
       type,
-      subList: [],
+      subList: Array(4).fill({ stat: null, value: null }),
     },
   })
   const values = watch()
   const mainStat = getMainStat(values.main, values.quality, values.level)
   const maxLevel = 20 - (5 - values.quality) * 4
 
+  const subList = useFieldArray({ control, name: 'subList' })
+
   useEffect(() => {
     if (aId) {
-      const { data, ...rest } = _.find(artifactStore.artifacts, ['id', aId])
+      const { data, subList, ...rest } = _.find(artifactStore.artifacts, ['id', aId])
 
       if (data.id) {
         reset({
           ...rest,
+          subList: [...subList, ...Array(4 - subList.length).fill({ stat: null, value: null })],
           set: {
             name: data.name,
             value: data.id.toString(),
             img: `https://enka.network/ui/${data.icon}_4.png`,
           },
         })
-        setSearchWord(data.name)
       }
     }
   }, [aId])
@@ -61,11 +62,15 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
     )
   }
 
-  const onSubmit = handleSubmit(({ set, ...rest }) => {
+  const onSubmit = handleSubmit(({ set, subList, ...rest }) => {
     const id = aId || `l_${_.random(9999999).toString().padStart(7, '0')}`
     const setData = _.find(ArtifactSets, ['id', _.parseInt(set?.value)])
 
-    const data = { id, ...rest, data: setData, subList: [] }
+    const trimmedSub = _.map(
+      _.filter(subList, (item) => item.stat && item.value),
+      (item) => ({ ...item, value: parseFloat(item.value) })
+    )
+    const data = { id, ...rest, data: setData, subList: trimmedSub }
 
     const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
     const pass = aId ? artifactStore.editArtifact(aId, data) : artifactStore.addArtifact(data)
@@ -95,19 +100,14 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
           rules={{ required: true }}
           render={({ field }) => (
             <SelectTextInput
-              value={field.value}
+              value={field.value?.value}
               options={_.map(ArtifactSets, (artifact) => ({
                 name: artifact.name,
                 value: artifact.id.toString(),
                 img: `https://enka.network/ui/${artifact.icon}_4.png`,
               }))}
               placeholder="Artifact Set"
-              searchWord={searchWord}
-              onType={(value) => setSearchWord(value)}
-              onChange={(name, value) => {
-                setSearchWord(name)
-                field.onChange(value)
-              }}
+              onChange={(value) => field.onChange(value)}
             />
           )}
         />
@@ -172,11 +172,37 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
               />
             )}
           />
-          <div className="w-1/4 px-3 py-1 text-sm border rounded-lg border-primary-light bg-primary-darker">
+          <div className="w-1/4 px-3 py-1 text-sm border rounded-lg text-gray border-primary-light bg-primary-darker">
             {_.includes([Stats.HP, Stats.ATK, Stats.EM], values?.main)
               ? _.round(mainStat).toLocaleString()
               : toPercentage(mainStat)}
           </div>
+        </div>
+      </div>
+      <div className="space-y-1">
+        <p className="text-xs">Sub Stats</p>
+        <div className="space-y-2">
+          {_.map(subList.fields, (field, index) => (
+            <div className="flex items-center justify-center gap-3" key={index}>
+              <SelectTextInput
+                value={subList.fields[index]?.stat}
+                options={_.map(SubStat, (item) => ({
+                  name: item,
+                  value: item,
+                }))}
+                style="w-3/4"
+                onChange={(value) => subList.update(index, { ...subList.fields[index], stat: value?.name })}
+                placeholder={`Sub Stat ${index + 1}`}
+              />
+              <TextInput
+                type="number"
+                value={subList.fields[index]?.value?.toString()}
+                onChange={(value) => subList.update(index, { ...subList.fields[index], value })}
+                disabled={!subList.fields[index]?.stat}
+                style="w-1/4"
+              />
+            </div>
+          ))}
         </div>
       </div>
       <div className="flex justify-end gap-2">

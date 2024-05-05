@@ -261,6 +261,19 @@ export const MainStatValue = [
   },
 ]
 
+export const SubStat = [
+  Stats.HP,
+  Stats.P_HP,
+  Stats.ATK,
+  Stats.P_ATK,
+  Stats.DEF,
+  Stats.P_DEF,
+  Stats.CRIT_RATE,
+  Stats.CRIT_DMG,
+  Stats.ER,
+  Stats.EM,
+]
+
 export const ArtifactSets: IArtifact[] = [
   {
     id: 1212345779,

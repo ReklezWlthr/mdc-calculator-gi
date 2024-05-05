@@ -3,6 +3,8 @@ export enum GenshinPage {
   DMG = 'dmg',
   ER = 'er',
   IMPORT = 'import',
+  MY_CHAR = 'myChar',
+  INVENTORY = 'inventory',
 }
 
 export interface ICharacterStats {
@@ -52,7 +54,7 @@ export interface IArtifactEquip {
   type: number
   main: Stats
   quality: number
-  subList: string[]
+  subList: { stat: Stats; value: number }[]
 }
 
 export interface IWeapon {

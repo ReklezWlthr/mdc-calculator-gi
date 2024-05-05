@@ -28,13 +28,18 @@ export const useStat = (index: number) => {
         (char?.data?.stat?.ascStat === stat ? _.max([0, char?.ascension - 2]) : 0) *
         AscensionGrowth[char?.data?.stat?.ascStat]?.[char?.data?.rarity - 4]
 
-      const artifacts = _.filter(
-        _.map(char?.equipments?.artifacts, (aId) => _.find(artifactStore.artifacts, ['id', aId])),
-        (item) => item?.main === stat
+      const artifacts = _.map(char?.equipments?.artifacts, (aId) => _.find(artifactStore.artifacts, ['id', aId]))
+      const fromMainStat = _.sum(
+        _.map(
+          _.filter(artifacts, (item) => item?.main === stat),
+          (item) => getMainStat(item.main, item.quality, item.level)
+        )
       )
-      const fromMainStat = _.sum(_.map(artifacts, (item) => getMainStat(item.main, item.quality, item.level)))
+      const fromSubStat =
+        _.sum(_.map(artifacts, (item) => _.sumBy(_.filter(item?.subList, ['stat', stat]), (sub) => sub.value))) /
+        (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], stat) ? 1 : 100)
 
-      return _.sum([fromWeapon, fromAscension, fromMainStat])
+      return _.sum([fromWeapon, fromAscension, fromMainStat, fromSubStat])
     },
     [weapon, char]
   )
