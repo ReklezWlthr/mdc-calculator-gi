@@ -14,7 +14,7 @@ export const Sidebar = ({
         className={classNames(
           'px-4 py-3 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray hover:bg-primary-dark',
           {
-            'bg-primary-dark': page === currentPage,
+            'bg-primary': page === currentPage,
           }
         )}
         onClick={() => onChange(page)}
