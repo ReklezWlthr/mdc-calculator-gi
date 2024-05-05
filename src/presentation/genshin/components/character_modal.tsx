@@ -47,6 +47,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           'bg-primary-lighter': checked,
         })}
         onClick={() => setParams({ [type]: checked ? _.without(array, value) : [...array, value] })}
+        title={value}
       >
         <img src={type === 'element' ? ElementIcon[value] : WeaponIcon[value]} />
       </div>
