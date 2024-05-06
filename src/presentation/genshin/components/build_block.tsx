@@ -24,11 +24,7 @@ export const BuildBlock = observer(({ build }: BuildBlockProps) => {
       </div>
       <div className="flex gap-x-2">
         <PrimaryButton title="Set Default" onClick={() => buildStore.setDefault(build.id)} disabled={build.isDefault} />
-        <GhostButton
-          icon="fa-regular fa-trash-alt"
-          onClick={() => buildStore.deleteBuild(build.id)}
-          disabled={build.isDefault}
-        />
+        <GhostButton icon="fa-regular fa-trash-alt" onClick={() => buildStore.deleteBuild(build.id)} />
       </div>
     </div>
   )
