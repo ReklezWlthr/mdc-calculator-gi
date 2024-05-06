@@ -9,7 +9,7 @@ import { MyBuilds } from './my_builds'
 import { ImportExport } from './import'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
-  const data = useLocalUpdater('genshin')
+  const updateUtil = useLocalUpdater('genshin')
 
   switch (page) {
     case GenshinPage.TEAM:
@@ -19,7 +19,7 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
     case GenshinPage.MY_CHAR:
       return <MyBuilds />
     case GenshinPage.IMPORT:
-      return <ImportExport data={data} />
+      return <ImportExport {...updateUtil} />
     default:
       return
   }

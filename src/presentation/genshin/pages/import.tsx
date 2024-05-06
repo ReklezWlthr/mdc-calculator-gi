@@ -1,7 +1,7 @@
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { observer } from 'mobx-react-lite'
 
-export const ImportExport = observer(({ data }: { data }) => {
+export const ImportExport = observer(({ data, updateData }: { data; updateData: (data) => void }) => {
   const saveFile = async (blob: Blob, suggestedName: string) => {
     const blobURL = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -27,7 +27,8 @@ export const ImportExport = observer(({ data }: { data }) => {
           const file = event.target.files[0]
           const reader = new FileReader()
           reader.addEventListener('load', (event) => {
-            localStorage.setItem(`genshin_local_stage`, event.target.result.toString())
+            localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
+            updateData(event.target.result)
           })
           reader.readAsText(file)
         }}
