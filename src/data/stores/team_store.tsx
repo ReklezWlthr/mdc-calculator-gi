@@ -90,7 +90,13 @@ export class Team {
   setArtifact = (cId: string, type: number, aId: string | null) => {
     const index = _.findIndex(this.characters, ['id', cId])
     if (index < 0) return
-    this.characters[index].equipments.artifacts[type - 1] = aId
+    _.forEach(this.characters, (character) => {
+      if (character.id === cId) {
+        character.equipments.artifacts[type - 1] = aId
+      } else {
+        character.equipments.artifacts = _.without(character.equipments.artifacts, aId)
+      }
+    })
     this.characters[index] = { ...this.characters[index] }
   }
 
