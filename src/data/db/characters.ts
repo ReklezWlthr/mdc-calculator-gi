@@ -2,6 +2,7 @@ import { Element, Stats, WeaponType } from '@src/domain/genshin/constant'
 
 export const Characters = [
   {
+    id: '1001',
     name: 'Albedo',
     stat: {
       baseAtk: 19.551,
@@ -20,6 +21,7 @@ export const Characters = [
     codeName: 'Albedo',
   },
   {
+    id: '1002',
     name: 'Alhaitham',
     stat: {
       baseAtk: 24.3922,
@@ -38,6 +40,7 @@ export const Characters = [
     codeName: 'Alhatham',
   },
   {
+    id: '1003',
     name: 'Chevreuse',
     stat: {
       baseAtk: 16.2052803,
@@ -56,6 +59,7 @@ export const Characters = [
     codeName: 'Chevreuse',
   },
   {
+    id: '1004',
     name: 'Sangonomiya Kokomi',
     stat: {
       baseAtk: 18.2476,
@@ -74,6 +78,7 @@ export const Characters = [
     codeName: 'Kokomi',
   },
   {
+    id: '1005',
     name: 'Fischl',
     stat: {
       baseAtk: 20.4792,
@@ -92,6 +97,7 @@ export const Characters = [
     codeName: 'Fischl',
   },
   {
+    id: '1006',
     name: 'Eula',
     stat: {
       baseAtk: 26.6266,
@@ -110,6 +116,7 @@ export const Characters = [
     codeName: 'Eula',
   },
   {
+    id: '1007',
     name: 'Wanderer',
     stat: {
       baseAtk: 25.5094,
@@ -128,6 +135,7 @@ export const Characters = [
     codeName: 'Wanderer',
   },
   {
+    id: '1008',
     name: 'Kirara',
     stat: {
       baseAtk: 18.6984,
@@ -146,6 +154,7 @@ export const Characters = [
     codeName: 'Momoka',
   },
   {
+    id: '1009',
     name: 'Furina',
     stat: {
       baseAtk: 18.9924,
@@ -164,6 +173,7 @@ export const Characters = [
     codeName: 'Furina',
   },
   {
+    id: '1010',
     name: 'Arlecchino',
     stat: {
       baseAtk: 26.6266002655029,
@@ -182,6 +192,7 @@ export const Characters = [
     codeName: 'Arlecchino',
   },
   {
+    id: '1011',
     name: 'Bennett',
     stat: {
       baseAtk: 16.0272,
@@ -200,6 +211,7 @@ export const Characters = [
     codeName: 'Bennett',
   },
   {
+    id: '1012',
     name: 'Aloy',
     stat: {
       baseAtk: 18.21036,
@@ -218,6 +230,7 @@ export const Characters = [
     codeName: 'Aloy',
   },
   {
+    id: '1013',
     name: 'Amber',
     stat: {
       baseAtk: 18.6984,
@@ -236,6 +249,7 @@ export const Characters = [
     codeName: 'Ambor',
   },
   {
+    id: '1014',
     name: 'Arataki Itto',
     stat: {
       baseAtk: 17.689,
@@ -254,6 +268,7 @@ export const Characters = [
     codeName: 'Itto',
   },
   {
+    id: '1015',
     name: 'Baizhu',
     stat: {
       baseAtk: 14.9891,
@@ -272,6 +287,7 @@ export const Characters = [
     codeName: 'Baizhuer',
   },
   {
+    id: '1016',
     name: 'Barbara',
     stat: {
       baseAtk: 13.356,
@@ -290,6 +306,7 @@ export const Characters = [
     codeName: 'Barbara',
   },
   {
+    id: '1017',
     name: 'Beidou',
     stat: {
       baseAtk: 18.87648,
@@ -308,6 +325,7 @@ export const Characters = [
     codeName: 'Beidou',
   },
   {
+    id: '1018',
     name: 'Candace',
     stat: {
       baseAtk: 17.808,
@@ -326,6 +344,7 @@ export const Characters = [
     codeName: 'Candace',
   },
   {
+    id: '1019',
     name: 'Charlotte',
     stat: {
       baseAtk: 14.51352024,
@@ -344,6 +363,7 @@ export const Characters = [
     codeName: 'Charlotte',
   },
   {
+    id: '1020',
     name: 'Chiori',
     stat: {
       baseAtk: 25.137,
@@ -362,6 +382,7 @@ export const Characters = [
     codeName: 'Chiori',
   },
   {
+    id: '1021',
     name: 'Chongyun',
     stat: {
       baseAtk: 18.6984,
@@ -380,6 +401,7 @@ export const Characters = [
     codeName: 'Chongyun',
   },
   {
+    id: '1022',
     name: 'Collei',
     stat: {
       baseAtk: 16.73952,
@@ -398,6 +420,7 @@ export const Characters = [
     codeName: 'Collei',
   },
   {
+    id: '1023',
     name: 'Cyno',
     stat: {
       baseAtk: 24.7646,
@@ -416,6 +439,7 @@ export const Characters = [
     codeName: 'Cyno',
   },
   {
+    id: '1024',
     name: 'Dehya',
     stat: {
       baseAtk: 20.6682,
@@ -434,6 +458,7 @@ export const Characters = [
     codeName: 'Dehya',
   },
   {
+    id: '1025',
     name: 'Diluc',
     stat: {
       baseAtk: 26.068,
@@ -452,6 +477,7 @@ export const Characters = [
     codeName: 'Diluc',
   },
   {
+    id: '1026',
     name: 'Diona',
     stat: {
       baseAtk: 17.808,
@@ -470,6 +496,7 @@ export const Characters = [
     codeName: 'Diona',
   },
   {
+    id: '1027',
     name: 'Dori',
     stat: {
       baseAtk: 18.6984,
@@ -488,6 +515,7 @@ export const Characters = [
     codeName: 'Dori',
   },
   {
+    id: '1028',
     name: 'Faruzan',
     stat: {
       baseAtk: 16.4724,
@@ -506,6 +534,7 @@ export const Characters = [
     codeName: 'Faruzan',
   },
   {
+    id: '1029',
     name: 'Freminet',
     stat: {
       baseAtk: 21.3696003,
@@ -524,6 +553,7 @@ export const Characters = [
     codeName: 'Freminet',
   },
   {
+    id: '1030',
     name: 'Gaming',
     stat: {
       baseAtk: 25.28735924,
@@ -542,6 +572,7 @@ export const Characters = [
     codeName: 'Gaming',
   },
   {
+    id: '1031',
     name: 'Ganyu',
     stat: {
       baseAtk: 26.068,
@@ -560,6 +591,7 @@ export const Characters = [
     codeName: 'Ganyu',
   },
   {
+    id: '1032',
     name: 'Gorou',
     stat: {
       baseAtk: 15.31488,
@@ -578,6 +610,7 @@ export const Characters = [
     codeName: 'Gorou',
   },
   {
+    id: '1033',
     name: 'Hu Tao',
     stat: {
       baseAtk: 8.2859,
@@ -596,6 +629,7 @@ export const Characters = [
     codeName: 'Hutao',
   },
   {
+    id: '1034',
     name: 'Jean',
     stat: {
       baseAtk: 18.62,
@@ -614,6 +648,7 @@ export const Characters = [
     codeName: 'Qin',
   },
   {
+    id: '1035',
     name: 'Kaedehara Kazuha',
     stat: {
       baseAtk: 23.0888,
@@ -632,6 +667,7 @@ export const Characters = [
     codeName: 'Kazuha',
   },
   {
+    id: '1036',
     name: 'Kaeya',
     stat: {
       baseAtk: 18.6984,
@@ -650,6 +686,7 @@ export const Characters = [
     codeName: 'Kaeya',
   },
   {
+    id: '1037',
     name: 'Kamisato Ayaka',
     stat: {
       baseAtk: 26.6266,
@@ -668,6 +705,7 @@ export const Characters = [
     codeName: 'Ayaka',
   },
   {
+    id: '1038',
     name: 'Kamisato Ayato',
     stat: {
       baseAtk: 23.275,
@@ -686,6 +724,7 @@ export const Characters = [
     codeName: 'Ayato',
   },
   {
+    id: '1039',
     name: 'Kaveh',
     stat: {
       baseAtk: 19.5888,
@@ -704,6 +743,7 @@ export const Characters = [
     codeName: 'Kaveh',
   },
   {
+    id: '1040',
     name: 'Keqing',
     stat: {
       baseAtk: 25.137,
@@ -722,6 +762,7 @@ export const Characters = [
     codeName: 'Keqing',
   },
   {
+    id: '1041',
     name: 'Klee',
     stat: {
       baseAtk: 24.206,
@@ -740,6 +781,7 @@ export const Characters = [
     codeName: 'Klee',
   },
   {
+    id: '1042',
     name: 'Kujou Sara',
     stat: {
       baseAtk: 16.38336,
@@ -758,6 +800,7 @@ export const Characters = [
     codeName: 'Sara',
   },
   {
+    id: '1043',
     name: 'Kuki Shinobu',
     stat: {
       baseAtk: 17.808,
@@ -776,6 +819,7 @@ export const Characters = [
     codeName: 'Shinobu',
   },
   {
+    id: '1044',
     name: 'Layla',
     stat: {
       baseAtk: 18.16416,
@@ -794,6 +838,7 @@ export const Characters = [
     codeName: 'Layla',
   },
   {
+    id: '1045',
     name: 'Lisa',
     stat: {
       baseAtk: 19.41072,
@@ -812,6 +857,7 @@ export const Characters = [
     codeName: 'Lisa',
   },
   {
+    id: '1046',
     name: 'Lynette',
     stat: {
       baseAtk: 19.41072,
@@ -830,6 +876,7 @@ export const Characters = [
     codeName: 'Linette',
   },
   {
+    id: '1047',
     name: 'Lyney',
     stat: {
       baseAtk: 24.7646,
@@ -848,6 +895,7 @@ export const Characters = [
     codeName: 'Liney',
   },
   {
+    id: '1048',
     name: 'Mika',
     stat: {
       baseAtk: 18.6984,
@@ -866,6 +914,7 @@ export const Characters = [
     codeName: 'Mika',
   },
   {
+    id: '1049',
     name: 'Mona',
     stat: {
       baseAtk: 22.344,
@@ -884,6 +933,7 @@ export const Characters = [
     codeName: 'Mona',
   },
   {
+    id: '1050',
     name: 'Nahida',
     stat: {
       baseAtk: 23.275,
@@ -902,6 +952,7 @@ export const Characters = [
     codeName: 'Nahida',
   },
   {
+    id: '1051',
     name: 'Navia',
     stat: {
       baseAtk: 27.3714,
@@ -920,6 +971,7 @@ export const Characters = [
     codeName: 'Navia',
   },
   {
+    id: '1052',
     name: 'Neuvillette',
     stat: {
       baseAtk: 16.218,
@@ -938,6 +990,7 @@ export const Characters = [
     codeName: 'Neuvillette',
   },
   {
+    id: '1053',
     name: 'Nilou',
     stat: {
       baseAtk: 17.8752,
@@ -956,6 +1009,7 @@ export const Characters = [
     codeName: 'Nilou',
   },
   {
+    id: '1054',
     name: 'Ningguang',
     stat: {
       baseAtk: 17.808,
@@ -974,6 +1028,7 @@ export const Characters = [
     codeName: 'Ningguang',
   },
   {
+    id: '1055',
     name: 'Noelle',
     stat: {
       baseAtk: 16.0272,
@@ -992,6 +1047,7 @@ export const Characters = [
     codeName: 'Noel',
   },
   {
+    id: '1056',
     name: 'Qiqi',
     stat: {
       baseAtk: 22.344,
@@ -1010,6 +1066,7 @@ export const Characters = [
     codeName: 'Qiqi',
   },
   {
+    id: '1057',
     name: 'Raiden Shogun',
     stat: {
       baseAtk: 26.2542,
@@ -1028,6 +1085,7 @@ export const Characters = [
     codeName: 'Shougun',
   },
   {
+    id: '1058',
     name: 'Razor',
     stat: {
       baseAtk: 19.5888,
@@ -1046,6 +1104,7 @@ export const Characters = [
     codeName: 'Razor',
   },
   {
+    id: '1059',
     name: 'Rosaria',
     stat: {
       baseAtk: 20.12304,
@@ -1064,6 +1123,7 @@ export const Characters = [
     codeName: 'Rosaria',
   },
   {
+    id: '1060',
     name: 'Sayu',
     stat: {
       baseAtk: 20.4792,
@@ -1082,6 +1142,7 @@ export const Characters = [
     codeName: 'Sayu',
   },
   {
+    id: '1061',
     name: 'Shenhe',
     stat: {
       baseAtk: 23.6474,
@@ -1100,6 +1161,7 @@ export const Characters = [
     codeName: 'Shenhe',
   },
   {
+    id: '1062',
     name: 'Shikanoin Heizou',
     stat: {
       baseAtk: 18.87648,
@@ -1118,6 +1180,7 @@ export const Characters = [
     codeName: 'Heizo',
   },
   {
+    id: '1063',
     name: 'Sucrose',
     stat: {
       baseAtk: 14.2464,
@@ -1136,6 +1199,7 @@ export const Characters = [
     codeName: 'Sucrose',
   },
   {
+    id: '1064',
     name: 'Tartaglia',
     stat: {
       baseAtk: 23.4612,
@@ -1154,6 +1218,7 @@ export const Characters = [
     codeName: 'Tartaglia',
   },
   {
+    id: '1065',
     name: 'Thoma',
     stat: {
       baseAtk: 16.9176,
@@ -1172,6 +1237,7 @@ export const Characters = [
     codeName: 'Tohma',
   },
   {
+    id: '1066',
     name: 'Tighnari',
     stat: {
       baseAtk: 20.8544,
@@ -1190,6 +1256,7 @@ export const Characters = [
     codeName: 'Tighnari',
   },
   {
+    id: '1067',
     name: 'Venti',
     stat: {
       baseAtk: 20.482,
@@ -1208,6 +1275,7 @@ export const Characters = [
     codeName: 'Venti',
   },
   {
+    id: '1068',
     name: 'Wriothesley',
     stat: {
       baseAtk: 24.206,
@@ -1226,6 +1294,7 @@ export const Characters = [
     codeName: 'Wriothesley',
   },
   {
+    id: '1069',
     name: 'Xiangling',
     stat: {
       baseAtk: 18.87648,
@@ -1244,6 +1313,7 @@ export const Characters = [
     codeName: 'Xiangling',
   },
   {
+    id: '1070',
     name: 'Xianyun',
     stat: {
       baseAtk: 26.06800079,
@@ -1262,6 +1332,7 @@ export const Characters = [
     codeName: 'Liuyun',
   },
   {
+    id: '1071',
     name: 'Xiao',
     stat: {
       baseAtk: 27.1852,
@@ -1280,6 +1351,7 @@ export const Characters = [
     codeName: 'Xiao',
   },
   {
+    id: '1072',
     name: 'Xingqiu',
     stat: {
       baseAtk: 16.9176,
@@ -1298,6 +1370,7 @@ export const Characters = [
     codeName: 'Xingqiu',
   },
   {
+    id: '1073',
     name: 'Xinyan',
     stat: {
       baseAtk: 20.83536,
@@ -1316,6 +1389,7 @@ export const Characters = [
     codeName: 'Xinyan',
   },
   {
+    id: '1074',
     name: 'Yae Miko',
     stat: {
       baseAtk: 26.4404,
@@ -1334,6 +1408,7 @@ export const Characters = [
     codeName: 'Yae',
   },
   {
+    id: '1075',
     name: 'Yanfei',
     stat: {
       baseAtk: 20.12304,
@@ -1352,6 +1427,7 @@ export const Characters = [
     codeName: 'Feiyan',
   },
   {
+    id: '1076',
     name: 'Yaoyao',
     stat: {
       baseAtk: 17.808,
@@ -1370,6 +1446,7 @@ export const Characters = [
     codeName: 'Yaoyao',
   },
   {
+    id: '1077',
     name: 'Yelan',
     stat: {
       baseAtk: 18.9924,
@@ -1388,6 +1465,7 @@ export const Characters = [
     codeName: 'Yelan',
   },
   {
+    id: '1078',
     name: 'Yoimiya',
     stat: {
       baseAtk: 25.137,
@@ -1406,6 +1484,7 @@ export const Characters = [
     codeName: 'Yoimiya',
   },
   {
+    id: '1079',
     name: 'Yun Jin',
     stat: {
       baseAtk: 16.0272,
@@ -1424,6 +1503,7 @@ export const Characters = [
     codeName: 'Yunjin',
   },
   {
+    id: '1080',
     name: 'Zhongli',
     stat: {
       baseAtk: 19.551,
@@ -1442,6 +1522,7 @@ export const Characters = [
     codeName: 'Zhongli',
   },
   {
+    id: '1081',
     name: 'Traveler (Anemo)',
     stat: {
       baseAtk: 17.808,
@@ -1460,6 +1541,7 @@ export const Characters = [
     codeName: 'PlayerGirl',
   },
   {
+    id: '1082',
     name: 'Traveler (Geo)',
     stat: {
       baseAtk: 17.808,
@@ -1478,6 +1560,7 @@ export const Characters = [
     codeName: 'PlayerGirl',
   },
   {
+    id: '1083',
     name: 'Traveler (Electro)',
     stat: {
       baseAtk: 17.808,
@@ -1496,6 +1579,7 @@ export const Characters = [
     codeName: 'PlayerGirl',
   },
   {
+    id: '1084',
     name: 'Traveler (Dendro)',
     stat: {
       baseAtk: 17.808,
@@ -1514,6 +1598,7 @@ export const Characters = [
     codeName: 'PlayerGirl',
   },
   {
+    id: '1085',
     name: 'Traveler (Hydro)',
     stat: {
       baseAtk: 17.808,

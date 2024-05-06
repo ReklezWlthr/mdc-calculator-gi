@@ -64,7 +64,7 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; 
   }
 
   const onSubmit = handleSubmit(({ set, subList, ...rest }) => {
-    const id = aId || `l_${_.random(9999999).toString().padStart(7, '0')}`
+    const id = aId || crypto.randomUUID()
     const setData = _.find(ArtifactSets, ['id', _.parseInt(set?.value)])
 
     const trimmedSub = _.map(

@@ -43,7 +43,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
   const { modalStore, teamStore, buildStore } = useStore()
 
   const onSaveBuild = useCallback(() => {
-    const id = `l_b_${_.random(9999999).toString().padStart(7, '0')}`
+    const id = crypto.randomUUID()
     const character = teamStore.characters[index]
 
     if (name) {
