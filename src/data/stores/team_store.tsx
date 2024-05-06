@@ -16,7 +16,7 @@ export const DefaultCharacter = {
   level: 1,
   ascension: 0,
   cons: 0,
-  character: null,
+  data: null,
   equipments: {
     weapon: DefaultWeapon,
     artifacts: Array(5),

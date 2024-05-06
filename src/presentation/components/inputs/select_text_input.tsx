@@ -18,7 +18,7 @@ type SelectTextInputProps = {
 
 export const SelectTextInput = (props: SelectTextInputProps) => {
   const valueFinder = useCallback((value: string) => _.find(props.options, ['value', value]), [props.options])
-  
+
   const [searchWord, setSearchWord] = useState(valueFinder(props.value)?.name || '')
 
   const filteredOptions = useMemo(() => {
@@ -36,7 +36,7 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
       disabled={props.disabled}
       as="div"
       className={classNames(
-        'rounded-lg relative transition-colors px-2 py-0.5 duration-200 hover:border-primary-lighter border-primary-light border bg-primary-darker font-normal',
+        'rounded-lg flex flex-col justify-center relative transition-colors px-2 py-0.5 duration-200 hover:border-primary-lighter border-primary-light border bg-primary-darker font-normal',
         props.style || 'w-full'
       )}
     >

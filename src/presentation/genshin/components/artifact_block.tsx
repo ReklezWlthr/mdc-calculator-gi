@@ -10,22 +10,24 @@ import { toPercentage } from '@src/core/utils/converter'
 import { StatIcons } from '../../../domain/genshin/constant'
 
 interface ArtifactBlockProps {
-  index: number
+  index?: number
   piece: number
+  aId: string
 }
 
 export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
   const pieceName = ArtifactPiece[props.piece]
 
   const { modalStore, teamStore, artifactStore } = useStore()
-  const aId = teamStore.characters[props.index]?.equipments?.artifacts?.[props.piece - 1]
-  const artifact = _.find(artifactStore.artifacts, ['id', aId])
+  const artifact = _.find(artifactStore.artifacts, ['id', props.aId])
 
   const mainStat = getMainStat(artifact?.main, artifact?.quality, artifact?.level)
 
   const onOpenModal = useCallback(() => {
-    modalStore.openModal(<ArtifactModal type={props.piece} cId={teamStore.characters[props.index]?.id} aId={aId} />)
-  }, [modalStore, props.index, aId])
+    modalStore.openModal(
+      <ArtifactModal type={props.piece} cId={teamStore.characters[props.index]?.id} aId={props.aId} />
+    )
+  }, [modalStore, props.index, props.aId])
 
   return (
     <div
@@ -36,7 +38,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
         <img src={`/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
         <p>{pieceName}</p>
       </div>
-      {aId ? (
+      {props.aId ? (
         <div className="px-4 py-3 space-y-3">
           <div className="flex gap-4">
             <div className="relative w-16 h-16 shrink-0">
@@ -44,7 +46,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
                 src={`https://enka.network/ui/${artifact.data.icon}_${artifact.type}.png`}
                 className="w-full h-full"
               />
-              <div className="absolute flex items-center justify-center px-2 py-1 text-xs bg-opacity-75 rounded-full -bottom-0 -right-4 bg-primary-light">
+              <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                 +{artifact?.level}
               </div>
             </div>
@@ -72,7 +74,11 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
                 <img className="w-4 h-4" src={`/icons/${StatIcons[item.stat]}`} />
                 {item.stat}
               </div>
-              <div>{getRolls(item.stat, item.value)}</div>
+              <div className="text-primary-lighter">
+                {_.map(Array(getRolls(item.stat, item.value)), (_, index) => (
+                  <span key={index}>&#10097;</span>
+                ))}
+              </div>
               <hr className="w-full border border-primary-border" />
               <p className="font-normal text-gray">
                 {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.EM], item.stat)

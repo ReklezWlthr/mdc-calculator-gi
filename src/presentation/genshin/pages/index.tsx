@@ -4,11 +4,14 @@ import { TeamSetup } from './team_setup'
 import { GenshinPage } from '@src/domain/genshin/constant'
 import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
 import { observer } from 'mobx-react-lite'
+import { ArtifactInventory } from './artifact_inventory'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
   switch (page) {
     case GenshinPage.TEAM:
       return <TeamSetup />
+    case GenshinPage.INVENTORY:
+      return <ArtifactInventory />
     default:
       return
   }

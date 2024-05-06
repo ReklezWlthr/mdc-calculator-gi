@@ -86,7 +86,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
             onClick={() => {
               teamStore.setMemberInfo(index, {
-                id: `l_000000${index + 1}`,
+                id: `l_${item.codeName}`,
                 data: item,
               })
               if (

@@ -25,7 +25,10 @@ const CharacterSelect = ({
       )}
       onClick={onClick}
     >
-      <img src={codeName ? `https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png` : ''} className="absolute scale-150 bottom-3" />
+      <img
+        src={codeName ? `https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png` : ''}
+        className="absolute scale-150 bottom-3"
+      />
     </div>
   )
 }
@@ -36,7 +39,7 @@ export const TeamSetup = observer(() => {
   const { teamStore } = useStore()
 
   return (
-    <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-scroll">
+    <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-auto">
       <div className="w-1/3">
         <div className="flex justify-center w-full gap-4 pt-1 pb-3">
           {_.map(teamStore?.characters, (item, index) => (
@@ -54,15 +57,15 @@ export const TeamSetup = observer(() => {
       </div>
       <div className="w-1/5 space-y-5">
         <WeaponBlock index={selected} />
-        <ArtifactBlock index={selected} piece={5} />
+        <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
       </div>
       <div className="w-1/5 space-y-5">
-        <ArtifactBlock index={selected} piece={4} />
-        <ArtifactBlock index={selected} piece={1} />
+        <ArtifactBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
+        <ArtifactBlock index={selected} piece={1} aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]} />
       </div>
       <div className="w-1/5 space-y-5">
-        <ArtifactBlock index={selected} piece={2} />
-        <ArtifactBlock index={selected} piece={3} />
+        <ArtifactBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
+        <ArtifactBlock index={selected} piece={3} aId={teamStore.characters[selected]?.equipments?.artifacts?.[2]} />
       </div>
     </div>
   )
