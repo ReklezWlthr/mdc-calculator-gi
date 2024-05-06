@@ -1,4 +1,4 @@
-import { findBaseLevel, findMaxLevel } from '@src/core/utils/data_format'
+import { findBaseLevel, findMaxLevel, getWeaponBase, getWeaponBonus } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { AscensionOptions, RefinementOptions, StatIcons, Stats } from '@src/domain/genshin/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
@@ -12,22 +12,26 @@ import { useStat } from '@src/core/hooks/useStat'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { findWeapon } from '@src/core/utils/finder'
+import { toPercentage } from '@src/core/utils/converter'
 
 interface StatBlockProps {
-  index: number
+  index?: number
+  wId: string
+  level: number
+  ascension: number
+  refinement: number
 }
 
-export const WeaponBlock = observer((props: StatBlockProps) => {
+export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0, refinement = 1 }: StatBlockProps) => {
   const { modalStore, teamStore } = useStore()
-  const weapon = teamStore.characters[props.index]?.equipments?.weapon
-  const ascension = weapon?.ascension || 0
-  const level = weapon?.level || 1
-  const refinement = weapon?.refinement || 1
 
-  const weaponData = findWeapon(weapon?.wId)
+  const weaponData = findWeapon(wId)
   const rarity = weaponData?.rarity
 
-  const { weaponBaseAtk, weaponSecondary } = useStat(props.index)
+  const weaponBaseAtk = getWeaponBase(weaponData?.tier, level, ascension, weaponData?.rarity)
+  const weaponSecondary = getWeaponBonus(weaponData?.baseStat, level)
+
+  const canEdit = index >= 0
 
   const levels = useMemo(
     () =>
@@ -42,8 +46,8 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
   )
 
   const onOpenModal = useCallback(() => {
-    modalStore.openModal(<WeaponModal index={props.index} />)
-  }, [modalStore, props.index])
+    modalStore.openModal(<WeaponModal index={index} />)
+  }, [modalStore, index])
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[300px]">
@@ -52,20 +56,20 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
         <div className="flex items-center gap-2">
           <PillInput
             onClick={onOpenModal}
-            onClear={() => teamStore.setWeapon(props.index, DefaultWeapon)}
+            onClear={() => teamStore.setWeapon(index, DefaultWeapon)}
             value={weaponData?.name}
-            disabled={!teamStore.characters[props.index]?.cId}
+            disabled={!canEdit || !teamStore.characters[index]?.cId}
           />
           <SelectInput
             onChange={(value) =>
-              teamStore.setWeapon(props.index, {
+              teamStore.setWeapon(index, {
                 refinement: parseInt(value) || 1,
               })
             }
             options={RefinementOptions}
             value={refinement?.toString()}
             style="w-fit"
-            disabled={!weaponData || weaponData?.name === 'Kagotsurube Isshin'}
+            disabled={!canEdit || !weaponData || weaponData?.name === 'Kagotsurube Isshin'}
           />
         </div>
         <div className="flex gap-2">
@@ -83,14 +87,14 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
               <p className="text-sm font-semibold">Level</p>
               <div className="flex items-center w-full gap-2">
                 <SelectInput
-                  onChange={(value) => teamStore.setWeapon(props.index, { level: parseInt(value) || 0 })}
+                  onChange={(value) => teamStore.setWeapon(index, { level: parseInt(value) || 0 })}
                   options={levels}
                   value={level?.toString()}
-                  disabled={!weaponData}
+                  disabled={!weaponData || !canEdit}
                 />
                 <SelectInput
                   onChange={(value) =>
-                    teamStore.setWeapon(props.index, {
+                    teamStore.setWeapon(index, {
                       ascension: parseInt(value) || 0,
                       level: findBaseLevel(parseInt(value) || 0),
                     })
@@ -98,7 +102,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
                   options={AscensionOptions}
                   value={ascension?.toString()}
                   style="w-fit"
-                  disabled={!weaponData}
+                  disabled={!weaponData || !canEdit}
                 />
               </div>
             </div>
@@ -120,7 +124,11 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
                 {weaponData?.ascStat || 'N/A'}
               </div>
               <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
+              <p className="font-normal text-gray">
+                {weaponData?.ascStat === Stats.EM
+                  ? _.round(weaponSecondary).toLocaleString()
+                  : toPercentage(weaponSecondary || 0)}
+              </p>
             </div>
           )}
         </div>

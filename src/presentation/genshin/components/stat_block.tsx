@@ -1,16 +1,27 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { getBaseStat, getWeaponBase } from '@src/core/utils/data_format'
 import _ from 'lodash'
 import { toPercentage } from '@src/core/utils/converter'
 import { useStat } from '@src/core/hooks/useStat'
+import { findCharacter, findWeapon } from '@src/core/utils/finder'
 
 interface StatBlockProps {
   index: number
 }
 
 export const StatBlock = observer((props: StatBlockProps) => {
-  const stat = useStat(props.index)
+  const { teamStore } = useStore()
+  const char = teamStore.characters[props.index]
+
+  const stat = useStat(
+    char?.cId,
+    char?.level,
+    char?.ascension,
+    char?.equipments?.weapon?.wId,
+    char?.equipments?.weapon?.level,
+    char?.equipments?.weapon?.ascension,
+    char?.equipments?.artifacts
+  )
 
   const DataRow = ({ title, value }: { title: string; value: number | string }) => {
     return (

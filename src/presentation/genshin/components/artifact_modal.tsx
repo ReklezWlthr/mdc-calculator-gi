@@ -73,7 +73,9 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
 
     const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
     const pass = aId ? artifactStore.editArtifact(aId, data) : artifactStore.addArtifact(data)
-    if (pass && index) {
+    console.log(pass, index)
+    if (pass && index >= 0) {
+      console.log('hey')
       teamStore.setArtifact(index, rest.type, id)
       if (rest.type !== oldType && oldType) teamStore.setArtifact(index, oldType, null)
     }
@@ -91,7 +93,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
       </div>
       <div className="flex items-center gap-2">
         <div className="border rounded-full w-9 h-9 bg-primary-darker border-primary-light shrink-0">
-          {setData?.icon && <img src={setData?.icon} className="scale-105" />}
+          {setData?.icon && <img src={`https://enka.network/ui/${setData?.icon}_4.png`} className="scale-105" />}
         </div>
         <Controller
           name="setId"
@@ -99,7 +101,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           rules={{ required: true }}
           render={({ field }) => (
             <SelectTextInput
-              value={field.value?.value}
+              value={field.value}
               options={_.map(ArtifactSets, (artifact) => ({
                 name: artifact.name,
                 value: artifact.id.toString(),

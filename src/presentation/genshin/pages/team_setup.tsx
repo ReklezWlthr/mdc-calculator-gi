@@ -118,7 +118,7 @@ export const TeamSetup = observer(() => {
         <StatBlock index={selected} />
       </div>
       <div className="w-1/5 space-y-5">
-        <WeaponBlock index={selected} />
+        <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
         <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
       </div>
       <div className="w-1/5 space-y-5">
