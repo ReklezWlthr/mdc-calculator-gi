@@ -2,7 +2,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { ArtifactPiece, Stats } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { ArtifactModal } from './artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { getMainStat, getRolls } from '@src/core/utils/data_format'
@@ -28,6 +28,17 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
       <ArtifactModal type={props.piece} cId={teamStore.characters[props.index]?.id} aId={props.aId} />
     )
   }, [modalStore, props.index, props.aId])
+
+  const subListWithRolls = useMemo(() => {
+    const rolls = _.map(artifact?.subList, (item) => getRolls(item.stat, item.value))
+    const sum = _.sum(rolls)
+    if (sum > 9) {
+      const max = _.max(rolls)
+      const index = _.findIndex(rolls, (item) => item === max)
+      rolls[index] -= 1
+    }
+    return _.map(artifact?.subList, (item, index) => ({ ...item, roll: rolls[index] }))
+  }, [artifact])
 
   return (
     <div
@@ -68,17 +79,13 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
             </p>
           </div>
           <p className="flex items-center justify-center text-xs text-primary-lighter">✦✦✦✦✦</p>
-          {_.map(artifact?.subList, (item) => (
+          {_.map(subListWithRolls, (item) => (
             <div className="flex items-center gap-2 text-xs" key={item.stat}>
               <div className="flex items-center gap-1.5 shrink-0">
                 <img className="w-4 h-4" src={`/icons/${StatIcons[item.stat]}`} />
                 {item.stat}
               </div>
-              <div className="text-primary-lighter">
-                {_.map(Array(getRolls(item.stat, item.value)), (_, index) => (
-                  <span key={index}>&#10097;</span>
-                ))}
-              </div>
+              <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>
               <hr className="w-full border border-primary-border" />
               <p className="font-normal text-gray">
                 {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.EM], item.stat)

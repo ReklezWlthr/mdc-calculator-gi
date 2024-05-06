@@ -58,7 +58,7 @@ export const getRolls = (stat: Stats, value: number) => {
   const low = _.find(SubStatMap, (item) => item.stat === stat)?.max * 0.7
   const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], stat) ? 1 : 100)
 
-  return _.max([roundValue > 0 ? 1 : 0, _.floor(roundValue / low)])
+  return _.min([6, _.max([roundValue > 0 ? 1 : 0, _.floor(roundValue / low)])])
 }
 
 export const correctSubStat = (stat: Stats, value: number) => {

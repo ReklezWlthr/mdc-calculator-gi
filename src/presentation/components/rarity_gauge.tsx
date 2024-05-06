@@ -21,9 +21,7 @@ export const RarityGauge = ({
         'text-primary-lighter': !rarity,
       })}
     >
-      {_.map(Array(rarity || 1), (_, index) => (
-        <span key={index}>✦</span>
-      ))}
+      {_.repeat('✦', rarity || 1)}
     </div>
   )
 }
