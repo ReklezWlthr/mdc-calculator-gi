@@ -6,13 +6,14 @@ import { Stats } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { useEffect, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 
-export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; aId?: string }) => {
+export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; aId?: string }) => {
   const { teamStore, artifactStore, modalStore } = useStore()
 
   const { watch, control, setValue, handleSubmit, reset } = useForm({
@@ -74,7 +75,7 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
 
     const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
     const pass = aId ? artifactStore.editArtifact(aId, data) : artifactStore.addArtifact(data)
-    if (pass) {
+    if (pass && cId) {
       teamStore.setArtifact(cId, rest.type, id)
       if (rest.type !== oldType && oldType) teamStore.setArtifact(cId, oldType, null)
     }
@@ -206,7 +207,7 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId: string; a
         </div>
       </div>
       <div className="flex justify-end gap-2">
-        <p onClick={onSubmit}>Confirm</p>
+        <PrimaryButton title="Confirm" onClick={onSubmit} />
       </div>
     </div>
   )

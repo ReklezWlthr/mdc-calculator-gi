@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -10,6 +10,8 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { ArtifactSets } from '@src/domain/genshin/artifact'
+import { ArtifactModal } from '../components/artifact_modal'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
 
 export const ArtifactInventory = observer(() => {
   const { params, setParams } = useParams({
@@ -17,7 +19,7 @@ export const ArtifactInventory = observer(() => {
     set: null,
   })
 
-  const { artifactStore } = useStore()
+  const { artifactStore, modalStore } = useStore()
 
   const TypeButton = ({ icon, buttonType }: { icon: string; buttonType: number }) => {
     const checked = _.includes(params.types, buttonType)
@@ -44,6 +46,10 @@ export const ArtifactInventory = observer(() => {
     return result
   }, [params.set, params.types])
 
+  const onOpenModal = useCallback(() => {
+    modalStore.openModal(<ArtifactModal type={4} />)
+  }, [modalStore])
+
   return (
     <div className="flex flex-col items-center w-full gap-5 p-5 overflow-y-scroll">
       <div className="flex items-center justify-between w-full">
@@ -65,13 +71,14 @@ export const ArtifactInventory = observer(() => {
             }))}
             placeholder="Artifact Set"
             onChange={(value) => setParams({ set: value })}
-            style='w-[300px]'
+            style="w-[300px]"
           />
+          <PrimaryButton title='Add New Artifact' onClick={onOpenModal} />
         </div>
       </div>
       <div className="grid w-full grid-cols-5 gap-4">
         {_.map(filteredArtifacts, (artifact) => (
-          <ArtifactBlock piece={artifact?.type} aId={artifact?.id} />
+          <ArtifactBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} />
         ))}
       </div>
     </div>
