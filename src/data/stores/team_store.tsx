@@ -76,7 +76,7 @@ export class Team {
   }
 
   unequipAll = (index: number) => {
-    if (!index) return
+    if (index < 0 || index > 4) return
     this.characters[index].equipments = DefaultBuild
     this.characters[index] = { ...this.characters[index] }
   }
