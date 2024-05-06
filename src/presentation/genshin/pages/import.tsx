@@ -18,29 +18,41 @@ export const ImportExport = observer(({ data, updateData }: { data; updateData: 
   }
 
   return (
-    <div>
-      <div>Import</div>
-      <input
-        type="file"
-        multiple={false}
-        onChange={(event) => {
-          const file = event.target.files[0]
-          const reader = new FileReader()
-          reader.addEventListener('load', (event) => {
-            localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
-            updateData(event.target.result)
-          })
-          reader.readAsText(file)
-        }}
-      />
-      <div>Export</div>
-      <PrimaryButton
-        title="Export"
-        onClick={() => {
-          const blob = new Blob([data], { type: 'text/json;charset=utf-8' })
-          saveFile(blob, 'export.json')
-        }}
-      />
+    <div className="flex w-full gap-5 p-5 overflow-y-scroll text-white">
+      <div className="w-1/5 space-y-2">
+        <div className="font-bold">Import</div>
+        <PrimaryButton
+          title="Import"
+          onClick={() => {
+            document.getElementById('importer').click()
+          }}
+        />
+        <input
+          id="importer"
+          className="hidden"
+          type="file"
+          multiple={false}
+          onChange={(event) => {
+            const file = event.target.files[0]
+            const reader = new FileReader()
+            reader.addEventListener('load', (event) => {
+              localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
+              updateData(event.target.result)
+            })
+            reader.readAsText(file)
+          }}
+        />
+      </div>
+      <div className="w-1/5 space-y-2">
+        <div className="font-bold">Export</div>
+        <PrimaryButton
+          title="Export"
+          onClick={() => {
+            const blob = new Blob([data], { type: 'text/json;charset=utf-8' })
+            saveFile(blob, 'export.json')
+          }}
+        />
+      </div>
     </div>
   )
 })
