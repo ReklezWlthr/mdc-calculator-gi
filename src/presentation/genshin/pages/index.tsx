@@ -6,8 +6,11 @@ import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
 import { observer } from 'mobx-react-lite'
 import { ArtifactInventory } from './artifact_inventory'
 import { MyBuilds } from './my_builds'
+import { ImportExport } from './import'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
+  const data = useLocalUpdater('genshin')
+
   switch (page) {
     case GenshinPage.TEAM:
       return <TeamSetup />
@@ -15,6 +18,8 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
       return <ArtifactInventory />
     case GenshinPage.MY_CHAR:
       return <MyBuilds />
+    case GenshinPage.IMPORT:
+      return <ImportExport data={data} />
     default:
       return
   }
@@ -22,8 +27,6 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
 
 export const GenshinHome = observer(() => {
   const [page, setPage] = useState<GenshinPage>(GenshinPage.TEAM)
-
-  const data = useLocalUpdater('genshin')
 
   return (
     <div className="flex w-full h-[calc(100vh-68px)]">
