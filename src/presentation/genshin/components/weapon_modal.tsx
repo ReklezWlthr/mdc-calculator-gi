@@ -88,6 +88,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
               <img
                 src={`/icons/${StatIcons[item.ascStat]}`}
                 className="absolute p-1 rounded-full w-7 h-7 top-2 left-2 bg-primary"
+                title={item.ascStat}
               />
               <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                 <RarityGauge rarity={item.rarity} />

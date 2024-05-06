@@ -109,7 +109,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                 {build && (
                   <img
                     src="/icons/artifact_icon.png"
-                    className="absolute w-8 h-8 top-0.5 right-1 p-0.5 bg-primary-light rounded-full bg-opacity-80"
+                    className="absolute w-7 h-7 top-1 right-1 p-0.5 bg-primary-light rounded-full bg-opacity-80"
                     title='Has Default Build'
                   />
                 )}
