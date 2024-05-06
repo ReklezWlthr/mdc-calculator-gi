@@ -9,13 +9,14 @@ import classNames from 'classnames'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { useMemo } from 'react'
 import { DefaultWeapon } from '@src/data/stores/team_store'
+import { DefaultBuild } from '@src/data/stores/build_store'
 
 interface CharacterModalProps {
   index: number
 }
 
 export const CharacterModal = observer(({ index }: CharacterModalProps) => {
-  const { teamStore, modalStore } = useStore()
+  const { teamStore, modalStore, buildStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     element: [],
@@ -85,9 +86,11 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
             onClick={() => {
+              const build = _.find(buildStore.builds, (build) => build.isEquipped && build.char === item.name)
               teamStore.setMemberInfo(index, {
                 id: `l_${item.codeName}`,
                 data: item,
+                equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
               })
               if (
                 item.weapon !== teamStore.characters[index]?.equipments?.weapon?.data?.type &&

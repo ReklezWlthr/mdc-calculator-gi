@@ -5,6 +5,7 @@ import { GenshinPage } from '@src/domain/genshin/constant'
 import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
 import { observer } from 'mobx-react-lite'
 import { ArtifactInventory } from './artifact_inventory'
+import { MyBuilds } from './my_builds'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
   switch (page) {
@@ -12,6 +13,8 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
       return <TeamSetup />
     case GenshinPage.INVENTORY:
       return <ArtifactInventory />
+    case GenshinPage.MY_CHAR:
+      return <MyBuilds />
     default:
       return
   }

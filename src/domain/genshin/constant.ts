@@ -27,17 +27,20 @@ export interface ICharacter {
 }
 
 export interface ITeamChar {
-  // l_####### for local characters
-  // c_####### for account characters
   id: string
   level: number
   ascension: number
   cons: number
   data: ICharacter
-  equipments: {
-    weapon: IWeaponEquip
-    artifacts: string[]
-  }
+  equipments: Omit<IBuild, 'id' | 'char' | 'isEquipped'>
+}
+
+export interface IBuild {
+  id: string
+  char: string
+  isEquipped: boolean,
+  weapon: IWeaponEquip
+  artifacts: string[]
 }
 
 export interface IArtifact {

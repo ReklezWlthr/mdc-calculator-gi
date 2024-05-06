@@ -13,6 +13,7 @@ interface ArtifactBlockProps {
   index?: number
   piece: number
   aId: string
+  showWearer?: boolean
 }
 
 export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
@@ -40,6 +41,8 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
     return _.map(artifact?.subList, (item, index) => ({ ...item, roll: rolls[index] }))
   }, [artifact])
 
+  const wearer = _.find(teamStore.characters, (item) => _.includes(item.equipments.artifacts, props.aId))
+
   return (
     <div
       className="flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[300px] hover:scale-[97%] cursor-pointer"
@@ -50,7 +53,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
         <p>{pieceName}</p>
       </div>
       {props.aId ? (
-        <div className="px-4 py-3 space-y-3">
+        <div className="p-3 space-y-3">
           <div className="flex gap-4">
             <div className="relative w-16 h-16 shrink-0">
               <img
@@ -60,6 +63,14 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
               <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                 +{artifact?.level}
               </div>
+              {wearer?.data?.codeName && props.showWearer && (
+                <div className="absolute flex items-center justify-center p-1 text-xs bg-opacity-75 rounded-full -top-1 w-7 h-7 -right-3 bg-primary-light">
+                  <img
+                    src={`https://enka.network/ui/UI_AvatarIcon_Side_${wearer?.data?.codeName}.png`}
+                    className="absolute scale-125 bottom-1.5"
+                  />
+                </div>
+              )}
             </div>
             <div className="flex flex-col items-center w-full gap-1">
               <RarityGauge rarity={artifact?.quality} textSize="text-sm" />

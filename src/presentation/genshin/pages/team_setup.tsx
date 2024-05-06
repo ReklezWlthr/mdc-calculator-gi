@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -7,6 +7,7 @@ import { StatBlock } from '../components/stat_block'
 import { WeaponBlock } from '../components/weapon_block'
 import { ArtifactBlock } from '../components/artifact_block'
 import { useStore } from '@src/data/providers/app_store_provider'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
 
 const CharacterSelect = ({
   onClick,
@@ -36,7 +37,18 @@ const CharacterSelect = ({
 export const TeamSetup = observer(() => {
   const [selected, setSelected] = useState(0)
 
-  const { teamStore } = useStore()
+  const { teamStore, buildStore } = useStore()
+
+  const onSaveBuild = useCallback(() => {
+    const character = teamStore.characters[selected]
+
+    buildStore.saveBuild({
+      id: `l_b_${_.random(9999999).toString().padStart(7, '0')}`,
+      char: character?.data?.name,
+      isEquipped: true,
+      ...character?.equipments,
+    })
+  }, [selected])
 
   return (
     <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-auto">
@@ -52,6 +64,7 @@ export const TeamSetup = observer(() => {
           ))}
         </div>
         <CharacterBlock index={selected} />
+        <PrimaryButton title='Save Build' onClick={onSaveBuild} />
         <div className="h-5" />
         <StatBlock index={selected} />
       </div>

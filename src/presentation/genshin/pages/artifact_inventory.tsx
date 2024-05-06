@@ -78,7 +78,7 @@ export const ArtifactInventory = observer(() => {
       </div>
       <div className="grid w-full grid-cols-5 gap-4">
         {_.map(filteredArtifacts, (artifact) => (
-          <ArtifactBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} />
+          <ArtifactBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} showWearer />
         ))}
       </div>
     </div>
