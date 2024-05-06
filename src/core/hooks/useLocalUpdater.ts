@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 export const useLocalUpdater = (game: string) => {
   const { teamStore, artifactStore, buildStore } = useStore()
+  const [data, setData] = useState(null)
   const [hydrated, setHydrated] = useState(false)
 
   const key = `${game}_local_storage`
@@ -28,10 +29,11 @@ export const useLocalUpdater = (game: string) => {
       teamStore.hydrateCharacters(json.team)
       artifactStore.hydrateArtifacts(json.artifacts)
       buildStore.hydrateBuilds(json.builds)
+      setData(data)
     }
 
     setHydrated(true)
   }, [])
 
-  return !hydrated
+  return data
 }
