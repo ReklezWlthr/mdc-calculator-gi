@@ -15,7 +15,7 @@ export interface BuildStoreType {
   builds: IBuild[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   saveBuild: (build: IBuild) => boolean
-  editBuild: (bId: string, build: IBuild) => boolean
+  editBuild: (bId: string, build: Partial<IBuild>) => boolean
   deleteBuild: (bId: string) => boolean
   setDefault: (bId: string) => void
   hydrateBuilds: (data: IBuild[]) => void
@@ -41,10 +41,10 @@ export class Build {
     return true
   }
 
-  editBuild = (bId: string, build: IBuild) => {
+  editBuild = (bId: string, build: Partial<IBuild>) => {
     if (!build || !bId) return false
     const index = _.findIndex(this.builds, ['id', bId])
-    this.builds[index] = build
+    this.builds[index] = { ...this.builds[index], ...build }
     return true
   }
 

@@ -10,6 +10,7 @@ export interface InventoryStoreType {
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   addArtifact: (artifact: IArtifactEquip) => boolean
   editArtifact: (aId: string, artifact: IArtifactEquip) => boolean
+  deleteArtifact: (aId: string) => boolean
   hydrateArtifacts: (data: IArtifactEquip[]) => void
   hydrate: (data: InventoryStoreType) => void
 }
@@ -37,6 +38,14 @@ export class Inventory {
     if (!artifact || !aId) return false
     const index = _.findIndex(this.artifacts, ['id', aId])
     this.artifacts[index] = artifact
+    return true
+  }
+
+  deleteArtifact = (aId: string) => {
+    if (!aId) return false
+    const index = _.findIndex(this.artifacts, ['id', aId])
+    this.artifacts.splice(index, 1)
+    this.artifacts = [...this.artifacts]
     return true
   }
 

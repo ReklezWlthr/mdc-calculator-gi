@@ -59,7 +59,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
         <div className="p-3 space-y-3">
           <div className="flex gap-4">
             <div className="relative w-16 h-16 shrink-0">
-              <img src={`https://enka.network/ui/${setData?.icon}_${artifact.type}.png`} className="w-full h-full" />
+              <img src={`https://enka.network/ui/${setData?.icon}_${artifact?.type}.png`} className="w-full h-full" />
               <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                 +{artifact?.level}
               </div>

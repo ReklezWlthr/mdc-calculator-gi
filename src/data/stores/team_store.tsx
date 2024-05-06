@@ -90,7 +90,6 @@ export class Team {
   setArtifact = (index: number, type: number, aId: string | null) => {
     if (index < 0) return
     _.forEach(this.characters, (character, i) => {
-      console.log(i, index)
       if (i === index) {
         character.equipments.artifacts[type - 1] = aId
       } else {

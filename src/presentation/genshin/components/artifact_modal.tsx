@@ -4,6 +4,7 @@ import { findArtifactSet } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { ArtifactSets, MainStat, MainStatValue, SubStat } from '@src/domain/genshin/artifact'
 import { Stats } from '@src/domain/genshin/constant'
+import { GhostButton } from '@src/presentation/components/ghost.button'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
@@ -11,11 +12,11 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import _ from 'lodash'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 
 export const ArtifactModal = ({ type, index, aId }: { type: number; index?: number; aId?: string }) => {
-  const { teamStore, artifactStore, modalStore } = useStore()
+  const { teamStore, artifactStore, modalStore, buildStore } = useStore()
 
   const { watch, control, setValue, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -73,14 +74,26 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
 
     const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
     const pass = aId ? artifactStore.editArtifact(aId, data) : artifactStore.addArtifact(data)
-    console.log(pass, index)
     if (pass && index >= 0) {
-      console.log('hey')
       teamStore.setArtifact(index, rest.type, id)
       if (rest.type !== oldType && oldType) teamStore.setArtifact(index, oldType, null)
     }
     modalStore.closeModal()
   })
+
+  const onDelete = useCallback(() => {
+    const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
+    artifactStore.deleteArtifact(aId)
+    modalStore.closeModal()
+    const char = _.findIndex(teamStore.characters, (item) => _.includes(item.equipments?.artifacts, aId))
+    const build = _.filter(buildStore.builds, (item) => _.includes(item.artifacts, aId))
+    if (char >= 0) {
+      teamStore.setArtifact(char, oldType, null)
+    }
+    _.forEach(build, (item) => {
+      buildStore.editBuild(item.id, { artifacts: _.without(item.artifacts, aId) })
+    })
+  }, [artifactStore.artifacts, teamStore.characters, buildStore.builds, aId])
 
   return (
     <div className="w-[300px] p-4 space-y-4 font-semibold text-white rounded-xl bg-primary-dark">
@@ -207,6 +220,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
         </div>
       </div>
       <div className="flex justify-end gap-2">
+        {aId && <GhostButton title="Delete" onClick={onDelete} />}
         <PrimaryButton title="Confirm" onClick={onSubmit} />
       </div>
     </div>
