@@ -1,7 +1,16 @@
-import { Element, IArtifactEquip, ITeamChar, IWeapon, IWeaponEquip, WeaponType } from '@src/domain/genshin/constant'
+import {
+  Element,
+  IArtifactEquip,
+  IBuild,
+  ITeamChar,
+  IWeapon,
+  IWeaponEquip,
+  WeaponType,
+} from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
+import { DefaultBuild } from './build_store'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -31,6 +40,7 @@ export interface TeamStoreType {
   setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
   setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
   setArtifact: (cId: string, type: number, aId: string) => void
+  unequipAll: (index: number) => void
   hydrateCharacters: (data: ITeamChar[]) => void
   hydrate: (data: TeamStoreType) => void
 }
@@ -57,6 +67,18 @@ export class Team {
   setMemberInfo = (index: number, info: Partial<ITeamChar>) => {
     if (index < 0 || index > 4) return
     this.characters[index] = { ...this.characters[index], ...info }
+  }
+
+  equipBuild = (index: number, build: IBuild) => {
+    if (!build) return
+    this.characters[index].equipments = { weapon: build.weapon, artifacts: build.artifacts }
+    this.characters[index] = { ...this.characters[index] }
+  }
+
+  unequipAll = (index: number) => {
+    if (!index) return
+    this.characters[index].equipments = DefaultBuild
+    this.characters[index] = { ...this.characters[index] }
   }
 
   setWeapon = (index: number, info: Partial<IWeaponEquip>) => {

@@ -32,13 +32,14 @@ export interface ITeamChar {
   ascension: number
   cons: number
   data: ICharacter
-  equipments: Omit<IBuild, 'id' | 'char' | 'isEquipped'>
+  equipments: { weapon: IWeaponEquip; artifacts: string[] }
 }
 
 export interface IBuild {
   id: string
+  name: string
   char: string
-  isEquipped: boolean,
+  isDefault: boolean
   weapon: IWeaponEquip
   artifacts: string[]
 }

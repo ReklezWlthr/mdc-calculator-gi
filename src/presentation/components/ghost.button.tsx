@@ -1,23 +1,23 @@
 import { MouseEventHandler, useState } from 'react'
 import classNames from 'classnames'
 
-export interface PrimaryButtonPropsType {
+export interface GhostButtonPropsType {
   onClick: MouseEventHandler<HTMLButtonElement>
   title?: string
   disabled?: boolean
   icon?: string | React.ReactNode
 }
 
-export const PrimaryButton = ({ onClick, title, disabled, icon }: PrimaryButtonPropsType) => {
+export const GhostButton = ({ onClick, title, disabled, icon }: GhostButtonPropsType) => {
   //---------------------
   // CONST
   //---------------------
   const colorClasses = classNames(
     {
-      'bg-primary-lighter hover:bg-primary-light active:scale-95 text-white cursor-pointer duration-200': !disabled,
+      'border-primary-light hover:border-primary-lighter active:scale-95 text-white cursor-pointer duration-200': !disabled,
     },
     {
-      'bg-primary-darker border border-primary text-primary-border cursor-not-allowed': disabled,
+      'border-primary-border text-primary-border cursor-not-allowed': disabled,
     }
   )
 
@@ -26,7 +26,7 @@ export const PrimaryButton = ({ onClick, title, disabled, icon }: PrimaryButtonP
   //---------------------
   return (
     <button
-      className={classNames('py-2 px-3 rounded-lg', colorClasses)}
+      className={classNames('py-2 px-3 rounded-lg border bg-transparent', colorClasses)}
       disabled={disabled}
       onClick={!disabled ? onClick : undefined}
     >

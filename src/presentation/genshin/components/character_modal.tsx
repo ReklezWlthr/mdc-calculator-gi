@@ -82,38 +82,49 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
         </div>
       </div>
       <div className="grid w-full grid-cols-9 gap-4">
-        {_.map(filteredChar, (item) => (
-          <div
-            className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
-            onClick={() => {
-              const build = _.find(buildStore.builds, (build) => build.isEquipped && build.char === item.name)
-              teamStore.setMemberInfo(index, {
-                id: `l_${item.codeName}`,
-                data: item,
-                equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
-              })
-              if (
-                item.weapon !== teamStore.characters[index]?.equipments?.weapon?.data?.type &&
-                teamStore.characters[index]?.equipments?.weapon
-              )
-                teamStore.setWeapon(index, DefaultWeapon)
-              modalStore.closeModal()
-            }}
-            key={item.name}
-          >
-            <div className="relative">
-              <img src={ElementIcon[item.element]} className="absolute w-8 h-8 top-0.5 left-1" />
-              <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
-                <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
+        {_.map(filteredChar, (item) => {
+          const build = _.find(buildStore.builds, ['char', item.name])
+
+          return (
+            <div
+              className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
+              onClick={() => {
+                const build = _.find(buildStore.builds, (build) => build.isDefault && build.char === item.name)
+                teamStore.setMemberInfo(index, {
+                  id: `l_${item.codeName}`,
+                  data: item,
+                  equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
+                })
+                if (
+                  item.weapon !== teamStore.characters[index]?.equipments?.weapon?.data?.type &&
+                  teamStore.characters[index]?.equipments?.weapon
+                )
+                  teamStore.setWeapon(index, DefaultWeapon)
+                modalStore.closeModal()
+              }}
+              key={item.name}
+            >
+              <div className="relative">
+                <img src={ElementIcon[item.element]} className="absolute w-8 h-8 top-0.5 left-1" />
+                {build && (
+                  <img
+                    src="/icons/artifact_icon.png"
+                    className="absolute w-8 h-8 top-0.5 right-1 p-0.5 bg-primary-light rounded-full bg-opacity-80"
+                    title='Has Default Build'
+                  />
+                )}
+                <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
+                  <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
+                </div>
+                <img
+                  src={`https://enka.network/ui/UI_AvatarIcon_${item.codeName || 'PlayerGirl'}.png`}
+                  className="object-contain rounded-t-lg bg-primary-darker aspect-square"
+                />
               </div>
-              <img
-                src={`https://enka.network/ui/UI_AvatarIcon_${item.codeName || 'PlayerGirl'}.png`}
-                className="object-contain rounded-t-lg bg-primary-darker aspect-square"
-              />
+              <p className="flex justify-center px-2 py-1 truncate">{item.name}</p>
             </div>
-            <p className="flex justify-center px-2 py-1 truncate">{item.name}</p>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )

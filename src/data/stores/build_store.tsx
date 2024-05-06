@@ -20,8 +20,10 @@ export const DefaultBuild = {
 export interface BuildStoreType {
   builds: IBuild[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
-  saveBuild: (build: IBuild) => void
-  editBuild: (bId: string, build: IBuild) => void
+  saveBuild: (build: IBuild) => boolean
+  editBuild: (bId: string, build: IBuild) => boolean
+  deleteBuild: (bId: string) => boolean
+  setDefault: (bId: string) => void
   hydrateBuilds: (data: IBuild[]) => void
   hydrate: (data: BuildStoreType) => void
 }
@@ -50,6 +52,23 @@ export class Build {
     const index = _.findIndex(this.builds, ['id', bId])
     this.builds[index] = build
     return true
+  }
+
+  deleteBuild = (bId: string) => {
+    if (!bId) return false
+    const index = _.findIndex(this.builds, ['id', bId])
+    this.builds.splice(index, 1)
+    this.builds = [...this.builds]
+    return true
+  }
+
+  setDefault = (bId: string) => {
+    if (!bId) return
+    const selected = _.find(this.builds, ['id', bId])
+    const others = _.filter(this.builds, (item) => item.id !== bId && selected.char === item.char)
+    selected.isDefault = true
+    _.forEach(others, (item) => (item.isDefault = false))
+    this.builds = [...this.builds]
   }
 
   hydrateBuilds = (data: IBuild[]) => {

@@ -27,11 +27,12 @@ export const MyBuilds = observer(() => {
       <div className="flex items-center justify-between w-full">
         <p className="text-2xl font-bold text-white w-fit">My Builds</p>
       </div>
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col w-1/3 gap-2'>
         {_.map(buildStore.builds, (build) => (
           <BuildBlock key={build.id} build={build} />
         ))}
       </div>
+      
     </div>
   )
 })

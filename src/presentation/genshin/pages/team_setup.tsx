@@ -8,6 +8,9 @@ import { WeaponBlock } from '../components/weapon_block'
 import { ArtifactBlock } from '../components/artifact_block'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { TextInput } from '@src/presentation/components/inputs/text_input'
+import { GhostButton } from '@src/presentation/components/ghost.button'
+import { BuildModal } from '../components/build_modal'
 
 const CharacterSelect = ({
   onClick,
@@ -34,20 +37,57 @@ const CharacterSelect = ({
   )
 }
 
+const SaveBuildModal = observer(({ index }: { index: number }) => {
+  const [name, setName] = useState('')
+
+  const { modalStore, teamStore, buildStore } = useStore()
+
+  const onSaveBuild = useCallback(() => {
+    const id = `l_b_${_.random(9999999).toString().padStart(7, '0')}`
+    const character = teamStore.characters[index]
+
+    if (name) {
+      const pass = buildStore.saveBuild({
+        id,
+        name,
+        char: character?.data?.name,
+        isDefault: false,
+        ...character?.equipments,
+      })
+      if (pass) {
+        buildStore.setDefault(id)
+        modalStore.closeModal()
+      }
+    }
+  }, [index, name])
+
+  return (
+    <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark">
+      <div className="space-y-1">
+        <p className="font-semibold">
+          Build Name<span className="text-genshin-pyro">*</span>
+        </p>
+        <TextInput onChange={setName} value={name} />
+      </div>
+      <div className="flex justify-end gap-2">
+        <GhostButton title="Cancel" onClick={() => modalStore.closeModal()} />
+        <PrimaryButton title="Confirm" onClick={onSaveBuild} />
+      </div>
+    </div>
+  )
+})
+
 export const TeamSetup = observer(() => {
   const [selected, setSelected] = useState(0)
 
-  const { teamStore, buildStore } = useStore()
+  const { teamStore, modalStore } = useStore()
 
-  const onSaveBuild = useCallback(() => {
-    const character = teamStore.characters[selected]
+  const onOpenSaveModal = useCallback(() => {
+    modalStore.openModal(<SaveBuildModal index={selected} />)
+  }, [selected])
 
-    buildStore.saveBuild({
-      id: `l_b_${_.random(9999999).toString().padStart(7, '0')}`,
-      char: character?.data?.name,
-      isEquipped: true,
-      ...character?.equipments,
-    })
+  const onOpenBuildModal = useCallback(() => {
+    modalStore.openModal(<BuildModal index={selected} />)
   }, [selected])
 
   return (
@@ -64,7 +104,11 @@ export const TeamSetup = observer(() => {
           ))}
         </div>
         <CharacterBlock index={selected} />
-        <PrimaryButton title='Save Build' onClick={onSaveBuild} />
+        <div className="flex gap-x-2">
+          <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
+          <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
+          <PrimaryButton title="Unequip All" onClick={() => teamStore.unequipAll(selected)} />
+        </div>
         <div className="h-5" />
         <StatBlock index={selected} />
       </div>

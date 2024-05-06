@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
-        <link href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" rel="stylesheet" />
+        <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" />
         <title>HoYoverse Calculator</title>
       </Head>
       <QueryClientProvider client={queryClient}>
