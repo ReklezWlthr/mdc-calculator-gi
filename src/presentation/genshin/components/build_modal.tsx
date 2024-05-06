@@ -41,7 +41,10 @@ export const BuildModal = observer(({ index }: { index: number }) => {
           </div>
         ))
       ) : (
-        <div className='flex items-center justify-center w-full h-20 text-gray'>No Saved Build</div>
+        <div className="flex flex-col items-center justify-center w-full text-gray">
+          <img src="https://cdn.wanderer.moe/genshin-impact/emotes/paimon-s-paintings-set-2-9.png" className='w-32 h-32' />
+          <p>No Saved Build</p>
+        </div>
       )}
     </div>
   )
