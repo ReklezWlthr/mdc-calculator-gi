@@ -36,25 +36,34 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
       disabled={props.disabled}
       as="div"
       className={classNames(
-        'rounded-lg flex flex-col justify-center relative transition-colors px-2 py-0.5 duration-200 hover:border-primary-lighter border-primary-light border bg-primary-darker font-normal',
+        'group rounded-lg flex flex-col justify-center relative transition-colors px-2 py-0.5 duration-200 hover:border-primary-lighter border-primary-light border bg-primary-darker font-normal',
         props.style || 'w-full'
       )}
     >
-      <Combobox.Button as="div">
-        <Combobox.Input
-          className={classNames(
-            'w-full outline-none placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent text-sm truncate',
-            {
-              'cursor-not-allowed': props.disabled,
-              'border-TextInput-colorBorderDefault text-TextInput-colorTextDisable bg-TextInput-colorBgDisable cursor-not-allowed':
-                props.disabled,
-            }
-          )}
-          displayValue={(item: OptionType) => item?.name}
-          placeholder={props.placeholder}
-          onChange={(event) => setSearchWord(event.target.value)}
+      <div className="flex items-center w-full">
+        <Combobox.Button as="div" className="w-full">
+          <Combobox.Input
+            className={classNames(
+              'w-full outline-none placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent text-sm truncate',
+              {
+                'cursor-not-allowed': props.disabled,
+                'border-TextInput-colorBorderDefault text-TextInput-colorTextDisable bg-TextInput-colorBgDisable cursor-not-allowed':
+                  props.disabled,
+              }
+            )}
+            displayValue={(item: OptionType) => item?.name}
+            placeholder={props.placeholder}
+            onChange={(event) => setSearchWord(event.target.value)}
+          />
+        </Combobox.Button>
+        <i
+          className="text-sm duration-100 opacity-0 cursor-pointer fa-solid fa-times-circle text-primary-light group-hover:opacity-100 w-fit"
+          onClick={() => {
+            props.onChange(null)
+            setSearchWord('')
+          }}
         />
-      </Combobox.Button>
+      </div>
       <Transition
         enter="transition duration-150 ease-out origin-top"
         enterFrom="transform scale-y-0 opacity-0"

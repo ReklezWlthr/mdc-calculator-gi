@@ -17,6 +17,7 @@ import _ from 'lodash'
 import { findMaxLevel } from '../../../core/utils/data_format'
 import classNames from 'classnames'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
+import { DefaultCharacter } from '@src/data/stores/team_store'
 
 interface CharacterBlockProps {
   index: number
@@ -62,7 +63,11 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
         <div className="w-1/2 px-2 py-3 space-y-2">
           <div className="space-y-1">
             <p className="text-sm font-semibold">Name</p>
-            <PillInput onClick={onOpenModal} value={teamStore.characters[props.index]?.data?.name} />
+            <PillInput
+              onClick={onOpenModal}
+              value={teamStore.characters[props.index]?.data?.name}
+              onClear={() => teamStore.setMember(props.index, { id: null, ...DefaultCharacter })}
+            />
           </div>
           <div className="space-y-1">
             <p className="w-full text-sm font-semibold">Level</p>

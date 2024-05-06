@@ -200,7 +200,7 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; 
                 value={subList.fields[index]?.value?.toString()}
                 onChange={(value) => subList.update(index, { ...subList.fields[index], value })}
                 disabled={!subList.fields[index]?.stat}
-                style="w-1/4"
+                style="!w-1/4"
               />
             </div>
           ))}

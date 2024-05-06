@@ -10,6 +10,7 @@ import { useCallback, useMemo } from 'react'
 import { WeaponModal } from './weapon_modal'
 import { useStat } from '@src/core/hooks/useStat'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
+import { DefaultWeapon } from '@src/data/stores/team_store'
 
 interface StatBlockProps {
   index: number
@@ -48,6 +49,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
         <div className="flex items-center gap-2">
           <PillInput
             onClick={onOpenModal}
+            onClear={() => teamStore.setWeapon(props.index, DefaultWeapon)}
             value={weapon?.data?.name}
             disabled={!teamStore.characters[props.index]?.data}
           />
@@ -108,14 +110,16 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
             <hr className="w-full border border-primary-border" />
             <p className="font-normal text-gray">{weaponBaseAtk}</p>
           </div>
-          <div className="flex items-center gap-2 text-xs">
-            <div className="flex items-center gap-1.5 shrink-0">
-              <img className="w-4 h-4" src={`/icons/${StatIcons[weapon?.data?.ascStat]}`} />
-              {weapon?.data?.ascStat || 'N/A'}
+          {weapon?.data && (
+            <div className="flex items-center gap-2 text-xs">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <img className="w-4 h-4" src={`/icons/${StatIcons[weapon?.data?.ascStat]}`} />
+                {weapon?.data?.ascStat || 'N/A'}
+              </div>
+              <hr className="w-full border border-primary-border" />
+              <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
             </div>
-            <hr className="w-full border border-primary-border" />
-            <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>
-          </div>
+          )}
         </div>
       </div>
     </div>
