@@ -1,5 +1,6 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { getMainStat } from '@src/core/utils/data_format'
+import { findArtifactSet } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { ArtifactSets, MainStat, MainStatValue, SubStat } from '@src/domain/genshin/artifact'
 import { Stats } from '@src/domain/genshin/constant'
@@ -10,15 +11,15 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import _ from 'lodash'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 
-export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; aId?: string }) => {
+export const ArtifactModal = ({ type, index, aId }: { type: number; index?: number; aId?: string }) => {
   const { teamStore, artifactStore, modalStore } = useStore()
 
   const { watch, control, setValue, handleSubmit, reset } = useForm({
     defaultValues: {
-      set: null,
+      setId: null,
       quality: 5,
       level: 20,
       main: _.head(MainStat[type]),
@@ -30,21 +31,19 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; 
   const mainStat = getMainStat(values.main, values.quality, values.level)
   const maxLevel = 20 - (5 - values.quality) * 4
 
+  const setData = useMemo(() => findArtifactSet(values.setId), [values.setId])
+
   const subList = useFieldArray({ control, name: 'subList' })
 
   useEffect(() => {
     if (aId) {
-      const { data, subList, ...rest } = _.find(artifactStore.artifacts, ['id', aId])
+      const { setId, subList, ...rest } = _.find(artifactStore.artifacts, ['id', aId])
 
-      if (data.id) {
+      if (setId) {
         reset({
           ...rest,
+          setId,
           subList: [...subList, ...Array(4 - subList.length).fill({ stat: null, value: null })],
-          set: {
-            name: data.name,
-            value: data.id.toString(),
-            img: `https://enka.network/ui/${data.icon}_4.png`,
-          },
         })
       }
     }
@@ -63,21 +62,20 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; 
     )
   }
 
-  const onSubmit = handleSubmit(({ set, subList, ...rest }) => {
+  const onSubmit = handleSubmit(({ subList, ...rest }) => {
     const id = aId || crypto.randomUUID()
-    const setData = _.find(ArtifactSets, ['id', _.parseInt(set?.value)])
 
     const trimmedSub = _.map(
       _.filter(subList, (item) => item.stat && item.value),
       (item) => ({ ...item, value: parseFloat(item.value) })
     )
-    const data = { id, ...rest, data: setData, subList: trimmedSub }
+    const data = { id, ...rest, subList: trimmedSub }
 
     const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
     const pass = aId ? artifactStore.editArtifact(aId, data) : artifactStore.addArtifact(data)
-    if (pass && cId) {
-      teamStore.setArtifact(cId, rest.type, id)
-      if (rest.type !== oldType && oldType) teamStore.setArtifact(cId, oldType, null)
+    if (pass && index) {
+      teamStore.setArtifact(index, rest.type, id)
+      if (rest.type !== oldType && oldType) teamStore.setArtifact(index, oldType, null)
     }
     modalStore.closeModal()
   })
@@ -93,10 +91,10 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; 
       </div>
       <div className="flex items-center gap-2">
         <div className="border rounded-full w-9 h-9 bg-primary-darker border-primary-light shrink-0">
-          {values?.set?.img && <img src={values?.set?.img} className="scale-105" />}
+          {setData?.icon && <img src={setData?.icon} className="scale-105" />}
         </div>
         <Controller
-          name="set"
+          name="setId"
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
@@ -108,7 +106,7 @@ export const ArtifactModal = ({ type, cId, aId }: { type: number; cId?: string; 
                 img: `https://enka.network/ui/${artifact.icon}_4.png`,
               }))}
               placeholder="Artifact Set"
-              onChange={(value) => field.onChange(value)}
+              onChange={(value) => field.onChange(value?.value)}
             />
           )}
         />

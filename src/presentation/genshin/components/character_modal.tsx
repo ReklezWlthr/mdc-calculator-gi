@@ -10,6 +10,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { useMemo } from 'react'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { DefaultBuild } from '@src/data/stores/build_store'
+import { findWeapon } from '@src/core/utils/finder'
 
 interface CharacterModalProps {
   index: number
@@ -22,6 +23,8 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
     element: [],
     weapon: [],
   })
+
+  const selectedWeaponData = findWeapon(teamStore.characters[index]?.equipments?.weapon?.wId)
 
   const filteredChar = useMemo(
     () =>
@@ -89,16 +92,12 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
             <div
               className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
               onClick={() => {
-                const build = _.find(buildStore.builds, (build) => build.isDefault && build.char === item.name)
+                const build = _.find(buildStore.builds, (build) => build.isDefault && build.cId === item.id)
                 teamStore.setMemberInfo(index, {
-                  id: `l_${item.codeName}`,
-                  data: item,
+                  cId: item.id,
                   equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
                 })
-                if (
-                  item.weapon !== teamStore.characters[index]?.equipments?.weapon?.data?.type &&
-                  teamStore.characters[index]?.equipments?.weapon
-                )
+                if (item.weapon !== selectedWeaponData?.type && teamStore.characters[index]?.equipments?.weapon)
                   teamStore.setWeapon(index, DefaultWeapon)
                 modalStore.closeModal()
               }}
@@ -110,7 +109,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                   <img
                     src="/icons/artifact_icon.png"
                     className="absolute w-7 h-7 top-1 right-1 p-0.5 bg-primary-light rounded-full bg-opacity-80"
-                    title='Has Default Build'
+                    title="Has Default Build"
                   />
                 )}
                 <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">

@@ -11,6 +11,7 @@ import { WeaponModal } from './weapon_modal'
 import { useStat } from '@src/core/hooks/useStat'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultWeapon } from '@src/data/stores/team_store'
+import { findWeapon } from '@src/core/utils/finder'
 
 interface StatBlockProps {
   index: number
@@ -22,7 +23,9 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
   const ascension = weapon?.ascension || 0
   const level = weapon?.level || 1
   const refinement = weapon?.refinement || 1
-  const rarity = weapon?.data?.rarity
+
+  const weaponData = findWeapon(weapon?.wId)
+  const rarity = weaponData?.rarity
 
   const { weaponBaseAtk, weaponSecondary } = useStat(props.index)
 
@@ -50,8 +53,8 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
           <PillInput
             onClick={onOpenModal}
             onClear={() => teamStore.setWeapon(props.index, DefaultWeapon)}
-            value={weapon?.data?.name}
-            disabled={!teamStore.characters[props.index]?.data}
+            value={weaponData?.name}
+            disabled={!teamStore.characters[props.index]?.cId}
           />
           <SelectInput
             onChange={(value) =>
@@ -62,13 +65,13 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
             options={RefinementOptions}
             value={refinement?.toString()}
             style="w-fit"
-            disabled={!weapon?.data || weapon?.data?.name === 'Kagotsurube Isshin'}
+            disabled={!weaponData || weaponData?.name === 'Kagotsurube Isshin'}
           />
         </div>
         <div className="flex gap-2">
           <div className="flex flex-col justify-between w-1/2 gap-1">
             <img
-              src={`https://enka.network/ui/${weapon?.data?.icon || 'UI_EquipIcon_Sword_Blunt'}${
+              src={`https://enka.network/ui/${weaponData?.icon || 'UI_EquipIcon_Sword_Blunt'}${
                 ascension >= 2 ? '_Awaken' : ''
               }.png`}
               className="pt-1 border rounded-lg bg-primary-darker border-primary-border"
@@ -83,7 +86,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
                   onChange={(value) => teamStore.setWeapon(props.index, { level: parseInt(value) || 0 })}
                   options={levels}
                   value={level?.toString()}
-                  disabled={!weapon?.data}
+                  disabled={!weaponData}
                 />
                 <SelectInput
                   onChange={(value) =>
@@ -95,7 +98,7 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
                   options={AscensionOptions}
                   value={ascension?.toString()}
                   style="w-fit"
-                  disabled={!weapon?.data}
+                  disabled={!weaponData}
                 />
               </div>
             </div>
@@ -110,11 +113,11 @@ export const WeaponBlock = observer((props: StatBlockProps) => {
             <hr className="w-full border border-primary-border" />
             <p className="font-normal text-gray">{weaponBaseAtk}</p>
           </div>
-          {weapon?.data && (
+          {weaponData && (
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
-                <img className="w-4 h-4" src={`/icons/${StatIcons[weapon?.data?.ascStat]}`} />
-                {weapon?.data?.ascStat || 'N/A'}
+                <img className="w-4 h-4" src={`/icons/${StatIcons[weaponData?.ascStat]}`} />
+                {weaponData?.ascStat || 'N/A'}
               </div>
               <hr className="w-full border border-primary-border" />
               <p className="font-normal text-gray">{weaponSecondary?.formatted}</p>

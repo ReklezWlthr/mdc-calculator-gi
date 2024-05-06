@@ -8,6 +8,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { getMainStat, getRolls } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatIcons } from '../../../domain/genshin/constant'
+import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
 
 interface ArtifactBlockProps {
   index?: number
@@ -21,12 +22,13 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
 
   const { modalStore, teamStore, artifactStore } = useStore()
   const artifact = _.find(artifactStore.artifacts, ['id', props.aId])
+  const setData = findArtifactSet(artifact?.setId)
 
   const mainStat = getMainStat(artifact?.main, artifact?.quality, artifact?.level)
 
   const onOpenModal = useCallback(() => {
     modalStore.openModal(
-      <ArtifactModal type={props.piece} cId={teamStore.characters[props.index]?.id} aId={props.aId} />
+      <ArtifactModal type={props.piece} index={props.index} aId={props.aId} />
     )
   }, [modalStore, props.index, props.aId])
 
@@ -42,6 +44,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
   }, [artifact])
 
   const wearer = _.find(teamStore.characters, (item) => _.includes(item.equipments.artifacts, props.aId))
+  const charData = findCharacter(wearer?.cId)
 
   return (
     <div
@@ -56,17 +59,14 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
         <div className="p-3 space-y-3">
           <div className="flex gap-4">
             <div className="relative w-16 h-16 shrink-0">
-              <img
-                src={`https://enka.network/ui/${artifact.data.icon}_${artifact.type}.png`}
-                className="w-full h-full"
-              />
+              <img src={`https://enka.network/ui/${setData?.icon}_${artifact.type}.png`} className="w-full h-full" />
               <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                 +{artifact?.level}
               </div>
-              {wearer?.data?.codeName && props.showWearer && (
+              {charData?.codeName && props.showWearer && (
                 <div className="absolute flex items-center justify-center p-1 text-xs bg-opacity-75 rounded-full -top-1 w-7 h-7 -right-3 bg-primary-light">
                   <img
-                    src={`https://enka.network/ui/UI_AvatarIcon_Side_${wearer?.data?.codeName}.png`}
+                    src={`https://enka.network/ui/UI_AvatarIcon_Side_${charData?.codeName}.png`}
                     className="absolute scale-125 bottom-1.5"
                   />
                 </div>
@@ -74,7 +74,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
             </div>
             <div className="flex flex-col items-center w-full gap-1">
               <RarityGauge rarity={artifact?.quality} textSize="text-sm" />
-              <p className="text-xs text-center">{artifact?.data?.name}</p>
+              <p className="text-xs text-center">{setData?.name}</p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs">

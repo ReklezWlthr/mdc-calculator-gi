@@ -2,15 +2,9 @@ import { IBuild } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
+import { DefaultWeapon } from './team_store'
 
 enableStaticRendering(typeof window === 'undefined')
-
-export const DefaultWeapon = {
-  level: 1,
-  ascension: 0,
-  refinement: 1,
-  data: null,
-}
 
 export const DefaultBuild = {
   weapon: DefaultWeapon,
@@ -65,7 +59,7 @@ export class Build {
   setDefault = (bId: string) => {
     if (!bId) return
     const selected = _.find(this.builds, ['id', bId])
-    const others = _.filter(this.builds, (item) => item.id !== bId && selected.char === item.char)
+    const others = _.filter(this.builds, (item) => item.id !== bId && selected.cId === item.cId)
     selected.isDefault = true
     _.forEach(others, (item) => (item.isDefault = false))
     this.builds = [...this.builds]

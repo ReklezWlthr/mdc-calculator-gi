@@ -18,14 +18,14 @@ export const DefaultWeapon = {
   level: 1,
   ascension: 0,
   refinement: 1,
-  data: null,
+  wId: null,
 }
 
 export const DefaultCharacter = {
   level: 1,
   ascension: 0,
   cons: 0,
-  data: null,
+  cId: null,
   equipments: {
     weapon: DefaultWeapon,
     artifacts: Array(5),
@@ -39,7 +39,7 @@ export interface TeamStoreType {
   setMember: (index: number, character: ITeamChar) => void
   setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
   setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
-  setArtifact: (cId: string, type: number, aId: string) => void
+  setArtifact: (index: number, type: number, aId: string) => void
   unequipAll: (index: number) => void
   hydrateCharacters: (data: ITeamChar[]) => void
   hydrate: (data: TeamStoreType) => void
@@ -87,11 +87,10 @@ export class Team {
     this.characters[index] = { ...this.characters[index] }
   }
 
-  setArtifact = (cId: string, type: number, aId: string | null) => {
-    const index = _.findIndex(this.characters, ['id', cId])
+  setArtifact = (index: number, type: number, aId: string | null) => {
     if (index < 0) return
-    _.forEach(this.characters, (character) => {
-      if (character.id === cId) {
+    _.forEach(this.characters, (character, i) => {
+      if (i === index) {
         character.equipments.artifacts[type - 1] = aId
       } else {
         character.equipments.artifacts = _.without(character.equipments.artifacts, aId)

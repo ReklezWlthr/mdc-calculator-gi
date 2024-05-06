@@ -27,25 +27,24 @@ export interface ICharacter {
 }
 
 export interface ITeamChar {
-  id: string
   level: number
   ascension: number
   cons: number
-  data: ICharacter
+  cId: string
   equipments: { weapon: IWeaponEquip; artifacts: string[] }
 }
 
 export interface IBuild {
   id: string
   name: string
-  char: string
+  cId: string
   isDefault: boolean
   weapon: IWeaponEquip
   artifacts: string[]
 }
 
 export interface IArtifact {
-  id: number
+  id: string
   name: string
   icon: string
   rarity: (3 | 4 | 5)[]
@@ -53,7 +52,7 @@ export interface IArtifact {
 
 export interface IArtifactEquip {
   id: string
-  data: IArtifact
+  setId: string
   level: number
   type: number
   main: Stats
@@ -75,7 +74,7 @@ export interface IWeaponEquip {
   level: number
   ascension: number
   refinement: number
-  data: IWeapon
+  wId: string
 }
 
 export enum WeaponType {

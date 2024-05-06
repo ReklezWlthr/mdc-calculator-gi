@@ -10,7 +10,7 @@ export const BuildModal = observer(({ index }: { index: number }) => {
   const char = teamStore.characters[index]
 
   const filteredBuilds = useMemo(
-    () => _.filter(buildStore.builds, (build) => build.char === char?.data?.name),
+    () => _.filter(buildStore.builds, (build) => build.cId === char?.cId),
     [buildStore.builds, char]
   )
 
@@ -32,7 +32,7 @@ export const BuildModal = observer(({ index }: { index: number }) => {
               <PrimaryButton
                 title="Equip"
                 onClick={() => {
-                  _.forEach(build.artifacts, (artifact, i) => teamStore.setArtifact(char?.id, i + 1, artifact))
+                  _.forEach(build.artifacts, (artifact, i) => teamStore.setArtifact(index, i + 1, artifact))
                   teamStore.setWeapon(index, build.weapon)
                   modalStore.closeModal()
                 }}

@@ -41,7 +41,7 @@ export const ArtifactInventory = observer(() => {
   const filteredArtifacts = useMemo(() => {
     if (params.set === null && params.types.length === 0) return artifactStore.artifacts
     let result = artifactStore.artifacts
-    if (params.set) result = _.filter(result, (artifact) => artifact.data?.name === params.set?.name)
+    if (params.set) result = _.filter(result, (artifact) => artifact.setId === params.set?.id)
     if (params.types.length) result = _.filter(result, (artifact) => _.includes(params.types, artifact.type))
     return result
   }, [params.set, params.types])
@@ -73,7 +73,7 @@ export const ArtifactInventory = observer(() => {
             onChange={(value) => setParams({ set: value })}
             style="w-[300px]"
           />
-          <PrimaryButton title='Add New Artifact' onClick={onOpenModal} />
+          <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />
         </div>
       </div>
       <div className="grid w-full grid-cols-5 gap-4">

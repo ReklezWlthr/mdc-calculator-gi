@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { StatIcons, Stats } from '@src/domain/genshin/constant'
 import classNames from 'classnames'
+import { findCharacter, findWeapon } from '@src/core/utils/finder'
 
 interface WeaponModalProps {
   index: number
@@ -27,7 +28,8 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
         (item) => {
           const regex = new RegExp(params.searchWord, 'i')
           const nameMatch = item.name.match(regex)
-          const typeMatch = teamStore.characters[index]?.data?.weapon === item.type
+          const data = findCharacter(teamStore.characters[index]?.cId)
+          const typeMatch = data?.weapon === item.type
           const statMatch = _.size(params.stat) ? _.includes(params.stat, item.ascStat) : true
 
           return nameMatch && typeMatch && statMatch
@@ -78,7 +80,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
             onClick={() => {
-              teamStore.setWeapon(index, { data: item })
+              teamStore.setWeapon(index, { wId: item.id })
               if (item.name === 'Kagotsurube Isshin') teamStore.setWeapon(index, { refinement: 1 })
               modalStore.closeModal()
             }}

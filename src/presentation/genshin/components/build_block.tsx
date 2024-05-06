@@ -1,3 +1,4 @@
+import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IBuild } from '@src/domain/genshin/constant'
 import { GhostButton } from '@src/presentation/components/ghost.button'
@@ -11,6 +12,8 @@ interface BuildBlockProps {
 export const BuildBlock = observer(({ build }: BuildBlockProps) => {
   const { buildStore } = useStore()
 
+  const char = findCharacter(build.cId)
+
   return (
     <div className="flex items-center justify-between w-full px-4 py-3 text-white rounded-lg bg-primary-dark">
       <div className="w-1/2">
@@ -20,7 +23,7 @@ export const BuildBlock = observer(({ build }: BuildBlockProps) => {
           )}
           <p className="w-full truncate">{build.name}</p>
         </div>
-        <p className="text-xs text-gray">Equipped By: {build.char}</p>
+        <p className="text-xs text-gray">Equipped By: {char?.name}</p>
       </div>
       <div className="flex gap-x-2">
         <PrimaryButton title="Set Default" onClick={() => buildStore.setDefault(build.id)} disabled={build.isDefault} />

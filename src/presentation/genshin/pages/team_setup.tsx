@@ -11,6 +11,7 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { GhostButton } from '@src/presentation/components/ghost.button'
 import { BuildModal } from '../components/build_modal'
+import { findCharacter } from '@src/core/utils/finder'
 
 const CharacterSelect = ({
   onClick,
@@ -50,7 +51,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
       const pass = buildStore.saveBuild({
         id,
         name,
-        char: character?.data?.name,
+        cId: character?.cId,
         isDefault: false,
         ...character?.equipments,
       })
@@ -94,14 +95,18 @@ export const TeamSetup = observer(() => {
     <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-auto">
       <div className="w-1/3">
         <div className="flex justify-center w-full gap-4 pt-1 pb-3">
-          {_.map(teamStore?.characters, (item, index) => (
-            <CharacterSelect
-              key={`char_select_${index}`}
-              onClick={() => setSelected(index)}
-              isSelected={index === selected}
-              codeName={item.data?.codeName}
-            />
-          ))}
+          {_.map(teamStore?.characters, (item, index) => {
+            const data = findCharacter(item.cId)
+
+            return (
+              <CharacterSelect
+                key={`char_select_${index}`}
+                onClick={() => setSelected(index)}
+                isSelected={index === selected}
+                codeName={data?.codeName}
+              />
+            )
+          })}
         </div>
         <CharacterBlock index={selected} />
         <div className="flex gap-x-2">

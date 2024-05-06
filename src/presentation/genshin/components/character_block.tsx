@@ -18,6 +18,7 @@ import { findMaxLevel } from '../../../core/utils/data_format'
 import classNames from 'classnames'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultCharacter } from '@src/data/stores/team_store'
+import { findCharacter } from '@src/core/utils/finder'
 
 interface CharacterBlockProps {
   index: number
@@ -28,9 +29,11 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   const ascension = teamStore.characters[props.index]?.ascension || 0
   const level = teamStore.characters[props.index]?.level || 1
   const cons = teamStore.characters[props.index]?.cons || 0
-  const rarity = teamStore.characters[props.index]?.data?.rarity
 
-  const isEmpty = !teamStore.characters[props.index]?.data
+  const characterData = findCharacter(teamStore.characters[props.index]?.cId)
+  const rarity = characterData?.rarity
+
+  const isEmpty = !characterData
 
   const levels = useMemo(
     () =>
@@ -54,9 +57,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
       <div className="flex">
         <div className="flex items-center w-1/2 px-5 py-3">
           <img
-            src={`https://enka.network/ui/UI_AvatarIcon_${
-              teamStore.characters[props.index]?.data?.codeName || 'Paimon'
-            }.png`}
+            src={`https://enka.network/ui/UI_AvatarIcon_${characterData?.codeName || 'Paimon'}.png`}
             className="object-contain w-full border rounded-lg bg-primary-darker border-primary-border aspect-square"
           />
         </div>
@@ -65,8 +66,8 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             <p className="text-sm font-semibold">Name</p>
             <PillInput
               onClick={onOpenModal}
-              value={teamStore.characters[props.index]?.data?.name}
-              onClear={() => teamStore.setMember(props.index, { id: null, ...DefaultCharacter })}
+              value={characterData?.name}
+              onClear={() => teamStore.setMember(props.index, DefaultCharacter)}
             />
           </div>
           <div className="space-y-1">
@@ -107,13 +108,13 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             <div className="flex gap-0.5">
               {/* <p className="[writing-mode:vertical-rl] rotate-180 text-[10px]">Weapon</p> */}
               <div className="p-1 rounded-full w-11 h-11 bg-primary">
-                <img src={WeaponIcon[teamStore.characters[props.index]?.data?.weapon]} />
+                <img src={WeaponIcon[characterData?.weapon]} />
               </div>
             </div>
             <RarityGauge rarity={rarity} />
             <div className="flex gap-0.5">
               <div className="p-1 rounded-full w-11 h-11 bg-primary">
-                <img src={ElementIcon[teamStore.characters[props.index]?.data?.element]} />
+                <img src={ElementIcon[characterData?.element]} />
               </div>
               {/* <p className="[writing-mode:vertical-rl] text-[10px]">Element</p> */}
             </div>
