@@ -56,7 +56,10 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
         className={classNames('w-10 h-10 p-2 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
           'bg-primary-lighter': values.type === buttonType,
         })}
-        onClick={() => setValue('type', buttonType)}
+        onClick={() => {
+          setValue('type', buttonType)
+          setValue('main', _.head(MainStat[buttonType]))
+        }}
       >
         <img src={icon} />
       </div>
