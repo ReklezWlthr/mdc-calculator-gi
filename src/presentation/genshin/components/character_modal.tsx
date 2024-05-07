@@ -22,6 +22,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
     searchWord: '',
     element: [],
     weapon: [],
+    hasBuild: false,
   })
 
   const selectedWeaponData = findWeapon(teamStore.characters[index]?.equipments?.weapon?.wId)
@@ -35,8 +36,9 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           const nameMatch = item.name.match(regex)
           const elmMatch = _.size(params.element) ? _.includes(params.element, item.element) : true
           const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, item.weapon) : true
+          const buildMatch = params.hasBuild ? _.find(buildStore.builds, ['cId', item.id]) : true
 
-          return nameMatch && elmMatch && weaponMatch
+          return nameMatch && elmMatch && weaponMatch && !!buildMatch
         }
       ),
     [params]
@@ -83,10 +85,18 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           <FilterIcon type="weapon" value={WeaponType.BOW} />
           <FilterIcon type="weapon" value={WeaponType.CATALYST} />
         </div>
+        <img
+          src="/icons/artifact_icon.png"
+          className={classNames('w-8 h-8 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
+            'bg-primary-lighter': params.hasBuild,
+          })}
+          onClick={() => setParams({ hasBuild: !params.hasBuild })}
+          title="Has Default Build"
+        />
       </div>
       <div className="grid w-full grid-cols-9 gap-4">
         {_.map(filteredChar, (item) => {
-          const build = _.find(buildStore.builds, ['char', item.name])
+          const build = _.find(buildStore.builds, ['cId', item.id])
 
           return (
             <div
