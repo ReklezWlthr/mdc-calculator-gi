@@ -9,15 +9,17 @@ import { getMainStat, getRolls } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatIcons } from '../../../domain/genshin/constant'
 import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
+import classNames from 'classnames'
 
 interface ArtifactBlockProps {
   index?: number
   piece: number
   aId: string
   showWearer?: boolean
+  canEdit?: boolean
 }
 
-export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
+export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlockProps) => {
   const pieceName = ArtifactPiece[props.piece]
 
   const { modalStore, teamStore, artifactStore } = useStore()
@@ -27,9 +29,7 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
   const mainStat = getMainStat(artifact?.main, artifact?.quality, artifact?.level)
 
   const onOpenModal = useCallback(() => {
-    modalStore.openModal(
-      <ArtifactModal type={props.piece} index={props.index} aId={props.aId} />
-    )
+    modalStore.openModal(<ArtifactModal type={props.piece} index={props.index} aId={props.aId} />)
   }, [modalStore, props.index, props.aId])
 
   const subListWithRolls = useMemo(() => {
@@ -48,8 +48,13 @@ export const ArtifactBlock = observer((props: ArtifactBlockProps) => {
 
   return (
     <div
-      className="flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[300px] hover:scale-[97%] cursor-pointer"
-      onClick={onOpenModal}
+      className={classNames(
+        'flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[300px]',
+        {
+          'hover:scale-[97%] cursor-pointer': canEdit,
+        }
+      )}
+      onClick={() => canEdit && onOpenModal()}
     >
       <div className="flex items-center justify-center gap-1 px-5 py-2 rounded-t-lg bg-primary-light">
         <img src={`/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />

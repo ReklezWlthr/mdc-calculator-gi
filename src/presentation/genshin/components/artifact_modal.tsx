@@ -98,6 +98,11 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
     })
   }, [artifactStore.artifacts, teamStore.characters, buildStore.builds, aId])
 
+  const onUnEquip = useCallback(() => {
+    const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
+    teamStore.setArtifact(index, oldType, null)
+  }, [index])
+
   return (
     <div className="w-[300px] p-4 space-y-4 font-semibold text-white rounded-xl bg-primary-dark">
       <div className="flex justify-center gap-2">
@@ -222,8 +227,11 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           ))}
         </div>
       </div>
-      <div className="flex justify-end gap-2">
-        {aId && <GhostButton title="Delete" onClick={onDelete} />}
+      <div className="flex justify-between gap-2">
+        <div className="flex gap-2">
+          {index >= 0 && <GhostButton icon="fa-solid fa-arrow-up-from-bracket" onClick={onUnEquip} tooltip="Unequip" />}
+          {aId && <GhostButton icon="fa-regular fa-trash-alt" onClick={onDelete} tooltip="Delete" />}
+        </div>
         <PrimaryButton title="Confirm" onClick={onSubmit} />
       </div>
     </div>

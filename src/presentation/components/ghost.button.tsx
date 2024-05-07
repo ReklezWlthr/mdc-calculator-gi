@@ -6,9 +6,10 @@ export interface GhostButtonPropsType {
   title?: string
   disabled?: boolean
   icon?: string | React.ReactNode
+  tooltip?: string
 }
 
-export const GhostButton = ({ onClick, title, disabled, icon }: GhostButtonPropsType) => {
+export const GhostButton = ({ onClick, title, disabled, icon, tooltip }: GhostButtonPropsType) => {
   //---------------------
   // CONST
   //---------------------
@@ -29,6 +30,7 @@ export const GhostButton = ({ onClick, title, disabled, icon }: GhostButtonProps
       className={classNames('py-2 px-3 rounded-lg border bg-transparent', colorClasses)}
       disabled={disabled}
       onClick={!disabled ? onClick : undefined}
+      title={tooltip}
     >
       {icon && <>{typeof icon === 'string' ? <i className={icon} /> : <>{icon}</>}</>}
       {title && <p className="text-sm font-bold">{title}</p>}

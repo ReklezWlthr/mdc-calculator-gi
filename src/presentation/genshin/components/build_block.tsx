@@ -7,15 +7,19 @@ import { observer } from 'mobx-react-lite'
 
 interface BuildBlockProps {
   build: IBuild
+  onClick: () => void
 }
 
-export const BuildBlock = observer(({ build }: BuildBlockProps) => {
+export const BuildBlock = observer(({ build, onClick }: BuildBlockProps) => {
   const { buildStore } = useStore()
 
   const char = findCharacter(build.cId)
 
   return (
-    <div className="flex items-center justify-between w-full px-4 py-3 text-white rounded-lg bg-primary-dark">
+    <div
+      className="flex items-center justify-between w-full px-4 py-3 text-white duration-200 rounded-lg cursor-pointer bg-primary-dark active:scale-95"
+      onClick={onClick}
+    >
       <div className="w-1/2">
         <div className="flex items-center gap-2">
           {build.isDefault && (
