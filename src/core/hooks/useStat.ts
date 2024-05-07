@@ -1,11 +1,18 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { correctSubStat, getBaseStat, getMainStat, getWeaponBase, getWeaponBonus } from '../utils/data_format'
-import { toPercentage } from '../utils/converter'
+import {
+  correctSubStat,
+  getBaseStat,
+  getMainStat,
+  getSetCount,
+  getWeaponBase,
+  getWeaponBonus,
+} from '../utils/data_format'
 import { useCallback } from 'react'
 import _ from 'lodash'
 import { Stats } from '@src/domain/genshin/constant'
 import { AscensionGrowth } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
+import { ArtifactSets } from '@src/data/db/artifacts'
 
 export const useStat = (
   cId: string,
@@ -25,6 +32,9 @@ export const useStat = (
   const weaponBaseAtk = getWeaponBase(weapon?.tier, wLevel, wAsc, weapon?.rarity)
   const weaponSecondary = getWeaponBonus(weapon?.baseStat, wLevel)
 
+  const artifactData = _.map(artifacts, (aId) => _.find(artifactStore.artifacts, ['id', aId]))
+  const setBonus = getSetCount(artifactStore.artifacts, artifacts)
+
   const getTotalStat = useCallback(
     (stat: string) => {
       const fromWeapon = weapon?.ascStat === stat ? weaponSecondary : 0
@@ -32,7 +42,6 @@ export const useStat = (
         (character?.stat?.ascStat === stat ? _.max([0, cAsc - 2]) : 0) *
         AscensionGrowth[character?.stat?.ascStat]?.[character?.rarity - 4]
 
-      const artifactData = _.map(artifacts, (aId) => _.find(artifactStore.artifacts, ['id', aId]))
       const fromMainStat = _.sum(
         _.map(
           _.filter(artifactData, (item) => item?.main === stat),
@@ -44,10 +53,19 @@ export const useStat = (
           _.sumBy(_.filter(item?.subList, ['stat', stat]), (sub) => correctSubStat(sub.stat, sub.value))
         )
       )
+      const fromSetBonus = _.sum(
+        _.map(setBonus, (value, key) => {
+          if (value >= 2) {
+            const bonuses = _.filter(_.find(ArtifactSets, ['id', key])?.bonus, ['stat', stat])
+            return _.sumBy(bonuses, 'value')
+          }
+          return 0
+        })
+      )
 
-      return _.sum([fromWeapon, fromAscension, fromMainStat, fromSubStat])
+      return _.sum([fromWeapon, fromAscension, fromMainStat, fromSubStat, fromSetBonus])
     },
-    [weapon, character]
+    [weapon, character, artifactData]
   )
 
   return {

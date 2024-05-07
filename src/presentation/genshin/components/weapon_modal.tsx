@@ -100,7 +100,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
                 className="object-contain rounded-t-lg bg-primary-darker aspect-square"
               />
             </div>
-            <p className="flex justify-center w-full px-2 py-1 text-center line-clamp-2">{item.name}</p>
+            <p className="w-full px-2 py-1 text-center line-clamp-2">{item.name}</p>
           </div>
         ))}
       </div>

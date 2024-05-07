@@ -1,5 +1,5 @@
 import { MainStatValue, SubStatMap } from '@src/domain/genshin/artifact'
-import { Stats } from '@src/domain/genshin/constant'
+import { IArtifactEquip, Stats } from '@src/domain/genshin/constant'
 import {
   AscensionScaling,
   FiveStarScaling,
@@ -74,4 +74,18 @@ export const correctSubStat = (stat: Stats, value: number) => {
   const bonusRolls = _.round((_.max([roundValue, accLow]) % accLow) / bonus)
 
   return accLow + bonus * bonusRolls
+}
+
+export const getSetCount = (artifacts: IArtifactEquip[], aIds: string[]) => {
+  const artifactData = _.map(aIds, (aId) => _.find(artifacts, ['id', aId]))
+  const setBonus: Record<string, number> = _.reduce(
+    artifactData,
+    (acc, curr) => {
+      if (!curr) return acc
+      acc[curr.setId] ? (acc[curr.setId] += 1) : (acc[curr.setId] = 1)
+      return acc
+    },
+    {}
+  )
+  return setBonus
 }

@@ -9,9 +9,9 @@ import { ArtifactBlock } from '../components/artifact_block'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
-import { ArtifactSets } from '@src/domain/genshin/artifact'
 import { ArtifactModal } from '../components/artifact_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { ArtifactSets } from '@src/data/db/artifacts'
 
 export const ArtifactInventory = observer(() => {
   const { params, setParams } = useParams({

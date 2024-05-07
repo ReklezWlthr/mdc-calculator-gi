@@ -1,6 +1,6 @@
+import { ArtifactSets } from '@src/data/db/artifacts'
 import { Characters } from '@src/data/db/characters'
 import { Weapons } from '@src/data/db/weapons'
-import { ArtifactSets } from '@src/domain/genshin/artifact'
 import _ from 'lodash'
 
 export const findWeapon = (wId: string) => _.find(Weapons, (item) => item.id === wId)

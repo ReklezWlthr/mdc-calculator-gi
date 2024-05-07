@@ -28,6 +28,8 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
 export const GenshinHome = observer(() => {
   const [page, setPage] = useState<GenshinPage>(GenshinPage.TEAM)
 
+  useLocalUpdater('genshin')
+
   return (
     <div className="flex w-full h-[calc(100vh-68px)]">
       <Sidebar onChange={setPage} currentPage={page} />

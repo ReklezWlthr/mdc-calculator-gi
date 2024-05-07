@@ -100,15 +100,15 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
 
           return (
             <div
-              className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
+              className="w-full text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
               onClick={() => {
                 const build = _.find(buildStore.builds, (build) => build.isDefault && build.cId === item.id)
+                if (item.weapon !== selectedWeaponData?.type && teamStore.characters[index]?.equipments?.weapon)
+                  teamStore.setWeapon(index, DefaultWeapon)
                 teamStore.setMemberInfo(index, {
                   cId: item.id,
                   equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
                 })
-                if (item.weapon !== selectedWeaponData?.type && teamStore.characters[index]?.equipments?.weapon)
-                  teamStore.setWeapon(index, DefaultWeapon)
                 modalStore.closeModal()
               }}
               key={item.name}
@@ -130,7 +130,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                   className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                 />
               </div>
-              <p className="flex justify-center px-2 py-1 truncate">{item.name}</p>
+              <p className="w-full px-2 py-1 text-center truncate">{item.name}</p>
             </div>
           )
         })}

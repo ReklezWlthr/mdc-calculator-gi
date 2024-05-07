@@ -48,6 +48,7 @@ export interface IArtifact {
   name: string
   icon: string
   rarity: (3 | 4 | 5)[]
+  bonus: { stat: Stats; value: number }[]
 }
 
 export interface IArtifactEquip {
@@ -134,6 +135,7 @@ export enum Stats {
   ANEMO_DMG = 'Anemo DMG%',
   HEAL = 'Healing Bonus',
   I_HEALING = 'Incoming Healing',
+  SHIELD = 'Shield Strength'
 }
 
 export const StatIcons = {
