@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite'
 import { ArtifactInventory } from './artifact_inventory'
 import { MyBuilds } from './my_builds'
 import { ImportExport } from './import'
+import { Calculator } from './calc'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
   const updateUtil = useLocalUpdater('genshin')
@@ -20,6 +21,8 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
       return <MyBuilds />
     case GenshinPage.IMPORT:
       return <ImportExport {...updateUtil} />
+    case GenshinPage.DMG:
+      return <Calculator />
     default:
       return
   }

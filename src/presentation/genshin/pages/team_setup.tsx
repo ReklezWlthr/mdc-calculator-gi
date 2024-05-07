@@ -122,14 +122,14 @@ export const TeamSetup = observer(() => {
       <div className="w-1/5 space-y-5">
         <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
         <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
-        <div>
+        <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
           {_.map(
             getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts),
             (item, key) =>
               item >= 2 && (
-                <div key={key} className="flex gap-2 text-white">
-                  <p>{_.find(ArtifactSets, ['id', key])?.name}</p>
-                  <p>{_.floor(item / 2) * 2}</p>
+                <div key={key} className="flex items-center justify-between w-full gap-3 text-xs text-white">
+                  <p className="w-full line-clamp-2">{_.find(ArtifactSets, ['id', key])?.name}</p>
+                  <p className="px-2 py-0.5 rounded-lg bg-primary-lighter bg-opacity-40">{_.floor(item / 2) * 2}</p>
                 </div>
               )
           )}

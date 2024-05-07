@@ -1,10 +1,7 @@
-import { useCallback, useMemo, useState } from 'react'
-import { CharacterBlock } from '../components/character_block'
+import { useCallback, useMemo } from 'react'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
-import { StatBlock } from '../components/stat_block'
-import { WeaponBlock } from '../components/weapon_block'
 import { ArtifactBlock } from '../components/artifact_block'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
@@ -39,9 +36,9 @@ export const ArtifactInventory = observer(() => {
   }
 
   const filteredArtifacts = useMemo(() => {
-    if (params.set === null && params.types.length === 0) return artifactStore.artifacts
+    if (!params.set && params.types.length === 0) return artifactStore.artifacts
     let result = artifactStore.artifacts
-    if (params.set) result = _.filter(result, (artifact) => artifact.setId === params.set?.id)
+    if (params.set) result = _.filter(result, (artifact) => artifact.setId === params.set)
     if (params.types.length) result = _.filter(result, (artifact) => _.includes(params.types, artifact.type))
     return result
   }, [params.set, params.types])
@@ -63,14 +60,14 @@ export const ArtifactInventory = observer(() => {
             <TypeButton icon="/icons/circlet_of_logos.png" buttonType={3} />
           </div>
           <SelectTextInput
-            value={params.set?.value}
+            value={params.set}
             options={_.map(ArtifactSets, (artifact) => ({
               name: artifact.name,
               value: artifact.id.toString(),
               img: `https://enka.network/ui/${artifact.icon}_4.png`,
             }))}
             placeholder="Artifact Set"
-            onChange={(value) => setParams({ set: value })}
+            onChange={(value) => setParams({ set: value?.value })}
             style="w-[300px]"
           />
           <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />

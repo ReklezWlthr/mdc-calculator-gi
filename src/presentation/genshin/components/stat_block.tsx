@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
 import { toPercentage } from '@src/core/utils/converter'
 import { useStat } from '@src/core/hooks/useStat'
-import { findCharacter, findWeapon } from '@src/core/utils/finder'
 
 interface StatBlockProps {
   index: number
@@ -39,10 +38,10 @@ export const StatBlock = observer((props: StatBlockProps) => {
         <p className="shrink-0">{title}</p>
         <hr className="w-full border border-primary-border" />
         <div className="flex flex-col items-end shrink-0">
-          <p className="font-normal text-gray">{_.floor(base + bonus).toLocaleString()}</p>
+          <p className="font-normal text-gray">{_.round(base + bonus).toLocaleString()}</p>
           <p className="font-normal text-neutral-400 text-[9px]">
-            {base.toLocaleString()}
-            <span className="text-genshin-cryo">{` +${_.floor(bonus).toLocaleString()}`}</span>
+            {_.round(base).toLocaleString()}
+            <span className="text-genshin-cryo">{` +${_.round(bonus).toLocaleString()}`}</span>
           </p>
         </div>
       </div>
@@ -70,7 +69,7 @@ export const StatBlock = observer((props: StatBlockProps) => {
       <DataRow title="Geo DMG%" value={toPercentage(stat?.geo)} />
       <DataRow title="Dendro DMG%" value={toPercentage(stat?.dendro)} />
       <DataRow title="DMG%" value={toPercentage(0)} />
-      <DataRow title="Shield Strength" value={toPercentage(0)} />
+      <DataRow title="Shield Strength" value={toPercentage(stat?.shield)} />
     </div>
   )
 })

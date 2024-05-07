@@ -135,7 +135,8 @@ export enum Stats {
   ANEMO_DMG = 'Anemo DMG%',
   HEAL = 'Healing Bonus',
   I_HEALING = 'Incoming Healing',
-  SHIELD = 'Shield Strength'
+  SHIELD = 'Shield Strength',
+  ALL_DMG = 'DMG%'
 }
 
 export const StatIcons = {

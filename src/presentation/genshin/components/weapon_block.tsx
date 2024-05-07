@@ -115,7 +115,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
               <p>Base ATK</p>
             </div>
             <hr className="w-full border border-primary-border" />
-            <p className="font-normal text-gray">{weaponBaseAtk}</p>
+            <p className="font-normal text-gray">{_.round(weaponBaseAtk)}</p>
           </div>
           {weaponData && (
             <div className="flex items-center gap-2 text-xs">

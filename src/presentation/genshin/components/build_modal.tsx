@@ -19,12 +19,10 @@ export const BuildModal = observer(({ index }: { index: number }) => {
       <p className="text-lg font-bold">Saved Builds</p>
       {filteredBuilds.length ? (
         _.map(filteredBuilds, (build) => (
-          <div className="flex items-center justify-between w-full px-2 text-white">
+          <div className="flex items-center justify-between w-full px-2 text-white" key={build.id}>
             <div className="w-1/2">
               <div className="flex items-center gap-2">
-                {build.isDefault && (
-                  <i className="text-xs fa-solid fa-check-circle text-genshin-dendro" title="Default Build" />
-                )}
+                {build.isDefault && <i className="text-xs fa-solid fa-star text-genshin-geo" title="Default Build" />}
                 <p className="w-full truncate">{build.name}</p>
               </div>
             </div>
@@ -42,7 +40,10 @@ export const BuildModal = observer(({ index }: { index: number }) => {
         ))
       ) : (
         <div className="flex flex-col items-center justify-center w-full text-gray">
-          <img src="https://cdn.wanderer.moe/genshin-impact/emotes/paimon-s-paintings-set-2-9.png" className='w-32 h-32' />
+          <img
+            src="https://cdn.wanderer.moe/genshin-impact/emotes/paimon-s-paintings-set-2-9.png"
+            className="w-32 h-32"
+          />
           <p>No Saved Build</p>
         </div>
       )}

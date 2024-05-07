@@ -91,5 +91,7 @@ export const useStat = (
     geo: getTotalStat(Stats.GEO_DMG),
     dendro: getTotalStat(Stats.DENDRO_DMG),
     anemo: getTotalStat(Stats.ANEMO_DMG),
+    shield: getTotalStat(Stats.SHIELD),
+    dmg: getTotalStat(Stats.ALL_DMG),
   }
 }
