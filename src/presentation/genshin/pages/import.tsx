@@ -1,7 +1,12 @@
+import { useStore } from '@src/data/providers/app_store_provider'
+import { CommonModal } from '@src/presentation/components/common_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { observer } from 'mobx-react-lite'
+import { useCallback } from 'react'
 
 export const ImportExport = observer(({ data, updateData }: { data; updateData: (data) => void }) => {
+  const { modalStore } = useStore()
+
   const saveFile = async (blob: Blob, suggestedName: string) => {
     const blobURL = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -16,6 +21,16 @@ export const ImportExport = observer(({ data, updateData }: { data; updateData: 
       a.remove()
     }, 1000)
   }
+
+  const onOpenConfirmModal = useCallback((build: number, artifact: number, onConfirm: () => void) => {
+    modalStore.openModal(
+      <CommonModal
+        title="Overwrite Data?"
+        desc={`The file contains ${build} builds and ${artifact} artifacts. Are you sure you want to overwrite the current data with this?`}
+        onConfirm={onConfirm}
+      />
+    )
+  }, [])
 
   return (
     <div className="flex w-full gap-5 p-5 overflow-y-scroll text-white">
@@ -36,8 +51,11 @@ export const ImportExport = observer(({ data, updateData }: { data; updateData: 
             const file = event.target.files[0]
             const reader = new FileReader()
             reader.addEventListener('load', (event) => {
-              localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
-              updateData(event.target.result)
+              const data = JSON.parse(event.target.result.toString())
+              onOpenConfirmModal(data?.builds?.length, data?.artifacts?.length, () => {
+                localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
+                updateData(event.target.result)
+              })
             })
             reader.readAsText(file)
           }}
