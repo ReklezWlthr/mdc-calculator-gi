@@ -12,6 +12,8 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { GhostButton } from '@src/presentation/components/ghost.button'
 import { BuildModal } from '../components/build_modal'
 import { findCharacter } from '@src/core/utils/finder'
+import { getSetCount } from '@src/core/utils/data_format'
+import { ArtifactSets } from '@src/data/db/artifacts'
 
 const CharacterSelect = ({
   onClick,
@@ -81,7 +83,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
 export const TeamSetup = observer(() => {
   const [selected, setSelected] = useState(0)
 
-  const { teamStore, modalStore } = useStore()
+  const { teamStore, modalStore, artifactStore } = useStore()
 
   const onOpenSaveModal = useCallback(() => {
     modalStore.openModal(<SaveBuildModal index={selected} />)
@@ -120,6 +122,18 @@ export const TeamSetup = observer(() => {
       <div className="w-1/5 space-y-5">
         <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
         <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
+        <div>
+          {_.map(
+            getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts),
+            (item, key) =>
+              item >= 2 && (
+                <div key={key} className="flex gap-2 text-white">
+                  <p>{_.find(ArtifactSets, ['id', key])?.name}</p>
+                  <p>{_.floor(item / 2) * 2}</p>
+                </div>
+              )
+          )}
+        </div>
       </div>
       <div className="w-1/5 space-y-5">
         <ArtifactBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
