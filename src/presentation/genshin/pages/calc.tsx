@@ -54,7 +54,7 @@ export const Calculator = observer(({}: {}) => {
   )
 
   return (
-    <div className="flex w-full gap-5 p-5 overflow-y-scroll text-white">
+    <div className="flex w-full gap-5 p-5 text-white">
       <div className="w-1/2 rounded-lg bg-primary-darker h-fit">
         <p className="px-4 py-3 text-lg font-bold text-center rounded-t-lg bg-primary-light">Self Conditionals</p>
         <div className="h-[200px] px-4 py-3 space-y-3 overflow-y-auto">

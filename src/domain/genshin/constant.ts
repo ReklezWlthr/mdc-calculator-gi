@@ -204,3 +204,8 @@ export const RefinementOptions = [
   { name: 'R4', value: '4' },
   { name: 'R5', value: '5' },
 ]
+
+export const PropMap = {
+  level: 4001,
+  ascension: 1002,
+}

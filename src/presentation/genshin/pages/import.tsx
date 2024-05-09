@@ -1,4 +1,6 @@
 import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
+import { toLocalStructure } from '@src/core/utils/converter'
+import { getAccountData } from '@src/core/utils/fetcher'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
@@ -36,15 +38,25 @@ export const ImportExport = observer(() => {
   }, [])
 
   return (
-    <div className="flex w-full gap-5 p-5 overflow-y-scroll text-white">
-      <div className="w-1/5 space-y-2">
+    <div className="flex w-full gap-5 p-5 text-white">
+      <div className="w-1/4 space-y-2">
         <div className="font-bold">Import</div>
-        <PrimaryButton
-          title="Import"
-          onClick={() => {
-            document.getElementById('importer').click()
-          }}
-        />
+        <div className="flex gap-x-2">
+          <PrimaryButton
+            title="Import from File"
+            onClick={() => {
+              document.getElementById('importer').click()
+            }}
+          />
+          <PrimaryButton
+            title="Import from UID"
+            onClick={async () => {
+              // const rawData = await getAccountData('801433054')
+              // console.log(toLocalStructure(rawData))
+            }}
+          />
+        </div>
+
         <input
           id="importer"
           className="hidden"
@@ -64,7 +76,7 @@ export const ImportExport = observer(() => {
           }}
         />
       </div>
-      <div className="w-1/5 space-y-2">
+      <div className="w-1/4 space-y-2">
         <div className="font-bold">Export</div>
         <PrimaryButton
           title="Export"

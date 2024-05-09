@@ -32,7 +32,7 @@ export const GenshinHome = observer(() => {
   useLocalUpdater('genshin')
 
   return (
-    <div className="flex flex-shrink w-full h-full">
+    <div className="flex flex-shrink w-full h-full overflow-y-auto">
       <Sidebar onChange={setPage} currentPage={page} />
       <InternalPage page={page} />
     </div>
