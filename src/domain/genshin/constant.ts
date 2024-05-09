@@ -49,6 +49,7 @@ export interface IArtifact {
   icon: string
   rarity: (3 | 4 | 5)[]
   bonus: { stat: Stats; value: number }[]
+  desc: string[]
 }
 
 export interface IArtifactEquip {

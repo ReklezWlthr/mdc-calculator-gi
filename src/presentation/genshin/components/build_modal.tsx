@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
 import { useMemo } from 'react'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { getEmote } from '@src/core/utils/fetcher'
 
 export const BuildModal = observer(({ index }: { index: number }) => {
   const { buildStore, teamStore, modalStore } = useStore()
@@ -40,10 +41,7 @@ export const BuildModal = observer(({ index }: { index: number }) => {
         ))
       ) : (
         <div className="flex flex-col items-center justify-center w-full text-gray">
-          <img
-            src="https://cdn.wanderer.moe/genshin-impact/emotes/paimon-s-paintings-set-2-9.png"
-            className="w-32 h-32"
-          />
+          <img src={getEmote('paimon-s-paintings-set-2-9')} className="w-32 h-32" />
           <p>No Saved Build</p>
         </div>
       )}

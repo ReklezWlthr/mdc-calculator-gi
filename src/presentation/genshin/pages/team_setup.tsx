@@ -14,6 +14,7 @@ import { BuildModal } from '../components/build_modal'
 import { findCharacter } from '@src/core/utils/finder'
 import { getSetCount } from '@src/core/utils/data_format'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
+import { Tooltip } from '@src/presentation/components/tooltip'
 
 const CharacterSelect = ({
   onClick,
@@ -125,13 +126,34 @@ export const TeamSetup = observer(() => {
         <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
           {_.map(
             getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts),
-            (item, key) =>
-              item >= 2 && (
-                <div key={key} className="flex items-center justify-between w-full gap-3 text-xs text-white">
-                  <p className="w-full line-clamp-2">{_.find(ArtifactSets, ['id', key])?.name}</p>
-                  <p className="px-2 py-0.5 rounded-lg bg-primary-lighter bg-opacity-40">{_.floor(item / 2) * 2}</p>
-                </div>
+            (item, key) => {
+              const set = _.find(ArtifactSets, ['id', key])
+              const count = _.floor(item / 2) * 2
+              return (
+                item >= 2 && (
+                  <Tooltip
+                    title={set?.name}
+                    body={
+                      <div className="space-y-1">
+                        <p className={count < 2 && 'opacity-40'}>
+                          <b>2 Piece:</b> {set.desc[0]}
+                        </p>
+                        <p className={count < 4 && 'opacity-40'}>
+                          <b>4 Piece:</b> {set.desc[1]}
+                        </p>
+                      </div>
+                    }
+                    style="w-[400px]"
+                    key={key}
+                  >
+                    <div className="flex items-center justify-between w-full gap-3 text-xs text-white">
+                      <p className="w-full line-clamp-2">{set?.name}</p>
+                      <p className="px-2 py-0.5 rounded-lg bg-primary-lighter bg-opacity-40">{count}</p>
+                    </div>
+                  </Tooltip>
+                )
               )
+            }
           )}
         </div>
       </div>

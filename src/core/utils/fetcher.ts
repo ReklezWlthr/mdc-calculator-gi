@@ -11,3 +11,5 @@ export const getAccountData = async (uid: string) => {
 
   return (await response.json()) as Record<string, any>
 }
+
+export const getEmote = (emote: string) => `https://cdn.wanderer.moe/genshin-impact/emotes/${emote}.png`

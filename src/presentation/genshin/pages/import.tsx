@@ -30,6 +30,7 @@ export const ImportExport = observer(() => {
   const onOpenConfirmModal = useCallback((build: number, artifact: number, onConfirm: () => void) => {
     modalStore.openModal(
       <CommonModal
+        icon="fa-solid fa-circle-question text-genshin-geo"
         title="Overwrite Data?"
         desc={`The file contains ${build} builds and ${artifact} artifacts. Are you sure you want to overwrite the current data with this?`}
         onConfirm={onConfirm}
