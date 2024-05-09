@@ -30,9 +30,11 @@ function MyApp({ Component, pageProps }) {
         <title>HoYoverse Calculator</title>
       </Head>
       <QueryClientProvider client={queryClient}>
-        <NavBar />
-        <Modal />
-        <Component {...pageProps} />
+        <div className="flex flex-col w-screen h-screen overflow-x-hidden">
+          <NavBar />
+          <Modal />
+          <Component {...pageProps} />
+        </div>
       </QueryClientProvider>
     </StoreProvider>
   )

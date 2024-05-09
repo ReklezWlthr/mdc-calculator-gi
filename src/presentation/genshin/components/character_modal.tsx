@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { Characters } from '@src/data/db/characters'
+import { Characters } from '@src/data/db/genshin/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
 import { Element, ElementIcon, WeaponIcon, WeaponType } from '@src/domain/genshin/constant'

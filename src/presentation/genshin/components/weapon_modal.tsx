@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { Weapons } from '@src/data/db/weapons'
+import { Weapons } from '@src/data/db/genshin/weapons'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
 import { TextInput } from '@src/presentation/components/inputs/text_input'

@@ -10,8 +10,6 @@ import { ImportExport } from './import'
 import { Calculator } from './calc'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
-  const updateUtil = useLocalUpdater('genshin')
-
   switch (page) {
     case GenshinPage.TEAM:
       return <TeamSetup />
@@ -20,7 +18,7 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
     case GenshinPage.MY_CHAR:
       return <MyBuilds />
     case GenshinPage.IMPORT:
-      return <ImportExport {...updateUtil} />
+      return <ImportExport />
     case GenshinPage.DMG:
       return <Calculator />
     default:
@@ -34,7 +32,7 @@ export const GenshinHome = observer(() => {
   useLocalUpdater('genshin')
 
   return (
-    <div className="flex w-full h-[calc(100vh-68px)]">
+    <div className="flex flex-shrink w-full h-full">
       <Sidebar onChange={setPage} currentPage={page} />
       <InternalPage page={page} />
     </div>

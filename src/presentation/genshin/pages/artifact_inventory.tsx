@@ -8,7 +8,7 @@ import { useParams } from '@src/core/hooks/useParams'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { ArtifactModal } from '../components/artifact_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { ArtifactSets } from '@src/data/db/artifacts'
+import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 
 export const ArtifactInventory = observer(() => {
   const { params, setParams } = useParams({

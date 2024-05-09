@@ -22,8 +22,8 @@ export const MyBuilds = observer(() => {
       <div className="flex items-center justify-between w-full">
         <p className="text-2xl font-bold text-white w-fit">My Builds</p>
       </div>
-      <div className="flex w-full gap-x-5">
-        <div className="flex flex-col w-1/3 gap-2 overflow-y-auto shrink-0">
+      <div className="flex w-full h-full gap-x-5">
+        <div className="flex flex-col w-1/3 h-full gap-2 overflow-y-auto shrink-0">
           {_.map(buildStore.builds, (build) => (
             <BuildBlock key={build.id} build={build} onClick={() => setSelected(build.id)} />
           ))}

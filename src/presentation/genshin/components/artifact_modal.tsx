@@ -1,7 +1,7 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { getMainStat } from '@src/core/utils/data_format'
 import { findArtifactSet } from '@src/core/utils/finder'
-import { ArtifactSets } from '@src/data/db/artifacts'
+import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { MainStat, SubStat } from '@src/domain/genshin/artifact'
 import { Stats } from '@src/domain/genshin/constant'

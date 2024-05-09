@@ -13,7 +13,7 @@ import { GhostButton } from '@src/presentation/components/ghost.button'
 import { BuildModal } from '../components/build_modal'
 import { findCharacter } from '@src/core/utils/finder'
 import { getSetCount } from '@src/core/utils/data_format'
-import { ArtifactSets } from '@src/data/db/artifacts'
+import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 
 const CharacterSelect = ({
   onClick,

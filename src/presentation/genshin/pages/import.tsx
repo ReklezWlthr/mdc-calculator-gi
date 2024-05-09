@@ -1,11 +1,14 @@
+import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { observer } from 'mobx-react-lite'
 import { useCallback } from 'react'
 
-export const ImportExport = observer(({ data, updateData }: { data; updateData: (data) => void }) => {
+export const ImportExport = observer(() => {
   const { modalStore } = useStore()
+
+  const { data, updateData } = useLocalUpdater('genshin')
 
   const saveFile = async (blob: Blob, suggestedName: string) => {
     const blobURL = URL.createObjectURL(blob)

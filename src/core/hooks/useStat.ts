@@ -12,7 +12,7 @@ import _ from 'lodash'
 import { Stats } from '@src/domain/genshin/constant'
 import { AscensionGrowth } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
-import { ArtifactSets } from '@src/data/db/artifacts'
+import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 
 export const useStat = (
   cId: string,
