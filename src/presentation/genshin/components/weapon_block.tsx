@@ -13,6 +13,39 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { findWeapon } from '@src/core/utils/finder'
 import { toPercentage } from '@src/core/utils/converter'
+import { Tooltip } from '@src/presentation/components/tooltip'
+
+const WeaponTooltip = ({ wId, refinement }: { wId: string; refinement: number }) => {
+  const data = findWeapon(wId)
+  const properties = data?.desc?.properties
+
+  return (
+    <div className="flex items-center w-full gap-x-2">
+      <p className="text-sm">Passive</p>
+      <Tooltip
+        title={data?.desc?.name}
+        body={
+          <div className="font-normal">
+            {_.reduce(
+              Array.from(data?.desc?.detail?.matchAll(/{{\d+}}/g) || []),
+              (acc, curr, index) =>
+                _.replace(
+                  acc,
+                  curr[0],
+                  (properties?.[index]?.base + properties?.[index]?.growth * (refinement - 1))?.toString()
+                ),
+              data?.desc?.detail
+            )}
+          </div>
+        }
+        position="bottom"
+        style="w-[500px]"
+      >
+        <i className="fa-regular fa-question-circle" />
+      </Tooltip>
+    </div>
+  )
+}
 
 interface StatBlockProps {
   index?: number
@@ -82,7 +115,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
             />
             <RarityGauge rarity={rarity} />
           </div>
-          <div className="w-1/2 space-y-2">
+          <div className="w-1/2 space-y-3">
             <div className="space-y-1">
               <p className="text-sm font-semibold">Level</p>
               <div className="flex items-center w-full gap-2">
@@ -106,6 +139,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
                 />
               </div>
             </div>
+            <WeaponTooltip wId={wId} refinement={refinement} />
           </div>
         </div>
         <div className="space-y-3">

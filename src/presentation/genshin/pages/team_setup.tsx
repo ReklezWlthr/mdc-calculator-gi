@@ -41,6 +41,35 @@ const CharacterSelect = ({
   )
 }
 
+const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
+  const setDetail = _.find(ArtifactSets, ['id', set])
+  const count = _.floor(item / 2) * 2
+  return (
+    item >= 2 && (
+      <Tooltip
+        title={setDetail?.name}
+        body={
+          <div className="space-y-1">
+            <p className={count < 2 && 'opacity-40'}>
+              <b>2 Piece:</b> {setDetail?.desc[0]}
+            </p>
+            <p className={count < 4 && 'opacity-40'}>
+              <b>4 Piece:</b> {setDetail?.desc[1]}
+            </p>
+          </div>
+        }
+        style="w-[400px]"
+        key={set}
+      >
+        <div className="flex items-center justify-between w-full gap-3 text-xs text-white cursor-default">
+          <p className="w-full line-clamp-2">{setDetail?.name}</p>
+          <p className="px-2 py-0.5 rounded-lg bg-primary-lighter bg-opacity-40">{count}</p>
+        </div>
+      </Tooltip>
+    )
+  )
+})
+
 const SaveBuildModal = observer(({ index }: { index: number }) => {
   const [name, setName] = useState('')
 
@@ -98,18 +127,14 @@ export const TeamSetup = observer(() => {
     <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-auto">
       <div className="w-1/3">
         <div className="flex justify-center w-full gap-4 pt-1 pb-3">
-          {_.map(teamStore?.characters, (item, index) => {
-            const data = findCharacter(item.cId)
-
-            return (
-              <CharacterSelect
-                key={`char_select_${index}`}
-                onClick={() => setSelected(index)}
-                isSelected={index === selected}
-                codeName={data?.codeName}
-              />
-            )
-          })}
+          {_.map(teamStore?.characters, (item, index) => (
+            <CharacterSelect
+              key={`char_select_${index}`}
+              onClick={() => setSelected(index)}
+              isSelected={index === selected}
+              codeName={findCharacter(item.cId)?.codeName}
+            />
+          ))}
         </div>
         <CharacterBlock index={selected} />
         <div className="flex gap-x-2">
@@ -126,34 +151,9 @@ export const TeamSetup = observer(() => {
         <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
           {_.map(
             getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts),
-            (item, key) => {
-              const set = _.find(ArtifactSets, ['id', key])
-              const count = _.floor(item / 2) * 2
-              return (
-                item >= 2 && (
-                  <Tooltip
-                    title={set?.name}
-                    body={
-                      <div className="space-y-1">
-                        <p className={count < 2 && 'opacity-40'}>
-                          <b>2 Piece:</b> {set.desc[0]}
-                        </p>
-                        <p className={count < 4 && 'opacity-40'}>
-                          <b>4 Piece:</b> {set.desc[1]}
-                        </p>
-                      </div>
-                    }
-                    style="w-[400px]"
-                    key={key}
-                  >
-                    <div className="flex items-center justify-between w-full gap-3 text-xs text-white">
-                      <p className="w-full line-clamp-2">{set?.name}</p>
-                      <p className="px-2 py-0.5 rounded-lg bg-primary-lighter bg-opacity-40">{count}</p>
-                    </div>
-                  </Tooltip>
-                )
-              )
-            }
+            (item, key) => (
+              <SetToolTip item={item} set={key} />
+            )
           )}
         </div>
       </div>

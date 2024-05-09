@@ -60,6 +60,14 @@ export const Weapons = [
     baseStat: 0.192,
     icon: 'UI_EquipIcon_Sword_Regalis',
     type: WeaponType.SWORD,
+    desc: {
+      name: 'Dawn and Dusk by the Lake',
+      detail: `When the equipping character's current HP increases or decreases, Elemental Skill DMG dealt will be increased by {{0}}% for 6s. Max 3 stacks. This effect can be triggered once every 0.2s. When other party members' current HP increases or decreases, the equipping character's Max HP will be increased by {{1}}% for 6s. Max 2 stacks. This effect can be triggered once every 0.2s. The aforementioned effects can be triggered even if the wielder is off-field.`,
+      properties: [
+        { base: 8, growth: 2 },
+        { base: 14, growth: 3.5 },
+      ],
+    },
   },
   {
     id: '2007',
@@ -130,6 +138,11 @@ export const Weapons = [
     baseStat: 48,
     icon: 'UI_EquipIcon_Pole_Stardust',
     type: WeaponType.POLEARM,
+    desc: {
+      name: 'Bane of Flame and Water',
+      detail: `Increases DMG against opponents affected by Hydro or Pyro by {{0}}%.`,
+      properties: [{ base: 20, growth: 4 }],
+    },
   },
   {
     id: '2014',
@@ -270,6 +283,11 @@ export const Weapons = [
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Pole_Caduceus',
     type: WeaponType.POLEARM,
+    desc: {
+      name: 'Principle of Equilibrium',
+      detail: `When the wielder performs healing, restore {{0}} Energy. This effect can be triggered once every 10s and can occur even when the character is not on the field.`,
+      properties: [{ base: 8, growth: 2 }],
+    },
   },
   {
     id: '2028',
@@ -360,6 +378,14 @@ export const Weapons = [
     baseStat: 48,
     icon: 'UI_EquipIcon_Catalyst_Fossil',
     type: WeaponType.CATALYST,
+    desc: {
+      name: 'Composed',
+      detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 40, growth: 10 },
+        { base: 30, growth: -4 },
+      ],
+    },
   },
   {
     id: '2037',
@@ -460,6 +486,14 @@ export const Weapons = [
     baseStat: 0.113,
     icon: 'UI_EquipIcon_Sword_Fossil',
     type: WeaponType.SWORD,
+    desc: {
+      name: 'Composed',
+      detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 40, growth: 10 },
+        { base: 30, growth: -4 },
+      ],
+    },
   },
   {
     id: '2047',
@@ -790,6 +824,14 @@ export const Weapons = [
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Bow_Fossil',
     type: WeaponType.BOW,
+    desc: {
+      name: 'Composed',
+      detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 40, growth: 10 },
+        { base: 30, growth: -4 },
+      ],
+    },
   },
   {
     id: '2080',
@@ -1130,6 +1172,14 @@ export const Weapons = [
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Claymore_Fossil',
     type: WeaponType.CLAYMORE,
+    desc: {
+      name: 'Composed',
+      detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 40, growth: 10 },
+        { base: 30, growth: -4 },
+      ],
+    },
   },
   {
     id: '2114',

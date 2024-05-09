@@ -47,7 +47,7 @@ export const Modal = observer(() => {
             >
               <div
                 className={classNames(
-                  'z-50 flex justify-center pt-[10vh] pb-[6vh] w-screen h-screen pointer-events-none overflow-y-auto dropdownScrollbar',
+                  'z-50 flex justify-center pt-[10vh] pb-[6vh] w-screen h-screen pointer-events-none overflow-y-auto hideScrollbar',
                   store.modalStore.style
                 )}
               >

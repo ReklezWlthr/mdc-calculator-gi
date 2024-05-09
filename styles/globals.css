@@ -23,4 +23,13 @@
   .dropdownScrollbar::-webkit-scrollbar-corner {
     background-color: transparent;
   }
+
+  .hideScrollbar {
+    overflow: overlay;
+  }
+
+  .hideScrollbar::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
 }
