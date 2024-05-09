@@ -10,6 +10,11 @@ export const Weapons = [
     baseStat: 36,
     icon: 'UI_EquipIcon_Bow_Troupe',
     type: WeaponType.BOW,
+    desc: {
+      name: 'Arrowless Song',
+      detail: `Increases Elemental Skill and Elemental Burst DMG by {{0}}%.`,
+      properties: [{ base: 24, growth: 6 }],
+    },
   },
   {
     id: '2002',
@@ -20,6 +25,14 @@ export const Weapons = [
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Claymore_Wolfmound',
     type: WeaponType.CLAYMORE,
+    desc: {
+      name: 'Wolfish Tracker',
+      detail: `Increases ATK by {{0}}%. On hit, attacks against opponents with less than 30% HP increase all party members' ATK by {{1}}% for 12s. Can only occur once every 30s.`,
+      properties: [
+        { base: 20, growth: 5 },
+        { base: 40, growth: 10 },
+      ],
+    },
   },
   {
     id: '2003',
@@ -30,6 +43,11 @@ export const Weapons = [
     baseStat: 0.051,
     icon: 'UI_EquipIcon_Pole_Ruby',
     type: WeaponType.POLEARM,
+    desc: {
+      name: 'Sharp',
+      detail: `Increases Normal Attack DMG by {{0}}%.`,
+      properties: [{ base: 24, growth: 6 }],
+    },
   },
   {
     id: '2004',
@@ -40,6 +58,14 @@ export const Weapons = [
     baseStat: 0.192,
     icon: 'UI_EquipIcon_Sword_Ayus',
     type: WeaponType.SWORD,
+    desc: {
+      name: 'Whitemoon Bristle',
+      detail: `CRIT Rate is increased by {{0}}%. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by {{1}}% of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s.`,
+      properties: [
+        { base: 4, growth: 1 },
+        { base: 120, growth: 30 },
+      ],
+    },
   },
   {
     id: '2005',
@@ -50,6 +76,18 @@ export const Weapons = [
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Catalyst_Troupe',
     type: WeaponType.CATALYST,
+    desc: {
+      name: 'Debut',
+      detail: `When a character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s.
+      Recitative: ATK is increased by {{0}}%.
+      Aria: Increases all Elemental DMG by {{1}}%.
+      Interlude: Elemental Mastery is increased by {{2}}.`,
+      properties: [
+        { base: 60, growth: 15 },
+        { base: 48, growth: 12 },
+        { base: 240, growth: 60 },
+      ],
+    },
   },
   {
     id: '2006',
@@ -78,6 +116,14 @@ export const Weapons = [
     baseStat: 0.048,
     icon: 'UI_EquipIcon_Pole_BloodMoon',
     type: WeaponType.POLEARM,
+    desc: {
+      name: "Ashen Sun's Shadow",
+      detail: `Grants a Bond of Life equal to 25% of Max HP when a Charged Attack hits an opponent. This effect can be triggered up to once every 14s. In addition, when the equipping character has a Bond of Life. they gain a {{0}}% DMG Bonus; if the value of the Bond of Life is greater than or equal to 30% of Max HP, then gain an additional {{1}}% DMG.`,
+      properties: [
+        { base: 12, growth: 3.5 },
+        { base: 24, growth: 8 },
+      ],
+    },
   },
   {
     id: '2008',
@@ -203,6 +249,14 @@ export const Weapons = [
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Pole_Zephyrus',
     type: WeaponType.POLEARM,
+    desc: {
+      name: 'Windfall',
+      detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 12, growth: -1.5 },
+      ],
+    },
   },
   {
     id: '2020',
@@ -466,6 +520,14 @@ export const Weapons = [
     baseStat: 0.113,
     icon: 'UI_EquipIcon_Sword_Zephyrus',
     type: WeaponType.SWORD,
+    desc: {
+      name: 'Windfall',
+      detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 12, growth: -1.5 },
+      ],
+    },
   },
   {
     id: '2045',
@@ -814,6 +876,14 @@ export const Weapons = [
     baseStat: 0.133,
     icon: 'UI_EquipIcon_Bow_Zephyrus',
     type: WeaponType.BOW,
+    desc: {
+      name: 'Windfall',
+      detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 12, growth: -1.5 },
+      ],
+    },
   },
   {
     id: '2079',
@@ -1152,6 +1222,14 @@ export const Weapons = [
     baseStat: 0.133,
     icon: 'UI_EquipIcon_Claymore_Zephyrus',
     type: WeaponType.CLAYMORE,
+    desc: {
+      name: 'Windfall',
+      detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 12, growth: -1.5 },
+      ],
+    },
   },
   {
     id: '2112',
@@ -1470,6 +1548,14 @@ export const Weapons = [
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Catalyst_Zephyrus',
     type: WeaponType.CATALYST,
+    desc: {
+      name: 'Windfall',
+      detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 12, growth: -1.5 },
+      ],
+    },
   },
   {
     id: '2143',

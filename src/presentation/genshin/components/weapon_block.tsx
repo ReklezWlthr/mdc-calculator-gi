@@ -39,7 +39,7 @@ const WeaponTooltip = ({ wId, refinement }: { wId: string; refinement: number })
           </div>
         }
         position="bottom"
-        style="w-[500px]"
+        style="w-[450px]"
       >
         <i className="fa-regular fa-question-circle" />
       </Tooltip>
