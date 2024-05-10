@@ -26,6 +26,10 @@ export const WeaponSecondaryScaling = [
 ]
 
 export const WeaponScaling = {
+  1: {
+    base: [23.245],
+    ascension: [0, 11.7, 23.3, 35.0, 46.7],
+  },
   3: {
     base: [37.6075, 38.7413, 39.8751],
     ascension: [0, 19.5, 38.9, 58.4, 77.8, 97.3, 116.7],

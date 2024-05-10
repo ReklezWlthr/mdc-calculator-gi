@@ -6,12 +6,14 @@ export const PillInput = ({
   onClear,
   style,
   disabled,
+  placeholder
 }: {
   value: string
   onClick: () => void
   onClear: () => void
   style?: string
   disabled?: boolean
+  placeholder?: string
 }) => {
   return (
     <div
@@ -25,7 +27,7 @@ export const PillInput = ({
       )}
       onClick={() => !disabled && onClick()}
     >
-      <p className="w-full truncate">{value || '-'}</p>
+      <p className="w-full truncate">{value || placeholder || '-'}</p>
       <i
         className={classNames('text-sm duration-100 opacity-0 fa-solid fa-times-circle text-primary-light w-fit', {
           'group-hover:opacity-100 cursor-pointer': !disabled,

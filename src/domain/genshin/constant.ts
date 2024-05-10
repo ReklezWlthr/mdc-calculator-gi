@@ -95,6 +95,22 @@ export const WeaponIcon = {
   [WeaponType.CATALYST]: '/icons/catalyst_icon.png',
 }
 
+export const DefaultWeaponImage = {
+  [WeaponType.SWORD]: 'UI_EquipIcon_Sword_Blunt',
+  [WeaponType.CATALYST]: 'UI_EquipIcon_Catalyst_Apprentice',
+  [WeaponType.CLAYMORE]: 'UI_EquipIcon_Claymore_Aniki',
+  [WeaponType.POLEARM]: 'UI_EquipIcon_Pole_Gewalt',
+  [WeaponType.BOW]: 'UI_EquipIcon_Bow_Hunters',
+}
+
+export const DefaultWeaponName = {
+  [WeaponType.SWORD]: 'Dull Blade',
+  [WeaponType.CATALYST]: "Apprentice's Notes",
+  [WeaponType.CLAYMORE]: 'Waster Greatsword',
+  [WeaponType.POLEARM]: "Beginner's Protector",
+  [WeaponType.BOW]: "Hunter's Bow",
+}
+
 export enum Element {
   PYRO = 'Pyro',
   CRYO = 'Cryo',
@@ -137,7 +153,7 @@ export enum Stats {
   HEAL = 'Healing Bonus',
   I_HEALING = 'Incoming Healing',
   SHIELD = 'Shield Strength',
-  ALL_DMG = 'DMG%'
+  ALL_DMG = 'DMG%',
 }
 
 export const StatIcons = {

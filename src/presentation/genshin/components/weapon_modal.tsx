@@ -81,7 +81,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
             onClick={() => {
               teamStore.setWeapon(index, { wId: item.id })
-              if (item.name === 'Kagotsurube Isshin') teamStore.setWeapon(index, { refinement: 1 })
+              if (item.id === '2057') teamStore.setWeapon(index, { refinement: 1 })
               modalStore.closeModal()
             }}
             key={item.name}

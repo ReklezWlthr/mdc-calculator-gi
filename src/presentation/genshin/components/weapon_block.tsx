@@ -1,6 +1,14 @@
 import { findBaseLevel, findMaxLevel, getWeaponBase, getWeaponBonus } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { AscensionOptions, RefinementOptions, StatIcons, Stats } from '@src/domain/genshin/constant'
+import {
+  AscensionOptions,
+  DefaultWeaponImage,
+  DefaultWeaponName,
+  RefinementOptions,
+  StatIcons,
+  Stats,
+  WeaponType,
+} from '@src/domain/genshin/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'
@@ -9,7 +17,7 @@ import { useCallback, useMemo } from 'react'
 import { WeaponModal } from './weapon_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultWeapon } from '@src/data/stores/team_store'
-import { findWeapon } from '@src/core/utils/finder'
+import { findCharacter, findWeapon } from '@src/core/utils/finder'
 import { toPercentage } from '@src/core/utils/converter'
 import { Tooltip } from '@src/presentation/components/tooltip'
 
@@ -66,6 +74,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
   const { modalStore, teamStore } = useStore()
 
   const weaponData = findWeapon(wId)
+  const weaponType = findCharacter(teamStore.characters[index]?.cId)?.weapon
   const rarity = weaponData?.rarity
 
   const weaponBaseAtk = getWeaponBase(weaponData?.tier, level, ascension, weaponData?.rarity)
@@ -96,9 +105,10 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
         <div className="flex items-center gap-2">
           <PillInput
             onClick={onOpenModal}
-            onClear={() => teamStore.setWeapon(index, DefaultWeapon)}
+            onClear={() => teamStore.setWeapon(index, { wId: null, refinement: 1 })}
             value={weaponData?.name}
             disabled={!canEdit || !teamStore.characters[index]?.cId}
+            placeholder={DefaultWeaponName[weaponType]}
           />
           <SelectInput
             onChange={(value) =>
@@ -109,13 +119,13 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
             options={RefinementOptions}
             value={refinement?.toString()}
             style="w-fit"
-            disabled={!canEdit || !weaponData || weaponData?.name === 'Kagotsurube Isshin'}
+            disabled={!canEdit || !weaponData || weaponData?.id === '2057'}
           />
         </div>
         <div className="flex gap-2">
           <div className="flex flex-col justify-between w-1/2 gap-1">
             <img
-              src={`https://enka.network/ui/${weaponData?.icon || 'UI_EquipIcon_Sword_Blunt'}${
+              src={`https://enka.network/ui/${weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD]}${
                 ascension >= 2 ? '_Awaken' : ''
               }.png`}
               className="pt-1 border rounded-lg bg-primary-darker border-primary-border"
@@ -130,7 +140,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
                   onChange={(value) => teamStore.setWeapon(index, { level: parseInt(value) || 0 })}
                   options={levels}
                   value={level?.toString()}
-                  disabled={!weaponData || !canEdit}
+                  disabled={!canEdit}
                 />
                 <SelectInput
                   onChange={(value) =>
@@ -142,11 +152,11 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
                   options={AscensionOptions}
                   value={ascension?.toString()}
                   style="w-fit"
-                  disabled={!weaponData || !canEdit}
+                  disabled={!canEdit}
                 />
               </div>
             </div>
-            <WeaponTooltip wId={wId} refinement={refinement} />
+            {weaponData && <WeaponTooltip wId={wId} refinement={refinement} />}
           </div>
         </div>
         <div className="space-y-3">

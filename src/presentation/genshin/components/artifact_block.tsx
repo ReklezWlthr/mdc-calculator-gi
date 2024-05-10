@@ -20,6 +20,19 @@ interface ArtifactBlockProps {
   canEdit?: boolean
 }
 
+const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => void; title: string }) => {
+  return (
+    <i
+      className={classNames(
+        'flex items-center justify-center w-11 h-11 p-2 text-xl duration-[300ms] rounded-full opacity-0 translate-x-full group-hover:translate-x-0 cursor-pointer bg-primary-light hover:bg-primary group-hover:opacity-100',
+        icon
+      )}
+      onClick={onClick}
+      title={title}
+    />
+  )
+}
+
 export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlockProps) => {
   const pieceName = ArtifactPiece[props.piece]
 
@@ -28,10 +41,6 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
   const setData = findArtifactSet(artifact?.setId)
 
   const mainStat = getMainStat(artifact?.main, artifact?.quality, artifact?.level)
-
-  const onOpenModal = useCallback(() => {
-    modalStore.openModal(<ArtifactModal type={props.piece} index={props.index} aId={props.aId} />)
-  }, [modalStore, props.index, props.aId])
 
   const subListWithRolls = useMemo(() => {
     const rolls = _.map(artifact?.subList, (item) => getRolls(item.stat, item.value))
@@ -48,6 +57,10 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
     const oldType = _.find(artifactStore.artifacts, ['id', props.aId])?.type
     teamStore.setArtifact(props.index, oldType, null)
   }, [props.index, props.aId])
+
+  const onOpenEditModal = useCallback(() => {
+    modalStore.openModal(<ArtifactModal type={props.piece} index={props.index} aId={props.aId} />)
+  }, [modalStore, props.index, props.aId])
 
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
@@ -79,7 +92,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             <p>{pieceName}</p>
           </div>
           <div className="flex items-center justify-center gap-1">
-            <p>Edit Artifact</p>
+            <p>Artifact Menu</p>
           </div>
         </div>
       </div>
@@ -136,19 +149,11 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             ))}
           </div>
           {canEdit && (
-            <div className="absolute flex flex-col gap-4 justify-center items-center top-0 w-full h-[260px] bg-opacity-0 group-hover:bg-opacity-80 bg-primary-bg duration-200">
-              <i
-                className="flex items-center justify-center w-16 h-16 p-2 text-3xl duration-200 rounded-full opacity-0 cursor-pointer fa-solid fa-pen-to-square bg-primary-light hover:bg-primary group-hover:opacity-100"
-                onClick={onOpenModal}
-                title="Edit Artifact"
-              />
-              <i
-                className="flex items-center justify-center w-16 h-16 p-2 text-3xl duration-200 rounded-full opacity-0 cursor-pointer fa-solid fa-repeat bg-primary-light hover:bg-primary group-hover:opacity-100"
-                onClick={null}
-                title="Swap Artifact"
-              />
-              <i
-                className="flex items-center justify-center w-16 h-16 p-2 text-3xl duration-200 rounded-full opacity-0 cursor-pointer fa-solid fa-arrow-up-from-bracket bg-primary-light hover:bg-primary group-hover:opacity-100"
+            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[260px] from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker duration-200 overflow-hidden">
+              <MenuButton icon="fa-solid fa-pen-to-square" onClick={onOpenEditModal} title="Edit Artifact" />
+              <MenuButton icon="fa-solid fa-repeat" onClick={onOpenEditModal} title="Swap Artifact" />
+              <MenuButton
+                icon="fa-solid fa-arrow-right-from-bracket rotate-90"
                 onClick={onOpenConfirmModal}
                 title="Unequip Artifact"
               />
