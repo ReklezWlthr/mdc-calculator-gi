@@ -100,7 +100,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
     <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark">
       <div className="space-y-1">
         <p className="font-semibold">
-          Build Name<span className="text-genshin-pyro">*</span>
+          Build Name<span className="text-red">*</span>
         </p>
         <TextInput onChange={setName} value={name} />
       </div>
@@ -156,7 +156,7 @@ export const TeamSetup = observer(() => {
             (item, key) => (
               <SetToolTip item={item} set={key} key={key} />
             )
-          )}
+          ) || <div>Non</div>}
         </div>
       </div>
       <div className="w-1/5 space-y-5">

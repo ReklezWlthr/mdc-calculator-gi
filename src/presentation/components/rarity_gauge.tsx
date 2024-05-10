@@ -13,11 +13,11 @@ export const RarityGauge = ({
   return (
     <div
       className={classNames('w-full flex justify-center', textSize, {
-        'text-genshin-pyro': isSpecial,
         'text-genshin-dendro': rarity === 2,
-        'text-genshin-hydro': rarity === 3,
-        'text-genshin-electro': rarity === 4,
-        'text-genshin-geo': rarity === 5,
+        'text-blue': rarity === 3,
+        'text-purple': rarity === 4,
+        'text-yellow': !isSpecial && rarity === 5,
+        'text-red': isSpecial && rarity === 5,
         'text-primary-lighter': !rarity,
       })}
     >

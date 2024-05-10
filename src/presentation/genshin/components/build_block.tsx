@@ -30,7 +30,7 @@ export const BuildBlock = observer(({ build, onClick }: BuildBlockProps) => {
     >
       <div className="w-1/2">
         <div className="flex items-center gap-2">
-          {build.isDefault && <i className="text-xs fa-solid fa-star text-genshin-geo" title="Default Build" />}
+          {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
           <p className="w-full truncate">{build.name}</p>
         </div>
         <p className="text-xs text-gray">Equipped By: {char?.name}</p>

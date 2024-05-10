@@ -391,7 +391,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'An End Sublime',
-      detail: `When using an Elemental Skill, ATK will be increased by {{0}}% for 15s, and a Bond of Life worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the Bond of Life is cleared, a maximum of {{1}} ATK will be gained based on {{2}}% of the total amount of the Life Bond cleared, lasting for 15s.`,
+      detail: `When using an Elemental Skill, ATK will be increased by {{0}}% for 15s, and a <b class="text-genshin-bol">Bond of Life</b> worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the <b class="text-genshin-bol">Bond of Life</b> is cleared, a maximum of {{1}} ATK will be gained based on {{2}}% of the total amount of the Life Bond cleared, lasting for 15s.`,
       properties: [
         { base: 12, growth: 4 },
         { base: 150, growth: 37.5 },
@@ -1686,7 +1686,7 @@ export const Weapons = [
     type: WeaponType.POLEARM,
     desc: {
       name: "Ashen Sun's Shadow",
-      detail: `Grants a <b class="text-genshin-pyro">Bond of Life</b> equal to 25% of Max HP when a Charged Attack hits an opponent. This effect can be triggered up to once every 14s. In addition, when the equipping character has a <b class="text-genshin-pyro">Bond of Life</b>. they gain a {{0}}% DMG Bonus; if the value of the <b class="text-genshin-pyro">Bond of Life</b> is greater than or equal to 30% of Max HP, then gain an additional {{1}}% DMG.`,
+      detail: `Grants a <b class="text-genshin-bol">Bond of Life</b> equal to 25% of Max HP when a Charged Attack hits an opponent. This effect can be triggered up to once every 14s. In addition, when the equipping character has a <b class="text-genshin-bol">Bond of Life</b>. they gain a {{0}}% DMG Bonus; if the value of the <b class="text-genshin-bol">Bond of Life</b> is greater than or equal to 30% of Max HP, then gain an additional {{1}}% DMG.`,
       properties: [
         { base: 12, growth: 3.5 },
         { base: 24, growth: 8 },
@@ -2099,7 +2099,7 @@ export const Weapons = [
     type: WeaponType.CATALYST,
     desc: {
       name: 'Unfinished Masterpiece',
-      detail: `When using an Elemental Skill, All Elemental DMG Bonus will be increased by {{0}}% for 15s, and a Bond of Life worth 24% of Max HP will be granted. This effect can be triggered once every 10s. When the Bond Of Life is cleared, every 1,000 HP cleared in the process will provide {{1}}% All Elemental DMG Bonus, up to a maximum of {{2}}%. This effect lasts 15s.`,
+      detail: `When using an Elemental Skill, All Elemental DMG Bonus will be increased by {{0}}% for 15s, and a <b class="text-genshin-bol">Bond of Life</b> worth 24% of Max HP will be granted. This effect can be triggered once every 10s. When the <b class="text-genshin-bol">Bond Of Life</b> is cleared, every 1,000 HP cleared in the process will provide {{1}}% All Elemental DMG Bonus, up to a maximum of {{2}}%. This effect lasts 15s.`,
       properties: [
         { base: 8, growth: 2 },
         { base: 2, growth: 0.5 },
@@ -2292,7 +2292,7 @@ export const Weapons = [
     name: "Crane's Echoing Call",
     rarity: 5,
     tier: 4,
-    ascStat: Stats.ATK,
+    ascStat: Stats.P_ATK,
     baseStat: 0.036,
     icon: 'UI_EquipIcon_Catalyst_MountainGale',
     type: WeaponType.CATALYST,

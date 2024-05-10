@@ -3,14 +3,7 @@ import { useCallback, useMemo } from 'react'
 import { CharacterModal } from './character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
-import {
-  AscensionOptions,
-  ConstellationOptions,
-  Element,
-  ElementIcon,
-  WeaponIcon,
-  WeaponType,
-} from '@src/domain/genshin/constant'
+import { AscensionOptions, ConstellationOptions, WeaponIcon } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { findBaseLevel } from '@src/core/utils/data_format'
 import _ from 'lodash'
@@ -108,13 +101,15 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             <div className="flex gap-0.5">
               {/* <p className="[writing-mode:vertical-rl] rotate-180 text-[10px]">Weapon</p> */}
               <div className="p-1 rounded-full w-11 h-11 bg-primary" title={characterData?.weapon}>
-                <img src={WeaponIcon[characterData?.weapon]} />
+                <img src={`https://enka.network/ui/${WeaponIcon[characterData?.weapon]}`} />
               </div>
             </div>
             <RarityGauge rarity={rarity} />
             <div className="flex gap-0.5">
-              <div className="p-1 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
-                <img src={ElementIcon[characterData?.element]} />
+              <div className="p-2 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
+                <img
+                  src={`https://cdn.wanderer.moe/genshin-impact/elements/${characterData?.element?.toLowerCase()}.png`}
+                />
               </div>
               {/* <p className="[writing-mode:vertical-rl] text-[10px]">Element</p> */}
             </div>

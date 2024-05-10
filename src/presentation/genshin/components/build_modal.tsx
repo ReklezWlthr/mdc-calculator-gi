@@ -23,7 +23,7 @@ export const BuildModal = observer(({ index }: { index: number }) => {
           <div className="flex items-center justify-between w-full px-2 text-white" key={build.id}>
             <div className="w-1/2">
               <div className="flex items-center gap-2">
-                {build.isDefault && <i className="text-xs fa-solid fa-star text-genshin-geo" title="Default Build" />}
+                {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
                 <p className="w-full truncate">{build.name}</p>
               </div>
             </div>

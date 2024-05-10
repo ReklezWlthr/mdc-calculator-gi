@@ -375,7 +375,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
       `ATK +18%`,
-      `When the value of a <b class="text-genshin-pyro">Bond of Life</b> increases or decreases, this character deals 18% increased DMG for 6s. Max 3 stacks.`,
+      `When the value of a <b class="text-genshin-bol">Bond of Life</b> increases or decreases, this character deals 18% increased DMG for 6s. Max 3 stacks.`,
     ],
   },
   {

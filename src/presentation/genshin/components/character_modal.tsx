@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { Characters } from '@src/data/db/genshin/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { Element, ElementIcon, WeaponIcon, WeaponType } from '@src/domain/genshin/constant'
+import { Element, WeaponIcon, WeaponType } from '@src/domain/genshin/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
@@ -51,11 +51,18 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
       <div
         className={classNames('w-8 h-8 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
           'bg-primary-lighter': checked,
+          'p-0.5': type === 'element',
         })}
         onClick={() => setParams({ [type]: checked ? _.without(array, value) : [...array, value] })}
         title={value}
       >
-        <img src={type === 'element' ? ElementIcon[value] : WeaponIcon[value]} />
+        <img
+          src={
+            type === 'element'
+              ? `https://cdn.wanderer.moe/genshin-impact/elements/${value?.toLowerCase()}.png`
+              : `https://enka.network/ui/${WeaponIcon[value]}`
+          }
+        />
       </div>
     )
   }
@@ -114,7 +121,10 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
               key={item.name}
             >
               <div className="relative">
-                <img src={ElementIcon[item.element]} className="absolute w-8 h-8 top-0.5 left-1" />
+                <img
+                  src={`https://cdn.wanderer.moe/genshin-impact/elements/${item.element.toLowerCase()}.png`}
+                  className="absolute w-8 h-8 top-1 left-1"
+                />
                 {build && (
                   <img
                     src="/icons/artifact_icon.png"

@@ -24,7 +24,7 @@ const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => voi
   return (
     <i
       className={classNames(
-        'flex items-center justify-center w-11 h-11 p-2 text-xl duration-[300ms] rounded-full opacity-0 translate-x-full group-hover:translate-x-0 cursor-pointer bg-primary-light hover:bg-primary group-hover:opacity-100',
+        'flex items-center justify-center w-11 h-11 p-2 text-xl rounded-full opacity-0 translate-x-full group-hover:translate-x-0 cursor-pointer bg-primary-light hover:bg-primary group-hover:opacity-100',
         icon
       )}
       onClick={onClick}
@@ -65,7 +65,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
       <CommonModal
-        icon="fa-solid fa-question-circle text-genshin-geo"
+        icon="fa-solid fa-question-circle text-yellow"
         title="Unequip Artifact"
         desc="Do you want to unequip this artifact?"
         onConfirm={onUnEquip}
@@ -150,10 +150,14 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
           </div>
           {canEdit && (
             <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[260px] from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker duration-200 overflow-hidden">
-              <MenuButton icon="fa-solid fa-pen-to-square" onClick={onOpenEditModal} title="Edit Artifact" />
-              <MenuButton icon="fa-solid fa-repeat" onClick={onOpenEditModal} title="Swap Artifact" />
               <MenuButton
-                icon="fa-solid fa-arrow-right-from-bracket rotate-90"
+                icon="fa-solid fa-pen-to-square duration-[200ms]"
+                onClick={onOpenEditModal}
+                title="Edit Artifact"
+              />
+              <MenuButton icon="fa-solid fa-repeat duration-[250ms]" onClick={onOpenEditModal} title="Swap Artifact" />
+              <MenuButton
+                icon="fa-solid fa-arrow-right-from-bracket rotate-90 duration-[300ms]"
                 onClick={onOpenConfirmModal}
                 title="Unequip Artifact"
               />
