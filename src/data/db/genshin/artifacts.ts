@@ -41,7 +41,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.PHYSICAL_DMG, value: 0.25 }],
     desc: [
-      `Physical DMG Bonus +25%`,
+      `<b>Physical DMG Bonus</b> +25%`,
       `After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s. Also triggers with wild animals such as boars, squirrels and frogs.`,
     ],
   },
@@ -63,7 +63,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ANEMO_DMG, value: 0.15 }],
     desc: [
-      `Anemo DMG Bonus +15%`,
+      `<b class="text-genshin-anemo">Anemo DMG Bonus</b> +15%`,
       `Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for 10s.`,
     ],
   },
@@ -74,8 +74,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.GEO_DMG, value: 0.15 }],
     desc: [
-      `Geo DMG Bonus +15%`,
-      `Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.`,
+      `<b class="text-genshin-geo">Geo DMG Bonus</b> +15%`,
+      `Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% <b>DMG Bonus</b> for that particular element for 10s. Only one form of <b>Elemental DMG Bonus</b> can be gained in this manner at any one time.`,
     ],
   },
   {
@@ -95,7 +95,10 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_14002',
     rarity: [4, 5],
     bonus: [],
-    desc: [`Electro RES increased by 40%.`, `Increases DMG against opponents affected by Electro by 35%.`],
+    desc: [
+      `<b class="text-genshin-electro">Electro RES</b> increased by 40%.`,
+      `Increases DMG against opponents affected by <b class="text-genshin-electro">Electro</b> by 35%.`,
+    ],
   },
   {
     id: '2512309395',
@@ -104,7 +107,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ELECTRO_DMG, value: 0.15 }],
     desc: [
-      `Electro DMG Bonus +15%`,
+      `<b class="text-genshin-electro">Electro DMG Bonus</b> +15%`,
       `Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by 20%. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by 1s. Can only occur once every 0.8s.`,
     ],
   },
@@ -114,7 +117,10 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_14003',
     rarity: [4, 5],
     bonus: [],
-    desc: [`Pyro RES increased by 40%.`, `Increases DMG against opponents affected by Pyro by 35%.`],
+    desc: [
+      `<b class="text-genshin-pyro">Pyro RES</b> increased by 40%.`,
+      `Increases DMG against opponents affected by <b class="text-genshin-pyro">Pyro</b> by 35%.`,
+    ],
   },
   {
     id: '1524173875',
@@ -123,7 +129,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.PYRO_DMG, value: 0.15 }],
     desc: [
-      `Pyro DMG Bonus +15%`,
+      `<b class="text-genshin-pyro">Pyro DMG Bonus</b> +15%`,
       `Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.`,
     ],
   },
@@ -134,8 +140,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.CRYO_DMG, value: 0.15 }],
     desc: [
-      `Cryo DMG Bonus +15%`,
-      `When a character attacks an opponent affected by Cryo, their CRIT Rate is increased by 20%. If the opponent is Frozen, CRIT Rate is increased by an additional 20%.`,
+      `<b class="text-genshin-cryo">Cryo DMG Bonus</b> +15%`,
+      `When a character attacks an opponent affected by <b class="text-genshin-cryo">Cryo</b>, their CRIT Rate is increased by 20%. If the opponent is <b class="text-genshin-cryo">Frozen</b>, CRIT Rate is increased by an additional 20%.`,
     ],
   },
   {
@@ -145,7 +151,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.HYDRO_DMG, value: 0.15 }],
     desc: [
-      `Hydro DMG Bonus +15%`,
+      `<b class="text-genshin-hydro">Hydro DMG Bonus</b> +15%`,
       `After using an Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for 15s.`,
     ],
   },
@@ -167,7 +173,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.PHYSICAL_DMG, value: 0.25 }],
     desc: [
-      `Physical DMG Bonus +25%`,
+      `<b>Physical DMG Bonus</b> +25%`,
       `When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.`,
     ],
   },
@@ -202,10 +208,10 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `DEF +30%`,
       `A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions:
-    When on the field, the character gains 1 stack after hitting an opponent with a Geo attack, triggering a maximum of once every 0.3s.
-    When off the field, the character gains 1 stack every 3s.
-    Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus.
-    When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.`,
+    <br />When on the field, the character gains 1 stack after hitting an opponent with a <b class="text-genshin-geo">Geo</b> attack, triggering a maximum of once every 0.3s.
+    <br />When off the field, the character gains 1 stack every 3s.
+    <br />Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus.
+    <br />When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.`,
     ],
   },
   {
@@ -217,12 +223,12 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `Healing Bonus +15%.`,
       `When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing).
-    At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing.
-    (This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses).
-    Only one Sea-Dyed Foam can be produced every 3.5 seconds.
-    Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing).
-    There can be no more than one Sea-Dyed Foam active at any given time.
-    This effect can still be triggered even when the character who is using this artifact set is not on the field.`,
+      <br />At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing.
+      <br />(This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses).
+      <br />Only one Sea-Dyed Foam can be produced every 3.5 seconds.
+      <br />Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing).
+      <br />There can be no more than one Sea-Dyed Foam active at any given time.
+      <br />This effect can still be triggered even when the character who is using this artifact set is not on the field.`,
     ],
   },
   {
@@ -245,9 +251,9 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `ATK +18%.`,
       `When Normal Attacks hit opponents, there is a 36% chance that it will trigger Valley Rite, which will increase Normal Attack DMG by 70% of ATK.
-    This effect will be dispelled 0.05s after a Normal Attack deals DMG.
-    If a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by 20%.
-    This trigger can occur once every 0.2s.`,
+      <br />This effect will be dispelled 0.05s after a Normal Attack deals DMG.
+      <br />If a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by 20%.
+      <br />This trigger can occur once every 0.2s.`,
     ],
   },
   {
@@ -257,8 +263,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.DENDRO_DMG, value: 0.15 }],
     desc: [
-      `Dendro DMG Bonus +15%`,
-      `After Elemental Skills or Bursts hit opponents, the targets' Dendro RES will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.`,
+      `<b class="text-genshin-dendro">Dendro DMG Bonus</b> +15%`,
+      `After Elemental Skills or Bursts hit opponents, the targets' <b class="text-genshin-dendro">Dendro RES</b> will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.`,
     ],
   },
   {
@@ -279,7 +285,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ANEMO_DMG, value: 0.15 }],
     desc: [
-      `Anemo DMG Bonus +15%.`,
+      `<b class="text-genshin-anemo">Anemo DMG Bonus</b> +15%.`,
       `When Charged Attacks hit opponents, the equipping character's Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.`,
     ],
   },
@@ -301,8 +307,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.HYDRO_DMG, value: 0.15 }],
     desc: [
-      `Hydro DMG Bonus +15%`,
-      `After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15%. Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.`,
+      `<b class="text-genshin-hydro">Hydro DMG Bonus</b> +15%`,
+      `After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and <b class="text-genshin-hydro">Hydro DMG</b> will be increased by 4%/9%/15%. Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.`,
     ],
   },
   {
@@ -336,7 +342,7 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `Increases Elemental Skill DMG by 20%.`,
       `Increases Elemental Skill DMG by 25%.
-      Additionally, when not on the field, Elemental Skill DMG will be further increased by 25%. This effect will be cleared 2s after taking the field.`,
+      <br />Additionally, when not on the field, Elemental Skill DMG will be further increased by 25%. This effect will be cleared 2s after taking the field.`,
     ],
   },
   {
@@ -358,7 +364,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
       `ATK +18%`,
-      `After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost.`,
+      `After using an Elemental Skill, gain a 20% <b class="text-genshin-geo">Geo DMG Bonus</b> for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost.`,
     ],
   },
   {
@@ -369,7 +375,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
       `ATK +18%`,
-      `When the value of a Bond of Life increases or decreases, this character deals 18% increased DMG for 6s. Max 3 stacks.`,
+      `When the value of a <b class="text-genshin-pyro">Bond of Life</b> increases or decreases, this character deals 18% increased DMG for 6s. Max 3 stacks.`,
     ],
   },
   {
@@ -398,8 +404,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [3, 4],
     bonus: [],
     desc: [
-      `All Elemental RES increased by 20%.`,
-      `Incoming Elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s.`,
+      `<b>All Elemental RES</b> increased by 20%.`,
+      `Incoming Elemental DMG increases corresponding <b>Elemental RES</b> by 30% for 10s. Can only occur once every 10s.`,
     ],
   },
   {
@@ -440,7 +446,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_DEF, value: 0.3 }],
     desc: [
       `DEF +30%`,
-      `For each different element present in your own party, the wearer's Elemental RES to that corresponding element is increased by 30%.`,
+      `For each different element present in your own party, the wearer's <b>Elemental RES</b> to that corresponding element is increased by 30%.`,
     ],
   },
   {
