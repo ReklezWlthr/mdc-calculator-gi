@@ -50,12 +50,14 @@ const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
         title={setDetail?.name}
         body={
           <div className="space-y-1">
-            <p className={count < 2 && 'opacity-40'}>
-              <b>2 Piece:</b> {setDetail?.desc[0]}
-            </p>
-            <p className={count < 4 && 'opacity-40'}>
-              <b>4 Piece:</b> {setDetail?.desc[1]}
-            </p>
+            <p
+              className={count < 2 && 'opacity-40'}
+              dangerouslySetInnerHTML={{ __html: `<b>2 Piece:</b> ${setDetail?.desc[0]}` }}
+            />
+            <p
+              className={count < 4 && 'opacity-40'}
+              dangerouslySetInnerHTML={{ __html: `<b>4 Piece:</b> ${setDetail?.desc[1]}` }}
+            />
           </div>
         }
         style="w-[400px]"
@@ -152,7 +154,7 @@ export const TeamSetup = observer(() => {
           {_.map(
             getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts),
             (item, key) => (
-              <SetToolTip item={item} set={key} />
+              <SetToolTip item={item} set={key} key={key} />
             )
           )}
         </div>

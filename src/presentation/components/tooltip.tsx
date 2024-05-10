@@ -74,6 +74,7 @@ export const Tooltip = observer(
         {React.cloneElement(children, {
           onMouseEnter: () => setHovered(true),
           onMouseLeave: () => setHovered(false),
+          className: classNames(children.props?.className, 'cursor-help'),
         })}
         <Transition
           show={hovered}
@@ -92,7 +93,7 @@ export const Tooltip = observer(
           )}
         >
           <p className="text-sm font-bold text-white">{title}</p>
-          <div className='h-0 border-t border-primary-lighter' />
+          <div className="h-0 border-t border-primary-lighter" />
           {body}
         </Transition>
       </div>

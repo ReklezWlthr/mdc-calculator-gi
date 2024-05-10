@@ -16,7 +16,8 @@ module.exports = {
         },
         white: '#efefef',
         gray: '#cccccc',
-        error: "#990100",
+        error: '#990100',
+        desc: '#ffd864',
         genshin: {
           anemo: '#a5ffd7',
           electro: '#b19fe6',
@@ -25,6 +26,8 @@ module.exports = {
           hydro: '#6fa8dd',
           cryo: '#99e5ff',
           geo: '#f1c232',
+          ousia: '#7f81c8',
+          pneuma: '#e6dba9',
         },
       },
     },

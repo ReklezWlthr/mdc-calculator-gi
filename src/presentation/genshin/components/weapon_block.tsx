@@ -3,12 +3,10 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { AscensionOptions, RefinementOptions, StatIcons, Stats } from '@src/domain/genshin/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
-import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
 import { WeaponModal } from './weapon_modal'
-import { useStat } from '@src/core/hooks/useStat'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { findWeapon } from '@src/core/utils/finder'
@@ -18,6 +16,21 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 const WeaponTooltip = ({ wId, refinement }: { wId: string; refinement: number }) => {
   const data = findWeapon(wId)
   const properties = data?.desc?.properties
+  const formattedString = _.reduce(
+    Array.from(data?.desc?.detail?.matchAll(/{{\d+}}\%?/g) || []),
+    (acc, curr) => {
+      const index = curr?.[0]?.match(/\d+/)?.[0]
+      const isPercentage = !!curr?.[0]?.match(/\%$/)
+      return _.replace(
+        acc,
+        curr[0],
+        `<span class="text-desc">${properties?.[index]?.base + properties?.[index]?.growth * (refinement - 1)}${
+          isPercentage ? '%' : ''
+        }</span>`
+      )
+    },
+    data?.desc?.detail
+  )
 
   return (
     <div className="flex items-center w-full gap-x-2">
@@ -25,23 +38,17 @@ const WeaponTooltip = ({ wId, refinement }: { wId: string; refinement: number })
       <Tooltip
         title={data?.desc?.name}
         body={
-          <div className="font-normal">
-            {_.reduce(
-              Array.from(data?.desc?.detail?.matchAll(/{{\d+}}/g) || []),
-              (acc, curr, index) =>
-                _.replace(
-                  acc,
-                  curr[0],
-                  (properties?.[index]?.base + properties?.[index]?.growth * (refinement - 1))?.toString()
-                ),
-              data?.desc?.detail
-            )}
-          </div>
+          <div
+            className="font-normal"
+            dangerouslySetInnerHTML={{
+              __html: formattedString,
+            }}
+          />
         }
         position="bottom"
         style="w-[450px]"
       >
-        <i className="fa-regular fa-question-circle" />
+        <i className="text-lg fa-regular fa-question-circle" />
       </Tooltip>
     </div>
   )
