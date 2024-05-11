@@ -1,22 +1,34 @@
+import { useStat } from '@src/core/hooks/useStat'
 import Albedo from '@src/data/lib/stats/conditionals/characters/Albedo'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
+  const char = teamStore.characters[0]
 
-  const test = Albedo(teamStore.characters[0]?.cons, teamStore.characters[0]?.ascension)
+  const stats = useStat(
+    char?.cId,
+    char?.level,
+    char?.ascension,
+    char?.equipments?.weapon?.wId,
+    char?.equipments?.weapon?.level,
+    char?.equipments?.weapon?.ascension,
+    char?.equipments?.artifacts
+  )
+
+  const main = Albedo(teamStore.characters[0]?.cons, teamStore.characters[0]?.ascension, stats)
 
   const { setValue, watch } = useForm<Record<string, any>>({
     defaultValues: _.reduce(
-      test.content,
+      main.content,
       (acc, curr) => {
-        acc[curr.id] = curr.default
+        if (curr.show) acc[curr.id] = curr.default
         return acc
       },
       {}
@@ -24,9 +36,14 @@ export const Calculator = observer(({}: {}) => {
   })
   const values = watch()
 
+  useEffect(() => {
+    const preComputed = main.preCompute(values)
+    console.log(preComputed)
+  }, [values])
+
   const Conditionals = useCallback(
     () =>
-      _.map(test.content, (content) => {
+      _.map(main.content, (content) => {
         let Input = () => <></>
         switch (content.type) {
           case 'number':
@@ -35,6 +52,9 @@ export const Calculator = observer(({}: {}) => {
                 type="number"
                 value={values[content.id]}
                 onChange={(value) => setValue(content.id, parseFloat(value) || '')}
+                max={content.max}
+                min={content.min}
+                style='col-span-1'
               />
             )
             break
@@ -45,23 +65,30 @@ export const Calculator = observer(({}: {}) => {
 
         return (
           content.show && (
-            <Tooltip
-              title={content.title}
-              body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
-              key={content.id}
-              style="w-[400px]"
-            >
-              <div className="grid items-center grid-cols-12 text-sm gap-x-1">
-                <p className="w-full col-span-4 text-center truncate" title={content.text}>
-                  {content.text}
-                </p>
-                <Input />
+            <div className="grid items-center grid-cols-12 text-sm gap-x-1">
+              <div className="col-span-4">
+                <Tooltip
+                  title={content.title}
+                  body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
+                  key={content.id}
+                  style="w-[400px]"
+                >
+                  <p className="w-full text-center text-white truncate">{content.text}</p>
+                </Tooltip>
               </div>
-            </Tooltip>
+              <div className="col-span-1 text-center truncate text-blue">Buff</div>
+              <div className="col-span-4 text-center truncate text-gray">{content.value[0].name}</div>
+              <div className="col-span-2 text-center text-gray">
+                {content.value[0].formatter(
+                  content.value[0].value * (content.type === 'number' ? values[content.id] : 1)
+                )}
+              </div>
+              <Input />
+            </div>
           )
         )
       }),
-    [test]
+    [main, values]
   )
 
   return (

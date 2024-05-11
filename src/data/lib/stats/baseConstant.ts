@@ -1,4 +1,44 @@
-import { Stats } from '@src/domain/genshin/constant'
+import { ScalingT } from '@src/domain/genshin/conditional'
+import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import _ from 'lodash'
+
+export const getPlungeScaling = (
+  type: 'catalyst' | 'base' | 'claymore' | 'hutao' | 'diluc' | 'high' | 'razor',
+  atk: number
+) => {
+  const plungeTypes = {
+    catalyst: [0.5683, 1.1363, 1.4193],
+    base: [0.6393, 1.2784, 1.5968], //Sword, Bow and Polearm
+    claymore: [0.7459, 1.4914, 1.8629],
+    hutao: [0.6542, 1.3081, 1.6339],
+    high: [0.8183, 1.6363, 2.0439], //Xiao and Itto
+    razor: [0.8205, 1.6406, 2.0492],
+    diluc: [0.8951, 1.7897, 2.2355],
+  }
+  return [
+    {
+      name: 'Plunge DMG',
+      scale: Stats.ATK,
+      value: atk * (plungeTypes[type]?.[0] || 0),
+      element: Element.PHYSICAL,
+      property: TalentProperty.PA,
+    },
+    {
+      name: 'Low Plunge DMG',
+      scale: Stats.ATK,
+      value: atk * (plungeTypes[type]?.[1] || 0),
+      element: Element.PHYSICAL,
+      property: TalentProperty.PA,
+    },
+    {
+      name: 'High Plunge DMG',
+      scale: Stats.ATK,
+      value: atk * (plungeTypes[type]?.[2] || 0),
+      element: Element.PHYSICAL,
+      property: TalentProperty.PA,
+    },
+  ]
+}
 
 export const baseStatsObject = {
   // Basic Stats
@@ -61,6 +101,12 @@ export const baseStatsObject = {
   SKILL_DMG: 0,
   BURST_DMG: 0,
 
+  BASIC_F_DMG: 0,
+  CHARGE_F_DMG: 0,
+  PLUNGE_F_DMG: 0,
+  SKILL_F_DMG: 0,
+  BURST_F_DMG: 0,
+
   BASIC_CR: 0,
   CHARGE_CR: 0,
   PLUNGE_CR: 0,
@@ -74,11 +120,11 @@ export const baseStatsObject = {
   BURST_CD: 0,
 
   // Multipliers
-  BASIC_SCALING: [],
-  CHARGE_SCALING: [],
-  PLUNGE_SCALING: [],
-  SKILL_SCALING: [],
-  BURST_SCALING: [],
+  BASIC_SCALING: [] as ScalingT[],
+  CHARGE_SCALING: [] as ScalingT[],
+  PLUNGE_SCALING: [] as ScalingT[],
+  SKILL_SCALING: [] as ScalingT[],
+  BURST_SCALING: [] as ScalingT[],
 }
 
 export type StatsObject = typeof baseStatsObject

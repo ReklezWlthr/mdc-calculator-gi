@@ -10,3 +10,5 @@ export const findCharacter = (cId: string) => _.find(Characters, (item) => item.
 export const findArtifactSet = (id: string) => _.find(ArtifactSets, (item) => item.id === id)
 
 export const findContentById = (content: any[], id: string) => _.find(content, ['id', id])
+
+export const isSubsetOf = (a: any[], b: any[]) => _.every(a, (item) => _.includes(b, item))

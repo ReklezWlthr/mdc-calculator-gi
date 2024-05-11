@@ -68,7 +68,7 @@ export const useStat = (
     [weapon, character, artifactData]
   )
 
-  return {
+  const preCalculated = {
     baseAtk: charBaseAtk + weaponBaseAtk,
     baseHp: getBaseStat(character?.stat?.baseHp, cLevel, character?.stat?.ascHp, cAsc, character?.rarity),
     baseDef: getBaseStat(character?.stat?.baseDef, cLevel, character?.stat?.ascDef, cAsc, character?.rarity),
@@ -78,6 +78,13 @@ export const useStat = (
     fAtk: getTotalStat(Stats.ATK),
     fHp: getTotalStat(Stats.HP),
     fDef: getTotalStat(Stats.DEF),
+  }
+
+  return {
+    ...preCalculated,
+    atk: preCalculated.baseAtk * (1 + preCalculated.pAtk) + preCalculated.fAtk,
+    hp: preCalculated.baseHp * (1 + preCalculated.pHp) + preCalculated.fHp,
+    def: preCalculated.baseDef * (1 + preCalculated.pDef) + preCalculated.fDef,
     cRate: 0.05 + getTotalStat(Stats.CRIT_RATE) - (character?.codeName === 'Kokomi' ? 1 : 0),
     cDmg: 0.5 + getTotalStat(Stats.CRIT_DMG),
     em: getTotalStat(Stats.EM),
@@ -95,3 +102,5 @@ export const useStat = (
     dmg: getTotalStat(Stats.ALL_DMG),
   }
 }
+
+export type StatObjectT = ReturnType<typeof useStat>

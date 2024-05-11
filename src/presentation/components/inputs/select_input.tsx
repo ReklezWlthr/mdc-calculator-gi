@@ -34,25 +34,21 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
         })}
       >
         <Listbox.Button
-          className={() =>
-            classNames(
-              'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full min-h-[30px]',
-              { 'cursor-not-allowed bg-primary-bg border-primary text-primary-light': disabled },
-              { 'cursor-pointer hover:border-primary-lighter bg-primary-darker border-primary-light': !disabled },
-              { 'text-gray': value },
-              { 'text-primary-light': !value }
-            )
-          }
-        >
-          {() => (
-            <div className="flex items-center">
-              {value && valueFinder(value)?.img && (
-                <img src={valueFinder(value)?.img} className="object-cover w-6 h-6 mr-3 rounded-full" />
-              )}
-              <div>{value && <i className={icon} />}</div>
-              <div className="text-sm truncate">{value ? valueFinder(value)?.name : placeholder}</div>
-            </div>
+          className={classNames(
+            'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full min-h-[30px]',
+            { 'cursor-not-allowed bg-primary-bg border-primary text-primary-light': disabled },
+            { 'cursor-pointer hover:border-primary-lighter bg-primary-darker border-primary-light': !disabled },
+            { 'text-gray': value },
+            { 'text-primary-light': !value }
           )}
+        >
+          <div className="flex items-center">
+            {value && valueFinder(value)?.img && (
+              <img src={valueFinder(value)?.img} className="object-cover w-6 h-6 mr-3 rounded-full" />
+            )}
+            <div>{value && <i className={icon} />}</div>
+            <div className="text-sm truncate">{value ? valueFinder(value)?.name : placeholder}</div>
+          </div>
         </Listbox.Button>
         <Transition
           enter="transition duration-150 ease-out origin-top"

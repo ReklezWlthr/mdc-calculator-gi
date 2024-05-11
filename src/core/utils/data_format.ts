@@ -8,6 +8,7 @@ import {
   WeaponSecondaryScaling,
 } from '@src/domain/genshin/scaling'
 import _ from 'lodash'
+import { StatObjectT } from '../hooks/useStat'
 
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0
@@ -87,4 +88,13 @@ export const getSetCount = (artifacts: IArtifactEquip[], aIds: string[]) => {
     {}
   )
   return setBonus
+}
+
+export const calcScaling = (scaling, stats: StatObjectT) => {
+  return _.map(scaling, (item) => ({
+    name: item.name,
+    value: item.value * stats[item.scale.toLowerCase()],
+    element: item.element,
+    property: item.property,
+  }))
 }

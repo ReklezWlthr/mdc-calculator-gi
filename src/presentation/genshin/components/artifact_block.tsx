@@ -11,6 +11,7 @@ import { StatIcons } from '../../../domain/genshin/constant'
 import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
 import classNames from 'classnames'
 import { CommonModal } from '@src/presentation/components/common_modal'
+import { ArtifactListModal } from './artifact_list_modal'
 
 interface ArtifactBlockProps {
   index?: number
@@ -61,6 +62,10 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
   const onOpenEditModal = useCallback(() => {
     modalStore.openModal(<ArtifactModal type={props.piece} index={props.index} aId={props.aId} />)
   }, [modalStore, props.index, props.aId])
+
+  const onOpenSwapModal = useCallback(() => {
+    modalStore.openModal(<ArtifactListModal index={props.index} type={props.piece} />)
+  }, [props.index, props.aId])
 
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
@@ -189,7 +194,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 onClick={onOpenEditModal}
                 title="Edit Artifact"
               />
-              <MenuButton icon="fa-solid fa-repeat duration-[250ms]" onClick={onOpenEditModal} title="Swap Artifact" />
+              <MenuButton icon="fa-solid fa-repeat duration-[250ms]" onClick={onOpenSwapModal} title="Swap Artifact" />
               <MenuButton
                 icon="fa-solid fa-arrow-right-from-bracket rotate-90 duration-[300ms]"
                 onClick={onOpenConfirmModal}

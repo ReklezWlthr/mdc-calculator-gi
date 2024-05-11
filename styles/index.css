@@ -1,5 +1,17 @@
 html {
   overflow: overlay;
-  font-family: "Nunito";
+  font-family: 'Nunito';
   background-color: #1e1e1e;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
 }

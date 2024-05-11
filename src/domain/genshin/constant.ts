@@ -111,7 +111,18 @@ export const DefaultWeaponName = {
   [WeaponType.BOW]: "Hunter's Bow",
 }
 
+export enum TalentProperty {
+  NA = 'Normal Attack',
+  CA = 'Charged Attack',
+  PA = 'Plunge Attack',
+  SKILL = 'Elemental Skill',
+  BURST = 'Elemental Burst',
+  HEAL = 'Heal',
+  SHIELD = 'Shield'
+}
+
 export enum Element {
+  PHYSICAL = 'Physical',
   PYRO = 'Pyro',
   CRYO = 'Cryo',
   HYDRO = 'Hydro',

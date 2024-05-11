@@ -30,7 +30,7 @@ export class Inventory {
 
   addArtifact = (artifact: IArtifactEquip) => {
     if (!artifact) return false
-    this.artifacts = [...this.artifacts, artifact]
+    this.artifacts = [artifact, ...this.artifacts]
     return true
   }
 

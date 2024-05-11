@@ -5,7 +5,6 @@ import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { MainStat, SubStat } from '@src/domain/genshin/artifact'
 import { Stats } from '@src/domain/genshin/constant'
-import { GhostButton } from '@src/presentation/components/ghost.button'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
@@ -13,13 +12,14 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import _ from 'lodash'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 
 export const ArtifactModal = ({ type, index, aId }: { type: number; index?: number; aId?: string }) => {
-  const { teamStore, artifactStore, modalStore, buildStore } = useStore()
+  const { teamStore, artifactStore, modalStore } = useStore()
+  const [error, setError] = useState('')
 
-  const { watch, control, setValue, handleSubmit, reset } = useForm({
+  const { watch, control, setValue, handleSubmit, reset, formState } = useForm({
     defaultValues: {
       setId: null,
       quality: 5,
@@ -68,12 +68,16 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
   }
 
   const onSubmit = handleSubmit(({ subList, ...rest }) => {
+    if (!_.includes(setData.rarity, rest.quality)) return setError('This set does not exist in selected quality.')
     const id = aId || crypto.randomUUID()
 
     const trimmedSub = _.map(
       _.filter(subList, (item) => item.stat && item.value),
       (item) => ({ ...item, value: parseFloat(item.value) })
     )
+    const unique = _.uniqBy(trimmedSub, 'stat')
+    if (unique.length !== trimmedSub.length) return setError('Duplicated Sub Stats')
+    if (_.find(trimmedSub, ['stat', rest.main])) return setError('Main Stat cannot appear in Sub Stats.')
     const data = { id, ...rest, subList: trimmedSub }
 
     const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
@@ -101,7 +105,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
         <Controller
           name="setId"
           control={control}
-          rules={{ required: true }}
+          rules={{ required: { value: true, message: 'Artifact set is required.' } }}
           render={({ field }) => (
             <SelectTextInput
               value={field.value}
@@ -209,7 +213,10 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           ))}
         </div>
       </div>
-      <div className="flex justify-end gap-2">
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-xs font-normal text-center text-red">
+          {formState.errors?.setId?.message?.toString() || error}
+        </p>
         <PrimaryButton title="Confirm" onClick={onSubmit} />
       </div>
     </div>

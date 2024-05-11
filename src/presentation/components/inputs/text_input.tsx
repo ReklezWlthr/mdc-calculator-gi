@@ -11,6 +11,8 @@ export interface TextInputProps {
   onChange: (value: string) => void
   style?: string
   type?: 'text' | 'number'
+  max?: number
+  min?: number
 }
 
 export const TextInput = (props: TextInputProps) => {
@@ -29,6 +31,9 @@ export const TextInput = (props: TextInputProps) => {
     >
       {props.iconLeading && <img src={props.iconLeading} className="object-cover w-6 h-6 mr-2 rounded-full" />}
       <input
+        type={props.type}
+        max={props.max}
+        min={props.min}
         value={props?.value}
         disabled={props.disabled}
         onChange={(e) => {

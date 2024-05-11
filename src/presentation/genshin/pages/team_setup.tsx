@@ -15,6 +15,7 @@ import { findCharacter } from '@src/core/utils/finder'
 import { getSetCount } from '@src/core/utils/data_format'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 import { Tooltip } from '@src/presentation/components/tooltip'
+import { CommonModal } from '@src/presentation/components/common_modal'
 
 const CharacterSelect = ({
   onClick,
@@ -125,6 +126,17 @@ export const TeamSetup = observer(() => {
     modalStore.openModal(<BuildModal index={selected} />)
   }, [selected])
 
+  const onOpenConfirmModal = useCallback(() => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-question-circle text-yellow"
+        title="Unequip All"
+        desc="This will unequip everything from this character, including weapons and artifacts. Do you wish to proceed?"
+        onConfirm={() => teamStore.unequipAll(selected)}
+      />
+    )
+  }, [selected])
+
   const set = getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts)
 
   return (
@@ -144,7 +156,7 @@ export const TeamSetup = observer(() => {
         <div className="flex gap-x-2">
           <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
           <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
-          <PrimaryButton title="Unequip All" onClick={() => teamStore.unequipAll(selected)} />
+          <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
         </div>
         <div className="h-5" />
         <StatBlock index={selected} />
