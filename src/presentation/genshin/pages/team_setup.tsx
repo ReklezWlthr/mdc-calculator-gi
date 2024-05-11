@@ -125,6 +125,8 @@ export const TeamSetup = observer(() => {
     modalStore.openModal(<BuildModal index={selected} />)
   }, [selected])
 
+  const set = getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts)
+
   return (
     <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-auto">
       <div className="w-1/3">
@@ -151,12 +153,11 @@ export const TeamSetup = observer(() => {
         <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
         <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
         <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
-          {_.map(
-            getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts),
-            (item, key) => (
-              <SetToolTip item={item} set={key} key={key} />
-            )
-          ) || <div>Non</div>}
+          {_.isEmpty(set) ? (
+            <p className="text-xs text-white">No Set Bonus</p>
+          ) : (
+            _.map(set, (item, key) => <SetToolTip item={item} set={key} key={key} />)
+          )}
         </div>
       </div>
       <div className="w-1/5 space-y-5">
