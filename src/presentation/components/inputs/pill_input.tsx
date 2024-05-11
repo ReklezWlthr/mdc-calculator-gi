@@ -18,7 +18,7 @@ export const PillInput = ({
   return (
     <div
       className={classNames(
-        'group flex items-center px-2 py-1 border rounded-lg duration-300 font-normal truncate w-full text-sm gap-1',
+        'group flex items-center px-2 py-1 border rounded-lg transition-colors duration-300 font-normal truncate w-full text-sm gap-1',
         value && !disabled ? 'text-gray' : 'text-primary-light',
         disabled
           ? 'cursor-not-allowed bg-primary-bg border-primary'
@@ -27,10 +27,10 @@ export const PillInput = ({
       )}
       onClick={() => !disabled && onClick()}
     >
-      <p className="w-full truncate">{value || placeholder || '-'}</p>
+      <p className="w-full truncate transition-none">{value || placeholder || '-'}</p>
       <i
-        className={classNames('text-sm duration-100 opacity-0 fa-solid fa-times-circle text-primary-light w-fit', {
-          'group-hover:opacity-100 cursor-pointer': !disabled,
+        className={classNames('text-sm transition duration-100 opacity-0 fa-solid fa-times-circle text-primary-light w-0', {
+          'group-hover:opacity-100 group-hover:w-fit cursor-pointer': !disabled,
         })}
         onClick={(event) => {
           event.stopPropagation()
