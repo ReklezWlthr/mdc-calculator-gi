@@ -85,20 +85,6 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
     modalStore.closeModal()
   })
 
-  const onDelete = useCallback(() => {
-    const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
-    artifactStore.deleteArtifact(aId)
-    modalStore.closeModal()
-    const char = _.findIndex(teamStore.characters, (item) => _.includes(item.equipments?.artifacts, aId))
-    const build = _.filter(buildStore.builds, (item) => _.includes(item.artifacts, aId))
-    if (char >= 0) {
-      teamStore.setArtifact(char, oldType, null)
-    }
-    _.forEach(build, (item) => {
-      buildStore.editBuild(item.id, { artifacts: _.without(item.artifacts, aId) })
-    })
-  }, [artifactStore.artifacts, teamStore.characters, buildStore.builds, aId])
-
   return (
     <div className="w-[300px] p-4 space-y-4 font-semibold text-white rounded-xl bg-primary-dark">
       <div className="flex justify-center gap-2">
@@ -223,10 +209,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           ))}
         </div>
       </div>
-      <div className="flex justify-between gap-2">
-        <div className="flex gap-2">
-          {aId && <GhostButton icon="fa-regular fa-trash-alt" onClick={onDelete} tooltip="Delete" />}
-        </div>
+      <div className="flex justify-end gap-2">
         <PrimaryButton title="Confirm" onClick={onSubmit} />
       </div>
     </div>

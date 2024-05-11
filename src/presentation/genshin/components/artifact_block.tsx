@@ -36,7 +36,7 @@ const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => voi
 export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlockProps) => {
   const pieceName = ArtifactPiece[props.piece]
 
-  const { modalStore, teamStore, artifactStore } = useStore()
+  const { modalStore, teamStore, artifactStore, buildStore } = useStore()
   const artifact = _.find(artifactStore.artifacts, ['id', props.aId])
   const setData = findArtifactSet(artifact?.setId)
 
@@ -69,6 +69,31 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
         title="Unequip Artifact"
         desc="Do you want to unequip this artifact?"
         onConfirm={onUnEquip}
+      />
+    )
+  }, [props.index, props.aId])
+
+  const onDelete = useCallback(() => {
+    const oldType = _.find(artifactStore.artifacts, ['id', props.aId])?.type
+    artifactStore.deleteArtifact(props.aId)
+    modalStore.closeModal()
+    const char = _.findIndex(teamStore.characters, (item) => _.includes(item.equipments?.artifacts, props.aId))
+    const build = _.filter(buildStore.builds, (item) => _.includes(item.artifacts, props.aId))
+    if (char >= 0) {
+      teamStore.setArtifact(char, oldType, null)
+    }
+    _.forEach(build, (item) => {
+      buildStore.editBuild(item.id, { artifacts: _.without(item.artifacts, props.aId) })
+    })
+  }, [artifactStore.artifacts, teamStore.characters, buildStore.builds, props.aId])
+
+  const onOpenDeleteModal = useCallback(() => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-exclamation-circle text-red"
+        title="Delete Artifact"
+        desc="Do you want to delete this artifact?"
+        onConfirm={onDelete}
       />
     )
   }, [props.index, props.aId])
@@ -121,7 +146,16 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             </div>
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
-                <img className="w-4 h-4" src={`/icons/${StatIcons[artifact?.main]}`} />
+                <img
+                  className="w-4 h-4"
+                  src={
+                    StatIcons[artifact?.main]
+                      ? `/icons/${StatIcons[artifact?.main]}`
+                      : `https://cdn.wanderer.moe/genshin-impact/elements/${artifact?.main
+                          ?.split(' ')?.[0]
+                          ?.toLowerCase()}.png`
+                  }
+                />
                 {artifact?.main}
               </div>
               <hr className="w-full border border-primary-border" />
@@ -160,6 +194,11 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 icon="fa-solid fa-arrow-right-from-bracket rotate-90 duration-[300ms]"
                 onClick={onOpenConfirmModal}
                 title="Unequip Artifact"
+              />
+              <MenuButton
+                icon="fa-solid fa-trash duration-[350ms]"
+                onClick={onOpenDeleteModal}
+                title="Delete Artifact"
               />
             </div>
           )}
