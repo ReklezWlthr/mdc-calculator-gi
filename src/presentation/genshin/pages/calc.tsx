@@ -17,23 +17,19 @@ import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { IContent } from '@src/domain/genshin/conditional'
 
+type ConditionalFormT = {
+  conditionals: Record<string, any>[]
+}
+
 const Conditionals = observer(
-  ({
-    content,
-    control,
-    selected,
-  }: {
-    content: IContent[]
-    control: Control<Record<string, any>[], any>
-    selected: number
-  }) =>
+  ({ content, control, selected }: { content: IContent[]; control: Control<ConditionalFormT>; selected: number }) =>
     _.map(
       content,
       (content) =>
         content.show && (
           <Controller
             key={content.id}
-            name={`${selected}.${content.id}`}
+            name={`conditionals.${selected}.${content.id}`}
             control={control}
             render={({ field }) => (
               <div className="grid items-center grid-cols-12 text-xs gap-x-1">
@@ -102,25 +98,26 @@ export const Calculator = observer(({}: {}) => {
   )
   const main = conditionals[selected]
 
-  const { watch, control } = useForm<Record<string, any>[]>({
-    defaultValues: _.map(conditionals, (item) =>
-      _.reduce(
-        item?.content,
-        (acc, curr) => {
-          if (curr.show) acc[curr.id] = curr.default
-          return acc
-        },
-        {}
-      )
-    ),
+  const { watch, control } = useForm<ConditionalFormT>({
+    defaultValues: {
+      conditionals: _.map(conditionals, (item) =>
+        _.reduce(
+          item?.content,
+          (acc, curr) => {
+            if (curr.show) acc[curr.id] = curr.default
+            return acc
+          },
+          {}
+        )
+      ),
+    },
   })
   const values = watch()
-  console.log(values)
 
   useEffect(() => {
     const preCompute = main?.preCompute(values)
-    setComputedStats(preCompute)
-  }, [char])
+    // setComputedStats(preCompute)
+  }, [char, values])
 
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
