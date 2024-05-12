@@ -3,7 +3,6 @@ import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
-import { toPercentage } from '@src/core/utils/converter'
 import { IContent } from '@src/domain/genshin/conditional'
 
 const Nahida = (c: number, a: number, stat: StatObjectT) => {
@@ -25,26 +24,39 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
   const teammateContent: IContent[] = [findContentById(content, 'nahida_a4')]
 
   return {
+    titles: {
+      attack: 'Akara',
+      skill: 'All Schemes to Know',
+      burst: 'Illusory Heart',
+      a1: 'Compassion Illuminated',
+      a4: 'Awakening Elucidated',
+      c1: 'The Seed of Stored Knowledge',
+      c2: 'The Root of All Fullness',
+      c3: 'The Shoot of Conscious Attainment',
+      c4: 'The Stem of Manifest Inference',
+      c5: 'The Leaves of Enlightening Speech',
+      c6: "The Fruit of Reason's Culmination",
+    },
     content,
     teammateContent,
     preCompute: (form: Record<string, any>) => {
       const base = _.cloneDeep(baseStatsObject)
 
       base.BASIC_SCALING = [
-        { name: '1-Hit', value: 0.403 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
-        { name: '2-Hit', value: 0.3697 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
-        { name: '3-Hit', value: 0.4587 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
-        { name: '4-Hit', value: 0.5841 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
+        { name: '1-Hit', value: 0.403 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
+        { name: '2-Hit', value: 0.3697 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
+        { name: '3-Hit', value: 0.4587 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
+        { name: '4-Hit', value: 0.5841 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
       ]
       base.CHARGE_SCALING = [
-        { name: 'Charged Attack', value: 1.32 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.CA },
+        { name: 'Charged Attack', value: 1.32 * stat.atk, element: Element.DENDRO, property: TalentProperty.CA },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('catalyst', stat.atk)
+      base.PLUNGE_SCALING = getPlungeScaling('catalyst', stat.atk, Element.DENDRO)
       base.SKILL_SCALING = [
         { name: 'Press DMG', value: 0.984 * stat.atk, element: Element.DENDRO, property: TalentProperty.SKILL },
         { name: 'Hold DMG', value: 1.304 * stat.atk, element: Element.DENDRO, property: TalentProperty.SKILL },
         {
-          name: 'Tri-Karma Purification DMG',
+          name: 'Tri-Karma Purification',
           value: 1.032 * stat.atk + 2.064 * stat.em,
           element: Element.DENDRO,
           property: TalentProperty.SKILL,

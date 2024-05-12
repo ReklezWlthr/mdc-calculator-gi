@@ -92,6 +92,7 @@ export const getSetCount = (artifacts: IArtifactEquip[], aIds: string[]) => {
 }
 
 export const getResonanceCount = (chars: ITeamChar[]) => {
+  if (_.size(chars) < 4) return {}
   const charData = _.map(chars, (item) => findCharacter(item.cId))
   const setBonus: Record<string, number> = _.reduce(
     charData,
