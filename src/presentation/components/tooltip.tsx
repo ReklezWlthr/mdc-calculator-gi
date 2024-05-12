@@ -32,40 +32,29 @@ export const Tooltip = observer(
         // Get calculated tooltip coordinates and size
         const tooltip_rect = ref?.getBoundingClientRect()
         const text_rect = main?.getBoundingClientRect()
+        const width = tooltip_rect.width * (100 / 95)
+        const height = tooltip_rect.height * (100 / 95)
 
         // Define tooltip's position
         let posX =
-          position === 'right'
-            ? text_rect?.width + MAIN_MARGIN
-            : position === 'left'
-            ? -tooltip_rect?.width - MAIN_MARGIN
-            : 0
+          position === 'right' ? text_rect?.width + MAIN_MARGIN : position === 'left' ? -width - MAIN_MARGIN : 0
         let posY =
-          position === 'top'
-            ? -tooltip_rect?.height - MAIN_MARGIN
-            : position === 'bottom'
-            ? text_rect?.height + MAIN_MARGIN
-            : 0
+          position === 'top' ? -height - MAIN_MARGIN : position === 'bottom' ? text_rect?.height + MAIN_MARGIN : 0
         // Position tooltip
         ref.style.top = posY + 'px'
         ref.style.left = posX + 'px'
 
         // Corrections if out of window
         // Check right
-        console.log(tooltip_rect.x, tooltip_rect.width, tooltip_rect.x +tooltip_rect.width, window.innerWidth)
-        if (tooltip_rect.x + tooltip_rect.width > window.innerWidth)
-          posX =
-            position === 'right'
-              ? -tooltip_rect?.width - MAIN_MARGIN
-              : tooltip_rect.x + tooltip_rect.width - (window.innerWidth + EDGE_MARGIN)
-
+        if (tooltip_rect?.x + text_rect?.width + width + MAIN_MARGIN > window.innerWidth) posX = -width - MAIN_MARGIN
+        // Check left
+        if (tooltip_rect?.x < 0) posX = text_rect?.width + MAIN_MARGIN
         // Check top
         if (tooltip_rect.y < 0) posY = position === 'top' ? text_rect.height + EDGE_MARGIN : 0
-
         // Check bottom
-        const bottomOverflow = tooltip_rect.y + tooltip_rect.height - window.innerHeight
-        if (tooltip_rect.y + tooltip_rect.height > window.innerHeight + EDGE_MARGIN)
-          posY = position === 'bottom' ? -tooltip_rect.height - EDGE_MARGIN : -bottomOverflow - EDGE_MARGIN
+        const bottomOverflow = tooltip_rect?.y + height - window.innerHeight
+        if (tooltip_rect?.y + height > window.innerHeight + EDGE_MARGIN)
+          posY = position === 'bottom' ? -height - EDGE_MARGIN : -bottomOverflow - EDGE_MARGIN
 
         // Apply corrected position
         ref.style.top = posY + 'px'

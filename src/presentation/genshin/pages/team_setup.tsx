@@ -87,7 +87,7 @@ const ResonanceToolTip = observer(({ count, element }: { count: number; element:
           </div>
         }
         style="w-[400px]"
-        position='right'
+        position="right"
         key={element}
       >
         <div className="flex items-center justify-between w-full gap-3 text-xs text-white cursor-default">
@@ -205,6 +205,8 @@ export const TeamSetup = observer(() => {
         <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
           {_.isEmpty(resonance) ? (
             <p className="text-xs text-white">No Resonance Bonus</p>
+          ) : _.size(resonance) === 4 ? (
+            <ResonanceToolTip count={4} element="Unique" />
           ) : (
             _.map(resonance, (item, key) => <ResonanceToolTip count={item} element={key} key={key} />)
           )}
