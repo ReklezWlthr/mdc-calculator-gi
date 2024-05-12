@@ -98,7 +98,8 @@ export const TagSelectInput = ({
                 key={item.value}
                 className="flex items-center gap-x-2 relative z-50 cursor-pointer select-none py-[9px] px-4 "
                 onClick={() => {
-                  if (_.size(values) < maxSelection || isSelected(item.value)) onToggleSelection(item.value)
+                  if (!maxSelection || _.size(values) < maxSelection || isSelected(item.value))
+                    onToggleSelection(item.value)
                 }}
               >
                 <input

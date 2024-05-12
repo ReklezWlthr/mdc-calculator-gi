@@ -17,11 +17,16 @@ export const BuildBlock = observer(({ build, onClick }: BuildBlockProps) => {
 
   const char = findCharacter(build.cId)
 
-  const onOpenConfirmModal = useCallback((onConfirm: () => void) => {
+  const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
-      <CommonModal title="Delete Build" desc="Are you sure you want to delete this build?" onConfirm={onConfirm} />
+      <CommonModal
+        icon="fa-solid fa-question-circle text-yellow"
+        title="Delete Build"
+        desc="Are you sure you want to delete this build? Deleting build will NOT delete designated artifacts."
+        onConfirm={() => buildStore.deleteBuild(build.id)}
+      />
     )
-  }, [])
+  }, [build.id])
 
   return (
     <div
@@ -48,7 +53,7 @@ export const BuildBlock = observer(({ build, onClick }: BuildBlockProps) => {
           icon="fa-regular fa-trash-alt"
           onClick={(event) => {
             event.stopPropagation()
-            onOpenConfirmModal(() => buildStore.deleteBuild(build.id))
+            onOpenConfirmModal()
           }}
         />
       </div>

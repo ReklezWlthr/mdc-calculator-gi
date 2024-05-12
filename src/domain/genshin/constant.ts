@@ -118,7 +118,7 @@ export enum TalentProperty {
   SKILL = 'Elemental Skill',
   BURST = 'Elemental Burst',
   HEAL = 'Heal',
-  SHIELD = 'Shield'
+  SHIELD = 'Shield',
 }
 
 export enum Element {
@@ -214,6 +214,65 @@ export const RefinementOptions = [
   { name: 'R3', value: '3' },
   { name: 'R4', value: '4' },
   { name: 'R5', value: '5' },
+]
+
+export const MainStatOptions = [
+  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
+  { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
+  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
+  { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
+  { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
+  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
+  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
+  { name: Stats.PHYSICAL_DMG, value: Stats.PHYSICAL_DMG, img: '/icons/stat_physical.png' },
+  {
+    name: Stats.ANEMO_DMG,
+    value: Stats.ANEMO_DMG,
+    img: 'https://cdn.wanderer.moe/genshin-impact/elements/anemo.png',
+  },
+  {
+    name: Stats.PYRO_DMG,
+    value: Stats.PYRO_DMG,
+    img: 'https://cdn.wanderer.moe/genshin-impact/elements/pyro.png',
+  },
+  {
+    name: Stats.HYDRO_DMG,
+    value: Stats.HYDRO_DMG,
+    img: 'https://cdn.wanderer.moe/genshin-impact/elements/hydro.png',
+  },
+  {
+    name: Stats.CRYO_DMG,
+    value: Stats.CRYO_DMG,
+    img: 'https://cdn.wanderer.moe/genshin-impact/elements/cryo.png',
+  },
+  {
+    name: Stats.ELECTRO_DMG,
+    value: Stats.ELECTRO_DMG,
+    img: 'https://cdn.wanderer.moe/genshin-impact/elements/electro.png',
+  },
+  {
+    name: Stats.GEO_DMG,
+    value: Stats.GEO_DMG,
+    img: 'https://cdn.wanderer.moe/genshin-impact/elements/geo.png',
+  },
+  {
+    name: Stats.DENDRO_DMG,
+    value: Stats.DENDRO_DMG,
+    img: 'https://cdn.wanderer.moe/genshin-impact/elements/dendro.png',
+  },
+]
+
+export const SubStatOptions = [
+  { name: Stats.ATK, value: Stats.ATK, img: '/icons/stat_atk.png' },
+  { name: Stats.HP, value: Stats.HP, img: '/icons/stat_hp.png' },
+  { name: Stats.DEF, value: Stats.DEF, img: '/icons/stat_def.png' },
+  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
+  { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
+  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
+  { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
+  { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
+  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
+  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
 ]
 
 export const PropMap = {

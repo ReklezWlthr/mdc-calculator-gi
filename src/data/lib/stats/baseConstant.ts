@@ -1,4 +1,4 @@
-import { ScalingT } from '@src/domain/genshin/conditional'
+import { IScaling } from '@src/domain/genshin/conditional'
 import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 
@@ -120,11 +120,11 @@ export const baseStatsObject = {
   BURST_CD: 0,
 
   // Multipliers
-  BASIC_SCALING: [] as ScalingT[],
-  CHARGE_SCALING: [] as ScalingT[],
-  PLUNGE_SCALING: [] as ScalingT[],
-  SKILL_SCALING: [] as ScalingT[],
-  BURST_SCALING: [] as ScalingT[],
+  BASIC_SCALING: [] as IScaling[],
+  CHARGE_SCALING: [] as IScaling[],
+  PLUNGE_SCALING: [] as IScaling[],
+  SKILL_SCALING: [] as IScaling[],
+  BURST_SCALING: [] as IScaling[],
 }
 
 export type StatsObject = typeof baseStatsObject

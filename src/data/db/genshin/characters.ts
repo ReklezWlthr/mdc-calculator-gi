@@ -1,5 +1,48 @@
 import { Element, Stats, WeaponType } from '@src/domain/genshin/constant'
 
+export const Resonance = [
+  {
+    name: 'Fervent Flames',
+    element: Element.PYRO,
+    desc: `Affected by <b class="text-genshin-cryo">Cryo</b> for 40% less time. Increases ATK by 25%.`,
+  },
+  {
+    name: 'Soothing Water',
+    element: Element.HYDRO,
+    desc: `Affected by <b class="text-genshin-pyro">Pyro</b> for 40% less time. Increases Max HP by 25%.`,
+  },
+  {
+    name: 'High Voltage',
+    element: Element.ELECTRO,
+    desc: `Affected by <b class="text-genshin-hydro">Hydro</b> for 40% less time. Superconduct, Overloaded, Electro-Charged, Quicken, Aggravate, or Hyperbloom have a 100% chance to generate an <b class="text-genshin-electro">Electro</b> Elemental Particle (CD: 5s).`,
+  },
+  {
+    name: 'Shattering Ice',
+    element: Element.CRYO,
+    desc: `Affected by <b class="text-genshin-electro">Electro</b> for 40% less time. Increases CRIT Rate against enemies that are Frozen or affected by <b class="text-genshin-cryo">Cryo</b> by 15%.`,
+  },
+  {
+    name: 'Impetuous Winds',
+    element: Element.ANEMO,
+    desc: `Decreases Stamina Consumption by 15%. Increases Movement SPD by 10%. Shortens Skill CD by 5%.`,
+  },
+  {
+    name: 'Enduring Rock',
+    element: Element.GEO,
+    desc: `Increases shield strength by 15%. Additionally, characters protected by a shield will have the following special characteristics: DMG dealt increased by 15%, dealing DMG to enemies will decrease their <b class="text-genshin-geo">Geo RES</b> by 20% for 15s.`,
+  },
+  {
+    name: 'Sprawling Greenery',
+    element: Element.DENDRO,
+    desc: `Elemental Mastery increased by 50. After triggering Burning, Quicken, or Bloom reactions, all nearby party members gain 30 Elemental Mastery for 6s. After triggering Aggravate, Spread, Hyperbloom, or Burgeon reactions, all nearby party members gain 20 Elemental Mastery for 6s. The durations of the aforementioned effects will be counted independently.`,
+  },
+  {
+    name: 'Protective Canopy',
+    element: 'Unique',
+    desc: `All Elemental RES +15%, Physical RES +15%.`,
+  },
+]
+
 export const Characters = [
   {
     id: '10000038',

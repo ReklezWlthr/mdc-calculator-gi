@@ -4,11 +4,12 @@ import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConsta
 import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
+import { IContent } from '@src/domain/genshin/conditional'
 
 const Albedo = (c: number, a: number, stat: StatObjectT) => {
   const maxFatalReckoning = 4
 
-  const content = [
+  const content: IContent[] = [
     {
       type: 'toggle',
       id: 'calciteMight',
@@ -65,7 +66,7 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
     },
   ]
 
-  const teammateContent = [
+  const teammateContent: IContent[] = [
     findContentById(content, 'homuncularNature'),
     findContentById(content, 'descentOfDivinity'),
     findContentById(content, 'dustOfPurification'),
@@ -96,6 +97,7 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
           value: 1.336 * stat.def,
           element: Element.GEO,
           property: TalentProperty.SKILL,
+          bonus: form.calciteMight ? 0.25 : null,
         },
       ]
       base.BURST_SCALING = [
@@ -108,16 +110,16 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
         },
       ]
 
-      base[Stats.ALL_DMG] += 0.17 * (form.dustOfPurification || 0)
-      base[Stats.EM] += 250 * (form.homuncularNature || 0)
-      base.PLUNGE_DMG += 0.3 * (form.descentOfDivinity || 0)
+      if (form.dustOfPurification) base[Stats.ALL_DMG] += 0.17
+      if (form.homuncularNature) base[Stats.EM] += 250
+      if (form.descentOfDivinity) base.PLUNGE_DMG += 0.3
 
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
-      base[Stats.ALL_DMG] += 0.17 * (form.dustOfPurification || 0)
-      base[Stats.EM] += 250 * (form.homuncularNature || 0)
-      base.PLUNGE_DMG += 0.3 * (form.descentOfDivinity || 0)
+      if (form.dustOfPurification) base[Stats.ALL_DMG] += 0.17
+      if (form.homuncularNature) base[Stats.EM] += 250
+      if (form.descentOfDivinity) base.PLUNGE_DMG += 0.3
 
       return base
     },

@@ -1,5 +1,5 @@
 import { MainStatValue, SubStatMap } from '@src/domain/genshin/artifact'
-import { IArtifactEquip, Stats } from '@src/domain/genshin/constant'
+import { IArtifactEquip, ICharacter, ITeamChar, Stats } from '@src/domain/genshin/constant'
 import {
   AscensionScaling,
   FiveStarScaling,
@@ -9,6 +9,7 @@ import {
 } from '@src/domain/genshin/scaling'
 import _ from 'lodash'
 import { StatObjectT } from '../hooks/useStat'
+import { findCharacter } from './finder'
 
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0
@@ -83,6 +84,20 @@ export const getSetCount = (artifacts: IArtifactEquip[], aIds: string[]) => {
     (acc, curr) => {
       if (!curr) return acc
       acc[curr.setId] ? (acc[curr.setId] += 1) : (acc[curr.setId] = 1)
+      return acc
+    },
+    {}
+  )
+  return setBonus
+}
+
+export const getResonanceCount = (chars: ITeamChar[]) => {
+  const charData = _.map(chars, (item) => findCharacter(item.cId))
+  const setBonus: Record<string, number> = _.reduce(
+    charData,
+    (acc, curr) => {
+      if (!curr) return acc
+      acc[curr.element] ? (acc[curr.element] += 1) : (acc[curr.element] = 1)
       return acc
     },
     {}

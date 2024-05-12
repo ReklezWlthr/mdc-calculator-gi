@@ -51,9 +51,13 @@ export const Tooltip = observer(
         ref.style.left = posX + 'px'
 
         // Corrections if out of window
-
         // Check right
-        if (tooltip_rect.x + tooltip_rect.width > window.innerWidth) posX = -tooltip_rect.width - 8
+        console.log(tooltip_rect.x, tooltip_rect.width, tooltip_rect.x +tooltip_rect.width, window.innerWidth)
+        if (tooltip_rect.x + tooltip_rect.width > window.innerWidth)
+          posX =
+            position === 'right'
+              ? -tooltip_rect?.width - MAIN_MARGIN
+              : tooltip_rect.x + tooltip_rect.width - (window.innerWidth + EDGE_MARGIN)
 
         // Check top
         if (tooltip_rect.y < 0) posY = position === 'top' ? text_rect.height + EDGE_MARGIN : 0

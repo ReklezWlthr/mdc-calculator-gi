@@ -9,7 +9,7 @@ import { SelectTextInput } from '@src/presentation/components/inputs/select_text
 import { ArtifactModal } from '../components/artifact_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
-import { Stats } from '@src/domain/genshin/constant'
+import { MainStatOptions, Stats, SubStatOptions } from '@src/domain/genshin/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
 
@@ -56,7 +56,10 @@ export const ArtifactInventory = observer(() => {
     <div className="flex flex-col items-center w-full gap-5 p-5 overflow-y-auto">
       <div className="flex items-center justify-between w-full">
         <p className="text-2xl font-bold text-white w-fit">Artifact Inventory</p>
-        <div className="flex gap-5">
+        <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />
+      </div>
+      <div className="w-full space-y-1">
+        <div className="flex items-center w-full gap-3">
           <div className="flex justify-center gap-2">
             <TypeButton field="types" icon="/icons/flower_of_life.png" value={4} />
             <TypeButton field="types" icon="/icons/plume_of_death.png" value={2} />
@@ -75,88 +78,22 @@ export const ArtifactInventory = observer(() => {
             onChange={(value) => setParams({ set: value?.value })}
             style="w-[300px]"
           />
-          <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />
-        </div>
-      </div>
-      <div className="w-full space-y-1">
-        <div className="flex items-center w-full gap-2">
-          <p className="text-white">Main Stats:</p>
-          <TypeButton field="main" icon="/icons/stat_p_atk.png" value={Stats.P_ATK} />
-          <TypeButton field="main" icon="/icons/stat_p_hp.png" value={Stats.P_HP} />
-          <TypeButton field="main" icon="/icons/stat_p_def.png" value={Stats.P_DEF} />
-          <TypeButton field="main" icon="/icons/stat_em.png" value={Stats.EM} />
-          <TypeButton field="main" icon="/icons/stat_er.png" value={Stats.ER} />
-          <TypeButton field="main" icon="/icons/stat_crit_rate.png" value={Stats.CRIT_RATE} />
-          <TypeButton field="main" icon="/icons/stat_crit_dmg.png" value={Stats.CRIT_DMG} />
-          <TypeButton field="main" icon="/icons/stat_heal.png" value={Stats.HEAL} />
-          <TypeButton field="main" icon="/icons/stat_physical.png" value={Stats.PHYSICAL_DMG} />
-          <TypeButton
-            field="main"
-            icon="https://cdn.wanderer.moe/genshin-impact/elements/anemo.png"
-            value={Stats.ANEMO_DMG}
+          <TagSelectInput
+            values={params.main}
+            options={MainStatOptions}
+            onChange={(main) => setParams({ main })}
+            placeholder="Main Stat"
+            renderAsText
+            style="w-[300px]"
           />
-          <TypeButton
-            field="main"
-            icon="https://cdn.wanderer.moe/genshin-impact/elements/pyro.png"
-            value={Stats.PYRO_DMG}
-          />
-          <TypeButton
-            field="main"
-            icon="https://cdn.wanderer.moe/genshin-impact/elements/hydro.png"
-            value={Stats.HYDRO_DMG}
-          />
-          <TypeButton
-            field="main"
-            icon="https://cdn.wanderer.moe/genshin-impact/elements/cryo.png"
-            value={Stats.CRYO_DMG}
-          />
-          <TypeButton
-            field="main"
-            icon="https://cdn.wanderer.moe/genshin-impact/elements/electro.png"
-            value={Stats.ELECTRO_DMG}
-          />
-          <TypeButton
-            field="main"
-            icon="https://cdn.wanderer.moe/genshin-impact/elements/geo.png"
-            value={Stats.GEO_DMG}
-          />
-          <TypeButton
-            field="main"
-            icon="https://cdn.wanderer.moe/genshin-impact/elements/dendro.png"
-            value={Stats.DENDRO_DMG}
-          />
-        </div>
-        <div className="flex items-center w-full gap-2">
-          <p className="text-white">Sub Stats:</p>
-          {/* <TypeButton field="subs" icon="/icons/stat_atk.png" value={Stats.ATK} />
-          <TypeButton field="subs" icon="/icons/stat_hp.png" value={Stats.HP} />
-          <TypeButton field="subs" icon="/icons/stat_def.png" value={Stats.DEF} />
-          <TypeButton field="subs" icon="/icons/stat_p_atk.png" value={Stats.P_ATK} />
-          <TypeButton field="subs" icon="/icons/stat_p_hp.png" value={Stats.P_HP} />
-          <TypeButton field="subs" icon="/icons/stat_p_def.png" value={Stats.P_DEF} />
-          <TypeButton field="subs" icon="/icons/stat_em.png" value={Stats.EM} />
-          <TypeButton field="subs" icon="/icons/stat_er.png" value={Stats.ER} />
-          <TypeButton field="subs" icon="/icons/stat_crit_rate.png" value={Stats.CRIT_RATE} />
-          <TypeButton field="subs" icon="/icons/stat_crit_dmg.png" value={Stats.CRIT_DMG} /> */}
           <TagSelectInput
             values={params.subs}
-            options={[
-              { name: Stats.ATK, value: Stats.ATK, img: '/icons/stat_atk.png' },
-              { name: Stats.HP, value: Stats.HP, img: '/icons/stat_hp.png' },
-              { name: Stats.DEF, value: Stats.DEF, img: '/icons/stat_def.png' },
-              { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
-              { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
-              { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
-              { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
-              { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
-              { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
-              { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
-            ]}
+            options={SubStatOptions}
             onChange={(subs) => setParams({ subs })}
             placeholder="Sub Stats"
             renderAsText
             maxSelection={4}
-            style="w-[200px]"
+            style="w-[300px]"
           />
         </div>
       </div>

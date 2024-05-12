@@ -12,10 +12,11 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { GhostButton } from '@src/presentation/components/ghost.button'
 import { BuildModal } from '../components/build_modal'
 import { findCharacter } from '@src/core/utils/finder'
-import { getSetCount } from '@src/core/utils/data_format'
+import { getResonanceCount, getSetCount } from '@src/core/utils/data_format'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { CommonModal } from '@src/presentation/components/common_modal'
+import { Resonance } from '@src/data/db/genshin/characters'
 
 const CharacterSelect = ({
   onClick,
@@ -67,6 +68,31 @@ const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
         <div className="flex items-center justify-between w-full gap-3 text-xs text-white cursor-default">
           <p className="w-full line-clamp-2">{setDetail?.name}</p>
           <p className="px-2 py-0.5 rounded-lg bg-primary-lighter bg-opacity-40">{count}</p>
+        </div>
+      </Tooltip>
+    )
+  )
+})
+
+const ResonanceToolTip = observer(({ count, element }: { count: number; element: string }) => {
+  const resDetail = _.find(Resonance, ['element', element])
+  const floorCount = _.floor(count / 2) * 2
+  return (
+    count >= 2 && (
+      <Tooltip
+        title={resDetail?.name}
+        body={
+          <div className="space-y-1">
+            <p dangerouslySetInnerHTML={{ __html: resDetail?.desc }} />
+          </div>
+        }
+        style="w-[400px]"
+        position='right'
+        key={element}
+      >
+        <div className="flex items-center justify-between w-full gap-3 text-xs text-white cursor-default">
+          <p className="w-full line-clamp-2">{resDetail?.name}</p>
+          <p className="px-2 py-0.5 rounded-lg bg-primary-lighter bg-opacity-40">{floorCount}</p>
         </div>
       </Tooltip>
     )
@@ -138,6 +164,7 @@ export const TeamSetup = observer(() => {
   }, [selected])
 
   const set = getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts)
+  const resonance = getResonanceCount(teamStore.characters)
 
   return (
     <div className="flex justify-center w-5/6 gap-5 p-5 overflow-y-auto">
@@ -175,6 +202,13 @@ export const TeamSetup = observer(() => {
       <div className="w-1/5 space-y-5">
         <ArtifactBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
         <ArtifactBlock index={selected} piece={1} aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]} />
+        <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
+          {_.isEmpty(resonance) ? (
+            <p className="text-xs text-white">No Resonance Bonus</p>
+          ) : (
+            _.map(resonance, (item, key) => <ResonanceToolTip count={item} element={key} key={key} />)
+          )}
+        </div>
       </div>
       <div className="w-1/5 space-y-5">
         <ArtifactBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
