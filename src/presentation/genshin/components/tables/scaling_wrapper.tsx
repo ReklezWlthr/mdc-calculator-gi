@@ -33,7 +33,7 @@ export const ScalingWrapper = observer(({ children, icon, talent, element }: Sca
           <img
             src={icon}
             className={classNames(
-              'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 ring-offset-primary-darker',
+              'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
               iconColor[element]
             )}
           />

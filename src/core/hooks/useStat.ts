@@ -14,6 +14,7 @@ import { Element, Stats } from '@src/domain/genshin/constant'
 import { AscensionGrowth } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
 export const useStat = (
   cId: string,
@@ -22,7 +23,8 @@ export const useStat = (
   wId: string,
   wLevel: number,
   wAsc: number,
-  artifacts?: string[]
+  artifacts?: string[],
+  conditionals?: StatsObject
 ) => {
   const { artifactStore, teamStore } = useStore()
 
@@ -65,9 +67,9 @@ export const useStat = (
         })
       )
 
-      return _.sum([fromWeapon, fromAscension, fromMainStat, fromSubStat, fromSetBonus])
+      return _.sum([fromWeapon, fromAscension, fromMainStat, fromSubStat, fromSetBonus, conditionals?.[stat]])
     },
-    [weapon, character, artifactData]
+    [weapon, character, artifactData, conditionals]
   )
 
   const preCalculated = {

@@ -8,13 +8,74 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Control, Controller, useForm } from 'react-hook-form'
 import { ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
 import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
+import { IContent } from '@src/domain/genshin/conditional'
+
+const Conditionals = observer(
+  ({
+    content,
+    control,
+    selected,
+  }: {
+    content: IContent[]
+    control: Control<Record<string, any>[], any>
+    selected: number
+  }) =>
+    _.map(
+      content,
+      (content) =>
+        content.show && (
+          <Controller
+            key={content.id}
+            name={`${selected}.${content.id}`}
+            control={control}
+            render={({ field }) => (
+              <div className="grid items-center grid-cols-12 text-xs gap-x-1">
+                <div className="col-span-5">
+                  <Tooltip
+                    title={content.title}
+                    body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
+                    key={content.id}
+                    style="w-[400px]"
+                  >
+                    <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
+                  </Tooltip>
+                </div>
+                <div className="col-span-1 text-center truncate text-blue">Buff</div>
+                <div className="col-span-4 text-center truncate text-gray">{content.value[0].name}</div>
+                <div className="col-span-1 text-center text-gray">
+                  {content.value[0].formatter(content.value[0].value * (content.type === 'number' ? field.value : 1))}
+                </div>
+                {content.type === 'number' && (
+                  <TextInput
+                    type="number"
+                    value={field.value}
+                    onChange={(value) => field.onChange(parseFloat(value) || '')}
+                    max={content.max}
+                    min={content.min}
+                    style="col-span-1"
+                  />
+                )}
+                {content.type === 'toggle' && (
+                  <input
+                    type="checkbox"
+                    onChange={(value) => field.onChange(value)}
+                    checked={field.value}
+                    name={content.id}
+                  />
+                )}
+              </div>
+            )}
+          />
+        )
+    )
+)
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
@@ -23,7 +84,7 @@ export const Calculator = observer(({}: {}) => {
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
 
-  const [computedStats, setComputedStats] = useState<StatsObject>(baseStatsObject)
+  const [computedStats, setComputedStats] = useState(baseStatsObject)
 
   const stats = useStat(
     char?.cId,
@@ -32,82 +93,34 @@ export const Calculator = observer(({}: {}) => {
     char?.equipments?.weapon?.wId,
     char?.equipments?.weapon?.level,
     char?.equipments?.weapon?.ascension,
-    char?.equipments?.artifacts
+    char?.equipments?.artifacts,
+    computedStats
   )
 
-  const mainConditional = _.find(ConditionalsObject, ['id', char.cId])
-  const main = mainConditional?.conditionals(
-    teamStore.characters[selected]?.cons,
-    teamStore.characters[selected]?.ascension,
-    stats
+  const conditionals = _.map(teamStore.characters, (item) =>
+    _.find(ConditionalsObject, ['id', item.cId])?.conditionals(item.cons, item.ascension, stats)
   )
+  const main = conditionals[selected]
 
-  const { setValue, watch } = useForm<Record<string, any>>({
-    defaultValues: _.reduce(
-      main?.content,
-      (acc, curr) => {
-        if (curr.show) acc[curr.id] = curr.default
-        return acc
-      },
-      {}
+  const { watch, control } = useForm<Record<string, any>[]>({
+    defaultValues: _.map(conditionals, (item) =>
+      _.reduce(
+        item?.content,
+        (acc, curr) => {
+          if (curr.show) acc[curr.id] = curr.default
+          return acc
+        },
+        {}
+      )
     ),
   })
   const values = watch()
+  console.log(values)
 
   useEffect(() => {
-    const preComputed = main?.preCompute(_.cloneDeep(values))
-    setComputedStats(preComputed)
-  }, [selected])
-
-  const Conditionals = useCallback(
-    () =>
-      _.map(main?.content, (content) => {
-        let Input = () => <></>
-        switch (content.type) {
-          case 'number':
-            Input = () => (
-              <TextInput
-                type="number"
-                value={values[content.id]}
-                onChange={(value) => setValue(content.id, parseFloat(value) || '')}
-                max={content.max}
-                min={content.min}
-                style="col-span-1"
-              />
-            )
-            break
-          case 'toggle':
-            Input = () => <div></div>
-            break
-        }
-
-        return (
-          content.show && (
-            <div className="grid items-center grid-cols-12 text-xs gap-x-1">
-              <div className="col-span-5">
-                <Tooltip
-                  title={content.title}
-                  body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
-                  key={content.id}
-                  style="w-[400px]"
-                >
-                  <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
-                </Tooltip>
-              </div>
-              <div className="col-span-1 text-center truncate text-blue">Buff</div>
-              <div className="col-span-4 text-center truncate text-gray">{content.value[0].name}</div>
-              <div className="col-span-1 text-center text-gray">
-                {content.value[0].formatter(
-                  content.value[0].value * (content.type === 'number' ? values[content.id] : 1)
-                )}
-              </div>
-              <Input />
-            </div>
-          )
-        )
-      }),
-    [main, values]
-  )
+    const preCompute = main?.preCompute(values)
+    setComputedStats(preCompute)
+  }, [char])
 
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
@@ -206,7 +219,7 @@ export const Calculator = observer(({}: {}) => {
         <div className="rounded-lg bg-primary-darker h-fit">
           <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Self Conditionals</p>
           <div className="h-[200px] px-4 py-3 space-y-3 overflow-visible">
-            <Conditionals />
+            <Conditionals content={main?.content} control={control} selected={selected} />
           </div>
         </div>
         <StatBlock index={selected} />

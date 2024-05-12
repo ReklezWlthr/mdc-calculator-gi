@@ -114,7 +114,7 @@ export const DefaultWeaponName = {
 export enum TalentProperty {
   NA = 'Normal Attack',
   CA = 'Charged Attack',
-  PA = 'Plunge Attack',
+  PA = 'Plunging Attack',
   SKILL = 'Elemental Skill',
   BURST = 'Elemental Burst',
   HEAL = 'Heal',
