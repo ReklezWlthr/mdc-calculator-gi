@@ -1,4 +1,5 @@
 import { useStat } from '@src/core/hooks/useStat'
+import { findCharacter } from '@src/core/utils/finder'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
 import Nahida from '@src/data/lib/stats/conditionals/characters/Nahida'
 import { useStore } from '@src/data/providers/app_store_provider'
@@ -13,6 +14,7 @@ import { useForm } from 'react-hook-form'
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
   const char = teamStore.characters[0]
+  const charData = findCharacter(char.cId)
 
   const [computedStats, setComputedStats] = useState<StatsObject>(baseStatsObject)
 
@@ -132,6 +134,10 @@ export const Calculator = observer(({}: {}) => {
           ))}
         </div>
         <div>
+          <img
+            src={`https://enka.network/ui/Skill_S_${charData?.codeName}_01.png`}
+            className="w-16 h-16 p-1 rounded-full bg-primary"
+          />
           {_.map(computedStats.SKILL_SCALING, (item) => (
             <div className="flex gap-2">
               <p>{item.name}</p>
@@ -141,6 +147,10 @@ export const Calculator = observer(({}: {}) => {
           ))}
         </div>
         <div>
+          <img
+            src={`https://enka.network/ui/Skill_E_${charData?.codeName}_01.png`}
+            className="w-16 h-16 p-1.5 rounded-full bg-primary"
+          />
           {_.map(computedStats.BURST_SCALING, (item) => (
             <div className="flex gap-2">
               <p>{item.name}</p>

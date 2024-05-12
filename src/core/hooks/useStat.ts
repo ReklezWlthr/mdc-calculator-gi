@@ -3,13 +3,14 @@ import {
   correctSubStat,
   getBaseStat,
   getMainStat,
+  getResonanceCount,
   getSetCount,
   getWeaponBase,
   getWeaponBonus,
 } from '../utils/data_format'
 import { useCallback } from 'react'
 import _ from 'lodash'
-import { Stats } from '@src/domain/genshin/constant'
+import { Element, Stats } from '@src/domain/genshin/constant'
 import { AscensionGrowth } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
@@ -23,7 +24,7 @@ export const useStat = (
   wAsc: number,
   artifacts?: string[]
 ) => {
-  const { artifactStore } = useStore()
+  const { artifactStore, teamStore } = useStore()
 
   const character = findCharacter(cId)
   const weapon = findWeapon(wId)
@@ -34,6 +35,7 @@ export const useStat = (
 
   const artifactData = _.map(artifacts, (aId) => _.find(artifactStore.artifacts, ['id', aId]))
   const setBonus = getSetCount(artifactStore.artifacts, artifacts)
+  const resonance = getResonanceCount(teamStore.characters)
 
   const getTotalStat = useCallback(
     (stat: string) => {
@@ -72,8 +74,8 @@ export const useStat = (
     baseAtk: charBaseAtk + weaponBaseAtk,
     baseHp: getBaseStat(character?.stat?.baseHp, cLevel, character?.stat?.ascHp, cAsc, character?.rarity),
     baseDef: getBaseStat(character?.stat?.baseDef, cLevel, character?.stat?.ascDef, cAsc, character?.rarity),
-    pAtk: getTotalStat(Stats.P_ATK),
-    pHp: getTotalStat(Stats.P_HP),
+    pAtk: getTotalStat(Stats.P_ATK) + (resonance[Element.PYRO] >= 2 ? 0.25 : 0),
+    pHp: getTotalStat(Stats.P_HP) + (resonance[Element.HYDRO] >= 2 ? 0.25 : 0),
     pDef: getTotalStat(Stats.P_DEF),
     fAtk: getTotalStat(Stats.ATK),
     fHp: getTotalStat(Stats.HP),
@@ -85,11 +87,11 @@ export const useStat = (
     atk: preCalculated.baseAtk * (1 + preCalculated.pAtk) + preCalculated.fAtk,
     hp: preCalculated.baseHp * (1 + preCalculated.pHp) + preCalculated.fHp,
     def: preCalculated.baseDef * (1 + preCalculated.pDef) + preCalculated.fDef,
-    cRate: 0.05 + getTotalStat(Stats.CRIT_RATE) - (character?.codeName === 'Kokomi' ? 1 : 0),
+    cRate: 0.05 + getTotalStat(Stats.CRIT_RATE) - (character?.id === '10000054' ? 1 : 0),
     cDmg: 0.5 + getTotalStat(Stats.CRIT_DMG),
-    em: getTotalStat(Stats.EM),
+    em: getTotalStat(Stats.EM) + (resonance[Element.DENDRO] >= 2 ? 50 : 0),
     er: 1 + getTotalStat(Stats.ER),
-    heal: getTotalStat(Stats.HEAL) + (character?.codeName === 'Kokomi' ? 0.25 : 0),
+    heal: getTotalStat(Stats.HEAL) + (character?.id === '10000054' ? 0.25 : 0),
     physical: getTotalStat(Stats.PHYSICAL_DMG),
     pyro: getTotalStat(Stats.PYRO_DMG),
     hydro: getTotalStat(Stats.HYDRO_DMG),
@@ -98,7 +100,7 @@ export const useStat = (
     geo: getTotalStat(Stats.GEO_DMG),
     dendro: getTotalStat(Stats.DENDRO_DMG),
     anemo: getTotalStat(Stats.ANEMO_DMG),
-    shield: getTotalStat(Stats.SHIELD),
+    shield: getTotalStat(Stats.SHIELD) + (resonance[Element.GEO] >= 2 ? 0.15 : 0),
     dmg: getTotalStat(Stats.ALL_DMG),
   }
 }
