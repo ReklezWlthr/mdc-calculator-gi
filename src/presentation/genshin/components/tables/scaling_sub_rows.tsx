@@ -27,14 +27,18 @@ export const ScalingSubRows = observer(({ scaling, cr, cd }: ScalingSubRowsProps
     [Element.DENDRO]: 'text-genshin-dendro',
   }
 
+  const dmg = scaling.value * (1 + (scaling.bonus || 0))
+  const totalCr = cr + (scaling.cr || 0)
+  const totalCd = cd + (scaling.cd || 0)
+
   return (
     <div className="grid items-center grid-cols-8 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
       <p className={classNames('col-span-1 text-center', elementColor[scaling.element])}>{scaling.element}</p>
-      <p className="col-span-1 text-center text-gray">{_.round(scaling.value)}</p>
-      <p className="col-span-1 text-center text-gray">{_.round(scaling.value * (1 + cd))}</p>
+      <p className="col-span-1 text-center text-gray">{_.round(dmg)}</p>
+      <p className="col-span-1 text-center text-gray">{_.round(dmg * (1 + totalCd))}</p>
       <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-        {_.round(scaling.value * (1 + cd * cr))}
+        {_.round(dmg * (1 + totalCd * totalCr))}
       </p>
       <p className="col-span-2 text-xs">{scaling.name}</p>
     </div>

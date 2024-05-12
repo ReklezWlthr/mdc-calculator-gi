@@ -4,10 +4,45 @@ import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConsta
 import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
-import { IContent } from '@src/domain/genshin/conditional'
+import { IContent, ITalent } from '@src/domain/genshin/conditional'
 
 const Albedo = (c: number, a: number, stat: StatObjectT) => {
   const maxFatalReckoning = 4
+
+  const talents: ITalent = {
+    normal: {
+      title: 'Favonius Bladework - Weiss',
+      content: `<b>Normal Attack</b>
+      <br />Performs up to 5 rapid strikes.
+      <br />
+      <br /><b>Charged Attack</b>
+      <br />Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+      <br />
+      <br /><b>Plunging Attack</b>
+      <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
+      `,
+    },
+    skill: {
+      title: 'Abiogenesis: Solar Isotoma',
+      content: `Albedo creates a Solar Isotoma using alchemy, which deals <b class="text-genshin-geo">AoE Geo DMG</b> on appearance.
+      <br />
+      <br /><b>Solar Isotoma</b>
+      <br />has the following properties:
+      <br />- When opponents within the Solar Isotoma field take DMG, the Solar Isotoma will generate Transient Blossoms which deal <b class="text-genshin-geo">AoE Geo DMG</b>. DMG dealt scales off Albedo's DEF.
+      <br />- Transient Blossoms can only be generated once every 2s.
+      <br />- When a character is located at the locus of the Solar Isotoma, the Solar Isotoma will accumulate Geo power to form a crystallized platform that lifts the character up to a certain height. Only one crystallized platform can exist at a time.
+      <br />- Solar Isotoma is considered a <b class="text-genshin-geo">Geo construct</b>. Only one Solar Isotoma created by Albedo himself can exist at a time.
+      <br />
+      <br /><b>Hold</b> to designate the location of the skill.`,
+    },
+    burst: {
+      title: 'Rite of Progeniture: Tectonic Tide',
+      content: `Under Albedo's command, Geo crystals surge and burst forth, dealing <b class="text-genshin-geo">AoE Geo DMG</b> in front of him.
+      <br />If a Solar Isotoma created by Albedo himself is on the field, 7 Fatal Blossoms will be generated in the Solar Isotoma field, bursting violently into bloom and dealing <b class="text-genshin-geo">AoE Geo DMG</b>.
+      <br />
+      <br />Tectonic Tide DMG and Fatal Blossom DMG will not generate Transient Blossoms.`,
+    },
+  }
 
   const content: IContent[] = [
     {
@@ -73,19 +108,7 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
   ]
 
   return {
-    titles: {
-      attack: 'Akara',
-      skill: 'All Schemes to Know',
-      burst: 'Illusory Heart',
-      a1: 'Compassion Illuminated',
-      a4: 'Awakening Elucidated',
-      c1: 'The Seed of Stored Knowledge',
-      c2: 'The Root of All Fullness',
-      c3: 'The Shoot of Conscious Attainment',
-      c4: 'The Stem of Manifest Inference',
-      c5: 'The Leaves of Enlightening Speech',
-      c6: "The Fruit of Reason's Culmination",
-    },
+    talents,
     content,
     teammateContent,
     preCompute: (form: Record<string, any>) => {
@@ -116,7 +139,7 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         { name: 'Skill DMG', value: 3.672 * stat.atk, element: Element.GEO, property: TalentProperty.BURST },
         {
-          name: 'Fatal Blossom DMG',
+          name: 'Fatal Blossom DMG [x7]',
           value: 0.72 * stat.def + (0.3 * stat.def * form.fatalReckoningStacks || 0),
           element: Element.GEO,
           property: TalentProperty.BURST,

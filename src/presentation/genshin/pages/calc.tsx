@@ -135,7 +135,7 @@ export const Calculator = observer(({}: {}) => {
             </div>
           </div>
           <ScalingWrapper
-            name={main?.titles?.attack}
+            talent={main?.talents?.normal}
             icon={`https://enka.network/ui${WeaponIcon[charData.weapon]}`}
             element={charData.element}
           >
@@ -172,7 +172,7 @@ export const Calculator = observer(({}: {}) => {
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
-            name={main?.titles?.skill}
+            talent={main?.talents?.skill}
             icon={`https://enka.network/ui/Skill_S_${charData?.codeName}_01.png`}
             element={charData.element}
           >
@@ -187,7 +187,7 @@ export const Calculator = observer(({}: {}) => {
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
-            name={main?.titles?.burst}
+            talent={main?.talents?.burst}
             icon={`https://enka.network/ui/Skill_E_${charData?.codeName}_01.png`}
             element={charData.element}
           >

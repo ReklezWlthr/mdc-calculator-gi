@@ -23,3 +23,7 @@ export interface IContent {
   max?: number
   min?: number
 }
+
+export interface ITalent {
+  [key: string]: { title: string; content: string; upgrade?: string[] }
+}
