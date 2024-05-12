@@ -136,7 +136,7 @@ export const Calculator = observer(({}: {}) => {
         <div>
           <img
             src={`https://enka.network/ui/Skill_S_${charData?.codeName}_01.png`}
-            className="w-16 h-16 p-1 rounded-full bg-primary"
+            className="w-12 h-12 p-1 rounded-full bg-primary"
           />
           {_.map(computedStats.SKILL_SCALING, (item) => (
             <div className="flex gap-2">
@@ -149,7 +149,7 @@ export const Calculator = observer(({}: {}) => {
         <div>
           <img
             src={`https://enka.network/ui/Skill_E_${charData?.codeName}_01.png`}
-            className="w-16 h-16 p-1.5 rounded-full bg-primary"
+            className="w-12 h-12 p-1 rounded-full bg-primary"
           />
           {_.map(computedStats.BURST_SCALING, (item) => (
             <div className="flex gap-2">
@@ -159,6 +159,30 @@ export const Calculator = observer(({}: {}) => {
             </div>
           ))}
         </div>
+        <img
+          src={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_01.png`}
+          className="w-12 h-12 p-1 rounded-full bg-primary"
+        />
+        <img
+          src={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_02.png`}
+          className="w-12 h-12 p-1 rounded-full bg-primary"
+        />
+        <img
+          src={`https://enka.network/ui/UI_Talent_U_${charData?.codeName}_01.png`}
+          className="w-12 h-12 p-1 rounded-full bg-primary"
+        />
+        <img
+          src={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_03.png`}
+          className="w-12 h-12 p-1 rounded-full bg-primary"
+        />
+        <img
+          src={`https://enka.network/ui/UI_Talent_U_${charData?.codeName}_02.png`}
+          className="w-12 h-12 p-1 rounded-full bg-primary"
+        />
+        <img
+          src={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_04.png`}
+          className="w-12 h-12 p-1 rounded-full bg-primary"
+        />
       </div>
     </div>
   )
