@@ -74,7 +74,7 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
     },
     c1: {
       title: 'C1: Ominous Inscription',
-      content: `Chakra Desiderata will gather Resolve even faster. When Electro characters use their Elemental Bursts, the Resolve gained is increased by <span class="text-yellow">80%</span>. When characters of other Elemental Types use their Elemental Bursts, the Resolve gained is increased by <span class="text-yellow">20%</span>.`,
+      content: `Chakra Desiderata will gather Resolve even faster. When <b class="text-genshin-electro">Electro</b> characters use their Elemental Bursts, the Resolve gained is increased by <span class="text-yellow">80%</span>. When characters of other Elemental Types use their Elemental Bursts, the Resolve gained is increased by <span class="text-yellow">20%</span>.`,
     },
     c2: {
       title: 'C2: Steelbreaker',

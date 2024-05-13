@@ -1,4 +1,5 @@
 import Albedo from './characters/Albedo'
+import Arlecchino from './characters/Arlecchino'
 import Furina from './characters/Furina'
 import Nahida from './characters/Nahida'
 import Raiden from './characters/Raiden'
@@ -10,4 +11,5 @@ export default [
   { id: '10000089', conditionals: Furina },
   { id: '10000052', conditionals: Raiden },
   { id: '10000077', conditionals: Yaoyao },
+  { id: '10000096', conditionals: Arlecchino },
 ]

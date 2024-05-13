@@ -107,6 +107,15 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
 
   const content: IContent[] = [
     {
+      type: 'toggle',
+      id: 'pneuma',
+      text: `Pneuma Alignment`,
+      ...talents.normal,
+      show: true,
+      default: false,
+      value: [],
+    },
+    {
       type: 'number',
       id: 'fanfare',
       text: `Fanfare Stacks`,
@@ -150,7 +159,7 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
       const salonMultiplier = 1 + _.min([form.salonAlly * 0.1, 0.4])
 
       const c6Infusion = form.centerOfAttention ? Element.HYDRO : Element.PHYSICAL
-      const c6DmgBonus = form.centerOfAttention ? 0.18 * stat.hp : 0
+      const c6DmgBonus = form.centerOfAttention ? (0.18 + (form.pneuma ? 0.25 : 0)) * stat.hp : 0
 
       base.BASIC_SCALING = [
         {
@@ -193,41 +202,44 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('base', stat.atk, c6Infusion, c6DmgBonus)
-      base.SKILL_SCALING = [
-        {
-          name: 'Ousia Bubble DMG',
-          value: calcScaling(0.0786, 10, 'elemental', '1') * stat.hp,
-          element: Element.HYDRO,
-          property: TalentProperty.SKILL,
-        },
-        {
-          name: 'Gentilhomme Usher DMG',
-          value: calcScaling(0.0596, 10, 'elemental', '1') * stat.hp * salonMultiplier,
-          bonus: salonA4Bonus,
-          element: Element.HYDRO,
-          property: TalentProperty.SKILL,
-        },
-        {
-          name: 'Surintendante Chevalmarin DMG',
-          value: calcScaling(0.0323, 10, 'elemental', '1') * stat.hp * salonMultiplier,
-          bonus: salonA4Bonus,
-          element: Element.HYDRO,
-          property: TalentProperty.SKILL,
-        },
-        {
-          name: 'Mademoiselle Crabaletta DMG',
-          value: calcScaling(0.0829, 10, 'elemental', '1') * stat.hp * salonMultiplier,
-          bonus: salonA4Bonus,
-          element: Element.HYDRO,
-          property: TalentProperty.SKILL,
-        },
-        {
-          name: 'Singer of Many Waters Healing',
-          value: calcScaling(0.048, 10, 'elemental', '1') * stat.hp + calcScaling(462, 10, 'special', 'flat'),
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-        },
-      ]
+      base.SKILL_SCALING = form.pneuma
+        ? [
+            {
+              name: 'Singer of Many Waters Healing',
+              value: calcScaling(0.048, 10, 'elemental', '1') * stat.hp + calcScaling(462, 10, 'special', 'flat'),
+              element: TalentProperty.HEAL,
+              property: TalentProperty.HEAL,
+            },
+          ]
+        : [
+            {
+              name: 'Ousia Bubble DMG',
+              value: calcScaling(0.0786, 10, 'elemental', '1') * stat.hp,
+              element: Element.HYDRO,
+              property: TalentProperty.SKILL,
+            },
+            {
+              name: 'Gentilhomme Usher DMG',
+              value: calcScaling(0.0596, 10, 'elemental', '1') * stat.hp * salonMultiplier,
+              bonus: salonA4Bonus,
+              element: Element.HYDRO,
+              property: TalentProperty.SKILL,
+            },
+            {
+              name: 'Surintendante Chevalmarin DMG',
+              value: calcScaling(0.0323, 10, 'elemental', '1') * stat.hp * salonMultiplier,
+              bonus: salonA4Bonus,
+              element: Element.HYDRO,
+              property: TalentProperty.SKILL,
+            },
+            {
+              name: 'Mademoiselle Crabaletta DMG',
+              value: calcScaling(0.0829, 10, 'elemental', '1') * stat.hp * salonMultiplier,
+              bonus: salonA4Bonus,
+              element: Element.HYDRO,
+              property: TalentProperty.SKILL,
+            },
+          ]
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
