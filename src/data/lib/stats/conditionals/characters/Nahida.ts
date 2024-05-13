@@ -167,25 +167,25 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: calcScaling(0.403, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.403, 10, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: calcScaling(0.3697, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.3697, 10, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: calcScaling(0.4587, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.4587, 10, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: calcScaling(0.5841, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.5841, 10, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
@@ -193,29 +193,31 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: calcScaling(1.32, 10, 'elemental', '1_alt') * stat.atk,
+          value: [{ scaling: calcScaling(1.32, 10, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('catalyst', stat.atk, Element.DENDRO)
+      base.PLUNGE_SCALING = getPlungeScaling('catalyst', Element.DENDRO)
       base.SKILL_SCALING = [
         {
           name: 'Press DMG',
-          value: calcScaling(0.984, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.984, 10, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Hold DMG',
-          value: calcScaling(1.304, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(1.304, 10, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Tri-Karma Purification',
-          value:
-            calcScaling(1.032, 10, 'elemental', '1') * stat.atk + calcScaling(2.064, 10, 'elemental', '1') * stat.em,
+          value: [
+            { scaling: calcScaling(1.032, 10, 'elemental', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(2.064, 10, 'elemental', '1'), multiplier: Stats.EM },
+          ],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
           bonus: (a >= 4 ? a4_bonus : 0) + pyroBonus,
@@ -228,7 +230,10 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
       if (c >= 6)
         base.SKILL_SCALING.push({
           name: 'Karmic Oblivion',
-          value: 2 * stat.atk + 4 * stat.em,
+          value: [
+            { scaling: 2, multiplier: Stats.ATK },
+            { scaling: 4, multiplier: Stats.EM },
+          ],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
           bonus: (a >= 4 ? a4_bonus : 0) + pyroBonus,

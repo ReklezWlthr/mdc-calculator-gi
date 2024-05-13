@@ -125,31 +125,31 @@ const Yaoyao = (c: number, a: number, stat: StatObjectT) => {
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: calcScaling(0.51, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.51, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: calcScaling(0.4744, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.4744, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit [1]',
-          value: calcScaling(0.3138, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.3138, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit [2]',
-          value: calcScaling(0.3295, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.3295, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: calcScaling(0.7793, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.7793, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
@@ -157,22 +157,23 @@ const Yaoyao = (c: number, a: number, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: calcScaling(1.1266, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(1.1266, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', stat.atk)
+      base.PLUNGE_SCALING = getPlungeScaling('base')
       base.SKILL_SCALING = [
         {
           name: 'White Jade Radish DMG',
-          value: calcScaling(0.2992, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.2992, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'White Jade Radish Healing',
-          value: calcScaling(0.171, 10, 'elemental', '1') * stat.hp + calcScaling(165.07991, 10, 'special', 'flat'),
+          value: [{ scaling: calcScaling(0.171, 10, 'physical', '1'), multiplier: Stats.HP }],
+          flat: calcScaling(165.07991, 10, 'special', 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },
@@ -180,19 +181,20 @@ const Yaoyao = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
-          value: calcScaling(1.1456, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(1.1456, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.BURST,
         },
         {
           name: 'Adeptal Legacy White Jade Radish DMG',
-          value: calcScaling(0.7216, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.7216, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.BURST,
         },
         {
           name: 'Adeptal Legacy White Jade Radish Healing',
-          value: calcScaling(0.202, 10, 'elemental', '1') * stat.hp + calcScaling(194.21231, 10, 'special', 'flat'),
+          value: [{ scaling: calcScaling(0.202, 10, 'physical', '1'), multiplier: Stats.HP }],
+          flat: calcScaling(194.21231, 10, 'special', 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },
@@ -200,7 +202,7 @@ const Yaoyao = (c: number, a: number, stat: StatObjectT) => {
       base.A4_SCALING = [
         {
           name: 'Passive Healing',
-          value: 0.008 * stat.hp,
+          value: [{ scaling: calcScaling(0.008, 10, 'physical', '1'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },
@@ -212,13 +214,13 @@ const Yaoyao = (c: number, a: number, stat: StatObjectT) => {
         base.SKILL_SCALING.push(
           {
             name: 'Mega Radish DMG',
-            value: 0.75 * stat.atk,
+            value: [{ scaling: calcScaling(0.75, 10, 'physical', '1'), multiplier: Stats.ATK }],
             element: Element.DENDRO,
             property: TalentProperty.SKILL,
           },
           {
             name: 'Mega Radish Healing',
-            value: 0.075 * stat.hp,
+            value: [{ scaling: calcScaling(0.075, 10, 'physical', '1'), multiplier: Stats.HP }],
             element: TalentProperty.HEAL,
             property: TalentProperty.HEAL,
           }

@@ -5,6 +5,7 @@ import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
+import { calcScaling } from '../../../../../core/utils/data_format'
 
 const Albedo = (c: number, a: number, stat: StatObjectT) => {
   const maxFatalReckoning = 4
@@ -129,33 +130,84 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
     preCompute: (form: Record<string, any>) => {
       const base = _.cloneDeep(baseStatsObject)
 
+      const fatalReckoningScaling =
+        form.fatalReckoningStacks > 0 ? [{ scaling: 0.3 * form.fatalReckoningStacks, multiplier: Stats.DEF }] : []
+
       base.BASIC_SCALING = [
-        { name: '1-Hit', value: 0.3674 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
-        { name: '2-Hit', value: 0.3674 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
-        { name: '3-Hit', value: 0.4745 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
-        { name: '4-Hit', value: 0.4975 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
-        { name: '5-Hit', value: 0.6207 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.NA },
+        {
+          name: '1-Hit',
+          value: [{ scaling: calcScaling(0.3674, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '2-Hit',
+          value: [{ scaling: calcScaling(0.3674, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '3-Hit',
+          value: [{ scaling: calcScaling(0.4745, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '4-Hit',
+          value: [{ scaling: calcScaling(0.4975, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '5-Hit',
+          value: [{ scaling: calcScaling(0.6207, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
       ]
       base.CHARGE_SCALING = [
-        { name: '1-Hit', value: 0.473 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.CA },
-        { name: '2-Hit', value: 0.602 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.CA },
+        {
+          name: '1-Hit',
+          value: [{ scaling: calcScaling(0.473, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.CA,
+        },
+        {
+          name: '2-Hit',
+          value: [{ scaling: calcScaling(0.602, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.CA,
+        },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', stat.atk)
+      base.PLUNGE_SCALING = getPlungeScaling('base')
       base.SKILL_SCALING = [
-        { name: 'Skill DMG', value: 1.304 * stat.atk, element: Element.GEO, property: TalentProperty.SKILL },
+        {
+          name: 'Skill DMG',
+          value: [{ scaling: calcScaling(1.304, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          element: Element.GEO,
+          property: TalentProperty.SKILL,
+        },
         {
           name: 'Transient Blossom DMG',
-          value: 1.336 * stat.def,
+          value: [{ scaling: calcScaling(1.336, 10, 'elemental', '1'), multiplier: Stats.DEF }],
           element: Element.GEO,
           property: TalentProperty.SKILL,
           bonus: form.calciteMight ? 0.25 : null,
         },
       ]
       base.BURST_SCALING = [
-        { name: 'Skill DMG', value: 3.672 * stat.atk, element: Element.GEO, property: TalentProperty.BURST },
+        {
+          name: 'Skill DMG',
+          value: [{ scaling: calcScaling(3.672, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          element: Element.GEO,
+          property: TalentProperty.BURST,
+        },
         {
           name: 'Fatal Blossom DMG [x7]',
-          value: 0.72 * stat.def + (0.3 * stat.def * form.fatalReckoningStacks || 0),
+          value: [
+            { scaling: calcScaling(0.72, 10, 'elemental', '1'), multiplier: Stats.DEF },
+            ...fatalReckoningScaling,
+          ],
           element: Element.GEO,
           property: TalentProperty.BURST,
         },

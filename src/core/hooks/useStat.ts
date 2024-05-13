@@ -108,4 +108,11 @@ export const useStat = (
   }
 }
 
+export const StatNameMap = {
+  [Stats.ATK]: 'atk',
+  [Stats.HP]: 'hp',
+  [Stats.DEF]: 'def',
+  [Stats.EM]: 'em',
+}
+
 export type StatObjectT = ReturnType<typeof useStat>

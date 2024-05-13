@@ -132,48 +132,69 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         if (remaining >= 0.3) return bolMultiplier * remaining
         return 0
       })
-      const c6BurstBonus = (c >= 6 ? 7 : 0) * (form.bol / 100)
+      const c6BurstBonus = c >= 6 ? [{ scaling: 7 * (form.bol / 100), multiplier: Stats.ATK }] : []
 
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: calcScaling(0.475 + bolPropagation[0], 10, 'physical', '1') * stat.atk,
+          value: [
+            { scaling: calcScaling(0.475, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: bolPropagation[0], multiplier: Stats.ATK },
+          ],
           element: bolPropagation[0] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: calcScaling(0.5211 + bolPropagation[1], 10, 'physical', '1') * stat.atk,
+          value: [
+            { scaling: calcScaling(0.5211, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: bolPropagation[1], multiplier: Stats.ATK },
+          ],
           element: bolPropagation[1] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: calcScaling(0.6539 + bolPropagation[2], 10, 'physical', '1') * stat.atk,
+          value: [
+            { scaling: calcScaling(0.6539, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: bolPropagation[2], multiplier: Stats.ATK },
+          ],
           element: bolPropagation[2] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit [1]',
-          value: calcScaling(0.3715 + bolPropagation[3], 10, 'physical', '1') * stat.atk,
+          value: [
+            { scaling: calcScaling(0.3715, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: bolPropagation[3], multiplier: Stats.ATK },
+          ],
           element: bolPropagation[3] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit [2]',
-          value: calcScaling(0.3715 + bolPropagation[4], 10, 'physical', '1') * stat.atk,
+          value: [
+            { scaling: calcScaling(0.3715, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: bolPropagation[4], multiplier: Stats.ATK },
+          ],
           element: bolPropagation[4] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '5-Hit',
-          value: calcScaling(0.6998 + bolPropagation[5], 10, 'physical', '1') * stat.atk,
+          value: [
+            { scaling: calcScaling(0.6998, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: bolPropagation[5], multiplier: Stats.ATK },
+          ],
           element: bolPropagation[5] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '6-Hit',
-          value: calcScaling(0.8538 + bolPropagation[6], 10, 'physical', '1') * stat.atk,
+          value: [
+            { scaling: calcScaling(0.8538, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: bolPropagation[6], multiplier: Stats.ATK },
+          ],
           element: bolPropagation[6] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
@@ -181,28 +202,28 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: calcScaling(1.1266, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(1.1266, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: form.bol >= 30 ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', stat.atk, form.bol >= 30 ? Element.PYRO : Element.PHYSICAL)
+      base.PLUNGE_SCALING = getPlungeScaling('base', form.bol >= 30 ? Element.PYRO : Element.PHYSICAL)
       base.SKILL_SCALING = [
         {
           name: 'Spike DMG',
-          value: calcScaling(0.1484, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.1484, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Cleave DMG',
-          value: calcScaling(1.3356, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(1.3356, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Blood-Debt Directive DMG',
-          value: calcScaling(0.318, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.318, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },
@@ -210,13 +231,16 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
-          value: calcScaling(3.704 + c6BurstBonus, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(3.704, 10, 'physical', '1'), multiplier: Stats.ATK }, ...c6BurstBonus],
           element: Element.PYRO,
           property: TalentProperty.BURST,
         },
         {
           name: 'HP Restored',
-          value: 1.5 * stat.atk + (form.bol / 100) * 0.5 * stat.hp,
+          value: [
+            { scaling: 1.5, multiplier: Stats.ATK },
+            { scaling: (form.bol / 100) * 0.5, multiplier: Stats.HP },
+          ],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },
@@ -227,7 +251,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       if (c >= 2)
         base.CHARGE_SCALING.push({
           name: 'C2 Balemoon Bloodfire',
-          value: 9 * stat.atk,
+          value: [{ scaling: 9, multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         })

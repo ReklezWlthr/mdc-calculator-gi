@@ -39,7 +39,12 @@ export const Calculator = observer(({}: {}) => {
   const conditionals = useMemo(
     () =>
       _.map(teamStore.characters, (item) =>
-        _.find(ConditionalsObject, ['id', item.cId])?.conditionals(item.cons, item.ascension, stats, teamStore.characters)
+        _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
+          item.cons,
+          item.ascension,
+          stats,
+          teamStore.characters
+        )
       ),
     [computedStats, teamStore.characters, selected]
   )
@@ -98,17 +103,17 @@ export const Calculator = observer(({}: {}) => {
           >
             <div className="space-y-0.5">
               {_.map(mainComputed?.BASIC_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+                <ScalingSubRows key={item.name} scaling={item} stats={stats} />
               ))}
             </div>
             <div className="py-2 space-y-0.5">
               {_.map(mainComputed?.CHARGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+                <ScalingSubRows key={item.name} scaling={item} stats={stats} />
               ))}
             </div>
             <div className="space-y-0.5">
               {_.map(mainComputed?.PLUNGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+                <ScalingSubRows key={item.name} scaling={item} stats={stats} />
               ))}
             </div>
           </ScalingWrapper>
@@ -119,7 +124,7 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
           >
             {_.map(mainComputed?.SKILL_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -129,7 +134,7 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
           >
             {_.map(mainComputed?.BURST_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -139,7 +144,7 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
           >
             {_.map(mainComputed?.A1_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -149,7 +154,7 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
           >
             {_.map(mainComputed?.A4_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
             ))}
           </ScalingWrapper>
         </div>

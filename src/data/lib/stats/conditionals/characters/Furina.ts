@@ -159,36 +159,38 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
       const salonMultiplier = 1 + _.min([form.salonAlly * 0.1, 0.4])
 
       const c6Infusion = form.centerOfAttention ? Element.HYDRO : Element.PHYSICAL
-      const c6DmgBonus = form.centerOfAttention ? (0.18 + (form.pneuma ? 0.25 : 0)) * stat.hp : 0
+      const c6DmgBonus = form.centerOfAttention
+        ? [{ scaling: calcScaling(0.18 + (form.pneuma ? 0.25 : 0), 10, 'physical', '1'), multiplier: Stats.HP }]
+        : []
 
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: calcScaling(0.4839, 10, 'physical', '1') * stat.atk + c6DmgBonus,
+          value: [{ scaling: calcScaling(0.4839, 10, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
           element: c6Infusion,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: calcScaling(0.4373, 10, 'physical', '1') * stat.atk + c6DmgBonus,
+          value: [{ scaling: calcScaling(0.4373, 10, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
           element: c6Infusion,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: calcScaling(0.5512, 10, 'physical', '1') * stat.atk + c6DmgBonus,
+          value: [{ scaling: calcScaling(0.5512, 10, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
           element: c6Infusion,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: calcScaling(0.733, 10, 'physical', '1') * stat.atk + c6DmgBonus,
+          value: [{ scaling: calcScaling(0.733, 10, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
           element: c6Infusion,
           property: TalentProperty.NA,
         },
         {
           name: 'Arkhe: Adaptive',
-          value: calcScaling(0.0946, 10, 'physical', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.0946, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,
         },
@@ -196,17 +198,18 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: calcScaling(0.7422, 10, 'physical', '1') * stat.atk + c6DmgBonus,
+          value: [{ scaling: calcScaling(0.7422, 10, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
           element: c6Infusion,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', stat.atk, c6Infusion, c6DmgBonus)
+      base.PLUNGE_SCALING = getPlungeScaling('base', c6Infusion, c6DmgBonus)
       base.SKILL_SCALING = form.pneuma
         ? [
             {
               name: 'Singer of Many Waters Healing',
-              value: calcScaling(0.048, 10, 'elemental', '1') * stat.hp + calcScaling(462, 10, 'special', 'flat'),
+              value: [{ scaling: calcScaling(0.048, 10, 'physical', '1'), multiplier: Stats.HP }],
+              flat: calcScaling(462, 10, 'special', 'flat'),
               element: TalentProperty.HEAL,
               property: TalentProperty.HEAL,
             },
@@ -214,27 +217,31 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
         : [
             {
               name: 'Ousia Bubble DMG',
-              value: calcScaling(0.0786, 10, 'elemental', '1') * stat.hp,
+              value: [{ scaling: calcScaling(0.0786, 10, 'physical', '1'), multiplier: Stats.HP }],
+              multiplier: salonMultiplier,
               element: Element.HYDRO,
               property: TalentProperty.SKILL,
             },
             {
               name: 'Gentilhomme Usher DMG',
-              value: calcScaling(0.0596, 10, 'elemental', '1') * stat.hp * salonMultiplier,
+              value: [{ scaling: calcScaling(0.0596, 10, 'physical', '1'), multiplier: Stats.HP }],
+              multiplier: salonMultiplier,
               bonus: salonA4Bonus,
               element: Element.HYDRO,
               property: TalentProperty.SKILL,
             },
             {
               name: 'Surintendante Chevalmarin DMG',
-              value: calcScaling(0.0323, 10, 'elemental', '1') * stat.hp * salonMultiplier,
+              value: [{ scaling: calcScaling(0.0323, 10, 'physical', '1'), multiplier: Stats.HP }],
+              multiplier: salonMultiplier,
               bonus: salonA4Bonus,
               element: Element.HYDRO,
               property: TalentProperty.SKILL,
             },
             {
               name: 'Mademoiselle Crabaletta DMG',
-              value: calcScaling(0.0829, 10, 'elemental', '1') * stat.hp * salonMultiplier,
+              value: [{ scaling: calcScaling(0.0829, 10, 'physical', '1'), multiplier: Stats.HP }],
+              multiplier: salonMultiplier,
               bonus: salonA4Bonus,
               element: Element.HYDRO,
               property: TalentProperty.SKILL,
@@ -243,7 +250,7 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
-          value: calcScaling(0.1141, 10, 'elemental', '1') * stat.hp,
+          value: [{ scaling: calcScaling(0.1141, 10, 'physical', '1'), multiplier: Stats.HP }],
           element: Element.HYDRO,
           property: TalentProperty.BURST,
         },
@@ -256,7 +263,7 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
       if (form.centerOfAttention)
         base.BASIC_SCALING.push({
           name: 'C6 Healing',
-          value: 0.04 * stat.hp,
+          value: [{ scaling: calcScaling(0.04, 10, 'physical', '1'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })

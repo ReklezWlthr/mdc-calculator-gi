@@ -159,37 +159,37 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         ? [
             {
               name: '1-Hit',
-              value: calcScaling(0.4474 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.4474 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '2-Hit',
-              value: calcScaling(0.4396 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.4396 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '3-Hit',
-              value: calcScaling(0.5382 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.5382 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '4-Hit [1]',
-              value: calcScaling(0.3089 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.3089 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '4-Hit [2]',
-              value: calcScaling(0.3098 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.3098 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '5-Hit',
-              value: calcScaling(0.7394 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.7394 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
@@ -197,31 +197,31 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         : [
             {
               name: '1-Hit',
-              value: calcScaling(0.3965, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.3965, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '2-Hit',
-              value: calcScaling(0.3973, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.3973, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '3-Hit',
-              value: calcScaling(0.4988, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.4988, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '4-Hit [x2]',
-              value: calcScaling(0.2898, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.2898, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '5-Hit',
-              value: calcScaling(0.6545, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.6545, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
@@ -230,13 +230,13 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         ? [
             {
               name: 'Charged Attack [1]',
-              value: calcScaling(0.616 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.616 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: 'Charged Attack [2]',
-              value: calcScaling(0.7436 + resolveAtkBonus, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.7436 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
@@ -244,7 +244,7 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         : [
             {
               name: 'Charged Attack',
-              value: calcScaling(0.9959, 10, 'physical', '1') * stat.atk,
+              value: [{ scaling: calcScaling(0.9959, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.CA,
             },
@@ -253,34 +253,34 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         ? [
             {
               name: 'Plunge DMG',
-              value: stat.atk * calcScaling(0.6393 + resolveAtkBonus, 10, 'physical', '1'),
+              value: [{ scaling: calcScaling(0.6393 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: 'Low Plunge DMG',
-              value: stat.atk * calcScaling(1.2784 + resolveAtkBonus, 10, 'physical', '1'),
+              value: [{ scaling: calcScaling(1.2784 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: 'High Plunge DMG',
-              value: stat.atk * calcScaling(1.5968 + resolveAtkBonus, 10, 'physical', '1'),
+              value: [{ scaling: calcScaling(1.5968 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
           ]
-        : getPlungeScaling('base', stat.atk)
+        : getPlungeScaling('base')
       base.SKILL_SCALING = [
         {
           name: 'Skill DMG',
-          value: calcScaling(1.172, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(1.172, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Coordinated ATK DMG',
-          value: calcScaling(0.42, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(0.42, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.SKILL,
         },
@@ -288,7 +288,7 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         {
           name: 'Musou no Hitotachi DMG',
-          value: calcScaling(4.008 + resolveMainBonus, 10, 'elemental', '1') * stat.atk,
+          value: [{ scaling: calcScaling(4.008 + resolveMainBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.BURST,
         },

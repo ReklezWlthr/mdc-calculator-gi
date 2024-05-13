@@ -4,8 +4,8 @@ import _ from 'lodash'
 
 export const getPlungeScaling = (
   type: 'catalyst' | 'base' | 'claymore' | 'hutao' | 'diluc' | 'high' | 'razor',
-  atk: number,
   element: Element = Element.PHYSICAL,
+  additionalScaling: { scaling: number; multiplier: Stats }[] = [],
   flat: number = 0,
   bonus: number = 0
 ) => {
@@ -22,26 +22,26 @@ export const getPlungeScaling = (
     {
       name: 'Plunge DMG',
       scale: Stats.ATK,
-      value: atk * (plungeTypes[type]?.[0] || 0) + flat,
+      value: [{ scaling: plungeTypes[type]?.[0] || 0, multiplier: Stats.ATK }, ...additionalScaling],
       element,
       property: TalentProperty.PA,
-      bonus
+      bonus,
     },
     {
       name: 'Low Plunge DMG',
       scale: Stats.ATK,
-      value: atk * (plungeTypes[type]?.[1] || 0) + flat,
+      value: [{ scaling: plungeTypes[type]?.[1] || 0, multiplier: Stats.ATK }, ...additionalScaling],
       element,
       property: TalentProperty.PA,
-      bonus
+      bonus,
     },
     {
       name: 'High Plunge DMG',
       scale: Stats.ATK,
-      value: atk * (plungeTypes[type]?.[2] || 0) + flat,
+      value: [{ scaling: plungeTypes[type]?.[2] || 0, multiplier: Stats.ATK }, ...additionalScaling],
       element,
       property: TalentProperty.PA,
-      bonus
+      bonus,
     },
   ]
 }

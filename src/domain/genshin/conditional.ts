@@ -3,9 +3,11 @@ import { Element, Stats, TalentProperty } from './constant'
 export interface IScaling {
   name: string
   scale?: Stats
-  value: number
+  value: { scaling: number; multiplier: Stats }[]
   element: Element | 'Heal' | 'Shield'
   property: TalentProperty
+  multiplier?: number
+  flat?: number
   bonus?: number //Bonus dmg for each component
   cr?: number //Bonus crit rate for each component
   cd?: number //Bonus crit dmg for each component
