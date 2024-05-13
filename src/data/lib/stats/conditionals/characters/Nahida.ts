@@ -1,15 +1,40 @@
-import { findContentById } from '@src/core/utils/finder'
+import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { toPercentage } from '@src/core/utils/converter'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Nahida = (c: number, a: number, stat: StatObjectT) => {
+const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]]) => {
+  const [team] = rest
   const a4_bonus = _.min([0.001 * _.max([stat.em - 200, 0]), 0.8])
   const a4_cr = _.min([0.0003 * _.max([stat.em - 200, 0]), 0.24])
+
+  const mapChar = _.map(team, (item) => findCharacter(item.cId)?.element)
+  const pyroCount = _.filter(mapChar, (item) => item === Element.PYRO).length + (c >= 1 ? 1 : 0)
+  const hydroCount = _.filter(mapChar, (item) => item === Element.HYDRO).length + (c >= 1 ? 1 : 0)
+  const electroCount = _.filter(mapChar, (item) => item === Element.ELECTRO).length + (c >= 1 ? 1 : 0)
+
+  const pyroBonus =
+    pyroCount >= 2
+      ? calcScaling(0.2232, 10, 'elemental', '1')
+      : pyroCount === 1
+      ? calcScaling(0.1488, 10, 'elemental', '1')
+      : 0
+  const hydroBonus =
+    hydroCount >= 2
+      ? calcScaling(0.372, 10, 'elemental', '1')
+      : hydroCount === 1
+      ? calcScaling(0.248, 10, 'elemental', '1')
+      : 0
+  const electroBonus =
+    electroCount >= 2
+      ? calcScaling(5.016, 10, 'elemental', '1')
+      : electroCount === 1
+      ? calcScaling(3.344, 10, 'elemental', '1')
+      : 0
 
   const talents: ITalent = {
     normal: {
@@ -46,9 +71,15 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
       content: `Manifests the Court of Dreams and expands the Shrine of Maya.
       <br />
       <br />When the Shrine of Maya field is unleashed, the following effects will be separately unleashed based on the Elemental Types present within the party.
-      <br />- <b class="text-genshin-pyro">Pyro</b>: While Nahida remains within the Shrine of Maya, the DMG dealt by Tri-Karma Purification from "All Schemes to Know" is increased.
-      <br />- <b class="text-genshin-electro">Electro</b>: While Nahida remains within the Shrine of Maya, the interval between each Tri-Karma Purification from "All Schemes to Know" is decreased.
-      <br />- <b class="text-genshin-hydro">Hydro</b>: The Shrine of Maya's duration is increased.
+      <br />- <b class="text-genshin-pyro">Pyro</b>: While Nahida remains within the Shrine of Maya, the DMG dealt by Tri-Karma Purification from "All Schemes to Know" is increased by <span class="text-yellow">${toPercentage(
+        pyroBonus
+      )}</span>.
+      <br />- <b class="text-genshin-electro">Electro</b>: While Nahida remains within the Shrine of Maya, the interval between each Tri-Karma Purification from "All Schemes to Know" is decreased by <span class="text-yellow"> ${hydroBonus.toFixed(
+        3
+      )}</span>s.
+      <br />- <b class="text-genshin-hydro">Hydro</b>: The Shrine of Maya's duration is increased by <span class="text-yellow"> ${electroBonus.toFixed(
+        3
+      )}</span>s.
       <br />
       <br />If there are at least 2 party members of the aforementioned Elemental Types present when the field is deployed, the aforementioned effects will be increased further.
       <br />
@@ -64,7 +95,7 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
     },
     a4: {
       title: 'A4: Awakening Elucidated',
-      content: `Each point of Nahida's Elemental Mastery beyond 200 will grant <span class="text-yellow">0.1%</span> Bonus DMG and <span class="text-yellow">0.03%</span> CRIT Rate to Tri-Karma Purification from All Schemes to Know.
+      content: `Each point of Nahida's Elemental Mastery beyond <span class="text-yellow">200</span> will grant <span class="text-yellow">0.1%</span> Bonus DMG and <span class="text-yellow">0.03%</span> CRIT Rate to Tri-Karma Purification from All Schemes to Know.
       <br />A maximum of <span class="text-yellow">80%</span> Bonus DMG and <span class="text-yellow">24%</span> CRIT Rate can be granted to Tri-Karma Purification in this manner.
       <br /><br />Current Bonus DMG: <span class="text-yellow">${toPercentage(a4_bonus)}</span>
       <br />Current CRIT Rate:<span class="text-yellow"> ${toPercentage(a4_cr)}</span>`,
@@ -76,8 +107,8 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
     c2: {
       title: 'C2: The Root of All Fullness',
       content: `Opponents that are marked by Seeds of Skandha applied by Nahida herself will be affected by the following effects:
-      <br />- Burning, Bloom, Hyperbloom, and Burgeon Reaction DMG can score CRIT Hits. CRIT Rate and CRIT DMG are fixed at 20% and 100% respectively.
-      <br />- Within 8s of being affected by Quicken, Aggravate, Spread, DEF is decreased by 30%.`,
+      <br />- Burning, Bloom, Hyperbloom, and Burgeon Reaction DMG can score CRIT Hits. CRIT Rate and CRIT DMG are fixed at <span class="text-yellow">20%</span> and <span class="text-yellow">100%</span> respectively.
+      <br />- Within <span class="text-yellow">8</span>s of being affected by Quicken, Aggravate, Spread, DEF is decreased by <span class="text-yellow">30%</span>.`,
     },
     c3: {
       title: 'C3: The Shoot of Conscious Attainment',
@@ -86,7 +117,7 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
     },
     c4: {
       title: 'C4: The Stem of Manifest Inference',
-      content: `When 1/2/3/(4 or more) nearby opponents are affected by All Schemes to Know's Seeds of Skandha, Nahida's Elemental Mastery will be increased by 100/120/140/160.`,
+      content: `When <span class="text-yellow">1/2/3/(4 or more)</span> nearby opponents are affected by All Schemes to Know's Seeds of Skandha, Nahida's Elemental Mastery will be increased by <span class="text-yellow">100/120/140/160</span>.`,
     },
     c5: {
       title: 'C5: The Leaves of Enlightening Speech',
@@ -95,9 +126,9 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
     },
     c6: {
       title: "C6: The Fruit of Reason's Culmination",
-      content: `When Nahida hits an opponent affected by All Schemes to Know's Seeds of Skandha with Normal or Charged Attacks after unleashing Illusory Heart, she will use Tri-Karma Purification: Karmic Oblivion on this opponent and all connected opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b> based on 200% of Nahida's ATK and 400% of her Elemental Mastery.
-      <br />DMG dealt by Tri-Karma Purification: Karmic Oblivion is considered Elemental Skill DMG and can be triggered once every 0.2s.
-      <br />This effect can last up to 10s and will be removed after Nahida has unleashed 6 instances of Tri-Karma Purification: Karmic Oblivion.`,
+      content: `When Nahida hits an opponent affected by All Schemes to Know's Seeds of Skandha with Normal or Charged Attacks after unleashing Illusory Heart, she will use Tri-Karma Purification: Karmic Oblivion on this opponent and all connected opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b> based on <span class="text-yellow">200%</span> of Nahida's ATK and <span class="text-yellow">400%</span> of her Elemental Mastery.
+      <br />DMG dealt by Tri-Karma Purification: Karmic Oblivion is considered Elemental Skill DMG and can be triggered once every <span class="text-yellow">0.2</span>s.
+      <br />This effect can last up to 10s and will be removed after Nahida has unleashed <span class="text-yellow">6</span> instances of Tri-Karma Purification: Karmic Oblivion.`,
     },
   }
 
@@ -111,9 +142,20 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
       value: [{ name: 'Elemental Mastery', value: 0.25, formatter: _.floor }],
       default: true,
     },
+    {
+      type: 'number',
+      id: 'nahida_c4',
+      text: `Enemies marked by TKP`,
+      ...talents.c4,
+      show: c >= 4,
+      value: [],
+      default: 4,
+      max: 8,
+      min: 0,
+    },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'nahida_a4')]
+  const teammateContent: IContent[] = []
 
   return {
     talents,
@@ -176,10 +218,22 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
             calcScaling(1.032, 10, 'elemental', '1') * stat.atk + calcScaling(2.064, 10, 'elemental', '1') * stat.em,
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
-          bonus: a >= 4 ? 0.001 * a4_bonus : 0,
-          cr: a >= 4 ? 0.0003 * a4_cr : 0,
+          bonus: (a >= 4 ? a4_bonus : 0) + pyroBonus,
+          cr: a >= 4 ? a4_cr : 0,
         },
       ]
+
+      base[Stats.EM] += form.nahida_c4 ? 100 + _.min([20 * (form.nahida_c4 - 1), 60]) : 0
+
+      if (c >= 6)
+        base.SKILL_SCALING.push({
+          name: 'Karmic Oblivion',
+          value: 2 * stat.atk + 4 * stat.em,
+          element: Element.DENDRO,
+          property: TalentProperty.SKILL,
+          bonus: (a >= 4 ? a4_bonus : 0) + pyroBonus,
+          cr: a >= 4 ? a4_cr : 0,
+        })
 
       return base
     },

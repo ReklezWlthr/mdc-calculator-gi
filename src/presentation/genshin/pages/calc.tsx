@@ -13,6 +13,7 @@ import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
 import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
+import { ConsCircle } from '../components/cons_circle'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
@@ -38,7 +39,7 @@ export const Calculator = observer(({}: {}) => {
   const conditionals = useMemo(
     () =>
       _.map(teamStore.characters, (item) =>
-        _.find(ConditionalsObject, ['id', item.cId])?.conditionals(item.cons, item.ascension, stats)
+        _.find(ConditionalsObject, ['id', item.cId])?.conditionals(item.cons, item.ascension, stats, teamStore.characters)
       ),
     [computedStats, teamStore.characters, selected]
   )
@@ -153,8 +154,8 @@ export const Calculator = observer(({}: {}) => {
           </ScalingWrapper>
         </div>
       </div>
-      <div className="space-y-3">
-        <div className="rounded-lg bg-primary-darker h-fit">
+      <div className="flex flex-col items-center w-full gap-3">
+        <div className="w-full rounded-lg bg-primary-darker h-fit">
           <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Self Conditionals</p>
           <div className="h-[200px] px-4 py-3 space-y-3 overflow-visible">
             {_.map(
@@ -212,6 +213,13 @@ export const Calculator = observer(({}: {}) => {
           </div>
         </div>
         <StatBlock index={selected} stat={stats} />
+        <ConsCircle
+          talents={main?.talents}
+          codeName={charData.codeName}
+          element={charData.element}
+          name={charData.constellation}
+          cons={char.cons}
+        />
       </div>
     </div>
   )

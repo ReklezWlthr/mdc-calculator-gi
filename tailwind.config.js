@@ -26,7 +26,7 @@ module.exports = {
           anemo: '#33ccb3',
           electro: '#d376f0',
           dendro: '#a8e157',
-          pyro: '#ef7938',
+          pyro: '#ff4d36',
           hydro: '#4098f2',
           cryo: '#92c8e8',
           geo: '#cfa726',
