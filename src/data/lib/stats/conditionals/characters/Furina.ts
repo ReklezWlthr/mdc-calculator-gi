@@ -9,6 +9,8 @@ import { calcScaling } from '@src/core/utils/data_format'
 
 const Furina = (c: number, a: number, stat: StatObjectT) => {
   const maxFanfare = c >= 1 ? 400 : 300
+  const salonA4Bonus = a >= 4 ? _.min([0.007 * (stat.hp / 1000), 0.28]) : 0
+  const salonA4Healing = a >= 4 ? _.min([0.004 * (stat.hp / 1000), 0.16]) : 0
 
   const talents: ITalent = {
     normal: {
@@ -29,7 +31,7 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
       upgrade: ['c6'],
     },
     skill: {
-      title: 'Salon Solitaire	',
+      title: 'Salon Solitaire',
       content: `Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance. Will summon either the Salon Members or the Singer of Many Waters based on Furina's current Arkhe alignment.
       <br />
       <br /><b class="text-genshin-ousia">Ousia</b>
@@ -62,7 +64,8 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
       content: `Every <span class="text-yellow">1,000</span> points of Furina's Max HP can buff the different Arkhe-aligned Salon Solitaire in the following ways:
       <br />Will increase Salon Member DMG dealt by <span class="text-yellow">0.7%</span>, up to a maximum of <span class="text-yellow">28%</span>.
       <br />Will decrease active character healing interval of the Singer of Many Waters by <span class="text-yellow">0.4%</span>, up to a maximum of <span class="text-yellow">16%</span>.
-      `,
+      <br /><br />Current Bonus DMG: <span class="text-yellow">${toPercentage(salonA4Bonus)}</span>
+      <br />Current decreased interval:<span class="text-yellow"> ${toPercentage(salonA4Healing)}</span>`,
     },
     c1: {
       title: 'C1: "Love Is a Rebellious Bird That None Can Tame"',
@@ -145,7 +148,6 @@ const Furina = (c: number, a: number, stat: StatObjectT) => {
     preCompute: (form: Record<string, any>) => {
       const base = _.cloneDeep(baseStatsObject)
       const salonMultiplier = 1 + _.min([form.salonAlly * 0.1, 0.4])
-      const salonA4Bonus = a >= 4 ? _.min([0.007 * (stat.hp / 1000), 0.28]) : 0
 
       const c6Infusion = form.centerOfAttention ? Element.HYDRO : Element.PHYSICAL
       const c6DmgBonus = form.centerOfAttention ? 0.18 * stat.hp : 0

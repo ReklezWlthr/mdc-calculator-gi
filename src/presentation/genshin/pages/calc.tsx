@@ -167,7 +167,7 @@ export const Calculator = observer(({}: {}) => {
                         title={content.title}
                         body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
                         key={content.id}
-                        style="w-[400px]"
+                        style="w-[40vw]"
                       >
                         <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                       </Tooltip>

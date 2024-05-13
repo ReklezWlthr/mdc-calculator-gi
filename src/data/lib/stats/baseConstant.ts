@@ -6,6 +6,7 @@ export const getPlungeScaling = (
   type: 'catalyst' | 'base' | 'claymore' | 'hutao' | 'diluc' | 'high' | 'razor',
   atk: number,
   element: Element = Element.PHYSICAL,
+  flat: number = 0,
   bonus: number = 0
 ) => {
   const plungeTypes = {
@@ -21,23 +22,26 @@ export const getPlungeScaling = (
     {
       name: 'Plunge DMG',
       scale: Stats.ATK,
-      value: atk * (plungeTypes[type]?.[0] || 0) + bonus,
+      value: atk * (plungeTypes[type]?.[0] || 0) + flat,
       element,
       property: TalentProperty.PA,
+      bonus
     },
     {
       name: 'Low Plunge DMG',
       scale: Stats.ATK,
-      value: atk * (plungeTypes[type]?.[1] || 0) + bonus,
+      value: atk * (plungeTypes[type]?.[1] || 0) + flat,
       element,
       property: TalentProperty.PA,
+      bonus
     },
     {
       name: 'High Plunge DMG',
       scale: Stats.ATK,
-      value: atk * (plungeTypes[type]?.[2] || 0) + bonus,
+      value: atk * (plungeTypes[type]?.[2] || 0) + flat,
       element,
       property: TalentProperty.PA,
+      bonus
     },
   ]
 }
