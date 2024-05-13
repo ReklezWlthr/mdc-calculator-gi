@@ -128,7 +128,7 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
       text: `Musou Isshin`,
       ...talents.burst,
       show: true,
-      default: true,
+      default: false,
       value: [],
     },
   ]
