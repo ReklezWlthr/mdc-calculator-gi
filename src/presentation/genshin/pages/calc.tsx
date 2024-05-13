@@ -21,58 +21,6 @@ type ConditionalFormT = {
   conditionals: Record<string, any>[]
 }
 
-const Conditionals = observer(
-  ({ content, control, selected }: { content: IContent[]; control: Control<ConditionalFormT>; selected: number }) =>
-    _.map(
-      content,
-      (content) =>
-        content.show && (
-          <Controller
-            key={content.id}
-            name={`conditionals.${selected}.${content.id}`}
-            control={control}
-            render={({ field }) => (
-              <div className="grid items-center grid-cols-12 text-xs gap-x-1">
-                <div className="col-span-5">
-                  <Tooltip
-                    title={content.title}
-                    body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
-                    key={content.id}
-                    style="w-[400px]"
-                  >
-                    <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
-                  </Tooltip>
-                </div>
-                <div className="col-span-1 text-center truncate text-blue">Buff</div>
-                <div className="col-span-4 text-center truncate text-gray">{content.value[0].name}</div>
-                <div className="col-span-1 text-center text-gray">
-                  {content.value[0].formatter(content.value[0].value * (content.type === 'number' ? field.value : 1))}
-                </div>
-                {content.type === 'number' && (
-                  <TextInput
-                    type="number"
-                    value={field.value}
-                    onChange={(value) => field.onChange(parseFloat(value) || '')}
-                    max={content.max}
-                    min={content.min}
-                    style="col-span-1"
-                  />
-                )}
-                {content.type === 'toggle' && (
-                  <input
-                    type="checkbox"
-                    onChange={(value) => field.onChange(value)}
-                    checked={field.value}
-                    name={content.id}
-                  />
-                )}
-              </div>
-            )}
-          />
-        )
-    )
-)
-
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
   const [selected, setSelected] = useState(0)
@@ -98,26 +46,23 @@ export const Calculator = observer(({}: {}) => {
   )
   const main = conditionals[selected]
 
-  const { watch, control } = useForm<ConditionalFormT>({
-    defaultValues: {
-      conditionals: _.map(conditionals, (item) =>
-        _.reduce(
-          item?.content,
-          (acc, curr) => {
-            if (curr.show) acc[curr.id] = curr.default
-            return acc
-          },
-          {}
-        )
-      ),
-    },
-  })
-  const values = watch()
+  const [form, setForm] = useState<Record<string, any>[]>(
+    _.map(conditionals, (item) =>
+      _.reduce(
+        item?.content,
+        (acc, curr) => {
+          if (curr.show) acc[curr.id] = curr.default
+          return acc
+        },
+        {}
+      )
+    )
+  )
 
   useEffect(() => {
-    const preCompute = main?.preCompute(values)
-    // setComputedStats(preCompute)
-  }, [char, values])
+    const preCompute = main?.preCompute(form[selected])
+    setComputedStats(preCompute)
+  }, [selected, form])
 
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
@@ -216,7 +161,59 @@ export const Calculator = observer(({}: {}) => {
         <div className="rounded-lg bg-primary-darker h-fit">
           <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Self Conditionals</p>
           <div className="h-[200px] px-4 py-3 space-y-3 overflow-visible">
-            <Conditionals content={main?.content} control={control} selected={selected} />
+            {_.map(
+              main?.content,
+              (content) =>
+                content.show && (
+                  <div className="grid items-center grid-cols-12 text-xs gap-x-1">
+                    <div className="col-span-5">
+                      <Tooltip
+                        title={content.title}
+                        body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
+                        key={content.id}
+                        style="w-[400px]"
+                      >
+                        <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
+                      </Tooltip>
+                    </div>
+                    <div className="col-span-1 text-center truncate text-blue">Buff</div>
+                    <div className="col-span-4 text-center truncate text-gray">{content.value[0].name}</div>
+                    <div className="col-span-1 text-center text-gray">
+                      {content.value[0].formatter(
+                        content.value[0].value * (content.type === 'number' ? form[selected]?.[content.id] : 1)
+                      )}
+                    </div>
+                    {content.type === 'number' && (
+                      <TextInput
+                        type="number"
+                        value={form[selected]?.[content.id]}
+                        onChange={(value) =>
+                          setForm((formValue) => {
+                            formValue[selected] = { ...formValue[selected], [content.id]: parseFloat(value) || '' }
+                            return formValue
+                          })
+                        }
+                        max={content.max}
+                        min={content.min}
+                        style="col-span-1"
+                      />
+                    )}
+                    {content.type === 'toggle' && (
+                      <input
+                        type="checkbox"
+                        onChange={(value) =>
+                          setForm((formValue) => {
+                            formValue[selected] = { ...formValue[selected], [content.id]: value }
+                            return formValue
+                          })
+                        }
+                        checked={form[selected]?.[content.id]}
+                        name={content.id}
+                      />
+                    )}
+                  </div>
+                )
+            )}
           </div>
         </div>
         <StatBlock index={selected} />
