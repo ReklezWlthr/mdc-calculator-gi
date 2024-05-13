@@ -5,7 +5,7 @@ import _ from 'lodash'
 export const getPlungeScaling = (
   type: 'catalyst' | 'base' | 'claymore' | 'hutao' | 'diluc' | 'high' | 'razor',
   atk: number,
-  element: Element
+  element: Element = Element.PHYSICAL
 ) => {
   const plungeTypes = {
     catalyst: [0.5683, 1.1363, 1.4193],
@@ -49,8 +49,8 @@ export const baseStatsObject = {
   [Stats.P_ATK]: 0,
   [Stats.P_HP]: 0,
   [Stats.P_DEF]: 0,
-  [Stats.CRIT_RATE]: 0.05,
-  [Stats.CRIT_DMG]: 0.5,
+  [Stats.CRIT_RATE]: 0,
+  [Stats.CRIT_DMG]: 0,
   [Stats.EM]: 0,
   [Stats.ER]: 1,
   [Stats.HEAL]: 0,

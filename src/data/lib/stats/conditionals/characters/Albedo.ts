@@ -140,7 +140,7 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
         { name: '1-Hit', value: 0.473 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.CA },
         { name: '2-Hit', value: 0.602 * stat.atk, element: Element.PHYSICAL, property: TalentProperty.CA },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', stat.atk, Element.PHYSICAL)
+      base.PLUNGE_SCALING = getPlungeScaling('base', stat.atk)
       base.SKILL_SCALING = [
         { name: 'Skill DMG', value: 1.304 * stat.atk, element: Element.GEO, property: TalentProperty.SKILL },
         {
@@ -164,8 +164,6 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       if (form.dustOfPurification) base[Stats.ALL_DMG] += 0.17
       if (form.homuncularNature) base[Stats.EM] += 125
       if (form.descentOfDivinity) base.PLUNGE_DMG += 0.3
-
-      console.log(form, base)
 
       return base
     },

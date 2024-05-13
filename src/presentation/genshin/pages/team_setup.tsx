@@ -18,6 +18,7 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { Resonance } from '@src/data/db/genshin/characters'
 import { CharacterSelect } from '../components/character_select'
+import { useStat } from '@src/core/hooks/useStat'
 
 const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
   const setDetail = _.find(ArtifactSets, ['id', set])
@@ -120,6 +121,17 @@ export const TeamSetup = observer(() => {
 
   const { teamStore, modalStore, artifactStore } = useStore()
 
+  const char = teamStore.characters[selected]
+  const stats = useStat(
+    char?.cId,
+    char?.level,
+    char?.ascension,
+    char?.equipments?.weapon?.wId,
+    char?.equipments?.weapon?.level,
+    char?.equipments?.weapon?.ascension,
+    char?.equipments?.artifacts
+  )
+
   const onOpenSaveModal = useCallback(() => {
     modalStore.openModal(<SaveBuildModal index={selected} />)
   }, [selected])
@@ -162,7 +174,7 @@ export const TeamSetup = observer(() => {
           <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
         </div>
         <div className="h-5" />
-        <StatBlock index={selected} />
+        <StatBlock index={selected} stat={stats} />
       </div>
       <div className="w-1/5 space-y-5">
         <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />

@@ -28,7 +28,13 @@ export const Calculator = observer(({}: {}) => {
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
 
-  const [computedStats, setComputedStats] = useState(baseStatsObject)
+  const [computedStats, setComputedStats] = useState([
+    baseStatsObject,
+    baseStatsObject,
+    baseStatsObject,
+    baseStatsObject,
+  ])
+  const mainComputed = computedStats?.[selected]
 
   const stats = useStat(
     char?.cId,
@@ -38,11 +44,15 @@ export const Calculator = observer(({}: {}) => {
     char?.equipments?.weapon?.level,
     char?.equipments?.weapon?.ascension,
     char?.equipments?.artifacts,
-    computedStats
+    computedStats?.[selected]
   )
 
-  const conditionals = _.map(teamStore.characters, (item) =>
-    _.find(ConditionalsObject, ['id', item.cId])?.conditionals(item.cons, item.ascension, stats)
+  const conditionals = useMemo(
+    () =>
+      _.map(teamStore.characters, (item) =>
+        _.find(ConditionalsObject, ['id', item.cId])?.conditionals(item.cons, item.ascension, stats)
+      ),
+    [computedStats, teamStore.characters, selected]
   )
   const main = conditionals[selected]
 
@@ -61,7 +71,10 @@ export const Calculator = observer(({}: {}) => {
 
   useEffect(() => {
     const preCompute = main?.preCompute(form[selected])
-    setComputedStats(preCompute)
+    setComputedStats((prev) => {
+      prev[selected] = preCompute
+      return _.cloneDeep(prev)
+    })
   }, [selected, form])
 
   return (
@@ -95,32 +108,32 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
           >
             <div>
-              {_.map(computedStats?.BASIC_SCALING, (item) => (
+              {_.map(mainComputed?.BASIC_SCALING, (item) => (
                 <ScalingSubRows
                   key={item.name}
                   scaling={item}
-                  cr={computedStats[Stats.CRIT_RATE]}
-                  cd={computedStats[Stats.CRIT_DMG]}
+                  cr={mainComputed[Stats.CRIT_RATE]}
+                  cd={mainComputed[Stats.CRIT_DMG]}
                 />
               ))}
             </div>
             <div className="py-3">
-              {_.map(computedStats?.CHARGE_SCALING, (item) => (
+              {_.map(mainComputed?.CHARGE_SCALING, (item) => (
                 <ScalingSubRows
                   key={item.name}
                   scaling={item}
-                  cr={computedStats[Stats.CRIT_RATE]}
-                  cd={computedStats[Stats.CRIT_DMG]}
+                  cr={mainComputed[Stats.CRIT_RATE]}
+                  cd={mainComputed[Stats.CRIT_DMG]}
                 />
               ))}
             </div>
             <div>
-              {_.map(computedStats?.PLUNGE_SCALING, (item) => (
+              {_.map(mainComputed?.PLUNGE_SCALING, (item) => (
                 <ScalingSubRows
                   key={item.name}
                   scaling={item}
-                  cr={computedStats[Stats.CRIT_RATE]}
-                  cd={computedStats[Stats.CRIT_DMG]}
+                  cr={mainComputed[Stats.CRIT_RATE]}
+                  cd={mainComputed[Stats.CRIT_DMG]}
                 />
               ))}
             </div>
@@ -131,12 +144,12 @@ export const Calculator = observer(({}: {}) => {
             icon={`https://enka.network/ui/Skill_S_${charData?.codeName}_01.png`}
             element={charData.element}
           >
-            {_.map(computedStats?.SKILL_SCALING, (item) => (
+            {_.map(mainComputed?.SKILL_SCALING, (item) => (
               <ScalingSubRows
                 key={item.name}
                 scaling={item}
-                cr={computedStats[Stats.CRIT_RATE]}
-                cd={computedStats[Stats.CRIT_DMG]}
+                cr={mainComputed[Stats.CRIT_RATE]}
+                cd={mainComputed[Stats.CRIT_DMG]}
               />
             ))}
           </ScalingWrapper>
@@ -146,12 +159,12 @@ export const Calculator = observer(({}: {}) => {
             icon={`https://enka.network/ui/Skill_E_${charData?.codeName}_01.png`}
             element={charData.element}
           >
-            {_.map(computedStats?.BURST_SCALING, (item) => (
+            {_.map(mainComputed?.BURST_SCALING, (item) => (
               <ScalingSubRows
                 key={item.name}
                 scaling={item}
-                cr={computedStats[Stats.CRIT_RATE]}
-                cd={computedStats[Stats.CRIT_DMG]}
+                cr={mainComputed[Stats.CRIT_RATE]}
+                cd={mainComputed[Stats.CRIT_DMG]}
               />
             ))}
           </ScalingWrapper>
@@ -165,7 +178,7 @@ export const Calculator = observer(({}: {}) => {
               main?.content,
               (content) =>
                 content.show && (
-                  <div className="grid items-center grid-cols-12 text-xs gap-x-1">
+                  <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={content.id}>
                     <div className="col-span-5">
                       <Tooltip
                         title={content.title}
@@ -190,7 +203,7 @@ export const Calculator = observer(({}: {}) => {
                         onChange={(value) =>
                           setForm((formValue) => {
                             formValue[selected] = { ...formValue[selected], [content.id]: parseFloat(value) || '' }
-                            return formValue
+                            return _.cloneDeep(formValue)
                           })
                         }
                         max={content.max}
@@ -201,10 +214,10 @@ export const Calculator = observer(({}: {}) => {
                     {content.type === 'toggle' && (
                       <input
                         type="checkbox"
-                        onChange={(value) =>
+                        onChange={(e) =>
                           setForm((formValue) => {
-                            formValue[selected] = { ...formValue[selected], [content.id]: value }
-                            return formValue
+                            formValue[selected] = { ...formValue[selected], [content.id]: e.target.checked }
+                            return _.cloneDeep(formValue)
                           })
                         }
                         checked={form[selected]?.[content.id]}
@@ -216,7 +229,7 @@ export const Calculator = observer(({}: {}) => {
             )}
           </div>
         </div>
-        <StatBlock index={selected} />
+        <StatBlock index={selected} stat={stats} />
       </div>
     </div>
   )
