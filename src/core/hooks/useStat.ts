@@ -93,6 +93,7 @@ export const useStat = (
     cDmg: 0.5 + getTotalStat(Stats.CRIT_DMG),
     em: getTotalStat(Stats.EM) + (resonance[Element.DENDRO] >= 2 ? 50 : 0),
     er: 1 + getTotalStat(Stats.ER),
+    iHeal: getTotalStat(Stats.I_HEALING),
     heal: getTotalStat(Stats.HEAL) + (character?.id === '10000054' ? 0.25 : 0),
     physical: getTotalStat(Stats.PHYSICAL_DMG),
     pyro: getTotalStat(Stats.PYRO_DMG),

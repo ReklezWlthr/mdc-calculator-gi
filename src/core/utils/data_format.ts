@@ -4,6 +4,7 @@ import {
   AscensionScaling,
   FiveStarScaling,
   FourStarScaling,
+  TalentScaling,
   WeaponScaling,
   WeaponSecondaryScaling,
 } from '@src/domain/genshin/scaling'
@@ -106,11 +107,6 @@ export const getResonanceCount = (chars: ITeamChar[]) => {
   return setBonus
 }
 
-export const calcScaling = (scaling, stats: StatObjectT) => {
-  return _.map(scaling, (item) => ({
-    name: item.name,
-    value: item.value * stats[item.scale.toLowerCase()],
-    element: item.element,
-    property: item.property,
-  }))
+export const calcScaling = (base: number, level: number, type: 'physical' | 'elemental' | 'special', sub: string) => {
+  return TalentScaling[type]?.[sub]?.[level - 1] * base
 }

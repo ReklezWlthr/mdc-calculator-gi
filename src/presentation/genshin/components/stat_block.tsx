@@ -48,7 +48,7 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <DataRow title="CRIT Rate" value={toPercentage(stat?.cRate)} />
       <DataRow title="CRIT DMG" value={toPercentage(stat?.cDmg)} />
       <DataRow title="Healing Bonus" value={toPercentage(stat?.heal)} />
-      <DataRow title="Incoming Healing" value={toPercentage(0)} />
+      <DataRow title="Incoming Healing" value={toPercentage(stat?.iHeal)} />
       <DataRow title="Energy Recharge" value={toPercentage(stat?.er)} />
       <DataRow title="CD Reduction" value={toPercentage(0)} />
       <DataRow title="Physical DMG%" value={toPercentage(stat?.physical)} />
@@ -59,7 +59,7 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <DataRow title="Anemo DMG%" value={toPercentage(stat?.anemo)} />
       <DataRow title="Geo DMG%" value={toPercentage(stat?.geo)} />
       <DataRow title="Dendro DMG%" value={toPercentage(stat?.dendro)} />
-      <DataRow title="DMG%" value={toPercentage(0)} />
+      <DataRow title="DMG%" value={toPercentage(stat?.dmg)} />
       <DataRow title="Shield Strength" value={toPercentage(stat?.shield)} />
     </div>
   )

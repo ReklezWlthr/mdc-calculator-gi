@@ -4,7 +4,7 @@ export interface IScaling {
   name: string
   scale?: Stats
   value: number
-  element: Element
+  element: Element | 'Heal' | 'Shield'
   property: TalentProperty
   bonus?: number //Bonus dmg for each component
   cr?: number //Bonus crit rate for each component

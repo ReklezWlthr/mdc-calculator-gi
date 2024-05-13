@@ -25,9 +25,9 @@ module.exports = {
         genshin: {
           anemo: '#33ccb3',
           electro: '#d376f0',
-          dendro: '#7bb42d',
-          pyro: '#e2311d',
-          hydro: '#1c72fd',
+          dendro: '#a8e157',
+          pyro: '#ef7938',
+          hydro: '#4098f2',
           cryo: '#92c8e8',
           geo: '#cfa726',
           pneuma: '#e9dba5',

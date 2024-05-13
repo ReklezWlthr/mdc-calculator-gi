@@ -40,7 +40,7 @@ export const ScalingWrapper = observer(({ children, icon, talent, element }: Sca
         </Tooltip>
         <p className="w-full font-bold text-center">{talent?.title}</p>
       </div>
-      <div className="w-4/5">{children}</div>
+      <div className="w-4/5 space-y-0.5">{children}</div>
     </div>
   )
 })

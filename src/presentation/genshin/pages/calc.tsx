@@ -1,25 +1,18 @@
-import { useStat } from '@src/core/hooks/useStat'
+import { StatObjectT, useStat } from '@src/core/hooks/useStat'
 import { findCharacter } from '@src/core/utils/finder'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
-import Nahida from '@src/data/lib/stats/conditionals/characters/Nahida'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { Stats, WeaponIcon } from '@src/domain/genshin/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Control, Controller, useForm } from 'react-hook-form'
+import { useEffect, useMemo, useState } from 'react'
 import { ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
 import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
-import { IContent } from '@src/domain/genshin/conditional'
-
-type ConditionalFormT = {
-  conditionals: Record<string, any>[]
-}
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
@@ -28,12 +21,7 @@ export const Calculator = observer(({}: {}) => {
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
 
-  const [computedStats, setComputedStats] = useState([
-    baseStatsObject,
-    baseStatsObject,
-    baseStatsObject,
-    baseStatsObject,
-  ])
+  const [computedStats, setComputedStats] = useState<StatsObject[]>(Array(4).fill(baseStatsObject))
   const mainComputed = computedStats?.[selected]
 
   const stats = useStat(
@@ -107,34 +95,19 @@ export const Calculator = observer(({}: {}) => {
             icon={`https://enka.network/ui${WeaponIcon[charData.weapon]}`}
             element={charData.element}
           >
-            <div>
+            <div className="space-y-0.5">
               {_.map(mainComputed?.BASIC_SCALING, (item) => (
-                <ScalingSubRows
-                  key={item.name}
-                  scaling={item}
-                  cr={mainComputed[Stats.CRIT_RATE]}
-                  cd={mainComputed[Stats.CRIT_DMG]}
-                />
+                <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
               ))}
             </div>
-            <div className="py-3">
+            <div className="py-2 space-y-0.5">
               {_.map(mainComputed?.CHARGE_SCALING, (item) => (
-                <ScalingSubRows
-                  key={item.name}
-                  scaling={item}
-                  cr={mainComputed[Stats.CRIT_RATE]}
-                  cd={mainComputed[Stats.CRIT_DMG]}
-                />
+                <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
               ))}
             </div>
-            <div>
+            <div className="space-y-0.5">
               {_.map(mainComputed?.PLUNGE_SCALING, (item) => (
-                <ScalingSubRows
-                  key={item.name}
-                  scaling={item}
-                  cr={mainComputed[Stats.CRIT_RATE]}
-                  cd={mainComputed[Stats.CRIT_DMG]}
-                />
+                <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
               ))}
             </div>
           </ScalingWrapper>
@@ -145,12 +118,7 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
           >
             {_.map(mainComputed?.SKILL_SCALING, (item) => (
-              <ScalingSubRows
-                key={item.name}
-                scaling={item}
-                cr={mainComputed[Stats.CRIT_RATE]}
-                cd={mainComputed[Stats.CRIT_DMG]}
-              />
+              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -160,12 +128,27 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
           >
             {_.map(mainComputed?.BURST_SCALING, (item) => (
-              <ScalingSubRows
-                key={item.name}
-                scaling={item}
-                cr={mainComputed[Stats.CRIT_RATE]}
-                cd={mainComputed[Stats.CRIT_DMG]}
-              />
+              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+            ))}
+          </ScalingWrapper>
+          <div className="w-full my-2 border-t-2 border-primary-border" />
+          <ScalingWrapper
+            talent={main?.talents?.a1}
+            icon={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_05.png`}
+            element={charData.element}
+          >
+            {_.map(mainComputed?.A1_SCALING, (item) => (
+              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
+            ))}
+          </ScalingWrapper>
+          <div className="w-full my-2 border-t-2 border-primary-border" />
+          <ScalingWrapper
+            talent={main?.talents?.a4}
+            icon={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_06.png`}
+            element={charData.element}
+          >
+            {_.map(mainComputed?.A4_SCALING, (item) => (
+              <ScalingSubRows key={item.name} scaling={item} cr={stats.cRate} cd={stats.cDmg} />
             ))}
           </ScalingWrapper>
         </div>
@@ -189,11 +172,10 @@ export const Calculator = observer(({}: {}) => {
                         <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                       </Tooltip>
                     </div>
-                    <div className="col-span-1 text-center truncate text-blue">Buff</div>
-                    <div className="col-span-4 text-center truncate text-gray">{content.value[0].name}</div>
+                    <div className="col-span-4 text-center truncate text-gray">{content.value[0]?.name}</div>
                     <div className="col-span-1 text-center text-gray">
-                      {content.value[0].formatter(
-                        content.value[0].value * (content.type === 'number' ? form[selected]?.[content.id] : 1)
+                      {content.value[0]?.formatter(
+                        content.value[0]?.value * (content.type === 'number' ? form[selected]?.[content.id] : 1)
                       )}
                     </div>
                     {content.type === 'number' && (
@@ -208,7 +190,7 @@ export const Calculator = observer(({}: {}) => {
                         }
                         max={content.max}
                         min={content.min}
-                        style="col-span-1"
+                        style="col-span-2"
                       />
                     )}
                     {content.type === 'toggle' && (

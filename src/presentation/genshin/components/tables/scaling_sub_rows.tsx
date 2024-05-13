@@ -12,7 +12,7 @@ interface ScalingSubRowsProps {
 
 export const ScalingSubRows = observer(({ scaling, cr, cd }: ScalingSubRowsProps) => {
   const propertyColor = {
-    Heal: 'text-green-200',
+    Heal: 'text-green-300',
     Shield: 'text-blue-200',
   }
 
@@ -25,6 +25,7 @@ export const ScalingSubRows = observer(({ scaling, cr, cd }: ScalingSubRowsProps
     [Element.GEO]: 'text-genshin-geo',
     [Element.ANEMO]: 'text-genshin-anemo',
     [Element.DENDRO]: 'text-genshin-dendro',
+    ...propertyColor,
   }
 
   const dmg = scaling.value * (1 + (scaling.bonus || 0))
@@ -40,7 +41,9 @@ export const ScalingSubRows = observer(({ scaling, cr, cd }: ScalingSubRowsProps
       <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
         {_.round(dmg * (1 + totalCd * totalCr))}
       </p>
-      <p className="col-span-2 text-xs">{scaling.name}</p>
+      <p className="col-span-2 text-xs truncate" title={scaling.name}>
+        {scaling.name}
+      </p>
     </div>
   )
 })

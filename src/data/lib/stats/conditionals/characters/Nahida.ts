@@ -5,6 +5,7 @@ import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { toPercentage } from '@src/core/utils/converter'
+import { calcScaling } from '@src/core/utils/data_format'
 
 const Nahida = (c: number, a: number, stat: StatObjectT) => {
   const a4_bonus = _.min([0.001 * _.max([stat.em - 200, 0]), 0.8])
@@ -122,21 +123,57 @@ const Nahida = (c: number, a: number, stat: StatObjectT) => {
       const base = _.cloneDeep(baseStatsObject)
 
       base.BASIC_SCALING = [
-        { name: '1-Hit', value: 0.403 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
-        { name: '2-Hit', value: 0.3697 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
-        { name: '3-Hit', value: 0.4587 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
-        { name: '4-Hit', value: 0.5841 * stat.atk, element: Element.DENDRO, property: TalentProperty.NA },
+        {
+          name: '1-Hit',
+          value: calcScaling(0.403, 10, 'elemental', '1') * stat.atk,
+          element: Element.DENDRO,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '2-Hit',
+          value: calcScaling(0.3697, 10, 'elemental', '1') * stat.atk,
+          element: Element.DENDRO,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '3-Hit',
+          value: calcScaling(0.4587, 10, 'elemental', '1') * stat.atk,
+          element: Element.DENDRO,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '4-Hit',
+          value: calcScaling(0.5841, 10, 'elemental', '1') * stat.atk,
+          element: Element.DENDRO,
+          property: TalentProperty.NA,
+        },
       ]
       base.CHARGE_SCALING = [
-        { name: 'Charged Attack', value: 1.32 * stat.atk, element: Element.DENDRO, property: TalentProperty.CA },
+        {
+          name: 'Charged Attack',
+          value: calcScaling(1.32, 10, 'elemental', '1_alt') * stat.atk,
+          element: Element.DENDRO,
+          property: TalentProperty.CA,
+        },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('catalyst', stat.atk, Element.DENDRO)
       base.SKILL_SCALING = [
-        { name: 'Press DMG', value: 0.984 * stat.atk, element: Element.DENDRO, property: TalentProperty.SKILL },
-        { name: 'Hold DMG', value: 1.304 * stat.atk, element: Element.DENDRO, property: TalentProperty.SKILL },
+        {
+          name: 'Press DMG',
+          value: calcScaling(0.984, 10, 'elemental', '1') * stat.atk,
+          element: Element.DENDRO,
+          property: TalentProperty.SKILL,
+        },
+        {
+          name: 'Hold DMG',
+          value: calcScaling(1.304, 10, 'elemental', '1') * stat.atk,
+          element: Element.DENDRO,
+          property: TalentProperty.SKILL,
+        },
         {
           name: 'Tri-Karma Purification',
-          value: 1.032 * stat.atk + 2.064 * stat.em,
+          value:
+            calcScaling(1.032, 10, 'elemental', '1') * stat.atk + calcScaling(2.064, 10, 'elemental', '1') * stat.em,
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
           bonus: a >= 4 ? 0.001 * a4_bonus : 0,
