@@ -1,5 +1,5 @@
 import { IScaling } from '@src/domain/genshin/conditional'
-import { Element, Stats } from '@src/domain/genshin/constant'
+import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -12,8 +12,8 @@ interface ScalingSubRowsProps {
 
 export const ScalingSubRows = observer(({ scaling, cr, cd }: ScalingSubRowsProps) => {
   const propertyColor = {
-    Heal: 'text-green-300',
-    Shield: 'text-blue-200',
+    [TalentProperty.HEAL]: 'text-green-300',
+    [TalentProperty.SHIELD]: 'text-blue-200',
   }
 
   const elementColor = {
@@ -37,9 +37,15 @@ export const ScalingSubRows = observer(({ scaling, cr, cd }: ScalingSubRowsProps
       <p className="col-span-2 text-center">{scaling.property}</p>
       <p className={classNames('col-span-1 text-center', elementColor[scaling.element])}>{scaling.element}</p>
       <p className="col-span-1 text-center text-gray">{_.round(dmg)}</p>
-      <p className="col-span-1 text-center text-gray">{_.round(dmg * (1 + totalCd))}</p>
+      <p className="col-span-1 text-center text-gray">
+        {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property)
+          ? '-'
+          : _.round(dmg * (1 + totalCd))}
+      </p>
       <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-        {_.round(dmg * (1 + totalCd * totalCr))}
+        {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property)
+          ? _.round(dmg)
+          : _.round(dmg * (1 + totalCd * totalCr))}
       </p>
       <p className="col-span-2 text-xs truncate" title={scaling.name}>
         {scaling.name}
