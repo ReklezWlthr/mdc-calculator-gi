@@ -88,6 +88,9 @@ export const baseStatsObject = {
   ATK_SPD: 1,
   CHARGE_ATK_SPD: 1,
   DEF_PEN: 0,
+  CD_RED: 0,
+  SKILL_CD_RED: 0,
+  BURST_CD_RED: 0,
 
   // RES PEN
   ALL_TYPE_RES_PEN: 0,
@@ -135,6 +138,23 @@ export const baseStatsObject = {
   PLUNGE_CD: 0,
   SKILL_CD: 0,
   BURST_CD: 0,
+
+  BURNING_DMG: 0,
+  BLOOM_DMG: 0,
+  HYPERBLOOM_DMG: 0,
+  BURGEON_DMG: 0,
+  VAPE_DMG: 0,
+  MELT_DMG: 0,
+  AGGRAVATE_DMG: 0,
+  SPREAD_DMG: 0,
+  SUPERCONDUCT_DMG: 0,
+  TASER_DMG: 0,
+  OVERLOAD_DMG: 0,
+  SHATTER_DMG: 0,
+
+  DMG_REDUCTION: 0,
+
+  INFUSION: null,
 
   // Multipliers
   BASIC_SCALING: [] as IScaling[],

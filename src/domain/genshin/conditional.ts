@@ -3,7 +3,7 @@ import { Element, Stats, TalentProperty } from './constant'
 export interface IScaling {
   name: string
   scale?: Stats
-  value: { scaling: number; multiplier: Stats }[]
+  value: { scaling: number; multiplier: Stats; override?: number }[]
   element: Element | 'Heal' | 'Shield'
   property: TalentProperty
   multiplier?: number

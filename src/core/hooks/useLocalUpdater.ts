@@ -2,7 +2,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { useEffect, useState } from 'react'
 
 export const useLocalUpdater = (game: string) => {
-  const { teamStore, artifactStore, buildStore } = useStore()
+  const { teamStore, artifactStore, buildStore, charStore } = useStore()
   const [data, setData] = useState(null)
   const [hydrated, setHydrated] = useState(false)
 
@@ -13,6 +13,7 @@ export const useLocalUpdater = (game: string) => {
     teamStore.hydrateCharacters(json.team)
     artifactStore.hydrateArtifacts(json.artifacts)
     buildStore.hydrateBuilds(json.builds)
+    charStore.hydrateCharacters(json.characters)
     setData(data)
   }
 
@@ -24,6 +25,7 @@ export const useLocalUpdater = (game: string) => {
           team: teamStore.characters,
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
+          characters: charStore.characters
         })
       )
     }

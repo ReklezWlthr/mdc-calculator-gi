@@ -15,8 +15,8 @@ interface ScalingSubRowsProps {
 
 export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps) => {
   const propertyColor = {
-    [TalentProperty.HEAL]: 'text-green-300',
-    [TalentProperty.SHIELD]: 'text-blue-200',
+    [TalentProperty.HEAL]: 'text-green-400',
+    [TalentProperty.SHIELD]: 'text-indigo-300',
   }
 
   const elementColor = {
@@ -31,10 +31,15 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     ...propertyColor,
   }
 
-  const bonusDMG = _.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property)
-    ? 0
-    : (scaling.bonus || 0) + stats.dmg + stats[scaling.element.toLowerCase()]
-  const dmg = _.sumBy(scaling.value, (item) => item.scaling * stats[StatNameMap[item.multiplier]]) * (1 + bonusDMG)
+  const bonusDMG =
+    TalentProperty.SHIELD === scaling.property
+      ? 0
+      : TalentProperty.HEAL === scaling.property
+      ? (scaling.bonus || 0) + stats.heal
+      : (scaling.bonus || 0) + stats.dmg + stats[scaling.element.toLowerCase()] + (stats.talent[scaling.property] || 0)
+  const dmg =
+    _.sumBy(scaling.value, (item) => item.scaling * (item.override || stats[StatNameMap[item.multiplier]])) *
+    (1 + bonusDMG)
   const totalCr = stats.cRate + (scaling.cr || 0)
   const totalCd = stats.cDmg + (scaling.cd || 0)
 
@@ -44,7 +49,7 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/icons/${
         StatIcons[item.multiplier]
       }" />${_.round(
-        stats[StatNameMap[item.multiplier]]
+        item.override || stats[StatNameMap[item.multiplier]]
       ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
@@ -64,11 +69,22 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       <Tooltip
         title={scaling.name}
         body={
-          <div className='space-y-1'>
+          <div className="space-y-1">
             <p dangerouslySetInnerHTML={{ __html: formulaString }} />
             {!!scaling.bonus && (
               <p className="text-xs">
                 Exclusive Bonus DMG: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
+              </p>
+            )}
+            {!!stats[scaling.element.toLowerCase()] && (
+              <p className="text-xs">
+                {scaling.element} Bonus DMG:{' '}
+                <span className="text-yellow">{toPercentage(stats[scaling.element.toLowerCase()])}</span>
+              </p>
+            )}
+            {!!stats.talent[scaling.property] && (
+              <p className="text-xs">
+                Talent Bonus DMG: <span className="text-yellow">{toPercentage(stats.talent[scaling.property])}</span>
               </p>
             )}
           </div>

@@ -32,13 +32,20 @@ export interface ITalentLevel {
   burst: number
 }
 
-export interface ITeamChar {
+export interface ICharStoreBase {
   level: number
   ascension: number
   cons: number
   cId: string
-  equipments: { weapon: IWeaponEquip; artifacts: string[] }
   talents: ITalentLevel
+}
+
+export interface ICharStore extends ICharStoreBase {
+  id: string
+}
+
+export interface ITeamChar extends ICharStoreBase {
+  equipments: { weapon: IWeaponEquip; artifacts: string[] }
 }
 
 export interface IBuild {

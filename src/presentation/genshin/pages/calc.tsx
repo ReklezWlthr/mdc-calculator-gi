@@ -66,7 +66,12 @@ export const Calculator = observer(({}: {}) => {
   )
 
   useEffect(() => {
-    const preCompute = main?.preCompute(form[selected])
+    let preCompute = main?.preCompute(form[selected])
+    _.forEach(conditionals, (item, index) => {
+      if (index !== selected) {
+        preCompute = item?.preComputeShared(preCompute, form[index])
+      }
+    })
     setComputedStats((prev) => {
       prev[selected] = preCompute
       return _.cloneDeep(prev)

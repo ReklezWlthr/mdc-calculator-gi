@@ -167,6 +167,12 @@ export const TeamSetup = observer(() => {
     teamStore.characters
   )
 
+  const maxTalentLevel = _.max([1, (char.ascension - 1) * 2])
+  const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
+    name: (index + 1).toString(),
+    value: (index + 1).toString(),
+  }))
+
   return (
     <div className="flex justify-center w-full gap-5 p-5 overflow-y-auto">
       <div className="w-1/3">
@@ -181,7 +187,7 @@ export const TeamSetup = observer(() => {
           ))}
         </div>
         <CharacterBlock index={selected} />
-        <div className="flex items-center gap-6 py-3">
+        <div className="flex items-center justify-center gap-3 py-3">
           <div className="relative">
             <TalentIcon
               talent={talent?.talents?.normal}
@@ -198,10 +204,10 @@ export const TeamSetup = observer(() => {
           <SelectInput
             value={char?.talents?.normal?.toString()}
             onChange={(value) => teamStore.setTalentLevel(selected, 'normal', parseInt(value))}
-            options={_.map(Array(10), (_, index) => ({ name: (index + 1).toString(), value: (index + 1).toString() }))}
+            options={talentLevels}
             style="w-14"
           />
-          <div className="relative">
+          <div className="relative ml-3">
             <TalentIcon
               talent={talent?.talents?.skill}
               element={charData?.element}
@@ -217,10 +223,10 @@ export const TeamSetup = observer(() => {
           <SelectInput
             value={char?.talents?.skill?.toString()}
             onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
-            options={_.map(Array(10), (_, index) => ({ name: (index + 1).toString(), value: (index + 1).toString() }))}
+            options={talentLevels}
             style="w-14"
           />
-          <div className="relative">
+          <div className="relative ml-3">
             <TalentIcon
               talent={talent?.talents?.burst}
               element={charData?.element}
@@ -236,7 +242,7 @@ export const TeamSetup = observer(() => {
           <SelectInput
             value={char?.talents?.burst?.toString()}
             onChange={(value) => teamStore.setTalentLevel(selected, 'burst', parseInt(value))}
-            options={_.map(Array(10), (_, index) => ({ name: (index + 1).toString(), value: (index + 1).toString() }))}
+            options={talentLevels}
             style="w-14"
           />
         </div>

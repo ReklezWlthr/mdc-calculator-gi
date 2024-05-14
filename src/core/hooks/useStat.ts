@@ -10,7 +10,7 @@ import {
 } from '../utils/data_format'
 import { useCallback } from 'react'
 import _ from 'lodash'
-import { Element, Stats } from '@src/domain/genshin/constant'
+import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { AscensionGrowth } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
@@ -111,6 +111,11 @@ export const useStat = (
       additive: 5 * (preCalculated.em / (preCalculated.em + 1200)),
       amplifying: 2.78 * (preCalculated.em / (preCalculated.em + 1400)),
     },
+    talent: {
+      [TalentProperty.NA]: conditionals?.BASIC_DMG,
+      [TalentProperty.SKILL]: conditionals?.SKILL_DMG,
+      [TalentProperty.BURST]: conditionals?.BURST_DMG,
+    }
   }
 }
 

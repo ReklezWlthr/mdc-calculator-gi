@@ -75,8 +75,8 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     a4: {
       title: 'A4: Enlightened One',
       content: `Each <span class="text-yellow">1%</span> above <span class="text-yellow">100%</span> Energy Recharge that the Raiden Shogun possesses grants her:
-      <br /><span class="text-yellow">0.6%</span> greater Energy restoration from Musou Isshin
-      <br /><span class="text-yellow">0.4%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.
+      <br />- <span class="text-yellow">0.6%</span> greater Energy restoration from Musou Isshin
+      <br />- <span class="text-yellow">0.4%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.
       <br /><br />Energy restoration per hit: <span class="text-yellow">${energyRestore.toFixed(1)}</span>
       <br />Current DMG Bonus: <span class="text-yellow">${toPercentage(a4Bonus)}</span>
       `,
