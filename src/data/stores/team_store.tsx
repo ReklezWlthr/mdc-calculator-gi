@@ -30,6 +30,11 @@ export const DefaultCharacter = {
     weapon: DefaultWeapon,
     artifacts: Array(5),
   },
+  talents: {
+    normal: 1,
+    skill: 1,
+    burst: 1,
+  },
 }
 
 export interface TeamStoreType {
@@ -37,6 +42,7 @@ export interface TeamStoreType {
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setMember: (index: number, character: ITeamChar) => void
+  setTalentLevel: (index: number, type: 'normal' | 'skill' | 'burst', level: number) => void
   setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
   setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
   setArtifact: (index: number, type: number, aId: string) => void
@@ -72,6 +78,12 @@ export class Team {
   equipBuild = (index: number, build: IBuild) => {
     if (!build) return
     this.characters[index].equipments = { weapon: build.weapon, artifacts: build.artifacts }
+    this.characters[index] = { ...this.characters[index] }
+  }
+
+  setTalentLevel = (index: number, type: 'normal' | 'skill' | 'burst', level: number) => {
+    if (!type) return
+    this.characters[index].talents = { ...this.characters[index].talents, [type]: level }
     this.characters[index] = { ...this.characters[index] }
   }
 

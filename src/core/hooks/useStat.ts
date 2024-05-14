@@ -82,6 +82,7 @@ export const useStat = (
     fAtk: getTotalStat(Stats.ATK),
     fHp: getTotalStat(Stats.HP),
     fDef: getTotalStat(Stats.DEF),
+    em: getTotalStat(Stats.EM) + (resonance[Element.DENDRO] >= 2 ? 50 : 0),
   }
 
   return {
@@ -91,7 +92,6 @@ export const useStat = (
     def: preCalculated.baseDef * (1 + preCalculated.pDef) + preCalculated.fDef,
     cRate: 0.05 + getTotalStat(Stats.CRIT_RATE) - (character?.id === '10000054' ? 1 : 0),
     cDmg: 0.5 + getTotalStat(Stats.CRIT_DMG),
-    em: getTotalStat(Stats.EM) + (resonance[Element.DENDRO] >= 2 ? 50 : 0),
     er: 1 + getTotalStat(Stats.ER),
     iHeal: getTotalStat(Stats.I_HEALING),
     heal: getTotalStat(Stats.HEAL) + (character?.id === '10000054' ? 0.25 : 0),
@@ -105,6 +105,12 @@ export const useStat = (
     anemo: getTotalStat(Stats.ANEMO_DMG),
     shield: getTotalStat(Stats.SHIELD) + (resonance[Element.GEO] >= 2 ? 0.15 : 0),
     dmg: getTotalStat(Stats.ALL_DMG),
+    reaction: {
+      transformative: 16 * (preCalculated.em / (preCalculated.em + 2000)),
+      crystallize: 4.44 * (preCalculated.em / (preCalculated.em + 1400)),
+      additive: 5 * (preCalculated.em / (preCalculated.em + 1200)),
+      amplifying: 2.78 * (preCalculated.em / (preCalculated.em + 1400)),
+    },
   }
 }
 

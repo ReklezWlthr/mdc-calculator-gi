@@ -1,9 +1,11 @@
+import { calcScaling } from '@src/core/utils/data_format'
 import { IScaling } from '@src/domain/genshin/conditional'
 import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 
 export const getPlungeScaling = (
   type: 'catalyst' | 'base' | 'claymore' | 'hutao' | 'diluc' | 'high' | 'razor',
+  level: number,
   element: Element = Element.PHYSICAL,
   additionalScaling: { scaling: number; multiplier: Stats }[] = [],
   flat: number = 0,
@@ -22,7 +24,10 @@ export const getPlungeScaling = (
     {
       name: 'Plunge DMG',
       scale: Stats.ATK,
-      value: [{ scaling: plungeTypes[type]?.[0] || 0, multiplier: Stats.ATK }, ...additionalScaling],
+      value: [
+        { scaling: calcScaling(plungeTypes[type]?.[0] || 0, level, 'physical', '1'), multiplier: Stats.ATK },
+        ...additionalScaling,
+      ],
       element,
       property: TalentProperty.PA,
       bonus,
@@ -30,7 +35,10 @@ export const getPlungeScaling = (
     {
       name: 'Low Plunge DMG',
       scale: Stats.ATK,
-      value: [{ scaling: plungeTypes[type]?.[1] || 0, multiplier: Stats.ATK }, ...additionalScaling],
+      value: [
+        { scaling: calcScaling(plungeTypes[type]?.[1] || 0, level, 'physical', '1'), multiplier: Stats.ATK },
+        ...additionalScaling,
+      ],
       element,
       property: TalentProperty.PA,
       bonus,
@@ -38,7 +46,10 @@ export const getPlungeScaling = (
     {
       name: 'High Plunge DMG',
       scale: Stats.ATK,
-      value: [{ scaling: plungeTypes[type]?.[2] || 0, multiplier: Stats.ATK }, ...additionalScaling],
+      value: [
+        { scaling: calcScaling(plungeTypes[type]?.[2] || 0, level, 'physical', '1'), multiplier: Stats.ATK },
+        ...additionalScaling,
+      ],
       element,
       property: TalentProperty.PA,
       bonus,

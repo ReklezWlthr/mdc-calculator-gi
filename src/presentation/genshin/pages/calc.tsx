@@ -14,6 +14,7 @@ import { StatBlock } from '../components/stat_block'
 import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { ConsCircle } from '../components/cons_circle'
+import { ConditionalBlock } from '../components/conditional_block'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
@@ -42,6 +43,7 @@ export const Calculator = observer(({}: {}) => {
         _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
           item.cons,
           item.ascension,
+          item.talents,
           stats,
           teamStore.characters
         )
@@ -100,6 +102,8 @@ export const Calculator = observer(({}: {}) => {
             talent={main?.talents?.normal}
             icon={`https://enka.network/ui${WeaponIcon[charData.weapon]}`}
             element={charData.element}
+            level={char.talents?.normal}
+            upgraded={main?.upgrade?.normal}
           >
             <div className="space-y-0.5">
               {_.map(mainComputed?.BASIC_SCALING, (item) => (
@@ -122,6 +126,8 @@ export const Calculator = observer(({}: {}) => {
             talent={main?.talents?.skill}
             icon={`https://enka.network/ui/Skill_S_${charData?.codeName}_01.png`}
             element={charData.element}
+            level={char.talents?.skill}
+            upgraded={main?.upgrade?.skill}
           >
             {_.map(mainComputed?.SKILL_SCALING, (item) => (
               <ScalingSubRows key={item.name} scaling={item} stats={stats} />
@@ -132,6 +138,8 @@ export const Calculator = observer(({}: {}) => {
             talent={main?.talents?.burst}
             icon={`https://enka.network/ui/Skill_E_${charData?.codeName}_01.png`}
             element={charData.element}
+            level={char.talents?.burst}
+            upgraded={main?.upgrade?.burst}
           >
             {_.map(mainComputed?.BURST_SCALING, (item) => (
               <ScalingSubRows key={item.name} scaling={item} stats={stats} />
@@ -142,6 +150,7 @@ export const Calculator = observer(({}: {}) => {
             talent={main?.talents?.a1}
             icon={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_05.png`}
             element={charData.element}
+            upgraded={false}
           >
             {_.map(mainComputed?.A1_SCALING, (item) => (
               <ScalingSubRows key={item.name} scaling={item} stats={stats} />
@@ -152,6 +161,7 @@ export const Calculator = observer(({}: {}) => {
             talent={main?.talents?.a4}
             icon={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_06.png`}
             element={charData.element}
+            upgraded={false}
           >
             {_.map(mainComputed?.A4_SCALING, (item) => (
               <ScalingSubRows key={item.name} scaling={item} stats={stats} />
@@ -160,63 +170,13 @@ export const Calculator = observer(({}: {}) => {
         </div>
       </div>
       <div className="flex flex-col items-center w-full gap-3">
-        <div className="w-full rounded-lg bg-primary-darker h-fit">
-          <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Self Conditionals</p>
-          <div className="h-[200px] px-4 py-3 space-y-3 overflow-visible">
-            {_.map(
-              main?.content,
-              (content) =>
-                content.show && (
-                  <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={content.id}>
-                    <div className="col-span-5">
-                      <Tooltip
-                        title={content.title}
-                        body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
-                        key={content.id}
-                        style="w-[40vw]"
-                      >
-                        <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
-                      </Tooltip>
-                    </div>
-                    <div className="col-span-4 text-center truncate text-gray">{content.value[0]?.name}</div>
-                    <div className="col-span-1 text-center text-gray">
-                      {content.value[0]?.formatter(
-                        content.value[0]?.value * (content.type === 'number' ? form[selected]?.[content.id] : 1)
-                      )}
-                    </div>
-                    {content.type === 'number' && (
-                      <TextInput
-                        type="number"
-                        value={form[selected]?.[content.id]}
-                        onChange={(value) =>
-                          setForm((formValue) => {
-                            formValue[selected] = { ...formValue[selected], [content.id]: parseFloat(value) || '' }
-                            return _.cloneDeep(formValue)
-                          })
-                        }
-                        max={content.max}
-                        min={content.min}
-                        style="col-span-2"
-                      />
-                    )}
-                    {content.type === 'toggle' && (
-                      <input
-                        type="checkbox"
-                        onChange={(e) =>
-                          setForm((formValue) => {
-                            formValue[selected] = { ...formValue[selected], [content.id]: e.target.checked }
-                            return _.cloneDeep(formValue)
-                          })
-                        }
-                        checked={form[selected]?.[content.id]}
-                        name={content.id}
-                      />
-                    )}
-                  </div>
-                )
-            )}
-          </div>
-        </div>
+        <ConditionalBlock
+          title="Self Conditionals"
+          selected={selected}
+          contents={main?.content}
+          form={form}
+          setForm={setForm}
+        />
         <StatBlock index={selected} stat={stats} />
         <ConsCircle
           talents={main?.talents}

@@ -29,8 +29,8 @@ export const ConsCircle = observer(
     }
 
     return (
-      <div className="flex flex-col justify-around ring-offset-primary-bg w-72 h-72">
-        <div className="flex justify-around">
+      <div className="flex flex-col justify-around w-[242px] h-[252px]">
+        <div className="flex justify-center">
           <Tooltip
             title={talents?.c1?.title}
             body={<p dangerouslySetInnerHTML={{ __html: talents?.c1?.content }} />}
@@ -44,6 +44,8 @@ export const ConsCircle = observer(
               )}
             />
           </Tooltip>
+        </div>
+        <div className="flex justify-between">
           <Tooltip
             title={talents?.c6?.title}
             body={<p dangerouslySetInnerHTML={{ __html: talents?.c6?.content }} />}
@@ -57,45 +59,41 @@ export const ConsCircle = observer(
               )}
             />
           </Tooltip>
+          <Tooltip
+            title={talents?.c2?.title}
+            body={<p dangerouslySetInnerHTML={{ __html: talents?.c2?.content }} />}
+            style="w-[40vw]"
+          >
+            <img
+              src={`https://enka.network/ui/UI_Talent_S_${codeName}_02.png`}
+              className={classNames(
+                'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
+                cons >= 2 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
+              )}
+            />
+          </Tooltip>
         </div>
-        <div className="flex items-center justify-between">
-          <div className="shrink-0">
-            <Tooltip
-              title={talents?.c2?.title}
-              body={<p dangerouslySetInnerHTML={{ __html: talents?.c2?.content }} />}
-              style="w-[40vw]"
-            >
-              <img
-                src={`https://enka.network/ui/UI_Talent_S_${codeName}_02.png`}
-                className={classNames(
-                  'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                  cons >= 2 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                )}
-              />
-            </Tooltip>
-          </div>
-          <p className="px-4 text-lg font-bold text-center max-w-1/2">{name}</p>
-          <div className="shrink-0">
-            <Tooltip
-              title={talents?.c5?.title}
-              body={<p dangerouslySetInnerHTML={{ __html: talents?.c5?.content }} />}
-              style="w-[40vw]"
-            >
-              <img
-                src={`https://enka.network/ui/UI_Talent_U_${codeName}_02.png`}
-                className={classNames(
-                  'shrink-0 w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                  cons >= 5 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                )}
-              />
-            </Tooltip>
-          </div>
+        <div className="flex items-center justify-center h-12">
+          <p className="w-1/2 px-4 text-lg font-bold text-center">{name}</p>
         </div>
-        <div className="flex justify-around">
+        <div className="flex justify-between">
+          <Tooltip
+            title={talents?.c5?.title}
+            body={<p dangerouslySetInnerHTML={{ __html: talents?.c5?.content }} />}
+            style="w-[25vw]"
+          >
+            <img
+              src={`https://enka.network/ui/UI_Talent_U_${codeName}_02.png`}
+              className={classNames(
+                'shrink-0 w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
+                cons >= 5 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
+              )}
+            />
+          </Tooltip>
           <Tooltip
             title={talents?.c3?.title}
             body={<p dangerouslySetInnerHTML={{ __html: talents?.c3?.content }} />}
-            style="w-[40vw]"
+            style="w-[25vw]"
           >
             <img
               src={`https://enka.network/ui/UI_Talent_U_${codeName}_01.png`}
@@ -105,6 +103,8 @@ export const ConsCircle = observer(
               )}
             />
           </Tooltip>
+        </div>
+        <div className="flex justify-center">
           <Tooltip
             title={talents?.c4?.title}
             body={<p dangerouslySetInnerHTML={{ __html: talents?.c4?.content }} />}

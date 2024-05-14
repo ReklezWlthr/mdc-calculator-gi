@@ -1,13 +1,22 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
+const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+  const upgrade = {
+    normal: c >= 3,
+    skill: false,
+    burst: c >= 5,
+  }
+  const normal = t.normal + (upgrade.normal ? 3 : 0)
+  const skill = t.skill + (upgrade.skill ? 3 : 0)
+  const burst = t.burst + (upgrade.burst ? 3 : 0)
+
   const a4Res = _.min([0.01 * ((stat.atk - 1000) / 100), 0.2])
 
   const talents: ITalent = {
@@ -92,7 +101,6 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       text: `Bond of Life`,
       ...talents.normal,
       show: true,
-      value: [],
       default: 145,
       min: 0,
       max: 200,
@@ -103,7 +111,6 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       text: `C2 Due Absorption`,
       ...talents.c2,
       show: c >= 2,
-      value: [],
       default: true,
     },
     {
@@ -112,14 +119,14 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       text: `C6 CRIT Buff`,
       ...talents.c2,
       show: c >= 6,
-      value: [],
       default: true,
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'yaoyaoC1')]
+  const teammateContent: IContent[] = []
 
   return {
+    upgrade,
     talents,
     content,
     teammateContent,
@@ -138,7 +145,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         {
           name: '1-Hit',
           value: [
-            { scaling: calcScaling(0.475, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.475, normal, 'physical', '1'), multiplier: Stats.ATK },
             { scaling: bolPropagation[0], multiplier: Stats.ATK },
           ],
           element: bolPropagation[0] ? Element.PYRO : Element.PHYSICAL,
@@ -147,7 +154,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         {
           name: '2-Hit',
           value: [
-            { scaling: calcScaling(0.5211, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.5211, normal, 'physical', '1'), multiplier: Stats.ATK },
             { scaling: bolPropagation[1], multiplier: Stats.ATK },
           ],
           element: bolPropagation[1] ? Element.PYRO : Element.PHYSICAL,
@@ -156,7 +163,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         {
           name: '3-Hit',
           value: [
-            { scaling: calcScaling(0.6539, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.6539, normal, 'physical', '1'), multiplier: Stats.ATK },
             { scaling: bolPropagation[2], multiplier: Stats.ATK },
           ],
           element: bolPropagation[2] ? Element.PYRO : Element.PHYSICAL,
@@ -165,7 +172,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         {
           name: '4-Hit [1]',
           value: [
-            { scaling: calcScaling(0.3715, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.3715, normal, 'physical', '1'), multiplier: Stats.ATK },
             { scaling: bolPropagation[3], multiplier: Stats.ATK },
           ],
           element: bolPropagation[3] ? Element.PYRO : Element.PHYSICAL,
@@ -174,7 +181,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         {
           name: '4-Hit [2]',
           value: [
-            { scaling: calcScaling(0.3715, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.3715, normal, 'physical', '1'), multiplier: Stats.ATK },
             { scaling: bolPropagation[4], multiplier: Stats.ATK },
           ],
           element: bolPropagation[4] ? Element.PYRO : Element.PHYSICAL,
@@ -183,7 +190,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         {
           name: '5-Hit',
           value: [
-            { scaling: calcScaling(0.6998, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.6998, normal, 'physical', '1'), multiplier: Stats.ATK },
             { scaling: bolPropagation[5], multiplier: Stats.ATK },
           ],
           element: bolPropagation[5] ? Element.PYRO : Element.PHYSICAL,
@@ -192,7 +199,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
         {
           name: '6-Hit',
           value: [
-            { scaling: calcScaling(0.8538, 10, 'physical', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.8538, normal, 'physical', '1'), multiplier: Stats.ATK },
             { scaling: bolPropagation[6], multiplier: Stats.ATK },
           ],
           element: bolPropagation[6] ? Element.PYRO : Element.PHYSICAL,
@@ -202,28 +209,28 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: [{ scaling: calcScaling(1.1266, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.1266, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: form.bol >= 30 ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', form.bol >= 30 ? Element.PYRO : Element.PHYSICAL)
+      base.PLUNGE_SCALING = getPlungeScaling('base', normal, form.bol >= 30 ? Element.PYRO : Element.PHYSICAL)
       base.SKILL_SCALING = [
         {
           name: 'Spike DMG',
-          value: [{ scaling: calcScaling(0.1484, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.1484, skill, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Cleave DMG',
-          value: [{ scaling: calcScaling(1.3356, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.3356, skill, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Blood-Debt Directive DMG',
-          value: [{ scaling: calcScaling(0.318, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.318, skill, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },
@@ -231,7 +238,7 @@ const Arlecchino = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
-          value: [{ scaling: calcScaling(3.704, 10, 'physical', '1'), multiplier: Stats.ATK }, ...c6BurstBonus],
+          value: [{ scaling: calcScaling(3.704, burst, 'physical', '1'), multiplier: Stats.ATK }, ...c6BurstBonus],
           element: Element.PYRO,
           property: TalentProperty.BURST,
         },

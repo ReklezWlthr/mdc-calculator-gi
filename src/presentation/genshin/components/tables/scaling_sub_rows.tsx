@@ -61,7 +61,20 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     <div className="grid items-center grid-cols-8 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
       <p className={classNames('col-span-1 text-center', elementColor[scaling.element])}>{scaling.element}</p>
-      <Tooltip title={scaling.name} body={<p dangerouslySetInnerHTML={{ __html: formulaString }} />} style="w-[400px]">
+      <Tooltip
+        title={scaling.name}
+        body={
+          <div className='space-y-1'>
+            <p dangerouslySetInnerHTML={{ __html: formulaString }} />
+            {!!scaling.bonus && (
+              <p className="text-xs">
+                Exclusive Bonus DMG: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
+              </p>
+            )}
+          </div>
+        }
+        style="w-[400px]"
+      >
         <p className="col-span-1 text-center text-gray">{_.round(dmg)}</p>
       </Tooltip>
       <p className="col-span-1 text-center text-gray">

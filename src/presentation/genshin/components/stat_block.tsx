@@ -1,8 +1,7 @@
-import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
 import { toPercentage } from '@src/core/utils/converter'
-import { StatObjectT, useStat } from '@src/core/hooks/useStat'
+import { StatObjectT } from '@src/core/hooks/useStat'
 
 interface StatBlockProps {
   index: number
@@ -10,9 +9,6 @@ interface StatBlockProps {
 }
 
 export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
-  const { teamStore } = useStore()
-  const char = teamStore.characters[index]
-
   const DataRow = ({ title, value }: { title: string; value: number | string }) => {
     return (
       <div className="flex items-center gap-2 text-xs">

@@ -1,13 +1,22 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { toPercentage } from '@src/core/utils/converter'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]]) => {
+const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...rest: [ITeamChar[]]) => {
+  const upgrade = {
+    normal: false,
+    skill: c >= 3,
+    burst: c >= 5,
+  }
+  const normal = t.normal + (upgrade.normal ? 3 : 0)
+  const skill = t.skill + (upgrade.skill ? 3 : 0)
+  const burst = t.burst + (upgrade.burst ? 3 : 0)
+
   const [team] = rest
   const a4_bonus = _.min([0.001 * _.max([stat.em - 200, 0]), 0.8])
   const a4_cr = _.min([0.0003 * _.max([stat.em - 200, 0]), 0.24])
@@ -19,21 +28,21 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
 
   const pyroBonus =
     pyroCount >= 2
-      ? calcScaling(0.2232, 10, 'elemental', '1')
+      ? calcScaling(0.2232, burst, 'elemental', '1')
       : pyroCount === 1
-      ? calcScaling(0.1488, 10, 'elemental', '1')
+      ? calcScaling(0.1488, burst, 'elemental', '1')
       : 0
   const hydroBonus =
     hydroCount >= 2
-      ? calcScaling(0.372, 10, 'elemental', '1')
+      ? calcScaling(0.372, burst, 'elemental', '1')
       : hydroCount === 1
-      ? calcScaling(0.248, 10, 'elemental', '1')
+      ? calcScaling(0.248, burst, 'elemental', '1')
       : 0
   const electroBonus =
     electroCount >= 2
-      ? calcScaling(5.016, 10, 'elemental', '1')
+      ? calcScaling(5.016, burst, 'elemental', '1')
       : electroCount === 1
-      ? calcScaling(3.344, 10, 'elemental', '1')
+      ? calcScaling(3.344, burst, 'elemental', '1')
       : 0
 
   const talents: ITalent = {
@@ -135,11 +144,18 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
   const content: IContent[] = [
     {
       type: 'toggle',
+      id: 'nahida_burst',
+      text: `Shrine of Maya: Pyro`,
+      ...talents.burst,
+      show: true,
+      default: true,
+    },
+    {
+      type: 'toggle',
       id: 'nahida_em_share',
       text: `Compassion Illuminated`,
-      ...talents.a4,
+      ...talents.a1,
       show: a >= 1,
-      value: [{ name: 'Elemental Mastery', value: 0.25, formatter: _.floor }],
       default: true,
     },
     {
@@ -148,7 +164,6 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
       text: `Enemies marked by TKP`,
       ...talents.c4,
       show: c >= 4,
-      value: [],
       default: 4,
       max: 8,
       min: 0,
@@ -158,6 +173,7 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
   const teammateContent: IContent[] = []
 
   return {
+    upgrade,
     talents,
     content,
     teammateContent,
@@ -167,25 +183,25 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.403, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.403, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.3697, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3697, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(0.4587, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4587, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: [{ scaling: calcScaling(0.5841, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.5841, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
         },
@@ -193,34 +209,34 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: [{ scaling: calcScaling(1.32, 10, 'elemental', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.32, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('catalyst', Element.DENDRO)
+      base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal, Element.DENDRO)
       base.SKILL_SCALING = [
         {
           name: 'Press DMG',
-          value: [{ scaling: calcScaling(0.984, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.984, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Hold DMG',
-          value: [{ scaling: calcScaling(1.304, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.304, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Tri-Karma Purification',
           value: [
-            { scaling: calcScaling(1.032, 10, 'elemental', '1'), multiplier: Stats.ATK },
-            { scaling: calcScaling(2.064, 10, 'elemental', '1'), multiplier: Stats.EM },
+            { scaling: calcScaling(1.032, skill, 'elemental', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(2.064, skill, 'elemental', '1'), multiplier: Stats.EM },
           ],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
-          bonus: (a >= 4 ? a4_bonus : 0) + pyroBonus,
+          bonus: (a >= 4 ? a4_bonus : 0) + (form.nahida_burst ? pyroBonus : 0),
           cr: a >= 4 ? a4_cr : 0,
         },
       ]
@@ -236,7 +252,7 @@ const Nahida = (c: number, a: number, stat: StatObjectT, ...rest: [ITeamChar[]])
           ],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
-          bonus: (a >= 4 ? a4_bonus : 0) + pyroBonus,
+          bonus: (a >= 4 ? a4_bonus : 0) + (form.nahida_burst ? pyroBonus : 0),
           cr: a >= 4 ? a4_cr : 0,
         })
 

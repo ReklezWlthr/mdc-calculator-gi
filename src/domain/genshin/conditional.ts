@@ -20,7 +20,6 @@ export interface IContent {
   title: string
   content: string
   show: boolean
-  value: { name: string; value: number; formatter: Function }[]
   default?: number | boolean
   max?: number
   min?: number

@@ -1,13 +1,22 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '../../../../../core/utils/data_format'
 
-const Albedo = (c: number, a: number, stat: StatObjectT) => {
+const Albedo = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+  const upgrade = {
+    normal: false,
+    skill: c >= 3,
+    burst: c >= 5,
+  }
+  const normal = t.normal + (upgrade.normal ? 3 : 0)
+  const skill = t.skill + (upgrade.skill ? 3 : 0)
+  const burst = t.burst + (upgrade.burst ? 3 : 0)
+
   const maxFatalReckoning = 4
 
   const talents: ITalent = {
@@ -74,7 +83,6 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       text: `Calcite Might`,
       ...talents.a1,
       show: a >= 1,
-      value: [{ name: 'Transient Blossoms DMG', value: 0.25, formatter: toPercentage }],
       default: true,
     },
     {
@@ -83,7 +91,6 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       text: `Homuncular Nature`,
       ...talents.a4,
       show: a >= 4,
-      value: [{ name: Stats.EM, value: 125, formatter: _.toString }],
       default: true,
     },
     {
@@ -92,7 +99,6 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       text: `Fatal Reckoning Stacks`,
       ...talents.c2,
       show: c >= 2,
-      value: [{ name: 'Elemental Burst DMG', value: 0.3 * stat.def, formatter: _.floor }],
       min: 0,
       max: maxFatalReckoning,
       default: maxFatalReckoning,
@@ -103,7 +109,6 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       text: `Descent of Divinity`,
       ...talents.c4,
       show: c >= 4,
-      value: [{ name: 'Plunge DMG%', value: 0.3, formatter: toPercentage }],
       default: true,
     },
     {
@@ -112,7 +117,6 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       text: `Dust of Purification`,
       ...talents.c6,
       show: c >= 6,
-      value: [{ name: Stats.ALL_DMG, value: 0.17, formatter: toPercentage }],
       default: true,
     },
   ]
@@ -124,6 +128,7 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
   ]
 
   return {
+    upgrade,
     talents,
     content,
     teammateContent,
@@ -136,31 +141,31 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.3674, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3674, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.3674, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3674, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(0.4745, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4745, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: [{ scaling: calcScaling(0.4975, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4975, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '5-Hit',
-          value: [{ scaling: calcScaling(0.6207, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.6207, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
@@ -168,28 +173,28 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.473, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.473, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.602, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.602, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base')
+      base.PLUNGE_SCALING = getPlungeScaling('base', normal)
       base.SKILL_SCALING = [
         {
           name: 'Skill DMG',
-          value: [{ scaling: calcScaling(1.304, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.304, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.GEO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Transient Blossom DMG',
-          value: [{ scaling: calcScaling(1.336, 10, 'elemental', '1'), multiplier: Stats.DEF }],
+          value: [{ scaling: calcScaling(1.336, skill, 'elemental', '1'), multiplier: Stats.DEF }],
           element: Element.GEO,
           property: TalentProperty.SKILL,
           bonus: form.calciteMight ? 0.25 : null,
@@ -198,14 +203,14 @@ const Albedo = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
-          value: [{ scaling: calcScaling(3.672, 10, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(3.672, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.GEO,
           property: TalentProperty.BURST,
         },
         {
           name: 'Fatal Blossom DMG [x7]',
           value: [
-            { scaling: calcScaling(0.72, 10, 'elemental', '1'), multiplier: Stats.DEF },
+            { scaling: calcScaling(0.72, burst, 'elemental', '1'), multiplier: Stats.DEF },
             ...fatalReckoningScaling,
           ],
           element: Element.GEO,

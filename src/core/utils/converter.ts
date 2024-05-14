@@ -14,5 +14,10 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
     cons: _.size(item.talentListId || []),
     cId: item.avatarId,
     equipments: null,
+    talents: {
+      normal: 1,
+      skill: 1,
+      burst: 1,
+    },
   }))
 }

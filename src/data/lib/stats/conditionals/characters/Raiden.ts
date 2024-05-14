@@ -1,13 +1,22 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { toPercentage } from '@src/core/utils/converter'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Raiden = (c: number, a: number, stat: StatObjectT) => {
+const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+  const upgrade = {
+    normal: false,
+    skill: c >= 5,
+    burst: c >= 3,
+  }
+  const normal = t.normal + (upgrade.normal ? 3 : 0)
+  const skill = t.skill + (upgrade.skill ? 3 : 0)
+  const burst = t.burst + (upgrade.burst ? 3 : 0)
+
   const a4Energy = a >= 4 ? 0.6 * (stat.er - 1) : 0
   const a4Bonus = a >= 4 ? 0.4 * (stat.er - 1) : 0
   const energyRestore = 1.6 * (1 + a4Energy)
@@ -109,7 +118,6 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
       ...talents.skill,
       show: true,
       default: true,
-      value: [],
     },
     {
       type: 'number',
@@ -120,7 +128,6 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
       min: 0,
       max: 60,
       default: 60,
-      value: [],
     },
     {
       type: 'toggle',
@@ -129,7 +136,6 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
       ...talents.burst,
       show: true,
       default: false,
-      value: [],
     },
   ]
 
@@ -142,11 +148,11 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
       ...talents.c4,
       show: c >= 4,
       default: true,
-      value: [],
     },
   ]
 
   return {
+    upgrade,
     talents,
     content,
     teammateContent,
@@ -159,37 +165,49 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         ? [
             {
               name: '1-Hit',
-              value: [{ scaling: calcScaling(0.4474 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.4474 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '2-Hit',
-              value: [{ scaling: calcScaling(0.4396 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.4396 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '3-Hit',
-              value: [{ scaling: calcScaling(0.5382 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.5382 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '4-Hit [1]',
-              value: [{ scaling: calcScaling(0.3089 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.3089 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '4-Hit [2]',
-              value: [{ scaling: calcScaling(0.3098 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.3098 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: '5-Hit',
-              value: [{ scaling: calcScaling(0.7394 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.7394 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
@@ -197,31 +215,31 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         : [
             {
               name: '1-Hit',
-              value: [{ scaling: calcScaling(0.3965, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.3965, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '2-Hit',
-              value: [{ scaling: calcScaling(0.3973, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.3973, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '3-Hit',
-              value: [{ scaling: calcScaling(0.4988, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.4988, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '4-Hit [x2]',
-              value: [{ scaling: calcScaling(0.2898, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.2898, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
             {
               name: '5-Hit',
-              value: [{ scaling: calcScaling(0.6545, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.6545, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
@@ -230,13 +248,15 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         ? [
             {
               name: 'Charged Attack [1]',
-              value: [{ scaling: calcScaling(0.616 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.616 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: 'Charged Attack [2]',
-              value: [{ scaling: calcScaling(0.7436 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.7436 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
@@ -244,7 +264,7 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         : [
             {
               name: 'Charged Attack',
-              value: [{ scaling: calcScaling(0.9959, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.9959, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.CA,
             },
@@ -253,34 +273,40 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
         ? [
             {
               name: 'Plunge DMG',
-              value: [{ scaling: calcScaling(0.6393 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.6393 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: 'Low Plunge DMG',
-              value: [{ scaling: calcScaling(1.2784 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(1.2784 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
             {
               name: 'High Plunge DMG',
-              value: [{ scaling: calcScaling(1.5968 + resolveAtkBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(1.5968 + resolveAtkBonus, burst, 'physical', '1'), multiplier: Stats.ATK },
+              ],
               element: Element.ELECTRO,
               property: TalentProperty.BURST,
             },
           ]
-        : getPlungeScaling('base')
+        : getPlungeScaling('base', normal)
       base.SKILL_SCALING = [
         {
           name: 'Skill DMG',
-          value: [{ scaling: calcScaling(1.172, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.172, skill, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Coordinated ATK DMG',
-          value: [{ scaling: calcScaling(0.42, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.42, skill, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.SKILL,
         },
@@ -288,7 +314,7 @@ const Raiden = (c: number, a: number, stat: StatObjectT) => {
       base.BURST_SCALING = [
         {
           name: 'Musou no Hitotachi DMG',
-          value: [{ scaling: calcScaling(4.008 + resolveMainBonus, 10, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(4.008 + resolveMainBonus, burst, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.BURST,
         },

@@ -26,12 +26,19 @@ export interface ICharacter {
   codeName: string
 }
 
+export interface ITalentLevel {
+  normal: number
+  skill: number
+  burst: number
+}
+
 export interface ITeamChar {
   level: number
   ascension: number
   cons: number
   cId: string
   equipments: { weapon: IWeaponEquip; artifacts: string[] }
+  talents: ITalentLevel
 }
 
 export interface IBuild {
@@ -204,7 +211,9 @@ export const ConstellationOptions = [
   { name: 'C0', value: '0' },
   { name: 'C1', value: '1' },
   { name: 'C2', value: '2' },
+  { name: 'C3', value: '3' },
   { name: 'C4', value: '4' },
+  { name: 'C5', value: '5' },
   { name: 'C6', value: '6' },
 ]
 
