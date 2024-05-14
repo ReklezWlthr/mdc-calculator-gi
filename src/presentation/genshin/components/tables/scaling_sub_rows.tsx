@@ -49,9 +49,9 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
   )
   const baseScaling = _.join(scalingArray, ' + ')
   const shouldWrap = !!scaling.flat || scaling.value.length > 1
-  const baseWithFlat = scaling.flat ? _.join([baseScaling, _.floor(scaling.flat)], ' + ') : baseScaling
+  const baseWithFlat = scaling.flat ? _.join([baseScaling, _.round(scaling.flat)], ' + ') : baseScaling
 
-  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(dmg)}</b> = ${
+  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(dmg)}</b> = ${
     shouldWrap ? `(${baseWithFlat})` : baseWithFlat
   }${bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${elementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''}${
     scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier)}</b>` : ''
