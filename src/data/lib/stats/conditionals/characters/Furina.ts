@@ -153,7 +153,7 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'fanfare')]
 
   return {
     upgrade,

@@ -5,6 +5,10 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Dispatch, SetStateAction } from 'react'
 
+interface IContentIndex extends IContent {
+  index: number
+}
+
 export const ConditionalBlock = observer(
   ({
     title,
@@ -14,7 +18,7 @@ export const ConditionalBlock = observer(
     selected,
   }: {
     title: string
-    contents: IContent[]
+    contents: IContentIndex[]
     form: Record<string, any>[]
     setForm: Dispatch<SetStateAction<Record<string, any>[]>>
     selected: number
@@ -43,10 +47,13 @@ export const ConditionalBlock = observer(
                     {content.type === 'number' && (
                       <TextInput
                         type="number"
-                        value={form[selected]?.[content.id]}
+                        value={form[content.index]?.[content.id]}
                         onChange={(value) =>
                           setForm((formValue) => {
-                            formValue[selected] = { ...formValue[selected], [content.id]: parseFloat(value) || '' }
+                            formValue[content.index] = {
+                              ...formValue[content.index],
+                              [content.id]: parseFloat(value) || '',
+                            }
                             return _.cloneDeep(formValue)
                           })
                         }
@@ -61,11 +68,11 @@ export const ConditionalBlock = observer(
                           type="checkbox"
                           onChange={(e) =>
                             setForm((formValue) => {
-                              formValue[selected] = { ...formValue[selected], [content.id]: e.target.checked }
+                              formValue[content.index] = { ...formValue[content.index], [content.id]: e.target.checked }
                               return _.cloneDeep(formValue)
                             })
                           }
-                          checked={form[selected]?.[content.id]}
+                          checked={form[content.index]?.[content.id]}
                           name={content.id}
                         />
                       </div>

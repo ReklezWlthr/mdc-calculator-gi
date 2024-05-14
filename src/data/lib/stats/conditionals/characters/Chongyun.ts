@@ -1,0 +1,241 @@
+import { findCharacter, findContentById } from '@src/core/utils/finder'
+import _ from 'lodash'
+import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { StatObjectT } from '@src/core/hooks/useStat'
+import { toPercentage } from '@src/core/utils/converter'
+import { IContent, ITalent } from '@src/domain/genshin/conditional'
+import { calcScaling } from '@src/core/utils/data_format'
+
+const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+  const upgrade = {
+    normal: false,
+    skill: c >= 5,
+    burst: c >= 3,
+  }
+  const normal = t.normal + (upgrade.normal ? 3 : 0)
+  const skill = t.skill + (upgrade.skill ? 3 : 0)
+  const burst = t.burst + (upgrade.burst ? 3 : 0)
+
+  const talents: ITalent = {
+    normal: {
+      title: `Demonbane`,
+      content: `<b>Normal Attack</b>
+      <br />Performs up to 4 consecutive strikes.
+      <br />
+      <br /><b>Charged Attack</b>
+      <br />Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+      <br />At the end of the sequence, performs a more powerful slash.
+      <br />
+      <br /><b>Plunging Attack</b>
+      <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
+      `,
+    },
+    skill: {
+      title: `Spirit Blade: Chonghua's Layered Frost`,
+      content: `Chongyun strikes the ground with his greatsword, causing a <b class="text-genshin-cryo">Cryo</b> explosion in a circular AoE in front of him that deals <b class="text-genshin-cryo">Cryo DMG</b>.
+      After a short delay, the cold air created by the <b class="text-genshin-cryo">Cryo</b> explosion will coalesce into a Chonghua Frost Field, within which all Sword, Claymore and Polearm-wielding characters' weapons will be infused with <b class="text-genshin-cryo">Cryo</b>.
+      `,
+    },
+    burst: {
+      title: `Spirit Blade: Cloud-Parting Star`,
+      content: `Performing the secret hand seals, Chongyun summons 3 giant spirit blades in mid-air that fall to the earth one by one after a short delay, exploding as they hit the ground.
+      <br />When the spirit blades explode, they will deal <b class="text-genshin-cryo">AoE Cryo DMG</b> and launch opponents.`,
+    },
+    a1: {
+      title: `A1: Steady Breathing`,
+      content: `Sword, Claymore, or Polearm-wielding characters within the field created by Spirit Blade: Chonghua's Layered Frost have their Normal ATK SPD increased by <span class="text-yellow">8%</span>.`,
+    },
+    a4: {
+      title: `A4: Rimechaser Blade`,
+      content: `When the field created by Spirit Blade: Chonghua's Layered Frost disappears, another spirit blade will be summoned to strike nearby opponents, dealing <span class="text-yellow">100%</span> of Chonghua's Layered Frost's Skill DMG as <b class="text-genshin-cryo">AoE Cryo DMG</b>.
+      <br />Opponents hit by this blade will have their <b class="text-genshin-cryo">Cryo RES</b> decreased by <span class="text-yellow">10%</span> for <span class="text-yellow">8</span>s.`,
+    },
+    c1: {
+      title: `C1: Ice Unleashed`,
+      content: `The last attack of Chongyun's Normal Attack combo releases 3 ice blades. Each blade deals <span class="text-yellow">50%</span> of Chongyun's ATK as <b class="text-genshin-cryo">Cryo DMG</b> to all opponents in its path.`,
+    },
+    c2: {
+      title: `C2: Atmospheric Revolution`,
+      content: `Elemental Skills and Elemental Bursts cast within the Frost Field created by Spirit Blade: Chonghua's Layered Frost have their CD time decreased by <span class="text-yellow">15%</span>.`,
+    },
+    c3: {
+      title: `C3: Cloudburst`,
+      content: `Increases the Level of Spirit Blade: Cloud-Parting Star by 3.
+      <br />Maximum upgrade level is 15.`,
+    },
+    c4: {
+      title: `C4: Frozen Skies`,
+      content: `Chongyun regenerates <span class="text-yellow">1</span> Energy every time he hits an opponent affected by <b class="text-genshin-cryo">Cryo</b>.
+      This effect can only occur once every <span class="text-yellow">2</span>s.`,
+    },
+    c5: {
+      title: `C5: The True Path`,
+      content: `Increases the Level of Spirit Blade: Chonghua's Layered Frost by 3.
+      <br />Maximum upgrade level is 15.`,
+    },
+    c6: {
+      title: `C6: Rally of Four Blades`,
+      content: `Spirit Blade: Cloud-Parting Star deals <span class="text-yellow">15%</span> more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.
+      <br />This skill will also summon <span class="text-yellow">1</span> additional spirit blade.`,
+    },
+  }
+
+  const content: IContent[] = [
+    {
+      type: 'toggle',
+      id: 'chongyun_infusion',
+      text: `Cryo Infusion`,
+      ...talents.skill,
+      show: true,
+      default: true,
+    },
+    {
+      type: 'toggle',
+      id: 'chongyun_a1',
+      text: `Steady Breathing`,
+      ...talents.a1,
+      show: a >= 1,
+      default: true,
+    },
+    {
+      type: 'toggle',
+      id: 'chongyun_a4',
+      text: `Cryo RES PEN`,
+      ...talents.a4,
+      show: a >= 4,
+      default: true,
+    },
+    {
+      type: 'toggle',
+      id: 'chongyun_c6',
+      text: `C6 Low Health DMG Bonus`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+    },
+  ]
+
+  const teammateContent: IContent[] = [
+    findContentById(content, 'chongyun_infusion'),
+    findContentById(content, 'chongyun_a1'),
+    findContentById(content, 'chongyun_a4'),
+  ]
+
+  return {
+    upgrade,
+    talents,
+    content,
+    teammateContent,
+    preCompute: (form: Record<string, any>) => {
+      const base = _.cloneDeep(baseStatsObject)
+      base.MAX_ENERGY = 40
+
+      if (form.chongyun_infusion) base.INFUSION = Element.CRYO
+
+      const c6Scaling = c >= 6 ? [{ scaling: 2.35, multiplier: Stats.DEF }] : []
+
+      base.BASIC_SCALING = [
+        {
+          name: '1-Hit',
+          value: [{ scaling: calcScaling(0.7, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '2-Hit',
+          value: [{ scaling: calcScaling(0.6312, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '3-Hit',
+          value: [{ scaling: calcScaling(0.8032, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '4-Hit',
+          value: [{ scaling: calcScaling(1.0122, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+      ]
+      base.CHARGE_SCALING = [
+        {
+          name: 'Charged Attack Cyclic DMG',
+          value: [{ scaling: calcScaling(0.5629, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.CA,
+        },
+        {
+          name: 'Charged Attack Final DMG',
+          value: [{ scaling: calcScaling(1.0178, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.CA,
+        },
+      ]
+      base.PLUNGE_SCALING = getPlungeScaling('claymore', normal)
+
+      const skillScaling = calcScaling(1.7204, skill, 'elemental', '1')
+
+      base.SKILL_SCALING = [
+        {
+          name: 'Skill DMG',
+          value: [{ scaling: skillScaling, multiplier: Stats.ATK }],
+          element: Element.CRYO,
+          property: TalentProperty.SKILL,
+        },
+      ]
+      base.BURST_SCALING = [
+        {
+          name: `Skill DMG Per Blade [x${c >= 6 ? 4 : 3}]`,
+          value: [{ scaling: calcScaling(1.424, burst, 'elemental', '1'), multiplier: Stats.ATK }],
+          element: Element.CRYO,
+          property: TalentProperty.BURST,
+          bonus: form.chongyun_c6 ? 0.15 : 0,
+        },
+      ]
+
+      if (form.chongyun_a1) base.ATK_SPD += 0.08
+
+      if (a >= 4)
+        base.SKILL_SCALING.push({
+          name: 'Rimechaser Blade DMG',
+          value: [{ scaling: skillScaling, multiplier: Stats.ATK }],
+          element: Element.CRYO,
+          property: TalentProperty.SKILL,
+        })
+
+      if (form.chongyun_a4) base.CRYO_RES_PEN += 0.1
+
+      if (c >= 1)
+        base.BASIC_SCALING.push({
+          name: 'Ice Unleashed DMG [x3]',
+          value: [{ scaling: 0.5, multiplier: Stats.ATK }],
+          element: Element.CRYO,
+          property: TalentProperty.NA,
+        })
+
+      if (c >= 2) {
+        base.SKILL_CD_RED += 0.15
+        base.BURST_CD_RED += 0.15
+      }
+
+      return base
+    },
+    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      if (form.chongyun_infusion) base.INFUSION = Element.CRYO
+      if (form.chongyun_a4) base.CRYO_RES_PEN += 0.1
+
+      if (c >= 2) {
+        base.SKILL_CD_RED += 0.15
+        base.BURST_CD_RED += 0.15
+      }
+
+      return base
+    },
+  }
+}
+
+export default Chongyun

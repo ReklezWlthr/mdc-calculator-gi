@@ -22,11 +22,6 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
   const fontainian = _.filter(teamData, 'Fontaine').length
   const nonFontainian = _.filter(teamData).length - fontainian
 
-  const a4Trans = _.min([stat.hp, 50000]) * 0.02
-  const a4Add = _.min([stat.hp, 50000]) * 0.008
-
-  const c6Scaling = c >= 6 ? [{ scaling: 0.08, multiplier: Stats.HP }] : []
-
   const talents: ITalent = {
     normal: {
       title: `Cool-Color Capture`,
@@ -198,6 +193,7 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
           value: [{ scaling: calcScaling(0.7762, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.BURST,
+          bonus: form.charlotte_c4 ? 0.1 : 0,
         },
         {
           name: 'Kamera Continuous Healing',
@@ -211,6 +207,7 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
           value: [{ scaling: calcScaling(0.0647, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.BURST,
+          bonus: form.charlotte_c4 ? 0.1 : 0,
         },
       ]
 
@@ -228,7 +225,6 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
         })
 
       if (form.verite_hit) base[Stats.P_ATK] += _.min([form.verite_hit * 0.1, 0.3])
-      if (form.charlotte_c4) base.BURST_DMG += 0.1
 
       if (c >= 6)
         //Duplicate to ally when stat is fixed

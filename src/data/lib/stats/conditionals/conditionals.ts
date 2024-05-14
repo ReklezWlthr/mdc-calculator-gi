@@ -7,6 +7,9 @@ import Beidou from './characters/Beidou'
 import Bennett from './characters/Bennett'
 import Candace from './characters/Candace'
 import Charlotte from './characters/Charlotte'
+import Chevreuse from './characters/Chevreuse'
+import Chiori from './characters/Chiori'
+import Chongyun from './characters/Chongyun'
 import Furina from './characters/Furina'
 import Itto from './characters/Itto'
 import Nahida from './characters/Nahida'
@@ -28,4 +31,7 @@ export default [
   { id: '10000032', conditionals: Bennett },
   { id: '10000072', conditionals: Candace },
   { id: '10000088', conditionals: Charlotte },
+  { id: '10000090', conditionals: Chevreuse },
+  { id: '10000094', conditionals: Chiori },
+  { id: '10000036', conditionals: Chongyun },
 ]

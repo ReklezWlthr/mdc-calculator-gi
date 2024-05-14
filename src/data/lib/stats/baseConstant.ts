@@ -156,6 +156,8 @@ export const baseStatsObject = {
 
   INFUSION: null,
 
+  MAX_ENERGY: 60,
+
   // Multipliers
   BASIC_SCALING: [] as IScaling[],
   CHARGE_SCALING: [] as IScaling[],

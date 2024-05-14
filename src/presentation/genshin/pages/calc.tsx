@@ -15,6 +15,7 @@ import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { ConsCircle } from '../components/cons_circle'
 import { ConditionalBlock } from '../components/conditional_block'
+import { useAllStatWrapper } from '@src/core/hooks/useAllStatWrapper'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore } = useStore()
@@ -26,25 +27,16 @@ export const Calculator = observer(({}: {}) => {
   const [computedStats, setComputedStats] = useState<StatsObject[]>(Array(4).fill(baseStatsObject))
   const mainComputed = computedStats?.[selected]
 
-  const stats = useStat(
-    char?.cId,
-    char?.level,
-    char?.ascension,
-    char?.equipments?.weapon?.wId,
-    char?.equipments?.weapon?.level,
-    char?.equipments?.weapon?.ascension,
-    char?.equipments?.artifacts,
-    computedStats?.[selected]
-  )
+  const stats = useAllStatWrapper(teamStore.characters, computedStats)
 
   const conditionals = useMemo(
     () =>
-      _.map(teamStore.characters, (item) =>
+      _.map(teamStore.characters, (item, index) =>
         _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
           item.cons,
           item.ascension,
           item.talents,
-          stats,
+          stats[index],
           teamStore.characters
         )
       ),
@@ -77,6 +69,13 @@ export const Calculator = observer(({}: {}) => {
       return _.cloneDeep(prev)
     })
   }, [selected, form])
+
+  const mapped = _.flatMap(
+    _.map(conditionals, (item, index) => (index === selected ? item.content : item.teammateContent)),
+    (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+  )
+  const mainContent = _.filter(mapped, ['index', selected])
+  const teamContent = _.filter(mapped, (item, index) => selected !== item.index)
 
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
@@ -112,17 +111,17 @@ export const Calculator = observer(({}: {}) => {
           >
             <div className="space-y-0.5">
               {_.map(mainComputed?.BASIC_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={stats} />
+                <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
               ))}
             </div>
             <div className="py-2 space-y-0.5">
               {_.map(mainComputed?.CHARGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={stats} />
+                <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
               ))}
             </div>
             <div className="space-y-0.5">
               {_.map(mainComputed?.PLUNGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={stats} />
+                <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
               ))}
             </div>
           </ScalingWrapper>
@@ -135,7 +134,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={main?.upgrade?.skill}
           >
             {_.map(mainComputed?.SKILL_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -147,7 +146,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={main?.upgrade?.burst}
           >
             {_.map(mainComputed?.BURST_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -158,7 +157,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={false}
           >
             {_.map(mainComputed?.A1_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -169,7 +168,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={false}
           >
             {_.map(mainComputed?.A4_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats} />
+              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
             ))}
           </ScalingWrapper>
         </div>
@@ -178,11 +177,18 @@ export const Calculator = observer(({}: {}) => {
         <ConditionalBlock
           title="Self Conditionals"
           selected={selected}
-          contents={main?.content}
+          contents={_.filter(mainContent, 'show')}
           form={form}
           setForm={setForm}
         />
-        <StatBlock index={selected} stat={stats} />
+        <ConditionalBlock
+          title="Team Conditionals"
+          selected={selected}
+          contents={_.filter(teamContent, 'show')}
+          form={form}
+          setForm={setForm}
+        />
+        <StatBlock index={selected} stat={stats[selected]} />
         <ConsCircle
           talents={main?.talents}
           codeName={charData.codeName}

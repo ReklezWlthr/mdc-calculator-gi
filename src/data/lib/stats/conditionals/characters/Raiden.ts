@@ -320,7 +320,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         },
       ]
 
-      if (form.raidenSkill) base.BURST_DMG += 0.198 //0.22% x 90 Energy
+      if (form.raidenSkill) base.BURST_DMG += calcScaling(0.0022, skill, 'elemental', '1') * 90 //0.22% x 90 Energy
       base[Stats.ELECTRO_DMG] += a4Bonus
 
       if (form.musou && c >= 2) base.DEF_PEN += 0.6
@@ -328,7 +328,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
-      if (form.raidenSkill) base.BURST_DMG += 0.0022 * 90 //Target Energy
+      if (form.raidenSkill) base.BURST_DMG += calcScaling(0.0022, skill, 'elemental', '1') * base.MAX_ENERGY //Target Energy
       if (form.raidenC4) base[Stats.P_ATK] += 0.3
       return base
     },

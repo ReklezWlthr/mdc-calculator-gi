@@ -29,7 +29,13 @@ export const ConsCircle = observer(
     }
 
     return (
-      <div className="flex flex-col justify-around w-[242px] h-[252px]">
+      <div className="flex flex-col justify-around w-[242px] h-[252px] relative">
+        <div
+          className={classNames(
+            'absolute w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-1/2 ring top-1/2 left-1/2 bg-opacity-10',
+            iconColor[element]
+          )}
+        />
         <div className="flex justify-center">
           <Tooltip
             title={talents?.c1?.title}

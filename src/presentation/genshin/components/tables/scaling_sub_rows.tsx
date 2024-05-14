@@ -15,7 +15,7 @@ interface ScalingSubRowsProps {
 
 export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps) => {
   const propertyColor = {
-    [TalentProperty.HEAL]: 'text-green-400',
+    [TalentProperty.HEAL]: 'text-heal',
     [TalentProperty.SHIELD]: 'text-indigo-300',
   }
 
@@ -73,18 +73,18 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
             <p dangerouslySetInnerHTML={{ __html: formulaString }} />
             {!!scaling.bonus && (
               <p className="text-xs">
-                Exclusive Bonus DMG: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
+                Exclusive Bonus: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
               </p>
             )}
             {!!stats[scaling.element.toLowerCase()] && (
               <p className="text-xs">
-                {scaling.element} Bonus DMG:{' '}
+                {scaling.element} Bonus:{' '}
                 <span className="text-yellow">{toPercentage(stats[scaling.element.toLowerCase()])}</span>
               </p>
             )}
             {!!stats.talent[scaling.property] && (
               <p className="text-xs">
-                Talent Bonus DMG: <span className="text-yellow">{toPercentage(stats.talent[scaling.property])}</span>
+                {scaling.property} Bonus: <span className="text-yellow">{toPercentage(stats.talent[scaling.property])}</span>
               </p>
             )}
           </div>

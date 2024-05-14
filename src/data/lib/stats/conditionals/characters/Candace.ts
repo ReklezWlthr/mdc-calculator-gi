@@ -177,7 +177,7 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
           property: TalentProperty.SKILL,
         },
         {
-          name: 'Charged SMG',
+          name: 'Charged DMG',
           value: [{ scaling: calcScaling(0.1904, skill, 'elemental', '1'), multiplier: Stats.HP }],
           element: Element.HYDRO,
           property: TalentProperty.SKILL,
@@ -213,14 +213,14 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         base.BASIC_DMG += 0.2 //Only when infused
         base.INFUSION = Element.HYDRO
       }
-      // if (a >= 4) base.BASIC_DMG += a4Dmg //Does not work now
-      // if (form.candace_burst && c >= 6)
-      //   base.BASIC_SCALING.push({
-      //     name: 'C6 Wave DMG',
-      //     value: [{ scaling: calcScaling(0.0661, burst, 'elemental', '1'), multiplier: Stats.HP, override: stat.hp }], //override does not work now
-      //     element: Element.HYDRO,
-      //     property: TalentProperty.BURST,
-      //   })
+      if (a >= 4) base.BASIC_DMG += a4Dmg //Only when infused
+      if (form.candace_burst && c >= 6)
+        base.BASIC_SCALING.push({
+          name: 'C6 Wave DMG',
+          value: [{ scaling: calcScaling(0.0661, burst, 'elemental', '1'), multiplier: Stats.HP, override: stat.hp }],
+          element: Element.HYDRO,
+          property: TalentProperty.BURST,
+        })
 
       return base
     },

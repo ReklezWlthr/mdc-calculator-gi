@@ -22,6 +22,7 @@ module.exports = {
         red: '#df6665',
         purple: '#b19fe6',
         blue: '#6fa8dd',
+        heal: "#84cf7c",
         genshin: {
           anemo: '#33ccb3',
           electro: '#d376f0',
