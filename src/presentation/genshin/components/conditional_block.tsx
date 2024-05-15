@@ -1,6 +1,7 @@
 import { IContent } from '@src/domain/genshin/conditional'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
+import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Dispatch, SetStateAction } from 'react'
@@ -43,7 +44,9 @@ export const ConditionalBlock = observer(
                         <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                       </Tooltip>
                     </div>
-                    <div className="col-span-2 text-center text-blue">Buff</div>
+                    <div className={classNames('col-span-2 text-center', content.debuff ? 'text-red' : 'text-blue')}>
+                      {content.debuff ? 'Debuff' : 'Buff'}
+                    </div>
                     {content.type === 'number' && (
                       <TextInput
                         type="number"

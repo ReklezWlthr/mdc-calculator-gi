@@ -156,31 +156,31 @@ const Beidou = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.7112, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.7112, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.7086, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.7086, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(0.8832, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.8832, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: [{ scaling: calcScaling(0.8652, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.8652, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '5-Hit',
-          value: [{ scaling: calcScaling(1.1214, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.1214, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
@@ -188,13 +188,13 @@ const Beidou = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack Cyclic DMG',
-          value: [{ scaling: calcScaling(0.5624, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.5624, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
         {
           name: 'Charged Attack Final DMG',
-          value: [{ scaling: calcScaling(1.0182, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.0182, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },

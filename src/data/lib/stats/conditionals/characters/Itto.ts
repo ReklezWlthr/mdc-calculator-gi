@@ -140,31 +140,31 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     teammateContent,
     preCompute: (form: Record<string, any>) => {
       const base = _.cloneDeep(baseStatsObject)
-      const infusion = form.itto_burst ? Element.GEO : Element.PHYSICAL
+      if (form.itto_burst) base.infuse(Element.GEO, true)
 
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
           value: [{ scaling: calcScaling(0.7923, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
           value: [{ scaling: calcScaling(0.7637, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
           value: [{ scaling: calcScaling(0.9164, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
           value: [{ scaling: calcScaling(1.1722, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
       ]
@@ -172,26 +172,26 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: 'Arataki Kesagiri Combo Slash DMG',
           value: [{ scaling: calcScaling(0.9116, normal, 'physical', '1'), multiplier: Stats.ATK }, ...a4DmgScaling],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.CA,
           cd: c >= 6 ? 0.7 : 0,
         },
         {
           name: 'Arataki Kesagiri Final Slash DMG',
           value: [{ scaling: calcScaling(1.9092, normal, 'physical', '1'), multiplier: Stats.ATK }, ...a4DmgScaling],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.CA,
           cd: c >= 6 ? 0.7 : 0,
         },
         {
           name: 'Saichimonji Slash DMG',
           value: [{ scaling: calcScaling(0.9047, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.CA,
           cd: c >= 6 ? 0.7 : 0,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('high', normal, infusion)
+      base.PLUNGE_SCALING = getPlungeScaling('high', normal)
       base.SKILL_SCALING = [
         {
           name: 'Skill DMG',

@@ -23,6 +23,7 @@ export interface IContent {
   default?: number | boolean
   max?: number
   min?: number
+  debuff?: boolean
 }
 
 export interface ITalent {

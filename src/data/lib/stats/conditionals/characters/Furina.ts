@@ -164,7 +164,7 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       const base = _.cloneDeep(baseStatsObject)
       const salonMultiplier = 1 + _.min([form.salonAlly * 0.1, 0.4])
 
-      const c6Infusion = form.centerOfAttention ? Element.HYDRO : Element.PHYSICAL
+      if (form.centerOfAttention) base.infuse(Element.HYDRO, true)
       const c6DmgBonus = form.centerOfAttention
         ? [{ scaling: 0.18 + (form.pneuma ? 0.25 : 0), multiplier: Stats.HP }]
         : []
@@ -173,25 +173,25 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: '1-Hit',
           value: [{ scaling: calcScaling(0.4839, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
-          element: c6Infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
           value: [{ scaling: calcScaling(0.4373, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
-          element: c6Infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
           value: [{ scaling: calcScaling(0.5512, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
-          element: c6Infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
           value: [{ scaling: calcScaling(0.733, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
-          element: c6Infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
@@ -205,11 +205,11 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: 'Charged Attack',
           value: [{ scaling: calcScaling(0.7422, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6DmgBonus],
-          element: c6Infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', normal, c6Infusion, c6DmgBonus)
+      base.PLUNGE_SCALING = getPlungeScaling('base', normal, Element.PHYSICAL, c6DmgBonus)
       base.SKILL_SCALING = form.pneuma
         ? [
             {

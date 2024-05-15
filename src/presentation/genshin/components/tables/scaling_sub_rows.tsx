@@ -31,17 +31,26 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     ...propertyColor,
   }
 
+  const element =
+    _.includes([TalentProperty.NA, TalentProperty.CA, TalentProperty.PA], scaling.property) &&
+    stats.infusion &&
+    scaling.element === Element.PHYSICAL
+      ? stats.infusion
+      : scaling.element
+
   const bonusDMG =
-    TalentProperty.SHIELD === scaling.property
-      ? 0
-      : TalentProperty.HEAL === scaling.property
-      ? (scaling.bonus || 0) + stats.heal
-      : (scaling.bonus || 0) + stats.dmg + stats[scaling.element.toLowerCase()] + (stats.talent[scaling.property] || 0)
+    scaling.bonus ||
+    0 +
+      (TalentProperty.SHIELD === scaling.property
+        ? 0
+        : TalentProperty.HEAL === scaling.property
+        ? stats.heal
+        : stats.dmg + stats[scaling.element.toLowerCase()] + (stats.talent[scaling.property]?.dmg || 0))
   const dmg =
     _.sumBy(scaling.value, (item) => item.scaling * (item.override || stats[StatNameMap[item.multiplier]])) *
     (1 + bonusDMG)
-  const totalCr = stats.cRate + (scaling.cr || 0)
-  const totalCd = stats.cDmg + (scaling.cd || 0)
+  const totalCr = stats.cRate + (scaling.cr || 0) + (stats.talent[scaling.property]?.cr || 0)
+  const totalCd = stats.cDmg + (scaling.cd || 0) + (stats.talent[scaling.property]?.cd || 0)
 
   const scalingArray = _.map(
     scaling.value,
@@ -62,10 +71,20 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier)}</b>` : ''
   }`
 
+  const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
+    dmg * (1 + totalCd)
+  )}</b> = <b>${_.round(dmg)}</b> \u{00d7} (1 + <b>${toPercentage(totalCd)}</b>)`
+
+  const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
+    dmg * (1 + totalCd * totalCr)
+  )}</b> = <b>${_.round(dmg)}</b> \u{00d7} (1 + <b>${toPercentage(totalCd)}</b> \u{00d7} <b>${toPercentage(
+    totalCr
+  )}</b>)`
+
   return (
     <div className="grid items-center grid-cols-8 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
-      <p className={classNames('col-span-1 text-center', elementColor[scaling.element])}>{scaling.element}</p>
+      <p className={classNames('col-span-1 text-center', elementColor[element])}>{element}</p>
       <Tooltip
         title={scaling.name}
         body={
@@ -78,13 +97,14 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
             )}
             {!!stats[scaling.element.toLowerCase()] && (
               <p className="text-xs">
-                {scaling.element} Bonus:{' '}
+                {element} Bonus:{' '}
                 <span className="text-yellow">{toPercentage(stats[scaling.element.toLowerCase()])}</span>
               </p>
             )}
-            {!!stats.talent[scaling.property] && (
+            {!!stats.talent[scaling.property]?.dmg && (
               <p className="text-xs">
-                {scaling.property} Bonus: <span className="text-yellow">{toPercentage(stats.talent[scaling.property])}</span>
+                {scaling.property} Bonus:{' '}
+                <span className="text-yellow">{toPercentage(stats.talent[scaling.property]?.dmg)}</span>
               </p>
             )}
           </div>
@@ -93,16 +113,62 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       >
         <p className="col-span-1 text-center text-gray">{_.round(dmg)}</p>
       </Tooltip>
-      <p className="col-span-1 text-center text-gray">
-        {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property)
-          ? '-'
-          : _.round(dmg * (1 + totalCd))}
-      </p>
-      <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-        {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property)
-          ? _.round(dmg)
-          : _.round(dmg * (1 + totalCd * totalCr))}
-      </p>
+      {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property) ? (
+        <p className="col-span-1 text-center text-gray">-</p>
+      ) : (
+        <Tooltip
+          title={'CRIT: ' + scaling.name}
+          body={
+            <div className="space-y-1">
+              <p dangerouslySetInnerHTML={{ __html: critString }} />
+              {!!scaling.cd && (
+                <p className="text-xs">
+                  Exclusive CRIT DMG: <span className="text-yellow">{toPercentage(scaling.cd)}</span>
+                </p>
+              )}
+              {!!stats.talent[scaling.property]?.cd && (
+                <p className="text-xs">
+                  {scaling.property} CRIT DMG:{' '}
+                  <span className="text-yellow">{toPercentage(stats.talent[scaling.property]?.cd)}</span>
+                </p>
+              )}
+            </div>
+          }
+          style="w-[400px]"
+        >
+          <p className="col-span-1 text-center text-gray">{_.round(dmg * (1 + totalCd))}</p>
+        </Tooltip>
+      )}
+      {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property) ? (
+        <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
+          {_.round(dmg)}
+        </p>
+      ) : (
+        <Tooltip
+          title={'Average: ' + scaling.name}
+          body={
+            <div className="space-y-1">
+              <p dangerouslySetInnerHTML={{ __html: avgString }} />
+              {!!scaling.cr && (
+                <p className="text-xs">
+                  Exclusive CRIT Rate: <span className="text-yellow">{toPercentage(scaling.cr)}</span>
+                </p>
+              )}
+              {!!stats.talent[scaling.property]?.cr && (
+                <p className="text-xs">
+                  {scaling.property} CRIT Rate:{' '}
+                  <span className="text-yellow">{toPercentage(stats.talent[scaling.property]?.cr)}</span>
+                </p>
+              )}
+            </div>
+          }
+          style="w-[400px]"
+        >
+          <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
+            {_.round(dmg * (1 + totalCd * totalCr))}
+          </p>
+        </Tooltip>
+      )}
       <p className="col-span-2 text-xs truncate" title={scaling.name}>
         {scaling.name}
       </p>

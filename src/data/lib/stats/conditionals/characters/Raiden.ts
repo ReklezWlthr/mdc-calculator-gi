@@ -323,7 +323,10 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       if (form.raidenSkill) base.BURST_DMG += calcScaling(0.0022, skill, 'elemental', '1') * 90 //0.22% x 90 Energy
       base[Stats.ELECTRO_DMG] += a4Bonus
 
-      if (form.musou && c >= 2) base.DEF_PEN += 0.6
+      if (form.musou) {
+        base.infuse(Element.ELECTRO, true)
+        if (c >= 2) base.DEF_PEN += 0.6
+      }
 
       return base
     },

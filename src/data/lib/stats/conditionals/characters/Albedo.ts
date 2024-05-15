@@ -141,31 +141,31 @@ const Albedo = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.3674, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3674, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.3674, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3674, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(0.4745, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4745, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: [{ scaling: calcScaling(0.4975, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4975, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '5-Hit',
-          value: [{ scaling: calcScaling(0.6207, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.6207, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
@@ -173,13 +173,13 @@ const Albedo = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.473, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.473, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.602, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.602, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },

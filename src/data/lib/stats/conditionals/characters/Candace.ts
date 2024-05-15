@@ -1,7 +1,7 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
@@ -199,21 +199,24 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       ]
 
       if (form.candace_burst) {
-        base.BASIC_DMG += 0.2 //Only when infused
-        base.INFUSION = Element.HYDRO
+        base.BASIC_DMG += 0.2
+        base.infuse(Element.HYDRO)
       }
       if (form.candace_c2) base[Stats.P_HP] += 0.2
 
-      if (a >= 4) base.BASIC_DMG += a4Dmg //Only when infused
+      if (a >= 4) base.BASIC_DMG += a4Dmg
 
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      const canInfuse = form.weapon !== WeaponType.BOW
       if (form.candace_burst) {
-        base.BASIC_DMG += 0.2 //Only when infused
-        base.INFUSION = Element.HYDRO
+        if (canInfuse) {
+          base.BASIC_DMG += 0.2
+          base.infuse(Element.HYDRO)
+        }
       }
-      if (a >= 4) base.BASIC_DMG += a4Dmg //Only when infused
+      if (a >= 4 && base.INFUSION) base.BASIC_DMG += a4Dmg
       if (form.candace_burst && c >= 6)
         base.BASIC_SCALING.push({
           name: 'C6 Wave DMG',

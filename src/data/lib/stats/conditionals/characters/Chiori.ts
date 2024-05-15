@@ -136,9 +136,8 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
     preCompute: (form: Record<string, any>) => {
       const base = _.cloneDeep(baseStatsObject)
       base.MAX_ENERGY = 50
-      
-      base.INFUSION = form.tailoring ? Element.GEO : null
-      const infusion = form.tailoring ? Element.GEO : Element.PHYSICAL
+
+      if (form.tailoring) base.infuse(Element.GEO, true)
 
       const c6Scaling = c >= 6 ? [{ scaling: 2.35, multiplier: Stats.DEF }] : []
 
@@ -146,25 +145,25 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
         {
           name: '1-Hit',
           value: [{ scaling: calcScaling(0.4941, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
           value: [{ scaling: calcScaling(0.4683, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit [x2]',
           value: [{ scaling: calcScaling(0.3042, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
           value: [{ scaling: calcScaling(0.7512, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
       ]
@@ -172,11 +171,11 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
         {
           name: 'Charged Attack DMG [x2]',
           value: [{ scaling: calcScaling(0.5431, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', normal, infusion)
+      base.PLUNGE_SCALING = getPlungeScaling('base', normal)
 
       const tamotoAtk = calcScaling(0.8208, skill, 'elemental', '1')
       const tamotoDef = calcScaling(1.026, skill, 'elemental', '1')

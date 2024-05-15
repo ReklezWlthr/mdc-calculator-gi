@@ -1,7 +1,7 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
@@ -245,10 +245,11 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)
       if (form.benny_atk_share) base[Stats.ATK] += calcScaling(0.56, burst, 'elemental', '1') * stat.baseAtk
       if (c >= 6 && form.benny_atk_share) {
         base[Stats.PYRO_DMG] += 0.15
-        base.INFUSION = Element.PYRO
+        if (canInfuse) base.infuse(Element.PYRO)
       }
 
       return base

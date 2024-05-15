@@ -61,7 +61,7 @@ export const Calculator = observer(({}: {}) => {
     let preCompute = main?.preCompute(form[selected])
     _.forEach(conditionals, (item, index) => {
       if (index !== selected) {
-        preCompute = item?.preComputeShared(preCompute, form[index])
+        if (item) preCompute = item.preComputeShared(preCompute, { ...form[index], weapon: charData.weapon })
       }
     })
     setComputedStats((prev) => {
@@ -71,7 +71,7 @@ export const Calculator = observer(({}: {}) => {
   }, [selected, form])
 
   const mapped = _.flatMap(
-    _.map(conditionals, (item, index) => (index === selected ? item.content : item.teammateContent)),
+    _.map(conditionals, (item, index) => (index === selected ? item?.content : item?.teammateContent)),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
   const mainContent = _.filter(mapped, ['index', selected])
@@ -128,7 +128,9 @@ export const Calculator = observer(({}: {}) => {
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
             talent={main?.talents?.skill}
-            icon={`https://enka.network/ui/Skill_S_${charData?.codeName}_01.png`}
+            icon={`https://enka.network/ui/Skill_S_${charData?.codeName}_01${
+              charData?.codeName === 'Diluc' ? '_01' : ''
+            }.png`}
             element={charData.element}
             level={char.talents?.skill}
             upgraded={main?.upgrade?.skill}

@@ -116,25 +116,25 @@ const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.3784, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3784, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.3552, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3552, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(0.4104, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4104, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: [{ scaling: calcScaling(0.552, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.552, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,
         },
@@ -142,7 +142,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: [{ scaling: calcScaling(1.6624, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.6624, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.CA,
         },

@@ -29,7 +29,7 @@ export const ConsCircle = observer(
     }
 
     return (
-      <div className="flex flex-col justify-around w-[242px] h-[252px] relative">
+      <div className="flex flex-col justify-around w-[252px] h-[252px] relative">
         <div
           className={classNames(
             'absolute w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-1/2 ring top-1/2 left-1/2 bg-opacity-10',
@@ -51,7 +51,7 @@ export const ConsCircle = observer(
             />
           </Tooltip>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between px-3">
           <Tooltip
             title={talents?.c6?.title}
             body={<p dangerouslySetInnerHTML={{ __html: talents?.c6?.content }} />}
@@ -82,7 +82,7 @@ export const ConsCircle = observer(
         <div className="flex items-center justify-center h-12">
           <p className="w-1/2 px-4 text-lg font-bold text-center">{name}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between px-3">
           <Tooltip
             title={talents?.c5?.title}
             body={<p dangerouslySetInnerHTML={{ __html: talents?.c5?.content }} />}

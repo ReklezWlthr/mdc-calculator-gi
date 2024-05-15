@@ -158,37 +158,37 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => 
     teammateContent,
     preCompute: (form: Record<string, any>) => {
       const base = _.cloneDeep(baseStatsObject)
-      const infusion = form.al_infusion ? Element.DENDRO : Element.PHYSICAL
+      if (form.al_infusion) base.infuse(Element.DENDRO, true)
 
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
           value: [{ scaling: calcScaling(0.4953, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
           value: [{ scaling: calcScaling(0.5075, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit [x2]',
           value: [{ scaling: calcScaling(0.3418, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
           value: [{ scaling: calcScaling(0.6677, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '5-Hit',
           value: [{ scaling: calcScaling(0.8385, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
       ]
@@ -196,11 +196,11 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => 
         {
           name: 'Charged Attack [x2]',
           value: [{ scaling: calcScaling(0.5525, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: infusion,
+          element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', normal, infusion)
+      base.PLUNGE_SCALING = getPlungeScaling('base', normal)
       base.SKILL_SCALING = [
         {
           name: 'Rush Attack DMG',

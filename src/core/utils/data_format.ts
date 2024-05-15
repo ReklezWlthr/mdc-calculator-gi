@@ -1,5 +1,5 @@
 import { MainStatValue, SubStatMap } from '@src/domain/genshin/artifact'
-import { IArtifactEquip, ICharacter, ITeamChar, Stats } from '@src/domain/genshin/constant'
+import { Element, IArtifactEquip, ICharacter, ITeamChar, Stats } from '@src/domain/genshin/constant'
 import {
   AscensionScaling,
   FiveStarScaling,
@@ -11,6 +11,7 @@ import {
 import _ from 'lodash'
 import { StatObjectT } from '../hooks/useStat'
 import { findCharacter } from './finder'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0

@@ -133,6 +133,7 @@ export enum TalentProperty {
   BURST = 'Elemental Burst',
   HEAL = 'Heal',
   SHIELD = 'Shield',
+  ADD = 'Additional Attack'
 }
 
 export enum Element {

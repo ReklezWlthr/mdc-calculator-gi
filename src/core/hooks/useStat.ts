@@ -111,10 +111,23 @@ export const useStat = (
       additive: 5 * (preCalculated.em / (preCalculated.em + 1200)),
       amplifying: 2.78 * (preCalculated.em / (preCalculated.em + 1400)),
     },
+    infusion: conditionals?.INFUSION,
     talent: {
-      [TalentProperty.NA]: conditionals?.BASIC_DMG,
-      [TalentProperty.SKILL]: conditionals?.SKILL_DMG,
-      [TalentProperty.BURST]: conditionals?.BURST_DMG,
+      [TalentProperty.NA]: {
+        dmg: conditionals?.BASIC_DMG,
+        cd: conditionals?.BASIC_CD,
+        cr: conditionals?.BASIC_CR
+      },
+      [TalentProperty.SKILL]: {
+        dmg: conditionals?.SKILL_DMG,
+        cd: conditionals?.SKILL_CD,
+        cr: conditionals?.SKILL_CR
+      },
+      [TalentProperty.BURST]: {
+        dmg: conditionals?.BURST_DMG,
+        cd: conditionals?.BURST_CD,
+        cr: conditionals?.BURST_CR
+      },
     }
   }
 }

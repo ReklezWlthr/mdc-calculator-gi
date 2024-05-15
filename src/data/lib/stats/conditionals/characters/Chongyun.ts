@@ -1,7 +1,7 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
 import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
@@ -34,7 +34,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     skill: {
       title: `Spirit Blade: Chonghua's Layered Frost`,
       content: `Chongyun strikes the ground with his greatsword, causing a <b class="text-genshin-cryo">Cryo</b> explosion in a circular AoE in front of him that deals <b class="text-genshin-cryo">Cryo DMG</b>.
-      After a short delay, the cold air created by the <b class="text-genshin-cryo">Cryo</b> explosion will coalesce into a Chonghua Frost Field, within which all Sword, Claymore and Polearm-wielding characters' weapons will be infused with <b class="text-genshin-cryo">Cryo</b>.
+      <br />After a short delay, the cold air created by the <b class="text-genshin-cryo">Cryo</b> explosion will coalesce into a Chonghua Frost Field, within which all Sword, Claymore and Polearm-wielding characters' weapons will be infused with <b class="text-genshin-cryo">Cryo</b>.
       `,
     },
     burst: {
@@ -85,7 +85,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     {
       type: 'toggle',
       id: 'chongyun_infusion',
-      text: `Cryo Infusion`,
+      text: `Chonghua Frost Field`,
       ...talents.skill,
       show: true,
       default: true,
@@ -101,10 +101,11 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     {
       type: 'toggle',
       id: 'chongyun_a4',
-      text: `Cryo RES PEN`,
+      text: `A4 Cryo RES Shred`,
       ...talents.a4,
       show: a >= 4,
       default: true,
+      debuff: true,
     },
     {
       type: 'toggle',
@@ -131,32 +132,30 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       const base = _.cloneDeep(baseStatsObject)
       base.MAX_ENERGY = 40
 
-      if (form.chongyun_infusion) base.INFUSION = Element.CRYO
-
-      const c6Scaling = c >= 6 ? [{ scaling: 2.35, multiplier: Stats.DEF }] : []
+      if (form.chongyun_infusion) base.infuse(Element.CRYO)
 
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.7, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          value: [{ scaling: calcScaling(0.7, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.6312, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          value: [{ scaling: calcScaling(0.6312, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(0.8032, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          value: [{ scaling: calcScaling(0.8032, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: [{ scaling: calcScaling(1.0122, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
+          value: [{ scaling: calcScaling(1.0122, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
@@ -225,7 +224,8 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
-      if (form.chongyun_infusion) base.INFUSION = Element.CRYO
+      if (form.chongyun_infusion && !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon))
+        base.infuse(Element.CRYO)
       if (form.chongyun_a4) base.CRYO_RES_PEN += 0.1
 
       if (c >= 2) {

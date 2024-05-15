@@ -1,6 +1,6 @@
 import { calcScaling } from '@src/core/utils/data_format'
 import { IScaling } from '@src/domain/genshin/conditional'
-import { Element, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 
 export const getPlungeScaling = (
@@ -68,7 +68,7 @@ export const baseStatsObject = {
   [Stats.CRIT_RATE]: 0,
   [Stats.CRIT_DMG]: 0,
   [Stats.EM]: 0,
-  [Stats.ER]: 1,
+  [Stats.ER]: 0,
   [Stats.HEAL]: 0,
   [Stats.I_HEALING]: 0,
   [Stats.SHIELD]: 0,
@@ -152,9 +152,12 @@ export const baseStatsObject = {
   OVERLOAD_DMG: 0,
   SHATTER_DMG: 0,
 
+  // Mitigation
   DMG_REDUCTION: 0,
+  ATK_REDUCTION: 0,
 
   INFUSION: null,
+  INFUSION_LOCKED: false,
 
   MAX_ENERGY: 60,
 
@@ -166,6 +169,36 @@ export const baseStatsObject = {
   BURST_SCALING: [] as IScaling[],
   A1_SCALING: [] as IScaling[],
   A4_SCALING: [] as IScaling[],
+
+  //util
+  infuse: function (infusion: Element, lock: boolean = false) {
+    if (lock) {
+      // If infusion cannot be overridden, lock infusion
+      this.INFUSION = infusion
+      this.INFUSION_LOCKED = true
+      return
+    }
+    if (this.INFUSION_LOCKED) return // If already infused and cannot override, return
+    // Check Frozen aura
+    if (
+      (this.INFUSION === Element.HYDRO && infusion === Element.CRYO) ||
+      (this.INFUSION === Element.CRYO && infusion === Element.HYDRO)
+    )
+      this.INFUSION = Element.CRYO
+    // Continue with normal infusion priority
+    const infusionPriority = [
+      Element.HYDRO,
+      Element.PYRO,
+      Element.CRYO,
+      Element.ELECTRO,
+      Element.GEO,
+      Element.ANEMO,
+      Element.DENDRO,
+    ]
+    const currentPriority = _.indexOf(infusionPriority, this.INFUSION)
+    const newPriority = _.indexOf(infusionPriority, infusion)
+    if (currentPriority < 0 || newPriority < currentPriority) this.INFUSION = infusion
+  },
 }
 
 export type StatsObject = typeof baseStatsObject
