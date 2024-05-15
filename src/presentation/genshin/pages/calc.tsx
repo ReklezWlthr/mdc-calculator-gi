@@ -129,9 +129,9 @@ export const Calculator = observer(({}: {}) => {
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
             talent={main?.talents?.skill}
-            icon={`https://enka.network/ui/Skill_S_${charData?.codeName}_01${
-              charData?.codeName === 'Diluc' ? '_01' : ''
-            }.png`}
+            icon={`https://enka.network/ui/Skill_S_${charData?.codeName}${
+              charData?.codeName === 'Qin' ? '_02' : '_01'
+            }${charData?.codeName === 'Diluc' ? '_01' : ''}.png`}
             element={charData.element}
             level={char.talents?.skill}
             upgraded={main?.upgrade?.skill}

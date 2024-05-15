@@ -14,13 +14,13 @@ export interface IScaling {
 }
 
 export interface IContent {
-  type?: 'toggle' | 'number'
+  type?: 'toggle' | 'number' | 'element'
   id: string
   text: string
   title: string
   content: string
   show: boolean
-  default?: number | boolean
+  default?: number | boolean | Element
   max?: number
   min?: number
   debuff?: boolean

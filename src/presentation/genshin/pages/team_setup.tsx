@@ -211,9 +211,9 @@ export const TeamSetup = observer(() => {
             <TalentIcon
               talent={talent?.talents?.skill}
               element={charData?.element}
-              icon={`https://enka.network/ui/Skill_S_${charData?.codeName}_01${
-                charData?.codeName === 'Diluc' ? '_01' : ''
-              }.png`}
+              icon={`https://enka.network/ui/Skill_S_${charData?.codeName}${
+                charData?.codeName === 'Qin' ? '_02' : '_01'
+              }${charData?.codeName === 'Diluc' ? '_01' : ''}.png`}
               size="w-9 h-9"
             />
             {talent?.upgrade?.skill && (

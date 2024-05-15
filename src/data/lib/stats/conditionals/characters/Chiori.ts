@@ -7,7 +7,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...rest: [ITeamChar[]]) => {
+const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -16,14 +16,6 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
   const normal = t.normal + (upgrade.normal ? 3 : 0)
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
-
-  const [team] = rest
-  const teamData = _.map(team, (item) => findCharacter(item.cId)?.element)
-  const pyro = _.filter(teamData, Element.PYRO).length
-  const electro = _.filter(teamData, Element.ELECTRO).length
-  const a1Active = pyro + electro === teamData.length && pyro >= 1 && electro >= 1
-
-  const a4Atk = _.min([(stat.hp / 1000) * 0.01, 0.4])
 
   const talents: ITalent = {
     normal: {
@@ -228,13 +220,6 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
-      if (form.chev_a4) base[Stats.ATK] += a4Atk //Only apply to Pyro & Electro
-
-      if (form.chev_c6) {
-        base[Stats.PYRO_DMG] += 0.2 * form.chev_c6
-        base[Stats.ELECTRO_DMG] += 0.2 * form.chev_c6
-      }
-
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {

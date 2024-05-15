@@ -1,4 +1,6 @@
 import { IContent } from '@src/domain/genshin/conditional'
+import { Element } from '@src/domain/genshin/constant'
+import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
@@ -27,7 +29,7 @@ export const ConditionalBlock = observer(
     return (
       <div className="w-full rounded-lg bg-primary-darker h-fit">
         <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">{title}</p>
-        <div className="max-h-[200px] px-4 py-3 space-y-3 overflow-visible">
+        <div className="px-4 py-3 space-y-3 overflow-visible">
           {_.size(_.filter(contents, 'show')) ? (
             _.map(
               contents,
@@ -77,6 +79,25 @@ export const ConditionalBlock = observer(
                           }
                           checked={form[content.index]?.[content.id]}
                           name={content.id}
+                        />
+                      </div>
+                    )}
+                    {content.type === 'element' && (
+                      <div className="flex items-center justify-center col-span-2">
+                        <SelectInput
+                          value={form[content.index]?.[content.id]}
+                          options={[
+                            { name: Element.PYRO, value: Element.PYRO },
+                            { name: Element.HYDRO, value: Element.HYDRO },
+                            { name: Element.CRYO, value: Element.CRYO },
+                            { name: Element.ELECTRO, value: Element.ELECTRO },
+                          ]}
+                          onChange={(value) =>
+                            setForm((formValue) => {
+                              formValue[content.index] = { ...formValue[content.index], [content.id]: value }
+                              return _.cloneDeep(formValue)
+                            })
+                          }
                         />
                       </div>
                     )}

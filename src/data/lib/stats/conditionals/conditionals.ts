@@ -26,6 +26,8 @@ import Ganyu from './characters/Ganyu'
 import Gorou from './characters/Gorou'
 import Hutao from './characters/Hutao'
 import Itto from './characters/Itto'
+import Jean from './characters/Jean'
+import Kazuha from './characters/Kazuha'
 import Nahida from './characters/Nahida'
 import Raiden from './characters/Raiden'
 import Yaoyao from './characters/Yaoyao'
@@ -59,6 +61,8 @@ export default [
   { id: '10000037', conditionals: Ganyu },
   { id: '10000055', conditionals: Gorou },
   { id: '10000046', conditionals: Hutao },
+  { id: '10000003', conditionals: Jean },
+  { id: '10000047', conditionals: Kazuha },
   { id: '10000073', conditionals: Nahida },
   { id: '10000052', conditionals: Raiden },
   { id: '10000077', conditionals: Yaoyao },

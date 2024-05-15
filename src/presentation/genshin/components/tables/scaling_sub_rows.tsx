@@ -39,13 +39,12 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       : scaling.element
 
   const bonusDMG =
-    scaling.bonus ||
-    0 +
-      (TalentProperty.SHIELD === scaling.property
-        ? 0
-        : TalentProperty.HEAL === scaling.property
-        ? stats.heal
-        : stats.dmg + stats[element.toLowerCase()] + (stats.talent[scaling.property]?.dmg || 0))
+    (scaling.bonus || 0) +
+    (TalentProperty.SHIELD === scaling.property
+      ? 0
+      : TalentProperty.HEAL === scaling.property
+      ? stats.heal
+      : stats.dmg + stats[element.toLowerCase()] + (stats.talent[scaling.property]?.dmg || 0))
   const dmg =
     _.sumBy(scaling.value, (item) => item.scaling * (item.override || stats[StatNameMap[item.multiplier]])) *
     (1 + bonusDMG)
@@ -95,10 +94,9 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
                 Exclusive Bonus: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
               </p>
             )}
-            {!!stats[scaling.element.toLowerCase()] && (
+            {!!stats[element.toLowerCase()] && (
               <p className="text-xs">
-                {element} Bonus:{' '}
-                <span className="text-yellow">{toPercentage(stats[scaling.element.toLowerCase()])}</span>
+                {element} Bonus: <span className="text-yellow">{toPercentage(stats[element.toLowerCase()])}</span>
               </p>
             )}
             {!!stats.talent[scaling.property]?.dmg && (

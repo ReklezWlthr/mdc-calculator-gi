@@ -232,7 +232,6 @@ const Hutao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: 'Blood Blossom DMG',
           value: [{ scaling: calcScaling(0.64, skill, 'elemental', '1'), multiplier: Stats.ATK }, ...c2Blood],
-          flat: calcScaling(1155, skill, 'special', 'flat'),
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },

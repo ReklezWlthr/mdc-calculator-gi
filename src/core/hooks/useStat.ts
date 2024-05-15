@@ -116,19 +116,29 @@ export const useStat = (
       [TalentProperty.NA]: {
         dmg: conditionals?.BASIC_DMG,
         cd: conditionals?.BASIC_CD,
-        cr: conditionals?.BASIC_CR
+        cr: conditionals?.BASIC_CR,
+      },
+      [TalentProperty.CA]: {
+        dmg: conditionals?.CHARGE_DMG,
+        cd: conditionals?.CHARGE_CD,
+        cr: conditionals?.CHARGE_CR,
+      },
+      [TalentProperty.PA]: {
+        dmg: conditionals?.PLUNGE_DMG,
+        cd: conditionals?.PLUNGE_CD,
+        cr: conditionals?.PLUNGE_CR,
       },
       [TalentProperty.SKILL]: {
         dmg: conditionals?.SKILL_DMG,
         cd: conditionals?.SKILL_CD,
-        cr: conditionals?.SKILL_CR
+        cr: conditionals?.SKILL_CR,
       },
       [TalentProperty.BURST]: {
         dmg: conditionals?.BURST_DMG,
         cd: conditionals?.BURST_CD,
-        cr: conditionals?.BURST_CR
+        cr: conditionals?.BURST_CR,
       },
-    }
+    },
   }
 }
 
