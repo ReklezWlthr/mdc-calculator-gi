@@ -93,8 +93,8 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Horns Lowered, Coming Through`,
-      content: `Increases the Level of Masatsu Zetsugi: Akaushi Burst! by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Masatsu Zetsugi: Akaushi Burst! by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Jailhouse Bread and Butter`,
@@ -102,8 +102,8 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: 10 Years of Hanamizaka Fame`,
-      content: `Increases the Level of Royal Descent: Behold, Itto the Evil! by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Royal Descent: Behold, Itto the Evil! by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Arataki Itto, Present!`,
@@ -213,6 +213,9 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         base[Stats.DEF] += 0.2
         base[Stats.P_ATK] += 0.2
       }
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

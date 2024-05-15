@@ -4,7 +4,7 @@ export interface IScaling {
   name: string
   scale?: Stats
   value: { scaling: number; multiplier: Stats; override?: number }[]
-  element: Element | 'Heal' | 'Shield'
+  element: Element | TalentProperty
   property: TalentProperty
   multiplier?: number
   flat?: number

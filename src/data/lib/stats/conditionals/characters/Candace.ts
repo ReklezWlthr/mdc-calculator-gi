@@ -17,7 +17,7 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const a4Dmg = (stat.hp / 1000) * 0.005
+  let a4Dmg = (stat.hp / 1000) * 0.005
 
   const talents: ITalent = {
     normal: {
@@ -73,8 +73,8 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Hunter's Supplication`,
-      content: `Increases the Level of Sacred Rite: Wagtail's Tide by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Sacred Rite: Wagtail's Tide by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Sentinel Oath`,
@@ -82,8 +82,8 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Heterochromatic Gaze`,
-      content: `Increases the Level of Sacred Rite: Heron's Sanctum by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Sacred Rite: Heron's Sanctum by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: The Overflow`,
@@ -224,6 +224,11 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
           element: Element.HYDRO,
           property: TalentProperty.BURST,
         })
+
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
+      a4Dmg = (stat.hp / 1000) * 0.005
 
       return base
     },

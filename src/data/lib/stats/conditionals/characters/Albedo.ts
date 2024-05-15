@@ -231,6 +231,9 @@ const Albedo = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
 
       return base
     },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
   }
 }
 

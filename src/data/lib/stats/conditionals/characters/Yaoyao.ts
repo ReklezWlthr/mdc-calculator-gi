@@ -78,8 +78,8 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Loyal and Kind`,
-      content: `Increases the Level of Raphanus Sky Cluster by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Raphanus Sky Cluster by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Winsome`,
@@ -88,8 +88,8 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Compassionate`,
-      content: `Increases the Level of Moonjade Descent by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Moonjade Descent by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Beneficent`,
@@ -237,6 +237,9 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

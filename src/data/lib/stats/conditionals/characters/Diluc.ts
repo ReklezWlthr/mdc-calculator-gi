@@ -64,8 +64,8 @@ const Diluc = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Fire and Steel`,
-      content: `Increases the Level of Searing Onslaught by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Searing Onslaught by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Flowing Flame`,
@@ -74,8 +74,8 @@ const Diluc = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Phoenix, Harbinger of Dawn`,
-      content: `Increases the Level of Dawn by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Dawn by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Flaming Sword, Nemesis of the Dark`,
@@ -244,6 +244,9 @@ const Diluc = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

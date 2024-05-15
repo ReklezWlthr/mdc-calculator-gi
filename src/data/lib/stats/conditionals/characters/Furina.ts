@@ -87,8 +87,8 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: 'C3: "My Secret Is Hidden Within Me, No One Will Know My Name"',
-      content: `Increases the Level of Let the People Rejoice by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Let the People Rejoice by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: 'C4: "They Know Not Life, Who Dwelt in the Netherworld Not!"',
@@ -96,8 +96,8 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: 'C5: "His Name I Now Know, It Is...!"',
-      content: `Increases the Level of Salon Solitaire by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Salon Solitaire by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: 'C6: "Hear Me — Let Us Raise the Chalice of Love!"',
@@ -262,8 +262,8 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         },
       ]
 
-      base[Stats.ALL_DMG] += 0.0007 * form.fanfare
-      base[Stats.I_HEALING] += 0.0001 * form.fanfare
+      base[Stats.ALL_DMG] += (0.0007 + burst * 0.0002) * form.fanfare
+      base[Stats.I_HEALING] += (0.0001 + burst * 0.0001) * form.fanfare
 
       if (c >= 2 && form.fanfare > maxFanfare) base[Stats.P_HP] += _.min([(form.fanfare - maxFanfare) * 0.0035, 1.4])
       if (form.centerOfAttention)
@@ -277,6 +277,12 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      base[Stats.ALL_DMG] += (0.0005 + burst * 0.0002) * form.fanfare
+      base[Stats.I_HEALING] += burst * 0.0001 * form.fanfare
+
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

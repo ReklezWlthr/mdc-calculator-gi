@@ -64,6 +64,7 @@ export const Calculator = observer(({}: {}) => {
         if (item) preCompute = item.preComputeShared(preCompute, { ...form[index], weapon: charData.weapon })
       }
     })
+    preCompute = main?.postCompute(preCompute, form[selected])
     setComputedStats((prev) => {
       prev[selected] = preCompute
       return _.cloneDeep(prev)

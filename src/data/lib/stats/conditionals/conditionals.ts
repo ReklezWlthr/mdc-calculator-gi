@@ -13,13 +13,18 @@ import Chongyun from './characters/Chongyun'
 import Collei from './characters/Collei'
 import Cyno from './characters/Cyno'
 import Dehya from './characters/Dehya'
-import Diluc from './characters/DIluc'
-import Diona from './characters/DIona'
+import Diluc from './characters/Diluc'
+import Diona from './characters/Diona'
 import Dori from './characters/Dori'
 import Eula from './characters/Eula'
 import Faruzan from './characters/Faruzan'
 import Fischl from './characters/Fischl'
+import Freminet from './characters/Freminet'
 import Furina from './characters/Furina'
+import Gaming from './characters/Gaming'
+import Ganyu from './characters/Ganyu'
+import Gorou from './characters/Gorou'
+import Hutao from './characters/Hutao'
 import Itto from './characters/Itto'
 import Nahida from './characters/Nahida'
 import Raiden from './characters/Raiden'
@@ -48,7 +53,12 @@ export default [
   { id: '10000051', conditionals: Eula },
   { id: '10000076', conditionals: Faruzan },
   { id: '10000031', conditionals: Fischl },
+  { id: '10000085', conditionals: Freminet },
   { id: '10000089', conditionals: Furina },
+  { id: '10000092', conditionals: Gaming },
+  { id: '10000037', conditionals: Ganyu },
+  { id: '10000055', conditionals: Gorou },
+  { id: '10000046', conditionals: Hutao },
   { id: '10000073', conditionals: Nahida },
   { id: '10000052', conditionals: Raiden },
   { id: '10000077', conditionals: Yaoyao },

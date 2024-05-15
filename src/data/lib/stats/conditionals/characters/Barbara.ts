@@ -70,8 +70,8 @@ const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Star of Tomorrow`,
-      content: `Increases the Level of Shining Miracle♪ by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Shining Miracle♪ by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Attentiveness Be My Power`,
@@ -80,8 +80,8 @@ const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: The Purest Companionship`,
-      content: `Increases the Level of Let the Show Begin♪ by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Let the Show Begin♪ by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Dedicating Everything to You`,
@@ -192,6 +192,9 @@ const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
       if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

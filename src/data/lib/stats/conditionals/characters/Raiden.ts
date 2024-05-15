@@ -91,8 +91,8 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: 'C3: Shinkage Bygones',
-      content: `Increases the Level of Secret Art: Musou Shinsetsu by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Secret Art: Musou Shinsetsu by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: 'C4: Pledge of Propriety',
@@ -100,8 +100,8 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: "C5: Shogun's Descent",
-      content: `Increases the Level of Transcendence: Baleful Omen by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Transcendence: Baleful Omen by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: 'C6: Wishbearer',
@@ -333,6 +333,9 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
       if (form.raidenSkill) base.BURST_DMG += calcScaling(0.0022, skill, 'elemental', '1') * base.MAX_ENERGY //Target Energy
       if (form.raidenC4) base[Stats.P_ATK] += 0.3
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

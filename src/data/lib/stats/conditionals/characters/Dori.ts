@@ -70,8 +70,8 @@ const Dori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Wonders Never Cease`,
-      content: `Increases the Level of Alcazarzaray's Exactitude by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Alcazarzaray's Exactitude by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Discretionary Supplement`,
@@ -81,8 +81,8 @@ const Dori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Value for Mora`,
-      content: `Increases the Level of Spirit-Warding Lamp: Troubleshooter Cannon by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Spirit-Warding Lamp: Troubleshooter Cannon by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Sprinkling Weight`,
@@ -233,6 +233,9 @@ const Dori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

@@ -75,8 +75,8 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) =>
     },
     c3: {
       title: `C3: "You Shall Become a New Member of Our Family..."`,
-      content: `Increases the Level of Normal Attack: Invitation to a Beheading by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Normal Attack: Invitation to a Beheading by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: "You Shall Love and Protect Each Other Henceforth..."`,
@@ -84,8 +84,8 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) =>
     },
     c5: {
       title: `C5: "For Alone, We Are as Good as Dead..."`,
-      content: `Increases the Level of Balemoon Rising by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Balemoon Rising by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: "From This Day On, We Shall Delight in New Life Together."`,
@@ -273,6 +273,9 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) =>
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

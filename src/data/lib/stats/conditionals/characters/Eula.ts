@@ -75,8 +75,8 @@ const Eula = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Lawrence Pedigree`,
-      content: `Increases the Level of Glacial Illumination by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Glacial Illumination by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: The Obstinacy of One's Inferiors`,
@@ -84,8 +84,8 @@ const Eula = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Chivalric Quality`,
-      content: `Increases the Level of Icetide Vortex by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Icetide Vortex by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Noble Obligation`,
@@ -214,14 +214,14 @@ const Eula = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: 'Low Plunge DMG',
           scale: Stats.ATK,
-          value: [{ scaling: calcScaling(1.4914, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.4914, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.PA,
         },
         {
           name: 'High Plunge DMG',
           scale: Stats.ATK,
-          value: [{ scaling: calcScaling(1.8629, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.8629, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.PA,
         },
@@ -290,6 +290,9 @@ const Eula = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

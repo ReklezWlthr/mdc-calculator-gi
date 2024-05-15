@@ -103,6 +103,8 @@ export const baseStatsObject = {
   GEO_RES_PEN: 0,
   DENDRO_RES_PEN: 0,
 
+  VULNERABILITY: 0,
+
   // RES
   ALL_TYPE_RES: 0,
   PHYSICAL_RES: 0,

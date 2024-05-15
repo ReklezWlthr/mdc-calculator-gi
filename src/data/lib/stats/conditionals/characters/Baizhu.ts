@@ -76,8 +76,8 @@ const Baizhu = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: All Aspects Stabilized`,
-      content: `Increases the Level of Holistic Revivification by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Holistic Revivification by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Ancient Art of Perception`,
@@ -85,8 +85,8 @@ const Baizhu = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: The Hidden Ebb and Flow`,
-      content: `Increases the Level of Universal Diagnosis by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Universal Diagnosis by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Elimination of Malicious Qi`,
@@ -245,6 +245,9 @@ const Baizhu = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
 
       if (form.bai_c4) base[Stats.EM] += 80
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

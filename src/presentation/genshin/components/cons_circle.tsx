@@ -80,7 +80,7 @@ export const ConsCircle = observer(
           </Tooltip>
         </div>
         <div className="flex items-center justify-center h-12">
-          <p className="w-1/2 px-4 text-lg font-bold text-center">{name}</p>
+          <p className="w-1/2 px-1 text-lg font-bold text-center">{name}</p>
         </div>
         <div className="flex justify-between px-3">
           <Tooltip

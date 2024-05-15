@@ -74,8 +74,8 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Unstoppable Fervor`,
-      content: `Increases the Level of Passion Overload by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Passion Overload by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Unexpected Odyssey`,
@@ -84,8 +84,8 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: True Explorer`,
-      content: `Increases the Level of Fantastic Voyage by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Fantastic Voyage by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Fire Ventures With Me`,
@@ -252,6 +252,9 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         if (canInfuse) base.infuse(Element.PYRO)
       }
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

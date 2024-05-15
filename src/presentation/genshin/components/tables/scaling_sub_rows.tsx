@@ -45,11 +45,11 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
         ? 0
         : TalentProperty.HEAL === scaling.property
         ? stats.heal
-        : stats.dmg + stats[scaling.element.toLowerCase()] + (stats.talent[scaling.property]?.dmg || 0))
+        : stats.dmg + stats[element.toLowerCase()] + (stats.talent[scaling.property]?.dmg || 0))
   const dmg =
     _.sumBy(scaling.value, (item) => item.scaling * (item.override || stats[StatNameMap[item.multiplier]])) *
     (1 + bonusDMG)
-  const totalCr = stats.cRate + (scaling.cr || 0) + (stats.talent[scaling.property]?.cr || 0)
+  const totalCr = _.min([stats.cRate + (scaling.cr || 0) + (stats.talent[scaling.property]?.cr || 0), 1])
   const totalCd = stats.cDmg + (scaling.cd || 0) + (stats.talent[scaling.property]?.cd || 0)
 
   const scalingArray = _.map(

@@ -121,8 +121,8 @@ const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
     },
     c3: {
       title: 'C3: The Shoot of Conscious Attainment',
-      content: `Increases the Level of All Schemes to Know by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of All Schemes to Know by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: 'C4: The Stem of Manifest Inference',
@@ -130,8 +130,8 @@ const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
     },
     c5: {
       title: 'C5: The Leaves of Enlightening Speech',
-      content: `Increases the Level of Illusory Heart by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Illusory Heart by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: "C6: The Fruit of Reason's Culmination",
@@ -259,6 +259,9 @@ const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

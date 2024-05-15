@@ -68,8 +68,8 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Spirit-Orchard Stroll`,
-      content: `Increases the Level of Wind Realm of Nasamjnin by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Wind Realm of Nasamjnin by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Divine Comprehension`,
@@ -78,8 +78,8 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Wonderland of Rumination`,
-      content: `Increases the Level of The Wind's Secret Ways by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of The Wind's Secret Ways by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: The Wondrous Path of Truth`,
@@ -231,6 +231,9 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         )
       }
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

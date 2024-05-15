@@ -85,8 +85,8 @@ const Dehya = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: A Rage Swift as Fire`,
-      content: `Increases the Level of Leonine Bite by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Leonine Bite by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: An Oath Abiding`,
@@ -94,8 +94,8 @@ const Dehya = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: The Alpha Unleashed`,
-      content: `Increases the Level of Molten Inferno by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Molten Inferno by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: The Burning Claws Cleaving`,
@@ -262,6 +262,9 @@ const Dehya = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
       if (form.fiery_field) base.DMG_REDUCTION += 0.3 + skill * 0.02
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

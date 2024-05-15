@@ -78,8 +78,8 @@ const Beidou = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Star of Tomorrow`,
-      content: `Increases the Level of Tidecaller by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Tidecaller by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Stunning Revenge`,
@@ -87,8 +87,8 @@ const Beidou = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Crimson Tidewalker`,
-      content: `Increases the Level of Stormbreaker by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Stormbreaker by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Bane of Evil`,
@@ -274,6 +274,9 @@ const Beidou = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
       if (form.c6_electro_res) base.ELECTRO_RES_PEN += 0.15
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

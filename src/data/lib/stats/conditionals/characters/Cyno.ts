@@ -69,8 +69,8 @@ const Cyno = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Precept: Lawful Enforcer`,
-      content: `Increases the Level of Sacred Rite: Wolf's Swiftness by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Sacred Rite: Wolf's Swiftness by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Austerity: Forbidding Guard`,
@@ -79,8 +79,8 @@ const Cyno = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Funerary Rite: The Passing of Starlight`,
-      content: `Increases the Level of Secret Rite: Chasmic Soulfarer by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Secret Rite: Chasmic Soulfarer by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Raiment: Just Scales`,
@@ -250,6 +250,9 @@ const Cyno = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

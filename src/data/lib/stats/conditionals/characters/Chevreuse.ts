@@ -79,8 +79,8 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
     },
     c3: {
       title: `C3: Practiced Field Stripping Technique`,
-      content: `Increases the Level of Short-Range Rapid Interdiction Fire by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Short-Range Rapid Interdiction Fire by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: The Secret to Rapid-Fire Multishots`,
@@ -88,8 +88,8 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
     },
     c5: {
       title: `C5: Enhanced Incendiary Firepower`,
-      content: `Increases the Level of Ring of Bursting Grenades by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Ring of Bursting Grenades by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: In Pursuit of Ending Evil`,
@@ -265,6 +265,9 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
         base[Stats.ELECTRO_DMG] += 0.2 * form.chev_c6
       }
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

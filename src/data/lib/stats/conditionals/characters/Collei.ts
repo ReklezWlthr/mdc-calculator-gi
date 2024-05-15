@@ -66,8 +66,8 @@ const Collei = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Scent of Summer`,
-      content: `Increases the Level of Floral Brush by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Floral Brush by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Gift of the Woods`,
@@ -75,8 +75,8 @@ const Collei = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: All Embers`,
-      content: `Increases the Level of Trump-Card Kitty by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Trump-Card Kitty by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Forest of Falling Arrows`,
@@ -181,12 +181,13 @@ const Collei = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         },
       ]
 
-      if (a>=1) base.SKILL_SCALING.push({
-        name: `Floral Sidewinder DMG`,
-        value: [{ scaling: 0.4, multiplier: Stats.ATK }],
-        element: Element.DENDRO,
-        property: TalentProperty.SKILL,
-      },)
+      if (a >= 1)
+        base.SKILL_SCALING.push({
+          name: `Floral Sidewinder DMG`,
+          value: [{ scaling: 0.4, multiplier: Stats.ATK }],
+          element: Element.DENDRO,
+          property: TalentProperty.SKILL,
+        })
 
       if (form.collei_c1) base[Stats.ER] += 0.2
 
@@ -195,6 +196,9 @@ const Collei = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
       if (form.collei_c4) base[Stats.EM] += 60
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

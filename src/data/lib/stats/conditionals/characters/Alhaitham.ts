@@ -74,8 +74,8 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => 
     },
     c3: {
       title: `C3: Negation`,
-      content: `Increases the Level of Universality: An Elaboration on Form by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Universality: An Elaboration on Form by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Elucidation`,
@@ -88,8 +88,8 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => 
     },
     c5: {
       title: `C5: Sagacity`,
-      content: `Increases the Level of Particular Field: Fetters of Phenomena by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Particular Field: Fetters of Phenomena by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Structuration`,
@@ -245,6 +245,9 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => 
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

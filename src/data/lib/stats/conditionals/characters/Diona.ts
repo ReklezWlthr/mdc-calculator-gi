@@ -73,8 +73,8 @@ const Diona = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: A—Another Round?`,
-      content: `Increases the Level of Signature Mix by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Signature Mix by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Wine Industry Slayer`,
@@ -82,8 +82,8 @@ const Diona = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Double Shot, on the Rocks`,
-      content: `Increases the Level of Icy Paws by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Icy Paws by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Cat's Tail Closing Time`,
@@ -236,6 +236,9 @@ const Diona = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         base[Stats.I_HEALING] += 0.3
       }
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

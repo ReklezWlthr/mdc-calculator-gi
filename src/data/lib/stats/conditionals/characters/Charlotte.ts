@@ -76,8 +76,8 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
     },
     c3: {
       title: `C3: An Imperative to Independence`,
-      content: `Increases the Still Photo: Comprehensive Confirmation by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Still Photo: Comprehensive Confirmation by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: A Responsibility to Oversee`,
@@ -85,8 +85,8 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
     },
     c5: {
       title: `C5: A Principle of Conscience`,
-      content: `Increases the Level of Framing: Freezing Point Composition by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Framing: Freezing Point Composition by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: A Summation of Interest`,
@@ -246,6 +246,9 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

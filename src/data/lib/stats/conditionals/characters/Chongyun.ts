@@ -61,8 +61,8 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Cloudburst`,
-      content: `Increases the Level of Spirit Blade: Cloud-Parting Star by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Spirit Blade: Cloud-Parting Star by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Frozen Skies`,
@@ -71,8 +71,8 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: The True Path`,
-      content: `Increases the Level of Spirit Blade: Chonghua's Layered Frost by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Spirit Blade: Chonghua's Layered Frost by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Rally of Four Blades`,
@@ -233,6 +233,9 @@ const Chongyun = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         base.BURST_CD_RED += 0.15
       }
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

@@ -19,7 +19,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
 
   const talents: ITalent = {
     normal: {
-      title: `Bolts of Downfall	`,
+      title: `Bolts of Downfall`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive shots with a bow.
       <br />
@@ -66,8 +66,8 @@ const Fischl = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c3: {
       title: `C3: Wings of Nightmare`,
-      content: `Increases the Level of Nightrider by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Nightrider by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: Her Pilgrimage of Bleak`,
@@ -76,8 +76,8 @@ const Fischl = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     c5: {
       title: `C5: Against the Fleeing Light`,
-      content: `Increases the Level of Midnight Phantasmagoria by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Midnight Phantasmagoria by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Evernight Raven`,
@@ -101,31 +101,31 @@ const Fischl = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.4412, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4412, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.4678, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4678, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(0.5814, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.5814, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit',
-          value: [{ scaling: calcScaling(0.57721, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.57721, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '5-Hit',
-          value: [{ scaling: calcScaling(0.7207, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.7207, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
@@ -220,6 +220,9 @@ const Fischl = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }

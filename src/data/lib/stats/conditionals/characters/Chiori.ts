@@ -87,8 +87,8 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
     },
     c3: {
       title: `C3: Four Brocade Embellishments`,
-      content: `Increases the Level of Fluttering Hasode by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Fluttering Hasode by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c4: {
       title: `C4: A Tailor's Three Courtesies`,
@@ -97,8 +97,8 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
     },
     c5: {
       title: `C5: Two Silken Plumules`,
-      content: `Increases the Level of Hiyoku: Twin Blades by 3.
-      <br />Maximum upgrade level is 15.`,
+      content: `Increases the Level of Hiyoku: Twin Blades by <span class="text-yellow">3</span>.
+      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
     },
     c6: {
       title: `C6: Sole Principle Pursuit`,
@@ -235,6 +235,9 @@ const Chiori = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
         base[Stats.ELECTRO_DMG] += 0.2 * form.chev_c6
       }
 
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
       return base
     },
   }
