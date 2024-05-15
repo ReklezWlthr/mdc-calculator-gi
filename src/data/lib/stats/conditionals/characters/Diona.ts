@@ -175,14 +175,14 @@ const Diona = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       base.SKILL_SCALING = [
         {
           name: 'DMG Per Icy Paw',
-          value: [{ scaling: calcScaling(0.4192, skill, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4192, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.SKILL,
           bonus: c >= 2 ? 0.15 : 0,
         },
         {
           name: 'Base Shield',
-          value: [{ scaling: calcScaling(0.072, skill, 'physical', '1'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.072, skill, 'elemental', '1'), multiplier: Stats.HP }],
           flat: calcScaling(692.8, normal, 'special', 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
@@ -190,7 +190,7 @@ const Diona = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         },
         {
           name: 'Hold Shield',
-          value: [{ scaling: calcScaling(0.072, skill, 'physical', '1'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.072, skill, 'elemental', '1'), multiplier: Stats.HP }],
           flat: calcScaling(692.8, normal, 'special', 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,

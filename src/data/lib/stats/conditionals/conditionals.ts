@@ -17,6 +17,8 @@ import Diluc from './characters/DIluc'
 import Diona from './characters/DIona'
 import Dori from './characters/Dori'
 import Eula from './characters/Eula'
+import Faruzan from './characters/Faruzan'
+import Fischl from './characters/Fischl'
 import Furina from './characters/Furina'
 import Itto from './characters/Itto'
 import Nahida from './characters/Nahida'
@@ -44,6 +46,8 @@ export default [
   { id: '10000039', conditionals: Diona },
   { id: '10000068', conditionals: Dori },
   { id: '10000051', conditionals: Eula },
+  { id: '10000076', conditionals: Faruzan },
+  { id: '10000031', conditionals: Fischl },
   { id: '10000089', conditionals: Furina },
   { id: '10000073', conditionals: Nahida },
   { id: '10000052', conditionals: Raiden },
