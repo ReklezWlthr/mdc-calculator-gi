@@ -45,6 +45,10 @@ import Mona from './characters/Mona'
 import Nahida from './characters/Nahida'
 import Navia from './characters/Navia'
 import Neuvillette from './characters/Neuvillette'
+import Nilou from './characters/Nilou'
+import Ningguang from './characters/Ningguang'
+import Noelle from './characters/Noelle'
+import Qiqi from './characters/Qiqi'
 import Raiden from './characters/Raiden'
 import Sara from './characters/Sara'
 import Yaoyao from './characters/Yaoyao'
@@ -98,6 +102,10 @@ export default [
   { id: '10000073', conditionals: Nahida },
   { id: '10000091', conditionals: Navia },
   { id: '10000087', conditionals: Neuvillette },
+  { id: '10000070', conditionals: Nilou },
+  { id: '10000027', conditionals: Ningguang },
+  { id: '10000034', conditionals: Noelle },
+  { id: '10000035', conditionals: Qiqi },
   { id: '10000052', conditionals: Raiden },
   { id: '10000077', conditionals: Yaoyao },
 ]
@@ -114,4 +122,6 @@ export const ReverseConsList = [
   'Kaveh',
   'Sara',
   'Lisa',
+  'Ningguang',
+  'Razor'
 ]

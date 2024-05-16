@@ -63,7 +63,7 @@ export const ConsCircle = observer(
         <div className="flex items-center justify-around">
           <Tooltip title={talents?.a1?.title} body={<TooltipBody talent={talents?.a1} />} style="w-[40vw]">
             <img
-              src={`https://enka.network/ui/UI_Talent_S_${codeName}_05.png`}
+              src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Ningguang' ? '_02' : '_05'}.png`}
               className={classNames(
                 'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                 ascension >= 1 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -111,7 +111,7 @@ export const ConsCircle = observer(
             </Tooltip>
             <Tooltip title={talents?.c2?.title} body={<TooltipBody talent={talents?.c2} />} style="w-[40vw]">
               <img
-                src={`https://enka.network/ui/UI_Talent_S_${codeName}_02.png`}
+                src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Ningguang' ? '_05' : '_02'}.png`}
                 className={classNames(
                   'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                   cons >= 2 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'

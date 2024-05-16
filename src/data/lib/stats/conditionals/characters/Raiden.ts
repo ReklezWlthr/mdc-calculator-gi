@@ -17,10 +17,6 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let a4Energy = 0
-  let a4Bonus = 0
-  const energyRestore = 1.6 * (1 + a4Energy)
-
   const talents: ITalent = {
     normal: {
       title: 'Origin',
@@ -77,9 +73,20 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       content: `Each <span class="text-yellow">1%</span> above <span class="text-yellow">100%</span> Energy Recharge that the Raiden Shogun possesses grants her:
       <br />- <span class="text-yellow">0.6%</span> greater Energy restoration from Musou Isshin
       <br />- <span class="text-yellow">0.4%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.
-      <br /><br />Energy restoration per hit: <span class="text-yellow">${energyRestore.toFixed(1)}</span>
-      <br />Current DMG Bonus: <span class="text-yellow">${toPercentage(a4Bonus)}</span>
       `,
+      value: [
+        {
+          name: 'Energy Restoration per Hit',
+          value: {
+            stat: Stats.ER,
+            scaling: (er) => (_.min([1.5 + 0.1 * burst, 2.5]) * (1 + 0.6 * (er - 1))).toFixed(1),
+          },
+        },
+        {
+          name: 'Electro DMG Bonus',
+          value: { stat: Stats.ER, scaling: (er) => toPercentage(0.4 * (er - 1)) },
+        },
+      ],
     },
     c1: {
       title: 'C1: Ominous Inscription',
@@ -321,7 +328,6 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.raidenSkill) base.BURST_DMG += calcScaling(0.0022, skill, 'elemental', '1') * 90 //0.22% x 90 Energy
-      base[Stats.ELECTRO_DMG] += a4Bonus
 
       if (form.musou) {
         base.infuse(Element.ELECTRO, true)
@@ -336,8 +342,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4Energy = 0.6 * (base[Stats.ER] - 1)
-      a4Bonus = 0.4 * (base[Stats.ER] - 1)
+      if (a >= 4) base[Stats.ELECTRO_DMG] += 0.4 * (base[Stats.ER] - 1)
 
       return base
     },
