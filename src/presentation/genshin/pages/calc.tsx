@@ -59,21 +59,28 @@ export const Calculator = observer(({}: {}) => {
   )
 
   useEffect(() => {
-    const preCompute = _.map(conditionals, (base, index) => base.preCompute(baseStats[index], form[index])) // Compute all self conditionals, return stats of each char
+    const preCompute = _.map(
+      conditionals,
+      (base, index) => base?.preCompute(baseStats[index], form[index]) || baseStats[index]
+    ) // Compute all self conditionals, return stats of each char
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
       let x = base
       _.forEach(conditionals, (item, i) => {
         // Loop characters, exclude index of the current parent iteration
         if (i !== index)
-          x = item.preComputeShared(preCompute[i], x, {
-            ...form[i],
-            weapon: findCharacter(teamStore.characters[index]?.cId).weapon,
-          })
+          x =
+            item?.preComputeShared(preCompute[i], x, {
+              ...form[i],
+              weapon: findCharacter(teamStore.characters[index]?.cId)?.weapon,
+            }) || x
       })
       return x
     })
-    const postCompute = _.map(conditionals, (base, index) => base.postCompute(preComputeShared[index], form[index]))
+    const postCompute = _.map(
+      conditionals,
+      (base, index) => base?.postCompute(preComputeShared[index], form[index]) || preComputeShared[index]
+    )
     setComputedStats(postCompute)
   }, [baseStats, form])
 
@@ -105,7 +112,7 @@ export const Calculator = observer(({}: {}) => {
           {_.map(teamStore?.characters, (item, index) => (
             <CharacterSelect
               key={`char_select_${index}`}
-              onClick={() => setSelected(index)}
+              onClick={() => teamStore.characters[index]?.cId && setSelected(index)}
               isSelected={index === selected}
               codeName={findCharacter(item.cId)?.codeName}
             />
