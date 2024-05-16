@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Itto = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -17,8 +17,8 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const atkConvert = calcScaling(0.576, burst, 'elemental', '1') * stat.def
-  const a4Dmg = stat.def * 0.35
+  let atkConvert = 0
+  let a4Dmg = 0
   const a4DmgScaling = a >= 4 ? [{ scaling: 0.35, multiplier: Stats.DEF }] : []
 
   const talents: ITalent = {
@@ -138,8 +138,8 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
       if (form.itto_burst) base.infuse(Element.GEO, true)
 
       base.BASIC_SCALING = [
@@ -216,6 +216,9 @@ const Itto = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      atkConvert = calcScaling(0.576, burst, 'elemental', '1') * base.getDef()
+      a4Dmg = base.getDef() * 0.35
+
       return base
     },
   }

@@ -2,12 +2,11 @@ import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Freminet = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Freminet = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: c >= 3,
     skill: c >= 5,
@@ -152,8 +151,8 @@ const Freminet = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
       base.MAX_ENERGY = 80
 
       if (form.diluc_infusion) {

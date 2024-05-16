@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Candace = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 5,
@@ -17,7 +17,7 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let a4Dmg = (stat.hp / 1000) * 0.005
+  let a4Dmg = 0
 
   const talents: ITalent = {
     normal: {
@@ -118,8 +118,8 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {
@@ -203,7 +203,6 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         base.infuse(Element.HYDRO)
       }
       if (form.candace_c2) base[Stats.P_HP] += 0.2
-
       if (a >= 4) base.BASIC_DMG += a4Dmg
 
       return base
@@ -220,7 +219,9 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       if (form.candace_burst && c >= 6)
         base.BASIC_SCALING.push({
           name: 'C6 Wave DMG',
-          value: [{ scaling: calcScaling(0.0661, burst, 'elemental', '1'), multiplier: Stats.HP, override: stat.hp }],
+          value: [
+            { scaling: calcScaling(0.0661, burst, 'elemental', '1'), multiplier: Stats.HP, override: base.getHP() },
+          ],
           element: Element.HYDRO,
           property: TalentProperty.BURST,
         })
@@ -228,7 +229,7 @@ const Candace = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4Dmg = (stat.hp / 1000) * 0.005
+      a4Dmg = (base.getHP() / 1000) * 0.005
 
       return base
     },

@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { toPercentage } from '@src/core/utils/converter'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Raiden = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 5,
@@ -17,8 +17,8 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const a4Energy = a >= 4 ? 0.6 * (stat.er - 1) : 0
-  const a4Bonus = a >= 4 ? 0.4 * (stat.er - 1) : 0
+  let a4Energy = 0
+  let a4Bonus = 0
   const energyRestore = 1.6 * (1 + a4Energy)
 
   const talents: ITalent = {
@@ -156,8 +156,8 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
       const resolveMainBonus = calcScaling(0.0389, 10, 'elemental', '1') * form.resolve
       const resolveAtkBonus = calcScaling(0.0073, 10, 'elemental', '1') * form.resolve
 
@@ -336,6 +336,9 @@ const Raiden = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      a4Energy = 0.6 * (base[Stats.ER] - 1)
+      a4Bonus = 0.4 * (base[Stats.ER] - 1)
+
       return base
     },
   }

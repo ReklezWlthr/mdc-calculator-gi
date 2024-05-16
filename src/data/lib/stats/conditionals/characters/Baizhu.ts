@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Baizhu = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Baizhu = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 5,
@@ -17,8 +17,8 @@ const Baizhu = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const a4Trans = _.min([stat.hp, 50000]) * 0.02
-  const a4Add = _.min([stat.hp, 50000]) * 0.008
+  let a4Trans = 0
+  let a4Add = 0
 
   const c6Scaling = c >= 6 ? [{ scaling: 0.08, multiplier: Stats.HP }] : []
 
@@ -121,8 +121,8 @@ const Baizhu = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {
@@ -248,6 +248,9 @@ const Baizhu = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      a4Trans = _.min([base.getHP(), 50000]) * 0.02
+      a4Add = _.min([base.getHP(), 50000]) * 0.008
+      
       return base
     },
   }

@@ -2,12 +2,11 @@ import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Chevreuse = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...rest: [ITeamChar[]]) => {
+const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -23,7 +22,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
   const electro = _.filter(teamData, Element.ELECTRO).length
   const a1Active = pyro + electro === teamData.length && pyro >= 1 && electro >= 1
 
-  const a4Atk = _.min([(stat.hp / 1000) * 0.01, 0.4])
+  let a4Atk = 0
 
   const talents: ITalent = {
     normal: {
@@ -134,8 +133,8 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {
@@ -268,6 +267,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      a4Atk = _.min([(base.getHP() / 1000) * 0.01, 0.4])
       return base
     },
   }

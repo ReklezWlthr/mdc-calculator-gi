@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Cyno = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Cyno = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 5,
@@ -127,8 +127,8 @@ const Cyno = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       const a4Na = a >= 4 ? [{ scaling: 1.5, multiplier: Stats.EM }] : []
       const a4Dust = a >= 4 ? [{ scaling: 2.5, multiplier: Stats.EM }] : []

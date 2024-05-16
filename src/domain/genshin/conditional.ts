@@ -1,4 +1,6 @@
-import { Element, Stats, TalentProperty } from './constant'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from './constant'
+
 
 export interface IScaling {
   name: string
@@ -29,3 +31,25 @@ export interface IContent {
 export interface ITalent {
   [key: string]: { title: string; content: string; upgrade?: string[] }
 }
+
+export interface IConditional {
+  upgrade: {
+    normal: boolean
+    skill: boolean
+    burst: boolean
+  }
+  talents: ITalent
+  content: IContent[]
+  teammateContent: IContent[]
+  preCompute: (form: Record<string, any>) => StatsObject
+  preComputeShared: (base: StatsObject, form: Record<string, any>) => StatsObject
+  postCompute: (base: StatsObject, form: Record<string, any>) => StatsObject
+}
+
+export type ConditionalFunction = (
+  c: number,
+  a: number,
+  t: ITalentLevel,
+  stat: StatObjectT,
+  team?: ITeamChar[]
+) => IConditional

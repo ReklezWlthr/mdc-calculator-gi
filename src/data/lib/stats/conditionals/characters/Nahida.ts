@@ -2,12 +2,11 @@ import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { toPercentage } from '@src/core/utils/converter'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...rest: [ITeamChar[]]) => {
+const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -18,8 +17,8 @@ const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
   const [team] = rest
-  const a4_bonus = _.min([0.001 * _.max([stat.em - 200, 0]), 0.8])
-  const a4_cr = _.min([0.0003 * _.max([stat.em - 200, 0]), 0.24])
+  let a4_bonus = 0
+  let a4_cr = 0
 
   const mapChar = _.map(team, (item) => findCharacter(item.cId)?.element)
   const pyroCount = _.filter(mapChar, (item) => item === Element.PYRO).length + (c >= 1 ? 1 : 0)
@@ -177,8 +176,8 @@ const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {
@@ -262,6 +261,9 @@ const Nahida = (c: number, a: number, t: ITalentLevel, stat: StatObjectT, ...res
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      a4_bonus = _.min([0.001 * _.max([base[Stats.EM] - 200, 0]), 0.8])
+      a4_cr = _.min([0.0003 * _.max([base[Stats.EM] - 200, 0]), 0.24])
+
       return base
     },
   }

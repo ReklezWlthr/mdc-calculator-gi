@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: c >= 3,
     skill: false,
@@ -17,7 +17,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) =>
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const a4Res = _.min([0.01 * ((stat.atk - 1000) / 100), 0.2])
+  let a4Res = 0
 
   const talents: ITalent = {
     normal: {
@@ -130,8 +130,8 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) =>
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       const bolMultiplier = calcScaling(1.204, 10, 'physical', '1') + (c >= 1 ? 1 : 0)
       const bolPropagation = _.map(Array(7).fill(form.bol / 100), (item, index) => {
@@ -276,6 +276,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) =>
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      a4Res = _.min([0.01 * ((base.getAtk() - 1000) / 100), 0.2])
       return base
     },
   }

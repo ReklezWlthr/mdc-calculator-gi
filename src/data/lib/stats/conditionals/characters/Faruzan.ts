@@ -2,12 +2,11 @@ import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Faruzan = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -122,8 +121,8 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
 
       base.BASIC_SCALING = [
@@ -162,7 +161,6 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: 'Fully-Charged Aimed Shot',
           value: [{ scaling: calcScaling(1.24, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
-          flat: form.hurricane_guard ? stat.atk * 0.32 : 0,
           element: Element.ANEMO,
           property: TalentProperty.CA,
           cd: c >= 6 && form.faruzan_burst ? 0.4 : 0,
@@ -170,7 +168,6 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: 'Pressurized Collapse Vortex DMG',
           value: [{ scaling: calcScaling(1.08, normal, 'elemental', '1'), multiplier: Stats.ATK }],
-          flat: form.hurricane_guard ? stat.atk * 0.32 : 0,
           element: Element.ANEMO,
           property: TalentProperty.SKILL,
           cd: c >= 6 && form.faruzan_burst ? 0.4 : 0,
@@ -182,7 +179,6 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: 'Skill DMG',
           value: [{ scaling: calcScaling(1.488, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-          flat: form.hurricane_guard ? stat.atk * 0.32 : 0,
           element: Element.ANEMO,
           property: TalentProperty.SKILL,
           cd: c >= 6 && form.faruzan_burst ? 0.4 : 0,
@@ -192,7 +188,6 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         {
           name: `Skill DMG`,
           value: [{ scaling: calcScaling(3.776, burst, 'elemental', '1'), multiplier: Stats.ATK }],
-          flat: form.hurricane_guard ? stat.atk * 0.32 : 0,
           element: Element.ANEMO,
           property: TalentProperty.BURST,
           cd: c >= 6 && form.faruzan_burst ? 0.4 : 0,
@@ -205,7 +200,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
-      const hurricane = stat.atk * 0.32
+      const hurricane = base.getAtk() * 0.32
 
       if (form.hurricane_guard) {
         _.forEach(base.BASIC_SCALING, (item) =>
@@ -234,6 +229,20 @@ const Faruzan = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      const hurricane = base.getAtk() * 0.32
+
+      if (form.hurricane_guard) {
+        _.forEach(base.BASIC_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
+        )
+        _.forEach(base.SKILL_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
+        )
+        _.forEach(base.BURST_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
+        )
+      }
+
       return base
     },
   }

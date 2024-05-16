@@ -9,7 +9,6 @@ import {
   WeaponSecondaryScaling,
 } from '@src/domain/genshin/scaling'
 import _ from 'lodash'
-import { StatObjectT } from '../hooks/useStat'
 import { findCharacter } from './finder'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
@@ -79,10 +78,9 @@ export const correctSubStat = (stat: Stats, value: number) => {
   return accLow + bonus * bonusRolls
 }
 
-export const getSetCount = (artifacts: IArtifactEquip[], aIds: string[]) => {
-  const artifactData = _.map(aIds, (aId) => _.find(artifacts, ['id', aId]))
+export const getSetCount = (artifacts: IArtifactEquip[]) => {
   const setBonus: Record<string, number> = _.reduce(
-    artifactData,
+    artifacts,
     (acc, curr) => {
       if (!curr) return acc
       acc[curr.setId] ? (acc[curr.setId] += 1) : (acc[curr.setId] = 1)

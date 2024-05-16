@@ -2,12 +2,11 @@ import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Kazuha = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Kazuha = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -170,8 +169,8 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
       base.MAX_ENERGY = 80
 
       base.BASIC_SCALING = [
@@ -282,11 +281,11 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`] += 0.0004 * stat.em
+      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`] += 0.0004 * base[Stats.EM]
       if (c >= 6) {
-        base.BASIC_DMG += 0.002 * stat.em
-        base.CHARGE_DMG += 0.002 * stat.em
-        base.PLUNGE_DMG += 0.002 * stat.em
+        base.BASIC_DMG += 0.002 * base[Stats.EM]
+        base.CHARGE_DMG += 0.002 * base[Stats.EM]
+        base.PLUNGE_DMG += 0.002 * base[Stats.EM]
       }
 
       return base

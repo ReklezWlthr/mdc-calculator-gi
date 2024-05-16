@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Bennett = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -17,7 +17,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const atkShare = (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * stat.baseAtk
+  let atkShare = 0
 
   const talents: ITalent = {
     normal: {
@@ -119,8 +119,8 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {
@@ -223,6 +223,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
         },
       ]
 
+      atkShare = (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * base.BASE_ATK
       if (form.benny_atk_share) base[Stats.ATK] += atkShare
       if (a >= 1) base.SKILL_CD_RED += 0.2
       if (a >= 4 && form.benny_atk_share) base.SKILL_CD_RED += 0.5
@@ -245,8 +246,10 @@ const Bennett = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+      atkShare = (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * base.BASE_ATK
+
       const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)
-      if (form.benny_atk_share) base[Stats.ATK] += calcScaling(0.56, burst, 'elemental', '1') * stat.baseAtk
+      if (form.benny_atk_share) base[Stats.ATK] += atkShare
       if (c >= 6 && form.benny_atk_share) {
         base[Stats.PYRO_DMG] += 0.15
         if (canInfuse) base.infuse(Element.PYRO)

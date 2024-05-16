@@ -1,4 +1,3 @@
-import { StatObjectT, useStat } from '@src/core/hooks/useStat'
 import { findCharacter } from '@src/core/utils/finder'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
@@ -15,19 +14,22 @@ import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { ConsCircle } from '../components/cons_circle'
 import { ConditionalBlock } from '../components/conditional_block'
-import { useAllStatWrapper } from '@src/core/hooks/useAllStatWrapper'
+import { getTeamOutOfCombat } from '@src/core/utils/calculator'
 
 export const Calculator = observer(({}: {}) => {
-  const { teamStore } = useStore()
+  const { teamStore, artifactStore } = useStore()
   const [selected, setSelected] = useState(0)
 
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
 
-  const [computedStats, setComputedStats] = useState<StatsObject[]>(Array(4).fill(baseStatsObject))
+  const [computedStats, setComputedStats] = useState<StatsObject[]>([])
   const mainComputed = computedStats?.[selected]
 
-  const stats = useAllStatWrapper(teamStore.characters, computedStats)
+  const baseStats = useMemo(
+    () => getTeamOutOfCombat(teamStore.characters, artifactStore.artifacts),
+    [teamStore.characters, artifactStore.artifacts]
+  )
 
   const conditionals = useMemo(
     () =>
@@ -36,7 +38,6 @@ export const Calculator = observer(({}: {}) => {
           item.cons,
           item.ascension,
           item.talents,
-          stats[index],
           teamStore.characters
         )
       ),
@@ -58,7 +59,7 @@ export const Calculator = observer(({}: {}) => {
   )
 
   useEffect(() => {
-    let preCompute = main?.preCompute(form[selected])
+    let preCompute = main?.preCompute(baseStats[selected], form[selected])
     _.forEach(conditionals, (item, index) => {
       if (index !== selected) {
         if (item) preCompute = item.preComputeShared(preCompute, { ...form[index], weapon: charData.weapon })
@@ -112,17 +113,17 @@ export const Calculator = observer(({}: {}) => {
           >
             <div className="space-y-0.5">
               {_.map(mainComputed?.BASIC_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
+                <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
               ))}
             </div>
             <div className="py-2 space-y-0.5">
               {_.map(mainComputed?.CHARGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
+                <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
               ))}
             </div>
             <div className="space-y-0.5">
               {_.map(mainComputed?.PLUNGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
+                <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
               ))}
             </div>
           </ScalingWrapper>
@@ -137,7 +138,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={main?.upgrade?.skill}
           >
             {_.map(mainComputed?.SKILL_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
+              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -149,7 +150,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={main?.upgrade?.burst}
           >
             {_.map(mainComputed?.BURST_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
+              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -160,7 +161,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={false}
           >
             {_.map(mainComputed?.A1_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
+              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -171,7 +172,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={false}
           >
             {_.map(mainComputed?.A4_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={stats[selected]} />
+              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
             ))}
           </ScalingWrapper>
         </div>
@@ -191,7 +192,7 @@ export const Calculator = observer(({}: {}) => {
           form={form}
           setForm={setForm}
         />
-        <StatBlock index={selected} stat={stats[selected]} />
+        <StatBlock index={selected} stat={computedStats[selected]} />
         <ConsCircle
           talents={main?.talents}
           codeName={charData.codeName}

@@ -18,11 +18,12 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { Resonance } from '@src/data/db/genshin/characters'
 import { CharacterSelect } from '../components/character_select'
-import { useStat } from '@src/core/hooks/useStat'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { WeaponIcon } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
+import { calculateOutOfCombat } from '@src/core/utils/calculator'
+import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
 
 const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
   const setDetail = _.find(ArtifactSets, ['id', set])
@@ -125,17 +126,13 @@ export const TeamSetup = observer(() => {
 
   const { teamStore, modalStore, artifactStore } = useStore()
 
+  const artifactData = _.filter(artifactStore.artifacts, (item) =>
+    _.includes(teamStore.characters[selected]?.equipments?.artifacts, item.id)
+  )
+
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
-  const stats = useStat(
-    char?.cId,
-    char?.level,
-    char?.ascension,
-    char?.equipments?.weapon?.wId,
-    char?.equipments?.weapon?.level,
-    char?.equipments?.weapon?.ascension,
-    char?.equipments?.artifacts
-  )
+  const stats = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, teamStore.characters, artifactData)
 
   const onOpenSaveModal = useCallback(() => {
     modalStore.openModal(<SaveBuildModal index={selected} />)
@@ -156,14 +153,13 @@ export const TeamSetup = observer(() => {
     )
   }, [selected])
 
-  const set = getSetCount(artifactStore.artifacts, teamStore.characters[selected]?.equipments?.artifacts)
+  const set = getSetCount(artifactData)
   const resonance = getResonanceCount(teamStore.characters)
 
   const talent = _.find(ConditionalsObject, ['id', char.cId])?.conditionals(
     char?.cons,
     char?.ascension,
     char?.talents,
-    stats,
     teamStore.characters
   )
 

@@ -1,16 +1,16 @@
-import { StatObjectT } from '@src/core/hooks/useStat'
 import { IScaling } from '@src/domain/genshin/conditional'
-import { Element, StatIcons, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, StatIcons, Stats, TalentProperty } from '@src/domain/genshin/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { StatNameMap } from '../../../../core/hooks/useStat'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
+import { TalentStatMap } from '../../../../data/lib/stats/baseConstant'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
-  stats: StatObjectT
+  stats: StatsObject
 }
 
 export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps) => {
@@ -31,11 +31,22 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     ...propertyColor,
   }
 
+  const talentDmg = stats[`${TalentStatMap[scaling.property]}_DMG`]
+  const talentCr = stats[`${TalentStatMap[scaling.property]}_CR`]
+  const talentCd = stats[`${TalentStatMap[scaling.property]}_CD`]
+
+  const statForScale = {
+    [Stats.ATK]: stats.getAtk(),
+    [Stats.DEF]: stats.getDef(),
+    [Stats.HP]: stats.getHP(),
+    [Stats.EM]: stats[Stats.EM],
+  }
+
   const element =
     _.includes([TalentProperty.NA, TalentProperty.CA, TalentProperty.PA], scaling.property) &&
-    stats.infusion &&
+    stats.INFUSION &&
     scaling.element === Element.PHYSICAL
-      ? stats.infusion
+      ? stats.INFUSION
       : scaling.element
 
   const bonusDMG =
@@ -43,13 +54,12 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
-      ? stats.heal
-      : stats.dmg + stats[element.toLowerCase()] + (stats.talent[scaling.property]?.dmg || 0))
+      ? stats[Stats.HEAL]
+      : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + (talentDmg || 0))
   const dmg =
-    _.sumBy(scaling.value, (item) => item.scaling * (item.override || stats[StatNameMap[item.multiplier]])) *
-    (1 + bonusDMG)
-  const totalCr = _.min([stats.cRate + (scaling.cr || 0) + (stats.talent[scaling.property]?.cr || 0), 1])
-  const totalCd = stats.cDmg + (scaling.cd || 0) + (stats.talent[scaling.property]?.cd || 0)
+    _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) * (1 + bonusDMG)
+  const totalCr = _.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + (talentCr || 0), 1])
+  const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + (talentCd || 0)
 
   const scalingArray = _.map(
     scaling.value,
@@ -57,7 +67,7 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/icons/${
         StatIcons[item.multiplier]
       }" />${_.round(
-        item.override || stats[StatNameMap[item.multiplier]]
+        item.override || statForScale[item.multiplier]
       ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
@@ -99,10 +109,9 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
                 {element} Bonus: <span className="text-yellow">{toPercentage(stats[element.toLowerCase()])}</span>
               </p>
             )}
-            {!!stats.talent[scaling.property]?.dmg && (
+            {!!talentDmg && (
               <p className="text-xs">
-                {scaling.property} Bonus:{' '}
-                <span className="text-yellow">{toPercentage(stats.talent[scaling.property]?.dmg)}</span>
+                {scaling.property} Bonus: <span className="text-yellow">{toPercentage(talentDmg)}</span>
               </p>
             )}
           </div>
@@ -124,10 +133,9 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
                   Exclusive CRIT DMG: <span className="text-yellow">{toPercentage(scaling.cd)}</span>
                 </p>
               )}
-              {!!stats.talent[scaling.property]?.cd && (
+              {!!talentCd && (
                 <p className="text-xs">
-                  {scaling.property} CRIT DMG:{' '}
-                  <span className="text-yellow">{toPercentage(stats.talent[scaling.property]?.cd)}</span>
+                  {scaling.property} CRIT DMG: <span className="text-yellow">{toPercentage(talentCd)}</span>
                 </p>
               )}
             </div>
@@ -152,10 +160,9 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
                   Exclusive CRIT Rate: <span className="text-yellow">{toPercentage(scaling.cr)}</span>
                 </p>
               )}
-              {!!stats.talent[scaling.property]?.cr && (
+              {!!talentCr && (
                 <p className="text-xs">
-                  {scaling.property} CRIT Rate:{' '}
-                  <span className="text-yellow">{toPercentage(stats.talent[scaling.property]?.cr)}</span>
+                  {scaling.property} CRIT Rate: <span className="text-yellow">{toPercentage(talentCr)}</span>
                 </p>
               )}
             </div>

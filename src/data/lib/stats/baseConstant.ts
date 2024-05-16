@@ -58,6 +58,11 @@ export const getPlungeScaling = (
 }
 
 export const baseStatsObject = {
+  // Base Stats
+  BASE_ATK: 0,
+  BASE_HP: 0,
+  BASE_DEF: 0,
+
   // Basic Stats
   [Stats.ATK]: 0,
   [Stats.HP]: 0,
@@ -141,6 +146,7 @@ export const baseStatsObject = {
   SKILL_CD: 0,
   BURST_CD: 0,
 
+  // Reaction
   BURNING_DMG: 0,
   BLOOM_DMG: 0,
   HYPERBLOOM_DMG: 0,
@@ -172,6 +178,16 @@ export const baseStatsObject = {
   A1_SCALING: [] as IScaling[],
   A4_SCALING: [] as IScaling[],
 
+  getAtk: function () {
+    return this.BASE_ATK * (1 + this[Stats.P_ATK]) + this[Stats.ATK]
+  },
+  getHP: function () {
+    return this.BASE_HP * (1 + this[Stats.P_HP]) + this[Stats.HP]
+  },
+  getDef: function () {
+    return this.BASE_DEF * (1 + this[Stats.P_DEF]) + this[Stats.DEF]
+  },
+
   //util
   infuse: function (infusion: Element, lock: boolean = false) {
     if (lock) {
@@ -201,6 +217,14 @@ export const baseStatsObject = {
     const newPriority = _.indexOf(infusionPriority, infusion)
     if (currentPriority < 0 || newPriority < currentPriority) this.INFUSION = infusion
   },
+}
+
+export const TalentStatMap = {
+  [TalentProperty.NA]: 'BASIC',
+  [TalentProperty.CA]: 'CHARGE',
+  [TalentProperty.PA]: 'PLUNGE',
+  [TalentProperty.SKILL]: 'SKILL',
+  [TalentProperty.BURST]: 'BURST',
 }
 
 export type StatsObject = typeof baseStatsObject

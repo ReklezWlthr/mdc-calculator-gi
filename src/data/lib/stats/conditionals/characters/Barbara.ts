@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Barbara = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 5,
@@ -16,11 +16,6 @@ const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const normal = t.normal + (upgrade.normal ? 3 : 0)
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
-
-  const a4Trans = _.min([stat.hp, 50000]) * 0.02
-  const a4Add = _.min([stat.hp, 50000]) * 0.008
-
-  const c6Scaling = c >= 6 ? [{ scaling: 0.08, multiplier: Stats.HP }] : []
 
   const talents: ITalent = {
     normal: {
@@ -110,8 +105,8 @@ const Barbara = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {

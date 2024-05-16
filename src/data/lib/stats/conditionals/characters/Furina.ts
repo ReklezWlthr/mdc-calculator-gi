@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { toPercentage } from '@src/core/utils/converter'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Furina = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 5,
@@ -18,8 +18,8 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
   const maxFanfare = c >= 1 ? 400 : 300
-  const salonA4Bonus = a >= 4 ? _.min([0.007 * (stat.hp / 1000), 0.28]) : 0
-  const salonA4Healing = a >= 4 ? _.min([0.004 * (stat.hp / 1000), 0.16]) : 0
+  let salonA4Bonus = 0
+  let salonA4Healing = 0
 
   const talents: ITalent = {
     normal: {
@@ -160,8 +160,8 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
       const salonMultiplier = 1 + _.min([form.salonAlly * 0.1, 0.4])
 
       if (form.centerOfAttention) base.infuse(Element.HYDRO, true)
@@ -283,6 +283,9 @@ const Furina = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      salonA4Bonus = a >= 4 ? _.min([0.007 * (base.getHP() / 1000), 0.28]) : 0
+      salonA4Healing = a >= 4 ? _.min([0.004 * (base.getHP() / 1000), 0.16]) : 0
+
       return base
     },
   }

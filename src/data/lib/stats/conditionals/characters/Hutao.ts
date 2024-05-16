@@ -2,12 +2,12 @@ import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
-import { StatObjectT } from '@src/core/hooks/useStat'
+
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/genshin/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Hutao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
+const Hutao = (c: number, a: number, t: ITalentLevel) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -16,8 +16,6 @@ const Hutao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
   const normal = t.normal + (upgrade.normal ? 3 : 0)
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
-
-  const a4Dmg = (stat.hp / 1000) * 0.005
 
   const talents: ITalent = {
     normal: {
@@ -147,8 +145,8 @@ const Hutao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     talents,
     content,
     teammateContent,
-    preCompute: (form: Record<string, any>) => {
-      const base = _.cloneDeep(baseStatsObject)
+    preCompute: (x: StatsObject, form: Record<string, any>) => {
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {
@@ -281,7 +279,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel, stat: StatObjectT) => {
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (form.hu_skill)
-        base[Stats.ATK] += _.min([calcScaling(0.0384, skill, 'elemental', '1') * stat.hp, stat.baseAtk * 4])
+        base[Stats.ATK] += _.min([calcScaling(0.0384, skill, 'elemental', '1') * base.getHP(), base.BASE_ATK * 4])
 
       return base
     },
