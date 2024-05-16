@@ -188,28 +188,7 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.sara_atk) {
         base[Stats.ATK] += calcScaling(0.43, skill, 'elemental', '1') * base.BASE_ATK
-        if (c >= 6) {
-          base.BASIC_SCALING = _.map(base.BASIC_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.CHARGE_SCALING = _.map(base.CHARGE_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.PLUNGE_SCALING = _.map(base.PLUNGE_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.SKILL_SCALING = _.map(base.SKILL_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.BURST_SCALING = _.map(base.BURST_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-        }
+        if (c >= 6) base.ELECTRO_CD += 0.6
       }
 
       return base
@@ -217,28 +196,7 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.sara_atk) {
         base[Stats.ATK] += calcScaling(0.43, skill, 'elemental', '1') * own.BASE_ATK
-        if (c >= 6) {
-          base.BASIC_SCALING = _.map(base.BASIC_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.CHARGE_SCALING = _.map(base.CHARGE_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.PLUNGE_SCALING = _.map(base.PLUNGE_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.SKILL_SCALING = _.map(base.SKILL_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-          base.BURST_SCALING = _.map(base.BURST_SCALING, (item) => ({
-            ...item,
-            cd: item.element === Element.ELECTRO ? (item.cd || 0) + 0.6 : item.cd,
-          }))
-        }
+        if (c >= 6) base.ELECTRO_CD += 0.6
       }
 
       return base

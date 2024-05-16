@@ -226,6 +226,7 @@ export const Calculator = observer(({}: {}) => {
           codeName={charData.codeName}
           element={charData.element}
           name={charData.constellation}
+          ascension={char.ascension}
           cons={char.cons}
           stats={computedStats[selected]}
         />

@@ -128,11 +128,6 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 80
 
-      if (form.diluc_infusion) {
-        base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG] += 0.2
-      }
-
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
@@ -141,7 +136,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '2-Hit [1]',
+          name: '2-Hit',
           value: [{ scaling: calcScaling(0.6964, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,

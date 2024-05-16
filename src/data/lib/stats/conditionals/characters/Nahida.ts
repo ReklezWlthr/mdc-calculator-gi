@@ -17,9 +17,6 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
   const [team] = rest
-  let a4_bonus = 0
-  let a4_cr = 0
-
   const mapChar = _.map(team, (item) => findCharacter(item.cId)?.element)
   const pyroCount = _.filter(mapChar, (item) => item === Element.PYRO).length + (c >= 1 ? 1 : 0)
   const hydroCount = _.filter(mapChar, (item) => item === Element.HYDRO).length + (c >= 1 ? 1 : 0)
@@ -104,9 +101,17 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
     a4: {
       title: 'A4: Awakening Elucidated',
       content: `Each point of Nahida's Elemental Mastery beyond <span class="text-yellow">200</span> will grant <span class="text-yellow">0.1%</span> Bonus DMG and <span class="text-yellow">0.03%</span> CRIT Rate to Tri-Karma Purification from All Schemes to Know.
-      <br />A maximum of <span class="text-yellow">80%</span> Bonus DMG and <span class="text-yellow">24%</span> CRIT Rate can be granted to Tri-Karma Purification in this manner.
-      <br /><br />Current Bonus DMG: <span class="text-yellow">${toPercentage(a4_bonus)}</span>
-      <br />Current CRIT Rate:<span class="text-yellow"> ${toPercentage(a4_cr)}</span>`,
+      <br />A maximum of <span class="text-yellow">80%</span> Bonus DMG and <span class="text-yellow">24%</span> CRIT Rate can be granted to Tri-Karma Purification in this manner.`,
+      value: [
+        {
+          name: 'Current Bonus DMG',
+          value: { stat: Stats.EM, scaling: (em) => toPercentage(_.min([0.001 * _.max([em - 200, 0]), 0.8])) },
+        },
+        {
+          name: 'Current CRIT Rate',
+          value: { stat: Stats.EM, scaling: (em) => toPercentage(_.min([0.0003 * _.max([em - 200, 0]), 0.24])) },
+        },
+      ],
     },
     c1: {
       title: 'C1: The Seed of Stored Knowledge',
@@ -158,6 +163,15 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       default: true,
     },
     {
+      type: 'toggle',
+      id: 'nahida_c2_def',
+      text: `C2 DEF Shred`,
+      ...talents.c2,
+      show: c >= 2,
+      default: true,
+      debuff: true,
+    },
+    {
       type: 'number',
       id: 'nahida_c4',
       text: `Enemies marked by TKP`,
@@ -169,7 +183,10 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [
+    findContentById(content, 'nahida_em_share'),
+    findContentById(content, 'nahida_c2_def'),
+  ]
 
   return {
     upgrade,
@@ -227,21 +244,41 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
         },
-        {
-          name: 'Tri-Karma Purification',
-          value: [
-            { scaling: calcScaling(1.032, skill, 'elemental', '1'), multiplier: Stats.ATK },
-            { scaling: calcScaling(2.064, skill, 'elemental', '1'), multiplier: Stats.EM },
-          ],
-          element: Element.DENDRO,
-          property: TalentProperty.SKILL,
-          bonus: (a >= 4 ? a4_bonus : 0) + (form.nahida_burst ? pyroBonus : 0),
-          cr: a >= 4 ? a4_cr : 0,
-        },
       ]
 
       base[Stats.EM] += form.nahida_c4 ? 100 + _.min([20 * (form.nahida_c4 - 1), 60]) : 0
 
+      if (form.nahida_c2_def) base.DEF_PEN += 0.3
+      if (c >= 2) {
+        base.CORE_CR = 0.2
+        base.CORE_CD = 1
+      }
+
+      return base
+    },
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.nahida_c2_def) base.DEF_PEN += 0.3
+      if (c >= 2) {
+        base.CORE_CR = 0.2
+        base.CORE_CD = 1
+      }
+
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
+      const a4Dmg = _.min([0.001 * _.max([base[Stats.EM] - 200, 0]), 0.8])
+      const a4Cr = _.min([0.0003 * _.max([base[Stats.EM] - 200, 0]), 0.24])
+      base.SKILL_SCALING.push({
+        name: 'Tri-Karma Purification',
+        value: [
+          { scaling: calcScaling(1.032, skill, 'elemental', '1'), multiplier: Stats.ATK },
+          { scaling: calcScaling(2.064, skill, 'elemental', '1'), multiplier: Stats.EM },
+        ],
+        element: Element.DENDRO,
+        property: TalentProperty.SKILL,
+        bonus: (a >= 4 ? a4Dmg : 0) + (form.nahida_burst ? pyroBonus : 0),
+        cr: a >= 4 ? a4Cr : 0,
+      })
       if (c >= 6)
         base.SKILL_SCALING.push({
           name: 'Karmic Oblivion',
@@ -251,18 +288,9 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
           ],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
-          bonus: (a >= 4 ? a4_bonus : 0) + (form.nahida_burst ? pyroBonus : 0),
-          cr: a >= 4 ? a4_cr : 0,
+          bonus: (a >= 4 ? a4Dmg : 0) + (form.nahida_burst ? pyroBonus : 0),
+          cr: a >= 4 ? a4Cr : 0,
         })
-
-      return base
-    },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      return base
-    },
-    postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4_bonus = _.min([0.001 * _.max([base[Stats.EM] - 200, 0]), 0.8])
-      a4_cr = _.min([0.0003 * _.max([base[Stats.EM] - 200, 0]), 0.24])
 
       return base
     },

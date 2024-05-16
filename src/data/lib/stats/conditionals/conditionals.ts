@@ -35,7 +35,16 @@ import Kazuha from './characters/Kazuha'
 import Keqing from './characters/Keqing'
 import Kirara from './characters/Kirara'
 import Klee from './characters/Klee'
+import Kuki from './characters/Kuki'
+import Layla from './characters/Layla'
+import Lisa from './characters/Lisa'
+import Lynette from './characters/Lynette'
+import Lyney from './characters/Lyney'
+import Mika from './characters/Mika'
+import Mona from './characters/Mona'
 import Nahida from './characters/Nahida'
+import Navia from './characters/Navia'
+import Neuvillette from './characters/Neuvillette'
 import Raiden from './characters/Raiden'
 import Sara from './characters/Sara'
 import Yaoyao from './characters/Yaoyao'
@@ -79,7 +88,30 @@ export default [
   { id: '10000061', conditionals: Kirara },
   { id: '10000029', conditionals: Klee },
   { id: '10000056', conditionals: Sara },
+  { id: '10000065', conditionals: Kuki },
+  { id: '10000074', conditionals: Layla },
+  { id: '10000006', conditionals: Lisa },
+  { id: '10000083', conditionals: Lynette },
+  { id: '10000084', conditionals: Lyney },
+  { id: '10000080', conditionals: Mika },
+  { id: '10000041', conditionals: Mona },
   { id: '10000073', conditionals: Nahida },
+  { id: '10000091', conditionals: Navia },
+  { id: '10000087', conditionals: Neuvillette },
   { id: '10000052', conditionals: Raiden },
   { id: '10000077', conditionals: Yaoyao },
+]
+
+export const ReverseConsList = [
+  'Furina',
+  'Shougun',
+  'Barbara',
+  'Collei',
+  'Dori',
+  'Qin',
+  'Ayaka',
+  'Ayato',
+  'Kaveh',
+  'Sara',
+  'Lisa',
 ]

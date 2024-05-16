@@ -39,16 +39,19 @@ export const TalentIcon = observer(
       <Tooltip
         title={talent?.title}
         body={<p dangerouslySetInnerHTML={{ __html: talent?.content }} />}
-        style="w-[40vw]"
+        style="w-[50vw]"
       >
-        <img
-          src={icon}
-          className={classNames(
-            'p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-            iconColor[element],
-            size || 'w-12 h-12'
-          )}
-        />
+        <div className="relative">
+          {/* <i className='absolute text-xl -left-1 -top-4 fa-solid fa-crown text-yellow -rotate-[15deg]' /> */}
+          <img
+            src={icon}
+            className={classNames(
+              'p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
+              iconColor[element],
+              size || 'w-12 h-12'
+            )}
+          />
+        </div>
       </Tooltip>
     )
   }

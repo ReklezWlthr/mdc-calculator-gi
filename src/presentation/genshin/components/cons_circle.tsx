@@ -1,4 +1,5 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
+import { ReverseConsList } from '@src/data/lib/stats/conditionals/conditionals'
 import { ITalent, ITalentDisplay } from '@src/domain/genshin/conditional'
 import { Element, Stats } from '@src/domain/genshin/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -13,6 +14,7 @@ export const ConsCircle = observer(
     codeName,
     name,
     cons,
+    ascension,
     stats,
   }: {
     talents: ITalent
@@ -20,6 +22,7 @@ export const ConsCircle = observer(
     codeName: string
     name: string
     cons: number
+    ascension: number
     stats?: StatsObject
   }) => {
     const iconColor = {
@@ -36,6 +39,7 @@ export const ConsCircle = observer(
       [Stats.DEF]: stats?.getDef(),
       [Stats.HP]: stats?.getHP(),
       [Stats.EM]: stats?.[Stats.EM],
+      [Stats.ER]: stats?.[Stats.ER],
     }
     const TooltipBody = ({ talent }: { talent: ITalentDisplay }) => {
       return (
@@ -55,24 +59,24 @@ export const ConsCircle = observer(
     }
 
     return (
-      <div className='space-y-5'>
+      <div className="space-y-5">
         <div className="flex items-center justify-around">
           <Tooltip title={talents?.a1?.title} body={<TooltipBody talent={talents?.a1} />} style="w-[40vw]">
             <img
               src={`https://enka.network/ui/UI_Talent_S_${codeName}_05.png`}
               className={classNames(
                 'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                true ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
+                ascension >= 1 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
               )}
             />
           </Tooltip>
-          <p className='text-sm font-bold'>Ascension</p>
+          <p className="text-sm font-bold">Ascension</p>
           <Tooltip title={talents?.a4?.title} body={<TooltipBody talent={talents?.a4} />} style="w-[40vw]">
             <img
               src={`https://enka.network/ui/UI_Talent_S_${codeName}_06.png`}
               className={classNames(
                 'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                true ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
+                ascension >= 4 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
               )}
             />
           </Tooltip>
@@ -121,7 +125,9 @@ export const ConsCircle = observer(
           <div className="flex justify-between px-3">
             <Tooltip title={talents?.c5?.title} body={<TooltipBody talent={talents?.c5} />} style="w-[25vw]">
               <img
-                src={`https://enka.network/ui/UI_Talent_U_${codeName}_02.png`}
+                src={`https://enka.network/ui/UI_Talent_U_${codeName}${
+                  _.includes(ReverseConsList, codeName) ? '_01' : '_02'
+                }.png`}
                 className={classNames(
                   'shrink-0 w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                   cons >= 5 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -130,7 +136,9 @@ export const ConsCircle = observer(
             </Tooltip>
             <Tooltip title={talents?.c3?.title} body={<TooltipBody talent={talents?.c3} />} style="w-[25vw]">
               <img
-                src={`https://enka.network/ui/UI_Talent_U_${codeName}_01.png`}
+                src={`https://enka.network/ui/UI_Talent_U_${codeName}${
+                  _.includes(ReverseConsList, codeName) ? '_02' : '_01'
+                }.png`}
                 className={classNames(
                   'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                   cons >= 3 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'

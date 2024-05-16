@@ -237,25 +237,25 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
-          value: [{ scaling: calcScaling(3.0327, burst, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(3.0327, burst, 'elemental', '2'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.BURST,
         },
         {
           name: 'Low HP Skill DMG',
-          value: [{ scaling: calcScaling(3.7909, burst, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(3.7909, burst, 'elemental', '2'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.BURST,
         },
         {
           name: 'Skill HP Regeneration',
-          value: [{ scaling: calcScaling(0.0626, burst, 'elemental', '1'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.0626, burst, 'elemental', '2'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },
         {
           name: 'Low HP Skill HP Regeneration',
-          value: [{ scaling: calcScaling(0.0835, burst, 'elemental', '1'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.0835, burst, 'elemental', '2'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },

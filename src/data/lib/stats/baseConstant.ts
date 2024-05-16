@@ -73,7 +73,7 @@ export const baseStatsObject = {
   [Stats.CRIT_RATE]: 0.05,
   [Stats.CRIT_DMG]: 0.5,
   [Stats.EM]: 0,
-  [Stats.ER]: 0,
+  [Stats.ER]: 1,
   [Stats.HEAL]: 0,
   [Stats.I_HEALING]: 0,
   [Stats.SHIELD]: 0,
@@ -88,6 +88,15 @@ export const baseStatsObject = {
   [Stats.DENDRO_DMG]: 0,
   [Stats.PHYSICAL_DMG]: 0,
   [Stats.ALL_DMG]: 0,
+
+  PHYSICAL_CD: 0,
+  PYRO_CD: 0,
+  HYDRO_CD: 0,
+  CRYO_CD: 0,
+  ELECTRO_CD: 0,
+  ANEMO_CD: 0,
+  GEO_CD: 0,
+  DENDRO_CD: 0,
 
   // Hidden Stats
   ATK_SPD: 1,
@@ -159,6 +168,15 @@ export const baseStatsObject = {
   TASER_DMG: 0,
   OVERLOAD_DMG: 0,
   SHATTER_DMG: 0,
+
+  SWIRL_DMG: 0,
+  PYRO_SWIRL_DMG: 0,
+  HYDRO_SWIRL_DMG: 0,
+  ELECTRO_SWIRL_DMG: 0,
+  CRYO_SWIRL_DMG: 0,
+
+  CORE_CR: 0,
+  CORE_CD: 0,
 
   // Mitigation
   DMG_REDUCTION: 0,

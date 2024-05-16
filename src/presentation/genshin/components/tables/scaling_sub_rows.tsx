@@ -31,9 +31,17 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     ...propertyColor,
   }
 
-  const talentDmg = stats[`${TalentStatMap[scaling.property]}_DMG`]
-  const talentCr = stats[`${TalentStatMap[scaling.property]}_CR`]
-  const talentCd = stats[`${TalentStatMap[scaling.property]}_CD`]
+  const element =
+    _.includes([TalentProperty.NA, TalentProperty.CA, TalentProperty.PA], scaling.property) &&
+    stats.INFUSION &&
+    scaling.element === Element.PHYSICAL
+      ? stats.INFUSION
+      : scaling.element
+
+  const talentDmg = stats[`${TalentStatMap[scaling.property]}_DMG`] || 0
+  const talentCr = stats[`${TalentStatMap[scaling.property]}_CR`] || 0
+  const talentCd = stats[`${TalentStatMap[scaling.property]}_CD`] || 0
+  const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
 
   const statForScale = {
     [Stats.ATK]: stats.getAtk(),
@@ -42,24 +50,19 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     [Stats.EM]: stats[Stats.EM],
   }
 
-  const element =
-    _.includes([TalentProperty.NA, TalentProperty.CA, TalentProperty.PA], scaling.property) &&
-    stats.INFUSION &&
-    scaling.element === Element.PHYSICAL
-      ? stats.INFUSION
-      : scaling.element
-
   const bonusDMG =
     (scaling.bonus || 0) +
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
       ? stats[Stats.HEAL]
-      : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + (talentDmg || 0))
+      : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + talentDmg + stats.VULNERABILITY) // Vulnerability effectively stacks with DMG Bonuses
   const dmg =
-    _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) * (1 + bonusDMG)
-  const totalCr = _.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + (talentCr || 0), 1])
-  const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + (talentCd || 0)
+    _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) *
+    (1 + bonusDMG) *
+    (scaling.multiplier || 1)
+  const totalCr = _.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1])
+  const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + talentCd + elementCd
 
   const scalingArray = _.map(
     scaling.value,
@@ -82,13 +85,13 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg * (1 + totalCd)
-  )}</b> = <b>${_.round(dmg)}</b> \u{00d7} (1 + <b>${toPercentage(totalCd)}</b>)`
+  )}</b> = <b>${_.round(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(totalCd)}</b>)`
 
   const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg * (1 + totalCd * totalCr)
-  )}</b> = <b>${_.round(dmg)}</b> \u{00d7} (1 + <b>${toPercentage(totalCd)}</b> \u{00d7} <b>${toPercentage(
-    totalCr
-  )}</b>)`
+  )}</b> = <b>${_.round(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(
+    totalCd
+  )}</b> \u{00d7} <b>${toPercentage(totalCr)}</b>)`
 
   return (
     <div className="grid items-center grid-cols-8 gap-2 pr-2">
@@ -101,17 +104,22 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
             <p dangerouslySetInnerHTML={{ __html: formulaString }} />
             {!!scaling.bonus && (
               <p className="text-xs">
-                Exclusive Bonus: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
+                Talent-Exclusive Bonus: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
               </p>
             )}
-            {!!stats[element.toLowerCase()] && (
+            {!!stats[`${element} DMG%`] && (
               <p className="text-xs">
-                {element} Bonus: <span className="text-yellow">{toPercentage(stats[element.toLowerCase()])}</span>
+                {element} Bonus: <span className="text-yellow">{toPercentage(stats[`${element} DMG%`])}</span>
               </p>
             )}
             {!!talentDmg && (
               <p className="text-xs">
                 {scaling.property} Bonus: <span className="text-yellow">{toPercentage(talentDmg)}</span>
+              </p>
+            )}
+            {!!stats.VULNERABILITY && (
+              <p className="text-xs">
+                Vulnerability Bonus: <span className="text-yellow">{toPercentage(stats.VULNERABILITY)}</span>
               </p>
             )}
           </div>
@@ -130,7 +138,12 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
               <p dangerouslySetInnerHTML={{ __html: critString }} />
               {!!scaling.cd && (
                 <p className="text-xs">
-                  Exclusive CRIT DMG: <span className="text-yellow">{toPercentage(scaling.cd)}</span>
+                  Talent-Exclusive CRIT DMG: <span className="text-yellow">{toPercentage(scaling.cd)}</span>
+                </p>
+              )}
+              {!!elementCd && (
+                <p className="text-xs">
+                  {element} CRIT DMG: <span className="text-yellow">{toPercentage(elementCd)}</span>
                 </p>
               )}
               {!!talentCd && (
@@ -157,7 +170,7 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
               <p dangerouslySetInnerHTML={{ __html: avgString }} />
               {!!scaling.cr && (
                 <p className="text-xs">
-                  Exclusive CRIT Rate: <span className="text-yellow">{toPercentage(scaling.cr)}</span>
+                  Talent-Exclusive CRIT Rate: <span className="text-yellow">{toPercentage(scaling.cr)}</span>
                 </p>
               )}
               {!!talentCr && (

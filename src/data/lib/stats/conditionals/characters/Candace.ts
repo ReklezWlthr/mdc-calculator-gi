@@ -221,7 +221,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
         base.BASIC_SCALING.push({
           name: 'C6 Wave DMG',
           value: [
-            { scaling: calcScaling(0.0661, burst, 'elemental', '1'), multiplier: Stats.HP, override: base.getHP() },
+            { scaling: calcScaling(0.0661, burst, 'elemental', '1'), multiplier: Stats.HP, override: own.getHP() },
           ],
           element: Element.HYDRO,
           property: TalentProperty.BURST,
