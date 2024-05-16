@@ -289,8 +289,6 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       }
 
       return base
-      {
-      }
     },
   }
 }

@@ -163,7 +163,9 @@ export const Calculator = observer(({}: {}) => {
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
             talent={main?.talents?.burst}
-            icon={`https://enka.network/ui/Skill_E_${charData?.codeName}_01.png`}
+            icon={`https://enka.network/ui/Skill_E_${charData?.codeName}${
+              charData?.codeName === 'Ayaka' ? '' : '_01'
+            }.png`}
             element={charData.element}
             level={char.talents?.burst}
             upgraded={main?.upgrade?.burst}
@@ -172,7 +174,7 @@ export const Calculator = observer(({}: {}) => {
               <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
             ))}
           </ScalingWrapper>
-          <div className="w-full my-2 border-t-2 border-primary-border" />
+          {/* <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
             talent={main?.talents?.a1}
             icon={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_05.png`}
@@ -193,7 +195,7 @@ export const Calculator = observer(({}: {}) => {
             {_.map(mainComputed?.A4_SCALING, (item) => (
               <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
             ))}
-          </ScalingWrapper>
+          </ScalingWrapper> */}
         </div>
       </div>
       <div className="flex flex-col items-center w-full gap-3">
@@ -218,6 +220,7 @@ export const Calculator = observer(({}: {}) => {
           element={charData.element}
           name={charData.constellation}
           cons={char.cons}
+          stats={computedStats[selected]}
         />
       </div>
     </div>

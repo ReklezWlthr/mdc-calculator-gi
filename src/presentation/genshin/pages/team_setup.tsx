@@ -213,7 +213,7 @@ export const TeamSetup = observer(() => {
               size="w-9 h-9"
             />
             {talent?.upgrade?.skill && (
-              <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
                 +3
               </div>
             )}
@@ -228,11 +228,13 @@ export const TeamSetup = observer(() => {
             <TalentIcon
               talent={talent?.talents?.burst}
               element={charData?.element}
-              icon={`https://enka.network/ui/Skill_E_${charData?.codeName}_01.png`}
+              icon={`https://enka.network/ui/Skill_E_${charData?.codeName}${
+                charData?.codeName === 'Ayaka' ? '' : '_01'
+              }.png`}
               size="w-9 h-9"
             />
             {talent?.upgrade?.burst && (
-              <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
                 +3
               </div>
             )}
@@ -250,7 +252,7 @@ export const TeamSetup = observer(() => {
         <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
         <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
         <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
-          {_.isEmpty(set) ? (
+          {_.every(set, (item) => item < 2) ? (
             <p className="text-xs text-white">No Set Bonus</p>
           ) : (
             _.map(set, (item, key) => <SetToolTip item={item} set={key} key={key} />)

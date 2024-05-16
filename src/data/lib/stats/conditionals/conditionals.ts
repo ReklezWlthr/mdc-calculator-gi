@@ -1,6 +1,8 @@
 import Albedo from './characters/Albedo'
 import Alhaitham from './characters/Alhaitham'
 import Arlecchino from './characters/Arlecchino'
+import Ayaka from './characters/Ayaka'
+import Ayato from './characters/Ayato'
 import Baizhu from './characters/Baizhu'
 import Barbara from './characters/Barbara'
 import Beidou from './characters/Beidou'
@@ -27,7 +29,11 @@ import Gorou from './characters/Gorou'
 import Hutao from './characters/Hutao'
 import Itto from './characters/Itto'
 import Jean from './characters/Jean'
+import Kaeya from './characters/Kaeya'
+import Kaveh from './characters/Kaveh'
 import Kazuha from './characters/Kazuha'
+import Keqing from './characters/Keqing'
+import Kirara from './characters/Kirara'
 import Nahida from './characters/Nahida'
 import Raiden from './characters/Raiden'
 import Yaoyao from './characters/Yaoyao'
@@ -63,6 +69,12 @@ export default [
   { id: '10000046', conditionals: Hutao },
   { id: '10000003', conditionals: Jean },
   { id: '10000047', conditionals: Kazuha },
+  { id: '10000015', conditionals: Kaeya },
+  { id: '10000002', conditionals: Ayaka },
+  { id: '10000066', conditionals: Ayato },
+  { id: '10000081', conditionals: Kaveh },
+  { id: '10000042', conditionals: Keqing },
+  { id: '10000061', conditionals: Kirara },
   { id: '10000073', conditionals: Nahida },
   { id: '10000052', conditionals: Raiden },
   { id: '10000077', conditionals: Yaoyao },

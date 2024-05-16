@@ -1,7 +1,6 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from './constant'
 
-
 export interface IScaling {
   name: string
   scale?: Stats
@@ -28,8 +27,15 @@ export interface IContent {
   debuff?: boolean
 }
 
+export interface ITalentDisplay {
+  title: string
+  content: string
+  upgrade?: string[]
+  value?: { name: string; value: { stat: Stats; scaling: (v: number) => number | string } }[]
+}
+
 export interface ITalent {
-  [key: string]: { title: string; content: string; upgrade?: string[] }
+  [key: string]: ITalentDisplay
 }
 
 export interface IConditional {
@@ -46,10 +52,4 @@ export interface IConditional {
   postCompute: (base: StatsObject, form: Record<string, any>) => StatsObject
 }
 
-export type ConditionalFunction = (
-  c: number,
-  a: number,
-  t: ITalentLevel,
-  stat: StatObjectT,
-  team?: ITeamChar[]
-) => IConditional
+export type ConditionalFunction = (c: number, a: number, t: ITalentLevel, team?: ITeamChar[]) => IConditional

@@ -60,8 +60,8 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Celestial Dome of Sand`,
-      content: `Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal <span class="text-yellow">0.5%</span> increased DMG to opponents for every <span class="text-yellow">1,000</span> points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.
-      <br /><br />Current DMG Bonus: <span class="text-yellow">${toPercentage(a4Dmg)}</span>`,
+      content: `Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal <span class="text-yellow">0.5%</span> increased DMG to opponents for every <span class="text-yellow">1,000</span> points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.`,
+      value: [{ name: 'DMG Bonus', value: { stat: Stats.HP, scaling: (hp) => toPercentage((hp / 1000) * 0.005) } }],
     },
     c1: {
       title: `C1: Returning Heiress of the Scarlet Sands`,
