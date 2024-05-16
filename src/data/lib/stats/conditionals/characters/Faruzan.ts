@@ -199,7 +199,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       const hurricane = base.getAtk() * 0.32
 
       if (form.hurricane_guard) {

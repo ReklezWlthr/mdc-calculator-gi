@@ -245,7 +245,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       atkShare = (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * base.BASE_ATK
 
       const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)

@@ -271,7 +271,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.hu_a1) base[Stats.CRIT_RATE] += 0.12
       if (form.hu_a4) base[Stats.CRIT_RATE] += 0.12
 

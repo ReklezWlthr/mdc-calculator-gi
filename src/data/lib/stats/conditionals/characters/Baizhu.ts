@@ -233,7 +233,7 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (a >= 4) {
         base.BURNING_DMG += a4Trans
         base.BLOOM_DMG += a4Trans

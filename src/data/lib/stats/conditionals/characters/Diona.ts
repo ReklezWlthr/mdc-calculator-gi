@@ -228,7 +228,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.diona_c6) {
         base[Stats.EM] += 200
       } else {

@@ -42,7 +42,7 @@ export interface IConditional {
   content: IContent[]
   teammateContent: IContent[]
   preCompute: (form: Record<string, any>) => StatsObject
-  preComputeShared: (base: StatsObject, form: Record<string, any>) => StatsObject
+  preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => StatsObject
   postCompute: (base: StatsObject, form: Record<string, any>) => StatsObject
 }
 

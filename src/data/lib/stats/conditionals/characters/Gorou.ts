@@ -241,7 +241,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.gorou_skill) {
         if (geoCount >= 1) base[Stats.DEF] += calcScaling(206.16, skill, 'elemental', '1')
         if (geoCount >= 3) base[Stats.GEO_DMG] += 0.15

@@ -60,7 +60,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Celestial Dome of Sand`,
-      content: `Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal 0.5% increased DMG to opponents for every 1,000 points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.
+      content: `Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal <span class="text-yellow">0.5%</span> increased DMG to opponents for every <span class="text-yellow">1,000</span> points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.
       <br /><br />Current DMG Bonus: <span class="text-yellow">${toPercentage(a4Dmg)}</span>`,
     },
     c1: {
@@ -203,11 +203,10 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
         base.infuse(Element.HYDRO)
       }
       if (form.candace_c2) base[Stats.P_HP] += 0.2
-      if (a >= 4) base.BASIC_DMG += a4Dmg
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       const canInfuse = form.weapon !== WeaponType.BOW
       if (form.candace_burst) {
         if (canInfuse) {
@@ -215,6 +214,8 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
           base.infuse(Element.HYDRO)
         }
       }
+      a4Dmg = (own.getHP() / 1000) * 0.005
+      console.log(own.BASE_HP)
       if (a >= 4 && base.INFUSION) base.BASIC_DMG += a4Dmg
       if (form.candace_burst && c >= 6)
         base.BASIC_SCALING.push({
@@ -230,6 +231,8 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       a4Dmg = (base.getHP() / 1000) * 0.005
+
+      if (a >= 4) base.BASIC_DMG += a4Dmg
 
       return base
     },

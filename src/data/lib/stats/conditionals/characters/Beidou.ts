@@ -270,7 +270,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
       if (form.c6_electro_res) base.ELECTRO_RES_PEN += 0.15
 

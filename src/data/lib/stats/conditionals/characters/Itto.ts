@@ -208,7 +208,7 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.itto_c4) {
         base[Stats.DEF] += 0.2
         base[Stats.P_ATK] += 0.2

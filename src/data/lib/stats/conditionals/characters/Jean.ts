@@ -230,7 +230,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.jean_c2) base.ATK_SPD += 0.15
       if (form.jean_c4) base.ANEMO_RES_PEN += 0.4
       if (form.jean_c6) base.DMG_REDUCTION += 0.35

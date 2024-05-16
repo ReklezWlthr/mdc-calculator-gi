@@ -213,13 +213,13 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.CHARGE_SCALING = [
         {
-          name: 'Charged Attack DMG',
+          name: 'Charged Attack DMG [1]',
           value: [{ scaling: calcScaling(0.43, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
         {
-          name: 'Charged Attack DMG',
+          name: 'Charged Attack DMG [2]',
           value: [{ scaling: calcScaling(0.7465, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
@@ -275,7 +275,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.kazu_c2_ally) base[Stats.EM] += 200
 
       return base

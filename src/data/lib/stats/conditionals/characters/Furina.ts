@@ -276,7 +276,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       base[Stats.ALL_DMG] += (0.0005 + burst * 0.0002) * form.fanfare
       base[Stats.I_HEALING] += burst * 0.0001 * form.fanfare
 

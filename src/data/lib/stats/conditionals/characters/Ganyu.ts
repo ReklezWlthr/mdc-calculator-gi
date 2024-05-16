@@ -227,7 +227,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.ganyu_c1) base.CRYO_RES_PEN += 0.15
       if (form.ganyu_c4) base.VULNERABILITY += 0.5 * form.ganyu_a4
 

@@ -184,7 +184,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
 
       return base

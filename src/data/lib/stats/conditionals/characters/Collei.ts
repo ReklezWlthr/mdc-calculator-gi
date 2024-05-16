@@ -192,7 +192,7 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.collei_c4) base[Stats.EM] += 60
 
       return base

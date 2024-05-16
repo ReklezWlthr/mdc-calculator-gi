@@ -223,7 +223,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.chongyun_infusion && !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon))
         base.infuse(Element.CRYO)
       if (form.chongyun_a4) base.CRYO_RES_PEN += 0.1

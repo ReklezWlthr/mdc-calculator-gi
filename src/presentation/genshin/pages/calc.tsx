@@ -33,7 +33,7 @@ export const Calculator = observer(({}: {}) => {
 
   const conditionals = useMemo(
     () =>
-      _.map(teamStore.characters, (item, index) =>
+      _.map(teamStore.characters, (item) =>
         _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
           item.cons,
           item.ascension,
@@ -41,7 +41,7 @@ export const Calculator = observer(({}: {}) => {
           teamStore.characters
         )
       ),
-    [computedStats, teamStore.characters, selected]
+    [teamStore.characters]
   )
   const main = conditionals[selected]
 
@@ -59,18 +59,37 @@ export const Calculator = observer(({}: {}) => {
   )
 
   useEffect(() => {
-    let preCompute = main?.preCompute(baseStats[selected], form[selected])
-    _.forEach(conditionals, (item, index) => {
-      if (index !== selected) {
-        if (item) preCompute = item.preComputeShared(preCompute, { ...form[index], weapon: charData.weapon })
-      }
+    const preCompute = _.map(conditionals, (base, index) => base.preCompute(baseStats[index], form[index])) // Compute all self conditionals, return stats of each char
+    const preComputeShared = _.map(preCompute, (base, index) => {
+      // Compute all shared conditionals, call function for every char except the owner
+      let x = base
+      _.forEach(conditionals, (item, i) => {
+        // Loop characters, exclude index of the current parent iteration
+        if (i !== index)
+          x = item.preComputeShared(preCompute[i], x, {
+            ...form[i],
+            weapon: findCharacter(teamStore.characters[index]?.cId).weapon,
+          })
+      })
+      return x
     })
-    preCompute = main?.postCompute(preCompute, form[selected])
-    setComputedStats((prev) => {
-      prev[selected] = preCompute
-      return _.cloneDeep(prev)
-    })
-  }, [selected, form])
+    const postCompute = _.map(conditionals, (base, index) => base.postCompute(preComputeShared[index], form[index]))
+    setComputedStats(postCompute)
+  }, [baseStats, form])
+
+  // useEffect(() => {
+  //   let preCompute = main?.preCompute(baseStats[selected], form[selected])
+  //   _.forEach(conditionals, (item, index) => {
+  //     if (index !== selected) {
+  //       if (item) preCompute = item.preComputeShared(preCompute, { ...form[index], weapon: charData.weapon })
+  //     }
+  //   })
+  //   preCompute = main?.postCompute(preCompute, form[selected])
+  //   setComputedStats((prev) => {
+  //     prev[selected] = preCompute
+  //     return _.cloneDeep(prev)
+  //   })
+  // }, [selected, form])
 
   const mapped = _.flatMap(
     _.map(conditionals, (item, index) => (index === selected ? item?.content : item?.teammateContent)),

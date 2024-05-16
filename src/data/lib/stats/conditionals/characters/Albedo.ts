@@ -224,7 +224,7 @@ const Albedo = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.dustOfPurification) base[Stats.ALL_DMG] += 0.17
       if (form.homuncularNature) base[Stats.EM] += 250
       if (form.descentOfDivinity) base.PLUNGE_DMG += 0.3

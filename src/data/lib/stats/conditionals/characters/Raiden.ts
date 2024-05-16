@@ -330,7 +330,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.raidenSkill) base.BURST_DMG += calcScaling(0.0022, skill, 'elemental', '1') * base.MAX_ENERGY //Target Energy
       if (form.raidenC4) base[Stats.P_ATK] += 0.3
       return base

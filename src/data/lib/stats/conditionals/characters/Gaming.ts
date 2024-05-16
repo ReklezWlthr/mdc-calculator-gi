@@ -234,7 +234,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {

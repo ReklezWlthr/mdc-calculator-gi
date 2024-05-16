@@ -256,7 +256,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
 
       return base
     },
-    preComputeShared: (base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.chev_a4) base[Stats.ATK] += a4Atk //Only apply to Pyro & Electro
 
       if (form.chev_c6) {
