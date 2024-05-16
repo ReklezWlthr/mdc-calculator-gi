@@ -57,13 +57,23 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
     a4: {
       title: `A4: Pupillary Variance`,
       content: `Every <span class="text-yellow">1,000</span> Max HP Kirara possesses will increase the DMG dealt by Meow-teor Kick by <span class="text-yellow">0.4%</span>, and the DMG dealt by Secret Art: Surprise Dispatch by <span class="text-yellow">0.3%</span>.`,
+      value: [
+        {
+          name: 'Meow-teor Kick DMG Bonus',
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage((hp / 1000) * 0.004) },
+        },
+        {
+          name: 'Secret Art: Surprise Dispatch DMG Bonus',
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage((hp / 1000) * 0.003) },
+        },
+      ],
     },
     c1: {
       title: `C1: Material Circulation`,
       content: `Every <span class="text-yellow">8,000</span> Max HP Kirara possesses will cause her to create <span class="text-yellow">1</span> extra Cat Grass Cardamom when she uses Secret Art: Surprise Dispatch. A maximum of <span class="text-yellow">4</span> extra can be created this way.`,
       value: [
         {
-          name: 'Extra Cat Grass Cardamom',
+          name: 'Extra Cat Grass Cardamoms',
           value: { stat: Stats.HP, scaling: (hp) => _.min([_.floor(hp / 8000), 4]) },
         },
       ],
@@ -230,7 +240,7 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
 
       if (c >= 2)
         base.SKILL_SCALING.push({
-          name: 'A1 Neko-Parcel Shield Stack',
+          name: 'Critical Transport Shield',
           value: [{ scaling: calcScaling(0.16, skill, 'elemental', '1') * 0.4, multiplier: Stats.HP }],
           flat: calcScaling(1541.0796, skill, 'special', 'flat') * 0.4,
           element: TalentProperty.SHIELD,

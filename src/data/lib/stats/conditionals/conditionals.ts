@@ -34,8 +34,10 @@ import Kaveh from './characters/Kaveh'
 import Kazuha from './characters/Kazuha'
 import Keqing from './characters/Keqing'
 import Kirara from './characters/Kirara'
+import Klee from './characters/Klee'
 import Nahida from './characters/Nahida'
 import Raiden from './characters/Raiden'
+import Sara from './characters/Sara'
 import Yaoyao from './characters/Yaoyao'
 
 export default [
@@ -75,6 +77,8 @@ export default [
   { id: '10000081', conditionals: Kaveh },
   { id: '10000042', conditionals: Keqing },
   { id: '10000061', conditionals: Kirara },
+  { id: '10000029', conditionals: Klee },
+  { id: '10000056', conditionals: Sara },
   { id: '10000073', conditionals: Nahida },
   { id: '10000052', conditionals: Raiden },
   { id: '10000077', conditionals: Yaoyao },

@@ -206,6 +206,12 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
         _.forEach(base.BASIC_SCALING, (item) =>
           item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
         )
+        _.forEach(base.CHARGE_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
+        )
+        _.forEach(base.PLUNGE_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
+        )
         _.forEach(base.SKILL_SCALING, (item) =>
           item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
         )
@@ -216,6 +222,12 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.faruzan_burst && c >= 6) {
         _.forEach(base.BASIC_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, cd: item.cd + 0.4 } : item
+        )
+        _.forEach(base.CHARGE_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, cd: item.cd + 0.4 } : item
+        )
+        _.forEach(base.PLUNGE_SCALING, (item) =>
           item.element === Element.ANEMO ? { ...item, cd: item.cd + 0.4 } : item
         )
         _.forEach(base.SKILL_SCALING, (item) =>
@@ -233,6 +245,12 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.hurricane_guard) {
         _.forEach(base.BASIC_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
+        )
+        _.forEach(base.CHARGE_SCALING, (item) =>
+          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
+        )
+        _.forEach(base.PLUNGE_SCALING, (item) =>
           item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
         )
         _.forEach(base.SKILL_SCALING, (item) =>

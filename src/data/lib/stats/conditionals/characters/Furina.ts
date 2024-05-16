@@ -72,9 +72,17 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       title: 'A4: Unheard Confession',
       content: `Every <span class="text-yellow">1,000</span> points of Furina's Max HP can buff the different Arkhe-aligned Salon Solitaire in the following ways:
       <br />Will increase Salon Member DMG dealt by <span class="text-yellow">0.7%</span>, up to a maximum of <span class="text-yellow">28%</span>.
-      <br />Will decrease active character healing interval of the Singer of Many Waters by <span class="text-yellow">0.4%</span>, up to a maximum of <span class="text-yellow">16%</span>.
-      <br /><br />Current Bonus DMG: <span class="text-yellow">${toPercentage(salonA4Bonus)}</span>
-      <br />Current decreased interval:<span class="text-yellow"> ${toPercentage(salonA4Healing)}</span>`,
+      <br />Will decrease active character healing interval of the Singer of Many Waters by <span class="text-yellow">0.4%</span>, up to a maximum of <span class="text-yellow">16%</span>.`,
+      value: [
+        {
+          name: 'Current Bonus DMG',
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([0.007 * (hp / 1000), 0.28])) },
+        },
+        {
+          name: 'Current decreased interval',
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([0.004 * (hp / 1000), 0.16])) },
+        },
+      ],
     },
     c1: {
       title: 'C1: "Love Is a Rebellious Bird That None Can Tame"',

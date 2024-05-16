@@ -55,8 +55,8 @@ export const ConsCircle = observer(
     }
 
     return (
-      <div>
-        <div className="flex justify-around">
+      <div className='space-y-5'>
+        <div className="flex items-center justify-around">
           <Tooltip title={talents?.a1?.title} body={<TooltipBody talent={talents?.a1} />} style="w-[40vw]">
             <img
               src={`https://enka.network/ui/UI_Talent_S_${codeName}_05.png`}
@@ -66,6 +66,7 @@ export const ConsCircle = observer(
               )}
             />
           </Tooltip>
+          <p className='text-sm font-bold'>Ascension</p>
           <Tooltip title={talents?.a4?.title} body={<TooltipBody talent={talents?.a4} />} style="w-[40vw]">
             <img
               src={`https://enka.network/ui/UI_Talent_S_${codeName}_06.png`}
