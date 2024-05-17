@@ -10,6 +10,7 @@ import Bennett from './characters/Bennett'
 import Candace from './characters/Candace'
 import Charlotte from './characters/Charlotte'
 import Chevreuse from './characters/Chevreuse'
+import Childe from './characters/Childe'
 import Chiori from './characters/Chiori'
 import Chongyun from './characters/Chongyun'
 import Collei from './characters/Collei'
@@ -26,6 +27,7 @@ import Furina from './characters/Furina'
 import Gaming from './characters/Gaming'
 import Ganyu from './characters/Ganyu'
 import Gorou from './characters/Gorou'
+import Heizou from './characters/Heizou'
 import Hutao from './characters/Hutao'
 import Itto from './characters/Itto'
 import Jean from './characters/Jean'
@@ -35,6 +37,7 @@ import Kazuha from './characters/Kazuha'
 import Keqing from './characters/Keqing'
 import Kirara from './characters/Kirara'
 import Klee from './characters/Klee'
+import Kokomi from './characters/Kokomi'
 import Kuki from './characters/Kuki'
 import Layla from './characters/Layla'
 import Lisa from './characters/Lisa'
@@ -51,7 +54,17 @@ import Noelle from './characters/Noelle'
 import Qiqi from './characters/Qiqi'
 import Raiden from './characters/Raiden'
 import Razor from './characters/Razor'
+import Rosaria from './characters/Rosaria'
 import Sara from './characters/Sara'
+import Sayu from './characters/Sayu'
+import Shenhe from './characters/Shenhe'
+import Sucrose from './characters/Sucrose'
+import Thoma from './characters/Thoma'
+import Tighnari from './characters/Tighnari'
+import Venti from './characters/Venti'
+import Wanderer from './characters/Wanderer'
+import Wriothesley from './characters/Wriothesley'
+import Xiangling from './characters/Xiangling'
 import Yaoyao from './characters/Yaoyao'
 
 export default [
@@ -109,6 +122,19 @@ export default [
   { id: '10000035', conditionals: Qiqi },
   { id: '10000052', conditionals: Raiden },
   { id: '10000020', conditionals: Razor },
+  { id: '10000045', conditionals: Rosaria },
+  { id: '10000053', conditionals: Sayu },
+  { id: '10000054', conditionals: Kokomi },
+  { id: '10000063', conditionals: Shenhe },
+  { id: '10000059', conditionals: Heizou },
+  { id: '10000043', conditionals: Sucrose },
+  { id: '10000033', conditionals: Childe },
+  { id: '10000050', conditionals: Thoma },
+  { id: '10000069', conditionals: Tighnari },
+  { id: '10000022', conditionals: Venti },
+  { id: '10000075', conditionals: Wanderer },
+  { id: '10000086', conditionals: Wriothesley },
+  { id: '10000023', conditionals: Xiangling },
   { id: '10000077', conditionals: Yaoyao },
 ]
 
@@ -125,5 +151,9 @@ export const ReverseConsList = [
   'Sara',
   'Lisa',
   'Ningguang',
-  'Razor'
+  'Razor',
+  'Kokomi',
+  'Venti',
+  'Wanderer',
+  'Xiangling'
 ]

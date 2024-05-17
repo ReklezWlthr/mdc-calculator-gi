@@ -65,7 +65,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
 
   // Kokomi
   if (character?.id === '10000054') {
-    conditionals[Stats.CRIT_RATE] -= 100
+    conditionals[Stats.CRIT_RATE] -= 1
     conditionals[Stats.HEAL] += 0.25
   }
 

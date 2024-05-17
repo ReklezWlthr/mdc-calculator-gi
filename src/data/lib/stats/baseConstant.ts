@@ -97,6 +97,9 @@ export const baseStatsObject = {
   ANEMO_CD: 0,
   GEO_CD: 0,
   DENDRO_CD: 0,
+  
+  ANEMO_F_DMG: 0,
+  CRYO_F_DMG: 0,
 
   // Hidden Stats
   ATK_SPD: 1,

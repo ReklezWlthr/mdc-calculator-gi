@@ -42,6 +42,7 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
   const talentCr = stats[`${TalentStatMap[scaling.property]}_CR`] || 0
   const talentCd = stats[`${TalentStatMap[scaling.property]}_CD`] || 0
   const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
+  const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0 // Faruzan & Shenhe
 
   const statForScale = {
     [Stats.ATK]: stats.getAtk(),
@@ -58,10 +59,12 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       ? stats[Stats.HEAL]
       : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + talentDmg + stats.VULNERABILITY) // Vulnerability effectively stacks with DMG Bonuses
   const dmg =
-    _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) *
+    (_.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) +
+      (scaling.flat || 0) +
+      elementFlat) *
     (1 + bonusDMG) *
     (scaling.multiplier || 1)
-  const totalCr = _.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1])
+  const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + talentCd + elementCd
 
   const scalingArray = _.map(
@@ -71,16 +74,19 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
         StatIcons[item.multiplier]
       }" />${_.round(
         item.override || statForScale[item.multiplier]
-      ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling)}</b>)</span>`
+      ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
-  const shouldWrap = !!scaling.flat || scaling.value.length > 1
-  const baseWithFlat = scaling.flat ? _.join([baseScaling, _.round(scaling.flat).toLocaleString()], ' + ') : baseScaling
+  const shouldWrap = !!scaling.flat || !!elementFlat || scaling.value.length > 1
+  const baseWithFlat =
+    scaling.flat || elementFlat
+      ? _.join([baseScaling, _.round((scaling.flat || 0) + (elementFlat || 0)).toLocaleString()], ' + ')
+      : baseScaling
 
   const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(dmg)}</b> = ${
     shouldWrap ? `(${baseWithFlat})` : baseWithFlat
   }${bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${elementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''}${
-    scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier)}</b>` : ''
+    scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''
   }`
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(

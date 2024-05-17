@@ -92,14 +92,6 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
     },
     {
       type: 'toggle',
-      id: 'chongyun_a1',
-      text: `Steady Breathing`,
-      ...talents.a1,
-      show: a >= 1,
-      default: true,
-    },
-    {
-      type: 'toggle',
       id: 'chongyun_a4',
       text: `A4 Cryo RES Shred`,
       ...talents.a4,
@@ -119,7 +111,6 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
 
   const teammateContent: IContent[] = [
     findContentById(content, 'chongyun_infusion'),
-    findContentById(content, 'chongyun_a1'),
     findContentById(content, 'chongyun_a4'),
   ]
 
@@ -132,7 +123,10 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 40
 
-      if (form.chongyun_infusion) base.infuse(Element.CRYO)
+      if (form.chongyun_infusion) {
+        base.infuse(Element.CRYO)
+        if (a >= 1) base.ATK_SPD += 0.08
+      }
 
       base.BASIC_SCALING = [
         {
@@ -224,8 +218,10 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.chongyun_infusion && !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon))
+      if (form.chongyun_infusion && !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)) {
         base.infuse(Element.CRYO)
+        if (a >= 1) base.ATK_SPD += 0.08
+      }
       if (form.chongyun_a4) base.CRYO_RES_PEN += 0.1
 
       if (c >= 2) {

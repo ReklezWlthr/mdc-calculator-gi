@@ -1,8 +1,8 @@
 import { ITeamChar, PropMap } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 
-export const toPercentage = (value: number) => {
-  return (value * 100).toFixed(1) + '%'
+export const toPercentage = (value: number, precision: number = 1) => {
+  return _.floor(value * 100, precision) + '%'
 }
 
 export const toLocalStructure = (rawData: Record<string, any>) => {

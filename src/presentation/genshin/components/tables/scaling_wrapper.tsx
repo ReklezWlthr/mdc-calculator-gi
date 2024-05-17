@@ -11,6 +11,7 @@ interface ScalingWrapperProps {
   element: Element
   level?: number
   upgraded: boolean
+  childeBuff?: boolean
 }
 
 export const TalentIcon = observer(
@@ -57,7 +58,7 @@ export const TalentIcon = observer(
   }
 )
 
-export const ScalingWrapper = observer(({ children, icon, talent, element, level, upgraded }: ScalingWrapperProps) => {
+export const ScalingWrapper = observer(({ children, icon, talent, element, level, upgraded, childeBuff }: ScalingWrapperProps) => {
   return (
     <div className="flex w-full">
       <div className="flex flex-col items-center justify-center w-1/5 px-2 py-5">
@@ -66,6 +67,7 @@ export const ScalingWrapper = observer(({ children, icon, talent, element, level
         {level && (
           <p className="text-xs text-gray">
             Level <span className={upgraded ? 'text-blue font-bold' : 'text-gray'}>{level + (upgraded ? 3 : 0)}</span>
+            {childeBuff && <span className='text-desc'> (+1)</span>}
           </p>
         )}
       </div>

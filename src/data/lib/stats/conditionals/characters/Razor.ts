@@ -16,11 +16,6 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const teamData = _.map(team, (item) => findCharacter(item.cId)?.element)
-  const elementCount = _.filter(teamData, (item) =>
-    _.includes([Element.PYRO, Element.HYDRO, Element.ELECTRO, Element.CRYO], item)
-  ).length
-
   const talents: ITalent = {
     normal: {
       title: `Steel Fang`,

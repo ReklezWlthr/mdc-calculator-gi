@@ -37,7 +37,10 @@ export const Calculator = observer(({}: {}) => {
         _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
           item.cons,
           item.ascension,
-          item.talents,
+          {
+            ...item.talents,
+            normal: item.talents.normal + (_.includes(_.map(teamStore.characters, 'cId'), '10000033') ? 1 : 0),
+          },
           teamStore.characters
         )
       ),
@@ -48,9 +51,9 @@ export const Calculator = observer(({}: {}) => {
   const [form, setForm] = useState<Record<string, any>[]>(
     _.map(conditionals, (item) =>
       _.reduce(
-        item?.content,
+        _.concat(item?.content, item?.teammateContent),
         (acc, curr) => {
-          if (curr.show) acc[curr.id] = curr.default
+          if (curr?.show) acc[curr.id] = curr.default
           return acc
         },
         {}
@@ -73,6 +76,7 @@ export const Calculator = observer(({}: {}) => {
             item?.preComputeShared(preCompute[i], x, {
               ...form[i],
               weapon: findCharacter(teamStore.characters[index]?.cId)?.weapon,
+              element: findCharacter(teamStore.characters[index]?.cId)?.element,
             }) || x
       })
       return x
@@ -136,6 +140,7 @@ export const Calculator = observer(({}: {}) => {
             element={charData.element}
             level={char.talents?.normal}
             upgraded={main?.upgrade?.normal}
+            childeBuff={_.includes(_.map(teamStore.characters, 'cId'), '10000033')}
           >
             <div className="space-y-0.5">
               {_.map(mainComputed?.BASIC_SCALING, (item) => (

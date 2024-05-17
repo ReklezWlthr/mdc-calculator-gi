@@ -23,7 +23,7 @@ export const Tooltip = observer(
     const [ref, setRef] = useState<HTMLElement>(null)
 
     const EDGE_MARGIN = 4
-    const MAIN_MARGIN = 12
+    const MAIN_MARGIN = 16
 
     useEffect(() => {
       if (ref && hovered) {
@@ -80,7 +80,7 @@ export const Tooltip = observer(
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
           className={classNames(
-            'z-50 absolute px-3 py-2 rounded-lg bg-primary-dark shadow-md border border-primary space-y-1',
+            'z-[2000] absolute px-3 py-2 rounded-lg bg-primary-dark shadow-md border border-primary space-y-1',
             hovered ? 'visible' : 'invisible',
             style
           )}

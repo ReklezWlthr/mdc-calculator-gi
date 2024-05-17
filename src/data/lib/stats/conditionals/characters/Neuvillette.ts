@@ -163,13 +163,13 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
-          value: [{ scaling: calcScaling(1.368, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.368, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.CA,
         },
         {
           name: 'Charged Attack: Equitable Judgment',
-          value: [{ scaling: calcScaling(0.0732, normal, 'elemental', '1_alt'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.0732, normal, 'physical', '1'), multiplier: Stats.HP }],
           element: Element.HYDRO,
           property: TalentProperty.CA,
           multiplier: a1Bonus,

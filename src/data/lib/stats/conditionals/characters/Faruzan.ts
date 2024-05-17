@@ -202,23 +202,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       const hurricane = base.getAtk() * 0.32
 
-      if (form.hurricane_guard) {
-        _.forEach(base.BASIC_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.CHARGE_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.PLUNGE_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.SKILL_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.BURST_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-      }
+      if (form.hurricane_guard) base.ANEMO_F_DMG += hurricane
 
       if (form.faruzan_burst && c >= 6) base.ANEMO_CD += 0.4
       return base
@@ -226,23 +210,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       const hurricane = base.getAtk() * 0.32
 
-      if (form.hurricane_guard) {
-        _.forEach(base.BASIC_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.CHARGE_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.PLUNGE_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.SKILL_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-        _.forEach(base.BURST_SCALING, (item) =>
-          item.element === Element.ANEMO ? { ...item, flat: item.flat + hurricane } : item
-        )
-      }
+      if (form.hurricane_guard) if (form.hurricane_guard) base.ANEMO_F_DMG += hurricane
       if (form.faruzan_burst && c >= 6) base.ANEMO_CD += 0.4
 
       return base
