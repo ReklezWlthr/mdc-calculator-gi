@@ -1,5 +1,5 @@
 import { IScaling } from '@src/domain/genshin/conditional'
-import { Element, StatIcons, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, StatIcons, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -39,10 +39,12 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       : scaling.element
 
   const talentDmg = stats[`${TalentStatMap[scaling.property]}_DMG`] || 0
+  const talentFlat = stats[`${TalentStatMap[scaling.property]}_F_DMG`] || 0
   const talentCr = stats[`${TalentStatMap[scaling.property]}_CR`] || 0
   const talentCd = stats[`${TalentStatMap[scaling.property]}_CD`] || 0
   const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
   const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0 // Faruzan & Shenhe
+  const elementNa = element !== Element.PHYSICAL && scaling.property === TalentProperty.NA ? stats.ELEMENTAL_NA_DMG : 0
 
   const statForScale = {
     [Stats.ATK]: stats.getAtk(),
@@ -57,15 +59,17 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       ? 0
       : TalentProperty.HEAL === scaling.property
       ? stats[Stats.HEAL]
-      : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + talentDmg + stats.VULNERABILITY) // Vulnerability effectively stacks with DMG Bonuses
+      : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + elementNa + talentDmg + stats.VULNERABILITY) // Vulnerability effectively stacks with DMG Bonuses
   const dmg =
     (_.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) +
       (scaling.flat || 0) +
-      elementFlat) *
+      elementFlat +
+      talentFlat) *
     (1 + bonusDMG) *
     (scaling.multiplier || 1)
   const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + talentCd + elementCd
+  const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
   const scalingArray = _.map(
     scaling.value,
@@ -77,25 +81,22 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
-  const shouldWrap = !!scaling.flat || !!elementFlat || scaling.value.length > 1
-  const baseWithFlat =
-    scaling.flat || elementFlat
-      ? _.join([baseScaling, _.round((scaling.flat || 0) + (elementFlat || 0)).toLocaleString()], ' + ')
-      : baseScaling
+  const shouldWrap = !!totalFlat || scaling.value.length > 1
+  const baseWithFlat = totalFlat ? _.join([baseScaling, _.round(totalFlat).toLocaleString()], ' + ') : baseScaling
 
-  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(dmg)}</b> = ${
-    shouldWrap ? `(${baseWithFlat})` : baseWithFlat
-  }${bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${elementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''}${
-    scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''
-  }`
+  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
+    dmg
+  ).toLocaleString()}</b> = ${shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
+    bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${elementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''
+  }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}`
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg * (1 + totalCd)
-  )}</b> = <b>${_.round(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(totalCd)}</b>)`
+  ).toLocaleString()}</b> = <b>${_.round(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(totalCd)}</b>)`
 
   const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg * (1 + totalCd * totalCr)
-  )}</b> = <b>${_.round(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(
+  ).toLocaleString()}</b> = <b>${_.round(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(
     totalCd
   )}</b> \u{00d7} <b>${toPercentage(totalCr)}</b>)`
 
@@ -118,9 +119,9 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
                 {element} Bonus: <span className="text-yellow">{toPercentage(stats[`${element} DMG%`])}</span>
               </p>
             )}
-            {!!talentDmg && (
+            {!!(talentDmg || elementNa) && (
               <p className="text-xs">
-                {scaling.property} Bonus: <span className="text-yellow">{toPercentage(talentDmg)}</span>
+                {scaling.property} Bonus: <span className="text-yellow">{toPercentage(talentDmg + elementNa)}</span>
               </p>
             )}
             {!!stats.VULNERABILITY && (

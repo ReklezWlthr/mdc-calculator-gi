@@ -1403,7 +1403,7 @@ export const Characters = [
       ascAtk: 60.53229,
       ascHp: 3066.6296,
       ascDef: 227.2725,
-      ascStat: Stats.HYDRO_DMG,
+      ascStat: Stats.P_ATK,
     },
     rarity: 4,
     region: 'Liyue',

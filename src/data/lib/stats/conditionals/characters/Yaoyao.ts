@@ -17,8 +17,6 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let c4Em = 0
-
   const talents: ITalent = {
     normal: {
       title: `Toss 'N' Turn Spear`,
@@ -68,6 +66,11 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: In Others' Shoes`,
       content: `When White Jade Radishes explode, active characters within their AoE will regain HP every <span class="text-yellow">1</span>s based on <span class="text-yellow">0.8%</span> of Yaoyao's Max HP. This effect lasts <span class="text-yellow">5</span>s.`,
     },
+    util: {
+      title: `Tailing on Tiptoes`,
+      content: `When Yaoyao is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.
+      <br />Check the "Other" sub-category of the "Living Beings / Wildlife" section in the Archive for creatures this skill works on.`,
+    },
     c1: {
       title: `C1: Adeptus' Tutelage`,
       content: `When White Jade Radishes explode, active characters within their AoE will gain <span class="text-yellow">15%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b> for 8s and have <span class="text-yellow">15</span> Stamina restored to them. This form of Stamina Restoration can only be triggered every <span class="text-yellow">5</span>s.`,
@@ -83,8 +86,13 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
     },
     c4: {
       title: `C4: Winsome`,
-      content: `After using Raphanus Sky Cluster or Moonjade Descent, Yaoyao's Elemental Mastery will be increased based on <span class="text-yellow">0.3%</span> of her Max HP for <span class="text-yellow">8</span>s. The maximum Elemental Mastery she can gain this way is <span class="text-yellow">120</span>.
-      <br /><br />Current Elemental Mastery Buff: <span class="text-yellow">${_.floor(c4Em)}</span>`,
+      content: `After using Raphanus Sky Cluster or Moonjade Descent, Yaoyao's Elemental Mastery will be increased based on <span class="text-yellow">0.3%</span> of her Max HP for <span class="text-yellow">8</span>s. The maximum Elemental Mastery she can gain this way is <span class="text-yellow">120</span>.`,
+      value: [
+        {
+          name: 'Current Elemental Mastery Buff',
+          value: { stat: Stats.HP, scaling: (hp) => _.round(_.min([0.003 * hp, 120])).toLocaleString() },
+        },
+      ],
     },
     c5: {
       title: `C5: Compassionate`,
@@ -217,7 +225,6 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
         })
 
       if (form.yaoyaoC1) base[Stats.DENDRO_DMG] += 0.15
-      if (form.yaoyaoC4) base[Stats.EM] += c4Em
       if (c >= 6)
         base.SKILL_SCALING.push(
           {
@@ -240,7 +247,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      c4Em = _.min([0.003 * base.getHP(), 120])
+      if (form.yaoyaoC4) base[Stats.EM] += _.min([0.003 * base.getHP(), 120])
 
       return base
     },

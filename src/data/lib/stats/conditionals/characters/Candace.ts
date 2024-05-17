@@ -17,8 +17,6 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let a4Dmg = 0
-
   const talents: ITalent = {
     normal: {
       title: `Gleaming Spear - Guardian Stance`,
@@ -199,7 +197,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.candace_burst) {
-        base.BASIC_DMG += 0.2
+        base.ELEMENTAL_NA_DMG += 0.2
         base.infuse(Element.HYDRO)
       }
       if (form.candace_c2) base[Stats.P_HP] += 0.2
@@ -207,16 +205,13 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      const canInfuse = form.weapon !== WeaponType.BOW
+      const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)
       if (form.candace_burst) {
-        if (canInfuse) {
-          base.BASIC_DMG += 0.2
-          base.infuse(Element.HYDRO)
-        }
+        base.ELEMENTAL_NA_DMG += 0.2
+        if (canInfuse) base.infuse(Element.HYDRO)
       }
-      a4Dmg = (own.getHP() / 1000) * 0.005
-      console.log(own.BASE_HP)
-      if (a >= 4 && base.INFUSION) base.BASIC_DMG += a4Dmg
+
+      if (a >= 4) base.ELEMENTAL_NA_DMG += (own.getHP() / 1000) * 0.005
       if (form.candace_burst && c >= 6)
         base.BASIC_SCALING.push({
           name: 'C6 Wave DMG',
@@ -230,9 +225,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4Dmg = (base.getHP() / 1000) * 0.005
-
-      if (a >= 4) base.BASIC_DMG += a4Dmg
+      if (a >= 4) base.ELEMENTAL_NA_DMG += (base.getHP() / 1000) * 0.005
 
       return base
     },

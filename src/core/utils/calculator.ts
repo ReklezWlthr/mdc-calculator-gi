@@ -63,10 +63,15 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals[character?.stat?.ascStat] +=
     _.max([0, char?.ascension - 2]) * AscensionGrowth[character?.stat?.ascStat]?.[character?.rarity - 4]
 
-  // Kokomi
+  // Kokomi Passive
   if (character?.id === '10000054') {
     conditionals[Stats.CRIT_RATE] -= 1
     conditionals[Stats.HEAL] += 0.25
+  }
+
+  // Xingqiu A4
+  if (character?.id === '10000025' && char?.ascension >= 4) {
+    conditionals[Stats.HYDRO_DMG] += 0.2
   }
 
   return conditionals

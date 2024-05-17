@@ -65,7 +65,15 @@ import Venti from './characters/Venti'
 import Wanderer from './characters/Wanderer'
 import Wriothesley from './characters/Wriothesley'
 import Xiangling from './characters/Xiangling'
+import Xianyun from './characters/Xianyun'
+import Xiao from './characters/Xiao'
+import Xingqiu from './characters/Xingqiu'
+import Xinyan from './characters/Xinyan'
+import Yae from './characters/Yae'
+import Yanfei from './characters/Yanfei'
 import Yaoyao from './characters/Yaoyao'
+import Yelan from './characters/Yelan'
+import Yoimiya from './characters/Yoimiya'
 
 export default [
   { id: '10000038', conditionals: Albedo },
@@ -135,7 +143,15 @@ export default [
   { id: '10000075', conditionals: Wanderer },
   { id: '10000086', conditionals: Wriothesley },
   { id: '10000023', conditionals: Xiangling },
+  { id: '10000093', conditionals: Xianyun },
+  { id: '10000026', conditionals: Xiao },
+  { id: '10000025', conditionals: Xingqiu },
+  { id: '10000044', conditionals: Xinyan },
+  { id: '10000058', conditionals: Yae },
+  { id: '10000048', conditionals: Yanfei },
   { id: '10000077', conditionals: Yaoyao },
+  { id: '10000060', conditionals: Yelan },
+  { id: '10000049', conditionals: Yoimiya },
 ]
 
 export const ReverseConsList = [

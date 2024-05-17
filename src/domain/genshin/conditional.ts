@@ -12,6 +12,7 @@ export interface IScaling {
   bonus?: number //Bonus dmg for each component
   cr?: number //Bonus crit rate for each component
   cd?: number //Bonus crit dmg for each component
+  defPen?: number //Only used by Yae
 }
 
 export interface IContent {

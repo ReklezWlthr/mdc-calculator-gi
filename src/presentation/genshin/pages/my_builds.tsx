@@ -42,7 +42,7 @@ export const MyBuilds = observer(() => {
           </>
         ) : (
           <div className="w-full h-[620px] rounded-lg bg-primary-darker flex items-center justify-center text-gray text-2xl font-bold">
-            No Build Selected
+            Selected a Build to Preview
           </div>
         )}
       </div>

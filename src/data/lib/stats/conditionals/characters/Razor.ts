@@ -249,7 +249,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       if (form.razor_c1) base[Stats.ALL_DMG] += 0.1
       if (form.razor_c2) base[Stats.CRIT_RATE] += 0.1
 
-      if (form.razor_c4) base.DEF_PEN += 0.15
+      if (form.razor_c4) base.DEF_REDUCTION += 0.15
 
       if (c >= 6)
         base.BASIC_SCALING.push({
@@ -262,7 +262,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.razor_c4) base.DEF_PEN += 0.15
+      if (form.razor_c4) base.DEF_REDUCTION += 0.15
 
       return base
     },

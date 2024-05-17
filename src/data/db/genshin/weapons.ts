@@ -133,7 +133,7 @@ export const Weapons = [
     rarity: 4,
     tier: 1,
     ascStat: Stats.ER,
-    baseStat: 0.113,
+    baseStat: 0.133333,
     icon: 'UI_EquipIcon_Sword_Fossil',
     type: WeaponType.SWORD,
     desc: {
@@ -743,7 +743,7 @@ export const Weapons = [
     rarity: 4,
     tier: 1,
     ascStat: Stats.ER,
-    baseStat: 0.133,
+    baseStat: 0.133333,
     icon: 'UI_EquipIcon_Claymore_Zephyrus',
     type: WeaponType.CLAYMORE,
     desc: {
@@ -2386,7 +2386,7 @@ export const Weapons = [
     rarity: 4,
     tier: 1,
     ascStat: Stats.ER,
-    baseStat: 0.133,
+    baseStat: 0.133333,
     icon: 'UI_EquipIcon_Bow_Zephyrus',
     type: WeaponType.BOW,
     desc: {

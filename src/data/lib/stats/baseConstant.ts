@@ -97,7 +97,7 @@ export const baseStatsObject = {
   ANEMO_CD: 0,
   GEO_CD: 0,
   DENDRO_CD: 0,
-  
+
   ANEMO_F_DMG: 0,
   CRYO_F_DMG: 0,
 
@@ -105,6 +105,7 @@ export const baseStatsObject = {
   ATK_SPD: 1,
   CHARGE_ATK_SPD: 1,
   DEF_PEN: 0,
+  DEF_REDUCTION: 0,
   CD_RED: 0,
   SKILL_CD_RED: 0,
   BURST_CD_RED: 0,
@@ -139,6 +140,8 @@ export const baseStatsObject = {
   PLUNGE_DMG: 0,
   SKILL_DMG: 0,
   BURST_DMG: 0,
+
+  ELEMENTAL_NA_DMG: 0, // Only used by Candace
 
   BASIC_F_DMG: 0,
   CHARGE_F_DMG: 0,
@@ -223,7 +226,7 @@ export const baseStatsObject = {
       (this.INFUSION === Element.HYDRO && infusion === Element.CRYO) ||
       (this.INFUSION === Element.CRYO && infusion === Element.HYDRO)
     )
-      this.INFUSION = Element.CRYO
+      return (this.INFUSION = Element.CRYO)
     // Continue with normal infusion priority
     const infusionPriority = [
       Element.HYDRO,
@@ -249,3 +252,4 @@ export const TalentStatMap = {
 }
 
 export type StatsObject = typeof baseStatsObject
+export type StatsObjectKeys = keyof typeof baseStatsObject

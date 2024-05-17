@@ -64,6 +64,12 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `A4: Consider, the Adeptus in Her Realm`,
       content: `When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-yellow">0.1</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-yellow">9,000</span>.
       <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-yellow">0.4</span>s.`,
+      value: [
+        {
+          name: 'Base Bonus Plung DMG',
+          value: { stat: Stats.ATK, scaling: (atk) => _.round(_.min([2 * atk, 9000])).toLocaleString() },
+        },
+      ],
     },
     util: {
       title: `Crane Form`,
@@ -80,6 +86,12 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Additionally, the effects of the Passive Talent "Consider, the Adeptus in Her Realm" will be enhanced: When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-yellow">400%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-yellow">18,000</span>.
       <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-yellow">0.4</span>s.
       <br />You must first unlock the Passive Talent "Consider, the Adeptus in Her Realm."`,
+      value: [
+        {
+          name: 'Enhanced Bonus Plung DMG',
+          value: { stat: Stats.ATK, scaling: (atk) => _.round(_.min([4 * atk, 18000])).toLocaleString() },
+        },
+      ],
     },
     c3: {
       title: `C3: Creations of Star and Moon`,
@@ -104,42 +116,36 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const content: IContent[] = [
     {
-      type: 'toggle',
-      id: 'windfavored',
-      text: `Windfavored State`,
+      type: 'number',
+      id: 'skyladder',
+      text: `Skyladder Stacks`,
       ...talents.skill,
       show: true,
-      default: true,
-    },
-    {
-      type: 'toggle',
-      id: 'windfavored_pyro',
-      text: `Windfavored State: Pyro`,
-      ...talents.a1,
-      show: a >= 1,
-      default: false,
-    },
-    {
-      type: 'toggle',
-      id: 'windfavored_cryo',
-      text: `Windfavored State: Cryo`,
-      ...talents.a1,
-      show: a >= 1,
-      default: false,
+      default: 3,
+      min: 0,
+      max: 3,
     },
     {
       type: 'number',
-      id: 'wanderer_c2',
-      text: `C2 Burst DMG per Missing Point`,
-      ...talents.c2,
-      show: c >= 2,
-      default: 100,
+      id: 'storm_pinion',
+      text: `Storm Pinion Stacks`,
+      ...talents.a1,
+      show: a >= 1,
+      default: 0,
       min: 0,
-      max: 140,
+      max: 4,
+    },
+    {
+      type: 'toggle',
+      id: 'xianyun_a4',
+      text: `A4 Bonus Plunge DMG`,
+      ...talents.a4,
+      show: a >= 4,
+      default: true,
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'xianyun_a4')]
 
   return {
     upgrade,
@@ -169,7 +175,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.488, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.NA,
@@ -183,7 +189,28 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal, Element.ANEMO)
+      const c6Cd = form.skyladder >= 3 ? 0.7 : form.skyladder >= 2 ? 0.35 : form.skyladder ? 0.15 : 0
+      base.PLUNGE_SCALING = form.skyladder
+        ? [
+            {
+              name: 'Driftcloud Wave DMG',
+              value: [
+                {
+                  scaling: calcScaling(
+                    form.skyladder >= 3 ? 3.376 : form.skyladder >= 2 ? 1.48 : form.skyladder ? 1.16 : 0,
+                    skill,
+                    'elemental',
+                    '1_alt'
+                  ),
+                  multiplier: Stats.ATK,
+                },
+              ],
+              element: Element.ANEMO,
+              property: TalentProperty.PA,
+              cd: c >= 6 ? c6Cd : 0,
+            },
+          ]
+        : getPlungeScaling('catalyst', normal, Element.ANEMO)
 
       base.SKILL_SCALING = [
         {
@@ -195,39 +222,57 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
       base.BURST_SCALING = [
         {
-          name: `Skill DMG [x5]`,
-          value: [{ scaling: calcScaling(1.472, burst, 'elemental', '1'), multiplier: Stats.ATK }],
+          name: `Skill DMG`,
+          value: [{ scaling: calcScaling(1.08, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.BURST,
         },
+        {
+          name: `Starwicker DMG`,
+          value: [{ scaling: calcScaling(0.392, burst, 'elemental', '1'), multiplier: Stats.ATK }],
+          element: Element.ANEMO,
+          property: TalentProperty.BURST,
+        },
+        {
+          name: `Healing`,
+          value: [{ scaling: calcScaling(0.9216, burst, 'elemental', '1'), multiplier: Stats.ATK }],
+          flat: calcScaling(578, burst, 'special', 'flat'),
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+        },
+        {
+          name: `Continuous Healing`,
+          value: [{ scaling: calcScaling(0.4301, burst, 'elemental', '1'), multiplier: Stats.ATK }],
+          flat: calcScaling(270, burst, 'special', 'flat'),
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+        },
       ]
-      if (form.windfavored_pyro) base[Stats.P_ATK] += 0.3
-      if (form.windfavored_cryo) base[Stats.CRIT_RATE] += 0.2
+      if (form.storm_pinion) base[Stats.CRIT_RATE] += form.storm_pinion * 0.2 + 0.2
+      if (c >= 2 && form.skyladder) base[Stats.P_ATK] += 0.2
 
-      if (a >= 4)
-        base.SKILL_SCALING.push({
-          name: 'Wind Arrow DMG [x4]',
-          value: [{ scaling: 0.35 + (c >= 1 ? 0.25 : 0), multiplier: Stats.ATK }],
-          element: Element.ANEMO,
-          property: TalentProperty.ADD,
-        })
-      if (c >= 1 && form.windfavored) base.ATK_SPD += 0.1
-      if (form.wanderer_c2) base.BURST_DMG += _.min([form.wanderer_c2 * 0.04, 2])
-
-      if (c >= 6)
-        base.BASIC_SCALING.push({
-          name: 'Kuugo: Fushoudan DMG',
-          value: [{ scaling: 0.4, multiplier: Stats.ATK }],
-          element: Element.ANEMO,
-          property: TalentProperty.NA,
+      if (c >= 6 && form.skyladder)
+        base.PLUNGE_SCALING.push({
+          name: 'C4 Healing',
+          value: [
+            {
+              scaling: form.skyladder >= 3 ? 1.5 : form.skyladder >= 2 ? 0.8 : form.skyladder ? 0.5 : 0,
+              multiplier: Stats.ATK,
+            },
+          ],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
         })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.xianyun_a4) base.PLUNGE_F_DMG += _.min([2 * own.getAtk(), 9000]) * (c >= 2 ? 2 : 1)
+
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      if (form.xianyun_a4) base.PLUNGE_F_DMG += _.min([2 * base.getAtk(), 9000]) * (c >= 2 ? 2 : 1)
       return base
     },
   }

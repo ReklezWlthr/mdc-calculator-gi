@@ -193,7 +193,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.CA,
         },
       ]
-      base.PLUNGE_SCALING = getPlungeScaling('razor', normal)
+      base.PLUNGE_SCALING = getPlungeScaling('claymore', normal)
 
       base.SKILL_SCALING = [
         {
@@ -248,7 +248,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.razor_c4) base.DEF_PEN += 0.15
+      if (form.razor_c4) base.DEF_REDUCTION += 0.15
 
       return base
     },

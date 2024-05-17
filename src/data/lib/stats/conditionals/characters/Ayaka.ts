@@ -237,12 +237,12 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
           }
         )
 
-        if(form.ayaka_c4) base.DEF_PEN += 0.3
+        if(form.ayaka_c4) base.DEF_REDUCTION += 0.3
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if(form.ayaka_c4) base.DEF_PEN += 0.3
+      if(form.ayaka_c4) base.DEF_REDUCTION += 0.3
 
       return base
     },

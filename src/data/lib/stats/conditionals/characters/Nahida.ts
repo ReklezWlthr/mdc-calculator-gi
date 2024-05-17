@@ -248,7 +248,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
 
       base[Stats.EM] += form.nahida_c4 ? 100 + _.min([20 * (form.nahida_c4 - 1), 60]) : 0
 
-      if (form.nahida_c2_def) base.DEF_PEN += 0.3
+      if (form.nahida_c2_def) base.DEF_REDUCTION += 0.3
       if (c >= 2) {
         base.CORE_CR = 0.2
         base.CORE_CD = 1
@@ -257,7 +257,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.nahida_c2_def) base.DEF_PEN += 0.3
+      if (form.nahida_c2_def) base.DEF_REDUCTION += 0.3
       if (c >= 2) {
         base.CORE_CR = 0.2
         base.CORE_CD = 1

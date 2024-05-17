@@ -42,11 +42,11 @@ export const ConsCircle = observer(
       [Stats.ER]: stats?.[Stats.ER],
       [Stats.HEAL]: stats?.[Stats.HEAL],
     }
-    const TooltipBody = ({ talent }: { talent: ITalentDisplay }) => {
+    const TooltipBody = ({ talent, unlocked }: { talent: ITalentDisplay; unlocked: boolean }) => {
       return (
         <div className="space-y-3">
           <p dangerouslySetInnerHTML={{ __html: talent?.content }} />
-          {!!_.size(talent?.value) && (
+          {!!_.size(talent?.value) && unlocked && (
             <div>
               {_.map(talent?.value, (item) => (
                 <p>
@@ -62,7 +62,11 @@ export const ConsCircle = observer(
     return (
       <div className="space-y-5">
         <div className="flex items-center justify-around">
-          <Tooltip title={talents?.a1?.title} body={<TooltipBody talent={talents?.a1} />} style="w-[40vw]">
+          <Tooltip
+            title={talents?.a1?.title}
+            body={<TooltipBody talent={talents?.a1} unlocked={ascension >= 1} />}
+            style="w-[40vw]"
+          >
             <img
               src={`https://enka.network/ui/UI_Talent_S_${codeName}${
                 codeName === 'Ningguang' ? '_02' : codeName === 'Tartaglia' ? '_03' : '_05'
@@ -74,7 +78,11 @@ export const ConsCircle = observer(
             />
           </Tooltip>
           <p className="text-sm font-bold">Ascension</p>
-          <Tooltip title={talents?.a4?.title} body={<TooltipBody talent={talents?.a4} />} style="w-[40vw]">
+          <Tooltip
+            title={talents?.a4?.title}
+            body={<TooltipBody talent={talents?.a4} unlocked={ascension >= 4} />}
+            style="w-[40vw]"
+          >
             <img
               src={`https://enka.network/ui/UI_Talent_S_${codeName}_06.png`}
               className={classNames(
@@ -92,7 +100,11 @@ export const ConsCircle = observer(
             )}
           />
           <div className="flex justify-center">
-            <Tooltip title={talents?.c1?.title} body={<TooltipBody talent={talents?.c1} />} style="w-[40vw]">
+            <Tooltip
+              title={talents?.c1?.title}
+              body={<TooltipBody talent={talents?.c1} unlocked={cons >= 1} />}
+              style="w-[40vw]"
+            >
               <img
                 src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Shenhe' ? '_02' : '_01'}.png`}
                 className={classNames(
@@ -103,7 +115,11 @@ export const ConsCircle = observer(
             </Tooltip>
           </div>
           <div className="flex justify-between px-3">
-            <Tooltip title={talents?.c6?.title} body={<TooltipBody talent={talents?.c6} />} style="w-[40vw]">
+            <Tooltip
+              title={talents?.c6?.title}
+              body={<TooltipBody talent={talents?.c6} unlocked={cons >= 6} />}
+              style="w-[40vw]"
+            >
               <img
                 src={`https://enka.network/ui/UI_Talent_S_${codeName}_04.png`}
                 className={classNames(
@@ -112,7 +128,11 @@ export const ConsCircle = observer(
                 )}
               />
             </Tooltip>
-            <Tooltip title={talents?.c2?.title} body={<TooltipBody talent={talents?.c2} />} style="w-[40vw]">
+            <Tooltip
+              title={talents?.c2?.title}
+              body={<TooltipBody talent={talents?.c2} unlocked={cons >= 2} />}
+              style="w-[40vw]"
+            >
               <img
                 src={`https://enka.network/ui/UI_Talent_S_${codeName}${
                   codeName === 'Ningguang' ? '_05' : codeName === 'Shenhe' ? '_01' : '_02'
@@ -128,7 +148,11 @@ export const ConsCircle = observer(
             <p className="w-1/2 px-1 text-lg font-bold text-center">{name}</p>
           </div>
           <div className="flex justify-between px-3">
-            <Tooltip title={talents?.c5?.title} body={<TooltipBody talent={talents?.c5} />} style="w-[25vw]">
+            <Tooltip
+              title={talents?.c5?.title}
+              body={<TooltipBody talent={talents?.c5} unlocked={cons >= 5} />}
+              style="w-[25vw]"
+            >
               <img
                 src={`https://enka.network/ui/UI_Talent_U_${codeName}${
                   _.includes(ReverseConsList, codeName) ? '_01' : '_02'
@@ -139,7 +163,11 @@ export const ConsCircle = observer(
                 )}
               />
             </Tooltip>
-            <Tooltip title={talents?.c3?.title} body={<TooltipBody talent={talents?.c3} />} style="w-[25vw]">
+            <Tooltip
+              title={talents?.c3?.title}
+              body={<TooltipBody talent={talents?.c3} unlocked={cons >= 3} />}
+              style="w-[25vw]"
+            >
               <img
                 src={`https://enka.network/ui/UI_Talent_U_${codeName}${
                   _.includes(ReverseConsList, codeName) ? '_02' : '_01'
@@ -152,7 +180,11 @@ export const ConsCircle = observer(
             </Tooltip>
           </div>
           <div className="flex justify-center">
-            <Tooltip title={talents?.c4?.title} body={<TooltipBody talent={talents?.c4} />} style="w-[40vw]">
+            <Tooltip
+              title={talents?.c4?.title}
+              body={<TooltipBody talent={talents?.c4} unlocked={cons >= 4} />}
+              style="w-[40vw]"
+            >
               <img
                 src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Tartaglia' ? '_05' : '_03'}.png`}
                 className={classNames(

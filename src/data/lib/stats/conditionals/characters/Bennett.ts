@@ -17,8 +17,6 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let atkShare = 0
-
   const talents: ITalent = {
     normal: {
       title: `Strike of Fortune`,
@@ -53,8 +51,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Inspiration Field</b>
       <br />- If the health of a character within the AoE is equal to or falls below <span class="text-yellow">70%</span>, their health will continuously regenerate. The amount of HP restored scales off Bennett's Max HP.
       <br />- If the health of a character within the AoE is higher than <span class="text-yellow">70%</span>, they gain an ATK Bonus that is based on Bennett's Base ATK.
-      <br />- Imbues characters within the AoE with <b class="text-genshin-pyro">Pyro</b>.
-      <br /><br />Current ATK Bonus: <span class="text-yellow">${_.round(atkShare)}</span>`,
+      <br />- Imbues characters within the AoE with <b class="text-genshin-pyro">Pyro</b>.`,
     },
     a1: {
       title: `A1: Rekindle`,
@@ -223,8 +220,8 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      atkShare = (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * base.BASE_ATK
-      if (form.benny_atk_share) base[Stats.ATK] += atkShare
+      if (form.benny_atk_share)
+        base[Stats.ATK] += (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * base.BASE_ATK
       if (a >= 1) base.SKILL_CD_RED += 0.2
       if (a >= 4 && form.benny_atk_share) base.SKILL_CD_RED += 0.5
 
@@ -246,10 +243,9 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      atkShare = (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * base.BASE_ATK
-
       const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)
-      if (form.benny_atk_share) base[Stats.ATK] += atkShare
+      if (form.benny_atk_share)
+        base[Stats.ATK] += (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * own.BASE_ATK
       if (c >= 6 && form.benny_atk_share) {
         base[Stats.PYRO_DMG] += 0.15
         if (canInfuse) base.infuse(Element.PYRO)
