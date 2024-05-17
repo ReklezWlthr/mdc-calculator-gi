@@ -155,5 +155,6 @@ export const ReverseConsList = [
   'Kokomi',
   'Venti',
   'Wanderer',
-  'Xiangling'
+  'Xiangling',
+  'Liuyun'
 ]
