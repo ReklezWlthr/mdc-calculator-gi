@@ -146,68 +146,48 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
         return 0
       })
       const c6BurstBonus = c >= 6 ? [{ scaling: 7 * (form.bol / 100), multiplier: Stats.ATK }] : []
+      const bolScaling = _.map(bolPropagation, (item) => (item ? [{ scaling: item, multiplier: Stats.ATK }] : []))
 
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [
-            { scaling: calcScaling(0.475, normal, 'physical', '1'), multiplier: Stats.ATK },
-            { scaling: bolPropagation[0], multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.475, normal, 'physical', '1'), multiplier: Stats.ATK }, ...bolScaling[0]],
           element: bolPropagation[0] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [
-            { scaling: calcScaling(0.5211, normal, 'physical', '1'), multiplier: Stats.ATK },
-            { scaling: bolPropagation[1], multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.5211, normal, 'physical', '1'), multiplier: Stats.ATK }, ...bolScaling[1]],
           element: bolPropagation[1] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [
-            { scaling: calcScaling(0.6539, normal, 'physical', '1'), multiplier: Stats.ATK },
-            { scaling: bolPropagation[2], multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.6539, normal, 'physical', '1'), multiplier: Stats.ATK }, ...bolScaling[2]],
           element: bolPropagation[2] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit [1]',
-          value: [
-            { scaling: calcScaling(0.3715, normal, 'physical', '1'), multiplier: Stats.ATK },
-            { scaling: bolPropagation[3], multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.3715, normal, 'physical', '1'), multiplier: Stats.ATK }, ...bolScaling[3]],
           element: bolPropagation[3] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '4-Hit [2]',
-          value: [
-            { scaling: calcScaling(0.3715, normal, 'physical', '1'), multiplier: Stats.ATK },
-            { scaling: bolPropagation[4], multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.3715, normal, 'physical', '1'), multiplier: Stats.ATK }, ...bolScaling[4]],
           element: bolPropagation[4] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '5-Hit',
-          value: [
-            { scaling: calcScaling(0.6998, normal, 'physical', '1'), multiplier: Stats.ATK },
-            { scaling: bolPropagation[5], multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.6998, normal, 'physical', '1'), multiplier: Stats.ATK }, ...bolScaling[5]],
           element: bolPropagation[5] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '6-Hit',
-          value: [
-            { scaling: calcScaling(0.8538, normal, 'physical', '1'), multiplier: Stats.ATK },
-            { scaling: bolPropagation[6], multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.8538, normal, 'physical', '1'), multiplier: Stats.ATK }, ...bolScaling[6]],
           element: bolPropagation[6] ? Element.PYRO : Element.PHYSICAL,
           property: TalentProperty.NA,
         },
