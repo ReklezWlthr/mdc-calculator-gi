@@ -50,6 +50,7 @@ import Ningguang from './characters/Ningguang'
 import Noelle from './characters/Noelle'
 import Qiqi from './characters/Qiqi'
 import Raiden from './characters/Raiden'
+import Razor from './characters/Razor'
 import Sara from './characters/Sara'
 import Yaoyao from './characters/Yaoyao'
 
@@ -107,6 +108,7 @@ export default [
   { id: '10000034', conditionals: Noelle },
   { id: '10000035', conditionals: Qiqi },
   { id: '10000052', conditionals: Raiden },
+  { id: '10000020', conditionals: Razor },
   { id: '10000077', conditionals: Yaoyao },
 ]
 
