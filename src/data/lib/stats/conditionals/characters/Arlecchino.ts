@@ -17,8 +17,6 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let a4Res = 0
-
   const talents: ITalent = {
     normal: {
       title: `Invitation to a Beheading	`,
@@ -60,8 +58,16 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Strength Alone Can Defend`,
-      content: `Arlecchino gains <span class="text-yellow">1%</span> All Elemental and Physical RES for every <span class="text-yellow">100</span> ATK she has in excess of <span class="text-yellow">1,000</span>. The maximum RES increase she can gain this way for each is <span class="text-yellow">20%</span>.
-      <br /><br />Current RES Bonus: <span class="text-yellow">${toPercentage(a4Res)}</span>`,
+      content: `Arlecchino gains <span class="text-yellow">1%</span> All Elemental and Physical RES for every <span class="text-yellow">100</span> ATK she has in excess of <span class="text-yellow">1,000</span>. The maximum RES increase she can gain this way for each is <span class="text-yellow">20%</span>.`,
+      value: [
+        {
+          name: 'RES Bonus',
+          value: {
+            stat: Stats.ATK,
+            scaling: (atk) => toPercentage(_.min([0.01 * ((atk - 1000) / 100), 0.2])),
+          },
+        },
+      ],
     },
     c1: {
       title: `C1: "All Reprisals and Arrears, Mine to Bear..."`,
@@ -276,7 +282,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4Res = _.min([0.01 * ((base.getAtk() - 1000) / 100), 0.2])
+      if (a >= 4) base.ALL_TYPE_RES = _.min([0.01 * ((base.getAtk() - 1000) / 100), 0.2])
       return base
     },
   }

@@ -22,8 +22,6 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
   const electro = _.filter(teamData, Element.ELECTRO).length
   const a1Active = pyro + electro === teamData.length && pyro >= 1 && electro >= 1
 
-  let a4Atk = 0
-
   const talents: ITalent = {
     normal: {
       title: `Line Bayonet Thrust EX`,
@@ -64,8 +62,13 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
     },
     a4: {
       title: `A4: Vertical Force Coordination`,
-      content: `After Chevreuse fires an Overcharged Ball using Short-Range Rapid Interdiction Fire, nearby <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters in the party gain <span class="text-yellow">1%</span> increased ATK for every <span class="text-yellow">1,000</span> Max HP Chevreuse has for <span class="text-yellow">30</span>s. ATK can be increased by up to <span class="text-yellow">40%</span> in this way.
-      <br /><br />Current ATK Bonus: <span class="text-yellow">${toPercentage(a4Atk)}</span>`,
+      content: `After Chevreuse fires an Overcharged Ball using Short-Range Rapid Interdiction Fire, nearby <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters in the party gain <span class="text-yellow">1%</span> increased ATK for every <span class="text-yellow">1,000</span> Max HP Chevreuse has for <span class="text-yellow">30</span>s. ATK can be increased by up to <span class="text-yellow">40%</span> in this way.`,
+      value: [
+        {
+          name: 'Current ATK Bonus',
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([(hp / 1000) * 0.01, 0.4])) },
+        },
+      ],
     },
     c1: {
       title: `C1: Stable Front Line's Resolve`,
@@ -231,8 +234,6 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
         base.ELECTRO_RES_PEN += 0.4
       }
 
-      if (form.chev_a4) base[Stats.ATK] += a4Atk
-
       if (c >= 2)
         base.SKILL_SCALING.push({
           name: 'C2 Chain Explosion [x2]',
@@ -257,7 +258,8 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.chev_a4) base[Stats.ATK] += a4Atk //Only apply to Pyro & Electro
+      if (form.chev_a4 && _.includes([Element.PYRO, Element.ELECTRO], form.element))
+        base[Stats.P_ATK] += _.min([(own.getHP() / 1000) * 0.01, 0.4]) //Only apply to Pyro & Electro
 
       if (form.chev_c6) {
         base[Stats.PYRO_DMG] += 0.2 * form.chev_c6
@@ -267,7 +269,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4Atk = _.min([(base.getHP() / 1000) * 0.01, 0.4])
+      if (form.chev_a4) base[Stats.P_ATK] += _.min([(base.getHP() / 1000) * 0.01, 0.4])
       return base
     },
   }
