@@ -137,6 +137,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
     teammateContent,
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
+      base.MAX_ENERGY = 70
 
       base.BASIC_SCALING = [
         {
@@ -189,7 +190,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
         {
           name: 'White Jade Radish Healing',
           value: [{ scaling: calcScaling(0.0171, skill, 'elemental', '1'), multiplier: Stats.HP }],
-          flat: calcScaling(165.07991, 10, 'special', 'flat'),
+          flat: calcScaling(165.07991, skill, 'special', 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },
@@ -210,7 +211,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
         {
           name: 'Adeptal Legacy White Jade Radish Healing',
           value: [{ scaling: calcScaling(0.0202, burst, 'elemental', '1'), multiplier: Stats.HP }],
-          flat: calcScaling(194.21231, 10, 'special', 'flat'),
+          flat: calcScaling(194.21231, burst, 'special', 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },

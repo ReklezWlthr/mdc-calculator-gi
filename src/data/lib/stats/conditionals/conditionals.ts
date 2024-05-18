@@ -74,6 +74,8 @@ import Yanfei from './characters/Yanfei'
 import Yaoyao from './characters/Yaoyao'
 import Yelan from './characters/Yelan'
 import Yoimiya from './characters/Yoimiya'
+import Yunjin from './characters/Yunjin'
+import Zhongli from './characters/Zhongli'
 
 export default [
   { id: '10000038', conditionals: Albedo },
@@ -152,6 +154,8 @@ export default [
   { id: '10000077', conditionals: Yaoyao },
   { id: '10000060', conditionals: Yelan },
   { id: '10000049', conditionals: Yoimiya },
+  { id: '10000064', conditionals: Yunjin },
+  { id: '10000030', conditionals: Zhongli },
 ]
 
 export const ReverseConsList = [
