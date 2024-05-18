@@ -116,7 +116,11 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
       )}
     >
       <div className="h-10 overflow-hidden rounded-t-lg bg-primary-light">
-        <div className={classNames('px-5 py-2 space-y-5 duration-200', { 'group-hover:-translate-y-1/2': canEdit })}>
+        <div
+          className={classNames('px-5 py-2 space-y-5 duration-200', {
+            'group-hover:-translate-y-1/2': canEdit && props.aId,
+          })}
+        >
           <div className="flex items-center justify-center gap-1">
             <img src={`/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
             <p>{pieceName}</p>
@@ -209,8 +213,20 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
           )}
         </div>
       ) : (
-        <div className="flex items-center justify-center w-full h-full">
-          <p className="text-gray">Click to Add</p>
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          <div
+            className="flex items-center justify-center w-full h-full duration-200 cursor-pointer hover:bg-primary-darker"
+            onClick={onOpenEditModal}
+          >
+            Add New Artifact
+          </div>
+          <div className="w-full h-0 border-t-2 border-primary-border" />
+          <div
+            className="flex items-center justify-center w-full h-full duration-200 cursor-pointer hover:bg-primary-darker"
+            onClick={onOpenSwapModal}
+          >
+            Equip an Artifact
+          </div>
         </div>
       )}
     </div>

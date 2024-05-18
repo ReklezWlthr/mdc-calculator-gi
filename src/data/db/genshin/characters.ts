@@ -324,7 +324,7 @@ export const Characters = [
     },
     rarity: 5,
     region: 'Liyue',
-    constellation: 'Legenaria',
+    constellation: 'Lagenaria',
     weapon: WeaponType.CATALYST,
     element: Element.DENDRO,
     codeName: 'Baizhuer',
