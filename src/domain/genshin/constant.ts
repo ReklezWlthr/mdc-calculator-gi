@@ -170,6 +170,7 @@ export enum Stats {
   I_HEALING = 'Incoming Healing',
   SHIELD = 'Shield Strength',
   ALL_DMG = 'DMG%',
+  ELEMENTAL_DMG = 'Elemental DMG%'
 }
 
 export const StatIcons = {

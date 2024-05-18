@@ -373,10 +373,10 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Northwind Wolf',
-      detail: `DMG dealt by Elemental Skill and Elemental Burst is increased by 16~32%. When an Elemental Skill hits an opponent, its CRIT Rate will be increased by 2~4%. When an Elemental Burst hits an opponent, its CRIT Rate will be increased by 2~4%. Both of these effects last 10s separately, have 4 max stacks, and can be triggered once every 0.1s.`,
+      detail: `DMG dealt by Elemental Skill and Elemental Burst is increased by {{0}}%. When an Elemental Skill hits an opponent, its CRIT Rate will be increased by {{1}}%. When an Elemental Burst hits an opponent, its CRIT Rate will be increased by {{1}}%. Both of these effects last 10s separately, have 4 max stacks, and can be triggered once every 0.1s.`,
       properties: [
-        { base: 52, growth: 13 },
-        { base: 28, growth: 7 },
+        { base: 16, growth: 4 },
+        { base: 2, growth: 0.5 },
       ],
     },
   },
@@ -505,7 +505,7 @@ export const Weapons = [
       <br />"Millennial Movement: Song of Resistance" increases Normal, Charged, and Plunging Attack DMG by {{1}}% and increases ATK by {{2}}%. Once this effect is triggered, you will not gain Sigils of Rebellion for 20s.
       <br />Of the many effects of the "Millennial Movement," buffs of the same type will not stack.`,
       properties: [
-        { base: 10, growth: 5 },
+        { base: 10, growth: 2.5 },
         { base: 16, growth: 4 },
         { base: 20, growth: 5 },
       ],

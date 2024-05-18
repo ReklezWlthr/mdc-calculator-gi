@@ -65,7 +65,7 @@ export const ArtifactListModal = observer(({ index, type }: { index: number; typ
           />
         </div>
       </div>
-      <div className="grid w-full grid-cols-4 gap-4">
+      <div className="grid w-full grid-cols-4 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredArtifacts, (artifact) => (
           <div
             key={artifact.id}

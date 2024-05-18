@@ -75,7 +75,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           <FilterIcon stat={Stats.PHYSICAL_DMG} />
         </div>
       </div>
-      <div className="grid w-full grid-cols-9 gap-4">
+      <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredWeapon, (item) => (
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"

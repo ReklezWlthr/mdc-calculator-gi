@@ -13,6 +13,7 @@ import { AscensionGrowth } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
+import WeaponBonus from '@src/data/lib/stats/conditionals/weapons/weapon_bonus'
 
 export const calculateOutOfCombat = (
   conditionals: StatsObject,
@@ -40,6 +41,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   )
   const weaponBaseAtk = getWeaponBase(weaponData?.tier, weapon?.level, weapon?.ascension, weaponData?.rarity)
   const weaponSecondary = getWeaponBonus(weaponData?.baseStat, weapon?.level)
+  const weaponBonus = _.find(WeaponBonus, (item) => item.id === weapon?.wId)
 
   // Get Base
   conditionals.BASE_ATK = charBaseAtk + weaponBaseAtk
@@ -62,6 +64,8 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals[weaponData?.ascStat] += weaponSecondary
   conditionals[character?.stat?.ascStat] +=
     _.max([0, char?.ascension - 2]) * AscensionGrowth[character?.stat?.ascStat]?.[character?.rarity - 4]
+
+  weaponBonus?.scaling(conditionals, weapon?.refinement)
 
   // Kokomi Passive
   if (character?.id === '10000054') {

@@ -101,7 +101,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           title="Has Default Build"
         />
       </div>
-      <div className="grid w-full grid-cols-9 gap-4">
+      <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredChar, (item) => {
           const build = _.find(buildStore.builds, ['cId', item.id])
           return (

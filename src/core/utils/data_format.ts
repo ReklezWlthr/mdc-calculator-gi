@@ -109,3 +109,7 @@ export const getResonanceCount = (chars: ITeamChar[]) => {
 export const calcScaling = (base: number, level: number, type: 'physical' | 'elemental' | 'special', sub: string) => {
   return TalentScaling[type]?.[sub]?.[level - 1] * base
 }
+
+export const calcRefinement = (base: number, growth: number, refinement: number) => {
+  return base + growth * (refinement - 1)
+}
