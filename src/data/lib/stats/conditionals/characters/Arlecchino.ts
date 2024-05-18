@@ -58,7 +58,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Strength Alone Can Defend`,
-      content: `Arlecchino gains <span class="text-desc">1%</span> All Elemental and Physical RES for every <span class="text-desc">100</span> ATK she has in excess of <span class="text-desc">1,000</span>. The maximum RES increase she can gain this way for each is <span class="text-desc">20%</span>.`,
+      content: `Arlecchino gains <span class="text-desc">1%</span> All <b>Elemental and Physical RES</b> for every <span class="text-desc">100</span> ATK she has in excess of <span class="text-desc">1,000</span>. The maximum RES increase she can gain this way for each is <span class="text-desc">20%</span>.`,
       value: [
         {
           name: 'RES Bonus',
@@ -76,7 +76,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
     c2: {
       title: `C2: "All Rewards and Retribution, Mine to Bestow..."`,
       content: `Blood-Debt Directives are now already Blood-Debt Due when first applied.
-      <br />When Arlecchino absorbs such a Due, she unleashes Balemoon Bloodfire in front of her, dealing <span class="text-desc">900%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b> and increasing her All Elemental RES and Physical RES by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s. This effect can trigger once every <span class="text-desc">10</span>s.
+      <br />When Arlecchino absorbs such a Due, she unleashes Balemoon Bloodfire in front of her, dealing <span class="text-desc">900%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b> and increasing her All <b>Elemental RES and Physical RES</b> by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s. This effect can trigger once every <span class="text-desc">10</span>s.
       <br />You must first unlock the Passive Talent "Agony Alone May Be Repaid."`,
     },
     c3: {

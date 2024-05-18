@@ -213,7 +213,7 @@ export const TeamSetup = observer(() => {
               size="w-9 h-9"
             />
             {talent?.upgrade?.skill && (
-              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
                 +3
               </div>
             )}
@@ -234,7 +234,7 @@ export const TeamSetup = observer(() => {
               size="w-9 h-9"
             />
             {talent?.upgrade?.burst && (
-              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
                 +3
               </div>
             )}

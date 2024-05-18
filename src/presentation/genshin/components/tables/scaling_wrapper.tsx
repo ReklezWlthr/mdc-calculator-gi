@@ -20,11 +20,13 @@ export const TalentIcon = observer(
     icon,
     element,
     size,
+    crowned,
   }: {
     icon: string
     element: Element
     talent: { title: string; content: string; upgrade?: string[] }
     size?: string
+    crowned?: boolean
   }) => {
     const iconColor = {
       [Element.PYRO]: 'bg-genshin-pyro ring-genshin-pyro',
@@ -42,12 +44,14 @@ export const TalentIcon = observer(
         body={<p dangerouslySetInnerHTML={{ __html: talent?.content }} />}
         style="w-[50vw]"
       >
-        <div className="relative">
-          {/* <i className='absolute text-xl -left-1 -top-4 fa-solid fa-crown text-yellow -rotate-[15deg]' /> */}
+        <div className="relative group">
+          {crowned && (
+            <i className="absolute text-xl -left-1 -top-3 fa-solid fa-crown text-yellow -rotate-[30deg] pointer-events-none" />
+          )}
           <img
             src={icon}
             className={classNames(
-              'p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
+              'p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 group-hover:ring-offset-4 duration-200 ring-offset-primary-darker',
               iconColor[element],
               size || 'w-12 h-12'
             )}
@@ -58,20 +62,22 @@ export const TalentIcon = observer(
   }
 )
 
-export const ScalingWrapper = observer(({ children, icon, talent, element, level, upgraded, childeBuff }: ScalingWrapperProps) => {
-  return (
-    <div className="flex w-full">
-      <div className="flex flex-col items-center justify-center w-1/5 px-2 py-5">
-        <TalentIcon talent={talent} icon={icon} element={element} />
-        <p className="w-full mt-2 font-bold text-center">{talent?.title}</p>
-        {level && (
-          <p className="text-xs text-gray">
-            Level <span className={upgraded ? 'text-blue font-bold' : 'text-gray'}>{level + (upgraded ? 3 : 0)}</span>
-            {childeBuff && <span className='text-desc'> (+1)</span>}
-          </p>
-        )}
+export const ScalingWrapper = observer(
+  ({ children, icon, talent, element, level, upgraded, childeBuff }: ScalingWrapperProps) => {
+    return (
+      <div className="flex w-full">
+        <div className="flex flex-col items-center justify-center w-1/5 px-2 py-5">
+          <TalentIcon talent={talent} icon={icon} element={element} crowned={level === 10} />
+          <p className="w-full mt-2 font-bold text-center">{talent?.title}</p>
+          {level && (
+            <p className="text-xs text-gray">
+              Level <span className={upgraded ? 'text-blue font-bold' : 'text-gray'}>{level + (upgraded ? 3 : 0)}</span>
+              {childeBuff && <span className="text-desc"> (+1)</span>}
+            </p>
+          )}
+        </div>
+        <div className="w-4/5 space-y-0.5">{children}</div>
       </div>
-      <div className="w-4/5 space-y-0.5">{children}</div>
-    </div>
-  )
-})
+    )
+  }
+)
