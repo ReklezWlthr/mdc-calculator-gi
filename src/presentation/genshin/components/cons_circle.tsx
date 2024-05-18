@@ -15,6 +15,7 @@ export const ConsCircle = observer(
     name,
     cons,
     ascension,
+    consName,
     stats,
   }: {
     talents: ITalent
@@ -23,6 +24,7 @@ export const ConsCircle = observer(
     name: string
     cons: number
     ascension: number
+    consName: string
     stats?: StatsObject
   }) => {
     const iconColor = {
@@ -93,11 +95,15 @@ export const ConsCircle = observer(
           </Tooltip>
         </div>
         <div className="flex flex-col justify-around w-[252px] h-[252px] relative">
-          <div
+          {/* <div
             className={classNames(
-              'absolute w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-1/2 ring top-1/2 left-1/2 bg-opacity-10',
+              'absolute w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full h-2/3 ring top-1/2 left-1/2 bg-opacity-0 ring-opacity-50',
               iconColor[element]
             )}
+          /> */}
+          <img
+            src={`/icons/cons/${consName.replaceAll(' ', '_')}_Shape.webp`}
+            className="absolute w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 h-2/3 top-1/2 left-1/2"
           />
           <div className="flex justify-center">
             <Tooltip
@@ -152,7 +158,7 @@ export const ConsCircle = observer(
               />
             </Tooltip>
           </div>
-          <div className="flex items-center justify-center h-12">
+          <div className="z-10 flex items-center justify-center h-12">
             <p className="w-1/2 px-1 text-lg font-bold text-center">{name}</p>
           </div>
           <div className="flex justify-between px-3">

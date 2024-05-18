@@ -989,7 +989,7 @@ export const Characters = [
     },
     rarity: 5,
     region: 'Sumeru',
-    constellation: 'Sapientia Oromantis',
+    constellation: 'Sapientia Oromasdis',
     weapon: WeaponType.CATALYST,
     element: Element.DENDRO,
     codeName: 'Nahida',
