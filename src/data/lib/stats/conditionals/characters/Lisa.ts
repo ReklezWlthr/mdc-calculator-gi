@@ -36,7 +36,7 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b>Press</b>
       <br />Releases a homing Lightning Orb.
-      <br />On hit, it deals <b class="text-genshin-electro">Electro DMG</b> and applies a stack of the Conductive status (max <span class="text-yellow">3</span> stacks) to opponents in a small AoE.
+      <br />On hit, it deals <b class="text-genshin-electro">Electro DMG</b> and applies a stack of the Conductive status (max <span class="text-desc">3</span> stacks) to opponents in a small AoE.
       <br />
       <br /><b>Hold</b>
       <br />After an extended casting time, calls down lightning from the heavens, dealing massive <b class="text-genshin-electro">Electro DMG</b> to all nearby opponents.
@@ -54,23 +54,23 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Static Electricity Field`,
-      content: `Opponents hit by Lightning Rose have their DEF decreased by <span class="text-yellow">15%</span> for <span class="text-yellow">10</span>s.`,
+      content: `Opponents hit by Lightning Rose have their DEF decreased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
     },
     c1: {
       title: `C1: Infinite Circuit`,
-      content: `Lisa regenerates <span class="text-yellow">2</span> Energy for every opponent hit while holding Violet Arc.
-      <br />A maximum of <span class="text-yellow">10</span> Energy can be regenerated in this manner at any one time.`,
+      content: `Lisa regenerates <span class="text-desc">2</span> Energy for every opponent hit while holding Violet Arc.
+      <br />A maximum of <span class="text-desc">10</span> Energy can be regenerated in this manner at any one time.`,
     },
     c2: {
       title: `C2: Electromagnetic Field`,
       content: `Holding Violet Arc has the following effects:
-      <br />- Increases DEF by <span class="text-yellow">25%</span>.
+      <br />- Increases DEF by <span class="text-desc">25%</span>.
       <br />- Increases Lisa's resistance to interruption.`,
     },
     c3: {
       title: `C3: Resonant Thunder`,
-      content: `Increases the Level of Lightning Rose by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Lightning Rose by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Plasma Eruption`,
@@ -78,13 +78,13 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
     },
     c5: {
       title: `C5: Electrocute`,
-      content: `Increases the Level of Violet Arc by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Violet Arc by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Pulsating Witch`,
-      content: `When Lisa takes the field, she applies 3<span class="text-yellow">3</span> stacks of Violet Arc's Conductive status onto nearby opponents.
-      <br />This effect can only occur once every <span class="text-yellow">5</span>s.`,
+      content: `When Lisa takes the field, she applies 3<span class="text-desc">3</span> stacks of Violet Arc's Conductive status onto nearby opponents.
+      <br />This effect can only occur once every <span class="text-desc">5</span>s.`,
     },
   }
 

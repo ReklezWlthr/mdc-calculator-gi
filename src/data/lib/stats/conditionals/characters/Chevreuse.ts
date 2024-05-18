@@ -43,7 +43,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       <br />
       <br /><b>Hold</b>
       <br />Enter Aiming Mode, locking a target in her sights to fire a precise interdiction shot. If Chevreuse has an Overcharged Ball, then she will fire the Overcharged Ball instead, dealing greater <b class="text-genshin-pyro">Pyro DMG</b> in a larger area.
-      <br />Chevreuse gains <span class="text-yellow">1</span> Overcharged Ball every time a nearby character in the party triggers an Overloaded reaction, and can have up to <span class="text-yellow">1</span> Overcharged Ball at a time.
+      <br />Chevreuse gains <span class="text-desc">1</span> Overcharged Ball every time a nearby character in the party triggers an Overloaded reaction, and can have up to <span class="text-desc">1</span> Overcharged Ball at a time.
       <br />
       <br />Arkhe: <b class="text-genshin-ousia">Ousia</b>
       <br />Periodically, after Chevreuse's Short-Range Rapid Interdiction Fire hits, a Surging Blade will be called forth that deals <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-pyro">Pyro DMG</b>.
@@ -57,12 +57,12 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
     a1: {
       title: `A1: Vanguard's Coordinated Tactics`,
       content: `When all party members are <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters and there is at least one Pyro and one Electro character each in the party:
-      <br />Chevreuse grants "Coordinated Tactics" to nearby party members: After a character triggers the Overloaded reaction, the <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro RES</b> of the opponent(s) affected by this Overloaded reaction will be decreased by <span class="text-yellow">40%</span> for <span class="text-yellow">6</span>s.
+      <br />Chevreuse grants "Coordinated Tactics" to nearby party members: After a character triggers the Overloaded reaction, the <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro RES</b> of the opponent(s) affected by this Overloaded reaction will be decreased by <span class="text-desc">40%</span> for <span class="text-desc">6</span>s.
       <br />The "Coordinated Tactics" effect will be removed when the Elemental Types of the characters in the party do not meet the basic requirements for the Passive Talent.`,
     },
     a4: {
       title: `A4: Vertical Force Coordination`,
-      content: `After Chevreuse fires an Overcharged Ball using Short-Range Rapid Interdiction Fire, nearby <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters in the party gain <span class="text-yellow">1%</span> increased ATK for every <span class="text-yellow">1,000</span> Max HP Chevreuse has for <span class="text-yellow">30</span>s. ATK can be increased by up to <span class="text-yellow">40%</span> in this way.`,
+      content: `After Chevreuse fires an Overcharged Ball using Short-Range Rapid Interdiction Fire, nearby <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters in the party gain <span class="text-desc">1%</span> increased ATK for every <span class="text-desc">1,000</span> Max HP Chevreuse has for <span class="text-desc">30</span>s. ATK can be increased by up to <span class="text-desc">40%</span> in this way.`,
       value: [
         {
           name: 'Current ATK Bonus',
@@ -72,31 +72,31 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
     },
     c1: {
       title: `C1: Stable Front Line's Resolve`,
-      content: `When the active character with the "Coordinated Tactics" status (not including Chevreuse herself) triggers the Overloaded reaction, they will recover <span class="text-yellow">6</span> Energy. This effect can be triggered once every <span class="text-yellow">10</span>s.
+      content: `When the active character with the "Coordinated Tactics" status (not including Chevreuse herself) triggers the Overloaded reaction, they will recover <span class="text-desc">6</span> Energy. This effect can be triggered once every <span class="text-desc">10</span>s.
       <br />You must first unlock the Passive Talent "Vanguard's Coordinated Tactics."`,
     },
     c2: {
       title: `C2: Sniper Induced Explosion`,
-      content: `After Holding Short-Range Rapid Interdiction Fire and hitting a target, 2 chain explosions will be triggered near the location where said target is hit. Each explosion deals <b class="text-genshin-pyro">Pyro DMG</b> equal to <span class="text-yellow">120%</span> of Chevreuse's ATK. This effect can be triggered up to once every <span class="text-yellow">10</span>s, and DMG dealt this way is considered Elemental Skill DMG.`,
+      content: `After Holding Short-Range Rapid Interdiction Fire and hitting a target, 2 chain explosions will be triggered near the location where said target is hit. Each explosion deals <b class="text-genshin-pyro">Pyro DMG</b> equal to <span class="text-desc">120%</span> of Chevreuse's ATK. This effect can be triggered up to once every <span class="text-desc">10</span>s, and DMG dealt this way is considered Elemental Skill DMG.`,
     },
     c3: {
       title: `C3: Practiced Field Stripping Technique`,
-      content: `Increases the Level of Short-Range Rapid Interdiction Fire by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Short-Range Rapid Interdiction Fire by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: The Secret to Rapid-Fire Multishots`,
-      content: `After using Ring of Bursting Grenades, the Hold mode of Short-Range Rapid Interdiction Fire will not go on cooldown when Chevreuse uses it. This effect is removed after Short-Range Rapid Interdiction Fire has been fired twice using Hold or after <span class="text-yellow">6</span>s.`,
+      content: `After using Ring of Bursting Grenades, the Hold mode of Short-Range Rapid Interdiction Fire will not go on cooldown when Chevreuse uses it. This effect is removed after Short-Range Rapid Interdiction Fire has been fired twice using Hold or after <span class="text-desc">6</span>s.`,
     },
     c5: {
       title: `C5: Enhanced Incendiary Firepower`,
-      content: `Increases the Level of Ring of Bursting Grenades by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Ring of Bursting Grenades by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: In Pursuit of Ending Evil`,
-      content: `After 12s of the healing effect from Short-Range Rapid Interdiction Fire, all nearby party members recover HP equivalent to <span class="text-yellow">10%</span> of Chevreuse's Max HP once.
-      After a party member is healed by Short-Range Rapid Interdiction Fire, they gain a <span class="text-yellow">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and <b class="text-genshin-electro">Electro DMG Bonus</b> for <span class="text-yellow">8</span>s. Max <span class="text-yellow">3</span> stacks. Each stack's duration is counted independently.`,
+      content: `After 12s of the healing effect from Short-Range Rapid Interdiction Fire, all nearby party members recover HP equivalent to <span class="text-desc">10%</span> of Chevreuse's Max HP once.
+      After a party member is healed by Short-Range Rapid Interdiction Fire, they gain a <span class="text-desc">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and <b class="text-genshin-electro">Electro DMG Bonus</b> for <span class="text-desc">8</span>s. Max <span class="text-desc">3</span> stacks. Each stack's duration is counted independently.`,
     },
   }
 

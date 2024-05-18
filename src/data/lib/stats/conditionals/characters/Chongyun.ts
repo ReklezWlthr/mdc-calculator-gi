@@ -44,40 +44,40 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Steady Breathing`,
-      content: `Sword, Claymore, or Polearm-wielding characters within the field created by Spirit Blade: Chonghua's Layered Frost have their Normal ATK SPD increased by <span class="text-yellow">8%</span>.`,
+      content: `Sword, Claymore, or Polearm-wielding characters within the field created by Spirit Blade: Chonghua's Layered Frost have their Normal ATK SPD increased by <span class="text-desc">8%</span>.`,
     },
     a4: {
       title: `A4: Rimechaser Blade`,
-      content: `When the field created by Spirit Blade: Chonghua's Layered Frost disappears, another spirit blade will be summoned to strike nearby opponents, dealing <span class="text-yellow">100%</span> of Chonghua's Layered Frost's Skill DMG as <b class="text-genshin-cryo">AoE Cryo DMG</b>.
-      <br />Opponents hit by this blade will have their <b class="text-genshin-cryo">Cryo RES</b> decreased by <span class="text-yellow">10%</span> for <span class="text-yellow">8</span>s.`,
+      content: `When the field created by Spirit Blade: Chonghua's Layered Frost disappears, another spirit blade will be summoned to strike nearby opponents, dealing <span class="text-desc">100%</span> of Chonghua's Layered Frost's Skill DMG as <b class="text-genshin-cryo">AoE Cryo DMG</b>.
+      <br />Opponents hit by this blade will have their <b class="text-genshin-cryo">Cryo RES</b> decreased by <span class="text-desc">10%</span> for <span class="text-desc">8</span>s.`,
     },
     c1: {
       title: `C1: Ice Unleashed`,
-      content: `The last attack of Chongyun's Normal Attack combo releases 3 ice blades. Each blade deals <span class="text-yellow">50%</span> of Chongyun's ATK as <b class="text-genshin-cryo">Cryo DMG</b> to all opponents in its path.`,
+      content: `The last attack of Chongyun's Normal Attack combo releases 3 ice blades. Each blade deals <span class="text-desc">50%</span> of Chongyun's ATK as <b class="text-genshin-cryo">Cryo DMG</b> to all opponents in its path.`,
     },
     c2: {
       title: `C2: Atmospheric Revolution`,
-      content: `Elemental Skills and Elemental Bursts cast within the Frost Field created by Spirit Blade: Chonghua's Layered Frost have their CD time decreased by <span class="text-yellow">15%</span>.`,
+      content: `Elemental Skills and Elemental Bursts cast within the Frost Field created by Spirit Blade: Chonghua's Layered Frost have their CD time decreased by <span class="text-desc">15%</span>.`,
     },
     c3: {
       title: `C3: Cloudburst`,
-      content: `Increases the Level of Spirit Blade: Cloud-Parting Star by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Spirit Blade: Cloud-Parting Star by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Frozen Skies`,
-      content: `Chongyun regenerates <span class="text-yellow">1</span> Energy every time he hits an opponent affected by <b class="text-genshin-cryo">Cryo</b>.
-      This effect can only occur once every <span class="text-yellow">2</span>s.`,
+      content: `Chongyun regenerates <span class="text-desc">1</span> Energy every time he hits an opponent affected by <b class="text-genshin-cryo">Cryo</b>.
+      This effect can only occur once every <span class="text-desc">2</span>s.`,
     },
     c5: {
       title: `C5: The True Path`,
-      content: `Increases the Level of Spirit Blade: Chonghua's Layered Frost by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Spirit Blade: Chonghua's Layered Frost by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Rally of Four Blades`,
-      content: `Spirit Blade: Cloud-Parting Star deals <span class="text-yellow">15%</span> more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.
-      <br />This skill will also summon <span class="text-yellow">1</span> additional spirit blade.`,
+      content: `Spirit Blade: Cloud-Parting Star deals <span class="text-desc">15%</span> more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.
+      <br />This skill will also summon <span class="text-desc">1</span> additional spirit blade.`,
     },
   }
 

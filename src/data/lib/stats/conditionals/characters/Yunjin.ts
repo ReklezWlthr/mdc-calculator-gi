@@ -41,7 +41,7 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Flourishes her polearm in a cloud-grasping stance, dealing <b class="text-genshin-geo">Geo DMG</b>.
       <br />
       <br /><b>Hold</b>
-      <br />Takes up the Opening Flourish stance and charges up, forming a shield. DMG Absorption is based on Yun Jin's Max HP and has <span class="text-yellow">150%</span> effectiveness against all <b>Elemental DMG</b> and <b>Physical DMG</b>. The shield lasts until she finishes unleashing her Elemental Skill.
+      <br />Takes up the Opening Flourish stance and charges up, forming a shield. DMG Absorption is based on Yun Jin's Max HP and has <span class="text-desc">150%</span> effectiveness against all <b>Elemental DMG</b> and <b>Physical DMG</b>. The shield lasts until she finishes unleashing her Elemental Skill.
       <br />When the skill is released, when its duration ends, or when the shield breaks, Yun Jin will unleash the charged energy as an attack, dealing <b class="text-genshin-geo">Geo DMG</b>.
       <br />Based on the time spent charging, it will either unleash an attack at Charge Level 1 or Level 2.`,
     },
@@ -57,41 +57,41 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a1: {
       title: `A1: True to Oneself`,
-      content: `While affected by the Adeptal Legacy state caused by Moonjade Descent, Yaoyao will constantly throw White Jade Radishes at nearby opponents when she is sprinting, jumping, or running. She can throw <span class="text-yellow">1</span> White Jade Radish this way once every <span class="text-yellow">0.6</span>s.`,
+      content: `While affected by the Adeptal Legacy state caused by Moonjade Descent, Yaoyao will constantly throw White Jade Radishes at nearby opponents when she is sprinting, jumping, or running. She can throw <span class="text-desc">1</span> White Jade Radish this way once every <span class="text-desc">0.6</span>s.`,
     },
     a4: {
       title: `A4: Breaking Conventions`,
-      content: `The Normal Attack DMG Bonus granted by Flying Cloud Flag Formation is further increased by <span class="text-yellow">2.5%/5%/7.5%/11.5%</span> of Yun Jin's DEF when the party contains characters of <span class="text-yellow">1/2/3/4</span> Elemental Types, respectively.`,
+      content: `The Normal Attack DMG Bonus granted by Flying Cloud Flag Formation is further increased by <span class="text-desc">2.5%/5%/7.5%/11.5%</span> of Yun Jin's DEF when the party contains characters of <span class="text-desc">1/2/3/4</span> Elemental Types, respectively.`,
     },
     util: {
       title: `Light Nourishment`,
-      content: `When Perfect Cooking is achieved on Food with Adventure-related effects, there is a <span class="text-yellow">12%</span> chance to obtain double the product.`,
+      content: `When Perfect Cooking is achieved on Food with Adventure-related effects, there is a <span class="text-desc">12%</span> chance to obtain double the product.`,
     },
     c1: {
       title: `C1: Thespian Gallop`,
-      content: `Opening Flourish's CD is decreased by <span class="text-yellow">18%</span>.`,
+      content: `Opening Flourish's CD is decreased by <span class="text-desc">18%</span>.`,
     },
     c2: {
       title: `C2: Myriad Mise-En-Scène`,
-      content: `After Cliffbreaker's Banner is unleashed, all nearby party members' Normal Attack DMG is increased by <span class="text-yellow">15%</span> for <span class="text-yellow">12</span>s.`,
+      content: `After Cliffbreaker's Banner is unleashed, all nearby party members' Normal Attack DMG is increased by <span class="text-desc">15%</span> for <span class="text-desc">12</span>s.`,
     },
     c3: {
       title: `C3: Seafaring General`,
-      content: `Increases the Level of Cliffbreaker's Banner by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Cliffbreaker's Banner by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Flower and a Fighter`,
-      content: `When Yun Jin triggers the Crystallize Reaction, her DEF is increased by <span class="text-yellow">20%</span> for <span class="text-yellow">12</span>s.`,
+      content: `When Yun Jin triggers the Crystallize Reaction, her DEF is increased by <span class="text-desc">20%</span> for <span class="text-desc">12</span>s.`,
     },
     c5: {
       title: `C5: Famed Throughout the Land`,
-      content: `Increases the Level of Opening Flourish by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Opening Flourish by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Decorous Harmony`,
-      content: `Characters under the effects of the Flying Cloud Flag Formation have their Normal ATK SPD increased by <span class="text-yellow">12%</span>.`,
+      content: `Characters under the effects of the Flying Cloud Flag Formation have their Normal ATK SPD increased by <span class="text-desc">12%</span>.`,
     },
   }
 

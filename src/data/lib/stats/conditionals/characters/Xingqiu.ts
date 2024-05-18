@@ -37,10 +37,10 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel) => {
       <br />- When a character takes DMG, the Rain Sword will shatter, reducing the amount of DMG taken.
       <br />- Increases the character's resistance to interruption.
       <br />
-      <br /><span class="text-yellow">20%</span> of Xingqiu's <b class="text-genshin-hydro">Hydro DMG Bonus</b> will be converted to additional DMG Reduction for the Rain Swords.
+      <br /><span class="text-desc">20%</span> of Xingqiu's <b class="text-genshin-hydro">Hydro DMG Bonus</b> will be converted to additional DMG Reduction for the Rain Swords.
       <br />
-      <br />The maximum amount of additional DMG Reduction that can be gained this way is <span class="text-yellow">24%</span>.
-      <br />The initial maximum number of Rain Swords is <span class="text-yellow">3</span>.
+      <br />The maximum amount of additional DMG Reduction that can be gained this way is <span class="text-desc">24%</span>.
+      <br />The initial maximum number of Rain Swords is <span class="text-desc">3</span>.
       <br />Using this ability applies the <b class="text-genshin-hydro">Wet</b> status onto the character.
       `,
     },
@@ -54,42 +54,42 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Hydropathic`,
-      content: `When a Rain Sword is shattered or when its duration expires, it regenerates the current character's HP based on <span class="text-yellow">6%</span> of Xingqiu's Max HP.`,
+      content: `When a Rain Sword is shattered or when its duration expires, it regenerates the current character's HP based on <span class="text-desc">6%</span> of Xingqiu's Max HP.`,
     },
     a4: {
       title: `A4: Blades Amidst Raindrops`,
-      content: `Xingqiu gains a <span class="text-yellow">20%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>.`,
+      content: `Xingqiu gains a <span class="text-desc">20%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>.`,
     },
     util: {
       title: `Flash of Genius`,
-      content: `When Xingqiu crafts Character Talent Materials, he has a <span class="text-yellow">25%</span> chance to refund a portion of the crafting materials used.`,
+      content: `When Xingqiu crafts Character Talent Materials, he has a <span class="text-desc">25%</span> chance to refund a portion of the crafting materials used.`,
     },
     c1: {
       title: `C1: The Scent Remained`,
-      content: `Increases the maximum number of Rain Swords by <span class="text-yellow">1</span>.`,
+      content: `Increases the maximum number of Rain Swords by <span class="text-desc">1</span>.`,
     },
     c2: {
       title: `C2: Rainbow Upon the Azure Sky`,
-      content: `Extends the duration of Guhua Sword: Raincutter by <span class="text-yellow">3</span>s.
-      <br />Decreases the <b class="text-genshin-hydro">Hydro RES</b> of opponents hit by sword rain attacks by <span class="text-yellow">15%</span> for <span class="text-yellow">4</span>s.`,
+      content: `Extends the duration of Guhua Sword: Raincutter by <span class="text-desc">3</span>s.
+      <br />Decreases the <b class="text-genshin-hydro">Hydro RES</b> of opponents hit by sword rain attacks by <span class="text-desc">15%</span> for <span class="text-desc">4</span>s.`,
     },
     c3: {
       title: `C3: Weaver of Verses`,
-      content: `Increases the Level of Guhua Sword: Raincutter by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Guhua Sword: Raincutter by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Evilsoother`,
-      content: `Throughout the duration of Guhua Sword: Raincutter, the DMG dealt by Guhua Sword: Fatal Rainscreen is increased by <span class="text-yellow">50%</span>.`,
+      content: `Throughout the duration of Guhua Sword: Raincutter, the DMG dealt by Guhua Sword: Fatal Rainscreen is increased by <span class="text-desc">50%</span>.`,
     },
     c5: {
       title: `C5: Embrace of Rain`,
-      content: `Increases the Level of Guhua Sword: Fatal Rainscreen by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Guhua Sword: Fatal Rainscreen by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Hence, Call Them My Own Verses`,
-      content: `Activating <span class="text-yellow">2</span> of Guhua Sword: Raincutter's sword rain attacks greatly enhances the third sword rain attack. On hit, the third sword rain attack also regenerates <span class="text-yellow">3</span> Energy for Xingqiu.`,
+      content: `Activating <span class="text-desc">2</span> of Guhua Sword: Raincutter's sword rain attacks greatly enhances the third sword rain attack. On hit, the third sword rain attack also regenerates <span class="text-desc">3</span> Energy for Xingqiu.`,
     },
   }
 

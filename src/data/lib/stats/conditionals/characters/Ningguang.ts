@@ -22,7 +22,7 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
       title: `Sparkling Scatter`,
       content: `<b>Normal Attack</b>
       <br />Shoots gems that deal <b class="text-genshin-geo">Geo DMG</b>.
-      <br />Upon hit, this grants Ningguang <span class="text-yellow">1</span> Star Jade.
+      <br />Upon hit, this grants Ningguang <span class="text-desc">1</span> Star Jade.
       <br />
       <br /><b>Charged Attack</b>
       <br />Consumes a certain amount of stamina to fire off a giant gem that deals <b class="text-genshin-geo">Geo DMG</b>.
@@ -54,7 +54,7 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Strategic Reserve`,
-      content: `A character that passes through the Jade Screen will gain a <span class="text-yellow">12%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for <span class="text-yellow">10</span>s.`,
+      content: `A character that passes through the Jade Screen will gain a <span class="text-desc">12%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for <span class="text-desc">10</span>s.`,
     },
     c1: {
       title: `C1: Piercing Fragments`,
@@ -63,25 +63,25 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
     c2: {
       title: `C2: Shock Effect`,
       content: `When Jade Screen is shattered, its CD will reset.
-      <br />Can occur once every <span class="text-yellow">6</span>s.`,
+      <br />Can occur once every <span class="text-desc">6</span>s.`,
     },
     c3: {
       title: `C3: Majesty Be the Array of Stars`,
-      content: `Increases the Level of Starshatter by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Starshatter by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Exquisite be the Jade, Outshining All Beneath`,
-      content: `Jade Screen increases nearby characters' <b>Elemental RES</b> by <span class="text-yellow">10%</span>.`,
+      content: `Jade Screen increases nearby characters' <b>Elemental RES</b> by <span class="text-desc">10%</span>.`,
     },
     c5: {
       title: `C5: Invincible Be the Jade Screen`,
-      content: `Increases the Level of Jade Screen by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Jade Screen by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Grandeur Be the Seven Stars`,
-      content: `When Starshatter is used, Ningguang gains <span class="text-yellow">7</span> Star Jades.`,
+      content: `When Starshatter is used, Ningguang gains <span class="text-desc">7</span> Star Jades.`,
     },
   }
 

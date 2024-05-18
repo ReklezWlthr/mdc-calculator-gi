@@ -46,7 +46,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       <br /><b class="text-genshin-ousia">Ousia</b>
       <br />Foaming bubbles like celebrants shall dance, dealing <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Furina's Max HP and summoning 3 Salon Members: the Ball Octopus-shaped Gentilhomme Usher, the Bubbly Seahorse-shaped Surintendante Chevalmarin, and the Armored Crab-shaped Mademoiselle Crabaletta.
       <br />They will attack nearby opponents at intervals, prioritizing the target of the active character, dealing <b class="text-genshin-hydro">Hydro DMG</b> based on Max HP.
-      <br />When they attack, if character(s) with more than <span class="text-yellow">50%</span> HP are nearby, the Members will increase their current attack's power based on the number of such characters, and consume said characters' HP. If the characters who meet these requirements are <span class="text-yellow">1/2/3/4</span> (or more), the Members' attacks will deal <span class="text-yellow">110%/120%/130%/140%</span> of their original DMG.
+      <br />When they attack, if character(s) with more than <span class="text-desc">50%</span> HP are nearby, the Members will increase their current attack's power based on the number of such characters, and consume said characters' HP. If the characters who meet these requirements are <span class="text-desc">1/2/3/4</span> (or more), the Members' attacks will deal <span class="text-desc">110%/120%/130%/140%</span> of their original DMG.
       <br />
       <br /><b class="text-genshin-pneuma">Pneuma</b>
       <br />Summons the Singer of Many Waters, who will heal nearby active character(s) based on Max HP at intervals.
@@ -58,7 +58,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
     },
     burst: {
       title: 'Let the People Rejoice',
-      content: `Rouses the impulse to revel, creating a stage of foam that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Furina's Max HP and cause nearby party members to enter the Universal Revelry state: During this time, when nearby party members' HP increases or decreases, <span class="text-yellow">1</span> Fanfare point will be granted to Furina for each percentage point of their Max HP by which their HP changes.
+      content: `Rouses the impulse to revel, creating a stage of foam that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Furina's Max HP and cause nearby party members to enter the Universal Revelry state: During this time, when nearby party members' HP increases or decreases, <span class="text-desc">1</span> Fanfare point will be granted to Furina for each percentage point of their Max HP by which their HP changes.
       <br />At the same time, Furina will increase the DMG dealt by and Incoming Healing Bonus of all nearby party members based on the amount of Fanfare she has.
       <br />When the duration ends, Furina's Fanfare points will be cleared.
       `,
@@ -66,13 +66,13 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: 'A1: Endless Waltz',
-      content: `When the active character in your party receives healing, if the source of the healing is not Furina herself and the healing overflows, then Furina will heal nearby party members for <span class="text-yellow">2%</span> of their Max HP once every <span class="text-yellow">2</span>s within the next <span class="text-yellow">4</span>s.`,
+      content: `When the active character in your party receives healing, if the source of the healing is not Furina herself and the healing overflows, then Furina will heal nearby party members for <span class="text-desc">2%</span> of their Max HP once every <span class="text-desc">2</span>s within the next <span class="text-desc">4</span>s.`,
     },
     a4: {
       title: 'A4: Unheard Confession',
-      content: `Every <span class="text-yellow">1,000</span> points of Furina's Max HP can buff the different Arkhe-aligned Salon Solitaire in the following ways:
-      <br />Will increase Salon Member DMG dealt by <span class="text-yellow">0.7%</span>, up to a maximum of <span class="text-yellow">28%</span>.
-      <br />Will decrease active character healing interval of the Singer of Many Waters by <span class="text-yellow">0.4%</span>, up to a maximum of <span class="text-yellow">16%</span>.`,
+      content: `Every <span class="text-desc">1,000</span> points of Furina's Max HP can buff the different Arkhe-aligned Salon Solitaire in the following ways:
+      <br />Will increase Salon Member DMG dealt by <span class="text-desc">0.7%</span>, up to a maximum of <span class="text-desc">28%</span>.
+      <br />Will decrease active character healing interval of the Singer of Many Waters by <span class="text-desc">0.4%</span>, up to a maximum of <span class="text-desc">16%</span>.`,
       value: [
         {
           name: 'Current Bonus DMG',
@@ -86,17 +86,17 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
     },
     c1: {
       title: 'C1: "Love Is a Rebellious Bird That None Can Tame"',
-      content: `When using Let the People Rejoice, Furina will gain <span class="text-yellow">150</span> Fanfare.
-      <br />Additionally, Furina's Fanfare limit is increased by <span class="text-yellow">100</span>.`,
+      content: `When using Let the People Rejoice, Furina will gain <span class="text-desc">150</span> Fanfare.
+      <br />Additionally, Furina's Fanfare limit is increased by <span class="text-desc">100</span>.`,
     },
     c2: {
       title: 'C2: "A Woman Adapts Like Duckweed in Water"',
-      content: `While Let the People Rejoice lasts, Furina's Fanfare gain from increases or decreases in nearby characters' HP is increased by <span class="text-yellow">250%</span>. Each point of Fanfare above the limit will increase Furina's Max HP by <span class="text-yellow">0.35%</span>. Her maximum Max HP increase is <span class="text-yellow">140%</span>.`,
+      content: `While Let the People Rejoice lasts, Furina's Fanfare gain from increases or decreases in nearby characters' HP is increased by <span class="text-desc">250%</span>. Each point of Fanfare above the limit will increase Furina's Max HP by <span class="text-desc">0.35%</span>. Her maximum Max HP increase is <span class="text-desc">140%</span>.`,
     },
     c3: {
       title: 'C3: "My Secret Is Hidden Within Me, No One Will Know My Name"',
-      content: `Increases the Level of Let the People Rejoice by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Let the People Rejoice by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: 'C4: "They Know Not Life, Who Dwelt in the Netherworld Not!"',
@@ -104,21 +104,21 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
     },
     c5: {
       title: 'C5: "His Name I Now Know, It Is...!"',
-      content: `Increases the Level of Salon Solitaire by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Salon Solitaire by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: 'C6: "Hear Me — Let Us Raise the Chalice of Love!"',
       content: `When using Salon Solitaire, Furina gains "Center of Attention" for 10s.
-      <br />Throughout the duration, Furina's Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to <span class="text-yellow">18%</span> of Furina's max HP.
-      <br />Throughout the duration, Furina's Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every <span class="text-yellow">0.1</span>s after hitting opponents depending on her current Arkhe alignment:
+      <br />Throughout the duration, Furina's Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to <span class="text-desc">18%</span> of Furina's max HP.
+      <br />Throughout the duration, Furina's Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every <span class="text-desc">0.1</span>s after hitting opponents depending on her current Arkhe alignment:
       <br />
       <br />Arkhe: <b class="text-genshin-ousia">Ousia</b>
-      <br />Every 1s, all nearby characters in the party will be healed by <span class="text-yellow">4%</span> of Furina's max HP, for a duration of <span class="text-yellow">2.9</span>s. Triggering this effect again will extend its duration.
+      <br />Every 1s, all nearby characters in the party will be healed by <span class="text-desc">4%</span> of Furina's max HP, for a duration of <span class="text-desc">2.9</span>s. Triggering this effect again will extend its duration.
       <br />Arkhe: <b class="text-genshin-pneuma">Pneuma</b>
-      <br />This Normal Attack (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attack, or Plunging Attack ground impact DMG will be further increased by an amount equivalent to <span class="text-yellow">25%</span> of Furina's max HP. When any of the attacks mentioned previously hit an opponent, all nearby characters in the party will consume <span class="text-yellow">1%</span> of their current HP.
+      <br />This Normal Attack (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attack, or Plunging Attack ground impact DMG will be further increased by an amount equivalent to <span class="text-desc">25%</span> of Furina's max HP. When any of the attacks mentioned previously hit an opponent, all nearby characters in the party will consume <span class="text-desc">1%</span> of their current HP.
       <br />
-      <br />During the duration of each instance of "Center of Attention," the above effects can be triggered up to <span class="text-yellow">6</span> times. "Center of Attention" will end when its effects have triggered <span class="text-yellow">6</span> times or when the duration expires.`,
+      <br />During the duration of each instance of "Center of Attention," the above effects can be triggered up to <span class="text-desc">6</span> times. "Center of Attention" will end when its effects have triggered <span class="text-desc">6</span> times or when the duration expires.`,
     },
   }
 

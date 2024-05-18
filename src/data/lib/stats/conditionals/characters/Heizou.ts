@@ -39,49 +39,49 @@ const Heizou = (c: number, a: number, t: ITalentLevel) => {
       <br />Charges energy to unleash an even stronger blow. He will obtain the Declension effect while charging, which will increase the power of the Heartstopper Strike. When the skill button is released or the skill finishes charging, he will strike forward, dealing <b class="text-genshin-anemo">Anemo DMG</b>.
       <br />
       <br /><b>Declension</b>
-      <br />Increases the power of the next Heartstopper Strike. Max <span class="text-yellow">4</span> stacks. When you possess <span class="text-yellow">4</span> Declension stacks, the Conviction effect will be produced, which will cause the next Heartstopper Strike to be even stronger and have a larger AoE.
+      <br />Increases the power of the next Heartstopper Strike. Max <span class="text-desc">4</span> stacks. When you possess <span class="text-desc">4</span> Declension stacks, the Conviction effect will be produced, which will cause the next Heartstopper Strike to be even stronger and have a larger AoE.
       `,
     },
     burst: {
       title: `Windmuster Kick`,
       content: `Leaps into the air and uses the Fudou Style Vacuum Slugger and kicks his opponent. The Vacuum Slugger will explode upon hit and create an Arresting Windtunnel that pulls in nearby objects and opponents, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.
       <br />When Vacuum Slugger hits opponents affected by <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, these opponents will be afflicted with Windmuster Iris. This Windmuster Iris will explode after a moment and dissipate, dealing AoE DMG of the corresponding elemental type.
-      <br />Vacuum Slugger can afflict a maximum of <span class="text-yellow">4</span> opponents with the Windmuster Iris. A single opponent cannot be under the effect of Windmuster Irises of different elements at the same time.`,
+      <br />Vacuum Slugger can afflict a maximum of <span class="text-desc">4</span> opponents with the Windmuster Iris. A single opponent cannot be under the effect of Windmuster Irises of different elements at the same time.`,
     },
     a1: {
       title: `A1: Paradoxical Practice`,
-      content: `When Shikanoin Heizou activates a Swirl reaction while on the field, he will gain <span class="text-yellow">1</span> Declension stack for Heartstopper Strike. This effect can be triggered every <span class="text-yellow">0.1</span>s.`,
+      content: `When Shikanoin Heizou activates a Swirl reaction while on the field, he will gain <span class="text-desc">1</span> Declension stack for Heartstopper Strike. This effect can be triggered every <span class="text-desc">0.1</span>s.`,
     },
     a4: {
       title: `A4: Penetrative Reasoning`,
-      content: `After Shikanoin Heizou's Heartstopper Strike hits an opponent, increases all party members' (excluding Shikanoin Heizou) Elemental Mastery by <span class="text-yellow">80</span> for <span class="text-yellow">10</span>s.`,
+      content: `After Shikanoin Heizou's Heartstopper Strike hits an opponent, increases all party members' (excluding Shikanoin Heizou) Elemental Mastery by <span class="text-desc">80</span> for <span class="text-desc">10</span>s.`,
     },
     c1: {
       title: `C1: Named Juvenile Casebook`,
-      content: `For <span class="text-yellow">5</span>s after Shikanoin Heizou takes the field, his Normal Attack SPD is increased by <span class="text-yellow">15%</span>. He also gains <span class="text-yellow">1</span> Declension stack for Heartstopper Strike. This effect can be triggered once every <span class="text-yellow">10</span>s.`,
+      content: `For <span class="text-desc">5</span>s after Shikanoin Heizou takes the field, his Normal Attack SPD is increased by <span class="text-desc">15%</span>. He also gains <span class="text-desc">1</span> Declension stack for Heartstopper Strike. This effect can be triggered once every <span class="text-desc">10</span>s.`,
     },
     c2: {
       title: `C2: Investigative Collection`,
-      content: `The pull effect of the Arresting Windtunnel created by Windmuster Kick is enhanced, and its duration is increased to <span class="text-yellow">1</span>s.`,
+      content: `The pull effect of the Arresting Windtunnel created by Windmuster Kick is enhanced, and its duration is increased to <span class="text-desc">1</span>s.`,
     },
     c3: {
       title: `C3: Esoteric Puzzle Book`,
-      content: `Increases the Level of Heartstopper Strike by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Heartstopper Strike by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Tome of Lies`,
-      content: `The first Windmuster Iris explosion in each Windmuster Kick will regenerate <span class="text-yellow">9</span> Elemental Energy for Shikanoin Heizou. Every subsequent explosion in that Windmuster Kick will each regenerate an additional <span class="text-yellow">1.5</span> Energy for Heizou.
-      <br />One Windmuster Kick can regenerate a total of <span class="text-yellow">13.5</span> Energy for Heizou in this manner.`,
+      content: `The first Windmuster Iris explosion in each Windmuster Kick will regenerate <span class="text-desc">9</span> Elemental Energy for Shikanoin Heizou. Every subsequent explosion in that Windmuster Kick will each regenerate an additional <span class="text-desc">1.5</span> Energy for Heizou.
+      <br />One Windmuster Kick can regenerate a total of <span class="text-desc">13.5</span> Energy for Heizou in this manner.`,
     },
     c5: {
       title: `C5: Secret Archive`,
-      content: `Increases the Level of Windmuster Kick by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Windmuster Kick by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Curious Casefiles`,
-      content: `Each Declension stack will increase the CRIT Rate of the Heartstopper Strike unleashed by <span class="text-yellow">4%</span>. When Heizou possesses Conviction, this Heartstopper Strike's CRIT DMG is increased by <span class="text-yellow">32%</span>.`,
+      content: `Each Declension stack will increase the CRIT Rate of the Heartstopper Strike unleashed by <span class="text-desc">4%</span>. When Heizou possesses Conviction, this Heartstopper Strike's CRIT DMG is increased by <span class="text-desc">32%</span>.`,
     },
   }
 

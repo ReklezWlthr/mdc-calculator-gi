@@ -28,7 +28,7 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b>Riptide</b>
       <br />Opponents affected by Riptide will suffer from <b class="text-genshin-hydro">AoE Hydro DMG</b> effects when attacked by Tartaglia in various ways. DMG dealt in this way is considered Normal Attack DMG.
-      <br />- <b>Riptide Flash</b>: A fully-charged Aimed Shot that hits an opponent affected by Riptide deals consecutive bouts of AoE DMG. Can occur once every <span class="text-yellow">0.7</span>s.
+      <br />- <b>Riptide Flash</b>: A fully-charged Aimed Shot that hits an opponent affected by Riptide deals consecutive bouts of AoE DMG. Can occur once every <span class="text-desc">0.7</span>s.
       <br />- <b>Riptide Burst</b>: Defeating an opponent affected by Riptide creates a <b class="text-genshin-hydro">Hydro</b> burst that inflicts the Riptide status on nearby opponents hit.
       <br />
       <br /><b>Plunging Attack</b>
@@ -48,11 +48,11 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
       <br />Consumes a certain amount of Stamina to unleash a cross slash, dealing <b class="text-genshin-hydro">Hydro DMG</b>.
       <br />
       <br /><b>Riptide Slash</b>
-      <br />Hitting an opponent affected by Riptide with a melee attack unleashes a Riptide Slash that deals <b class="text-genshin-hydro">AoE Hydro DMG</b>. DMG dealt in this way is considered Elemental Skill DMG, and can only occur once every <span class="text-yellow">1.5</span>s.
+      <br />Hitting an opponent affected by Riptide with a melee attack unleashes a Riptide Slash that deals <b class="text-genshin-hydro">AoE Hydro DMG</b>. DMG dealt in this way is considered Elemental Skill DMG, and can only occur once every <span class="text-desc">1.5</span>s.
       <br />
-      <br />After <span class="text-yellow">30</span>s, or when the ability is unleashed again, this skill will end. Tartaglia will return to his Ranged Stance and this ability will enter CD.
+      <br />After <span class="text-desc">30</span>s, or when the ability is unleashed again, this skill will end. Tartaglia will return to his Ranged Stance and this ability will enter CD.
       <br />The longer Tartaglia stays in his Melee Stance, the longer the CD.
-      <br />If the return to a ranged stance occurs automatically after <span class="text-yellow">30</span>s, the CD is even longer.`,
+      <br />If the return to a ranged stance occurs automatically after <span class="text-desc">30</span>s, the CD is even longer.`,
     },
     burst: {
       title: `Havoc: Obliteration`,
@@ -72,7 +72,7 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Never Ending`,
-      content: `Extends Riptide duration by <span class="text-yellow">8</span>s.`,
+      content: `Extends Riptide duration by <span class="text-desc">8</span>s.`,
     },
     a4: {
       title: `A4: Sword of Torrents`,
@@ -80,30 +80,30 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
     },
     util: {
       title: `Master of Weaponry`,
-      content: `Increases your own party members' Normal Attack Level by <span class="text-yellow">1</span>.`,
+      content: `Increases your own party members' Normal Attack Level by <span class="text-desc">1</span>.`,
     },
     c1: {
       title: `C1: Foul Legacy: Tide Withholder`,
-      content: `Decreases the CD of Foul Legacy: Raging Tide by <span class="text-yellow">20%</span>.`,
+      content: `Decreases the CD of Foul Legacy: Raging Tide by <span class="text-desc">20%</span>.`,
     },
     c2: {
       title: `C2: Foul Legacy: Understream`,
-      content: `When opponents affected by Riptide are defeated, Tartaglia regenerates <span class="text-yellow">4</span> Elemental Energy.`,
+      content: `When opponents affected by Riptide are defeated, Tartaglia regenerates <span class="text-desc">4</span> Elemental Energy.`,
     },
     c3: {
       title: `C3: Abyssal Mayhem: Vortex of Turmoil`,
-      content: `Increases the Level of Foul Legacy: Raging Tide by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Foul Legacy: Raging Tide by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Abyssal Mayhem: Hydrospout`,
-      content: `If Tartaglia is in Foul Legacy: Raging Tide's Melee Stance, triggers Riptide Slash against opponents on the field affected by Riptide every <span class="text-yellow">4</span>s, otherwise, triggers Riptide Flash.
+      content: `If Tartaglia is in Foul Legacy: Raging Tide's Melee Stance, triggers Riptide Slash against opponents on the field affected by Riptide every <span class="text-desc">4</span>s, otherwise, triggers Riptide Flash.
       <br />Riptide Slashes and Riptide Flashes triggered by this Constellation effect are not subject to the time intervals that would typically apply to these two Riptide effects, nor do they have any effect on those time intervals.`,
     },
     c5: {
       title: `C5: Havoc: Formless Blade`,
-      content: `Increases the Level of Havoc: Obliteration by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Havoc: Obliteration by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Havoc: Annihilation`,

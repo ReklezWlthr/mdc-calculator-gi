@@ -42,12 +42,12 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       content: `Using the keen instincts of an ace reporter, Charlotte uses her photography skills to produce different effects based on whether the ability is Tapped or Held.
       <br />
       <br /><b>Press</b>
-      <br />Takes a snapshot using Monsieur Verite, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b> to opponents in front of her and applying Snappy Silhouette to a maximum of <span class="text-yellow">5</span> opponents. During this effect's duration, it will deal <b class="text-genshin-cryo">Cryo DMG</b> to affected opponents at intervals.
+      <br />Takes a snapshot using Monsieur Verite, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b> to opponents in front of her and applying Snappy Silhouette to a maximum of <span class="text-desc">5</span> opponents. During this effect's duration, it will deal <b class="text-genshin-cryo">Cryo DMG</b> to affected opponents at intervals.
       <br />
       <br /><b>Hold</b>
       <br />Popping Monsieur Verite's viewfinder open, Charlotte enters Composition Mode, and during this time, the viewfinder will expand as you hold until you reach a Finisher Frame state. In this state, Charlotte can move and change direction freely.
       <br />When the hold state ends, Monsieur Verite will deal <b class="text-genshin-cryo">Cryo DMG</b> to all opponents locked on within the viewfinder, and apply the same Snappy Silhouette as Tap Mode does to them. If you unleash this ability only after reaching Finisher Frame, you will instead apply Focused Impression, which lasts longer and deals more DMG, although the Skill CD will be longer.
-      <br />Composition Mode lasts a maximum of <span class="text-yellow">15</span>s and allows a maximum of <span class="text-yellow">5</span> opponents to be selected.
+      <br />Composition Mode lasts a maximum of <span class="text-desc">15</span>s and allows a maximum of <span class="text-desc">5</span> opponents to be selected.
       `,
     },
     burst: {
@@ -59,37 +59,37 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
     },
     a1: {
       title: `A1: Moment of Impact`,
-      content: `When opponents marked by "Focused Impression" are defeated, Framing: Freezing Point Composition's CD will be decreased by <span class="text-yellow">2</span>s. This CD decrease can be triggered <span class="text-yellow">4</span> times every <span class="text-yellow">12</span>s.`,
+      content: `When opponents marked by "Focused Impression" are defeated, Framing: Freezing Point Composition's CD will be decreased by <span class="text-desc">2</span>s. This CD decrease can be triggered <span class="text-desc">4</span> times every <span class="text-desc">12</span>s.`,
     },
     a4: {
       title: `A4: Diversified Investigation`,
-      content: `When the party contains <span class="text-yellow">1/2/3</span> Fontainians other than herself, Charlotte gains a <span class="text-yellow">5%/10%/15%</span> Healing Bonus. When the party contains <span class="text-yellow">1/2/3</span> non-Fontainians, Charlotte gains a <span class="text-yellow">5%/10%/15%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b>.`,
+      content: `When the party contains <span class="text-desc">1/2/3</span> Fontainians other than herself, Charlotte gains a <span class="text-desc">5%/10%/15%</span> Healing Bonus. When the party contains <span class="text-desc">1/2/3</span> non-Fontainians, Charlotte gains a <span class="text-desc">5%/10%/15%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b>.`,
     },
     c1: {
       title: `C1: A Need to Verify Facts`,
-      content: `After Still Photo: Comprehensive Confirmation heals a character, it will mark them with Verification, which will heal them once every <span class="text-yellow">2</span>s for <span class="text-yellow">80%</span> of Charlotte's ATK. This effect lasts <span class="text-yellow">6</span>s.`,
+      content: `After Still Photo: Comprehensive Confirmation heals a character, it will mark them with Verification, which will heal them once every <span class="text-desc">2</span>s for <span class="text-desc">80%</span> of Charlotte's ATK. This effect lasts <span class="text-desc">6</span>s.`,
     },
     c2: {
       title: `C2: A Duty to Pursue Truth`,
-      content: `When using Framing: Freezing Point Composition, when Monsieur Verite hits <span class="text-yellow">1/2/3</span> (or more) opponents, Charlotte's own ATK will be increased by <span class="text-yellow">10%/20%/30%</span> for <span class="text-yellow">12</span>s.`,
+      content: `When using Framing: Freezing Point Composition, when Monsieur Verite hits <span class="text-desc">1/2/3</span> (or more) opponents, Charlotte's own ATK will be increased by <span class="text-desc">10%/20%/30%</span> for <span class="text-desc">12</span>s.`,
     },
     c3: {
       title: `C3: An Imperative to Independence`,
-      content: `Increases the Still Photo: Comprehensive Confirmation by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Still Photo: Comprehensive Confirmation by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: A Responsibility to Oversee`,
-      content: `When Still Photo: Comprehensive Confirmation hits an opponent marked by Snappy Silhouette or Focused Impression, it will deal <span class="text-yellow">10%</span> more DMG and restore <span class="text-yellow">2</span> Energy to Charlotte. This restoration can be triggered <span class="text-yellow">5</span> times every <span class="text-yellow">20</span>s.`,
+      content: `When Still Photo: Comprehensive Confirmation hits an opponent marked by Snappy Silhouette or Focused Impression, it will deal <span class="text-desc">10%</span> more DMG and restore <span class="text-desc">2</span> Energy to Charlotte. This restoration can be triggered <span class="text-desc">5</span> times every <span class="text-desc">20</span>s.`,
     },
     c5: {
       title: `C5: A Principle of Conscience`,
-      content: `Increases the Level of Framing: Freezing Point Composition by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Framing: Freezing Point Composition by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: A Summation of Interest`,
-      content: `When the active character's Normal and Charged Attacks hit an opponent marked by Framing: Freezing Point Composition's Focused Impression, Monsieur Verite will initiate a coordinated attack that deals <span class="text-yellow">180%</span> of Charlotte's ATK as AoE Cryo DMG and heals active character(s) within the AoE for <span class="text-yellow">42%</span> of Charlotte's ATK. This effect can be triggered once every <span class="text-yellow">6</span>s and both DMG and healing dealt in this way will be considered as having been done by Charlotte's Elemental Burst.`,
+      content: `When the active character's Normal and Charged Attacks hit an opponent marked by Framing: Freezing Point Composition's Focused Impression, Monsieur Verite will initiate a coordinated attack that deals <span class="text-desc">180%</span> of Charlotte's ATK as AoE Cryo DMG and heals active character(s) within the AoE for <span class="text-desc">42%</span> of Charlotte's ATK. This effect can be triggered once every <span class="text-desc">6</span>s and both DMG and healing dealt in this way will be considered as having been done by Charlotte's Elemental Burst.`,
     },
   }
 

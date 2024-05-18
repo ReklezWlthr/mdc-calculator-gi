@@ -51,11 +51,11 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Impetuous Flow`,
-      content: `When Faruzan is in the Manifest Gale state created by Wind Realm of Nasamjnin, the amount of time taken to charge a shot is decreased by <span class="text-yellow">60%</span>, and she can apply The Wind's Secret Ways' Perfidious Wind's Bale to opponents who are hit by the vortex created by Pressurized Collapse.`,
+      content: `When Faruzan is in the Manifest Gale state created by Wind Realm of Nasamjnin, the amount of time taken to charge a shot is decreased by <span class="text-desc">60%</span>, and she can apply The Wind's Secret Ways' Perfidious Wind's Bale to opponents who are hit by the vortex created by Pressurized Collapse.`,
     },
     a4: {
       title: `A4: Lost Wisdom of the Seven Caverns`,
-      content: `When characters affected by The Wind's Secret Ways' Prayerful Wind's Gift deal <b class="text-genshin-anemo">Anemo DMG</b> using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on <span class="text-yellow">32%</span> of Faruzan's Base ATK. <span class="text-yellow">1</span> instance of Hurricane Guard can occur once every <span class="text-yellow">0.8</span>s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.`,
+      content: `When characters affected by The Wind's Secret Ways' Prayerful Wind's Gift deal <b class="text-genshin-anemo">Anemo DMG</b> using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on <span class="text-desc">32%</span> of Faruzan's Base ATK. <span class="text-desc">1</span> instance of Hurricane Guard can occur once every <span class="text-desc">0.8</span>s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.`,
     },
     c1: {
       title: `C1: Truth by Any Means`,
@@ -63,26 +63,26 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
     },
     c2: {
       title: `C2: Overzealous Intellect`,
-      content: `The duration of the Dazzling Polyhedron created by The Wind's Secret Ways is increased by <span class="text-yellow">6</span>s.`,
+      content: `The duration of the Dazzling Polyhedron created by The Wind's Secret Ways is increased by <span class="text-desc">6</span>s.`,
     },
     c3: {
       title: `C3: Spirit-Orchard Stroll`,
-      content: `Increases the Level of Wind Realm of Nasamjnin by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Wind Realm of Nasamjnin by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Divine Comprehension`,
-      content: `The vortex created by Pressurized Collapses will restore Energy to Faruzan based on the number of opponents hit: If it hits 1 opponent, it will restore <span class="text-yellow">2</span> Energy for Faruzan. Each additional opponent hit will restore <span class="text-yellow">0.5</span> more Energy for Faruzan.
-      <br />A maximum of <span class="text-yellow">4</span> Energy can be restored to her per vortex.`,
+      content: `The vortex created by Pressurized Collapses will restore Energy to Faruzan based on the number of opponents hit: If it hits 1 opponent, it will restore <span class="text-desc">2</span> Energy for Faruzan. Each additional opponent hit will restore <span class="text-desc">0.5</span> more Energy for Faruzan.
+      <br />A maximum of <span class="text-desc">4</span> Energy can be restored to her per vortex.`,
     },
     c5: {
       title: `C5: Wonderland of Rumination`,
-      content: `Increases the Level of The Wind's Secret Ways by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of The Wind's Secret Ways by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: The Wondrous Path of Truth`,
-      content: `Characters affected by The Wind's Secret Ways' Prayerful Wind's Benefit have <span class="text-yellow">40%</span> increased CRIT DMG when they deal <b class="text-genshin-anemo">Anemo DMG</b>. When the active character deals DMG while affected by Prayerful Wind's Benefit, they will apply Pressurized Collapse to the opponent damaged. This effect can be triggered once every <span class="text-yellow">3</span>s. This CD is shared between all party members.`,
+      content: `Characters affected by The Wind's Secret Ways' Prayerful Wind's Benefit have <span class="text-desc">40%</span> increased CRIT DMG when they deal <b class="text-genshin-anemo">Anemo DMG</b>. When the active character deals DMG while affected by Prayerful Wind's Benefit, they will apply Pressurized Collapse to the opponent damaged. This effect can be triggered once every <span class="text-desc">3</span>s. This CD is shared between all party members.`,
     },
   }
 

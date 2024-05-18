@@ -49,44 +49,44 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       content: `Bennett performs a jumping attack that deals Pyro DMG, creating an Inspiration Field.
       <br />
       <br /><b>Inspiration Field</b>
-      <br />- If the health of a character within the AoE is equal to or falls below <span class="text-yellow">70%</span>, their health will continuously regenerate. The amount of HP restored scales off Bennett's Max HP.
-      <br />- If the health of a character within the AoE is higher than <span class="text-yellow">70%</span>, they gain an ATK Bonus that is based on Bennett's Base ATK.
+      <br />- If the health of a character within the AoE is equal to or falls below <span class="text-desc">70%</span>, their health will continuously regenerate. The amount of HP restored scales off Bennett's Max HP.
+      <br />- If the health of a character within the AoE is higher than <span class="text-desc">70%</span>, they gain an ATK Bonus that is based on Bennett's Base ATK.
       <br />- Imbues characters within the AoE with <b class="text-genshin-pyro">Pyro</b>.`,
     },
     a1: {
       title: `A1: Rekindle`,
-      content: `Decreases Passion Overload's CD by <span class="text-yellow">20%</span>.`,
+      content: `Decreases Passion Overload's CD by <span class="text-desc">20%</span>.`,
     },
     a4: {
       title: `A4: Lightning Storm	`,
-      content: `When inside Fantastic Voyage's circle, Passion Overload's CD is decreased by <span class="text-yellow">50%</span> and Bennett cannot be launched by this skill's explosion.`,
+      content: `When inside Fantastic Voyage's circle, Passion Overload's CD is decreased by <span class="text-desc">50%</span> and Bennett cannot be launched by this skill's explosion.`,
     },
     c1: {
       title: `C1: Grand Expectation`,
-      content: `Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional <span class="text-yellow">20%</span> of Bennett's Base ATK.`,
+      content: `Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional <span class="text-desc">20%</span> of Bennett's Base ATK.`,
     },
     c2: {
       title: `C2: Impasse Conqueror`,
-      content: `When Bennett's HP falls below <span class="text-yellow">70%</span>, his Energy Recharge is increased by <span class="text-yellow">30%</span>.`,
+      content: `When Bennett's HP falls below <span class="text-desc">70%</span>, his Energy Recharge is increased by <span class="text-desc">30%</span>.`,
     },
     c3: {
       title: `C3: Unstoppable Fervor`,
-      content: `Increases the Level of Passion Overload by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Passion Overload by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Unexpected Odyssey`,
       content: `Using a Normal Attack as the second attack of Passion Overload's Charge Level 1 will perform a follow-up attack.
-      This additional attack does <span class="text-yellow">135%</span> of the second attack's DMG.`,
+      This additional attack does <span class="text-desc">135%</span> of the second attack's DMG.`,
     },
     c5: {
       title: `C5: True Explorer`,
-      content: `Increases the Level of Fantastic Voyage by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Fantastic Voyage by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Fire Ventures With Me`,
-      content: `Sword, Claymore, or Polearm-wielding characters inside Fantastic Voyage's radius gain a <span class="text-yellow">15%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and their weapons are infused with <b class="text-genshin-pyro">Pyro</b>.`,
+      content: `Sword, Claymore, or Polearm-wielding characters inside Fantastic Voyage's radius gain a <span class="text-desc">15%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and their weapons are infused with <b class="text-genshin-pyro">Pyro</b>.`,
     },
   }
 

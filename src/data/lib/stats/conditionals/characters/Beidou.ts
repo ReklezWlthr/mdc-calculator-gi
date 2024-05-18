@@ -42,7 +42,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       <br />Lifts her weapon up as a shield. Max DMG absorbed scales off Beidou's Max HP.
       <br />Attacks using the energy stored within the greatsword upon release or once this ability's duration expires, dealing <b class="text-genshin-electro">Electro DMG</b>. DMG dealt scales with the number of times Beidou is attacked in the skill's duration. The greatest DMG Bonus will be attained once this effect is triggered twice.
       <br />The shield possesses the following properties:
-      <br />Has <span class="text-yellow">250%</span> <b class="text-genshin-electro">Electro DMG</b> Absorption Efficiency.
+      <br />Has <span class="text-desc">250%</span> <b class="text-genshin-electro">Electro DMG</b> Absorption Efficiency.
       <br />Applies the <b class="text-genshin-electro">Electro</b> element to Beidou upon activation.
       `,
     },
@@ -54,7 +54,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       <br />- When Normal and Charged Attacks hit, they create a lightning discharge that can jump between opponents, dealing <b class="text-genshin-electro">Electro DMG</b>.
       <br />- Increases the character's resistance to interruption, and decreases DMG taken.
       <br />
-      <br />A maximum of <span class="text-yellow">1</span> lightning discharge can be triggered per second.`,
+      <br />A maximum of <span class="text-desc">1</span> lightning discharge can be triggered per second.`,
     },
     a1: {
       title: `A1: Retribution`,
@@ -63,36 +63,36 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
     a4: {
       title: `A4: Lightning Storm	`,
       content: `Gain the following effects for 10s after unleashing Tidecaller with its maximum DMG Bonus:
-      <br />- DMG dealt by Normal and Charged Attacks is increased by <span class="text-yellow">15%</span>. ATK SPD of Normal and Charged Attacks is increased by <span class="text-yellow">15%</span>.
+      <br />- DMG dealt by Normal and Charged Attacks is increased by <span class="text-desc">15%</span>. ATK SPD of Normal and Charged Attacks is increased by <span class="text-desc">15%</span>.
       <br />- Greatly reduced delay before unleashing Charged Attacks.`,
     },
     c1: {
       title: `C1: Sea Beast's Scourge`,
       content: `When Stormbreaker is used:
-      <br />Creates a shield that absorbs up to <span class="text-yellow">16%</span> of Beidou's Max HP for <span class="text-yellow">15</span>s.
-      <br />This shield absorbs <b class="text-genshin-electro">Electro DMG</b> <span class="text-yellow">250%</span> more effectively.`,
+      <br />Creates a shield that absorbs up to <span class="text-desc">16%</span> of Beidou's Max HP for <span class="text-desc">15</span>s.
+      <br />This shield absorbs <b class="text-genshin-electro">Electro DMG</b> <span class="text-desc">250%</span> more effectively.`,
     },
     c2: {
       title: `C2: Summoner of Storm`,
-      content: `Stormbreaker's arc lightning can jump to <span class="text-yellow">2</span> additional targets.`,
+      content: `Stormbreaker's arc lightning can jump to <span class="text-desc">2</span> additional targets.`,
     },
     c3: {
       title: `C3: Star of Tomorrow`,
-      content: `Increases the Level of Tidecaller by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Tidecaller by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Stunning Revenge`,
-      content: `Upon being attacked, Beidou's Normal Attacks gain an additional instance of <span class="text-yellow">20%</span> <b class="text-genshin-electro">Electro DMG</b> for <span class="text-yellow">10</span>s.`,
+      content: `Upon being attacked, Beidou's Normal Attacks gain an additional instance of <span class="text-desc">20%</span> <b class="text-genshin-electro">Electro DMG</b> for <span class="text-desc">10</span>s.`,
     },
     c5: {
       title: `C5: Crimson Tidewalker`,
-      content: `Increases the Level of Stormbreaker by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Stormbreaker by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Bane of Evil`,
-      content: `During the duration of Stormbreaker, the <b class="text-genshin-electro">Electro RES</b> of surrounding opponents is decreased by <span class="text-yellow">15%</span>.`,
+      content: `During the duration of Stormbreaker, the <b class="text-genshin-electro">Electro RES</b> of surrounding opponents is decreased by <span class="text-desc">15%</span>.`,
     },
   }
 

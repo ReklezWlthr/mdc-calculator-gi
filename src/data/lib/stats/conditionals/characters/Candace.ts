@@ -38,7 +38,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       <br />Rushes forward with her shield, dealing <b class="text-genshin-hydro">Hydro DMG</b> to opponents in front of her.
       <br />
       <br /><b>Hold</b>
-      <br />Raises her shield to block incoming attacks from nearby opponents, forming a barrier that absorbs DMG based on her Max HP and absorbs <b class="text-genshin-hydro">Hydro DMG</b> <span class="text-yellow">250%</span> more effectively. This barrier lasts until the Elemental Skill is unleashed.
+      <br />Raises her shield to block incoming attacks from nearby opponents, forming a barrier that absorbs DMG based on her Max HP and absorbs <b class="text-genshin-hydro">Hydro DMG</b> <span class="text-desc">250%</span> more effectively. This barrier lasts until the Elemental Skill is unleashed.
       <br />After holding for a certain period of time, Candace will finish charging, and when the skill button is released, the skill duration expires, or when the barrier is broken, she will perform a leaping strike that deals <b class="text-genshin-hydro">Hydro DMG</b> to opponents in front of her.
       `,
     },
@@ -58,21 +58,21 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Celestial Dome of Sand`,
-      content: `Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal <span class="text-yellow">0.5%</span> increased DMG to opponents for every <span class="text-yellow">1,000</span> points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.`,
+      content: `Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal <span class="text-desc">0.5%</span> increased DMG to opponents for every <span class="text-desc">1,000</span> points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.`,
       value: [{ name: 'DMG Bonus', value: { stat: Stats.HP, scaling: (hp) => toPercentage((hp / 1000) * 0.005) } }],
     },
     c1: {
       title: `C1: Returning Heiress of the Scarlet Sands`,
-      content: `The duration of Prayer of the Crimson Crown effect triggered by Sacred Rite: Wagtail's Tide is increased by <span class="text-yellow">3</span>s.`,
+      content: `The duration of Prayer of the Crimson Crown effect triggered by Sacred Rite: Wagtail's Tide is increased by <span class="text-desc">3</span>s.`,
     },
     c2: {
       title: `C2: Moon-Piercing Brilliance`,
-      content: `When Sacred Rite: Heron's Sanctum hits opponents, Candace's Max HP will be increased by <span class="text-yellow">20%</span> for <span class="text-yellow">15</span>s.`,
+      content: `When Sacred Rite: Heron's Sanctum hits opponents, Candace's Max HP will be increased by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s.`,
     },
     c3: {
       title: `C3: Hunter's Supplication`,
-      content: `Increases the Level of Sacred Rite: Wagtail's Tide by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Sacred Rite: Wagtail's Tide by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Sentinel Oath`,
@@ -80,13 +80,13 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
     },
     c5: {
       title: `C5: Heterochromatic Gaze`,
-      content: `Increases the Level of Sacred Rite: Heron's Sanctum by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Sacred Rite: Heron's Sanctum by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: The Overflow`,
-      content: `When characters (excluding Candace herself) affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide deal Elemental DMG to opponents using Normal Attacks, an attack wave will be unleashed that deals <b class="text-genshin-hydro">AoE Hydro DMG</b> equal to <span class="text-yellow">15%</span> of Candace's Max HP.
-      <br />This effect can trigger once every <span class="text-yellow">2.3</span>s and is considered Elemental Burst DMG.`,
+      content: `When characters (excluding Candace herself) affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide deal Elemental DMG to opponents using Normal Attacks, an attack wave will be unleashed that deals <b class="text-genshin-hydro">AoE Hydro DMG</b> equal to <span class="text-desc">15%</span> of Candace's Max HP.
+      <br />This effect can trigger once every <span class="text-desc">2.3</span>s and is considered Elemental Burst DMG.`,
     },
   }
 

@@ -40,7 +40,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       content: `Summons protective stone armor, dealing <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents and creating a shield. The shield's DMG Absorption scales based on Noelle's DEF.
       <br />The shield has the following properties:
       <br />- When Noelle's Normal and Charged Attacks hit a target, they have a certain chance to regenerate HP for all characters.
-      <br />- Possesses <span class="text-yellow">150%</span> DMG Absorption efficiency against all <b>Elemental and Physical DMG</b>.
+      <br />- Possesses <span class="text-desc">150%</span> DMG Absorption efficiency against all <b>Elemental and Physical DMG</b>.
       <br />
       <br />The amount of HP healed when regeneration is triggered scales based on Noelle's DEF.
       `,
@@ -64,42 +64,42 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a1: {
       title: `A1: Devotion`,
-      content: `When Noelle is in the party but not on the field, this ability triggers automatically when your active character's HP falls below <span class="text-yellow">30%</span>:
-      <br />Creates a shield for your active character that lasts for <span class="text-yellow">20</span>s and absorbs DMG equal to <span class="text-yellow">400%</span> of Noelle's DEF.
-      <br />The shield has a <span class="text-yellow">150%</span> DMG Absorption effectiveness against all <b>Elemental and Physical DMG</b>.
-      <br />This effect can only occur once every <span class="text-yellow">60</span>s.`,
+      content: `When Noelle is in the party but not on the field, this ability triggers automatically when your active character's HP falls below <span class="text-desc">30%</span>:
+      <br />Creates a shield for your active character that lasts for <span class="text-desc">20</span>s and absorbs DMG equal to <span class="text-desc">400%</span> of Noelle's DEF.
+      <br />The shield has a <span class="text-desc">150%</span> DMG Absorption effectiveness against all <b>Elemental and Physical DMG</b>.
+      <br />This effect can only occur once every <span class="text-desc">60</span>s.`,
     },
     a4: {
       title: `A4: Nice and Clean`,
-      content: `Every <span class="text-yellow">4</span> Normal or Charged Attack hits will decrease the CD of Breastplate by <span class="text-yellow">1</span>s.
-      <br />Hitting multiple opponents with a single attack is only counted as <span class="text-yellow">1</span> hit.`,
+      content: `Every <span class="text-desc">4</span> Normal or Charged Attack hits will decrease the CD of Breastplate by <span class="text-desc">1</span>s.
+      <br />Hitting multiple opponents with a single attack is only counted as <span class="text-desc">1</span> hit.`,
     },
     c1: {
       title: `C1: I Got Your Back`,
-      content: `While Sweeping Time and Breastplate are both in effect, the chance of Breastplate's healing effects activating is increased to <span class="text-yellow">100%</span>.`,
+      content: `While Sweeping Time and Breastplate are both in effect, the chance of Breastplate's healing effects activating is increased to <span class="text-desc">100%</span>.`,
     },
     c2: {
       title: `C2: Combat Maid`,
-      content: `Decreases the Stamina Consumption of Noelle's Charged Attacks by <span class="text-yellow">20%</span> and increases her Charged Attack DMG by <span class="text-yellow">15%</span>.`,
+      content: `Decreases the Stamina Consumption of Noelle's Charged Attacks by <span class="text-desc">20%</span> and increases her Charged Attack DMG by <span class="text-desc">15%</span>.`,
     },
     c3: {
       title: `C3: Invulnerable Maid`,
-      content: `Increases the Level of Breastplate by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Breastplate by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: To Be Cleaned`,
-      content: `When Breastplate's duration expires or it is destroyed by DMG, it will deal <span class="text-yellow">400%</span> of Noelle's ATK of <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents.`,
+      content: `When Breastplate's duration expires or it is destroyed by DMG, it will deal <span class="text-desc">400%</span> of Noelle's ATK of <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents.`,
     },
     c5: {
       title: `C5: Favonius Sweeper Master`,
-      content: `Increases the Level of Sweeping Time by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Sweeping Time by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Must Be Spotless`,
-      content: `Sweeping Time increases Noelle's ATK by an additional <span class="text-yellow">50%</span> of her DEF.
-      <br />Additionally, every opponent defeated during the skill's duration adds 1s to the duration, up to <span class="text-yellow">10</span>s.`,
+      content: `Sweeping Time increases Noelle's ATK by an additional <span class="text-desc">50%</span> of her DEF.
+      <br />Additionally, every opponent defeated during the skill's duration adds 1s to the duration, up to <span class="text-desc">10</span>s.`,
     },
   }
 

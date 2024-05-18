@@ -38,7 +38,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       <br />On the third bounce, the bomb splits into many mines.
       <br />The mines will explode upon contact with opponents, or after a short period of time, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       <br />
-      <br />Starts with <span class="text-yellow">2</span> charges.
+      <br />Starts with <span class="text-desc">2</span> charges.
       `,
     },
     burst: {
@@ -47,38 +47,38 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Pounding Surprise`,
-      content: `When Jumpy Dumpty and Normal Attacks deal DMG, Klee has a <span class="text-yellow">50%</span> chance to obtain an Explosive Spark. This Explosive Spark is consumed by the next Charged Attack, which costs no Stamina and deals <span class="text-yellow">50%</span> increased DMG.`,
+      content: `When Jumpy Dumpty and Normal Attacks deal DMG, Klee has a <span class="text-desc">50%</span> chance to obtain an Explosive Spark. This Explosive Spark is consumed by the next Charged Attack, which costs no Stamina and deals <span class="text-desc">50%</span> increased DMG.`,
     },
     a4: {
       title: `A4: Sparkling Burst`,
-      content: `When Klee's Charged Attack results in a CRIT Hit, all party members gain <span class="text-yellow">2</span> Elemental Energy.`,
+      content: `When Klee's Charged Attack results in a CRIT Hit, all party members gain <span class="text-desc">2</span> Elemental Energy.`,
     },
     c1: {
       title: `C1: Chained Reactions`,
-      content: `Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to <span class="text-yellow">120%</span> of Sparks 'n' Splash's DMG.`,
+      content: `Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to <span class="text-desc">120%</span> of Sparks 'n' Splash's DMG.`,
     },
     c2: {
       title: `C2: Explosive Frags`,
-      content: `Being hit by Jumpy Dumpty's mines decreases opponents' DEF by <span class="text-yellow">23%</span> for <span class="text-yellow">10</span>s.`,
+      content: `Being hit by Jumpy Dumpty's mines decreases opponents' DEF by <span class="text-desc">23%</span> for <span class="text-desc">10</span>s.`,
     },
     c3: {
       title: `C3: Exquisite Compound`,
-      content: `Increases the Level of Jumpy Dumpty by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Jumpy Dumpty by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Sparkly Explosion`,
-      content: `If Klee leaves the field during the duration of Sparks 'n' Splash, her departure triggers an explosion that deals <span class="text-yellow">555%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
+      content: `If Klee leaves the field during the duration of Sparks 'n' Splash, her departure triggers an explosion that deals <span class="text-desc">555%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
     },
     c5: {
       title: `C5: Nova Burst`,
-      content: `Increases the Level of Sparks 'n' Splash by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Sparks 'n' Splash by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Blazing Delight`,
-      content: `While under the effects of Sparks 'n' Splash, Klee will regenerate <span class="text-yellow">3</span> Energy for all members of the party (excluding Klee) every <span class="text-yellow">3</span>s.
-      <br />When Sparks 'n' Splash is used, all party members will gain a <span class="text-yellow">10%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> for <span class="text-yellow">25</span>s.`,
+      content: `While under the effects of Sparks 'n' Splash, Klee will regenerate <span class="text-desc">3</span> Energy for all members of the party (excluding Klee) every <span class="text-desc">3</span>s.
+      <br />When Sparks 'n' Splash is used, all party members will gain a <span class="text-desc">10%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> for <span class="text-desc">25</span>s.`,
     },
   }
 

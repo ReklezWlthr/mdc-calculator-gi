@@ -34,7 +34,7 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
     skill: {
       title: `Tengu Stormcall`,
       content: `Retreats rapidly with the speed of a tengu, summoning the protection of the Crowfeather.
-      <br />Gains Crowfeather Cover for <span class="text-yellow">18</span>s, and when Kujou Sara fires a fully-charged Aimed Shot, Crowfeather Cover will be consumed, and will leave a Crowfeather at the target location.
+      <br />Gains Crowfeather Cover for <span class="text-desc">18</span>s, and when Kujou Sara fires a fully-charged Aimed Shot, Crowfeather Cover will be consumed, and will leave a Crowfeather at the target location.
       <br />Crowfeathers will trigger Tengu Juurai: Ambush after a short time, dealing <b class="text-genshin-electro">Electro DMG</b> and granting the active character within its AoE an ATK Bonus based on Kujou Sara's Base ATK.
       <br />
       <br />The ATK Bonuses from different Tengu Juurai will not stack, and their effects and duration will be determined by the last Tengu Juurai to take effect.`,
@@ -49,39 +49,39 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Immovable Will`,
-      content: `While in the Crowfeather Cover state provided by Tengu Stormcall, Aimed Shot charge times are decreased by <span class="text-yellow">60%</span>.`,
+      content: `While in the Crowfeather Cover state provided by Tengu Stormcall, Aimed Shot charge times are decreased by <span class="text-desc">60%</span>.`,
     },
     a4: {
       title: `A4: Decorum`,
-      content: `When Tengu Juurai: Ambush hits opponents, Kujou Sara will restore <span class="text-yellow">1.2</span> Energy to all party members for every <span class="text-yellow">100%</span> Energy Recharge she has. This effect can be triggered once every <span class="text-yellow">3</span>s.`,
+      content: `When Tengu Juurai: Ambush hits opponents, Kujou Sara will restore <span class="text-desc">1.2</span> Energy to all party members for every <span class="text-desc">100%</span> Energy Recharge she has. This effect can be triggered once every <span class="text-desc">3</span>s.`,
       value: [{ name: 'Energy Restoration', value: { stat: Stats.ER, scaling: (er) => 1.2 * _.floor(er) } }],
     },
     c1: {
       title: `C1: Crow's Eye`,
-      content: `When Tengu Juurai grant characters ATK Bonuses or hits opponents, the CD of Tengu Stormcall is decreased by <span class="text-yellow">1</span>s.
-      <br />This effect can be triggered once every <span class="text-yellow">3</span>s.`,
+      content: `When Tengu Juurai grant characters ATK Bonuses or hits opponents, the CD of Tengu Stormcall is decreased by <span class="text-desc">1</span>s.
+      <br />This effect can be triggered once every <span class="text-desc">3</span>s.`,
     },
     c2: {
       title: `C2: Dark Wings`,
-      content: `Unleashing Tengu Stormcall will leave a weaker Crowfeather at Kujou Sara's original position that will deal <span class="text-yellow">30%</span> of its original DMG.`,
+      content: `Unleashing Tengu Stormcall will leave a weaker Crowfeather at Kujou Sara's original position that will deal <span class="text-desc">30%</span> of its original DMG.`,
     },
     c3: {
       title: `C3: The War Within`,
-      content: `Increases the Level of Subjugation: Koukou Sendou by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Subjugation: Koukou Sendou by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Conclusive Proof`,
-      content: `The number of Tengu Juurai: Stormcluster released by Subjugation: Koukou Sendou is increased to <span class="text-yellow">6</span>.`,
+      content: `The number of Tengu Juurai: Stormcluster released by Subjugation: Koukou Sendou is increased to <span class="text-desc">6</span>.`,
     },
     c5: {
       title: `C5: Spellsinger`,
-      content: `Increases the Level of Tengu Stormcall by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Tengu Stormcall by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Sin of Pride`,
-      content: `The <b class="text-genshin-electro">Electro DMG</b> of characters who have had their ATK increased by Tengu Juurai has its Crit DMG increased by <span class="text-yellow">60%</span>.`,
+      content: `The <b class="text-genshin-electro">Electro DMG</b> of characters who have had their ATK increased by Tengu Juurai has its Crit DMG increased by <span class="text-desc">60%</span>.`,
     },
   }
 

@@ -50,7 +50,7 @@ export const ConsCircle = observer(
             <div>
               {_.map(talent?.value, (item) => (
                 <p>
-                  {item.name}: <span className="text-yellow">{item.value.scaling(statForScale[item.value.stat])}</span>
+                  {item.name}: <span className="text-desc">{item.value.scaling(statForScale[item.value.stat])}</span>
                 </p>
               ))}
             </div>

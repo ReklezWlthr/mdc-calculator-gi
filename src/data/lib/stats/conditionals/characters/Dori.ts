@@ -45,49 +45,49 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
       <br />- Continuously restore HP based on Dori's Max HP.
       <br />- Continuously regenerate Energy.
       <br />- Be affected by <b class="text-genshin-electro">Electro</b>.
-      <br />When the connector between the Jinni and the character touches opponents, it will deal one instance of <b class="text-genshin-electro">Electro DMG</b> to them every <span class="text-yellow">0.4</span>s.
+      <br />When the connector between the Jinni and the character touches opponents, it will deal one instance of <b class="text-genshin-electro">Electro DMG</b> to them every <span class="text-desc">0.4</span>s.
       <br />
       <br />Only one Jinni can exist at one time.`,
     },
     a1: {
       title: `A1: An Eye for Gold`,
-      content: `After a character connected to the Jinni triggers an Electro-Charged, Superconduct, Overloaded, Quicken, Aggravate, Hyperbloom, or an Electro Swirl or Crystallize reaction, the CD of Spirit-Warding Lamp: Troubleshooter Cannon is decreased by <span class="text-yellow">1</span>s.
-      <br />This effect can be triggered once every <span class="text-yellow">3</span>s.`,
+      content: `After a character connected to the Jinni triggers an Electro-Charged, Superconduct, Overloaded, Quicken, Aggravate, Hyperbloom, or an Electro Swirl or Crystallize reaction, the CD of Spirit-Warding Lamp: Troubleshooter Cannon is decreased by <span class="text-desc">1</span>s.
+      <br />This effect can be triggered once every <span class="text-desc">3</span>s.`,
     },
     a4: {
       title: `A4: Compound Interest`,
-      content: `When the Troubleshooter Shots or After-Sales Service Rounds from Spirit-Warding Lamp: Troubleshooter Cannon hit opponents, Dori will restore <span class="text-yellow">5</span> Elemental Energy for every <span class="text-yellow">100%</span> Energy Recharge possessed.
-      <br />Per Spirit-Warding Lamp: Troubleshooter Cannon, only one instance of Energy restoration can be triggered and a maximum of <span class="text-yellow">15</span> Energy can be restored this way.`,
+      content: `When the Troubleshooter Shots or After-Sales Service Rounds from Spirit-Warding Lamp: Troubleshooter Cannon hit opponents, Dori will restore <span class="text-desc">5</span> Elemental Energy for every <span class="text-desc">100%</span> Energy Recharge possessed.
+      <br />Per Spirit-Warding Lamp: Troubleshooter Cannon, only one instance of Energy restoration can be triggered and a maximum of <span class="text-desc">15</span> Energy can be restored this way.`,
     },
     c1: {
       title: `C1: Additional Investment`,
-      content: `The number of After-Sales Service Rounds created by Troubleshooter Shots is increased by <span class="text-yellow">1</span>.`,
+      content: `The number of After-Sales Service Rounds created by Troubleshooter Shots is increased by <span class="text-desc">1</span>.`,
     },
     c2: {
       title: `C2: Special Franchise`,
-      content: `When you are in combat and the Jinni heals the character it is connected to, it will fire a Jinni Toop from that character's position that deals <span class="text-yellow">50%</span> of Dori's ATK DMG.`,
+      content: `When you are in combat and the Jinni heals the character it is connected to, it will fire a Jinni Toop from that character's position that deals <span class="text-desc">50%</span> of Dori's ATK DMG.`,
     },
     c3: {
       title: `C3: Wonders Never Cease`,
-      content: `Increases the Level of Alcazarzaray's Exactitude by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Alcazarzaray's Exactitude by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Discretionary Supplement`,
       content: `The character connected to the Jinni will obtain the following buffs based on their current HP and Energy:
-      <br />- When their HP is lower than <span class="text-yellow">50%</span>, they gain <span class="text-yellow">50%</span> Incoming Healing Bonus.
-      <br />- When their Energy is less than <span class="text-yellow">50%</span>, they gain <span class="text-yellow">50%</span> Energy Recharge.`,
+      <br />- When their HP is lower than <span class="text-desc">50%</span>, they gain <span class="text-desc">50%</span> Incoming Healing Bonus.
+      <br />- When their Energy is less than <span class="text-desc">50%</span>, they gain <span class="text-desc">50%</span> Energy Recharge.`,
     },
     c5: {
       title: `C5: Value for Mora`,
-      content: `Increases the Level of Spirit-Warding Lamp: Troubleshooter Cannon by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Spirit-Warding Lamp: Troubleshooter Cannon by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Sprinkling Weight`,
-      content: `Dori gains the following effects for <span class="text-yellow">3</span>s after using Spirit-Warding Lamp: Troubleshooter Cannon:
+      content: `Dori gains the following effects for <span class="text-desc">3</span>s after using Spirit-Warding Lamp: Troubleshooter Cannon:
       <br /><b class="text-genshin-electro">Electro Infusion</b>.
-      <br />When Normal Attacks hit opponents, all nearby party members will heal HP equivalent to <span class="text-yellow">4%</span> of Dori's Max HP. This type of healing can occur once every <span class="text-yellow">0.1</span>s.`,
+      <br />When Normal Attacks hit opponents, all nearby party members will heal HP equivalent to <span class="text-desc">4%</span> of Dori's Max HP. This type of healing can occur once every <span class="text-desc">0.1</span>s.`,
     },
   }
 

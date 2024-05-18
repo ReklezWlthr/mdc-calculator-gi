@@ -43,43 +43,43 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Floral Sidewinder`,
-      content: `If one of your party members has triggered Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions before the Floral Ring returns, it will grant the character the Sprout effect upon return, which will continuously deal <b class="text-genshin-dendro">Dendro DMG</b> equivalent to <span class="text-yellow">40%</span> of Collei's ATK to nearby opponents for <span class="text-yellow">3</span>s.
+      content: `If one of your party members has triggered Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions before the Floral Ring returns, it will grant the character the Sprout effect upon return, which will continuously deal <b class="text-genshin-dendro">Dendro DMG</b> equivalent to <span class="text-desc">40%</span> of Collei's ATK to nearby opponents for <span class="text-desc">3</span>s.
       <br />If another Sprout effect is triggered during its initial duration, the initial effect will be removed. DMG dealt by Sprout is considered Elemental Skill DMG.`,
     },
     a4: {
       title: `A4: The Languid Wood`,
-      content: `When a character within the Cuilein-Anbar Zone triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the Zone's duration will be increased by <span class="text-yellow">1</span>s.
-      <br />A single Trump-Card Kitty can be extended by up to <span class="text-yellow">3</span>s.`,
+      content: `When a character within the Cuilein-Anbar Zone triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the Zone's duration will be increased by <span class="text-desc">1</span>s.
+      <br />A single Trump-Card Kitty can be extended by up to <span class="text-desc">3</span>s.`,
     },
     c1: {
       title: `C1: Deepwood Patrol`,
-      content: `When in the party and not on the field, Collei's Energy Recharge is increased by <span class="text-yellow">20%</span>.`,
+      content: `When in the party and not on the field, Collei's Energy Recharge is increased by <span class="text-desc">20%</span>.`,
     },
     c2: {
       title: `C2: Through Hill and Copse`,
       content: `The Passive Talent Floral Sidewinder is changed to this:
-      <br />The Floral Ring will grant the character the Sprout effect from Floral Sidewinder upon return, dealing <span class="text-yellow">40%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents for <span class="text-yellow">3</span>s.
-      <br />From the moment of using Floral Brush to the moment when this instance of Sprout effect ends, if any of your party members triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the Sprout effect will be extended by <span class="text-yellow">3</span>s.
+      <br />The Floral Ring will grant the character the Sprout effect from Floral Sidewinder upon return, dealing <span class="text-desc">40%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents for <span class="text-desc">3</span>s.
+      <br />From the moment of using Floral Brush to the moment when this instance of Sprout effect ends, if any of your party members triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the Sprout effect will be extended by <span class="text-desc">3</span>s.
       <br />The Sprout effect can only be extended this way once. If another Sprout effect is triggered during its initial duration, the initial effect will be removed.
       <br />Requires you to have unlocked the Floral Sidewinder Passive Talent.`,
     },
     c3: {
       title: `C3: Scent of Summer`,
-      content: `Increases the Level of Floral Brush by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Floral Brush by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Gift of the Woods`,
-      content: `Using Trump-Card Kitty will increase all nearby characters' Elemental Mastery by <span class="text-yellow">60</span> for <span class="text-yellow">12</span>s (not including Collei herself).`,
+      content: `Using Trump-Card Kitty will increase all nearby characters' Elemental Mastery by <span class="text-desc">60</span> for <span class="text-desc">12</span>s (not including Collei herself).`,
     },
     c5: {
       title: `C5: All Embers`,
-      content: `Increases the Level of Trump-Card Kitty by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Trump-Card Kitty by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Forest of Falling Arrows`,
-      content: `When the Floral Ring hits, it will create a miniature Cuilein-Anbar that will deal <span class="text-yellow">200%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b>.
+      content: `When the Floral Ring hits, it will create a miniature Cuilein-Anbar that will deal <span class="text-desc">200%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b>.
       <br />Each Floral Brush can only create one such miniature Cuilein-Anbar.`,
     },
   }

@@ -32,7 +32,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
     },
     skill: {
       title: `Pressurized Floe`,
-      content: `Performs an upward thrust that deals <b class="text-genshin-cryo">Cryo DMG</b> and causes Freminet to enter Pers Timer for <span class="text-yellow">10</span>s.
+      content: `Performs an upward thrust that deals <b class="text-genshin-cryo">Cryo DMG</b> and causes Freminet to enter Pers Timer for <span class="text-desc">10</span>s.
       <br />While Pers Timer is active, his Elemental Skill will turn into Shattering Pressure.
       <br />
       <br />Shattering Pressure
@@ -51,47 +51,47 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
     },
     burst: {
       title: `Shadowhunter's Ambush`,
-      content: `Unleashes a wave of untouchable cold, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>, resetting the CD of the Elemental Skill "Pressurized Floe," and causing Freminet to enter the Subnautical Hunter mode for <span class="text-yellow">10</span>s.
+      content: `Unleashes a wave of untouchable cold, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>, resetting the CD of the Elemental Skill "Pressurized Floe," and causing Freminet to enter the Subnautical Hunter mode for <span class="text-desc">10</span>s.
       <br />
       <br />While in Subnautical Hunter mode, Freminet's resistance to interruption will increase, and his Elemental Skill "Pressurized Floe" will obtain the following buffs:
-      <br />CD is decreased by <span class="text-yellow">70%</span>.
-      <br />Normal Attacks will increase the Pers Timer by <span class="text-yellow">1</span> additional Pressure Level, and the frost released by his Normal Attacks deal <span class="text-yellow">200%</span> of their original DMG.
+      <br />CD is decreased by <span class="text-desc">70%</span>.
+      <br />Normal Attacks will increase the Pers Timer by <span class="text-desc">1</span> additional Pressure Level, and the frost released by his Normal Attacks deal <span class="text-desc">200%</span> of their original DMG.
       <br />
       <br />These effects will be canceled when Freminet leaves the field.`,
     },
     a1: {
       title: `A1: Saturation Deep Dive`,
-      content: `When Freminet unleashes Pressurized Floe: Shattering Pressure, if Pers Timer has yet to reach Pressure Level 4, the CD of Pressurized Floe will be decreased by <span class="text-yellow">1</span>s.`,
+      content: `When Freminet unleashes Pressurized Floe: Shattering Pressure, if Pers Timer has yet to reach Pressure Level 4, the CD of Pressurized Floe will be decreased by <span class="text-desc">1</span>s.`,
     },
     a4: {
       title: `A4: Parallel Condensers`,
-      content: `When Freminet triggers Shatter against opponents, the DMG dealt by Pressurized Floe: Shattering Pressure will be increased by <span class="text-yellow">40%</span> for <span class="text-yellow">5</span>s.`,
+      content: `When Freminet triggers Shatter against opponents, the DMG dealt by Pressurized Floe: Shattering Pressure will be increased by <span class="text-desc">40%</span> for <span class="text-desc">5</span>s.`,
     },
     c1: {
       title: `C1: Dreams of the Foamy Deep`,
-      content: `The CRIT Rate of Pressurized Floe: Shattering Pressure will be increased by <span class="text-yellow">15%</span>.`,
+      content: `The CRIT Rate of Pressurized Floe: Shattering Pressure will be increased by <span class="text-desc">15%</span>.`,
     },
     c2: {
       title: `C2: Penguins and the Land of Plenty`,
-      content: `Unleashing Pressurized Floe: Shattering Pressure will restore <span class="text-yellow">2</span> Energy to Freminet. If a Pressure Level 4 Shattering Pressure is unleashed, this will restore <span class="text-yellow">3</span> Energy.`,
+      content: `Unleashing Pressurized Floe: Shattering Pressure will restore <span class="text-desc">2</span> Energy to Freminet. If a Pressure Level 4 Shattering Pressure is unleashed, this will restore <span class="text-desc">3</span> Energy.`,
     },
     c3: {
       title: `C3: Song of the Eddies and Bleached Sands`,
-      content: `Increases the Level of Normal Attack: Flowing Eddies by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Normal Attack: Flowing Eddies by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Dance of the Snowy Moon and Flute`,
-      content: `After Freminet triggers Frozen, Shatter, or Superconduct against opponents, his ATK will be increased by <span class="text-yellow">9%</span> for <span class="text-yellow">6</span>s. Max <span class="text-yellow">2</span> stacks. This can be triggered once every <span class="text-yellow">0.3</span>s.`,
+      content: `After Freminet triggers Frozen, Shatter, or Superconduct against opponents, his ATK will be increased by <span class="text-desc">9%</span> for <span class="text-desc">6</span>s. Max <span class="text-desc">2</span> stacks. This can be triggered once every <span class="text-desc">0.3</span>s.`,
     },
     c5: {
       title: `C5: Nights of Hearth and Happiness`,
-      content: `Increases the Level of Pressurized Floe by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Pressurized Floe by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Moment of Waking and Resolve`,
-      content: `After Freminet triggers Frozen, Shatter, or Superconduct against opponents, his CRIT DMG will be increased by <span class="text-yellow">12%</span> for <span class="text-yellow">6</span>s. Max <span class="text-yellow">3</span> stacks. This can be triggered once every <span class="text-yellow">0.3</span>s.`,
+      content: `After Freminet triggers Frozen, Shatter, or Superconduct against opponents, his CRIT DMG will be increased by <span class="text-desc">12%</span> for <span class="text-desc">6</span>s. Max <span class="text-desc">3</span> stacks. This can be triggered once every <span class="text-desc">0.3</span>s.`,
     },
   }
 

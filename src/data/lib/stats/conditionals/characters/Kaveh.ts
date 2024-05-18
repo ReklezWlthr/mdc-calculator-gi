@@ -45,38 +45,38 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: An Architect's Undertaking`,
-      content: `When DMG dealt by a <b class="text-genshin-dendro">Dendro Core</b> (including DMG from Burgeon and Hyperbloom) hits Kaveh, Kaveh will regain HP equal to <span class="text-yellow">300%</span> of his Elemental Mastery. This effect can be triggered once every <span class="text-yellow">0.5</span>s.`,
+      content: `When DMG dealt by a <b class="text-genshin-dendro">Dendro Core</b> (including DMG from Burgeon and Hyperbloom) hits Kaveh, Kaveh will regain HP equal to <span class="text-desc">300%</span> of his Elemental Mastery. This effect can be triggered once every <span class="text-desc">0.5</span>s.`,
     },
     a4: {
       title: `A4: A Craftsman's Curious Conceptions`,
-      content: `During Painted Dome, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by <span class="text-yellow">25</span>. This effect can be triggered once every <span class="text-yellow">0.1</span>s. Max <span class="text-yellow">4</span> stacks.
+      content: `During Painted Dome, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by <span class="text-desc">25</span>. This effect can be triggered once every <span class="text-desc">0.1</span>s. Max <span class="text-desc">4</span> stacks.
       <br />This effect will be canceled when Painted Dome's effects end.`,
     },
     c1: {
       title: `C1: Sublime Salutations`,
-      content: `Within 3s after using Artistic Ingenuity, Kaveh's <b class="text-genshin-dendro">Dendro RES</b> and Incoming Healing Bonus will be increased by <span class="text-yellow">50%</span> and <span class="text-yellow">25%</span> respectively.`,
+      content: `Within 3s after using Artistic Ingenuity, Kaveh's <b class="text-genshin-dendro">Dendro RES</b> and Incoming Healing Bonus will be increased by <span class="text-desc">50%</span> and <span class="text-desc">25%</span> respectively.`,
     },
     c2: {
       title: `C2: Grace of Royal Roads`,
-      content: `Kaveh's Normal Attack SPD increases by <span class="text-yellow">15%</span> during Painted Dome.`,
+      content: `Kaveh's Normal Attack SPD increases by <span class="text-desc">15%</span> during Painted Dome.`,
     },
     c3: {
       title: `C3: Profferings of Dur Untash`,
-      content: `Increases the Level of Painted Dome by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Painted Dome by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Feast of Apadana`,
-      content: `<b class="text-genshin-dendro">Dendro Cores</b> created from Bloom reactions Kaveh triggers will deal <span class="text-yellow">60%</span> more DMG when they burst.`,
+      content: `<b class="text-genshin-dendro">Dendro Cores</b> created from Bloom reactions Kaveh triggers will deal <span class="text-desc">60%</span> more DMG when they burst.`,
     },
     c5: {
       title: `C5: Treasures of Bonkhanak`,
-      content: `Increases the Level of Artistic Ingenuity by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Artistic Ingenuity by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Pairidaeza's Dreams`,
-      content: `When Kaveh's Normal, Charged, or Plunging Attacks hit opponents during Painted Dome, they will unleash Pairidaeza's Light upon the opponent's position, dealing <span class="text-yellow">61.8%</span> of Kaveh's ATK as <b class="text-genshin-dendro">AoE Dendro DMG</b> and causing all <b class="text-genshin-dendro">Dendro Cores</b> within that AoE to burst. This effect can be triggered once every <span class="text-yellow">3</span>s.`,
+      content: `When Kaveh's Normal, Charged, or Plunging Attacks hit opponents during Painted Dome, they will unleash Pairidaeza's Light upon the opponent's position, dealing <span class="text-desc">61.8%</span> of Kaveh's ATK as <b class="text-genshin-dendro">AoE Dendro DMG</b> and causing all <b class="text-genshin-dendro">Dendro Cores</b> within that AoE to burst. This effect can be triggered once every <span class="text-desc">3</span>s.`,
     },
   }
 

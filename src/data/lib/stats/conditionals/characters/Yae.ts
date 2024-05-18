@@ -41,7 +41,7 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- When there are other Sesshou Sakura nearby, their level will increase, boosting the DMG dealt by these lightning strikes.
       <br />
       <br />This skill has three charges.
-      <br />A maximum of <span class="text-yellow">3</span> Sesshou Sakura can exist simultaneously. The initial level of each Sesshou Sakura is <span class="text-yellow">1</span>, and the initial highest level each sakura can reach is <span class="text-yellow">3</span>. If a new Sesshou Sakura is created too close to an existing one, the existing one will be destroyed.
+      <br />A maximum of <span class="text-desc">3</span> Sesshou Sakura can exist simultaneously. The initial level of each Sesshou Sakura is <span class="text-desc">1</span>, and the initial highest level each sakura can reach is <span class="text-desc">3</span>. If a new Sesshou Sakura is created too close to an existing one, the existing one will be destroyed.
       `,
     },
     burst: {
@@ -52,11 +52,11 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a1: {
       title: `A1: The Shrine's Sacred Shade`,
-      content: `When casting Great Secret Art: Tenko Kenshin, each Sesshou Sakura destroyed resets the cooldown for <span class="text-yellow">1</span> charge of Yakan Evocation: Sesshou Sakura.`,
+      content: `When casting Great Secret Art: Tenko Kenshin, each Sesshou Sakura destroyed resets the cooldown for <span class="text-desc">1</span> charge of Yakan Evocation: Sesshou Sakura.`,
     },
     a4: {
       title: `A4: Enlightened Blessing`,
-      content: `Every point of Elemental Mastery Yae Miko possesses will increase Sesshou Sakura DMG by <span class="text-yellow">0.15%</span>.`,
+      content: `Every point of Elemental Mastery Yae Miko possesses will increase Sesshou Sakura DMG by <span class="text-desc">0.15%</span>.`,
       value: [
         {
           name: 'Current Bonus DMG',
@@ -66,33 +66,33 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     util: {
       title: `Meditations of a Yako`,
-      content: `Has a <span class="text-yellow">25%</span> chance to get <span class="text-yellow">1</span> regional Character Talent Material (base material excluded) when crafting. The rarity is that of the base material.`,
+      content: `Has a <span class="text-desc">25%</span> chance to get <span class="text-desc">1</span> regional Character Talent Material (base material excluded) when crafting. The rarity is that of the base material.`,
     },
     c1: {
       title: `C1: Yakan Offering`,
-      content: `Each time Great Secret Art: Tenko Kenshin activates a Tenko Thunderbolt, Yae Miko will restore <span class="text-yellow">8</span> Elemental Energy for herself.`,
+      content: `Each time Great Secret Art: Tenko Kenshin activates a Tenko Thunderbolt, Yae Miko will restore <span class="text-desc">8</span> Elemental Energy for herself.`,
     },
     c2: {
       title: `C2: Fox's Mooncall`,
-      content: `Sesshou Sakura start at Level 2 when created, their max level is increased to 4, and their attack range is increased by <span class="text-yellow">60%</span>.`,
+      content: `Sesshou Sakura start at Level 2 when created, their max level is increased to 4, and their attack range is increased by <span class="text-desc">60%</span>.`,
     },
     c3: {
       title: `C3: The Seven Glamours`,
-      content: `Increases the Level of Yakan Evocation: Sesshou Sakura by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Yakan Evocation: Sesshou Sakura by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Sakura Channeling`,
-      content: `When Sesshou Sakura lightning hits opponents, the <b class="text-genshin-electro">Electro DMG Bonus</b> of all nearby party members is increased by <span class="text-yellow">20%</span> for <span class="text-yellow">5</span>s.`,
+      content: `When Sesshou Sakura lightning hits opponents, the <b class="text-genshin-electro">Electro DMG Bonus</b> of all nearby party members is increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
     },
     c5: {
       title: `C5: Mischievous Teasing`,
-      content: `Increases the Level of Great Secret Art: Tenko Kenshin by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Great Secret Art: Tenko Kenshin by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Forbidden Art: Daisesshou`,
-      content: `The Sesshou Sakura's attacks will ignore <span class="text-yellow">60%</span> of the opponent's DEF.`,
+      content: `The Sesshou Sakura's attacks will ignore <span class="text-desc">60%</span> of the opponent's DEF.`,
     },
   }
 

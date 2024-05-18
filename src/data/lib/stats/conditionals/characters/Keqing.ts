@@ -52,38 +52,38 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Thundering Penance`,
-      content: `After recasting Stellar Restoration while a Lightning Stiletto is present, Keqing's weapon gains an <b class="text-genshin-electro">Electro Infusion</b> for <span class="text-yellow">5</span>s.`,
+      content: `After recasting Stellar Restoration while a Lightning Stiletto is present, Keqing's weapon gains an <b class="text-genshin-electro">Electro Infusion</b> for <span class="text-desc">5</span>s.`,
     },
     a4: {
       title: `A4: Aristocratic Dignity`,
-      content: `When casting Starward Sword, Keqing's CRIT Rate is increased by <span class="text-yellow">15%</span>, and her Energy Recharge is increased by <span class="text-yellow">15%</span>. This effect lasts for <span class="text-yellow">8</span>s.`,
+      content: `When casting Starward Sword, Keqing's CRIT Rate is increased by <span class="text-desc">15%</span>, and her Energy Recharge is increased by <span class="text-desc">15%</span>. This effect lasts for <span class="text-desc">8</span>s.`,
     },
     c1: {
       title: `C1: Thundering Might`,
-      content: `Recasting Stellar Restoration while a Lightning Stiletto is present causes Keqing to deal <span class="text-yellow">50%</span> of her ATK as <b class="text-genshin-electro">AoE Electro DMG</b> at the start point and terminus of her Blink.`,
+      content: `Recasting Stellar Restoration while a Lightning Stiletto is present causes Keqing to deal <span class="text-desc">50%</span> of her ATK as <b class="text-genshin-electro">AoE Electro DMG</b> at the start point and terminus of her Blink.`,
     },
     c2: {
       title: `C2: Keen Extraction`,
-      content: `When Keqing's Normal and Charged Attacks hit opponents affected by <b class="text-genshin-electro">Electro</b>, they have a <span class="text-yellow">50%</span> chance of producing an Elemental Particle.
-      <br />This effect can only occur once every <span class="text-yellow">5</span>s.`,
+      content: `When Keqing's Normal and Charged Attacks hit opponents affected by <b class="text-genshin-electro">Electro</b>, they have a <span class="text-desc">50%</span> chance of producing an Elemental Particle.
+      <br />This effect can only occur once every <span class="text-desc">5</span>s.`,
     },
     c3: {
       title: `C3: Foreseen Reformation`,
-      content: `Increases the Level of Starward Sword by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Starward Sword by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Attunement`,
-      content: `For 10s after Keqing triggers an <b class="text-genshin-electro">Electro</b>-related Elemental Reaction, her ATK is increased by <span class="text-yellow">25%</span>.`,
+      content: `For 10s after Keqing triggers an <b class="text-genshin-electro">Electro</b>-related Elemental Reaction, her ATK is increased by <span class="text-desc">25%</span>.`,
     },
     c5: {
       title: `C5: Beckoning Stars`,
-      content: `Increases the Level of Stellar Restoration by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Stellar Restoration by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Tenacious Star`,
-      content: `When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a <span class="text-yellow">6%</span> <b class="text-genshin-electro">Electro DMG Bonus</b> for 8s.
+      content: `When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a <span class="text-desc">6%</span> <b class="text-genshin-electro">Electro DMG Bonus</b> for 8s.
       <br />Effects triggered by Normal Attacks, Charged Attacks, Elemental Skills and Elemental Bursts are considered independent entities.`,
     },
   }

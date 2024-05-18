@@ -30,7 +30,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />While aiming, flowing water will accumulate on the arrowhead. A fully charged torrential arrow will deal <b class="text-genshin-hydro">Hydro DMG</b>.
       <br />
       <br /><b>Breakthrough</b>
-      <br />Yelan will enter a "Breakthrough" state after spending <span class="text-yellow">5</span>s out of combat, which will cause her next Charged Aimed Shot to have 80% decreased charge time, and once charged, she can fire a "Breakthrough Barb" that will <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Yelan's Max HP.
+      <br />Yelan will enter a "Breakthrough" state after spending <span class="text-desc">5</span>s out of combat, which will cause her next Charged Aimed Shot to have 80% decreased charge time, and once charged, she can fire a "Breakthrough Barb" that will <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Yelan's Max HP.
       <br />
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
@@ -48,7 +48,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Engages in continuous, swift movement, during which Yelan's resistance to interruption is increased.
       <br />During this time, Yelan can control this rapid movement and end it by using this Skill again.
       <br />
-      <br />Additionally, each opponent marked by the Lifeline when it explodes grants Yelan a <span class="text-yellow">34%</span> chance to reset her Breakthrough state.`,
+      <br />Additionally, each opponent marked by the Lifeline when it explodes grants Yelan a <span class="text-desc">34%</span> chance to reset her Breakthrough state.`,
     },
     burst: {
       title: `Depth-Clarion Dice`,
@@ -62,46 +62,46 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a1: {
       title: `A1: Turn Control`,
-      content: `When the party has <span class="text-yellow">1/2/3/4</span> Elemental Types, Yelan's Max HP is increased by <span class="text-yellow">6%/12%/18%/30%</span>.`,
+      content: `When the party has <span class="text-desc">1/2/3/4</span> Elemental Types, Yelan's Max HP is increased by <span class="text-desc">6%/12%/18%/30%</span>.`,
     },
     a4: {
       title: `A4: Adapt With Ease`,
-      content: `So long as an Exquisite Throw is in play, your own active character deals <span class="text-yellow">1%</span> more DMG. This increases by a further <span class="text-yellow">3.5%</span> DMG every second. The maximum increase to DMG dealt is <span class="text-yellow">50%</span>.
+      content: `So long as an Exquisite Throw is in play, your own active character deals <span class="text-desc">1%</span> more DMG. This increases by a further <span class="text-desc">3.5%</span> DMG every second. The maximum increase to DMG dealt is <span class="text-desc">50%</span>.
       <br />The pre-existing effect will be dispelled if Depth-Clarion Dice is recast during its duration.`,
     },
     util: {
       title: `Necessary Calculation`,
-      content: `Gains <span class="text-yellow">25%</span> more rewards when dispatched on a Liyue Expedition for 20 hours.`,
+      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on a Liyue Expedition for 20 hours.`,
     },
     c1: {
       title: `C1: Enter the Plotters`,
-      content: `Lingering Lifeline gains <span class="text-yellow">1</span> additional charge.`,
+      content: `Lingering Lifeline gains <span class="text-desc">1</span> additional charge.`,
     },
     c2: {
       title: `C2: Taking All Comers`,
-      content: `When Exquisite Throw conducts a coordinated attack, it will fire an additional water arrow that will deal <span class="text-yellow">14%</span> of Yelan's Max HP as Hydro DMG.
-      <br />This effect can trigger once every <span class="text-yellow">1.8</span>s.`,
+      content: `When Exquisite Throw conducts a coordinated attack, it will fire an additional water arrow that will deal <span class="text-desc">14%</span> of Yelan's Max HP as Hydro DMG.
+      <br />This effect can trigger once every <span class="text-desc">1.8</span>s.`,
     },
     c3: {
       title: `C3: Beware the Trickster's Dice`,
-      content: `Increases the Level of Depth-Clarion Dice by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Depth-Clarion Dice by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Bait-and-Switch`,
-      content: `Increases all party members' Max HP by <span class="text-yellow">10%</span> for <span class="text-yellow">25</span>s for every opponent marked by Lifeline when the Lifeline explodes. A maximum increase of <span class="text-yellow">40%</span> Max HP can be attained in this manner.`,
+      content: `Increases all party members' Max HP by <span class="text-desc">10%</span> for <span class="text-desc">25</span>s for every opponent marked by Lifeline when the Lifeline explodes. A maximum increase of <span class="text-desc">40%</span> Max HP can be attained in this manner.`,
     },
     c5: {
       title: `C5: Dealer's Sleight`,
-      content: `Increases the Level of Lingering Lifeline by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Lingering Lifeline by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Winner Takes All`,
       content: `After using Depth-Clarion Dice, Yelan will enter the Mastermind state.
-      <br />In this state, all of Yelan's Normal Attacks will be special Breakthrough Barbs. These Breakthrough Barbs will have similar abilities to normal ones and the DMG dealt will be considered Charged Attack DMG, dealing <span class="text-yellow">156%</span> of a normal Breakthrough Barb's DMG.
+      <br />In this state, all of Yelan's Normal Attacks will be special Breakthrough Barbs. These Breakthrough Barbs will have similar abilities to normal ones and the DMG dealt will be considered Charged Attack DMG, dealing <span class="text-desc">156%</span> of a normal Breakthrough Barb's DMG.
       <br />
-      <br />The Mastermind state lasts <span class="text-yellow">20</span>s and will be cleared after Yelan fires <span class="text-yellow">5</span> arrows.`,
+      <br />The Mastermind state lasts <span class="text-desc">20</span>s and will be cleared after Yelan fires <span class="text-desc">5</span> arrows.`,
     },
   }
 

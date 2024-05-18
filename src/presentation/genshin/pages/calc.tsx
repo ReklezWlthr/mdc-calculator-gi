@@ -176,7 +176,7 @@ export const Calculator = observer(({}: {}) => {
           <ScalingWrapper
             talent={main?.talents?.burst}
             icon={`https://enka.network/ui/Skill_E_${charData?.codeName}${
-              charData?.codeName === 'Ayaka' ? '' : '_01'
+              _.includes(['Ayaka', 'Ambor'], charData?.codeName) ? '' : '_01'
             }.png`}
             element={charData.element}
             level={char.talents?.burst}

@@ -47,43 +47,43 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Glorious Season`,
-      content: `The Stamina Consumption of characters within Let the Show Begin♪'s Melody Loop is reduced by <span class="text-yellow">12%</span>.`,
+      content: `The Stamina Consumption of characters within Let the Show Begin♪'s Melody Loop is reduced by <span class="text-desc">12%</span>.`,
     },
     a4: {
       title: `A4: Encore`,
-      content: `When your active character gains an Elemental Orb/Particle, the duration of the Melody Loop of Let the Show Begin♪ is extended by <span class="text-yellow">1</span>s.
-      <br />The maximum extension is <span class="text-yellow">5</span>s.`,
+      content: `When your active character gains an Elemental Orb/Particle, the duration of the Melody Loop of Let the Show Begin♪ is extended by <span class="text-desc">1</span>s.
+      <br />The maximum extension is <span class="text-desc">5</span>s.`,
     },
     c1: {
       title: `C1: Gleeful Songs`,
-      content: `Barbara regenerates <span class="text-yellow">1</span> Energy every <span class="text-yellow">10</span>s.`,
+      content: `Barbara regenerates <span class="text-desc">1</span> Energy every <span class="text-desc">10</span>s.`,
     },
     c2: {
       title: `C2: Vitality Burst`,
-      content: `Decreases the CD of Let the Show Begin♪ by <span class="text-yellow">15%</span>.
-      <br />During the ability's duration, your active character gains a <span class="text-yellow">15%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>.`,
+      content: `Decreases the CD of Let the Show Begin♪ by <span class="text-desc">15%</span>.
+      <br />During the ability's duration, your active character gains a <span class="text-desc">15%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>.`,
     },
     c3: {
       title: `C3: Star of Tomorrow`,
-      content: `Increases the Level of Shining Miracle♪ by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Shining Miracle♪ by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Attentiveness Be My Power`,
-      content: `Every opponent Barbara hits with her Charged Attack regenerates <span class="text-yellow">1</span> Energy for her.
-      A maximum of <span class="text-yellow">5</span> energy can be regenerated in this manner with any one Charged Attack.`,
+      content: `Every opponent Barbara hits with her Charged Attack regenerates <span class="text-desc">1</span> Energy for her.
+      A maximum of <span class="text-desc">5</span> energy can be regenerated in this manner with any one Charged Attack.`,
     },
     c5: {
       title: `C5: The Purest Companionship`,
-      content: `Increases the Level of Let the Show Begin♪ by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Let the Show Begin♪ by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Dedicating Everything to You`,
       content: `When Barbara is in the party but not on the field, and one of your own party members falls:
       <br />- Automatically revives the fallen character.
-      <br />- Fully restores the revived character's HP to <span class="text-yellow">100%</span>.
-      <br />This effect can only occur once every <span class="text-yellow">15</span> mins.`,
+      <br />- Fully restores the revived character's HP to <span class="text-desc">100%</span>.
+      <br />This effect can only occur once every <span class="text-desc">15</span> mins.`,
     },
   }
 

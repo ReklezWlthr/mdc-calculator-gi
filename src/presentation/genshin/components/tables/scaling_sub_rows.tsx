@@ -111,22 +111,22 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
             <p dangerouslySetInnerHTML={{ __html: formulaString }} />
             {!!scaling.bonus && (
               <p className="text-xs">
-                Talent-Exclusive Bonus: <span className="text-yellow">{toPercentage(scaling.bonus)}</span>
+                Talent-Exclusive Bonus: <span className="text-desc">{toPercentage(scaling.bonus)}</span>
               </p>
             )}
             {!!stats[`${element} DMG%`] && (
               <p className="text-xs">
-                {element} Bonus: <span className="text-yellow">{toPercentage(stats[`${element} DMG%`])}</span>
+                {element} Bonus: <span className="text-desc">{toPercentage(stats[`${element} DMG%`])}</span>
               </p>
             )}
             {!!(talentDmg || elementNa) && (
               <p className="text-xs">
-                {scaling.property} Bonus: <span className="text-yellow">{toPercentage(talentDmg + elementNa)}</span>
+                {scaling.property} Bonus: <span className="text-desc">{toPercentage(talentDmg + elementNa)}</span>
               </p>
             )}
             {!!stats.VULNERABILITY && (
               <p className="text-xs">
-                Vulnerability Bonus: <span className="text-yellow">{toPercentage(stats.VULNERABILITY)}</span>
+                Vulnerability Bonus: <span className="text-desc">{toPercentage(stats.VULNERABILITY)}</span>
               </p>
             )}
           </div>
@@ -145,17 +145,17 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
               <p dangerouslySetInnerHTML={{ __html: critString }} />
               {!!scaling.cd && (
                 <p className="text-xs">
-                  Talent-Exclusive CRIT DMG: <span className="text-yellow">{toPercentage(scaling.cd)}</span>
+                  Talent-Exclusive CRIT DMG: <span className="text-desc">{toPercentage(scaling.cd)}</span>
                 </p>
               )}
               {!!elementCd && (
                 <p className="text-xs">
-                  {element} CRIT DMG: <span className="text-yellow">{toPercentage(elementCd)}</span>
+                  {element} CRIT DMG: <span className="text-desc">{toPercentage(elementCd)}</span>
                 </p>
               )}
               {!!talentCd && (
                 <p className="text-xs">
-                  {scaling.property} CRIT DMG: <span className="text-yellow">{toPercentage(talentCd)}</span>
+                  {scaling.property} CRIT DMG: <span className="text-desc">{toPercentage(talentCd)}</span>
                 </p>
               )}
             </div>
@@ -177,12 +177,12 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
               <p dangerouslySetInnerHTML={{ __html: avgString }} />
               {!!scaling.cr && (
                 <p className="text-xs">
-                  Talent-Exclusive CRIT Rate: <span className="text-yellow">{toPercentage(scaling.cr)}</span>
+                  Talent-Exclusive CRIT Rate: <span className="text-desc">{toPercentage(scaling.cr)}</span>
                 </p>
               )}
               {!!talentCr && (
                 <p className="text-xs">
-                  {scaling.property} CRIT Rate: <span className="text-yellow">{toPercentage(talentCr)}</span>
+                  {scaling.property} CRIT Rate: <span className="text-desc">{toPercentage(talentCr)}</span>
                 </p>
               )}
             </div>

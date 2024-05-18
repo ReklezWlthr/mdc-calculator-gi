@@ -37,7 +37,7 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Takimeguri Kanka</b>
       <br />In this state, Kamisato Ayato uses his Shunsuiken to engage in blindingly fast attacks, causing DMG from his Normal Attacks to be converted into <b class="text-genshin-hydro">AoE Hydro DMG</b>. This cannot be overridden.
       <br />It also has the following properties:
-      <br />- After a Shunsuiken attack hits an opponent, it will grant Ayato the Namisen effect, increasing the DMG dealt by Shunsuiken based on Ayato's current Max HP. The initial maximum number of Namisen stacks is <span class="text-yellow">4</span>, and <span class="text-yellow">1</span> stack can be gained through Shunsuiken every <span class="text-yellow">0.1</span>s. This effect will be dispelled when Takimeguri Kanka ends.
+      <br />- After a Shunsuiken attack hits an opponent, it will grant Ayato the Namisen effect, increasing the DMG dealt by Shunsuiken based on Ayato's current Max HP. The initial maximum number of Namisen stacks is <span class="text-desc">4</span>, and <span class="text-desc">1</span> stack can be gained through Shunsuiken every <span class="text-desc">0.1</span>s. This effect will be dispelled when Takimeguri Kanka ends.
       <br />- Kamisato Ayato's resistance to interruption is increased.
       <br />- Unable to use Charged or Plunging Attacks.
       <br />
@@ -52,38 +52,38 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
     a1: {
       title: `A1: Kamisato Art: Mine Wo Matoishi Kiyotaki	`,
       content: `Kamisato Art: Kyouka has the following properties:
-      <br />- After it is used, Kamisato Ayato will gain <span class="text-yellow">2</span> Namisen stacks.
+      <br />- After it is used, Kamisato Ayato will gain <span class="text-desc">2</span> Namisen stacks.
       <br />- When the water illusion explodes, Ayato will gain a Namisen effect equal to the maximum number of stacks possible.`,
     },
     a4: {
       title: `A4: Kamisato Art: Michiyuku Hagetsu`,
-      content: `If Kamisato Ayato is not on the field and his Energy is less than <span class="text-yellow">40</span>, he will regenerate <span class="text-yellow">2</span> Energy for himself every second.`,
+      content: `If Kamisato Ayato is not on the field and his Energy is less than <span class="text-desc">40</span>, he will regenerate <span class="text-desc">2</span> Energy for himself every second.`,
     },
     c1: {
       title: `C1: Kyouka Fuushi`,
-      content: `Shunsuiken DMG is increased by <span class="text-yellow">40%</span> against opponents with <span class="text-yellow">50%</span> HP or less.`,
+      content: `Shunsuiken DMG is increased by <span class="text-desc">40%</span> against opponents with <span class="text-desc">50%</span> HP or less.`,
     },
     c2: {
       title: `C2: World Source`,
-      content: `Namisen's maximum stack count is increased to <span class="text-yellow">5</span>. When Kamisato Ayato has at least <span class="text-yellow">3</span> Namisen stacks, his Max HP is increased by <span class="text-yellow">50%</span>.`,
+      content: `Namisen's maximum stack count is increased to <span class="text-desc">5</span>. When Kamisato Ayato has at least <span class="text-desc">3</span> Namisen stacks, his Max HP is increased by <span class="text-desc">50%</span>.`,
     },
     c3: {
       title: `C3: To Admire the Flowers`,
-      content: `Increases the Level of Kamisato Art: Kyouka by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Kamisato Art: Kyouka by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Endless Flow`,
-      content: `After using Kamisato Art: Suiyuu, all nearby party members will have <span class="text-yellow">15%</span> increased Normal Attack SPD for <span class="text-yellow">15</span>s.`,
+      content: `After using Kamisato Art: Suiyuu, all nearby party members will have <span class="text-desc">15%</span> increased Normal Attack SPD for <span class="text-desc">15</span>s.`,
     },
     c5: {
       title: `C5: Bansui Ichiro`,
-      content: `Increases the Level of Kamisato Art: Suiyuu by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Kamisato Art: Suiyuu by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Boundless Origin`,
-      content: `After using Kamisato Art: Kyouka, Ayato's next Shunsuiken attack will create <span class="text-yellow">2</span> extra Shunsuiken strikes when they hit opponents, each one dealing <span class="text-yellow">450%</span> of Ayato's ATK as DMG.
+      content: `After using Kamisato Art: Kyouka, Ayato's next Shunsuiken attack will create <span class="text-desc">2</span> extra Shunsuiken strikes when they hit opponents, each one dealing <span class="text-desc">450%</span> of Ayato's ATK as DMG.
       <br />Both these Shunsuiken attacks will not be affected by Namisen.`,
     },
   }

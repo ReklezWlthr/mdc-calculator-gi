@@ -46,37 +46,37 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a1: {
       title: `A1: Catalyst Conversion`,
-      content: `When Sucrose triggers a Swirl effect, all characters in the party with the matching element (excluding Sucrose) have their Elemental Mastery increased by <span class="text-yellow">50</span> for <span class="text-yellow">8</span>s.`,
+      content: `When Sucrose triggers a Swirl effect, all characters in the party with the matching element (excluding Sucrose) have their Elemental Mastery increased by <span class="text-desc">50</span> for <span class="text-desc">8</span>s.`,
     },
     a4: {
       title: `A4: Mollis Favonius`,
-      content: `When Astable Anemohypostasis Creation - 6308 or Forbidden Creation - Isomer 75 / Type II hits an opponent, increases all party members' (excluding Sucrose) Elemental Mastery based on <span class="text-yellow">20%</span> of Sucrose's Elemental Mastery for <span class="text-yellow">8</span>s.`,
+      content: `When Astable Anemohypostasis Creation - 6308 or Forbidden Creation - Isomer 75 / Type II hits an opponent, increases all party members' (excluding Sucrose) Elemental Mastery based on <span class="text-desc">20%</span> of Sucrose's Elemental Mastery for <span class="text-desc">8</span>s.`,
     },
     c1: {
       title: `C1: Clustered Vacuum Field`,
-      content: `Astable Anemohypostasis Creation - 6308 gains <span class="text-yellow">1</span> additional charge.`,
+      content: `Astable Anemohypostasis Creation - 6308 gains <span class="text-desc">1</span> additional charge.`,
     },
     c2: {
       title: `C2: Beth: Unbound Form`,
-      content: `The duration of Forbidden Creation - Isomer 75 / Type II is increased by <span class="text-yellow">2</span>s.`,
+      content: `The duration of Forbidden Creation - Isomer 75 / Type II is increased by <span class="text-desc">2</span>s.`,
     },
     c3: {
       title: `C3: Flawless Alchemistress`,
-      content: `Increases the Level of Astable Anemohypostasis Creation - 6308 by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Astable Anemohypostasis Creation - 6308 by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Alchemania`,
-      content: `Every <span class="text-yellow">7</span> Normal and Charged Attacks, Sucrose will reduce the CD of Astable Anemohypostasis Creation - 6308 by <span class="text-yellow">1-7</span>s.`,
+      content: `Every <span class="text-desc">7</span> Normal and Charged Attacks, Sucrose will reduce the CD of Astable Anemohypostasis Creation - 6308 by <span class="text-desc">1-7</span>s.`,
     },
     c5: {
       title: `C5: Caution: Standard Flask`,
-      content: `Increases the Level of Forbidden Creation - Isomer 75 / Type II by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Forbidden Creation - Isomer 75 / Type II by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Chaotic Entropy`,
-      content: `If Forbidden Creation - Isomer 75 / Type II triggers an Elemental Absorption, all party members gain a <span class="text-yellow">20%</span> Elemental DMG Bonus for the corresponding absorbed element during its duration.`,
+      content: `If Forbidden Creation - Isomer 75 / Type II triggers an Elemental Absorption, all party members gain a <span class="text-desc">20%</span> Elemental DMG Bonus for the corresponding absorbed element during its duration.`,
     },
   }
 

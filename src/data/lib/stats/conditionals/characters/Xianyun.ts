@@ -38,7 +38,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b>Skyladder</b>
       <br />Can be used while in mid-air. Xianyun leaps forward, dealing <b class="text-genshin-anemo">Anemo DMG</b> to targets along her path.
-      <br />During each Cloud Transmogrification state Xianyun enters, Skyladder may be used up to <span class="text-yellow">3</span> times and only <span class="text-yellow">1</span> instance of Skyladder DMG can be dealt to any one opponent.
+      <br />During each Cloud Transmogrification state Xianyun enters, Skyladder may be used up to <span class="text-desc">3</span> times and only <span class="text-desc">1</span> instance of Skyladder DMG can be dealt to any one opponent.
       <br />If Skyladder is not used again in a short period, the Cloud Transmogrification state will be canceled.
       <br />
       <br />If Xianyun does not use Driftcloud Wave while in this state, the next CD of White Clouds at Dawn will be decreased by 3s.
@@ -50,20 +50,20 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b>Starwicker</b>
       <br />Continuously follows the active character and periodically heals all nearby party members based on Xianyun's ATK.
-      <br />Starts with <span class="text-yellow">8</span> stacks of Adeptal Assistance. While Adeptal Assistance is active, nearby active characters in the party will have their jump height increased.
+      <br />Starts with <span class="text-desc">8</span> stacks of Adeptal Assistance. While Adeptal Assistance is active, nearby active characters in the party will have their jump height increased.
       <br />When the active character completes a Plunging Attack, Starwicker will consume 1 stack of Adeptal Assistance and deal <b class="text-genshin-anemo">AoE Anemo DMG</b>.
-      <br />Only <span class="text-yellow">1</span> Starwicker can exist simultaneously.
+      <br />Only <span class="text-desc">1</span> Starwicker can exist simultaneously.
       `,
     },
     a1: {
       title: `A1: Galefeather Pursuit`,
-      content: `Each opponent hit by Driftcloud Waves from White Clouds at Dawn will grant all nearby party members <span class="text-yellow">1</span> stack of Storm Pinion for <span class="text-yellow">20</span>s. Max <span class="text-yellow">4</span> stacks. These will cause the characters' Plunging Attack CRIT Rate to increase by <span class="text-yellow">4%/6%/8%/10%</span> respectively.
+      content: `Each opponent hit by Driftcloud Waves from White Clouds at Dawn will grant all nearby party members <span class="text-desc">1</span> stack of Storm Pinion for <span class="text-desc">20</span>s. Max <span class="text-desc">4</span> stacks. These will cause the characters' Plunging Attack CRIT Rate to increase by <span class="text-desc">4%/6%/8%/10%</span> respectively.
       <br />Each Storm Pinion created by hitting an opponent has an independent duration.`,
     },
     a4: {
       title: `A4: Consider, the Adeptus in Her Realm`,
-      content: `When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-yellow">0.1</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-yellow">9,000</span>.
-      <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-yellow">0.4</span>s.`,
+      content: `When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">0.1</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">9,000</span>.
+      <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-desc">0.4</span>s.`,
       value: [
         {
           name: 'Base Bonus Plung DMG',
@@ -73,18 +73,18 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     util: {
       title: `Crane Form`,
-      content: `Increases gliding SPD for your own party members by <span class="text-yellow">15%</span>.
+      content: `Increases gliding SPD for your own party members by <span class="text-desc">15%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
       title: `C1: Purifying Wind`,
-      content: `White Clouds at Dawn gains <span class="text-yellow">1</span> additional charge.`,
+      content: `White Clouds at Dawn gains <span class="text-desc">1</span> additional charge.`,
     },
     c2: {
       title: `C2: Aloof From the World`,
-      content: `After using a Skyladder from White Clouds at Dawn, Xianyun's ATK will be increased by <span class="text-yellow">20%</span> for <span class="text-yellow">15</span>s.
-      <br />Additionally, the effects of the Passive Talent "Consider, the Adeptus in Her Realm" will be enhanced: When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-yellow">400%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-yellow">18,000</span>.
-      <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-yellow">0.4</span>s.
+      content: `After using a Skyladder from White Clouds at Dawn, Xianyun's ATK will be increased by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s.
+      <br />Additionally, the effects of the Passive Talent "Consider, the Adeptus in Her Realm" will be enhanced: When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">400%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">18,000</span>.
+      <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-desc">0.4</span>s.
       <br />You must first unlock the Passive Talent "Consider, the Adeptus in Her Realm."`,
       value: [
         {
@@ -95,22 +95,22 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     c3: {
       title: `C3: Creations of Star and Moon`,
-      content: `Increases the Level of Stars Gather at Dusk by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Stars Gather at Dusk by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Mystery Millet Gourmet`,
-      content: `After using Skyladder <span class="text-yellow">1/2/3</span> times during one White Clouds at Dawn Cloud Transmogrification state, when a Driftcloud Wave unleashed during that instance hits an opponent, it will heal all nearby party members for <span class="text-yellow">50%/80%/150%</span> of Xianyun's ATK. This effect can be triggered once every <span class="text-yellow">5</span>s.`,
+      content: `After using Skyladder <span class="text-desc">1/2/3</span> times during one White Clouds at Dawn Cloud Transmogrification state, when a Driftcloud Wave unleashed during that instance hits an opponent, it will heal all nearby party members for <span class="text-desc">50%/80%/150%</span> of Xianyun's ATK. This effect can be triggered once every <span class="text-desc">5</span>s.`,
     },
     c5: {
       title: `C5: Astride Rose-Colored Clouds`,
-      content: `Increases the Level of White Clouds at Dawn by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of White Clouds at Dawn by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: They Call Her Cloud Retainer`,
-      content: `After Xianyun uses <span class="text-yellow">1/2/3</span> Skyladders within one Cloud Transmogrification caused by White Clouds at Dawn, the CRIT DMG of a Driftcloud Wave created in this instance of Cloud Transmogrification will be increased by <span class="text-yellow">15%/35%/70%</span>%.
-      <br />Within <span class="text-yellow">16</span>s after Xianyun has used Stars Gather at Dusk, White Clouds at Dawn will not enter CD. This effect will be canceled once she has used White Clouds at Dawn <span class="text-yellow">8</span> times.`,
+      content: `After Xianyun uses <span class="text-desc">1/2/3</span> Skyladders within one Cloud Transmogrification caused by White Clouds at Dawn, the CRIT DMG of a Driftcloud Wave created in this instance of Cloud Transmogrification will be increased by <span class="text-desc">15%/35%/70%</span>%.
+      <br />Within <span class="text-desc">16</span>s after Xianyun has used Stars Gather at Dusk, White Clouds at Dawn will not enter CD. This effect will be canceled once she has used White Clouds at Dawn <span class="text-desc">8</span> times.`,
     },
   }
 

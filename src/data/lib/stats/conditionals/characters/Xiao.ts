@@ -53,42 +53,42 @@ const Xiao = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Conqueror of Evil: Tamer of Demons`,
-      content: `While under the effects of Bane of All Evil, all DMG dealt by Xiao increases by <span class="text-yellow">5%</span>. DMG increases by a further <span class="text-yellow">5%</span> for every <span class="text-yellow">3</span>s the ability persists. The maximum DMG Bonus is <span class="text-yellow">25%</span>.`,
+      content: `While under the effects of Bane of All Evil, all DMG dealt by Xiao increases by <span class="text-desc">5%</span>. DMG increases by a further <span class="text-desc">5%</span> for every <span class="text-desc">3</span>s the ability persists. The maximum DMG Bonus is <span class="text-desc">25%</span>.`,
     },
     a4: {
       title: `A4: Dissolution Eon: Heaven Fall`,
-      content: `Using Lemniscatic Wind Cycling increases the DMG of subsequent uses of Lemniscatic Wind Cycling by <span class="text-yellow">15%</span>. This effect lasts for <span class="text-yellow">7</span>s, and has a maximum of <span class="text-yellow">3</span> stacks. Gaining a new stack refreshes the effect's duration.`,
+      content: `Using Lemniscatic Wind Cycling increases the DMG of subsequent uses of Lemniscatic Wind Cycling by <span class="text-desc">15%</span>. This effect lasts for <span class="text-desc">7</span>s, and has a maximum of <span class="text-desc">3</span> stacks. Gaining a new stack refreshes the effect's duration.`,
     },
     util: {
       title: `Transcension: Gravity Defier`,
-      content: `Decreases climbing Stamina consumption for your own party members by <span class="text-yellow">20%</span>.
+      content: `Decreases climbing Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
       title: `C1: Dissolution Eon: Destroyer of Worlds`,
-      content: `Increases Lemniscatic Wind Cycling's charges by <span class="text-yellow">1</span>.`,
+      content: `Increases Lemniscatic Wind Cycling's charges by <span class="text-desc">1</span>.`,
     },
     c2: {
       title: `C2: Annihilation Eon: Blossom of Kaleidos`,
-      content: `When in the party and not on the field, Xiao's Energy Recharge is increased by <span class="text-yellow">25%</span>.`,
+      content: `When in the party and not on the field, Xiao's Energy Recharge is increased by <span class="text-desc">25%</span>.`,
     },
     c3: {
       title: `C3: Conqueror of Evil: Wrath Deity`,
-      content: `Increases the Level of Lemniscatic Wind Cycling by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Lemniscatic Wind Cycling by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Transcension: Extinction of Suffering`,
-      content: `When Xiao's HP falls below <span class="text-yellow">50%</span>, he gains a <span class="text-yellow">100%</span> DEF Bonus.`,
+      content: `When Xiao's HP falls below <span class="text-desc">50%</span>, he gains a <span class="text-desc">100%</span> DEF Bonus.`,
     },
     c5: {
       title: `C5: Evolution Eon: Origin of Ignorance`,
-      content: `Increases the Level of Bane of All Evil by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Bane of All Evil by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Conqueror of Evil: Guardian Yaksha`,
-      content: `While under the effects of Bane of All Evil, hitting at least <span class="text-yellow">2</span> opponents with Xiao's Plunging Attack will immediately grant him <span class="text-yellow">1</span> charge of Lemniscatic Wind Cycling, and for the next <span class="text-yellow">1</span>s, he may use Lemniscatic Wind Cycling while ignoring its CD.`,
+      content: `While under the effects of Bane of All Evil, hitting at least <span class="text-desc">2</span> opponents with Xiao's Plunging Attack will immediately grant him <span class="text-desc">1</span> charge of Lemniscatic Wind Cycling, and for the next <span class="text-desc">1</span>s, he may use Lemniscatic Wind Cycling while ignoring its CD.`,
     },
   }
 

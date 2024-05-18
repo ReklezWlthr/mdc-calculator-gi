@@ -35,7 +35,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
     skill: {
       title: `Chihayaburu`,
       content: `Unleashes a secret technique as fierce as the rushing wind that pulls objects and opponents towards Kazuha's current position before launching opponents within the AoE, dealing <b class="text-genshin-anemo">Anemo DMG</b> and lifting Kazuha into the air on a rushing gust of wind.
-      <br />Within <span class="text-yellow">10</span>s of remaining airborne after casting Chihayaburu, Kazuha can unleash a powerful Plunging Attack known as Midare Ranzan.
+      <br />Within <span class="text-desc">10</span>s of remaining airborne after casting Chihayaburu, Kazuha can unleash a powerful Plunging Attack known as Midare Ranzan.
       <br />
       <br /><b>Press</b>
       <br />Can be used in mid-air.
@@ -59,45 +59,45 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Soumon Swordsmanship`,
-      content: `If Chihayaburu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when cast, Chihayaburu will absorb that element and if Plunging Attack: Midare Ranzan is used before the effect expires, it will deal an additional <span class="text-yellow">200%</span> ATK of the absorbed elemental type as DMG. This will be considered Plunging Attack DMG.
+      content: `If Chihayaburu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when cast, Chihayaburu will absorb that element and if Plunging Attack: Midare Ranzan is used before the effect expires, it will deal an additional <span class="text-desc">200%</span> ATK of the absorbed elemental type as DMG. This will be considered Plunging Attack DMG.
       <br />Elemental Absorption may only occur once per use of Chihayaburu.`,
     },
     a4: {
       title: `A4: Poetics of Fuubutsu`,
-      content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-yellow">0.04%</span> Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for 8s. Bonuses for different elements obtained through this method can co-exist.`,
+      content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-desc">0.04%</span> Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for 8s. Bonuses for different elements obtained through this method can co-exist.`,
     },
     c1: {
       title: `C1: Scarlet Hills`,
-      content: `Decreases Chihayaburu's CD by <span class="text-yellow">10%</span>.
+      content: `Decreases Chihayaburu's CD by <span class="text-desc">10%</span>.
       <br />Using Kazuha Slash resets the CD of Chihayaburu.`,
     },
     c2: {
       title: `C2: Yamaarashi Tailwind`,
       content: `The Autumn Whirlwind field created by Kazuha Slash has the following effects:
-      <br />- Increases Kaedehara Kazuha's own Elemental Mastery by <span class="text-yellow">200</span> for its duration.
-      <br />- Increases the Elemental Mastery of characters within the field by <span class="text-yellow">200</span>.
+      <br />- Increases Kaedehara Kazuha's own Elemental Mastery by <span class="text-desc">200</span> for its duration.
+      <br />- Increases the Elemental Mastery of characters within the field by <span class="text-desc">200</span>.
       <br />
       <br />The Elemental Mastery-increasing effects of this Constellation do not stack.`,
     },
     c3: {
       title: `C3: Maple Monogatari`,
-      content: `Increases the Level of Chihayaburu by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Chihayaburu by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Oozora Genpou`,
-      content: `When Kaedehara Kazuha's Energy is lower than <span class="text-yellow">45</span>, he obtains the following effects:
-      <br /><b>Pressing</b> or <b>Holding</b> Chihayaburu regenerates <span class="text-yellow">3</span> or <span class="text-yellow">4</span> Energy for Kaedehara Kazuha, respectively.
-      <br />When gliding, Kaedehara Kazuha regenerates <span class="text-yellow">2</span> Energy per second.`,
+      content: `When Kaedehara Kazuha's Energy is lower than <span class="text-desc">45</span>, he obtains the following effects:
+      <br /><b>Pressing</b> or <b>Holding</b> Chihayaburu regenerates <span class="text-desc">3</span> or <span class="text-desc">4</span> Energy for Kaedehara Kazuha, respectively.
+      <br />When gliding, Kaedehara Kazuha regenerates <span class="text-desc">2</span> Energy per second.`,
     },
     c5: {
       title: `C5: Wisdom of Bansei`,
-      content: `Increases the Level of Kazuha Slash by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Kazuha Slash by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Crimson Momiji`,
-      content: `After using Chihayaburu or Kazuha Slash, Kaedehara Kazuha gains an <b class="text-genshin-anemo">Anemo Infusion</b> for 5s. Additionally, each point of Elemental Mastery will increase the DMG dealt by Kaedehara Kazuha's Normal, Charged, and Plunging Attacks by <span class="text-yellow">0.2%</span>.`,
+      content: `After using Chihayaburu or Kazuha Slash, Kaedehara Kazuha gains an <b class="text-genshin-anemo">Anemo Infusion</b> for 5s. Additionally, each point of Elemental Mastery will increase the DMG dealt by Kaedehara Kazuha's Normal, Charged, and Plunging Attacks by <span class="text-desc">0.2%</span>.`,
     },
   }
 

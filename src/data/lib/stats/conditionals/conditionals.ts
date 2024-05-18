@@ -1,5 +1,6 @@
 import Albedo from './characters/Albedo'
 import Alhaitham from './characters/Alhaitham'
+import Amber from './characters/Amber'
 import Arlecchino from './characters/Arlecchino'
 import Ayaka from './characters/Ayaka'
 import Ayato from './characters/Ayato'
@@ -80,6 +81,7 @@ import Zhongli from './characters/Zhongli'
 export default [
   { id: '10000038', conditionals: Albedo },
   { id: '10000078', conditionals: Alhaitham },
+  { id: '10000021', conditionals: Amber },
   { id: '10000057', conditionals: Itto },
   { id: '10000096', conditionals: Arlecchino },
   { id: '10000082', conditionals: Baizhu },
@@ -159,6 +161,7 @@ export default [
 ]
 
 export const ReverseConsList = [
+  'Ambor',
   'Furina',
   'Shougun',
   'Barbara',

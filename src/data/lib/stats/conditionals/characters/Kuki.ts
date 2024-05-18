@@ -34,25 +34,25 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
       content: `Creates a Grass Ring of Sanctification at the cost of part of her HP, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.
       <br />
       <br /><b>Grass Ring of Sanctification</b>
-      <br />Follows your current active character around. Deals <b class="text-genshin-electro">Electro DMG</b> to nearby opponents every <span class="text-yellow">1.5</span>s and restores HP for the active character(s) within the ring's AoE based on Kuki Shinobu's Max HP.
+      <br />Follows your current active character around. Deals <b class="text-genshin-electro">Electro DMG</b> to nearby opponents every <span class="text-desc">1.5</span>s and restores HP for the active character(s) within the ring's AoE based on Kuki Shinobu's Max HP.
       <br />
-      <br />The HP consumption from using this skill can only bring her to <span class="text-yellow">20%</span> HP.
+      <br />The HP consumption from using this skill can only bring her to <span class="text-desc">20%</span> HP.
       `,
     },
     burst: {
       title: `Gyoei Narukami Kariyama Rite`,
       content: `Stabs an evil-excoriating blade into the ground, creating a field that cleanses the area of all that is foul, dealing continuous <b class="text-genshin-electro">Electro DMG</b> to opponents within its AoE based on Shinobu's Max HP.
-      <br />If Shinobu's HP is less than or equal to <span class="text-yellow">50%</span> when this skill is used, the field will last longer.`,
+      <br />If Shinobu's HP is less than or equal to <span class="text-desc">50%</span> when this skill is used, the field will last longer.`,
     },
     a1: {
       title: `A1: Breaking Free`,
-      content: `When Shinobu's HP is not higher than <span class="text-yellow">50%</span>, her Healing Bonus is increased by <span class="text-yellow">15%</span>.`,
+      content: `When Shinobu's HP is not higher than <span class="text-desc">50%</span>, her Healing Bonus is increased by <span class="text-desc">15%</span>.`,
     },
     a4: {
       title: `A4: Heart's Repose`,
       content: `Sanctifying Ring's abilities will be boosted based on Shinobu's Elemental Mastery:
-      <br />- Healing amount will be increased by <span class="text-yellow">75%</span> of Elemental Mastery.
-      <br />- DMG dealt is increased by <span class="text-yellow">25%</span> of Elemental Mastery.`,
+      <br />- Healing amount will be increased by <span class="text-desc">75%</span> of Elemental Mastery.
+      <br />- DMG dealt is increased by <span class="text-desc">25%</span> of Elemental Mastery.`,
       value: [
         {
           name: 'Bonus Healing',
@@ -66,31 +66,31 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
     },
     c1: {
       title: `C1: To Cloister Compassion`,
-      content: `Gyoei Narukami Kariyama Rite's AoE is increased by <span class="text-yellow">50%</span>.`,
+      content: `Gyoei Narukami Kariyama Rite's AoE is increased by <span class="text-desc">50%</span>.`,
     },
     c2: {
       title: `C2: To Forsake Fortune`,
-      content: `Grass Ring of Sanctification's duration is increased by <span class="text-yellow">3</span>s.`,
+      content: `Grass Ring of Sanctification's duration is increased by <span class="text-desc">3</span>s.`,
     },
     c3: {
       title: `C3: To Sequester Sorrow`,
-      content: `Increases the Level of Sanctifying Ring by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Sanctifying Ring by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: To Sever Sealing`,
-      content: `When the Normal, Charged, or Plunging Attacks of the character affected by Shinobu's Grass Ring of Sanctification hit opponents, a Thundergrass Mark will land on the opponent's position and deal <b class="text-genshin-electro">AoE Electro DMG</b> based on <span class="text-yellow">9.7%</span> of Shinobu's Max HP.
-      <br />This effect can occur once every <span class="text-yellow">5</span>s.`,
+      content: `When the Normal, Charged, or Plunging Attacks of the character affected by Shinobu's Grass Ring of Sanctification hit opponents, a Thundergrass Mark will land on the opponent's position and deal <b class="text-genshin-electro">AoE Electro DMG</b> based on <span class="text-desc">9.7%</span> of Shinobu's Max HP.
+      <br />This effect can occur once every <span class="text-desc">5</span>s.`,
     },
     c5: {
       title: `C5: To Cease Courtesies`,
-      content: `Increases the Level of Gyoei Narukami Kariyama Rite by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Gyoei Narukami Kariyama Rite by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: To Ward Weakness`,
-      content: `When Kuki Shinobu takes lethal DMG, this instance of DMG will not take her down. This effect will automatically trigger when her HP reaches <span class="text-yellow">1</span> and will trigger once every <span class="text-yellow">60</span>s.
-      <br />When Shinobu's HP drops below <span class="text-yellow">25%</span>, she will gain <span class="text-yellow">150</span> Elemental Mastery for <span class="text-yellow">15</span>s. This effect will trigger once every <span class="text-yellow">60</span>s.`,
+      content: `When Kuki Shinobu takes lethal DMG, this instance of DMG will not take her down. This effect will automatically trigger when her HP reaches <span class="text-desc">1</span> and will trigger once every <span class="text-desc">60</span>s.
+      <br />When Shinobu's HP drops below <span class="text-desc">25%</span>, she will gain <span class="text-desc">150</span> Elemental Mastery for <span class="text-desc">15</span>s. This effect will trigger once every <span class="text-desc">60</span>s.`,
     },
   }
 

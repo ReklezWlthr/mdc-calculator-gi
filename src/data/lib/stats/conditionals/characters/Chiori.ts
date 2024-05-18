@@ -53,48 +53,48 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Tapestry</b>
       <br />Switches to the next character in your roster.
       <br />Grants all your party members "Seize the Moment": When your active party member's Normal Attacks, Charged Attacks, and Plunging Attacks hit a nearby opponent, "Tamoto" will execute a coordinated attack, dealing 100% of Fluttering Hasode's upward sweep DMG as <b class="text-genshin-geo">AoE Geo DMG</b> at the opponent's location. DMG dealt this way is considered Elemental Skill DMG.
-      <br />"Seize the Moment" lasts <span class="text-yellow">8</span>s, and <span class="text-yellow">1</span> of "Tamoto"'s coordinated attack can be unleashed every <span class="text-yellow">2</span>s. <span class="text-yellow">2</span> such coordinated attacks can occur per "Seize the Moment" effect duration.
+      <br />"Seize the Moment" lasts <span class="text-desc">8</span>s, and <span class="text-desc">1</span> of "Tamoto"'s coordinated attack can be unleashed every <span class="text-desc">2</span>s. <span class="text-desc">2</span> such coordinated attacks can occur per "Seize the Moment" effect duration.
       <br />
       <br /><b>Tailoring</b>
-      <br />Chiori gains <b class="text-genshin-geo">Geo infusion</b> for <span class="text-yellow">5</span>s.
+      <br />Chiori gains <b class="text-genshin-geo">Geo infusion</b> for <span class="text-desc">5</span>s.
       <br />
       <br />When on the field, if Chiori does not either <b>Press</b> her Elemental Skill or use a Normal Attack within a short time after using Fluttering Hasode's upward sweep, the Tailoring effect will be triggered by default.`,
     },
     a4: {
       title: `A4: The Finishing Touch`,
-      content: `When a nearby party member creates a <b class="text-genshin-geo">Geo Construct</b>, Chiori will gain <span class="text-yellow">20%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for 20s.`,
+      content: `When a nearby party member creates a <b class="text-genshin-geo">Geo Construct</b>, Chiori will gain <span class="text-desc">20%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for 20s.`,
     },
     c1: {
       title: `C1: Six Paths of Sage Silkcraft`,
-      content: `The AoE of the automaton doll "Tamoto" summoned by Fluttering Hasode is increased by <span class="text-yellow">50%</span>.
+      content: `The AoE of the automaton doll "Tamoto" summoned by Fluttering Hasode is increased by <span class="text-desc">50%</span>.
       <br />Additionally, if there is a <b class="text-genshin-geo">Geo</b> party member other than Chiori, Fluttering Hasode will trigger the following after the dash is completed:
       <br />Summon an additional Tamoto. Only one additional Tamoto can exist at the same time, whether summoned by Chiori this way or through the presence of a Geo Construct.
       <br />Triggers the Passive Talent "The Finishing Touch." This effect requires you to first unlock the Passive Talent "The Finishing Touch."`,
     },
     c2: {
       title: `C2: In Five Colors Dyed`,
-      content: `For <span class="text-yellow">10</span>s after using Hiyoku: Twin Blades, a simplified automaton doll, "Kinu," will be summoned next to your active character every <span class="text-yellow">3</span>s. Kinu will attack nearby opponents, dealing <b class="text-genshin-geo">AoE Geo DMG</b> equivalent to <span class="text-yellow">170%</span> of Tamoto's DMG. DMG dealt this way is considered Elemental Skill DMG.
-      <br />Kinu will leave the field after <span class="text-yellow">1</span> attack or after lasting <span class="text-yellow">3</span>s.`,
+      content: `For <span class="text-desc">10</span>s after using Hiyoku: Twin Blades, a simplified automaton doll, "Kinu," will be summoned next to your active character every <span class="text-desc">3</span>s. Kinu will attack nearby opponents, dealing <b class="text-genshin-geo">AoE Geo DMG</b> equivalent to <span class="text-desc">170%</span> of Tamoto's DMG. DMG dealt this way is considered Elemental Skill DMG.
+      <br />Kinu will leave the field after <span class="text-desc">1</span> attack or after lasting <span class="text-desc">3</span>s.`,
     },
     c3: {
       title: `C3: Four Brocade Embellishments`,
-      content: `Increases the Level of Fluttering Hasode by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Fluttering Hasode by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: A Tailor's Three Courtesies`,
-      content: `For <span class="text-yellow">8</span>s after triggering either follow-up effect of the Passive Talent "Tailor-Made," when your current active character's Normal, Charged, or Plunging Attacks hit a nearby opponent, a simplified automaton doll, "Kinu," will be summoned near this opponent. You can summon <span class="text-yellow">1</span> Kinu every <span class="text-yellow">1</span>s in this way, and up to <span class="text-yellow">3</span> Kinu may be summoned this way during each instance of "Tailor-Made"'s Seize the Moment or Tailoring effect. The above effect can be triggered up to once every <span class="text-yellow">15</span>s.
+      content: `For <span class="text-desc">8</span>s after triggering either follow-up effect of the Passive Talent "Tailor-Made," when your current active character's Normal, Charged, or Plunging Attacks hit a nearby opponent, a simplified automaton doll, "Kinu," will be summoned near this opponent. You can summon <span class="text-desc">1</span> Kinu every <span class="text-desc">1</span>s in this way, and up to <span class="text-desc">3</span> Kinu may be summoned this way during each instance of "Tailor-Made"'s Seize the Moment or Tailoring effect. The above effect can be triggered up to once every <span class="text-desc">15</span>s.
       <br />Must unlock the Passive Talent "Tailor-Made" first.`,
     },
     c5: {
       title: `C5: Two Silken Plumules`,
-      content: `Increases the Level of Hiyoku: Twin Blades by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Hiyoku: Twin Blades by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Sole Principle Pursuit`,
-      content: `After triggering a follow-up effect of the Passive Talent "Tailor-Made," Chiori's own Fluttering Hasode's CD is decreased by <span class="text-yellow">12</span>s. Must unlock the Passive "Tailor-Made" first.
-      <br />In addition, the DMG dealt by Chiori's own Normal Attacks is increased by an amount equal to <span class="text-yellow">235%</span> of her own DEF.`,
+      content: `After triggering a follow-up effect of the Passive Talent "Tailor-Made," Chiori's own Fluttering Hasode's CD is decreased by <span class="text-desc">12</span>s. Must unlock the Passive "Tailor-Made" first.
+      <br />In addition, the DMG dealt by Chiori's own Normal Attacks is increased by an amount equal to <span class="text-desc">235%</span> of her own DEF.`,
     },
   }
 

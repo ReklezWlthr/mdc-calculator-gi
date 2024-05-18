@@ -36,46 +36,46 @@ const Kaeya = (c: number, a: number, t: ITalentLevel) => {
     },
     burst: {
       title: `Glacial Waltz`,
-      content: `Coalescing the frost in the air, Kaeya summons <span class="text-yellow">3</span> icicles that revolve around him.
+      content: `Coalescing the frost in the air, Kaeya summons <span class="text-desc">3</span> icicles that revolve around him.
       <br />These icicles will follow the character around and deal <b class="text-genshin-cryo">Cryo DMG</b> to opponents in their path for the ability's duration.`,
     },
     a1: {
       title: `A1: Cold-Blooded Strike`,
-      content: `Every hit with Frostgnaw regenerates HP for Kaeya equal to <span class="text-yellow">15%</span> of his ATK.`,
+      content: `Every hit with Frostgnaw regenerates HP for Kaeya equal to <span class="text-desc">15%</span> of his ATK.`,
     },
     a4: {
       title: `A4: Glacial Heart`,
       content: `Opponents <b class="text-genshin-cryo">Frozen</b> by Frostgnaw will drop additional Elemental Particles.
-      <br />Frostgnaw may only produce a maximum of <span class="text-yellow">2</span> additional Elemental Particles per use.`,
+      <br />Frostgnaw may only produce a maximum of <span class="text-desc">2</span> additional Elemental Particles per use.`,
     },
     c1: {
       title: `C1: Excellent Blood`,
-      content: `The CRIT Rate of Kaeya's Normal and Charge Attacks against opponents affected by <b class="text-genshin-cryo">Cryo</b> is increased by <span class="text-yellow">15%</span>.`,
+      content: `The CRIT Rate of Kaeya's Normal and Charge Attacks against opponents affected by <b class="text-genshin-cryo">Cryo</b> is increased by <span class="text-desc">15%</span>.`,
     },
     c2: {
       title: `C2: Never-Ending Performance`,
-      content: `When Glacial Waltz is in effect, for each opponent defeated, its base duration is increased by <span class="text-yellow">2.5</span>s, up to a maximum of <span class="text-yellow">15</span>s.`,
+      content: `When Glacial Waltz is in effect, for each opponent defeated, its base duration is increased by <span class="text-desc">2.5</span>s, up to a maximum of <span class="text-desc">15</span>s.`,
     },
     c3: {
       title: `C3: Dance of Frost`,
-      content: `Increases the Level of Frostgnaw by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Frostgnaw by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Frozen Kiss`,
-      content: `Triggers automatically when Kaeya's HP falls below <span class="text-yellow">20%</span>:
-      <br />Creates a shield that absorbs damage equal to <span class="text-yellow">30%</span> of Kaeya's Max HP. Lasts for <span class="text-yellow">20</span>s.
+      content: `Triggers automatically when Kaeya's HP falls below <span class="text-desc">20%</span>:
+      <br />Creates a shield that absorbs damage equal to <span class="text-desc">30%</span> of Kaeya's Max HP. Lasts for <span class="text-desc">20</span>s.
       <br />This shield absorbs <b class="text-genshin-cryo">Cryo DMG</b> with 250% efficiency.
-      <br />Can only occur once every <span class="text-yellow">60</span>s.`,
+      <br />Can only occur once every <span class="text-desc">60</span>s.`,
     },
     c5: {
       title: `C5: Frostbiting Embrace`,
-      content: `Increases the Level of Glacial Waltz by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Glacial Waltz by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Glacial Whirlwind`,
-      content: `Glacial Waltz will generate <span class="text-yellow">1</span> additional icicle, and will regenerate <span class="text-yellow">15</span> Energy when cast.`,
+      content: `Glacial Waltz will generate <span class="text-desc">1</span> additional icicle, and will regenerate <span class="text-desc">15</span> Energy when cast.`,
     },
   }
 

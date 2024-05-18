@@ -37,7 +37,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Press</b>
       <br />Swings the Thunder Wolf Claw, dealing <b class="text-genshin-electro">Electro DMG</b> to opponents in front of Razor.
       <br />Upon striking an opponent, Razor will gain an Electro Sigil, which increases his Energy Recharge rate.
-      <br />Razor can have up to <span class="text-yellow">3</span> Electro Sigils simultaneously, and gaining a new Electro Sigil refreshes their duration.
+      <br />Razor can have up to <span class="text-desc">3</span> Electro Sigils simultaneously, and gaining a new Electro Sigil refreshes their duration.
       <br />
       <br /><b>Hold</b>
       <br />Gathers Electro energy to unleash a lightning storm over a small AoE, causing massive <b class="text-genshin-electro">Electro DMG</b>, and clears all of Razor's Electro Sigils.
@@ -57,41 +57,41 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- Increases Razor's resistance to interruption.
       <br />
       <br />These effects end when Razor leaves the battlefield.
-      <br />When Razor leaves the field, a maximum of <span class="text-yellow">10</span> Energy will be returned to him based off the duration remaining on this skill.`,
+      <br />When Razor leaves the field, a maximum of <span class="text-desc">10</span> Energy will be returned to him based off the duration remaining on this skill.`,
     },
     a1: {
       title: `A1: Awakening`,
-      content: `Decreases Claw and Thunder's CD by <span class="text-yellow">18%</span>. Using Lightning Fang resets the CD of Claw and Thunder.`,
+      content: `Decreases Claw and Thunder's CD by <span class="text-desc">18%</span>. Using Lightning Fang resets the CD of Claw and Thunder.`,
     },
     a4: {
       title: `A4: Hunger`,
-      content: `When Razor's Energy is below <span class="text-yellow">50%</span>, increases Energy Recharge by <span class="text-yellow">30%</span>.`,
+      content: `When Razor's Energy is below <span class="text-desc">50%</span>, increases Energy Recharge by <span class="text-desc">30%</span>.`,
     },
     c1: {
       title: `C1: Wolf's Instinct`,
-      content: `Picking up an Elemental Orb or Particle increases Razor's DMG by <span class="text-yellow">10%</span> for <span class="text-yellow">8</span>s.`,
+      content: `Picking up an Elemental Orb or Particle increases Razor's DMG by <span class="text-desc">10%</span> for <span class="text-desc">8</span>s.`,
     },
     c2: {
       title: `C2: Suppression`,
-      content: `Increases CRIT Rate against opponents with less than <span class="text-yellow">30%</span> HP by <span class="text-yellow">10%</span>.`,
+      content: `Increases CRIT Rate against opponents with less than <span class="text-desc">30%</span> HP by <span class="text-desc">10%</span>.`,
     },
     c3: {
       title: `C3: Soul Companion`,
-      content: `Increases the Level of Lightning Fang by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Lightning Fang by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Bite`,
-      content: `When casting Claw and Thunder <b>Press</b>, opponents hit will have their DEF decreased by <span class="text-yellow">15%</span> for <span class="text-yellow">7</span>s.`,
+      content: `When casting Claw and Thunder <b>Press</b>, opponents hit will have their DEF decreased by <span class="text-desc">15%</span> for <span class="text-desc">7</span>s.`,
     },
     c5: {
       title: `C5: Sharpened Claws`,
-      content: `Increases the Level of Claw and Thunder by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Claw and Thunder by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Lupus Fulguris`,
-      content: `Every <span class="text-yellow">10</span>s, Razor's sword charges up, causing the next Normal Attack to release lightning that deals <span class="text-yellow">100%</span> of Razor's ATK as <b class="text-genshin-electro">Electro DMG</b>.
+      content: `Every <span class="text-desc">10</span>s, Razor's sword charges up, causing the next Normal Attack to release lightning that deals <span class="text-desc">100%</span> of Razor's ATK as <b class="text-genshin-electro">Electro DMG</b>.
       <br />When Razor is not using Lightning Fang, a lightning strike on an opponent will grant Razor an Electro Sigil for Claw and Thunder.`,
     },
   }

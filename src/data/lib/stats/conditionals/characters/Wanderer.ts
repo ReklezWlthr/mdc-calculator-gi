@@ -52,52 +52,52 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     a1: {
       title: `A1: Jade-Claimed Flower`,
       content: `If Hanega: Song of the Wind comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when it is unleashed, this instance of the Windfavored state will obtain buffs according to the contacted element(s):
-      <br /><b class="text-genshin-hydro">Hydro</b>: Kuugoryoku Point cap increases by <span class="text-yellow">20</span>.
-      <br /><b class="text-genshin-pyro">Pyro</b>: ATK increases by <span class="text-yellow">30%</span>.
-      <br /><b class="text-genshin-cryo">Cryo</b>: CRIT Rate increases by <span class="text-yellow">20%</span>.
-      <br /><b class="text-genshin-electro">Electro</b>: When Normal and Charged Attacks hit an opponent, <span class="text-yellow">0.8</span> Energy will be restored. Energy can be restored this way every <span class="text-yellow">0.2</span>s.
+      <br /><b class="text-genshin-hydro">Hydro</b>: Kuugoryoku Point cap increases by <span class="text-desc">20</span>.
+      <br /><b class="text-genshin-pyro">Pyro</b>: ATK increases by <span class="text-desc">30%</span>.
+      <br /><b class="text-genshin-cryo">Cryo</b>: CRIT Rate increases by <span class="text-desc">20%</span>.
+      <br /><b class="text-genshin-electro">Electro</b>: When Normal and Charged Attacks hit an opponent, <span class="text-desc">0.8</span> Energy will be restored. Energy can be restored this way every <span class="text-desc">0.2</span>s.
       <br />
-      <br />You can have up to <span class="text-yellow">2</span> different kinds of these buffs simultaneously.`,
+      <br />You can have up to <span class="text-desc">2</span> different kinds of these buffs simultaneously.`,
     },
     a4: {
       title: `A4: Gales of Reverie`,
-      content: `When the Wanderer hits opponents with Kuugo: Fushoudan or Kuugo: Toufukai in his Windfavored state, he has a <span class="text-yellow">16%</span> chance to obtain the Descent effect: The next time the Wanderer accelerates in mid-air while in this instance of the Windfavored state, this effect will be removed, this acceleration instance will not consume any Kuugoryoku Points, and he will fire off <span class="text-yellow">4</span> wind arrows that deal <span class="text-yellow">35%</span> of his ATK as <b class="text-genshin-anemo">Anemo DMG</b> each.
-      <br />For each Kuugo: Fushoudan and Kuugo: Toufukai that does not produce this effect, the next attack of those types will have a <span class="text-yellow">12%</span> increased chance of producing it. The calculation of the effect production is done once every <span class="text-yellow">0.1</span>s.`,
+      content: `When the Wanderer hits opponents with Kuugo: Fushoudan or Kuugo: Toufukai in his Windfavored state, he has a <span class="text-desc">16%</span> chance to obtain the Descent effect: The next time the Wanderer accelerates in mid-air while in this instance of the Windfavored state, this effect will be removed, this acceleration instance will not consume any Kuugoryoku Points, and he will fire off <span class="text-desc">4</span> wind arrows that deal <span class="text-desc">35%</span> of his ATK as <b class="text-genshin-anemo">Anemo DMG</b> each.
+      <br />For each Kuugo: Fushoudan and Kuugo: Toufukai that does not produce this effect, the next attack of those types will have a <span class="text-desc">12%</span> increased chance of producing it. The calculation of the effect production is done once every <span class="text-desc">0.1</span>s.`,
     },
     util: {
       title: `Strum the Swirling Winds`,
-      content: `Mora expended when ascending Bows and Catalysts is decreased by <span class="text-yellow">50%</span>.`,
+      content: `Mora expended when ascending Bows and Catalysts is decreased by <span class="text-desc">50%</span>.`,
     },
     c1: {
       title: `C1: Shoban: Ostentatious Plumage`,
-      content: `When in the Windfavored state, the Attack SPD of the Wanderer's Kuugo: Fushoudan and Kuugo: Toufukai is increased by <span class="text-yellow">10%</span>.
-      <br />Additionally, the wind arrows fired by the Passive Talent "Gales of Reverie" will deal an additional <span class="text-yellow">25%</span> of his ATK as DMG. You must unlock the Passive Talent "Gales of Reverie" first.`,
+      content: `When in the Windfavored state, the Attack SPD of the Wanderer's Kuugo: Fushoudan and Kuugo: Toufukai is increased by <span class="text-desc">10%</span>.
+      <br />Additionally, the wind arrows fired by the Passive Talent "Gales of Reverie" will deal an additional <span class="text-desc">25%</span> of his ATK as DMG. You must unlock the Passive Talent "Gales of Reverie" first.`,
     },
     c2: {
       title: `C2: Niban: Isle Amidst White Waves`,
-      content: `When in the Windfavored state, Kyougen: Five Ceremonial Plays will see its DMG increased by <span class="text-yellow">4%</span> per point of difference between the max amount of Kuugoryoku Points contrasted with Kuugoryoku's present capacity when using this skill.
-      Through this method, you can increase Kyougen: Five Ceremonial Plays's DMG by a maximum of <span class="text-yellow">200%</span>.`,
+      content: `When in the Windfavored state, Kyougen: Five Ceremonial Plays will see its DMG increased by <span class="text-desc">4%</span> per point of difference between the max amount of Kuugoryoku Points contrasted with Kuugoryoku's present capacity when using this skill.
+      Through this method, you can increase Kyougen: Five Ceremonial Plays's DMG by a maximum of <span class="text-desc">200%</span>.`,
     },
     c3: {
       title: `C3: Sanban: Moonflower Kusemai`,
-      content: `Increases the Level of Kyougen: Five Ceremonial Plays by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Kyougen: Five Ceremonial Plays by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Yonban: Set Adrift into Spring`,
-      content: `When casting Hanega: Song of the Wind, should the Passive Talent "Jade-Claimed Flower" be triggered, the character will gain buffs in correspondence to the contacted Elemental Type(s), and also obtain a random untriggered buff. A maximum of <span class="text-yellow">3</span> such corresponding elemental buffs can exist simultaneously.
+      content: `When casting Hanega: Song of the Wind, should the Passive Talent "Jade-Claimed Flower" be triggered, the character will gain buffs in correspondence to the contacted Elemental Type(s), and also obtain a random untriggered buff. A maximum of <span class="text-desc">3</span> such corresponding elemental buffs can exist simultaneously.
       You must unlock the Passive Talent "Jade-Claimed Flower" first.`,
     },
     c5: {
       title: `C5: Matsuban: Ancient Illuminator From Abroad`,
-      content: `Increases the Level of Hanega: Song of the Wind by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Hanega: Song of the Wind by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Shugen: The Curtains' Melancholic Sway`,
       content: `When the Wanderer actively hits an opponent with Kuugo: Fushoudan while in the Windfavored state, the following effects will occur:
-      <br />Deals an additional instance of Kuugo: Fushoudan at the position hit, dealing <span class="text-yellow">40%</span> of the attack's original DMG. This DMG will be considered Normal Attack DMG.
-      <br />When the Wanderer falls below <span class="text-yellow">40</span> Kuugoryoku Points, restores <span class="text-yellow">4</span> Points to him. Kuugoryoku Points can be restored in this manner once every <span class="text-yellow">0.2</span>s. This restoration can occur up to <span class="text-yellow">5</span> times within one Windfavored duration.`,
+      <br />Deals an additional instance of Kuugo: Fushoudan at the position hit, dealing <span class="text-desc">40%</span> of the attack's original DMG. This DMG will be considered Normal Attack DMG.
+      <br />When the Wanderer falls below <span class="text-desc">40</span> Kuugoryoku Points, restores <span class="text-desc">4</span> Points to him. Kuugoryoku Points can be restored in this manner once every <span class="text-desc">0.2</span>s. This restoration can occur up to <span class="text-desc">5</span> times within one Windfavored duration.`,
     },
   }
 

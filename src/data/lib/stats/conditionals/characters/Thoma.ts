@@ -35,7 +35,7 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       content: `Thoma vaults forward with his polearm and delivers a flame-filled flying kick that deals <b class="text-genshin-pyro">AoE Pyro DMG</b>, while also summoning a defensive Blazing Barrier. At the moment of casting, Thoma's Elemental Skill applies <b class="text-genshin-pyro">Pyro</b> to himself.
       <br />The DMG Absorption of the Blazing Barrier scales off Thoma's Max HP.
       <br />The Blazing Barrier has the following traits:
-      <br />- Absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-yellow">250%</span> more effectively.
+      <br />- Absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-desc">250%</span> more effectively.
       <br />- When a new Blazing Barrier is obtained, the remaining DMG Absorption of an existing Blazing Barrier will stack and its duration will be refreshed.
       <br />
       <br />The maximum DMG Absorprtion of the Blazing Barrier will not exceed a certain percentage of Thoma's Max HP.
@@ -47,10 +47,10 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b>Scorching Ooyoroi</b>
       <br />While Scorching Ooyoroi is in effect, the active character's Normal Attacks will trigger Fiery Collapse, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> and summoning a Blazing Barrier.
-      <br />Fiery Collapse can be triggered once every <span class="text-yellow">1</span>s.
+      <br />Fiery Collapse can be triggered once every <span class="text-desc">1</span>s.
       <br />
       <br />Except for the amount of DMG they can absorb, the Blazing Barriers created in this way are identical to those created by Thoma's Elemental Skill, Blazing Blessing:
-      <br />- Absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-yellow">250%</span> more effectively.
+      <br />- Absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-desc">250%</span> more effectively.
       <br />- When a new Blazing Barrier is obtained, the remaining DMG Absorption of an existing Blazing Barrier will stack and its duration will be refreshed.
       <br />
       <br />The maximum DMG Absorption of the Blazing Barrier will not exceed a certain percentage of Thoma's Max HP.
@@ -60,39 +60,39 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Imbricated Armor`,
-      content: `When your current active character obtains or refreshes a Blazing Barrier, this character's Shield Strength will increase by <span class="text-yellow">5%</span> for <span class="text-yellow">6</span>s.
-      <br />This effect can be triggered once every <span class="text-yellow">0.3</span> seconds. Max <span class="text-yellow">5</span> stacks.`,
+      content: `When your current active character obtains or refreshes a Blazing Barrier, this character's Shield Strength will increase by <span class="text-desc">5%</span> for <span class="text-desc">6</span>s.
+      <br />This effect can be triggered once every <span class="text-desc">0.3</span> seconds. Max <span class="text-desc">5</span> stacks.`,
     },
     a4: {
       title: `A4: Flaming Assault`,
-      content: `DMG dealt by Crimson Ooyoroi's Fiery Collapse is increased by <span class="text-yellow">2.2%</span> of Thoma's Max HP.`,
+      content: `DMG dealt by Crimson Ooyoroi's Fiery Collapse is increased by <span class="text-desc">2.2%</span> of Thoma's Max HP.`,
     },
     c1: {
       title: `C1: A Comrade's Duty`,
-      content: `When a character protected by Thoma's own Blazing Barrier (Thoma excluded) is attacked, Thoma's own Blazing Blessing CD is decreased by <span class="text-yellow">3</span>s, while his own Crimson Ooyoroi's CD is decreased by <span class="text-yellow">3</span>s.
-      <br />This effect can be triggered once every <span class="text-yellow">20</span>s.`,
+      content: `When a character protected by Thoma's own Blazing Barrier (Thoma excluded) is attacked, Thoma's own Blazing Blessing CD is decreased by <span class="text-desc">3</span>s, while his own Crimson Ooyoroi's CD is decreased by <span class="text-desc">3</span>s.
+      <br />This effect can be triggered once every <span class="text-desc">20</span>s.`,
     },
     c2: {
       title: `C2: A Subordinate's Skills`,
-      content: `Crimson Ooyoroi's duration is increased by <span class="text-yellow">3</span>s.`,
+      content: `Crimson Ooyoroi's duration is increased by <span class="text-desc">3</span>s.`,
     },
     c3: {
       title: `C3: Fortified Resolve`,
-      content: `Increases the Level of Blazing Blessing by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Blazing Blessing by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Long-Term Planning`,
-      content: `After using Crimson Ooyoroi, <span class="text-yellow">15</span> Energy will be restored to Thoma.`,
+      content: `After using Crimson Ooyoroi, <span class="text-desc">15</span> Energy will be restored to Thoma.`,
     },
     c5: {
       title: `C5: Raging Wildfire`,
-      content: `Increases the Level of Crimson Ooyoroi by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Crimson Ooyoroi by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Burning Heart`,
-      content: `When a Blazing Barrier is obtained or refreshed, the DMG dealt by all party members' Normal, Charged, and Plunging Attacks is increased by <span class="text-yellow">15%</span> for <span class="text-yellow">6</span>s.`,
+      content: `When a Blazing Barrier is obtained or refreshed, the DMG dealt by all party members' Normal, Charged, and Plunging Attacks is increased by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.`,
     },
   }
 

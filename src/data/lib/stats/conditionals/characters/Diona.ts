@@ -55,40 +55,40 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Cat's Tail Secret Menu`,
-      content: `Characters shielded by Icy Paws have their Movement SPD increased by <span class="text-yellow">10%</span> and their Stamina Consumption decreased by <span class="text-yellow">10%</span>.`,
+      content: `Characters shielded by Icy Paws have their Movement SPD increased by <span class="text-desc">10%</span> and their Stamina Consumption decreased by <span class="text-desc">10%</span>.`,
     },
     a4: {
       title: `A4: Drunkards' Farce`,
-      content: `Opponents who enter the AoE of Signature Mix have <span class="text-yellow">10%</span> decreased ATK for <span class="text-yellow">15</span>s.`,
+      content: `Opponents who enter the AoE of Signature Mix have <span class="text-desc">10%</span> decreased ATK for <span class="text-desc">15</span>s.`,
     },
     c1: {
       title: `C1: A Lingering Flavor`,
-      content: `Regenerates <span class="text-yellow">15</span> Energy for Diona after the effects of Signature Mix end.`,
+      content: `Regenerates <span class="text-desc">15</span> Energy for Diona after the effects of Signature Mix end.`,
     },
     c2: {
       title: `C2: Shaken, Not Purred`,
-      content: `Increases Icy Paws' DMG by <span class="text-yellow">15%</span>, and increases its shield's DMG Absorption by <span class="text-yellow">15%</span>.
-      <br />Additionally, when paws hit their targets, creates a shield for other nearby characters on the field with <span class="text-yellow">50%</span> of the Icy Paws shield's DMG Absorption for <span class="text-yellow">5</span>s.`,
+      content: `Increases Icy Paws' DMG by <span class="text-desc">15%</span>, and increases its shield's DMG Absorption by <span class="text-desc">15%</span>.
+      <br />Additionally, when paws hit their targets, creates a shield for other nearby characters on the field with <span class="text-desc">50%</span> of the Icy Paws shield's DMG Absorption for <span class="text-desc">5</span>s.`,
     },
     c3: {
       title: `C3: A—Another Round?`,
-      content: `Increases the Level of Signature Mix by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Signature Mix by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Wine Industry Slayer`,
-      content: `Within the radius of Signature Mix, Diona's charge time for aimed shots is reduced by <span class="text-yellow">60%</span>.`,
+      content: `Within the radius of Signature Mix, Diona's charge time for aimed shots is reduced by <span class="text-desc">60%</span>.`,
     },
     c5: {
       title: `C5: Double Shot, on the Rocks`,
-      content: `Increases the Level of Icy Paws by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Icy Paws by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Cat's Tail Closing Time`,
       content: `Characters within Signature Mix's radius will gain the following effects based on their HP amounts:
-      <br />Increases Incoming Healing Bonus by <span class="text-yellow">30%</span> when HP falls below or is equal to <span class="text-yellow">50%</span>.
-      <br />Elemental Mastery increased by <span class="text-yellow">200</span> when HP is above <span class="text-yellow">50%</span>.`,
+      <br />Increases Incoming Healing Bonus by <span class="text-desc">30%</span> when HP falls below or is equal to <span class="text-desc">50%</span>.
+      <br />Elemental Mastery increased by <span class="text-desc">200</span> when HP is above <span class="text-desc">50%</span>.`,
     },
   }
 

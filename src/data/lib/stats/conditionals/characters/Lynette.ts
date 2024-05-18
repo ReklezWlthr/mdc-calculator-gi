@@ -35,7 +35,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     skill: {
       title: `Enigmatic Feint`,
       content: `Flicks her mantle and executes an Enigma Thrust, dealing <b class="text-genshin-anemo">Anemo DMG</b>.
-      <br />When the Enigma Thrust hits an opponent, it will restore Lynette's HP based on her Max HP, and in the <span class="text-yellow">4</span>s afterward, she will lose a certain amount of HP per second.
+      <br />When the Enigma Thrust hits an opponent, it will restore Lynette's HP based on her Max HP, and in the <span class="text-desc">4</span>s afterward, she will lose a certain amount of HP per second.
       <br />Based on whether you press or hold this ability, she will use Enigma Thrust differently.
       <br />
       <br /><b>Press</b>
@@ -45,7 +45,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Lynette will enter a high-speed Pilfering Shadow state and apply Shadowsign to a nearby opponent. You can control her movement direction during this state, and you can end it prematurely by using this skill again.
       <br />When this high-speed state ends, Lynette will unleash her Enigma Thrust. If there is an opponent with Shadowsign applied to them nearby, Lynette will approach them in a flash before using Enigma Thrust.
       <br />
-      <br />A maximum of <span class="text-yellow">1</span> opponent can have Shadowsign at any one time. When this opponent gets too far from Lynette, the Shadowsign will be canceled.
+      <br />A maximum of <span class="text-desc">1</span> opponent can have Shadowsign at any one time. When this opponent gets too far from Lynette, the Shadowsign will be canceled.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-ousia">Ousia</b>
       <br />At specific intervals, Lynette will unleash a Surging Blade when she uses Enigma Thrust, dealing <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-anemo">Anemo DMG</b>.
@@ -63,11 +63,11 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a1: {
       title: `A1: Sophisticated Synergy`,
-      content: `Within <span class="text-yellow">10</span>s after using Magic Trick: Astonishing Shift, when there are <span class="text-yellow">1/2/3/4</span> Elemental Types in the party, all party members' ATK will be increased by <span class="text-yellow">8%/12%/16%/20%</span> respectively.`,
+      content: `Within <span class="text-desc">10</span>s after using Magic Trick: Astonishing Shift, when there are <span class="text-desc">1/2/3/4</span> Elemental Types in the party, all party members' ATK will be increased by <span class="text-desc">8%/12%/16%/20%</span> respectively.`,
     },
     a4: {
       title: `A4: Props Positively Prepped`,
-      content: `After the Bogglecat Box summoned by Magic Trick: Astonishing Shift performs Elemental Conversion, Lynette's Elemental Burst will deal <span class="text-yellow">15%</span> more DMG. This effect will persist until the Bogglecat Box's duration ends.`,
+      content: `After the Bogglecat Box summoned by Magic Trick: Astonishing Shift performs Elemental Conversion, Lynette's Elemental Burst will deal <span class="text-desc">15%</span> more DMG. This effect will persist until the Bogglecat Box's duration ends.`,
     },
     c1: {
       title: `C1: A Cold Blade Like a Shadow`,
@@ -79,21 +79,21 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     c3: {
       title: `C3: Cognition-Inverting Gaze`,
-      content: `Increases the Level of Magic Trick: Astonishing Shift by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Magic Trick: Astonishing Shift by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Tacit Coordination`,
-      content: `Increases Enigmatic Feint's charges by <span class="text-yellow">1</span>.`,
+      content: `Increases Enigmatic Feint's charges by <span class="text-desc">1</span>.`,
     },
     c5: {
       title: `C5: Obscuring Ambiguity`,
-      content: `Increases the Level of Enigmatic Feint by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Enigmatic Feint by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Watchful Eye`,
-      content: `When Lynette uses Enigmatic Feint's Enigma Thrust, she will gain an <b class="text-genshin-anemo">Anemo Infusion</b> and <span class="text-yellow">20%</span> <b class="text-genshin-anemo">Anemo DMG Bonus</b> for <span class="text-yellow">6</span>s.`,
+      content: `When Lynette uses Enigmatic Feint's Enigma Thrust, she will gain an <b class="text-genshin-anemo">Anemo Infusion</b> and <span class="text-desc">20%</span> <b class="text-genshin-anemo">Anemo DMG Bonus</b> for <span class="text-desc">6</span>s.`,
     },
   }
 

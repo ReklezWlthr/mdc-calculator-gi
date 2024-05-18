@@ -43,7 +43,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       <br />- 2 <b class="text-genshin-geo">Geo</b> characters: Adds "Impregnable" - Increased resistance to interruption.
       <br />- 3 <b class="text-genshin-geo">Geo</b> characters: Adds "Crunch" - <b class="text-genshin-geo">Geo DMG Bonus</b>.
       <br />
-      <br />Gorou can deploy only <span class="text-yellow">1</span> General's War Banner on the field at any one time.
+      <br />Gorou can deploy only <span class="text-desc">1</span> General's War Banner on the field at any one time.
       <br />Characters can only benefit from 1 General's War Banner at a time. When a party member leaves the field, the active buff will last for 2s.
       <br />
       <br /><b>Hold</b>
@@ -56,7 +56,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       <br /><b>General's Glory</b>
       <br />This field has the following properties:
       <br />- Like the General's War Banner created by Inuzaka All-Round Defense, provides buffs to active characters within the skill's AoE based on the number of <b class="text-genshin-geo">Geo</b> characters in the party. Also moves together with your active character.
-      <br />- Generates 1 Crystal Collapse every <span class="text-yellow">1.5</span>s that deals <b class="text-genshin-geo">AoE Geo DMG</b> to 1 opponent within the skill's AoE.
+      <br />- Generates 1 Crystal Collapse every <span class="text-desc">1.5</span>s that deals <b class="text-genshin-geo">AoE Geo DMG</b> to 1 opponent within the skill's AoE.
       <br />- Pulls 1 elemental shard in the skill's AoE to your active character's position every 1.5s (elemental shards are created by Crystallize reactions).
       <br />
       <br />If a General's War Banner created by Gorou currently exists on the field when his ability is used, it will be destroyed. In addition, for the duration of General's Glory, Gorou's Elemental Skill "Inuzaka All-Round Defense" will not create the General's War Banner.
@@ -65,42 +65,42 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
     },
     a1: {
       title: `A1: Heedless of the Wind and Weather`,
-      content: `After using Juuga: Forward Unto Victory, all nearby party members' DEF is increased by <span class="text-yellow">25%</span> for <span class="text-yellow">12</span>s.`,
+      content: `After using Juuga: Forward Unto Victory, all nearby party members' DEF is increased by <span class="text-desc">25%</span> for <span class="text-desc">12</span>s.`,
     },
     a4: {
       title: `A4: A Favor Repaid`,
       content: `Gorou receives the following DMG Bonuses to his attacks based on his DEF:
-      <br />- Inuzaka All-Round Defense: Skill DMG increased by <span class="text-yellow">156%</span> of DEF
-      <br />- Juuga: Forward Unto Victory: Skill DMG and Crystal Collapse DMG increased by <span class="text-yellow">15.6%</span> of DEF`,
+      <br />- Inuzaka All-Round Defense: Skill DMG increased by <span class="text-desc">156%</span> of DEF
+      <br />- Juuga: Forward Unto Victory: Skill DMG and Crystal Collapse DMG increased by <span class="text-desc">15.6%</span> of DEF`,
     },
     c1: {
       title: `C1: Rushing Hound: Swift as the Wind`,
-      content: `When characters (other than Gorou) within the AoE of Gorou's General's War Banner or General's Glory deal <b class="text-genshin-geo">Geo DMG</b> to opponents, the CD of Gorou's Inuzaka All-Round Defense is decreased by <span class="text-yellow">2</span>s. This effect can occur once every <span class="text-yellow">10</span>s.`,
+      content: `When characters (other than Gorou) within the AoE of Gorou's General's War Banner or General's Glory deal <b class="text-genshin-geo">Geo DMG</b> to opponents, the CD of Gorou's Inuzaka All-Round Defense is decreased by <span class="text-desc">2</span>s. This effect can occur once every <span class="text-desc">10</span>s.`,
     },
     c2: {
       title: `C2: Sitting Hound: Steady as a Clock`,
-      content: `While General's Glory is in effect, its duration is extended by <span class="text-yellow">1</span>s when a nearby active character obtains an Elemental Shard from a Crystallize reaction. This effect can occur once every <span class="text-yellow">0.1</span>s. Max extension is <span class="text-yellow">3</span>s.`,
+      content: `While General's Glory is in effect, its duration is extended by <span class="text-desc">1</span>s when a nearby active character obtains an Elemental Shard from a Crystallize reaction. This effect can occur once every <span class="text-desc">0.1</span>s. Max extension is <span class="text-desc">3</span>s.`,
     },
     c3: {
       title: `C3: Mauling Hound: Fierce as Fire`,
-      content: `Increases the Level of Inuzaka All-Round Defense by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Inuzaka All-Round Defense by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Lapping Hound: Warm as Water`,
-      content: `When General's Glory is in the "Impregnable" or "Crunch" states, it will also heal active characters within its AoE by <span class="text-yellow">50%</span> of Gorou's own DEF every <span class="text-yellow">1.5</span>s.`,
+      content: `When General's Glory is in the "Impregnable" or "Crunch" states, it will also heal active characters within its AoE by <span class="text-desc">50%</span> of Gorou's own DEF every <span class="text-desc">1.5</span>s.`,
     },
     c5: {
       title: `C5: Striking Hound: Thunderous Force`,
-      content: `Increases the Level of Juuga: Forward Unto Victory by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Juuga: Forward Unto Victory by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Valiant Hound: Mountainous Fealty`,
-      content: `For <span class="text-yellow">12</span>s after using Inuzaka All-Round Defense or Juuga: Forward Unto Victory, increases the CRIT DMG of all nearby party members' <b class="text-genshin-geo">Geo DMG</b> based on the buff level of the skill's field at the time of use:
-      <br />- "Standing Firm": <span class="text-yellow">+10%</span>
-      <br />- "Impregnable": <span class="text-yellow">+20%</span>
-      <br />- "Crunch": <span class="text-yellow">+40%</span>
+      content: `For <span class="text-desc">12</span>s after using Inuzaka All-Round Defense or Juuga: Forward Unto Victory, increases the CRIT DMG of all nearby party members' <b class="text-genshin-geo">Geo DMG</b> based on the buff level of the skill's field at the time of use:
+      <br />- "Standing Firm": <span class="text-desc">+10%</span>
+      <br />- "Impregnable": <span class="text-desc">+20%</span>
+      <br />- "Crunch": <span class="text-desc">+40%</span>
       <br />
       <br />This effect cannot stack and will take reference from the last instance of the effect that is triggered.`,
     },

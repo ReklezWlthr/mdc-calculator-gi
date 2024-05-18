@@ -51,37 +51,37 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Wind Companion`,
-      content: `On hit, Jean's Normal Attacks have a <span class="text-yellow">50%</span> chance to regenerate HP equal to <span class="text-yellow">15%</span> of Jean's ATK for all party members.`,
+      content: `On hit, Jean's Normal Attacks have a <span class="text-desc">50%</span> chance to regenerate HP equal to <span class="text-desc">15%</span> of Jean's ATK for all party members.`,
     },
     a4: {
       title: `A4: Let the Wind Lead`,
-      content: `Using Dandelion Breeze will regenerate <span class="text-yellow">20%</span> of its Energy.`,
+      content: `Using Dandelion Breeze will regenerate <span class="text-desc">20%</span> of its Energy.`,
     },
     c1: {
       title: `C1: Spiraling Tempest`,
-      content: `Increases the pulling speed of Gale Blade after holding for more than <span class="text-yellow">1</span>s, and increases the DMG dealt by <span class="text-yellow">40%</span>.`,
+      content: `Increases the pulling speed of Gale Blade after holding for more than <span class="text-desc">1</span>s, and increases the DMG dealt by <span class="text-desc">40%</span>.`,
     },
     c2: {
       title: `C2: People's Aegis`,
-      content: `When Jean picks up an Elemental Orb/Particle, all party members have their Movement SPD and ATK SPD increased by <span class="text-yellow">15%</span> for <span class="text-yellow">15</span>s.`,
+      content: `When Jean picks up an Elemental Orb/Particle, all party members have their Movement SPD and ATK SPD increased by <span class="text-desc">15%</span> for <span class="text-desc">15</span>s.`,
     },
     c3: {
       title: `C3: When the West Wind Arises`,
-      content: `Increases the Level of Dandelion Breeze by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Dandelion Breeze by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Lands of Dandelion`,
-      content: `Within the Field created by Dandelion Breeze, all opponents have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-yellow">40%</span>.`,
+      content: `Within the Field created by Dandelion Breeze, all opponents have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">40%</span>.`,
     },
     c5: {
       title: `C5: Outbursting Gust`,
-      content: `Increases the Level of Gale Blade by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Gale Blade by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Lion's Fang, Fair Protector of Mondstadt`,
-      content: `Incoming DMG is decreased by <span class="text-yellow">35%</span> within the Field created by Dandelion Breeze. Upon leaving the Dandelion Field, this effect lasts for <span class="text-yellow">3</span> attacks or <span class="text-yellow">10</span>s.`,
+      content: `Incoming DMG is decreased by <span class="text-desc">35%</span> within the Field created by Dandelion Breeze. Upon leaving the Dandelion Field, this effect lasts for <span class="text-desc">3</span> attacks or <span class="text-desc">10</span>s.`,
     },
   }
 

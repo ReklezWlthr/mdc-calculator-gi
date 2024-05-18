@@ -44,39 +44,39 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Regina Probationum`,
-      content: `When Rosaria strikes an opponent from behind using Ravaging Confession, Rosaria's CRIT Rate increases by <span class="text-yellow">12%</span> for <span class="text-yellow">5</span>s.`,
+      content: `When Rosaria strikes an opponent from behind using Ravaging Confession, Rosaria's CRIT Rate increases by <span class="text-desc">12%</span> for <span class="text-desc">5</span>s.`,
     },
     a4: {
       title: `A4: Shadow Samaritan`,
-      content: `Casting Rites of Termination increases CRIT Rate of all nearby party members (except Rosaria herself) by <span class="text-yellow">15%</span> of Rosaria's CRIT Rate for <span class="text-yellow">10</span>s.
-      <br />CRIT Rate Bonus gained this way cannot exceed <span class="text-yellow">15%</span>.`,
+      content: `Casting Rites of Termination increases CRIT Rate of all nearby party members (except Rosaria herself) by <span class="text-desc">15%</span> of Rosaria's CRIT Rate for <span class="text-desc">10</span>s.
+      <br />CRIT Rate Bonus gained this way cannot exceed <span class="text-desc">15%</span>.`,
     },
     c1: {
       title: `C1: Unholy Revelation`,
-      content: `When Rosaria deals a CRIT Hit, her ATK SPD increases by <span class="text-yellow">10%</span> and her Normal Attack DMG increases by <span class="text-yellow">10%</span> for <span class="text-yellow">4</span>s.`,
+      content: `When Rosaria deals a CRIT Hit, her ATK SPD increases by <span class="text-desc">10%</span> and her Normal Attack DMG increases by <span class="text-desc">10%</span> for <span class="text-desc">4</span>s.`,
     },
     c2: {
       title: `C2: Land Without Promise`,
-      content: `The duration of the Ice Lance created by Rites of Termination is increased by <span class="text-yellow">4</span>s.`,
+      content: `The duration of the Ice Lance created by Rites of Termination is increased by <span class="text-desc">4</span>s.`,
     },
     c3: {
       title: `C3: The Wages of Sin`,
-      content: `Increases the Level of Ravaging Confession by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Ravaging Confession by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Painful Grace`,
-      content: `Ravaging Confession's CRIT Hits regenerate <span class="text-yellow">5</span> Energy for Rosaria.
+      content: `Ravaging Confession's CRIT Hits regenerate <span class="text-desc">5</span> Energy for Rosaria.
       <br />Can only be triggered once each time Ravaging Confession is cast.`,
     },
     c5: {
       title: `C5: Last Rites`,
-      content: `Increases the Level of Rites of Termination by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Rites of Termination by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Divine Retribution`,
-      content: `Rites of Termination's attack decreases opponents' <b>Physical RES</b> by <span class="text-yellow">20%</span> for <span class="text-yellow">10</span>s.`,
+      content: `Rites of Termination's attack decreases opponents' <b>Physical RES</b> by <span class="text-desc">20%</span> for <span class="text-desc">10</span>s.`,
     },
   }
 

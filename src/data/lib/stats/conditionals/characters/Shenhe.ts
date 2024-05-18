@@ -57,38 +57,38 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
     },
     a1: {
       title: `A1: Deific Embrace`,
-      content: `An active character within the field created by Divine Maiden's Deliverance gains <span class="text-yellow">15%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b>.`,
+      content: `An active character within the field created by Divine Maiden's Deliverance gains <span class="text-desc">15%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b>.`,
     },
     a4: {
       title: `A4: Spirit Communion Seal`,
       content: `After Shenhe uses Spring Spirit Summoning, she will grant all nearby party members the following effects:
-      <br />- Press: Elemental Skill and Elemental Burst DMG increased by <span class="text-yellow">15%</span> for <span class="text-yellow">10</span>s.
-      <br />- Hold: Normal, Charged, and Plunging Attack DMG increased by <span class="text-yellow">15%</span> for <span class="text-yellow">15</span>s.`,
+      <br />- Press: Elemental Skill and Elemental Burst DMG increased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.
+      <br />- Hold: Normal, Charged, and Plunging Attack DMG increased by <span class="text-desc">15%</span> for <span class="text-desc">15</span>s.`,
     },
     c1: {
       title: `C1: Clarity of Heart`,
-      content: `Spring Spirit Summoning can be used <span class="text-yellow">1</span> more time.`,
+      content: `Spring Spirit Summoning can be used <span class="text-desc">1</span> more time.`,
     },
     c2: {
       title: `C2: Centered Spirit`,
-      content: `Divine Maiden's Deliverance lasts for <span class="text-yellow">6</span> seconds longer.
-      <br />Active characters within the skill's field deal <span class="text-yellow">15%</span> increased <b class="text-genshin-cryo">Cryo</b> CRIT DMG.`,
+      content: `Divine Maiden's Deliverance lasts for <span class="text-desc">6</span> seconds longer.
+      <br />Active characters within the skill's field deal <span class="text-desc">15%</span> increased <b class="text-genshin-cryo">Cryo</b> CRIT DMG.`,
     },
     c3: {
       title: `C3: Seclusion`,
-      content: `Increases the Level of Spring Spirit Summoning by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Spring Spirit Summoning by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
       title: `C4: Insight`,
       content: `When characters under the effect of Icy Quill applied by Shenhe triggers its DMG Bonus effects, Shenhe will gain a Skyfrost Mantra stack:
-      <br />- When Shenhe uses Spring Spirit Summoning, she will consume all stacks of Skyfrost Mantra, increasing the DMG of that Spring Spirit Summoning by <span class="text-yellow">5%</span> for each stack consumed.
-      <br />- Max <span class="text-yellow">50</span> stacks. Stacks last for <span class="text-yellow">60</span>s.`,
+      <br />- When Shenhe uses Spring Spirit Summoning, she will consume all stacks of Skyfrost Mantra, increasing the DMG of that Spring Spirit Summoning by <span class="text-desc">5%</span> for each stack consumed.
+      <br />- Max <span class="text-desc">50</span> stacks. Stacks last for <span class="text-desc">60</span>s.`,
     },
     c5: {
       title: `C5: Divine Attainment`,
-      content: `Increases the Level of Divine Maiden's Deliverance by <span class="text-yellow">3</span>.
-      <br />Maximum upgrade level is <span class="text-yellow">15</span>.`,
+      content: `Increases the Level of Divine Maiden's Deliverance by <span class="text-desc">3</span>.
+      <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `C6: Mystical Abandon`,
