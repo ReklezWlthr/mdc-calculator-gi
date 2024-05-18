@@ -47,7 +47,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, nilo
     },
     {
       name: 'Burning',
-      element: Element.DENDRO,
+      element: Element.PYRO,
       show: _.includes([Element.DENDRO, Element.PYRO, Element.ANEMO], element),
       dmg: 0.25 * base * (1 + emBonus + stat?.BURNING_DMG),
       amp: 0,

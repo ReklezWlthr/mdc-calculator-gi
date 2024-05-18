@@ -23,11 +23,11 @@ export const calculateOutOfCombat = (
   team: ITeamChar[],
   artifacts: IArtifactEquip[]
 ) => {
-  let base = calculateBase(conditionals, team[selected], team[selected]?.equipments?.weapon)
-  base = addArtifactStats(base, artifacts)
-  base = addResonance(base, team)
+  const base = calculateBase(conditionals, team[selected], team[selected]?.equipments?.weapon)
+  const withArtifacts = addArtifactStats(base, artifacts)
+  const final = addResonance(withArtifacts, team)
 
-  return base
+  return final
 }
 
 export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon: IWeaponEquip) => {
@@ -106,10 +106,10 @@ export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifact
 export const addResonance = (conditionals: StatsObject, team: ITeamChar[]) => {
   const resonance = getResonanceCount(team)
 
-  if (resonance[Element.PYRO] >= 2) conditionals[Stats.P_ATK] = +0.25
-  if (resonance[Element.HYDRO] >= 2) conditionals[Stats.P_HP] = +0.25
-  if (resonance[Element.DENDRO] >= 2) conditionals[Stats.EM] = +50
-  if (resonance[Element.GEO] >= 2) conditionals[Stats.SHIELD] = +0.15
+  if (resonance[Element.PYRO] >= 2) conditionals[Stats.P_ATK] += 0.25
+  if (resonance[Element.HYDRO] >= 2) conditionals[Stats.P_HP] += 0.25
+  if (resonance[Element.DENDRO] >= 2) conditionals[Stats.EM] += 50
+  if (resonance[Element.GEO] >= 2) conditionals[Stats.SHIELD] += 0.15
 
   return conditionals
 }
