@@ -1,20 +1,21 @@
 import { findCharacter } from '@src/core/utils/finder'
-import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { Stats, WeaponIcon } from '@src/domain/genshin/constant'
-import { TextInput } from '@src/presentation/components/inputs/text_input'
-import { Tooltip } from '@src/presentation/components/tooltip'
+import { WeaponIcon } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useEffect, useMemo, useState } from 'react'
-import { ScalingSubRows } from '../components/tables/scaling_sub_rows'
+import { ElementColor, ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
 import { CharacterSelect } from '../components/character_select'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { ConsCircle } from '../components/cons_circle'
 import { ConditionalBlock } from '../components/conditional_block'
-import { getTeamOutOfCombat } from '@src/core/utils/calculator'
+import { calculateReaction, getTeamOutOfCombat } from '@src/core/utils/calculator'
+import Reactions from '@src/data/lib/stats/conditionals/reactions'
+import Transformative from '@src/data/lib/stats/conditionals/transformative'
+import classNames from 'classnames'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore } = useStore()
@@ -49,9 +50,17 @@ export const Calculator = observer(({}: {}) => {
   const main = conditionals[selected]
 
   const [form, setForm] = useState<Record<string, any>[]>(
-    _.map(conditionals, (item) =>
+    _.map(conditionals, (item, index) =>
       _.reduce(
-        _.concat(item?.content, item?.teammateContent),
+        _.concat(
+          item?.content,
+          item?.teammateContent,
+          Reactions(
+            teamStore.characters[index].level,
+            findCharacter(teamStore.characters[index].cId).element,
+            computedStats[index]
+          )
+        ),
         (acc, curr) => {
           if (curr?.show) acc[curr.id] = curr.default
           return acc
@@ -85,30 +94,33 @@ export const Calculator = observer(({}: {}) => {
       conditionals,
       (base, index) => base?.postCompute(preComputeShared[index], form[index]) || preComputeShared[index]
     )
-    setComputedStats(postCompute)
+    const postReaction = _.map(postCompute, (base, index) =>
+      calculateReaction(base, form[index], teamStore.characters[index]?.level)
+    )
+    setComputedStats(postReaction)
   }, [baseStats, form])
 
-  // useEffect(() => {
-  //   let preCompute = main?.preCompute(baseStats[selected], form[selected])
-  //   _.forEach(conditionals, (item, index) => {
-  //     if (index !== selected) {
-  //       if (item) preCompute = item.preComputeShared(preCompute, { ...form[index], weapon: charData.weapon })
-  //     }
-  //   })
-  //   preCompute = main?.postCompute(preCompute, form[selected])
-  //   setComputedStats((prev) => {
-  //     prev[selected] = preCompute
-  //     return _.cloneDeep(prev)
-  //   })
-  // }, [selected, form])
-
+  const reactions = _.flatMap(
+    _.map(teamStore.characters, (item, index) =>
+      Reactions(item.level, findCharacter(item.cId)?.element, computedStats[index])
+    ),
+    (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+  )
   const mapped = _.flatMap(
     _.map(conditionals, (item, index) => (index === selected ? item?.content : item?.teammateContent)),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
   const mainContent = _.filter(mapped, ['index', selected])
   const teamContent = _.filter(mapped, (item, index) => selected !== item.index)
+  const mainReaction = _.filter(reactions, ['index', selected])
 
+  const nilou = _.some(form, (item) => item.bountiful_core)
+  const nahida = _.find(teamStore.characters, ['cId', '10000073'])?.cons >= 2
+  const transformative = _.filter(
+    Transformative(char.level, charData?.element, computedStats[selected], nilou, nahida),
+    'show'
+  )
+  
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
       <div className="col-span-2">
@@ -122,7 +134,7 @@ export const Calculator = observer(({}: {}) => {
             />
           ))}
         </div>
-        <div className="flex flex-col text-sm rounded-lg bg-primary-darker h-fit">
+        <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
           <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Damage Calculation</p>
           <div className="flex justify-end w-full mb-1.5 bg-primary-dark">
             <div className="grid w-4/5 grid-cols-8 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
@@ -186,41 +198,45 @@ export const Calculator = observer(({}: {}) => {
               <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
             ))}
           </ScalingWrapper>
-          {/* <div className="w-full my-2 border-t-2 border-primary-border" />
-          <ScalingWrapper
-            talent={main?.talents?.a1}
-            icon={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_05.png`}
-            element={charData.element}
-            upgraded={false}
-          >
-            {_.map(mainComputed?.A1_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
+        </div>
+        <div className="flex flex-col w-2/3 text-sm rounded-lg bg-primary-darker h-fit">
+          <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
+            Transformative Reactions
+          </p>
+          <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
+            <p className="col-span-3">Reaction</p>
+            <p className="col-span-2">Element</p>
+            <p className="col-span-2">Base</p>
+            <p className="col-span-2">Amplified</p>
+          </div>
+          <div className="py-1 rounded-b-lg bg-primary-darker">
+            {_.map(transformative, (item) => (
+              <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
+                <p className="col-span-3 font-bold">{item.name}</p>
+                <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
+                <p className="col-span-2 font-bold text-red">{_.round(item.dmg)}</p>
+                <p className="col-span-2">{_.round(item.amp * item.dmg) || '-'}</p>
+              </div>
             ))}
-          </ScalingWrapper>
-          <div className="w-full my-2 border-t-2 border-primary-border" />
-          <ScalingWrapper
-            talent={main?.talents?.a4}
-            icon={`https://enka.network/ui/UI_Talent_S_${charData?.codeName}_06.png`}
-            element={charData.element}
-            upgraded={false}
-          >
-            {_.map(mainComputed?.A4_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
-            ))}
-          </ScalingWrapper> */}
+          </div>
         </div>
       </div>
       <div className="flex flex-col items-center w-full gap-3">
         <ConditionalBlock
+          title="Amplifying Reactions"
+          contents={_.filter(mainReaction, 'show')}
+          form={form}
+          setForm={setForm}
+          tooltipStyle="w-[20vw]"
+        />
+        <ConditionalBlock
           title="Self Conditionals"
-          selected={selected}
           contents={_.filter(mainContent, 'show')}
           form={form}
           setForm={setForm}
         />
         <ConditionalBlock
           title="Team Conditionals"
-          selected={selected}
           contents={_.filter(teamContent, 'show')}
           form={form}
           setForm={setForm}

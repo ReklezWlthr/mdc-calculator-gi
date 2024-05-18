@@ -18,8 +18,6 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
   const maxFanfare = c >= 1 ? 400 : 300
-  let salonA4Bonus = 0
-  let salonA4Healing = 0
 
   const talents: ITalent = {
     normal: {
@@ -170,7 +168,6 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
     teammateContent,
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      const salonMultiplier = 1 + _.min([form.salonAlly * 0.1, 0.4])
 
       if (form.centerOfAttention) base.infuse(Element.HYDRO, true)
       const c6DmgBonus = form.centerOfAttention
@@ -218,6 +215,39 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('base', normal, Element.PHYSICAL, c6DmgBonus)
+      base.BURST_SCALING = [
+        {
+          name: 'Skill DMG',
+          value: [{ scaling: calcScaling(0.1141, burst, 'physical', '1'), multiplier: Stats.HP }],
+          element: Element.HYDRO,
+          property: TalentProperty.BURST,
+        },
+      ]
+
+      base[Stats.ALL_DMG] += (0.0007 + burst * 0.0002) * form.fanfare
+      base[Stats.I_HEALING] += (0.0001 + burst * 0.0001) * form.fanfare
+
+      if (c >= 2 && form.fanfare > maxFanfare) base[Stats.P_HP] += _.min([(form.fanfare - maxFanfare) * 0.0035, 1.4])
+      if (form.centerOfAttention)
+        base.BASIC_SCALING.push({
+          name: 'C6 Healing',
+          value: [{ scaling: 0.04, multiplier: Stats.HP }],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+        })
+
+      return base
+    },
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      base[Stats.ALL_DMG] += (0.0005 + burst * 0.0002) * form.fanfare
+      base[Stats.I_HEALING] += burst * 0.0001 * form.fanfare
+
+      return base
+    },
+    postCompute: (base: StatsObject, form: Record<string, any>) => {
+      const salonA4Bonus = a >= 4 ? _.min([0.007 * (base.getHP() / 1000), 0.28]) : 0
+      const salonMultiplier = 1 + _.min([form.salonAlly * 0.1, 0.4])
+
       base.SKILL_SCALING = form.pneuma
         ? [
             {
@@ -261,38 +291,6 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
               property: TalentProperty.SKILL,
             },
           ]
-      base.BURST_SCALING = [
-        {
-          name: 'Skill DMG',
-          value: [{ scaling: calcScaling(0.1141, burst, 'physical', '1'), multiplier: Stats.HP }],
-          element: Element.HYDRO,
-          property: TalentProperty.BURST,
-        },
-      ]
-
-      base[Stats.ALL_DMG] += (0.0007 + burst * 0.0002) * form.fanfare
-      base[Stats.I_HEALING] += (0.0001 + burst * 0.0001) * form.fanfare
-
-      if (c >= 2 && form.fanfare > maxFanfare) base[Stats.P_HP] += _.min([(form.fanfare - maxFanfare) * 0.0035, 1.4])
-      if (form.centerOfAttention)
-        base.BASIC_SCALING.push({
-          name: 'C6 Healing',
-          value: [{ scaling: 0.04, multiplier: Stats.HP }],
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-        })
-
-      return base
-    },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      base[Stats.ALL_DMG] += (0.0005 + burst * 0.0002) * form.fanfare
-      base[Stats.I_HEALING] += burst * 0.0001 * form.fanfare
-
-      return base
-    },
-    postCompute: (base: StatsObject, form: Record<string, any>) => {
-      salonA4Bonus = a >= 4 ? _.min([0.007 * (base.getHP() / 1000), 0.28]) : 0
-      salonA4Healing = a >= 4 ? _.min([0.004 * (base.getHP() / 1000), 0.16]) : 0
 
       return base
     },

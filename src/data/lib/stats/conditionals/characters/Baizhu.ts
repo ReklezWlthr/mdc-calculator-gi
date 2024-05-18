@@ -60,11 +60,11 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       value: [
         {
           name: 'Transformative DMG Bonus',
-          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([hp, 50000]) * 0.02) },
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage((_.min([hp, 50000]) / 1000) * 0.02) },
         },
         {
           name: 'Additive DMG Bonus',
-          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([hp, 50000]) * 0.008) },
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage((_.min([hp, 50000]) / 1000) * 0.008) },
         },
       ],
     },
@@ -230,8 +230,8 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      const a4Trans = _.min([own.getHP(), 50000]) * 0.02
-      const a4Add = _.min([own.getHP(), 50000]) * 0.008
+      const a4Trans = (_.min([own.getHP(), 50000]) / 1000) * 0.02
+      const a4Add = (_.min([own.getHP(), 50000]) / 1000) * 0.008
 
       if (a >= 4) {
         base.BURNING_DMG += a4Trans
@@ -247,8 +247,8 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      const a4Trans = _.min([base.getHP(), 50000]) * 0.02
-      const a4Add = _.min([base.getHP(), 50000]) * 0.008
+      const a4Trans = (_.min([base.getHP(), 50000]) / 1000) * 0.02
+      const a4Add = (_.min([base.getHP(), 50000]) / 1000) * 0.008
 
       if (a >= 4) {
         base.BURNING_DMG += a4Trans

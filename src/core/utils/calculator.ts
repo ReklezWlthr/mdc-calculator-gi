@@ -1,4 +1,6 @@
 import {
+  calcAdditive,
+  calcAmplifying,
   correctSubStat,
   getBaseStat,
   getMainStat,
@@ -9,7 +11,7 @@ import {
 } from '../utils/data_format'
 import _ from 'lodash'
 import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats } from '@src/domain/genshin/constant'
-import { AscensionGrowth } from '@src/domain/genshin/scaling'
+import { AscensionGrowth, BaseReactionDmg } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
@@ -139,4 +141,25 @@ export const getTeamOutOfCombat = (chars: ITeamChar[], artifacts: IArtifactEquip
       _.filter(artifacts, (item) => _.includes(chars?.[3]?.equipments?.artifacts, item.id))
     ),
   ]
+}
+
+export const calculateReaction = (conditionals: StatsObject, form: Record<string, any>, level: number) => {
+  const base = BaseReactionDmg[level - 1]
+
+  if (form.melt_forward)
+    conditionals.PYRO_MULT += 2 * (1 + conditionals?.MELT_DMG + calcAmplifying(conditionals?.[Stats.EM] || 0))
+  if (form.melt_reverse)
+    conditionals.CRYO_MULT += 1.5 * (1 + conditionals?.MELT_DMG + calcAmplifying(conditionals?.[Stats.EM] || 0))
+  if (form.vape_forward)
+    conditionals.HYDRO_MULT += 2 * (1 + conditionals?.VAPE_DMG + calcAmplifying(conditionals?.[Stats.EM] || 0))
+  if (form.vape_reverse)
+    conditionals.PYRO_MULT += 1.5 * (1 + conditionals?.VAPE_DMG + calcAmplifying(conditionals?.[Stats.EM] || 0))
+  if (form.spread)
+    conditionals.DENDRO_F_DMG +=
+      1.25 * base * (1 + conditionals?.SPREAD_DMG + calcAdditive(conditionals?.[Stats.EM] || 0))
+  if (form.aggravate)
+    conditionals.DENDRO_F_DMG +=
+      1.15 * base * (1 + conditionals?.SPREAD_DMG + calcAdditive(conditionals?.[Stats.EM] || 0))
+
+  return conditionals
 }

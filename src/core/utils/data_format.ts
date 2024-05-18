@@ -113,3 +113,15 @@ export const calcScaling = (base: number, level: number, type: 'physical' | 'ele
 export const calcRefinement = (base: number, growth: number, refinement: number) => {
   return base + growth * (refinement - 1)
 }
+
+export const calcAmplifying = (em: number) => {
+  return 2.78 * (em / (em + 1400))
+}
+
+export const calcAdditive = (em: number) => {
+  return (em * 5) / (em + 1200)
+}
+
+export const calcTransformative = (em: number) => {
+  return 16 * (em / (em + 2000))
+}

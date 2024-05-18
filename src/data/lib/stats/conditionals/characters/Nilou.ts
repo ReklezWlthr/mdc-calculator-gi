@@ -17,8 +17,8 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
   const teamData = _.map(team, (item) => findCharacter(item.cId)?.element)
-  const hydro = _.filter(teamData, Element.HYDRO).length
-  const dendro = _.filter(teamData, Element.DENDRO).length
+  const hydro = _.filter(teamData, item => item === Element.HYDRO).length
+  const dendro = _.filter(teamData, item => item === Element.DENDRO).length
   const a1Active = hydro + dendro === teamData.length && hydro >= 1 && dendro >= 1
 
   const talents: ITalent = {

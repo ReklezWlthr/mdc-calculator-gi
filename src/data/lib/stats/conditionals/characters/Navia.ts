@@ -201,12 +201,13 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       base.SKILL_SCALING = [
         {
           name: 'Rosula Shardshot DMG',
-          value: [{ scaling: calcScaling(3.948, skill, 'elemental', '1') * shrapnelBonus, multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(3.948, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.GEO,
           property: TalentProperty.SKILL,
           bonus: shrapnelOverflow,
           cr: c >= 2 && form.crystal_shrapnel ? _.min([form.crystal_shrapnel, 3]) * 0.12 : 0,
           cd: c >= 6 && form.crystal_shrapnel ? _.max([form.crystal_shrapnel - 3, 0]) * 0.45 : 0,
+          multiplier: shrapnelBonus,
         },
         {
           name: 'Arkhe: Ousia',

@@ -13,23 +13,24 @@ interface ScalingSubRowsProps {
   stats: StatsObject
 }
 
-export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps) => {
-  const propertyColor = {
-    [TalentProperty.HEAL]: 'text-heal',
-    [TalentProperty.SHIELD]: 'text-indigo-300',
-  }
+const propertyColor = {
+  [TalentProperty.HEAL]: 'text-heal',
+  [TalentProperty.SHIELD]: 'text-indigo-300',
+}
 
-  const elementColor = {
-    [Element.PHYSICAL]: 'text-gray',
-    [Element.PYRO]: 'text-genshin-pyro',
-    [Element.HYDRO]: 'text-genshin-hydro',
-    [Element.CRYO]: 'text-genshin-cryo',
-    [Element.ELECTRO]: 'text-genshin-electro',
-    [Element.GEO]: 'text-genshin-geo',
-    [Element.ANEMO]: 'text-genshin-anemo',
-    [Element.DENDRO]: 'text-genshin-dendro',
-    ...propertyColor,
-  }
+export const ElementColor = {
+  [Element.PHYSICAL]: 'text-gray',
+  [Element.PYRO]: 'text-genshin-pyro',
+  [Element.HYDRO]: 'text-genshin-hydro',
+  [Element.CRYO]: 'text-genshin-cryo',
+  [Element.ELECTRO]: 'text-genshin-electro',
+  [Element.GEO]: 'text-genshin-geo',
+  [Element.ANEMO]: 'text-genshin-anemo',
+  [Element.DENDRO]: 'text-genshin-dendro',
+  ...propertyColor,
+}
+
+export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps) => {
 
   const element =
     _.includes([TalentProperty.NA, TalentProperty.CA, TalentProperty.PA], scaling.property) &&
@@ -45,6 +46,7 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
   const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
   const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0 // Faruzan & Shenhe
   const elementNa = element !== Element.PHYSICAL && scaling.property === TalentProperty.NA ? stats.ELEMENTAL_NA_DMG : 0
+  const elementMult = stats[`${element.toUpperCase()}_MULT`] || 1
 
   const statForScale = {
     [Stats.ATK]: stats.getAtk(),
@@ -66,7 +68,8 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       elementFlat +
       talentFlat) *
     (1 + bonusDMG) *
-    (scaling.multiplier || 1)
+    (scaling.multiplier || 1) *
+    elementMult
   const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + talentCd + elementCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
@@ -87,8 +90,10 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
   const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg
   ).toLocaleString()}</b> = ${shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
-    bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${elementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''
-  }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}`
+    bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''
+  }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
+    elementMult > 1 ? ` \u{00d7} <b class="text-amber-400">${toPercentage(elementMult, 2)}</b>` : ''
+  }`
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg * (1 + totalCd)
@@ -103,7 +108,7 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
   return (
     <div className="grid items-center grid-cols-8 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
-      <p className={classNames('col-span-1 text-center', elementColor[element])}>{element}</p>
+      <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
       <Tooltip
         title={scaling.name}
         body={
