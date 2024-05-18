@@ -17,8 +17,6 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let atkConvert = 0
-  let a4Dmg = 0
   const a4DmgScaling = a >= 4 ? [{ scaling: 0.35, multiplier: Stats.DEF }] : []
 
   const talents: ITalent = {
@@ -63,10 +61,9 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
       <br />- Converts Itto's Normal, Charged, and Plunging Attacks to <b class="text-genshin-geo">Geo DMG</b>. This cannot be overridden.
       <br />- Increases Itto's Normal Attack SPD. Also increases his ATK based on his DEF.
       <br />- On hit, the <span class="text-yellow">1st</span> and <span class="text-yellow">3rd</span> strikes of his attack combo will each grant Arataki Itto <span class="text-yellow">1</span> stack of Superlative Superstrength.
-      <br />- Decreases Itto's Elemental and Physical RES by <span class="text-yellow">20%</span>.
+      <br />- Decreases Itto's <b>Elemental and Physical RES</b> by <span class="text-yellow">20%</span>.
       <br />
       <br />The Raging Oni King state will be cleared when Itto leaves the field.
-      <br /><br />Current Bonus ATK: <span class="text-yellow">${_.round(atkConvert)}</span>
       `,
     },
     a1: {
@@ -79,8 +76,13 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Bloodline of the Crimson Oni`,
-      content: `Arataki Kesagiri DMG is increased by <span class="text-yellow">35%</span> of Arataki Itto's DEF.
-      <br /><br />Current DMG Bonus: <span class="text-yellow">${_.round(a4Dmg)}</span>`,
+      content: `Arataki Kesagiri DMG is increased by <span class="text-yellow">35%</span> of Arataki Itto's DEF.`,
+      value: [
+        {
+          name: 'Current ATK Bonus',
+          value: { stat: Stats.DEF, scaling: (def) => _.round(def * 0.35).toLocaleString() },
+        },
+      ],
     },
     c1: {
       title: `C1: Stay a While and Listen Up`,
@@ -201,10 +203,7 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.itto_burst) {
-        base[Stats.ATK] += atkConvert
-        base.ALL_TYPE_RES += 0.2
-      }
+      if (form.itto_burst) base.ALL_TYPE_RES += 0.2
 
       return base
     },
@@ -216,8 +215,7 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      atkConvert = calcScaling(0.576, burst, 'elemental', '1') * base.getDef()
-      a4Dmg = base.getDef() * 0.35
+      if (form.itto_burst) base[Stats.ATK] += calcScaling(0.576, burst, 'elemental', '1') * base.getDef()
 
       return base
     },

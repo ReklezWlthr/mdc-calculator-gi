@@ -17,8 +17,6 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let a4Em = 0
-
   const talents: ITalent = {
     normal: {
       title: `Abductive Reasoning`,
@@ -61,8 +59,13 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
     a4: {
       title: `A4: Mysteries Laid Bare`,
       content: `Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by Projection Attacks and Particular Field: Fetters of Phenomena by <span class="text-yellow">0.1%</span>.
-      <br />The maximum DMG increase this way for both these abilities is <span class="text-yellow">100%</span>.
-      <br /><br />Current DMG Bonus: <span class="text-yellow">${toPercentage(a4Em)}</span>`,
+      <br />The maximum DMG increase this way for both these abilities is <span class="text-yellow">100%</span>.`,
+      value: [
+        {
+          name: 'Current DMG Bonus',
+          value: { stat: Stats.EM, scaling: (em) => toPercentage(_.min([em * 0.001, 1])) },
+        },
+      ],
     },
     c1: {
       title: `C1: Intuition`,
@@ -211,27 +214,6 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
         },
-        {
-          name: 'DMG Per Mirror Projection',
-          value: [
-            { scaling: calcScaling(0.672, skill, 'elemental', '1'), multiplier: Stats.ATK },
-            { scaling: calcScaling(1.344, skill, 'elemental', '1'), multiplier: Stats.EM },
-          ],
-          bonus: a4Em,
-          element: Element.DENDRO,
-          property: TalentProperty.SKILL,
-        },
-      ]
-      base.BURST_SCALING = [
-        {
-          name: 'Single-Instance DMG',
-          value: [
-            { scaling: calcScaling(1.216, burst, 'elemental', '1'), multiplier: Stats.ATK },
-            { scaling: calcScaling(0.9728, burst, 'elemental', '1'), multiplier: Stats.EM },
-          ],
-          element: Element.DENDRO,
-          property: TalentProperty.BURST,
-        },
       ]
 
       if (form.al_c2Em > 0) base[Stats.EM] += 50 * form.al_c2Em
@@ -248,8 +230,30 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4Em = _.min([base[Stats.EM] * 0.001, 1])
-      
+      base.SKILL_SCALING.push({
+        name: 'DMG Per Mirror Projection',
+        value: [
+          { scaling: calcScaling(0.672, skill, 'elemental', '1'), multiplier: Stats.ATK },
+          { scaling: calcScaling(1.344, skill, 'elemental', '1'), multiplier: Stats.EM },
+        ],
+        bonus: a >= 4 ? _.min([base[Stats.EM] * 0.001, 1]) : 0,
+        element: Element.DENDRO,
+        property: TalentProperty.SKILL,
+      })
+
+      base.BURST_SCALING = [
+        {
+          name: 'Single-Instance DMG',
+          value: [
+            { scaling: calcScaling(1.216, burst, 'elemental', '1'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.9728, burst, 'elemental', '1'), multiplier: Stats.EM },
+          ],
+          element: Element.DENDRO,
+          property: TalentProperty.BURST,
+          bonus: a >= 4 ? _.min([base[Stats.EM] * 0.001, 1]) : 0,
+        },
+      ]
+
       return base
     },
   }

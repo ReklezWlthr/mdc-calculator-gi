@@ -17,9 +17,6 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  let a4Trans = 0
-  let a4Add = 0
-
   const c6Scaling = c >= 6 ? [{ scaling: 0.08, multiplier: Stats.HP }] : []
 
   const talents: ITalent = {
@@ -59,9 +56,17 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: All Things Are of the Earth`,
-      content: `Characters who are healed by Seamless Shields will gain the Year of Verdant Favor effect: Each <span class="text-yellow">1,000</span> Max HP that Baizhu possesses that does not exceed <span class="text-yellow">50,000</span> will increase the Burning, Bloom, Hyperbloom, and Burgeon reaction DMG dealt by these characters by <span class="text-yellow">2%</span>, while the Aggravate and Spread reaction DMG dealt by these characters will be increased by <span class="text-yellow">0.8%</span>. This effect lasts <span class="text-yellow">6</span>s.
-      <br /><br />Transformative DMG Bonus: <span class="text-yellow">${_.round(a4Trans)}</span>
-      <br />Additive DMG Bonus: <span class="text-yellow">${_.round(a4Add)}</span>`,
+      content: `Characters who are healed by Seamless Shields will gain the Year of Verdant Favor effect: Each <span class="text-yellow">1,000</span> Max HP that Baizhu possesses that does not exceed <span class="text-yellow">50,000</span> will increase the Burning, Bloom, Hyperbloom, and Burgeon reaction DMG dealt by these characters by <span class="text-yellow">2%</span>, while the Aggravate and Spread reaction DMG dealt by these characters will be increased by <span class="text-yellow">0.8%</span>. This effect lasts <span class="text-yellow">6</span>s.`,
+      value: [
+        {
+          name: 'Transformative DMG Bonus',
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([hp, 50000]) * 0.02) },
+        },
+        {
+          name: 'Additive DMG Bonus',
+          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([hp, 50000]) * 0.008) },
+        },
+      ],
     },
     c1: {
       title: `C1: Attentive Observation`,
@@ -220,20 +225,14 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
         base[Stats.HEAL] += 0.2
       }
 
-      if (a >= 4) {
-        base.BURNING_DMG += a4Trans
-        base.BLOOM_DMG += a4Trans
-        base.HYPERBLOOM_DMG += a4Trans
-        base.BURGEON_DMG += a4Trans
-        base.SPREAD_DMG += a4Add
-        base.AGGRAVATE_DMG += a4Add
-      }
-
       if (form.bai_c4) base[Stats.EM] += 80
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      const a4Trans = _.min([own.getHP(), 50000]) * 0.02
+      const a4Add = _.min([own.getHP(), 50000]) * 0.008
+
       if (a >= 4) {
         base.BURNING_DMG += a4Trans
         base.BLOOM_DMG += a4Trans
@@ -248,9 +247,18 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      a4Trans = _.min([base.getHP(), 50000]) * 0.02
-      a4Add = _.min([base.getHP(), 50000]) * 0.008
-      
+      const a4Trans = _.min([base.getHP(), 50000]) * 0.02
+      const a4Add = _.min([base.getHP(), 50000]) * 0.008
+
+      if (a >= 4) {
+        base.BURNING_DMG += a4Trans
+        base.BLOOM_DMG += a4Trans
+        base.HYPERBLOOM_DMG += a4Trans
+        base.BURGEON_DMG += a4Trans
+        base.SPREAD_DMG += a4Add
+        base.AGGRAVATE_DMG += a4Add
+      }
+
       return base
     },
   }
