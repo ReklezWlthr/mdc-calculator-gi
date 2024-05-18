@@ -97,7 +97,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 options={ConstellationOptions}
                 value={cons?.toString()}
                 style="w-fit"
-                disabled={isEmpty}
+                disabled={isEmpty || characterData?.id === '10000062'}
               />
             </div>
           </div>

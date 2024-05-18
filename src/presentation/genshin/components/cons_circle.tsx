@@ -106,7 +106,9 @@ export const ConsCircle = observer(
               style="w-[40vw]"
             >
               <img
-                src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Shenhe' ? '_02' : '_01'}.png`}
+                src={`https://enka.network/ui/UI_Talent_S_${codeName}${
+                  codeName === 'Aloy' ? '_Lock' : codeName === 'Shenhe' ? '_02' : '_01'
+                }.png`}
                 className={classNames(
                   'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                   cons >= 1 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -121,7 +123,7 @@ export const ConsCircle = observer(
               style="w-[40vw]"
             >
               <img
-                src={`https://enka.network/ui/UI_Talent_S_${codeName}_04.png`}
+                src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Aloy' ? '_Lock' : '_04'}.png`}
                 className={classNames(
                   'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                   cons >= 6 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -135,7 +137,13 @@ export const ConsCircle = observer(
             >
               <img
                 src={`https://enka.network/ui/UI_Talent_S_${codeName}${
-                  codeName === 'Ningguang' ? '_05' : codeName === 'Shenhe' ? '_01' : '_02'
+                  codeName === 'Aloy'
+                    ? '_Lock'
+                    : codeName === 'Ningguang'
+                    ? '_05'
+                    : codeName === 'Shenhe'
+                    ? '_01'
+                    : '_02'
                 }.png`}
                 className={classNames(
                   'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
@@ -154,8 +162,8 @@ export const ConsCircle = observer(
               style="w-[25vw]"
             >
               <img
-                src={`https://enka.network/ui/UI_Talent_U_${codeName}${
-                  _.includes(ReverseConsList, codeName) ? '_01' : '_02'
+                src={`https://enka.network/ui/UI_Talent_${codeName === 'Aloy' ? 'S' : 'U'}_${codeName}${
+                  codeName === 'Aloy' ? '_Lock' : _.includes(ReverseConsList, codeName) ? '_01' : '_02'
                 }.png`}
                 className={classNames(
                   'shrink-0 w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
@@ -169,8 +177,8 @@ export const ConsCircle = observer(
               style="w-[25vw]"
             >
               <img
-                src={`https://enka.network/ui/UI_Talent_U_${codeName}${
-                  _.includes(ReverseConsList, codeName) ? '_02' : '_01'
+                src={`https://enka.network/ui/UI_Talent_${codeName === 'Aloy' ? 'S' : 'U'}_${codeName}${
+                  codeName === 'Aloy' ? '_Lock' : _.includes(ReverseConsList, codeName) ? '_02' : '_01'
                 }.png`}
                 className={classNames(
                   'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
@@ -186,7 +194,9 @@ export const ConsCircle = observer(
               style="w-[40vw]"
             >
               <img
-                src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Tartaglia' ? '_05' : '_03'}.png`}
+                src={`https://enka.network/ui/UI_Talent_S_${codeName}${
+                  codeName === 'Aloy' ? '_Lock' : codeName === 'Tartaglia' ? '_05' : '_03'
+                }.png`}
                 className={classNames(
                   'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                   cons >= 4 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'

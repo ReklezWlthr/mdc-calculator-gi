@@ -104,7 +104,6 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
       <div className="grid w-full grid-cols-9 gap-4">
         {_.map(filteredChar, (item) => {
           const build = _.find(buildStore.builds, ['cId', item.id])
-
           return (
             <div
               className="w-full text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
@@ -115,6 +114,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                 teamStore.setMemberInfo(index, {
                   cId: item.id,
                   equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
+                  cons: item.id === '10000062' ? 0 : teamStore.characters[index]?.cons,
                 })
                 modalStore.closeModal()
               }}
