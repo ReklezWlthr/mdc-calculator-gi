@@ -5,7 +5,7 @@ import { BaseReactionDmg } from '@src/domain/genshin/scaling'
 import _ from 'lodash'
 import { calcTransformative } from '@src/core/utils/data_format'
 
-const Transformative = (level: number, element: Element, stat: StatsObject, nilou?: boolean, nahida?: boolean) => {
+const Transformative = (level: number, element: Element, stat: StatsObject, nilou?: boolean) => {
   const emBonus = calcTransformative(stat?.[Stats.EM] || 0)
   const base = BaseReactionDmg[level - 1]
 
@@ -29,21 +29,21 @@ const Transformative = (level: number, element: Element, stat: StatsObject, nilo
       element: Element.DENDRO,
       show: _.includes([Element.HYDRO, Element.DENDRO, Element.ANEMO], element),
       dmg: 2 * base * (1 + emBonus + stat?.BLOOM_DMG),
-      amp: nahida ? 2 : 0,
+      amp: 1 + stat?.CORE_CD,
     },
     {
       name: 'Hyperbloom',
       element: Element.DENDRO,
       show: _.includes([Element.ELECTRO, Element.ANEMO], element),
       dmg: 3 * base * (1 + emBonus + stat?.HYPERBLOOM_DMG),
-      amp: nahida ? 2 : 0,
+      amp: 1 + stat?.CORE_CD,
     },
     {
       name: 'Burgeon',
       element: Element.DENDRO,
       show: _.includes([Element.PYRO, Element.ANEMO], element),
       dmg: 3 * base * (1 + emBonus + stat?.BURGEON_DMG),
-      amp: nahida ? 2 : 0,
+      amp: 1 + stat?.CORE_CD,
     },
     {
       name: 'Burning',

@@ -115,12 +115,8 @@ export const Calculator = observer(({}: {}) => {
   const mainReaction = _.filter(reactions, ['index', selected])
 
   const nilou = _.some(form, (item) => item.bountiful_core)
-  const nahida = _.find(teamStore.characters, ['cId', '10000073'])?.cons >= 2
-  const transformative = _.filter(
-    Transformative(char.level, charData?.element, computedStats[selected], nilou, nahida),
-    'show'
-  )
-  
+  const transformative = _.filter(Transformative(char.level, charData?.element, computedStats[selected], nilou), 'show')
+
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
       <div className="col-span-2">

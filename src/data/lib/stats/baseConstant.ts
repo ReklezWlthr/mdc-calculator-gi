@@ -184,11 +184,11 @@ export const baseStatsObject = {
   CORE_CR: 0,
   CORE_CD: 0,
 
-  PYRO_MULT: 0,
-  HYDRO_MULT: 0,
-  CRYO_MULT: 0,
-  DENDRO_F_DMG: 0,
-  ELECTRO_F_DMG: 0,
+  PYRO_MULT: 0, // Vape + Melt
+  HYDRO_MULT: 0, // Vape
+  CRYO_MULT: 0, // Melt
+  DENDRO_F_DMG: 0, // Spread
+  ELECTRO_F_DMG: 0, // Aggravate
 
   // Mitigation
   DMG_REDUCTION: 0,
