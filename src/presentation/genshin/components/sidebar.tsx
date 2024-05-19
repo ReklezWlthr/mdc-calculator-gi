@@ -30,7 +30,8 @@ export const Sidebar = ({
       <Pill name="ER Requirement" page={GenshinPage.ER} />
       <Pill name="Import" page={GenshinPage.IMPORT} />
       <p className="p-2 font-bold text-white">Account</p>
-      <Pill name="My Builds" page={GenshinPage.MY_CHAR} />
+      <Pill name="My Characters" page={GenshinPage.CHAR} />
+      <Pill name="My Builds" page={GenshinPage.BUILD} />
       <Pill name="Artifact Inventory" page={GenshinPage.INVENTORY} />
     </div>
   )

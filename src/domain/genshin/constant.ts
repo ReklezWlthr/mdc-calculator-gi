@@ -3,8 +3,9 @@ export enum GenshinPage {
   DMG = 'dmg',
   ER = 'er',
   IMPORT = 'import',
-  MY_CHAR = 'myChar',
+  BUILD = 'build',
   INVENTORY = 'inventory',
+  CHAR = 'char'
 }
 
 export interface ICharacterStats {

@@ -8,6 +8,7 @@ import { ArtifactInventory } from './artifact_inventory'
 import { MyBuilds } from './my_builds'
 import { ImportExport } from './import'
 import { Calculator } from './calc'
+import { MyCharacters } from './my_chars'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
   switch (page) {
@@ -15,12 +16,14 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
       return <TeamSetup />
     case GenshinPage.INVENTORY:
       return <ArtifactInventory />
-    case GenshinPage.MY_CHAR:
+    case GenshinPage.BUILD:
       return <MyBuilds />
     case GenshinPage.IMPORT:
       return <ImportExport />
     case GenshinPage.DMG:
       return <Calculator />
+    case GenshinPage.CHAR:
+      return <MyCharacters />
     default:
       return
   }

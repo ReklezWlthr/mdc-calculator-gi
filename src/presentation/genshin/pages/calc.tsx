@@ -17,6 +17,7 @@ import Reactions from '@src/data/lib/stats/conditionals/reactions'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import classNames from 'classnames'
 import { Tooltip } from '@src/presentation/components/tooltip'
+import { AscensionIcons } from '../ascension_icons'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore } = useStore()
@@ -273,14 +274,21 @@ export const Calculator = observer(({}: {}) => {
           setForm={setForm}
         />
         <StatBlock index={selected} stat={computedStats[selected]} />
+        <div className="w-[252px]">
+          <AscensionIcons
+            talents={main?.talents}
+            codeName={charData.codeName}
+            element={charData.element}
+            stats={computedStats[selected]}
+            ascension={char.ascension}
+          />
+        </div>
         <ConsCircle
           talents={main?.talents}
           codeName={charData.codeName}
           element={charData.element}
           name={charData.constellation}
-          ascension={char.ascension}
           cons={char.cons}
-          consName={charData.constellation}
           stats={computedStats[selected]}
         />
       </div>
