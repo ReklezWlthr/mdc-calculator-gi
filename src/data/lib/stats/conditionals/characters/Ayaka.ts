@@ -62,6 +62,10 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       <br />- Restores <span class="text-desc">10</span> Stamina
       <br />- Gains <span class="text-desc">18%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b> for <span class="text-desc">10</span>s.`,
     },
+    util: {
+      title: 'Fruits of Shinsa',
+      content: `When Ayaka crafts Weapon Ascension Materials, she has a <span class="text-desc">10%</span> chance to receive double the product.`,
+    },
     c1: {
       title: `C1: Snowswept Sakura`,
       content: `When Kamisato Ayaka's Normal or Charged Attacks deal <b class="text-genshin-cryo">Cryo DMG</b> to opponents, it has a <span class="text-desc">50%</span> chance of decreasing the CD of Kamisato Art: Hyouka by <span class="text-desc">0.3</span>s. This effect can occur once every <span class="text-desc">0.1</span>s.`,

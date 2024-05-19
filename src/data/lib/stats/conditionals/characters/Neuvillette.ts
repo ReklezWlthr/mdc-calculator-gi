@@ -61,6 +61,11 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Discipline of the Supreme Arbitration`,
       content: `For each <span class="text-desc">1%</span> of Neuvillette's current HP greater than <span class="text-desc">30%</span> of Max HP, he will gain <span class="text-desc">0.6%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>. A maximum bonus of <span class="text-desc">30%</span> can be obtained this way.`,
     },
+    util: {
+      title: `Gather Like the Tide`,
+      content: `Increases underwater Sprint SPD for your own party members by <span class="text-desc">15%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Venerable Institution`,
       content: `When Neuvillette takes the field, he will obtain <span class="text-desc">1</span> stack of Past Draconic Glories from the Passive Talent "Heir to the Ancient Sea's Authority." You must first unlock the Passive Talent "Heir to the Ancient Sea's Authority."

@@ -69,6 +69,10 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `The Balemoon ALone May Know`,
+      content: `While in combat, Arlecchino gains a <span class="text-desc">40%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and can only be healed through Balemoon Rising.`,
+    },
     c1: {
       title: `C1: "All Reprisals and Arrears, Mine to Bear..."`,
       content: `Masque of the Red Death is further enhanced, the value of the increase is <span class="text-desc">100%</span>. Additionally, Arlecchino's interruption resistance is increased when she performs Normal or Charged Attacks while affected by the Masque of the Red Death.`,

@@ -67,6 +67,10 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Flaming Assault`,
       content: `DMG dealt by Crimson Ooyoroi's Fiery Collapse is increased by <span class="text-desc">2.2%</span> of Thoma's Max HP.`,
     },
+    util: {
+      title: `Snap and Swing`,
+      content: `When you fish successfully in Inazuma, Thoma's help grants a <span class="text-desc">20%</span> chance of scoring a double catch.`,
+    },
     c1: {
       title: `C1: A Comrade's Duty`,
       content: `When a character protected by Thoma's own Blazing Barrier (Thoma excluded) is attacked, Thoma's own Blazing Blessing CD is decreased by <span class="text-desc">3</span>s, while his own Crimson Ooyoroi's CD is decreased by <span class="text-desc">3</span>s.

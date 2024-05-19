@@ -64,6 +64,10 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `A4: Mutual Assistance Network`,
       content: `For each <b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-electro">Electro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-hydro">Hydro</b> party member, Navia gains <span class="text-desc">20%</span> increased ATK. This effect can stack up to <span class="text-desc">2</span> times.`,
     },
+    util: {
+      title: `Painstaking Transaction`,
+      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Fontaine Expedition for 20 hours.`,
+    },
     c1: {
       title: `C1: A Lady's Rules for Keeping a Courteous Distance`,
       content: `Each stack of Crystal Shrapnel consumed when Navia uses Ceremonial Crystalshot will restore <span class="text-desc">3</span> Energy to her and decrease the CD of As the Sunlit Sky's Singing Salute by <span class="text-desc">1</span>s. Up to <span class="text-desc">9</span> Energy can be gained this way, and the CD of "As the Sunlit Sky's Singing Salute" can be decreased by up to <span class="text-desc">3</span>s.`,

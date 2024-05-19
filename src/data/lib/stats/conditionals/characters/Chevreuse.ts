@@ -70,6 +70,11 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
         },
       ],
     },
+    util: {
+      title: `Double Time March`,
+      content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Stable Front Line's Resolve`,
       content: `When the active character with the "Coordinated Tactics" status (not including Chevreuse herself) triggers the Overloaded reaction, they will recover <span class="text-desc">6</span> Energy. This effect can be triggered once every <span class="text-desc">10</span>s.

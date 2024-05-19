@@ -52,6 +52,10 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       content: `During Painted Dome, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by <span class="text-desc">25</span>. This effect can be triggered once every <span class="text-desc">0.1</span>s. Max <span class="text-desc">4</span> stacks.
       <br />This effect will be canceled when Painted Dome's effects end.`,
     },
+    util: {
+      title: 'The Art of Budgeting',
+      content: `When Kaveh crafts Landscape, Building, and Courtyard-type Furnishings, he has a <span class="text-desc">100%</span> chance to refund a portion of the materials used.`,
+    },
     c1: {
       title: `C1: Sublime Salutations`,
       content: `Within 3s after using Artistic Ingenuity, Kaveh's <b class="text-genshin-dendro">Dendro RES</b> and Incoming Healing Bonus will be increased by <span class="text-desc">50%</span> and <span class="text-desc">25%</span> respectively.`,

@@ -68,6 +68,10 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `Herbal Nourishment`,
+      content: `When Baizhu is in the party, interacting with certain harvestable items will heal your current active character for <span class="text-desc">2.5%</span> of Baizhu's Max HP.`,
+    },
     c1: {
       title: `C1: Attentive Observation`,
       content: `Universal Diagnosis gains <span class="text-desc">1</span> additional charge.`,
@@ -175,6 +179,12 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
           name: 'Healing',
           value: [{ scaling: calcScaling(0.08, skill, 'elemental', '1'), multiplier: Stats.HP }],
           flat: calcScaling(770.3755, skill, 'special', 'flat'),
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+        },
+        {
+          name: 'Utility Passive Healing',
+          value: [{ scaling: 0.025, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         },

@@ -65,6 +65,10 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       title: `A4: Diversified Investigation`,
       content: `When the party contains <span class="text-desc">1/2/3</span> Fontainians other than herself, Charlotte gains a <span class="text-desc">5%/10%/15%</span> Healing Bonus. When the party contains <span class="text-desc">1/2/3</span> non-Fontainians, Charlotte gains a <span class="text-desc">5%/10%/15%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b>.`,
     },
+    util: {
+      title: `First-Person Shutter`,
+      content: `After activating the Special Analysis Zoom Lens, Charlotte's "Framing: Freezing Point Composition" Hold Mode cannot trigger its original effects, but instead enables her to take photos in a rather unique manner...`,
+    },
     c1: {
       title: `C1: A Need to Verify Facts`,
       content: `After Still Photo: Comprehensive Confirmation heals a character, it will mark them with Verification, which will heal them once every <span class="text-desc">2</span>s for <span class="text-desc">80%</span> of Charlotte's ATK. This effect lasts <span class="text-desc">6</span>s.`,

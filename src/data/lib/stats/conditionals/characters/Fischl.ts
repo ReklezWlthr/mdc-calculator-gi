@@ -55,6 +55,10 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Undone Be Thy Sinful Hex`,
       content: `If your active character triggers an Electro-related Elemental Reaction when Oz is on the field, the opponent shall be stricken with Thundering Retribution that deals <b class="text-genshin-electro">Electro DMG</b> equal to <span class="text-desc">80%</span> of Fischl's ATK.`,
     },
+    util: {
+      title: `Mein Hausgarten`,
+      content: `When dispatched on an expedition in Mondstadt, time consumed is reduced by <span class="text-desc">25%</span>.`,
+    },
     c1: {
       title: `C1: Gaze of the Deep`,
       content: `Even when Oz is not present in combat, he can still watch over Fischl through his raven eyes. When Fischl performs a Normal Attack against an opponent, Oz fires a coordinated attack, dealing DMG equal to <span class="text-desc">22%</span> of Fischl's ATK.`,

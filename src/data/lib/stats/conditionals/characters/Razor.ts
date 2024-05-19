@@ -67,6 +67,11 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `A4: Hunger`,
       content: `When Razor's Energy is below <span class="text-desc">50%</span>, increases Energy Recharge by <span class="text-desc">30%</span>.`,
     },
+    util: {
+      title: `Wolvensprint`,
+      content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Wolf's Instinct`,
       content: `Picking up an Elemental Orb or Particle increases Razor's DMG by <span class="text-desc">10%</span> for <span class="text-desc">8</span>s.`,

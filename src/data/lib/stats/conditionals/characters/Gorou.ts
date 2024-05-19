@@ -73,6 +73,10 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       <br />- Inuzaka All-Round Defense: Skill DMG increased by <span class="text-desc">156%</span> of DEF
       <br />- Juuga: Forward Unto Victory: Skill DMG and Crystal Collapse DMG increased by <span class="text-desc">15.6%</span> of DEF`,
     },
+    util: {
+      title: `Seeker of Shinies`,
+      content: `Displays the location of nearby resources unique to Inazuma on the mini-map.`,
+    },
     c1: {
       title: `C1: Rushing Hound: Swift as the Wind`,
       content: `When characters (other than Gorou) within the AoE of Gorou's General's War Banner or General's Glory deal <b class="text-genshin-geo">Geo DMG</b> to opponents, the CD of Gorou's Inuzaka All-Round Defense is decreased by <span class="text-desc">2</span>s. This effect can occur once every <span class="text-desc">10</span>s.`,

@@ -67,6 +67,10 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: 'Law of Reductive Overdetermination',
+      content: `When Alhaitham crafts Weapon Ascension Materials, he has a <span class="text-desc">10%</span> chance to receive double the product.`,
+    },
     c1: {
       title: `C1: Intuition`,
       content: `When a Projection Attack hits an opponent, Universality: An Elaboration on Form's CD is decreased by <span class="text-desc">1.2</span>s. This effect can be triggered once every <span class="text-desc">1</span>s.`,

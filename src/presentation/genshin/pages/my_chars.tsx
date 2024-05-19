@@ -11,13 +11,13 @@ import { Characters } from '@src/data/db/genshin/characters'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import { ConsCircle, ElementIconColor, TooltipBody } from '../components/cons_circle'
-import conditionals from '@src/data/lib/stats/conditionals/conditionals'
+import conditionals, { UtilTalentOverride } from '@src/data/lib/stats/conditionals/conditionals'
 import { A1Icon, A4Icon } from '../ascension_icons'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import Image from 'next/image'
 
 export const MyCharacters = observer(() => {
-  const { teamStore, modalStore, buildStore } = useStore()
+  const { teamStore, modalStore, charStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     element: [],
@@ -50,58 +50,9 @@ export const MyCharacters = observer(() => {
     teamStore.characters
   )
 
-  const UtilTalentOverride = {
-    Albedo: 'S_Alhatham_07',
-    Wriothesley: 'S_Alhatham_07',
-    Ayaka: 'S_Alhatham_07',
-    Qin: 'Cook_Heal',
-    Diona: 'Cook_Heal',
-    Barbara: 'Cook_Heal',
-    Hutao: 'Cook_ExtraFailedItem',
-    Xiangling: 'Cook_Attack',
-    Noel: 'Cook_Defense',
-    Xinyan: 'Cook_Defense',
-    Nilou: 'S_Yunjin_07',
-    Ambor: 'Explosion_Glide',
-    Collei: 'Explosion_Glide',
-    Venti: 'Explosion_Glide',
-    Sucrose: 'Combine_Material',
-    Eula: 'Eula_Combine',
-    Layla: 'Eula_Combine',
-    Xingqiu: 'Combine_Talent',
-    Lisa: 'Combine_Potion',
-    Mona: 'Combine_Weapon',
-    Diluc: 'Forge_Claymore',
-    Ganyu: 'Forge_Bow',
-    Zhongli: 'Forge_Pole',
-    Candace: 'Explosion_Climb',
-    Xiao: 'Explosion_Climb',
-    Kazuha: 'Explosion_Sprint',
-    Chevreuse: 'Explosion_Sprint',
-    Kaeya: 'Explosion_Sprint',
-    Heizo: 'Explosion_Sprint',
-    Razor: 'Explosion_Sprint',
-    Kokomi: 'Explosion_Swim',
-    Beidou: 'Explosion_Swim',
-    Rosaria: 'Rosaria_NightRunner',
-    Gaming: 'S_Dehya_07',
-    Chongyun: 'Expedition_Liyue',
-    Keqing: 'Expedition_Liyue',
-    Yelan: 'Expedition_Liyue',
-    Shenhe: 'Expedition_Liyue',
-    Fischl: 'Expedition_Mengde',
-    Bennett: 'Expedition_Mengde',
-    Faruzan: 'S_Cyno_07',
-    Klee: 'Collect_Local_Mengde',
-    Mika: 'Collect_Local_Mengde',
-    Feiyan: 'Collect_Local_Liyue',
-    Qiqi: 'Collect_Local_Liyue',
-    Momoka: 'S_Aloy_07',
-  }
-
   return (
     <div className="flex flex-col items-center w-full gap-5 p-5 overflow-y-auto">
-      <div className="flex w-full h-full gap-x-5">
+      <div className="flex w-full h-full gap-x-10">
         <div className="flex flex-col w-1/3 h-full gap-y-2 shrink-0">
           <p className="text-2xl font-bold text-white">My Characters</p>
           <div className="grid grid-cols-4 gap-4 rounded-lg hideScrollbar">
@@ -114,7 +65,7 @@ export const MyCharacters = observer(() => {
                   )}
                   onClick={() => {
                     setSelected(item.id)
-                    setLoading(true)
+                    if (item.id !== selected) setLoading(true)
                   }}
                   key={item.name}
                 >
@@ -138,27 +89,32 @@ export const MyCharacters = observer(() => {
           </div>
         </div>
         {selected ? (
-          <div className="text-white">
-            <div className="flex gap-2">
+          <div className="w-full text-white">
+            <div className="flex w-full gap-2">
               <div className={classNames('items-center justify-center w-96 h-96', loading ? 'flex' : 'hidden')}>
                 <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
               </div>
               <Image
                 src={`https://enka.network/ui/UI_Gacha_AvatarImg_${charData.codeName}.png`}
                 className={classNames(
-                  'object-cover rounded-full w-96 h-96 ring-4 bg-opacity-0',
+                  'object-cover rounded-full w-96 h-96 ring-4 bg-opacity-5',
                   ElementIconColor[charData?.element],
                   loading ? 'hidden' : 'block'
                 )}
                 alt={charData?.codeName}
                 width={500}
                 height={500}
-                quality={80}
+                quality={90}
                 loading="eager"
                 onLoad={() => setLoading(false)}
               />
-              <div>
-                <p className="text-3xl font-bold">{charData.name}</p>
+              <div className="w-full">
+                <div className="flex flex-col items-end w-full px-20 pt-2">
+                  <p className="text-3xl font-bold text-end">{charData.name}</p>
+                  <div className="w-fit">
+                    <RarityGauge rarity={charData?.rarity} textSize="text-2xl" />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex gap-3">
@@ -216,9 +172,7 @@ export const MyCharacters = observer(() => {
                       style="w-[40vw]"
                     >
                       <img
-                        src={`https://enka.network/ui/UI_Talent_${
-                          UtilTalentOverride[charData.codeName] || `S_${charData.codeName}_07`
-                        }.png`}
+                        src={`https://enka.network/ui/Skill_S_${charData.codeName}_02.png`}
                         className={classNames(
                           'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                           ElementIconColor[charData?.element]
@@ -251,7 +205,7 @@ export const MyCharacters = observer(() => {
           </div>
         ) : (
           <div className="w-full h-[620px] rounded-lg bg-primary-darker flex items-center justify-center text-gray text-2xl font-bold">
-            Selected a Build to Preview
+            Selected a Character to Preview
           </div>
         )}
       </div>

@@ -64,6 +64,10 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `Protracted Prayers`,
+      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Inazuma Expedition for 20 hours.`,
+    },
     c1: {
       title: `C1: To Cloister Compassion`,
       content: `Gyoei Narukami Kariyama Rite's AoE is increased by <span class="text-desc">50%</span>.`,

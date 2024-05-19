@@ -54,6 +54,10 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `A4: A Glimpse Into Arcanum	`,
       content: `When Qiqi hits opponents with her Normal and Charged Attacks, she has a <span class="text-desc">50%</span> chance to apply a Fortune-Preserving Talisman to them for <span class="text-desc">6</span>s. This effect can only occur once every <span class="text-desc">30</span>s.`,
     },
+    util: {
+      title: `Former Life Memories`,
+      content: `Displays the location of nearby resources unique to Liyue on the mini-map.`,
+    },
     c1: {
       title: `C1: Ascetics of Frost`,
       content: `When the Herald of Frost hits an opponent marked by a Fortune-Preserving Talisman, Qiqi regenerates <span class="text-desc">2</span> Energy.`,

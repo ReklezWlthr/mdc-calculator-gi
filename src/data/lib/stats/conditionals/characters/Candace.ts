@@ -61,6 +61,11 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       content: `Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal <span class="text-desc">0.5%</span> increased DMG to opponents for every <span class="text-desc">1,000</span> points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.`,
       value: [{ name: 'DMG Bonus', value: { stat: Stats.HP, scaling: (hp) => toPercentage((hp / 1000) * 0.005) } }],
     },
+    util: {
+      title: `To Dawn's First Light`,
+      content: `Decreases climbing Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Returning Heiress of the Scarlet Sands`,
       content: `The duration of Prayer of the Crimson Crown effect triggered by Sacred Rite: Wagtail's Tide is increased by <span class="text-desc">3</span>s.`,

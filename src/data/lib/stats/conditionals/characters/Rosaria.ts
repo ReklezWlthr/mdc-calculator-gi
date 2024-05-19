@@ -51,6 +51,11 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
       content: `Casting Rites of Termination increases CRIT Rate of all nearby party members (except Rosaria herself) by <span class="text-desc">15%</span> of Rosaria's CRIT Rate for <span class="text-desc">10</span>s.
       <br />CRIT Rate Bonus gained this way cannot exceed <span class="text-desc">15%</span>.`,
     },
+    util: {
+      title: `Night Walk`,
+      content: `At night (18:00 - 6:00), your party members gain the Swift Stride effect: Movement SPD increased by <span class="text-desc">10%</span>.
+      <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
+    },
     c1: {
       title: `C1: Unholy Revelation`,
       content: `When Rosaria deals a CRIT Hit, her ATK SPD increases by <span class="text-desc">10%</span> and her Normal Attack DMG increases by <span class="text-desc">10%</span> for <span class="text-desc">4</span>s.`,

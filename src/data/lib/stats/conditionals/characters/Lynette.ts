@@ -69,6 +69,10 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `A4: Props Positively Prepped`,
       content: `After the Bogglecat Box summoned by Magic Trick: Astonishing Shift performs Elemental Conversion, Lynette's Elemental Burst will deal <span class="text-desc">15%</span> more DMG. This effect will persist until the Bogglecat Box's duration ends.`,
     },
+    util: {
+      title: `Loci-Based Mnemonics`,
+      content: `Shows the location of nearby Recovery Orbs on the minimap. The Aquatic Stamina and HP gained from touching Orbs will be increased by <span class="text-desc">25%</span>.`,
+    },
     c1: {
       title: `C1: A Cold Blade Like a Shadow`,
       content: `When Enigmatic Feint's Enigma Thrust hits an opponent with Shadowsign, a vortex will be created at that opponent's position that will pull nearby opponents in.`,

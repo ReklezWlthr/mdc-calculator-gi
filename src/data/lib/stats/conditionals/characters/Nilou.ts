@@ -71,6 +71,10 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ],
     },
+    util: {
+      title: `White Jade Lotus`,
+      content: `When Perfect Cooking is achieved on Food with Adventure-related effects, there is a <span class="text-desc">12%</span> chance to obtain double the product.`,
+    },
     c1: {
       title: `C1: Dance of the Waning Moon`,
       content: `Dance of Haftkarsvar will be enhanced as follows:

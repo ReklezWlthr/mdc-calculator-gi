@@ -61,6 +61,10 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Lightning Storm	`,
       content: `When inside Fantastic Voyage's circle, Passion Overload's CD is decreased by <span class="text-desc">50%</span> and Bennett cannot be launched by this skill's explosion.`,
     },
+    util: {
+      title: `It Should Be Safe...`,
+      content: `When dispatched on an expedition in Mondstadt, time consumed is reduced by <span class="text-desc">25%</span>.`,
+    },
     c1: {
       title: `C1: Grand Expectation`,
       content: `Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional <span class="text-desc">20%</span> of Bennett's Base ATK.`,

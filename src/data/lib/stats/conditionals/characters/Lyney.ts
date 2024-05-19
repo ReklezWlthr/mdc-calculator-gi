@@ -73,6 +73,10 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- Each <b class="text-genshin-pyro">Pyro</b> party member other than Lyney will cause the DMG dealt to increase by an additional <span class="text-desc">20%</span>.
       <br />Lyney can deal up to <span class="text-desc">100%</span> increased DMG to opponents affected by <b class="text-genshin-pyro">Pyro</b> in this way.`,
     },
+    util: {
+      title: `Trivial Observations`,
+      content: `Displays the location of nearby resources unique to Fontaine on the mini-map.`,
+    },
     c1: {
       title: `C1: Whimsical Wonders`,
       content: `Lyney can have <span class="text-desc">2</span> Grin-Malkin Hats present at once.

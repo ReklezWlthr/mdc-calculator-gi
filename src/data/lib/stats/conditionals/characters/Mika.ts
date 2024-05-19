@@ -64,6 +64,10 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       <br />Additionally, the maximum number of stacks that can be gained through Soulwind alone is increased by <span class="text-desc">1</span>.
       <br />Requires Suppressive Barrage to be unlocked first.`,
     },
+    util: {
+      title: `Demarcation`,
+      content: `Displays the location of nearby resources unique to Mondstadt on the mini-map.`,
+    },
     c1: {
       title: `C1: Factor Confluence`,
       content: `The Soulwind state of Starfrost Swirl can decrease the healing interval between instances caused by Skyfeather Song's Eagleplume state. This decrease percentage is equal to the ATK SPD increase provided by Soulwind.`,

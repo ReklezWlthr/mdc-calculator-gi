@@ -84,6 +84,10 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `Woodchuck Chucked`,
+      content: `When a party member uses attacks to obtain wood from a tree, they have a <span class="text-desc">25%</span> chance to get an additional log of wood.`,
+    },
     c1: {
       title: `C1: Stay a While and Listen Up`,
       content: `After using Royal Descent: Behold, Itto the Evil!, Arataki Itto gains <span class="text-desc">2</span> stacks of Superlative Superstrength. After 1s, Itto will gain <span class="text-desc">1</span> stack of Superlative Superstrength every <span class="text-desc">0.5</span>s for <span class="text-desc">1.5</span>s.`,

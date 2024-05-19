@@ -59,6 +59,10 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Kamisato Art: Michiyuku Hagetsu`,
       content: `If Kamisato Ayato is not on the field and his Energy is less than <span class="text-desc">40</span>, he will regenerate <span class="text-desc">2</span> Energy for himself every second.`,
     },
+    util: {
+      title: `Kamisato Art: Daily Cooking`,
+      content: `When Ayato cooks a dish perfectly, he has a <span class="text-desc">18%</span> chance to receive an additional "Suspicious" dish of the same type.`,
+    },
     c1: {
       title: `C1: Kyouka Fuushi`,
       content: `Shunsuiken DMG is increased by <span class="text-desc">40%</span> against opponents with <span class="text-desc">50%</span> HP or less.`,

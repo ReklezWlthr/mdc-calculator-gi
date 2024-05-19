@@ -64,6 +64,11 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: The Finishing Touch`,
       content: `When a nearby party member creates a <b class="text-genshin-geo">Geo Construct</b>, Chiori will gain <span class="text-desc">20%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for 20s.`,
     },
+    util: {
+      title: `Brocaded Collar's Beauteous Silhouette`,
+      content: `When any party member is wearing an outfit apart from their default outfit, or is wearing a wind glider other than the Wings of First Flight, your party members will obtain the Swift Stride effect: Movement SPD is increased by <span class="text-desc">10%</span>.
+      <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
+    },
     c1: {
       title: `C1: Six Paths of Sage Silkcraft`,
       content: `The AoE of the automaton doll "Tamoto" summoned by Fluttering Hasode is increased by <span class="text-desc">50%</span>.

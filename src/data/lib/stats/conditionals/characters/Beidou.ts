@@ -66,6 +66,11 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       <br />- DMG dealt by Normal and Charged Attacks is increased by <span class="text-desc">15%</span>. ATK SPD of Normal and Charged Attacks is increased by <span class="text-desc">15%</span>.
       <br />- Greatly reduced delay before unleashing Charged Attacks.`,
     },
+    util: {
+      title: `Conqueror of Tides`,
+      content: `Decreases swimming Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Sea Beast's Scourge`,
       content: `When Stormbreaker is used:

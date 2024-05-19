@@ -58,6 +58,10 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `Encyclopedic Knowledge`,
+      content: `Displays the location of nearby resources unique to Sumeru on the mini-map.`,
+    },
     c1: {
       title: `C1: Beginnings Determined at the Roots`,
       content: `Tighnari's Charged Attack CRIT Rate is increased by <span class="text-desc">15%</span>.`,

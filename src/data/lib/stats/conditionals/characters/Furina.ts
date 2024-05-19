@@ -82,6 +82,10 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `The Sea Is My Stage`,
+      content: `Xenochromatic Fontemer Aberrant ability CD decreased by <span class="text-desc">30%</span>.`,
+    },
     c1: {
       title: 'C1: "Love Is a Rebellious Bird That None Can Tame"',
       content: `When using Let the People Rejoice, Furina will gain <span class="text-desc">150</span> Fanfare.

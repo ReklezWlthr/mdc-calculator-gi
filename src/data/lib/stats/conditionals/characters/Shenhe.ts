@@ -65,6 +65,10 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
       <br />- Press: Elemental Skill and Elemental Burst DMG increased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.
       <br />- Hold: Normal, Charged, and Plunging Attack DMG increased by <span class="text-desc">15%</span> for <span class="text-desc">15</span>s.`,
     },
+    util: {
+      title: `Precise Comings and Goings`,
+      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Liyue Expedition for 20 hours.`,
+    },
     c1: {
       title: `C1: Clarity of Heart`,
       content: `Spring Spirit Summoning can be used <span class="text-desc">1</span> more time.`,

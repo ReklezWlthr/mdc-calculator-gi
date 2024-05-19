@@ -56,6 +56,11 @@ const Heizou = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Penetrative Reasoning`,
       content: `After Shikanoin Heizou's Heartstopper Strike hits an opponent, increases all party members' (excluding Shikanoin Heizou) Elemental Mastery by <span class="text-desc">80</span> for <span class="text-desc">10</span>s.`,
     },
+    util: {
+      title: `Pre-Existing Guilt`,
+      content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Named Juvenile Casebook`,
       content: `For <span class="text-desc">5</span>s after Shikanoin Heizou takes the field, his Normal Attack SPD is increased by <span class="text-desc">15%</span>. He also gains <span class="text-desc">1</span> Declension stack for Heartstopper Strike. This effect can be triggered once every <span class="text-desc">10</span>s.`,

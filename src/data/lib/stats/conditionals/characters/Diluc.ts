@@ -52,6 +52,10 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Blessing of Phoenix`,
       content: `The <b class="bg-genshin-pyro">Pyro Infusion</b> provided by Dawn lasts for <span class="text-desc">4</span>s longer. Additionally, Diluc gains <span class="text-desc">20%</span> <b class="bg-genshin-pyro">Pyro DMG Bonus</b> during the duration of this effect.`,
     },
+    util: {
+      title: 'Traditional of the Dawn Knight',
+      content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Claymore-type weapons.`,
+    },
     c1: {
       title: `C1: Conviction`,
       content: `Diluc deals <span class="text-desc">15%</span> more DMG to opponents whose HP is above <span class="text-desc">50%</span>.`,

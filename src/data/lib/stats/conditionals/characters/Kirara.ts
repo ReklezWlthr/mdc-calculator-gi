@@ -68,6 +68,10 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `Cat's Creeping Carriage`,
+      content: `When Kirara is in the party, animals who produce Fowl, Raw Meat, or Chilled Meat will not be startled when party members approach them.`,
+    },
     c1: {
       title: `C1: Material Circulation`,
       content: `Every <span class="text-desc">8,000</span> Max HP Kirara possesses will cause her to create <span class="text-desc">1</span> extra Cat Grass Cardamom when she uses Secret Art: Surprise Dispatch. A maximum of <span class="text-desc">4</span> extra can be created this way.`,

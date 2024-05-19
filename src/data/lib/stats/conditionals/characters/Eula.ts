@@ -63,6 +63,10 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Wellspring of War-Lust`,
       content: `When Glacial Illumination is cast, the CD of Icetide Vortex is reset and Eula gains <span class="text-desc">1</span> stack of Grimheart.`,
     },
+    util: {
+      title: `Aristocratic Introspection`,
+      content: `When Eula crafts Character Talent Materials, she has a <span class="text-desc">10%</span> chance to receive double the product.`,
+    },
     c1: {
       title: `C1: Tidal Illusion`,
       content: `Every time Icetide Vortex's Grimheart stacks are consumed, Eula's <b>Physical DMG</b> is increased by <span class="text-desc">30%</span> for <span class="text-desc">6</span>s.

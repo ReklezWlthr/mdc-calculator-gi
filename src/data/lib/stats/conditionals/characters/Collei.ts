@@ -51,6 +51,11 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
       content: `When a character within the Cuilein-Anbar Zone triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the Zone's duration will be increased by <span class="text-desc">1</span>s.
       <br />A single Trump-Card Kitty can be extended by up to <span class="text-desc">3</span>s.`,
     },
+    util: {
+      title: `Gliding Champion of Sumeru`,
+      content: `Decreases gliding Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Deepwood Patrol`,
       content: `When in the party and not on the field, Collei's Energy Recharge is increased by <span class="text-desc">20%</span>.`,

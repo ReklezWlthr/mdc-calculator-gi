@@ -57,6 +57,10 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Let the Wind Lead`,
       content: `Using Dandelion Breeze will regenerate <span class="text-desc">20%</span> of its Energy.`,
     },
+    util: {
+      title: `Guiding Breeze`,
+      content: `When Perfect Cooking is achieved on a dish with restorative effects, there is a <span class="text-desc">12%</span> chance to obtain double the product.`,
+    },
     c1: {
       title: `C1: Spiraling Tempest`,
       content: `Increases the pulling speed of Gale Blade after holding for more than <span class="text-desc">1</span>s, and increases the DMG dealt by <span class="text-desc">40%</span>.`,

@@ -56,6 +56,10 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
       content: `When Tengu Juurai: Ambush hits opponents, Kujou Sara will restore <span class="text-desc">1.2</span> Energy to all party members for every <span class="text-desc">100%</span> Energy Recharge she has. This effect can be triggered once every <span class="text-desc">3</span>s.`,
       value: [{ name: 'Energy Restoration', value: { stat: Stats.ER, scaling: (er) => 1.2 * _.floor(er) } }],
     },
+    util: {
+      title: `Land Survey`,
+      content: `When dispatched on an expedition in Inazuma, time consumed is reduced by <span class="text-desc">25%</span>.`,
+    },
     c1: {
       title: `C1: Crow's Eye`,
       content: `When Tengu Juurai grant characters ATK Bonuses or hits opponents, the CD of Tengu Stormcall is decreased by <span class="text-desc">1</span>s.

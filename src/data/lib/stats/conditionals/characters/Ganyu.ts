@@ -55,6 +55,10 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Harmony between Heaven and Earth`,
       content: `Celestial Shower grants a <span class="text-desc">20%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b> to active members in the AoE.`,
     },
+    util: {
+      title: 'Preserved for the Hunt',
+      content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Bow-type weapons.`,
+    },
     c1: {
       title: `C1: Dew-Drinker`,
       content: `Taking DMG from a Charge Level 2 Frostflake Arrow or Frostflake Arrow Bloom decreases opponents' <b class="text-genshin-cryo">Cryo RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.

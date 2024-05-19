@@ -57,6 +57,10 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Lost Wisdom of the Seven Caverns`,
       content: `When characters affected by The Wind's Secret Ways' Prayerful Wind's Gift deal <b class="text-genshin-anemo">Anemo DMG</b> using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on <span class="text-desc">32%</span> of Faruzan's Base ATK. <span class="text-desc">1</span> instance of Hurricane Guard can occur once every <span class="text-desc">0.8</span>s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.`,
     },
+    util: {
+      title: `Tomes Light the Path`,
+      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Inazuma Expedition for 20 hours.`,
+    },
     c1: {
       title: `C1: Truth by Any Means`,
       content: `Faruzan can fire off a maximum of 2 Hurricane Arrows using fully charged Aimed Shots while under the effect of a single Manifest Gale created by Wind Realm of Nasamjnin.`,

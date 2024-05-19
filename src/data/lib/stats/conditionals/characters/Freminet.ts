@@ -67,6 +67,11 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Parallel Condensers`,
       content: `When Freminet triggers Shatter against opponents, the DMG dealt by Pressurized Floe: Shattering Pressure will be increased by <span class="text-desc">40%</span> for <span class="text-desc">5</span>s.`,
     },
+    util: {
+      title: `Deepwater Navigation`,
+      content: `Decreases Aquatic Stamina consumption for your own party members by <span class="text-desc">35%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Dreams of the Foamy Deep`,
       content: `The CRIT Rate of Pressurized Floe: Shattering Pressure will be increased by <span class="text-desc">15%</span>.`,

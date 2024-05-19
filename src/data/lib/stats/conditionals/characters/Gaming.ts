@@ -56,6 +56,11 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Air of Prosperity`,
       content: `When Gaming has less than <span class="text-desc">50%</span> HP, he will receive a <span class="text-desc">20%</span> Incoming Healing Bonus. When Gaming has <span class="text-desc">50%</span> HP or more, Plunging Attack: Charmed Cloudstrider will deal <span class="text-desc">20%</span> more DMG.`,
     },
+    util: {
+      title: `The Striding Beast`,
+      content: `During the day (6:00 - 18:00), your party members gain the Swift Stride effect: Movement SPD increased by <span class="text-desc">10%</span>.
+      <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
+    },
     c1: {
       title: `C1: Bringer of Blessing`,
       content: `When the Suanni Man Chai from Suanni's Gilded Dance meets back up with Gaming, it will heal <span class="text-desc">15%</span> of Gaming's HP.`,

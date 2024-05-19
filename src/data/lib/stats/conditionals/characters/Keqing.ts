@@ -58,6 +58,10 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Aristocratic Dignity`,
       content: `When casting Starward Sword, Keqing's CRIT Rate is increased by <span class="text-desc">15%</span>, and her Energy Recharge is increased by <span class="text-desc">15%</span>. This effect lasts for <span class="text-desc">8</span>s.`,
     },
+    util: {
+      title: `Land's Overseer`,
+      content: `When dispatched on an expedition in Liyue, time consumed is reduced by <span class="text-desc">25%</span>.`,
+    },
     c1: {
       title: `C1: Thundering Might`,
       content: `Recasting Stellar Restoration while a Lightning Stiletto is present causes Keqing to deal <span class="text-desc">50%</span> of her ATK as <b class="text-genshin-electro">AoE Electro DMG</b> at the start point and terminus of her Blink.`,

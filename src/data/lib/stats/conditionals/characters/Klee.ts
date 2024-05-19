@@ -53,6 +53,10 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Sparkling Burst`,
       content: `When Klee's Charged Attack results in a CRIT Hit, all party members gain <span class="text-desc">2</span> Elemental Energy.`,
     },
+    util: {
+      title: `All Of My Treasures!`,
+      content: `Displays the location of nearby resources unique to Mondstadt on the mini-map.`,
+    },
     c1: {
       title: `C1: Chained Reactions`,
       content: `Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to <span class="text-desc">120%</span> of Sparks 'n' Splash's DMG.`,

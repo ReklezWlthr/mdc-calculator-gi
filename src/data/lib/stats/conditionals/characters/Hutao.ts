@@ -62,6 +62,10 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Sanguine Rouge`,
       content: `When Hu Tao's HP is equal to or less than <span class="text-desc">50%</span>, her <b class="text-genshin-pyro">Pyro DMG Bonus</b> is increased by <span class="text-desc">33%</span>.`,
     },
+    util: {
+      title: `The More the Merrier`,
+      content: `When Hu Tao cooks a dish perfectly, she has a <span class="text-desc">18%</span> chance to receive an additional "Suspicious" dish of the same type.`,
+    },
     c1: {
       title: `C1: Crimson Bouquet`,
       content: `While in a Paramita Papilio state activated by Guide to Afterlife, Hu Tao's Charged Attacks do not consume Stamina.`,

@@ -78,6 +78,10 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       content: `Increases Mona's Hydro DMG Bonus by a degree equivalent to <span class="text-desc">20%</span> of her Energy Recharge rate.`,
       value: [{ name: 'Current Hydro DMG Bonus', value: { stat: Stats.ER, scaling: (er) => toPercentage(er * 0.2) } }],
     },
+    util: {
+      title: 'Principium of Astrology',
+      content: `When Mona crafts Weapon Ascension Materials, she has a <span class="text-desc">1250%</span> chance to refund a portion of the crafting material used.`,
+    },
     c1: {
       title: `C1: Prophecy of Submersion`,
       content: `When any of your own party members hits an opponent affected by an Omen, the effects of <b class="text-genshin-hydro">Hydro</b>-related Elemental Reactions are enhanced for 8s:

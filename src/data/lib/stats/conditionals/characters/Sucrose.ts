@@ -52,6 +52,10 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `A4: Mollis Favonius`,
       content: `When Astable Anemohypostasis Creation - 6308 or Forbidden Creation - Isomer 75 / Type II hits an opponent, increases all party members' (excluding Sucrose) Elemental Mastery based on <span class="text-desc">20%</span> of Sucrose's Elemental Mastery for <span class="text-desc">8</span>s.`,
     },
+    util: {
+      title: `Astable Invention`,
+      content: `When Sucrose crafts Character and Weapon Enhancement Materials, she has a <span class="text-desc">10%</span> chance to obtain double the product.`,
+    },
     c1: {
       title: `C1: Clustered Vacuum Field`,
       content: `Astable Anemohypostasis Creation - 6308 gains <span class="text-desc">1</span> additional charge.`,

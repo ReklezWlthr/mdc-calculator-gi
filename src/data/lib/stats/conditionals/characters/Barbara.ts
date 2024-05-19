@@ -54,6 +54,10 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       content: `When your active character gains an Elemental Orb/Particle, the duration of the Melody Loop of Let the Show Begin♪ is extended by <span class="text-desc">1</span>s.
       <br />The maximum extension is <span class="text-desc">5</span>s.`,
     },
+    util: {
+      title: `With My Whole Heart♪`,
+      content: `When Perfect Cooking is achieved on a dish with restorative effects, Barbara has a <span class="text-desc">12%</span> chance to obtain double the product.`,
+    },
     c1: {
       title: `C1: Gleeful Songs`,
       content: `Barbara regenerates <span class="text-desc">1</span> Energy every <span class="text-desc">10</span>s.`,

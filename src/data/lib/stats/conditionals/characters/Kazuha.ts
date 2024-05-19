@@ -66,6 +66,11 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Poetics of Fuubutsu`,
       content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-desc">0.04%</span> Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for 8s. Bonuses for different elements obtained through this method can co-exist.`,
     },
+    util: {
+      title: `Cloud Strider`,
+      content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Scarlet Hills`,
       content: `Decreases Chihayaburu's CD by <span class="text-desc">10%</span>.

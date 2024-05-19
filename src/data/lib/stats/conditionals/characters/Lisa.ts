@@ -56,6 +56,10 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Static Electricity Field`,
       content: `Opponents hit by Lightning Rose have their DEF decreased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
     },
+    util: {
+      title: `General Pharmaceutics`,
+      content: `When Lisa crafts a potion, she has a <span class="text-desc">20%</span> chance to refund a portion of the crafting materials used.`,
+    },
     c1: {
       title: `C1: Infinite Circuit`,
       content: `Lisa regenerates <span class="text-desc">2</span> Energy for every opponent hit while holding Violet Arc.

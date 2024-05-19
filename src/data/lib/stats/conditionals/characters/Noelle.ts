@@ -74,6 +74,10 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       content: `Every <span class="text-desc">4</span> Normal or Charged Attack hits will decrease the CD of Breastplate by <span class="text-desc">1</span>s.
       <br />Hitting multiple opponents with a single attack is only counted as <span class="text-desc">1</span> hit.`,
     },
+    util: {
+      title: `Maid's Knighthood`,
+      content: `When a Perfect Cooking is achieved on a DEF-boosting dish, Noelle has a <span class="text-desc">12%</span> chance to obtain double the product.`,
+    },
     c1: {
       title: `C1: I Got Your Back`,
       content: `While Sweeping Time and Breastplate are both in effect, the chance of Breastplate's healing effects activating is increased to <span class="text-desc">100%</span>.`,

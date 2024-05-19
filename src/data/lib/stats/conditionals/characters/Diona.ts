@@ -61,6 +61,10 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Drunkards' Farce`,
       content: `Opponents who enter the AoE of Signature Mix have <span class="text-desc">10%</span> decreased ATK for <span class="text-desc">15</span>s.`,
     },
+    util: {
+      title: `Complimentary Bar Food`,
+      content: `When a Perfect Cooking is achieved on a dish with restorative effects, Diona has a <span class="text-desc">12%</span> chance to obtain double the product.`,
+    },
     c1: {
       title: `C1: A Lingering Flavor`,
       content: `Regenerates <span class="text-desc">15</span> Energy for Diona after the effects of Signature Mix end.`,

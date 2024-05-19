@@ -78,6 +78,11 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- When healing a character, it will also heal characters near that healed character for <span class="text-desc">20%</span> the amount of HP.
       <br />- Increases the AoE of its attack against opponents.`,
     },
+    util: {
+      title: `Yoohoo Art: Silencer's Secret`,
+      content: `When Yaoyao is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.
+      <br />Check the "Other" sub-category of the "Living Beings / Wildlife" section in the Archive for creatures this skill works on.`,
+    },
     c1: {
       title: `C1: Multi-Task no Jutsu`,
       content: `The Muji-Muji Daruma created by Yoohoo Art: Mujina Flurry will ignore HP limits and can simultaneously attack nearby opponents and heal characters.`,

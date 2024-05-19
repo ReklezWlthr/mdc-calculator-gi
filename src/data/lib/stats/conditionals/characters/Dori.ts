@@ -59,6 +59,10 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
       content: `When the Troubleshooter Shots or After-Sales Service Rounds from Spirit-Warding Lamp: Troubleshooter Cannon hit opponents, Dori will restore <span class="text-desc">5</span> Elemental Energy for every <span class="text-desc">100%</span> Energy Recharge possessed.
       <br />Per Spirit-Warding Lamp: Troubleshooter Cannon, only one instance of Energy restoration can be triggered and a maximum of <span class="text-desc">15</span> Energy can be restored this way.`,
     },
+    util: {
+      title: `Unexpected Order`,
+      content: `Has a <span class="text-desc">25%</span> chance to recover some of the materials used when crafting Character and Weapon Materials.`,
+    },
     c1: {
       title: `C1: Additional Investment`,
       content: `The number of After-Sales Service Rounds created by Troubleshooter Shots is increased by <span class="text-desc">1</span>.`,

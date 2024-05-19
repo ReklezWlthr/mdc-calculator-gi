@@ -88,6 +88,10 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
         },
       ],
     },
+    util: {
+      title: `All-Preserver`,
+      content: `Mora expended when ascending Swords and Polearms is decreased by <span class="text-desc">50%</span>.`,
+    },
     c1: {
       title: 'C1: Ominous Inscription',
       content: `Chakra Desiderata will gather Resolve even faster. When <b class="text-genshin-electro">Electro</b> characters use their Elemental Bursts, the Resolve gained is increased by <span class="text-desc">80%</span>. When characters of other Elemental Types use their Elemental Bursts, the Resolve gained is increased by <span class="text-desc">20%</span>.`,

@@ -56,6 +56,10 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Strategic Reserve`,
       content: `A character that passes through the Jade Screen will gain a <span class="text-desc">12%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for <span class="text-desc">10</span>s.`,
     },
+    util: {
+      title: `Trove of Marvelous Treasures`,
+      content: `Displays the location of nearby ore veins used in forging on the mini-map.`,
+    },
     c1: {
       title: `C1: Piercing Fragments`,
       content: `When a Normal Attack hits, it deals AoE DMG.`,

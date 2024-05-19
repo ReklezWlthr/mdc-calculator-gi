@@ -58,6 +58,10 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
       <br />Pactsworn Pathclearer's Normal Attack DMG is increased by <span class="text-desc">150%</span> of his Elemental Mastery.
       <br />Duststalker Bolt DMG from his Passive Talent Featherfall Judgment is increased by <span class="text-desc">250%</span> of his Elemental Mastery.`,
     },
+    util: {
+      title: `The Gift of Silence`,
+      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Sumeru Expedition for 20 hours.`,
+    },
     c1: {
       title: `C1: Ordinance: Unceasing Vigil`,
       content: `After using Sacred Rite: Wolf's Swiftness, Cyno's Normal Attack SPD will be increased by <span class="text-desc">20%</span> for <span class="text-desc">10</span>s. If the Judication effect of his Passive Talent Featherfall Judgment is triggered during Secret Rite: Chasmic Soulfarer, the duration of this increase will be refreshed.

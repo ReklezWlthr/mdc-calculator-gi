@@ -113,6 +113,10 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
         },
       ],
     },
+    util: {
+      title: `On All Things Meditated`,
+      content: `Nahida can use All Schemes to Know to interact with some harvestable items within a fixed AoE. This skill may even have some other effects...`,
+    },
     c1: {
       title: 'C1: The Seed of Stored Knowledge',
       content: `When the Shrine of Maya is unleashed and the Elemental Types of the party members are being tabulated, the count will add 1 to the number of <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-electro">Electro</b>, and <b class="text-genshin-hydro">Hydro</b> characters respectively.`,

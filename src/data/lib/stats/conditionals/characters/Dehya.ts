@@ -71,6 +71,11 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
       title: `A4: Stalwart and True`,
       content: `When her HP is less than <span class="text-desc">40%</span>, Dehya will recover <span class="text-desc">20%</span> of her Max HP and will restore <span class="text-desc">6%</span> of her Max HP every <span class="text-desc">2</span>s for the next <span class="text-desc">10</span>s. This effect can be triggered once every <span class="text-desc">20</span>s.`,
     },
+    util: {
+      title: `The Sunlit Way`,
+      content: `During the day (6:00 - 18:00), your party members gain the Swift Stride effect: Movement SPD increased by <span class="text-desc">10%</span>.
+      <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
+    },
     c1: {
       title: `C1: The Flame Incandescent`,
       content: `Dehya's Max HP is increased by <span class="text-desc">20%</span>, and she deals bonus DMG based on her Max HP when using the following attacks:
