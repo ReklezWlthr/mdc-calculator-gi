@@ -221,7 +221,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         },
         {
-          name: 'Arkhe: Pneuma',
+          name: 'Spiritbreath Thorn DMG',
           value: [{ scaling: calcScaling(0.144, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.SKILL,

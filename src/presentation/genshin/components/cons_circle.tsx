@@ -1,7 +1,7 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { ReverseConsList } from '@src/data/lib/stats/conditionals/conditionals'
 import { ITalent, ITalentDisplay } from '@src/domain/genshin/conditional'
-import { Element, Stats } from '@src/domain/genshin/constant'
+import { Element, Stats, TravelerIconName } from '@src/domain/genshin/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
 import _ from 'lodash'
@@ -61,6 +61,8 @@ export const ConsCircle = observer(
       )
     }
 
+    if (_.includes(['PlayerBoy', 'PlayerGirl'], codeName)) codeName = TravelerIconName[element]
+
     return (
       <div className="space-y-5">
         <div className="flex items-center justify-around">
@@ -70,8 +72,14 @@ export const ConsCircle = observer(
             style="w-[40vw]"
           >
             <img
-              src={`https://enka.network/ui/UI_Talent_S_${codeName}${
-                codeName === 'Ningguang' ? '_02' : codeName === 'Tartaglia' ? '_03' : '_05'
+              src={`https://enka.network/ui/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${
+                codeName === 'PlayerGrass'
+                  ? '_01'
+                  : codeName === 'Ningguang'
+                  ? '_02'
+                  : codeName === 'Tartaglia'
+                  ? '_03'
+                  : '_05'
               }.png`}
               className={classNames(
                 'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
@@ -86,7 +94,9 @@ export const ConsCircle = observer(
             style="w-[40vw]"
           >
             <img
-              src={`https://enka.network/ui/UI_Talent_S_${codeName}_06.png`}
+              src={`https://enka.network/ui/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${
+                codeName === 'PlayerGrass' ? '_02' : '_06'
+              }.png`}
               className={classNames(
                 'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                 ascension >= 4 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -132,7 +142,9 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_S_${codeName}${codeName === 'Aloy' ? '_Lock' : '_04'}.png`}
+                  src={`https://enka.network/ui/UI_Talent_S_${codeName}${
+                    codeName === 'PlayerGrass' ? '_06' : codeName === 'Aloy' ? '_Lock' : '_04'
+                  }.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                     cons >= 6 ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -175,8 +187,16 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_${codeName === 'Aloy' ? 'S' : 'U'}_${codeName}${
-                    codeName === 'Aloy' ? '_Lock' : _.includes(ReverseConsList, codeName) ? '_01' : '_02'
+                  src={`https://enka.network/ui/UI_Talent_${
+                    _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
+                  }_${codeName}${
+                    codeName === 'PlayerGrass'
+                      ? '_05'
+                      : codeName === 'Aloy'
+                      ? '_Lock'
+                      : _.includes(ReverseConsList, codeName)
+                      ? '_01'
+                      : '_02'
                   }.png`}
                   className={classNames(
                     'shrink-0 w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
@@ -192,8 +212,16 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_${codeName === 'Aloy' ? 'S' : 'U'}_${codeName}${
-                    codeName === 'Aloy' ? '_Lock' : _.includes(ReverseConsList, codeName) ? '_02' : '_01'
+                  src={`https://enka.network/ui/UI_Talent_${
+                    _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
+                  }_${codeName}${
+                    codeName === 'PlayerGrass'
+                      ? '_03'
+                      : codeName === 'Aloy'
+                      ? '_Lock'
+                      : _.includes(ReverseConsList, codeName)
+                      ? '_02'
+                      : '_01'
                   }.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
@@ -212,7 +240,13 @@ export const ConsCircle = observer(
               <div className="rounded-full bg-primary-bg">
                 <img
                   src={`https://enka.network/ui/UI_Talent_S_${codeName}${
-                    codeName === 'Aloy' ? '_Lock' : codeName === 'Tartaglia' ? '_05' : '_03'
+                    codeName === 'PlayerGrass'
+                      ? '_04'
+                      : codeName === 'Aloy'
+                      ? '_Lock'
+                      : codeName === 'Tartaglia'
+                      ? '_05'
+                      : '_03'
                   }.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',

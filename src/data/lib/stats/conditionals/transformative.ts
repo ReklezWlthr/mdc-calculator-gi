@@ -5,7 +5,7 @@ import { BaseReactionDmg } from '@src/domain/genshin/scaling'
 import _ from 'lodash'
 import { calcTransformative } from '@src/core/utils/data_format'
 
-const Transformative = (level: number, element: Element, stat: StatsObject, nilou?: boolean) => {
+const Transformative = (level: number, element: Element, stat: StatsObject, swirl: Element, nilou?: boolean) => {
   const emBonus = calcTransformative(stat?.[Stats.EM] || 0)
   const base = BaseReactionDmg[level - 1]
 
@@ -15,63 +15,73 @@ const Transformative = (level: number, element: Element, stat: StatsObject, nilo
       element: Element.ELECTRO,
       show: _.includes([Element.HYDRO, Element.ELECTRO, Element.ANEMO], element),
       dmg: 1.2 * base * (1 + emBonus + stat?.TASER_DMG),
-      amp: 0,
+      cd: 0,
+      amp: 1,
     },
     {
       name: 'Superconduct',
       element: Element.CRYO,
       show: _.includes([Element.CRYO, Element.ELECTRO, Element.ANEMO], element),
       dmg: 0.5 * base * (1 + emBonus + stat?.SUPERCONDUCT_DMG),
-      amp: 0,
+      cd: 0,
+      amp: 1,
     },
     {
       name: nilou ? 'Bloom: Bountiful Core' : 'Bloom',
       element: Element.DENDRO,
       show: _.includes([Element.HYDRO, Element.DENDRO, Element.ANEMO], element),
       dmg: 2 * base * (1 + emBonus + stat?.BLOOM_DMG),
-      amp: 1 + stat?.CORE_CD,
+      cd: stat?.CORE_CD,
+      amp: 1,
     },
     {
       name: 'Hyperbloom',
       element: Element.DENDRO,
       show: _.includes([Element.ELECTRO, Element.ANEMO], element),
       dmg: 3 * base * (1 + emBonus + stat?.HYPERBLOOM_DMG),
-      amp: 1 + stat?.CORE_CD,
+      cd: stat?.CORE_CD,
+      amp: 1,
     },
     {
       name: 'Burgeon',
       element: Element.DENDRO,
       show: _.includes([Element.PYRO, Element.ANEMO], element),
       dmg: 3 * base * (1 + emBonus + stat?.BURGEON_DMG),
-      amp: 1 + stat?.CORE_CD,
+      cd: stat?.CORE_CD,
+      amp: 1,
     },
     {
       name: 'Burning',
       element: Element.PYRO,
       show: _.includes([Element.DENDRO, Element.PYRO, Element.ANEMO], element),
       dmg: 0.25 * base * (1 + emBonus + stat?.BURNING_DMG),
-      amp: 0,
+      cd: stat?.CORE_CD,
+      amp: 1,
     },
     {
       name: 'Overloaded',
       element: Element.PYRO,
       show: _.includes([Element.PYRO, Element.ELECTRO, Element.ANEMO], element),
       dmg: 2 * base * (1 + emBonus + stat?.OVERLOAD_DMG),
-      amp: 0,
+      cd: 0,
+      amp: 1,
     },
     {
       name: 'Swirl',
-      element: Element.ELECTRO,
+      element: swirl,
       show: element === Element.ANEMO,
       dmg: 0.6 * base * (1 + emBonus + stat?.SWIRL_DMG),
-      amp: 0,
+      amp: swirl === Element.PYRO ? stat?.PYRO_MULT || 1 : 1,
+      cd: 0,
+      add: swirl === Element.ELECTRO ? stat?.ELECTRO_F_DMG : 0,
     },
     {
       name: 'Shattered',
       element: Element.PHYSICAL,
       show: true,
       dmg: 1.5 * base * (1 + emBonus + stat?.SHATTER_DMG),
-      amp: 0,
+      cd: 0,
+      amp: 1,
     },
   ]
 }

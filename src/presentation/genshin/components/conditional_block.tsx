@@ -22,7 +22,7 @@ interface ConditionalBlockProps {
 
 export const ConditionalBlock = observer(
   ({ title, contents, form, setForm, tooltipStyle = 'w-[40vw]' }: ConditionalBlockProps) => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(true)
 
     return (
       <div className="w-full rounded-lg bg-primary-darker h-fit">
@@ -103,15 +103,17 @@ export const ConditionalBlock = observer(
                       </div>
                     )}
                     {content.type === 'element' && (
-                      <div className="flex items-center justify-center col-span-2">
+                      <div className="flex items-center justify-center col-span-3">
                         <SelectInput
                           value={form[content.index]?.[content.id]}
-                          options={[
-                            { name: Element.PYRO, value: Element.PYRO },
-                            { name: Element.HYDRO, value: Element.HYDRO },
-                            { name: Element.CRYO, value: Element.CRYO },
-                            { name: Element.ELECTRO, value: Element.ELECTRO },
-                          ]}
+                          options={
+                            content.options || [
+                              { name: Element.PYRO, value: Element.PYRO },
+                              { name: Element.HYDRO, value: Element.HYDRO },
+                              { name: Element.CRYO, value: Element.CRYO },
+                              { name: Element.ELECTRO, value: Element.ELECTRO },
+                            ]
+                          }
                           onChange={(value) =>
                             setForm((formValue) => {
                               formValue[content.index] = { ...formValue[content.index], [content.id]: value }

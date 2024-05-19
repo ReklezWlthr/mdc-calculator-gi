@@ -75,6 +75,11 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
     conditionals[Stats.HEAL] += 0.25
   }
 
+  // Anemo MC C2
+  if (_.includes(['10000005-504', '10000005-704'], character?.id) && char?.ascension >= 2) {
+    conditionals[Stats.ER] += 0.16
+  }
+
   // Xingqiu A4
   if (character?.id === '10000025' && char?.ascension >= 4) {
     conditionals[Stats.HYDRO_DMG] += 0.2
@@ -158,7 +163,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
     conditionals.DENDRO_F_DMG +=
       1.25 * base * (1 + conditionals?.SPREAD_DMG + calcAdditive(conditionals?.[Stats.EM] || 0))
   if (form.aggravate)
-    conditionals.DENDRO_F_DMG +=
+    conditionals.ELECTRO_F_DMG +=
       1.15 * base * (1 + conditionals?.SPREAD_DMG + calcAdditive(conditionals?.[Stats.EM] || 0))
 
   return conditionals

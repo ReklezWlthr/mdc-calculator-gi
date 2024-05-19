@@ -199,7 +199,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.SKILL,
         },
         {
-          name: 'Arkhe: Ousia',
+          name: 'Surging Blade DMG',
           value: [{ scaling: calcScaling(0.312, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.SKILL,

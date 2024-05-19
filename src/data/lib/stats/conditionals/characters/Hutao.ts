@@ -107,8 +107,8 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       type: 'toggle',
       id: 'hu_low',
       text: `Current HP < 50%`,
-      ...talents.a2,
-      show: a >= 2,
+      ...talents.a4,
+      show: a >= 4,
       default: true,
     },
     {

@@ -26,6 +26,7 @@ export interface IContent {
   max?: number
   min?: number
   debuff?: boolean
+  options?: { name: string; value: string }[]
 }
 
 export interface ITalentDisplay {

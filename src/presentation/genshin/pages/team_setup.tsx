@@ -20,7 +20,7 @@ import { Resonance } from '@src/data/db/genshin/characters'
 import { CharacterSelect } from '../components/character_select'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
-import { WeaponIcon } from '@src/domain/genshin/constant'
+import { TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
@@ -169,6 +169,10 @@ export const TeamSetup = observer(() => {
     value: (index + 1).toString(),
   }))
 
+  const codeName = _.includes(['PlayerBoy', 'PlayerGirl'], charData?.codeName)
+    ? TravelerIconName[charData.element]
+    : charData?.codeName
+
   return (
     <div className="flex justify-center w-full gap-5 p-5 overflow-y-auto">
       <div className="w-1/3">
@@ -207,9 +211,9 @@ export const TeamSetup = observer(() => {
             <TalentIcon
               talent={talent?.talents?.skill}
               element={charData?.element}
-              icon={`https://enka.network/ui/Skill_S_${charData?.codeName}${
-                charData?.codeName === 'Qin' ? '_02' : '_01'
-              }${charData?.codeName === 'Diluc' ? '_01' : ''}.png`}
+              icon={`https://enka.network/ui/Skill_S_${codeName}${codeName === 'Qin' ? '_02' : '_01'}${
+                codeName === 'Diluc' ? '_01' : ''
+              }.png`}
               size="w-9 h-9"
             />
             {talent?.upgrade?.skill && (
@@ -228,9 +232,7 @@ export const TeamSetup = observer(() => {
             <TalentIcon
               talent={talent?.talents?.burst}
               element={charData?.element}
-              icon={`https://enka.network/ui/Skill_E_${charData?.codeName}${
-                charData?.codeName === 'Ayaka' ? '' : '_01'
-              }.png`}
+              icon={`https://enka.network/ui/Skill_E_${codeName}${codeName === 'Ayaka' ? '' : '_01'}.png`}
               size="w-9 h-9"
             />
             {talent?.upgrade?.burst && (

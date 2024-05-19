@@ -12,12 +12,14 @@ export const Tooltip = observer(
     body,
     position = 'right',
     style,
+    containerStyle
   }: {
     children: React.ReactElement
     title: string
     body: React.ReactNode
     position?: TooltipPositionT
     style?: string
+    containerStyle?: string
   }) => {
     const [hovered, setHovered] = useState(false)
     const [ref, setRef] = useState<HTMLElement>(null)
@@ -63,7 +65,7 @@ export const Tooltip = observer(
     }, [position, hovered, ref])
 
     return (
-      <div className="relative text-sm text-gray">
+      <div className={classNames("relative text-sm text-gray", containerStyle)}>
         {React.cloneElement(children, {
           onMouseEnter: () => setHovered(true),
           onMouseLeave: () => setHovered(false),

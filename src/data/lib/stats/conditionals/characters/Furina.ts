@@ -98,7 +98,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
     },
     c4: {
       title: 'C4: "They Know Not Life, Who Dwelt in the Netherworld Not!"',
-      content: `When the Salon Members from Salon Solitaire hit an opponent, or the Singer of Many Waters restores HP to nearby active characters, Furina will restore 4 Energy. This effect can be triggered once every 5s.`,
+      content: `When the Salon Members from Salon Solitaire hit an opponent, or the Singer of Many Waters restores HP to nearby active characters, Furina will restore <span class="text-desc">4</span> Energy. This effect can be triggered once every <span class="text-desc">5</span>s.`,
     },
     c5: {
       title: 'C5: "His Name I Now Know, It Is...!"',
@@ -107,12 +107,12 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
     },
     c6: {
       title: 'C6: "Hear Me — Let Us Raise the Chalice of Love!"',
-      content: `When using Salon Solitaire, Furina gains "Center of Attention" for 10s.
+      content: `When using Salon Solitaire, Furina gains "Center of Attention" for <span class="text-desc">10</span>s.
       <br />Throughout the duration, Furina's Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to <span class="text-desc">18%</span> of Furina's max HP.
       <br />Throughout the duration, Furina's Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every <span class="text-desc">0.1</span>s after hitting opponents depending on her current Arkhe alignment:
       <br />
       <br />Arkhe: <b class="text-genshin-ousia">Ousia</b>
-      <br />Every 1s, all nearby characters in the party will be healed by <span class="text-desc">4%</span> of Furina's max HP, for a duration of <span class="text-desc">2.9</span>s. Triggering this effect again will extend its duration.
+      <br />Every <span class="text-desc">1</span>s, all nearby characters in the party will be healed by <span class="text-desc">4%</span> of Furina's max HP, for a duration of <span class="text-desc">2.9</span>s. Triggering this effect again will extend its duration.
       <br />Arkhe: <b class="text-genshin-pneuma">Pneuma</b>
       <br />This Normal Attack (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attack, or Plunging Attack ground impact DMG will be further increased by an amount equivalent to <span class="text-desc">25%</span> of Furina's max HP. When any of the attacks mentioned previously hit an opponent, all nearby characters in the party will consume <span class="text-desc">1%</span> of their current HP.
       <br />
@@ -200,7 +200,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: 'Arkhe: Adaptive',
+          name: 'Spiritbreath Thorn/Surging Blade DMG',
           value: [{ scaling: calcScaling(0.0946, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,

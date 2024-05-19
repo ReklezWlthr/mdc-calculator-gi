@@ -297,3 +297,11 @@ export const PropMap = {
   level: 4001,
   ascension: 1002,
 }
+
+export const TravelerIconName = {
+  [Element.ANEMO]: 'PlayerWind',
+  [Element.GEO]: 'PlayerRock',
+  [Element.ELECTRO]: 'PlayerElectric',
+  [Element.DENDRO]: 'PlayerGrass',
+  [Element.HYDRO]: 'PlayerWater',
+}

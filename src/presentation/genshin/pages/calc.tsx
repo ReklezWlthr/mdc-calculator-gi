@@ -1,7 +1,7 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { WeaponIcon } from '@src/domain/genshin/constant'
+import { Element, TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useEffect, useMemo, useState } from 'react'
@@ -16,6 +16,7 @@ import { calculateReaction, getTeamOutOfCombat } from '@src/core/utils/calculato
 import Reactions from '@src/data/lib/stats/conditionals/reactions'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import classNames from 'classnames'
+import { Tooltip } from '@src/presentation/components/tooltip'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore } = useStore()
@@ -58,6 +59,7 @@ export const Calculator = observer(({}: {}) => {
           Reactions(
             teamStore.characters[index].level,
             findCharacter(teamStore.characters[index].cId).element,
+            Element.PYRO,
             computedStats[index]
           )
         ),
@@ -102,7 +104,7 @@ export const Calculator = observer(({}: {}) => {
 
   const reactions = _.flatMap(
     _.map(teamStore.characters, (item, index) =>
-      Reactions(item.level, findCharacter(item.cId)?.element, computedStats[index])
+      Reactions(item.level, findCharacter(item.cId)?.element, form[index].swirl, computedStats[index])
     ),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
@@ -115,7 +117,14 @@ export const Calculator = observer(({}: {}) => {
   const mainReaction = _.filter(reactions, ['index', selected])
 
   const nilou = _.some(form, (item) => item.bountiful_core)
-  const transformative = _.filter(Transformative(char.level, charData?.element, computedStats[selected], nilou), 'show')
+  const transformative = _.filter(
+    Transformative(char.level, charData?.element, computedStats[selected], form[selected].swirl, nilou),
+    'show'
+  )
+
+  const codeName = _.includes(['PlayerBoy', 'PlayerGirl'], charData?.codeName)
+    ? TravelerIconName[charData.element]
+    : charData?.codeName
 
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
@@ -169,9 +178,9 @@ export const Calculator = observer(({}: {}) => {
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
             talent={main?.talents?.skill}
-            icon={`https://enka.network/ui/Skill_S_${charData?.codeName}${
-              charData?.codeName === 'Qin' ? '_02' : '_01'
-            }${charData?.codeName === 'Diluc' ? '_01' : ''}.png`}
+            icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'E' : 'S'}_${codeName}${
+              codeName === 'Qin' ? '_02' : '_01'
+            }${codeName === 'Diluc' ? '_01' : ''}.png`}
             element={charData.element}
             level={char.talents?.skill}
             upgraded={main?.upgrade?.skill}
@@ -183,8 +192,8 @@ export const Calculator = observer(({}: {}) => {
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
             talent={main?.talents?.burst}
-            icon={`https://enka.network/ui/Skill_E_${charData?.codeName}${
-              _.includes(['Ayaka', 'Ambor'], charData?.codeName) ? '' : '_01'
+            icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'S' : 'E'}_${codeName}${
+              _.includes(['Ayaka', 'Ambor'], codeName) ? '' : '_01'
             }.png`}
             element={charData.element}
             level={char.talents?.burst}
@@ -199,11 +208,33 @@ export const Calculator = observer(({}: {}) => {
           <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
             Transformative Reactions
           </p>
-          <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
+          <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark items-center">
             <p className="col-span-3">Reaction</p>
             <p className="col-span-2">Element</p>
             <p className="col-span-2">Base</p>
-            <p className="col-span-2">Amplified</p>
+            <div className="flex items-center justify-center col-span-2 gap-2 text-start">
+              <p>Amplified</p>
+              <Tooltip
+                title="Amplified Reaction"
+                body={
+                  <div className="space-y-1 font-normal text-start">
+                    <p>
+                      For Swirl Reactions, this represents the <b className="text-genshin-anemo">Swirl DMG</b> amplified
+                      by either Vaporize, Melt or Aggravate Reaction.
+                    </p>
+                    <p>
+                      For Bloom-related Reactions, this represents the{' '}
+                      <b className="text-genshin-dendro">Dendro Core</b>
+                      's Crit DMG caused by Nahida's C2.
+                    </p>
+                    <p>Burning Reactions can be affected by both.</p>
+                  </div>
+                }
+                style="w-[400px]"
+              >
+                <i className="text-sm fa-regular fa-question-circle" />
+              </Tooltip>
+            </div>
           </div>
           <div className="py-1 rounded-b-lg bg-primary-darker">
             {_.map(transformative, (item) => (
@@ -211,7 +242,11 @@ export const Calculator = observer(({}: {}) => {
                 <p className="col-span-3 font-bold">{item.name}</p>
                 <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
                 <p className="col-span-2 font-bold text-red">{_.round(item.dmg)}</p>
-                <p className="col-span-2">{_.round(item.amp * item.dmg) || '-'}</p>
+                <p className={classNames('col-span-2', { 'font-bold text-desc': item.amp > 1 || item.add || item.cd })}>
+                  {item.amp > 1 || item.add || item.cd
+                    ? _.round((item.dmg + item.add) * (1 + item.cd) * item.amp)
+                    : '-'}
+                </p>
               </div>
             ))}
           </div>
@@ -219,7 +254,7 @@ export const Calculator = observer(({}: {}) => {
       </div>
       <div className="flex flex-col items-center w-full gap-3">
         <ConditionalBlock
-          title="Amplifying Reactions"
+          title="Elemental Reactions"
           contents={_.filter(mainReaction, 'show')}
           form={form}
           setForm={setForm}

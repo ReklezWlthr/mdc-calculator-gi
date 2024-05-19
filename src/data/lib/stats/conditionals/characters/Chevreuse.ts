@@ -208,7 +208,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
           property: TalentProperty.HEAL,
         },
         {
-          name: 'Arkhe: Ousia',
+          name: 'Surging Blade DMG',
           value: [{ scaling: calcScaling(0.288, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,

@@ -1,5 +1,6 @@
 import Albedo from './characters/Albedo'
 import Alhaitham from './characters/Alhaitham'
+import Aloy from './characters/Aloy'
 import Amber from './characters/Amber'
 import Arlecchino from './characters/Arlecchino'
 import Ayaka from './characters/Ayaka'
@@ -62,6 +63,11 @@ import Shenhe from './characters/Shenhe'
 import Sucrose from './characters/Sucrose'
 import Thoma from './characters/Thoma'
 import Tighnari from './characters/Tighnari'
+import TravelerWind from './characters/TravelerAnemo'
+import TravelerElectric from './characters/TravelerELEctric'
+import TravelerGrass from './characters/TravelerGrass'
+import TravelerRock from './characters/TravelerRock'
+import TravelerWater from './characters/TravelerWater'
 import Venti from './characters/Venti'
 import Wanderer from './characters/Wanderer'
 import Wriothesley from './characters/Wriothesley'
@@ -82,6 +88,7 @@ export default [
   { id: '10000038', conditionals: Albedo },
   { id: '10000078', conditionals: Alhaitham },
   { id: '10000021', conditionals: Amber },
+  { id: '10000062', conditionals: Aloy },
   { id: '10000057', conditionals: Itto },
   { id: '10000096', conditionals: Arlecchino },
   { id: '10000082', conditionals: Baizhu },
@@ -158,6 +165,12 @@ export default [
   { id: '10000049', conditionals: Yoimiya },
   { id: '10000064', conditionals: Yunjin },
   { id: '10000030', conditionals: Zhongli },
+  // Travelers
+  { id: '10000005-504', conditionals: TravelerWind },
+  { id: '10000005-506', conditionals: TravelerRock },
+  { id: '10000005-507', conditionals: TravelerElectric },
+  { id: '10000005-508', conditionals: TravelerGrass },
+  { id: '10000005-503', conditionals: TravelerWater },
 ]
 
 export const ReverseConsList = [
@@ -179,5 +192,7 @@ export const ReverseConsList = [
   'Venti',
   'Wanderer',
   'Xiangling',
-  'Liuyun'
+  'Liuyun',
+  'PlayerRock',
+  'PlayerWind',
 ]
