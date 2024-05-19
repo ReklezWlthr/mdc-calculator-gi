@@ -86,7 +86,7 @@ export const ConsCircle = observer(
             <Tooltip
               title={talents?.c1?.title}
               body={<TooltipBody talent={talents?.c1} stats={stats} unlocked={cons >= 1} />}
-              style="w-[40vw]"
+              style="w-[30vw]"
             >
               <div className="rounded-full bg-primary-bg">
                 <img
@@ -105,7 +105,7 @@ export const ConsCircle = observer(
             <Tooltip
               title={talents?.c6?.title}
               body={<TooltipBody talent={talents?.c6} stats={stats} unlocked={cons >= 6} />}
-              style="w-[40vw]"
+              style="w-[30vw]"
             >
               <div className="rounded-full bg-primary-bg">
                 <img
@@ -122,7 +122,7 @@ export const ConsCircle = observer(
             <Tooltip
               title={talents?.c2?.title}
               body={<TooltipBody talent={talents?.c2} stats={stats} unlocked={cons >= 2} />}
-              style="w-[40vw]"
+              style="w-[30vw]"
             >
               <div className="rounded-full bg-primary-bg">
                 <img
@@ -202,7 +202,7 @@ export const ConsCircle = observer(
             <Tooltip
               title={talents?.c4?.title}
               body={<TooltipBody talent={talents?.c4} stats={stats} unlocked={cons >= 4} />}
-              style="w-[40vw]"
+              style="w-[30vw]"
             >
               <div className="rounded-full bg-primary-bg">
                 <img

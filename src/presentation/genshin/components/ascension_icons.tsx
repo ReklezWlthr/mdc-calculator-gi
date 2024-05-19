@@ -1,6 +1,6 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
-import { Tooltip } from '../components/tooltip'
-import { ElementIconColor, TooltipBody } from './components/cons_circle'
+import { Tooltip } from '../../components/tooltip'
+import { ElementIconColor, TooltipBody } from './cons_circle'
 import { ITalent } from '@src/domain/genshin/conditional'
 import classNames from 'classnames'
 import { Element } from '@src/domain/genshin/constant'
@@ -18,7 +18,7 @@ export const A1Icon = ({ talents, stats, ascension, codeName, element }: Ascensi
     <Tooltip
       title={talents?.a1?.title}
       body={<TooltipBody talent={talents?.a1} stats={stats} unlocked={ascension >= 1} />}
-      style="w-[40vw]"
+      style="w-[25vw]"
     >
       <img
         src={`https://enka.network/ui/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${
@@ -44,7 +44,7 @@ export const A4Icon = ({ talents, stats, ascension, codeName, element }: Ascensi
     <Tooltip
       title={talents?.a4?.title}
       body={<TooltipBody talent={talents?.a4} stats={stats} unlocked={ascension >= 4} />}
-      style="w-[40vw]"
+      style="w-[25vw]"
     >
       <img
         src={`https://enka.network/ui/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${

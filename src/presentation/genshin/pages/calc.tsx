@@ -17,7 +17,7 @@ import Reactions from '@src/data/lib/stats/conditionals/reactions'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import classNames from 'classnames'
 import { Tooltip } from '@src/presentation/components/tooltip'
-import { AscensionIcons } from '../ascension_icons'
+import { AscensionIcons } from '../components/ascension_icons'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore } = useStore()

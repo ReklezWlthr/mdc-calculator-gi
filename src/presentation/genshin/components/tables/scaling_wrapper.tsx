@@ -20,12 +20,14 @@ export const TalentIcon = observer(
     icon,
     element,
     size,
+    tooltipSize,
     crowned,
   }: {
     icon: string
     element: Element
     talent: { title: string; content: string; upgrade?: string[] }
     size?: string
+    tooltipSize?: string
     crowned?: boolean
   }) => {
     const iconColor = {
@@ -42,7 +44,7 @@ export const TalentIcon = observer(
       <Tooltip
         title={talent?.title}
         body={<p dangerouslySetInnerHTML={{ __html: talent?.content }} />}
-        style="w-[50vw]"
+        style={tooltipSize || 'w-[50vw]'}
       >
         <div className="relative group">
           {crowned && (
