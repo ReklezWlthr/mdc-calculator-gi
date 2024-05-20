@@ -88,15 +88,14 @@ export const MyCharacters = observer(() => {
     ? TravelerIconName[charData.element]
     : charData?.codeName
 
-  const defaultForm = {
+  const { params: form, setParams: setForm, resetParams: resetForm } = useParams({
     level: charUpgrade?.level || 1,
     ascension: charUpgrade?.ascension || 0,
     cons: charUpgrade?.cons || 0,
     normal: charUpgrade?.talents?.normal || 1,
     skill: charUpgrade?.talents?.skill || 1,
     burst: charUpgrade?.talents?.burst || 1,
-  }
-  const { params: form, setParams: setForm, resetParams: resetForm } = useParams(defaultForm)
+  })
 
   const maxTalentLevel = _.max([1, ((form.ascension || 0) - 1) * 2])
   const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({

@@ -20,6 +20,7 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { AscensionIcons } from '../components/ascension_icons'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { EnemyModal } from '../components/enemy_modal'
+import { ReactionTooltip } from '../components/tables/reaction_tooltip'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore, modalStore, calculatorStore } = useStore()
@@ -254,18 +255,23 @@ export const Calculator = observer(({}: {}) => {
             </div>
           </div>
           <div className="py-1 rounded-b-lg bg-primary-darker">
-            {_.map(transformative, (item) => (
-              <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
-                <p className="col-span-3 font-bold">{item.name}</p>
-                <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
-                <p className="col-span-2 font-bold text-red">{_.round(item.dmg)}</p>
-                <p className={classNames('col-span-2', { 'font-bold text-desc': item.amp > 1 || item.add || item.cd })}>
-                  {item.amp > 1 || item.add || item.cd
-                    ? _.round((item.dmg + item.add) * (1 + item.cd) * item.amp)
-                    : '-'}
-                </p>
-              </div>
-            ))}
+            {_.map(transformative, (item) => {
+              const base = item.base * item.mult * (1 + item.emBonus + item.dmg)
+              return (
+                <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
+                  <p className="col-span-3 font-bold">{item.name}</p>
+                  <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
+                  <div className="col-span-2 text-start">
+                    <ReactionTooltip {...item} />
+                  </div>
+                  <p
+                    className={classNames('col-span-2', { 'font-bold text-desc': item.amp > 1 || item.add || item.cd })}
+                  >
+                    {item.amp > 1 || item.add || item.cd ? _.round((base + item.add) * (1 + item.cd) * item.amp) : '-'}
+                  </p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

@@ -14,7 +14,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Swirl',
       element: swirl,
       show: element === Element.ANEMO,
-      dmg: 0.6 * base * (1 + emBonus + stat?.SWIRL_DMG),
+      base,
+      mult: 0.6,
+      emBonus,
+      dmg: stat?.SWIRL_DMG,
       amp: swirl === Element.PYRO ? stat?.PYRO_MULT || 1 : 1,
       cd: 0,
       add: swirl === Element.ELECTRO ? stat?.ELECTRO_F_DMG : 0,
@@ -23,7 +26,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Electro-Charged',
       element: Element.ELECTRO,
       show: _.includes([Element.HYDRO, Element.ELECTRO, Element.ANEMO], element),
-      dmg: 1.2 * base * (1 + emBonus + stat?.TASER_DMG),
+      base,
+      mult: 1.2,
+      emBonus,
+      dmg: stat?.TASER_DMG,
       cd: 0,
       amp: 1,
       add: 0,
@@ -32,7 +38,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Superconduct',
       element: Element.CRYO,
       show: _.includes([Element.CRYO, Element.ELECTRO, Element.ANEMO], element),
-      dmg: 0.5 * base * (1 + emBonus + stat?.SUPERCONDUCT_DMG),
+      base,
+      mult: 0.5,
+      emBonus,
+      dmg: stat?.SUPERCONDUCT_DMG,
       cd: 0,
       amp: 1,
       add: 0,
@@ -41,7 +50,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: nilou ? 'Bloom: Bountiful Core' : 'Bloom',
       element: Element.DENDRO,
       show: _.includes([Element.HYDRO, Element.DENDRO, Element.ANEMO], element),
-      dmg: 2 * base * (1 + emBonus + stat?.BLOOM_DMG),
+      base,
+      mult: 2,
+      emBonus,
+      dmg: stat?.BLOOM_DMG,
       cd: stat?.CORE_CD,
       amp: 1,
       add: 0,
@@ -50,7 +62,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Hyperbloom',
       element: Element.DENDRO,
       show: _.includes([Element.ELECTRO, Element.ANEMO], element),
-      dmg: 3 * base * (1 + emBonus + stat?.HYPERBLOOM_DMG),
+      base,
+      mult: 3,
+      emBonus,
+      dmg: stat?.HYPERBLOOM_DMG,
       cd: stat?.CORE_CD,
       amp: 1,
       add: 0,
@@ -59,7 +74,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Burgeon',
       element: Element.DENDRO,
       show: _.includes([Element.PYRO, Element.ANEMO], element),
-      dmg: 3 * base * (1 + emBonus + stat?.BURGEON_DMG),
+      base,
+      mult: 3,
+      emBonus,
+      dmg: stat?.BURGEON_DMG,
       cd: stat?.CORE_CD,
       amp: 1,
       add: 0,
@@ -68,7 +86,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Burning',
       element: Element.PYRO,
       show: _.includes([Element.DENDRO, Element.PYRO, Element.ANEMO], element),
-      dmg: 0.25 * base * (1 + emBonus + stat?.BURNING_DMG),
+      base,
+      mult: 0.25,
+      emBonus,
+      dmg: stat?.BURNING_DMG,
       cd: stat?.CORE_CD || 0,
       amp: stat?.PYRO_MULT || 1,
       add: 0,
@@ -77,7 +98,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Overloaded',
       element: Element.PYRO,
       show: _.includes([Element.PYRO, Element.ELECTRO, Element.ANEMO], element),
-      dmg: 2 * base * (1 + emBonus + stat?.OVERLOAD_DMG),
+      base,
+      mult: 2,
+      emBonus,
+      dmg: stat?.OVERLOAD_DMG,
       cd: 0,
       amp: 1,
       add: 0,
@@ -86,7 +110,10 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Shattered',
       element: Element.PHYSICAL,
       show: true,
-      dmg: 1.5 * base * (1 + emBonus + stat?.SHATTER_DMG),
+      base,
+      mult: 1.5,
+      emBonus,
+      dmg: stat?.SHATTER_DMG,
       cd: 0,
       amp: 1,
       add: 0,
@@ -95,3 +122,16 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
 }
 
 export default Transformative
+
+export type TransformativeT = {
+  name: string
+  element: Element
+  show: boolean
+  base: number
+  mult: number
+  emBonus: number
+  dmg: number
+  amp: number
+  cd: number
+  add: number
+}
