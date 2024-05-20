@@ -66,6 +66,8 @@ export const DefaultAccount = [
 
 export interface CharacterStoreType {
   characters: ICharStore[]
+  selected: string
+  loading: boolean
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   addChar: (char: ICharStore) => boolean
@@ -77,10 +79,14 @@ export interface CharacterStoreType {
 
 export class CharacterStore {
   characters: ICharStore[]
+  selected: string
+  loading: boolean
   hydrated: boolean = false
 
   constructor() {
     this.characters = DefaultAccount
+    this.selected = ''
+    this.loading = true
 
     makeAutoObservable(this)
   }

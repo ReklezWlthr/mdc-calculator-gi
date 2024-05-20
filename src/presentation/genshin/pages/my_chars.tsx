@@ -32,6 +32,7 @@ export const MyCharacters = observer(() => {
     element: [],
     weapon: [],
   })
+  const { selected } = charStore
 
   const filteredChar = useMemo(
     () =>
@@ -51,7 +52,6 @@ export const MyCharacters = observer(() => {
 
   const [loading, setLoading] = useState(true)
   const [edit, setEdit] = useState(false)
-  const [selected, setSelected] = useState('')
   const charData = findCharacter(selected)
   const charUpgrade = _.find(charStore.characters, ['cId', selected])
   const charCond = _.find(conditionals, ['id', charData?.id])?.conditionals(
@@ -135,7 +135,7 @@ export const MyCharacters = observer(() => {
                     owned ? 'opacity-100' : 'opacity-30'
                   )}
                   onClick={() => {
-                    setSelected(item.id)
+                    charStore.setValue('selected', item.id)
                     setEdit(false)
                     resetForm()
                     if (item.id !== selected) setLoading(true)
