@@ -33,9 +33,9 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
     skill: {
       title: `Starfrost Swirl`,
       content: `Mika uses his crossbow to attack, granting all nearby characters in your party Soulwind. When characters in the Soulwind state are on the field, their ATK SPD will be increased.
-      <br />Will take effect in different ways if Tapped or Held.
+      <br />Will take effect in different ways if Pressed or Held.
       <br />
-      <br /><b>Tap</b>
+      <br /><b>Press</b>
       <br />Fires a Flowfrost Arrow that can pierce through opponents, dealing <b class="text-genshin-cryo">Cryo DMG</b> to enemies it comes into contact with.
       <br />
       <br /><b>Hold</b>

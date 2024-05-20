@@ -42,7 +42,7 @@ export interface ICharStoreBase {
 }
 
 export interface ICharStore extends ICharStoreBase {
-  id: string
+  // id: string
 }
 
 export interface ITeamChar extends ICharStoreBase {

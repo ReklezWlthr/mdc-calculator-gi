@@ -128,7 +128,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
               src={`https://enka.network/ui/${weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD]}${
                 ascension >= 2 ? '_Awaken' : ''
               }.png`}
-              className="pt-1 border rounded-lg bg-primary-darker border-primary-border"
+              className="w-full pt-1 border rounded-lg bg-primary-darker border-primary-border aspect-square"
             />
             <RarityGauge rarity={rarity} />
           </div>

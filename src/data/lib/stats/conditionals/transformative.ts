@@ -11,6 +11,15 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
 
   return [
     {
+      name: 'Swirl',
+      element: swirl,
+      show: element === Element.ANEMO,
+      dmg: 0.6 * base * (1 + emBonus + stat?.SWIRL_DMG),
+      amp: swirl === Element.PYRO ? stat?.PYRO_MULT || 1 : 1,
+      cd: 0,
+      add: swirl === Element.ELECTRO ? stat?.ELECTRO_F_DMG : 0,
+    },
+    {
       name: 'Electro-Charged',
       element: Element.ELECTRO,
       show: _.includes([Element.HYDRO, Element.ELECTRO, Element.ANEMO], element),
@@ -65,15 +74,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 2 * base * (1 + emBonus + stat?.OVERLOAD_DMG),
       cd: 0,
       amp: 1,
-    },
-    {
-      name: 'Swirl',
-      element: swirl,
-      show: element === Element.ANEMO,
-      dmg: 0.6 * base * (1 + emBonus + stat?.SWIRL_DMG),
-      amp: swirl === Element.PYRO ? stat?.PYRO_MULT || 1 : 1,
-      cd: 0,
-      add: swirl === Element.ELECTRO ? stat?.ELECTRO_F_DMG : 0,
     },
     {
       name: 'Shattered',

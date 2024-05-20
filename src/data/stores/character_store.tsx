@@ -17,6 +17,53 @@ export const DefaultCharacterStore = {
   },
 }
 
+export const DefaultAccount = [
+  {
+    level: 1,
+    ascension: 0,
+    cons: 0,
+    cId: '10000005-504',
+    talents: {
+      normal: 1,
+      skill: 1,
+      burst: 1,
+    },
+  },
+  {
+    level: 1,
+    ascension: 0,
+    cons: 0,
+    cId: '10000015',
+    talents: {
+      normal: 1,
+      skill: 1,
+      burst: 1,
+    },
+  },
+  {
+    level: 1,
+    ascension: 0,
+    cons: 0,
+    cId: '10000006',
+    talents: {
+      normal: 1,
+      skill: 1,
+      burst: 1,
+    },
+  },
+  {
+    level: 1,
+    ascension: 0,
+    cons: 0,
+    cId: '10000021',
+    talents: {
+      normal: 1,
+      skill: 1,
+      burst: 1,
+    },
+  },
+]
+
 export interface CharacterStoreType {
   characters: ICharStore[]
   hydrated: boolean
@@ -33,7 +80,7 @@ export class CharacterStore {
   hydrated: boolean = false
 
   constructor() {
-    this.characters = []
+    this.characters = DefaultAccount
 
     makeAutoObservable(this)
   }
@@ -50,14 +97,14 @@ export class CharacterStore {
 
   editChar = (id: string, char: ICharStore) => {
     if (!char || !id) return false
-    const index = _.findIndex(this.characters, ['id', id])
+    const index = _.findIndex(this.characters, ['cId', id])
     this.characters[index] = char
     return true
   }
 
   deleteChar = (id: string) => {
     if (!id) return false
-    const index = _.findIndex(this.characters, ['id', id])
+    const index = _.findIndex(this.characters, ['cId', id])
     this.characters.splice(index, 1)
     this.characters = [...this.characters]
     return true
@@ -71,6 +118,6 @@ export class CharacterStore {
   hydrate = (data: CharacterStoreType) => {
     if (!data) return
 
-    this.characters = data.characters || Array(4)
+    this.characters = data.characters || DefaultAccount
   }
 }

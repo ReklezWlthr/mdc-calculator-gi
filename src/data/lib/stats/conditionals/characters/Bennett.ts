@@ -58,7 +58,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       content: `Decreases Passion Overload's CD by <span class="text-desc">20%</span>.`,
     },
     a4: {
-      title: `A4: Lightning Storm	`,
+      title: `A4: Fearnaught`,
       content: `When inside Fantastic Voyage's circle, Passion Overload's CD is decreased by <span class="text-desc">50%</span> and Bennett cannot be launched by this skill's explosion.`,
     },
     util: {

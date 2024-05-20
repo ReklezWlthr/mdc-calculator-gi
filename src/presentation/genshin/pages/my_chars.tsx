@@ -2,11 +2,8 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
-import { BuildBlock } from '../components/build_block'
-import { WeaponBlock } from '../components/weapon_block'
-import { useMemo, useState } from 'react'
-import { ArtifactBlock } from '../components/artifact_block'
-import { findCharacter, findWeapon } from '@src/core/utils/finder'
+import { useCallback, useMemo, useState } from 'react'
+import { findCharacter } from '@src/core/utils/finder'
 import { Characters } from '@src/data/db/genshin/characters'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
@@ -14,16 +11,19 @@ import { ConsCircle, ElementIconColor, TooltipBody } from '../components/cons_ci
 import conditionals, { UtilTalentOverride } from '@src/data/lib/stats/conditionals/conditionals'
 import { A1Icon, A4Icon } from '../components/ascension_icons'
 import { Tooltip } from '@src/presentation/components/tooltip'
-import Image from 'next/image'
-import { calculateBase, calculateOutOfCombat } from '@src/core/utils/calculator'
-import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
-import { DefaultCharacterStore } from '@src/data/stores/character_store'
-import { DefaultCharacter, DefaultWeapon } from '@src/data/stores/team_store'
-import { getBaseStat } from '@src/core/utils/data_format'
+import { findBaseLevel, findMaxLevel, getBaseStat } from '@src/core/utils/data_format'
 import { AscensionGrowth } from '@src/domain/genshin/scaling'
-import { Stats, TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
+import {
+  AscensionOptions,
+  ConstellationOptions,
+  Stats,
+  TravelerIconName,
+  WeaponIcon,
+} from '@src/domain/genshin/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
+import { SelectInput } from '@src/presentation/components/inputs/select_input'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
 
 export const MyCharacters = observer(() => {
   const { teamStore, modalStore, charStore } = useStore()
@@ -50,22 +50,75 @@ export const MyCharacters = observer(() => {
   )
 
   const [loading, setLoading] = useState(true)
+  const [edit, setEdit] = useState(false)
   const [selected, setSelected] = useState('')
   const charData = findCharacter(selected)
+  const charUpgrade = _.find(charStore.characters, ['cId', selected])
   const charCond = _.find(conditionals, ['id', charData?.id])?.conditionals(
-    0,
-    0,
-    { normal: 1, skill: 1, burst: 1 },
+    charUpgrade?.cons || 0,
+    charUpgrade?.ascension || 0,
+    charUpgrade?.talents || { normal: 1, skill: 1, burst: 1 },
     teamStore.characters
   )
-  const baseAtk = getBaseStat(charData?.stat?.baseAtk, 1, charData?.stat?.ascHp, 0, charData?.rarity)
-  const baseHp = getBaseStat(charData?.stat?.baseHp, 1, charData?.stat?.ascHp, 0, charData?.rarity)
-  const baseDef = getBaseStat(charData?.stat?.baseDef, 1, charData?.stat?.ascHp, 0, charData?.rarity)
-  const asc = _.max([0, 0 - 2]) * AscensionGrowth[charData?.stat?.ascStat]?.[charData?.rarity - 4]
+  const baseAtk = getBaseStat(
+    charData?.stat?.baseAtk,
+    charUpgrade?.level,
+    charData?.stat?.ascHp,
+    charUpgrade?.ascension,
+    charData?.rarity
+  )
+  const baseHp = getBaseStat(
+    charData?.stat?.baseHp,
+    charUpgrade?.level,
+    charData?.stat?.ascHp,
+    charUpgrade?.ascension,
+    charData?.rarity
+  )
+  const baseDef = getBaseStat(
+    charData?.stat?.baseDef,
+    charUpgrade?.level,
+    charData?.stat?.ascHp,
+    charUpgrade?.ascension,
+    charData?.rarity
+  )
+  const asc =
+    _.max([0, (charUpgrade?.ascension || 0) - 2]) * AscensionGrowth[charData?.stat?.ascStat]?.[charData?.rarity - 4]
 
   const codeName = _.includes(['PlayerBoy', 'PlayerGirl'], charData?.codeName)
     ? TravelerIconName[charData.element]
     : charData?.codeName
+
+  const defaultForm = {
+    level: charUpgrade?.level || 1,
+    ascension: charUpgrade?.ascension || 0,
+    cons: charUpgrade?.cons || 0,
+    normal: charUpgrade?.talents?.normal || 1,
+    skill: charUpgrade?.talents?.skill || 1,
+    burst: charUpgrade?.talents?.burst || 1,
+  }
+  const { params: form, setParams: setForm, resetParams: resetForm } = useParams(defaultForm)
+
+  const maxTalentLevel = _.max([1, ((form.ascension || 0) - 1) * 2])
+  const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
+    name: (index + 1).toString(),
+    value: (index + 1).toString(),
+  }))
+
+  const onSave = useCallback(() => {
+    const data = {
+      cId: charData.id,
+      cons: form.cons,
+      ascension: form.ascension,
+      level: form.level,
+      talents: { normal: form.normal, skill: form.skill, burst: form.burst },
+    }
+    if (charUpgrade) {
+      charStore.editChar(charUpgrade.cId, data)
+    } else {
+      charStore.addChar(data)
+    }
+    setEdit(false)
+  }, [form, charUpgrade, charData])
 
   return (
     <div className="flex flex-col items-center w-full gap-5 p-5 overflow-y-auto">
@@ -74,14 +127,17 @@ export const MyCharacters = observer(() => {
           <p className="text-2xl font-bold text-white">My Characters</p>
           <div className="grid grid-cols-4 gap-4 rounded-lg hideScrollbar">
             {_.map(filteredChar, (item) => {
+              const owned = _.includes(_.map(charStore.characters, 'cId'), item.id)
               return (
                 <div
                   className={classNames(
-                    'w-full text-xs text-white duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border',
-                    'opacity-30'
+                    'w-full text-xs text-white duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95',
+                    owned ? 'opacity-100' : 'opacity-30'
                   )}
                   onClick={() => {
                     setSelected(item.id)
+                    setEdit(false)
+                    resetForm()
                     if (item.id !== selected) setLoading(true)
                   }}
                   key={item.name}
@@ -91,6 +147,11 @@ export const MyCharacters = observer(() => {
                       src={`https://cdn.wanderer.moe/genshin-impact/elements/${item.element.toLowerCase()}.png`}
                       className="absolute w-6 h-6 top-1 left-1"
                     />
+                    {owned && (
+                      <div className="absolute px-1.5 py-1 rounded-full top-1 right-1 bg-primary-light font-bold">
+                        C{charUpgrade?.cons || 0}
+                      </div>
+                    )}
                     <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                       <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
                     </div>
@@ -109,14 +170,17 @@ export const MyCharacters = observer(() => {
           <div className="w-full h-full p-2 text-white hideScrollbar">
             <div className="flex w-full gap-2">
               <div
-                className={classNames('items-center justify-center w-96 h-96 shrink-0', loading ? 'flex' : 'hidden')}
+                className={classNames(
+                  'items-center justify-center w-1/2 aspect-square shrink-0',
+                  loading ? 'flex' : 'hidden'
+                )}
               >
                 <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
               </div>
               <img
                 src={`https://enka.network/ui/UI_Gacha_AvatarImg_${charData.codeName}.png`}
                 className={classNames(
-                  'object-cover rounded-full w-96 h-96 bg-opacity-5 shrink-0',
+                  'object-cover rounded-full w-1/2 h-fit aspect-square bg-opacity-5 shrink-0',
                   ElementIconColor[charData?.element],
                   loading ? 'hidden' : 'block'
                 )}
@@ -125,121 +189,228 @@ export const MyCharacters = observer(() => {
                 onLoad={() => setLoading(false)}
               />
               <div className="w-full">
-                <div className="flex flex-col items-end w-full px-10 pt-2 text-sm gap-y-3">
-                  <div className='flex flex-col items-end w-full gap-y-2'>
-                    <p className="text-5xl font-bold text-end">{charData.name}</p>
-                    <div className="w-fit">
-                      <RarityGauge rarity={charData?.rarity} textSize="text-2xl" />
+                <div className="flex flex-col items-end w-full pt-2 pr-10 text-sm gap-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="flex flex-col items-end w-full">
+                      <p className="text-5xl font-bold text-end">{charData.name}</p>
+                      <div className="w-fit">
+                        <RarityGauge rarity={charData?.rarity} textSize="text-2xl" />
+                      </div>
                     </div>
+                    {charUpgrade && (
+                      <p className="px-2 py-0.5 text-lg font-bold rounded-lg bg-primary">{`C${charUpgrade.cons}`}</p>
+                    )}
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex items-center gap-3">
                     <div className="flex gap-0.5">
-                      <div className="w-16 h-16 p-1 rounded-full bg-primary" title={charData?.weapon}>
+                      <div className="p-1 rounded-full w-14 h-14 bg-primary" title={charData?.weapon}>
                         <img src={`https://enka.network/ui/${WeaponIcon[charData?.weapon]}`} />
                       </div>
                     </div>
                     <div className="flex gap-0.5">
-                      <div className="w-16 h-16 p-2 rounded-full bg-primary" title={charData?.element}>
+                      <div className="p-2 rounded-full w-14 h-14 bg-primary" title={charData?.element}>
                         <img
                           src={`https://cdn.wanderer.moe/genshin-impact/elements/${charData?.element?.toLowerCase()}.png`}
                         />
                       </div>
                     </div>
-                  </div>
-                  <div className="w-4/5 px-4 py-3 space-y-2 rounded-lg bg-primary-dark">
-                    <div className="grid grid-cols-3 gap-3">
-                      <p className="col-span-2 font-bold">Base HP</p>
-                      <p className="text-center text-gray">{_.round(baseHp).toLocaleString()}</p>
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      <p className="col-span-2 font-bold">Base ATK</p>
-                      <p className="text-center text-gray">{_.round(baseAtk).toLocaleString()}</p>
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      <p className="col-span-2 font-bold">Base ATK</p>
-                      <p className="text-center text-gray">{_.round(baseDef).toLocaleString()}</p>
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      <p className="col-span-2 font-bold">{charData?.stat?.ascStat}</p>
-                      <p className="text-center text-gray">
-                        {charData?.stat?.ascStat === Stats.EM ? asc.toLocaleString() : toPercentage(asc)}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-6">
-                    <p className="font-bold">Talents</p>
-                    <div className="relative">
-                      <TalentIcon
-                        talent={charCond?.talents?.normal}
-                        element={charData?.element}
-                        icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
-                        size="w-12 h-12"
-                        tooltipSize="w-[35vw] text-xs"
-                      />
-                      {charCond?.upgrade?.normal && (
-                        <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
-                          +3
-                        </div>
+                    <i
+                      className={classNames(
+                        'flex items-center justify-center w-12 h-12 text-xl duration-200 rounded-full cursor-pointer fa-solid hover:bg-primary-light shrink-0 text-gray',
+                        edit ? 'fa-times' : 'fa-pen'
                       )}
-                    </div>
-                    <div className="relative">
-                      <TalentIcon
-                        talent={charCond?.talents?.skill}
-                        element={charData?.element}
-                        icon={`https://enka.network/ui/Skill_S_${codeName}${codeName === 'Qin' ? '_02' : '_01'}${
-                          codeName === 'Diluc' ? '_01' : ''
-                        }.png`}
-                        size="w-12 h-12"
-                        tooltipSize="w-[35vw] text-xs"
-                      />
-                      {charCond?.upgrade?.normal && (
-                        <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
-                          +3
-                        </div>
-                      )}
-                    </div>
-                    <div className="relative">
-                      <TalentIcon
-                        talent={charCond?.talents?.burst}
-                        element={charData?.element}
-                        icon={`https://enka.network/ui/Skill_E_${codeName}${codeName === 'Ayaka' ? '' : '_01'}.png`}
-                        size="w-12 h-12"
-                        tooltipSize="w-[35vw] text-xs"
-                      />
-                      {charCond?.upgrade?.normal && (
-                        <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
-                          +3
-                        </div>
-                      )}
-                    </div>
+                      title="Edit Character"
+                      onClick={() => {
+                        setEdit((prev) => !prev)
+                        resetForm()
+                      }}
+                    />
                   </div>
+                  {edit ? (
+                    <div className="w-4/5 px-4 py-2 space-y-2 border rounded-lg bg-primary-dark border-primary-border">
+                      <p className="text-base font-bold">Edit Character</p>
+                      <div className="flex items-center w-full gap-2">
+                        <p>Level</p>
+                        <SelectInput
+                          onChange={(value) => setForm({ level: parseInt(value) })}
+                          options={_.map(
+                            Array(findMaxLevel(form.ascension) - findBaseLevel(form.ascension) + 1 || 1).fill(
+                              findBaseLevel(form.ascension)
+                            ),
+                            (item, index) => ({
+                              name: _.toString(item + index),
+                              value: _.toString(item + index),
+                            })
+                          )}
+                          value={form.level?.toString()}
+                          style="w-full"
+                        />
+                        <SelectInput
+                          onChange={(value) => {
+                            const max = _.max([1, (parseInt(value) - 1) * 2])
+                            setForm({ ascension: parseInt(value), level: findBaseLevel(parseInt(value) || 0) })
+                            if (form.normal > max) setForm({ normal: max })
+                            if (form.skill > max) setForm({ skill: max })
+                            if (form.burst > max) setForm({ burst: max })
+                          }}
+                          options={AscensionOptions}
+                          value={form.ascension?.toString()}
+                          style="w-fit"
+                        />
+                        <SelectInput
+                          onChange={(value) => setForm({ cons: parseInt(value) })}
+                          options={ConstellationOptions}
+                          value={form.cons?.toString()}
+                          style="w-fit"
+                          disabled={charData?.id === '10000062'}
+                        />
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <p>Normal Attack: </p>
+                        <SelectInput
+                          value={form.normal?.toString()}
+                          onChange={(value) => setForm({ normal: parseInt(value) })}
+                          options={talentLevels}
+                          style="w-14"
+                        />
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <p>Elemental Skill: </p>
+                        <SelectInput
+                          value={form.skill?.toString()}
+                          onChange={(value) => setForm({ skill: parseInt(value) })}
+                          options={talentLevels}
+                          style="w-14"
+                        />
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <p>Elemental Burst: </p>
+                        <SelectInput
+                          value={form.burst?.toString()}
+                          onChange={(value) => setForm({ burst: parseInt(value) })}
+                          options={talentLevels}
+                          style="w-14"
+                        />
+                      </div>
+                      <div className="flex justify-end w-full">
+                        <PrimaryButton onClick={onSave} title="Save" />
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="w-4/5 px-4 py-3 space-y-2 rounded-lg bg-primary-dark">
+                        <div className="grid grid-cols-3 gap-3">
+                          <p className="col-span-2 font-bold">Base HP</p>
+                          <p className="text-center text-gray">{_.round(baseHp).toLocaleString()}</p>
+                        </div>
+                        <div className="grid grid-cols-3 gap-3">
+                          <p className="col-span-2 font-bold">Base ATK</p>
+                          <p className="text-center text-gray">{_.round(baseAtk).toLocaleString()}</p>
+                        </div>
+                        <div className="grid grid-cols-3 gap-3">
+                          <p className="col-span-2 font-bold">Base DEF</p>
+                          <p className="text-center text-gray">{_.round(baseDef).toLocaleString()}</p>
+                        </div>
+                        <div className="grid grid-cols-3 gap-3">
+                          <p className="col-span-2 font-bold">{charData?.stat?.ascStat}</p>
+                          <p className="text-center text-gray">
+                            {charData?.stat?.ascStat === Stats.EM ? asc.toLocaleString() : toPercentage(asc)}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-6">
+                        <p className="font-bold">Talents</p>
+                        <div className="relative space-y-2">
+                          <TalentIcon
+                            talent={charCond?.talents?.normal}
+                            element={charData?.element}
+                            icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
+                            size="w-10 h-10"
+                            tooltipSize="w-[34vw]"
+                          />
+                          {charUpgrade?.talents?.normal && (
+                            <div
+                              className={classNames(
+                                'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
+                                charCond?.upgrade?.normal ? 'bg-cyan-600' : 'bg-primary-light'
+                              )}
+                            >
+                              {charUpgrade?.talents?.normal + (charCond?.upgrade?.normal ? 3 : 0)}
+                            </div>
+                          )}
+                        </div>
+                        <div className="relative space-y-2">
+                          <TalentIcon
+                            talent={charCond?.talents?.skill}
+                            element={charData?.element}
+                            icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'E' : 'S'}_${codeName}${
+                              codeName === 'Qin' ? '_02' : '_01'
+                            }${codeName === 'Diluc' ? '_01' : ''}.png`}
+                            size="w-10 h-10"
+                            tooltipSize="w-[35vw]"
+                          />
+                          {charUpgrade?.talents?.skill && (
+                            <div
+                              className={classNames(
+                                'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
+                                charCond?.upgrade?.skill ? 'bg-cyan-600' : 'bg-primary-light'
+                              )}
+                            >
+                              {charUpgrade?.talents?.skill + (charCond?.upgrade?.skill ? 3 : 0)}
+                            </div>
+                          )}
+                        </div>
+                        <div className="relative space-y-2">
+                          <TalentIcon
+                            talent={charCond?.talents?.burst}
+                            element={charData?.element}
+                            icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'S' : 'E'}_${codeName}${
+                              _.includes(['Ayaka', 'Ambor'], codeName) ? '' : '_01'
+                            }.png`}
+                            size="w-10 h-10"
+                            tooltipSize="w-[35vw]"
+                          />
+                          {charUpgrade?.talents?.burst && (
+                            <div
+                              className={classNames(
+                                'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
+                                charCond?.upgrade?.burst ? 'bg-cyan-600' : 'bg-primary-light'
+                              )}
+                            >
+                              {charUpgrade?.talents?.burst + (charCond?.upgrade?.burst ? 3 : 0)}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
             <p className="my-5 text-xl font-bold">✦ Constellations & Passives ✦</p>
             <div className="flex items-center gap-4">
               <ConsCircle
-                codeName={charData.codeName}
+                codeName={codeName}
                 talents={charCond?.talents}
-                cons={0}
+                cons={charUpgrade?.cons}
                 element={charData.element}
                 name={charData.constellation}
               />
               <div className="flex flex-col text-sm gap-y-5">
                 <div className="flex items-center gap-3">
                   <A1Icon
-                    codeName={charData.codeName}
+                    codeName={codeName}
                     talents={charCond?.talents}
-                    ascension={0}
+                    ascension={charUpgrade?.ascension}
                     element={charData.element}
                   />
                   <p>{charCond?.talents?.a1?.title}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <A4Icon
-                    codeName={charData.codeName}
+                    codeName={codeName}
                     talents={charCond?.talents}
-                    ascension={0}
+                    ascension={charUpgrade?.ascension}
                     element={charData.element}
                   />
                   <p>{charCond?.talents?.a4?.title}</p>

@@ -32,7 +32,13 @@ export const isLevelInRange = (ascension: number, level: number) => {
   return level >= low && level <= high
 }
 
-export const getBaseStat = (base: number, level: number, ascBonus: number, ascension: number, rarity: number) => {
+export const getBaseStat = (
+  base: number,
+  level: number = 1,
+  ascBonus: number,
+  ascension: number = 0,
+  rarity: number
+) => {
   if (rarity !== 4 && rarity !== 5) return 0
   const scaling = rarity === 4 ? FourStarScaling : FiveStarScaling
   return base * scaling[level - 1] + ascBonus * AscensionScaling[ascension]

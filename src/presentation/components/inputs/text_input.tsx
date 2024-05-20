@@ -36,13 +36,17 @@ export const TextInput = (props: TextInputProps) => {
         min={props.min}
         value={props?.value}
         disabled={props.disabled}
+        onFocus={(e) => e.target.select()}
         onChange={(e) => {
           if (props?.disabled) return
           if (props?.type === 'number' && !e.target?.value?.match(/\d*/)) return
+          if (props?.type === 'number' && props.max && parseFloat(e.target?.value) > props.max)
+            return props.onChange(props.max.toString())
+          if (props?.type === 'number' && props.min && parseFloat(e.target?.value) < props.min)
+            return props.onChange(props.min.toString())
           props.onChange(e.target?.value)
         }}
         placeholder={props.placeholder}
-        data-cy={props['data-cy']}
         className={classNames(
           'w-full outline-none placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent text-sm',
           {

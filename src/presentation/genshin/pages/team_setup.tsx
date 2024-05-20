@@ -211,9 +211,9 @@ export const TeamSetup = observer(() => {
             <TalentIcon
               talent={talent?.talents?.skill}
               element={charData?.element}
-              icon={`https://enka.network/ui/Skill_S_${codeName}${codeName === 'Qin' ? '_02' : '_01'}${
-                codeName === 'Diluc' ? '_01' : ''
-              }.png`}
+              icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'E' : 'S'}_${codeName}${
+                codeName === 'Qin' ? '_02' : '_01'
+              }${codeName === 'Diluc' ? '_01' : ''}.png`}
               size="w-9 h-9"
             />
             {talent?.upgrade?.skill && (
@@ -232,7 +232,9 @@ export const TeamSetup = observer(() => {
             <TalentIcon
               talent={talent?.talents?.burst}
               element={charData?.element}
-              icon={`https://enka.network/ui/Skill_E_${codeName}${codeName === 'Ayaka' ? '' : '_01'}.png`}
+              icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'S' : 'E'}_${codeName}${
+                _.includes(['Ayaka', 'Ambor'], codeName) ? '' : '_01'
+              }.png`}
               size="w-9 h-9"
             />
             {talent?.upgrade?.burst && (

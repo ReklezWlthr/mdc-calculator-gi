@@ -56,6 +56,12 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
     a4: {
       title: `A4: Lost Wisdom of the Seven Caverns`,
       content: `When characters affected by The Wind's Secret Ways' Prayerful Wind's Gift deal <b class="text-genshin-anemo">Anemo DMG</b> using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on <span class="text-desc">32%</span> of Faruzan's Base ATK. <span class="text-desc">1</span> instance of Hurricane Guard can occur once every <span class="text-desc">0.8</span>s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.`,
+      value: [
+        {
+          name: 'Hurricane Guard DMG',
+          value: { stat: Stats.ATK, scaling: (atk) => _.round(atk * 0.32).toLocaleString() },
+        },
+      ],
     },
     util: {
       title: `Tomes Light the Path`,
@@ -171,7 +177,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
         },
         {
           name: 'Pressurized Collapse Vortex DMG',
-          value: [{ scaling: calcScaling(1.08, normal, 'elemental', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.08, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.SKILL,
           cd: c >= 6 && form.faruzan_burst ? 0.4 : 0,

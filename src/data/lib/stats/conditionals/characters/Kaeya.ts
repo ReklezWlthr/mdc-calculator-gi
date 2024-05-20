@@ -48,6 +48,11 @@ const Kaeya = (c: number, a: number, t: ITalentLevel) => {
       content: `Opponents <b class="text-genshin-cryo">Frozen</b> by Frostgnaw will drop additional Elemental Particles.
       <br />Frostgnaw may only produce a maximum of <span class="text-desc">2</span> additional Elemental Particles per use.`,
     },
+    util: {
+      title: `Hidden Strength`,
+      content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
+      <br />Not stackable with Passive Talents that provide the exact same effects.`,
+    },
     c1: {
       title: `C1: Excellent Blood`,
       content: `The CRIT Rate of Kaeya's Normal and Charge Attacks against opponents affected by <b class="text-genshin-cryo">Cryo</b> is increased by <span class="text-desc">15%</span>.`,

@@ -70,7 +70,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     util: {
-      title: `The Balemoon ALone May Know`,
+      title: `The Balemoon Alone May Know`,
       content: `While in combat, Arlecchino gains a <span class="text-desc">40%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and can only be healed through Balemoon Rising.`,
     },
     c1: {

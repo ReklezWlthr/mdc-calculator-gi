@@ -219,6 +219,7 @@ export const UtilTalentOverride = {
   Mika: 'Collect_Local_Mengde',
   Feiyan: 'Collect_Local_Liyue',
   Qiqi: 'Collect_Local_Liyue',
+  Ningguang: 'Collect_Ore',
   Momoka: 'S_Aloy_07',
 }
 

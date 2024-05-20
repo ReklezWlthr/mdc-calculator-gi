@@ -29,7 +29,7 @@ export const useLocalUpdater = (game: string) => {
         })
       )
     }
-  }, [...teamStore.characters, artifactStore.artifacts, buildStore.builds])
+  }, [...teamStore.characters, artifactStore.artifacts, buildStore.builds, charStore.characters])
 
   useEffect(() => {
     const data = localStorage.getItem(key)

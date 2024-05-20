@@ -277,7 +277,7 @@ export const Calculator = observer(({}: {}) => {
         <div className="w-[252px]">
           <AscensionIcons
             talents={main?.talents}
-            codeName={charData.codeName}
+            codeName={codeName}
             element={charData.element}
             stats={computedStats[selected]}
             ascension={char.ascension}

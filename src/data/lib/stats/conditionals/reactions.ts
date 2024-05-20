@@ -21,7 +21,8 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       id: 'swirl',
       text: `Swirled Element`,
       title: `Swirled Element`,
-      content: ``,
+      content: `The target element Swirled by this character. Should not be confused with <b>Elemental Absorption</b>.
+      <br />Elemental damage caused by Swirl can trigger chain Reactions that scale with this character's Elemental Mastery.`,
       show: element === Element.ANEMO,
       default: Element.PYRO,
     },
@@ -32,7 +33,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Forward Melt`,
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
         (2 * (1 + stat?.MELT_DMG + amp)).toFixed(2)
-      )}</span> times`,
+      )}</span> times.`,
       show: _.includes([element, swirl], Element.PYRO),
       default: false,
     },
@@ -43,7 +44,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Reverse Melt`,
       content: `Increase <b class="text-genshin-cryo">Cryo DMG</b> by <span class="text-desc">${parseFloat(
         (1.5 * (1 + stat?.MELT_DMG + amp)).toFixed(2)
-      )}</span> times`,
+      )}</span> times.`,
       show: _.includes([element, swirl], Element.CRYO),
       default: false,
     },
@@ -54,7 +55,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Forward Vaporize`,
       content: `Increase <b class="text-genshin-hydro">Hydro DMG</b> by <span class="text-desc">${parseFloat(
         (2 * (1 + stat?.VAPE_DMG + amp)).toFixed(2)
-      )}</span> times`,
+      )}</span> times.`,
       show: _.includes([element, swirl], Element.HYDRO),
       default: false,
     },
@@ -65,7 +66,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Reverse Vaporize`,
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
         (1.5 * (1 + stat?.VAPE_DMG + amp)).toFixed(2)
-      )}</span> times`,
+      )}</span> times.`,
       show: _.includes([element, swirl], Element.PYRO),
       default: false,
     },
@@ -76,7 +77,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Spread`,
       content: `Increase <b class="text-genshin-dendro">Dendro Base DMG</b> by <span class="text-desc">${_.round(
         1.25 * base * (1 + stat?.SPREAD_DMG + add)
-      ).toLocaleString()}</span>`,
+      ).toLocaleString()}</span>.`,
       show: element === Element.DENDRO,
       default: false,
     },
@@ -87,7 +88,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Aggravate`,
       content: `Increase <b class="text-genshin-electro">Electro Base DMG</b> by <span class="text-desc">${_.round(
         1.15 * base * (1 + stat?.AGGRAVATE_DMG + add)
-      ).toLocaleString()}</span>`,
+      ).toLocaleString()}</span>.`,
       show: _.includes([element, swirl], Element.ELECTRO),
       default: false,
     },
