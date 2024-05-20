@@ -63,7 +63,7 @@ export const MyCharacters = observer(() => {
   const baseAtk = getBaseStat(
     charData?.stat?.baseAtk,
     charUpgrade?.level,
-    charData?.stat?.ascHp,
+    charData?.stat?.ascAtk,
     charUpgrade?.ascension,
     charData?.rarity
   )
@@ -77,7 +77,7 @@ export const MyCharacters = observer(() => {
   const baseDef = getBaseStat(
     charData?.stat?.baseDef,
     charUpgrade?.level,
-    charData?.stat?.ascHp,
+    charData?.stat?.ascDef,
     charUpgrade?.ascension,
     charData?.rarity
   )
