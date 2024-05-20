@@ -78,7 +78,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
       <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredWeapon, (item) => (
           <div
-            className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
+            className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
             onClick={() => {
               teamStore.setWeapon(index, { wId: item.id })
               if (item.id === '2057') teamStore.setWeapon(index, { refinement: 1 })

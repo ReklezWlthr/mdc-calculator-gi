@@ -149,7 +149,7 @@ export const MyCharacters = observer(() => {
                     />
                     {owned && (
                       <div className="absolute px-1.5 py-1 rounded-full top-1 right-1 bg-primary-light font-bold">
-                        C{charUpgrade?.cons || 0}
+                        C{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
                       </div>
                     )}
                     <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
@@ -202,6 +202,9 @@ export const MyCharacters = observer(() => {
                     )}
                   </div>
                   <div className="flex items-center gap-3">
+                    {charUpgrade && (
+                      <p className="px-2 py-0.5 text-base font-bold rounded-lg bg-primary">{`Lvl ${charUpgrade.level}`}</p>
+                    )}
                     <div className="flex gap-0.5">
                       <div className="p-1 rounded-full w-14 h-14 bg-primary" title={charData?.weapon}>
                         <img src={`https://enka.network/ui/${WeaponIcon[charData?.weapon]}`} />

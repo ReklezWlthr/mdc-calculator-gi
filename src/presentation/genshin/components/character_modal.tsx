@@ -17,7 +17,7 @@ interface CharacterModalProps {
 }
 
 export const CharacterModal = observer(({ index }: CharacterModalProps) => {
-  const { teamStore, modalStore, buildStore } = useStore()
+  const { teamStore, modalStore, buildStore, charStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     element: [],
@@ -103,18 +103,22 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
       </div>
       <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredChar, (item) => {
-          const build = _.find(buildStore.builds, ['cId', item.id])
+          const owned = _.includes(_.map(charStore.characters, 'cId'), item.id)
           return (
             <div
-              className="w-full text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-105"
+              className="w-full text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
               onClick={() => {
                 const build = _.find(buildStore.builds, (build) => build.isDefault && build.cId === item.id)
+                const char = _.find(charStore.characters, (char) => char.cId === item.id)
                 if (item.weapon !== selectedWeaponData?.type && teamStore.characters[index]?.equipments?.weapon)
                   teamStore.setWeapon(index, DefaultWeapon)
                 teamStore.setMemberInfo(index, {
                   cId: item.id,
+                  ascension: char?.ascension || 0,
+                  level: char?.level || 1,
+                  talents: char?.talents || { normal: 1, skill: 1, burst: 1 },
                   equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
-                  cons: item.id === '10000062' ? 0 : teamStore.characters[index]?.cons,
+                  cons: char?.cons || 0,
                 })
                 modalStore.closeModal()
               }}
@@ -125,12 +129,10 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                   src={`https://cdn.wanderer.moe/genshin-impact/elements/${item.element.toLowerCase()}.png`}
                   className="absolute w-8 h-8 top-1 left-1"
                 />
-                {build && (
-                  <img
-                    src="/icons/artifact_icon.png"
-                    className="absolute w-7 h-7 top-1 right-1 p-0.5 bg-primary-light rounded-full bg-opacity-80"
-                    title="Has Default Build"
-                  />
+                {owned && (
+                  <div className="absolute px-1.5 py-1 text-sm rounded-lg top-1 right-1 bg-primary font-bold">
+                    C{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
+                  </div>
                 )}
                 <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                   <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
