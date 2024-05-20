@@ -33,8 +33,8 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Forward Melt`,
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
         (2 * (1 + stat?.MELT_DMG + amp)).toFixed(2)
-      )}</span> times.`,
-      show: _.includes([element, swirl], Element.PYRO),
+      )}</span> times. Can be applied to Swirl and Burning.`,
+      show: _.includes([element, swirl], Element.PYRO) || element === Element.PYRO,
       default: false,
     },
     {
@@ -66,8 +66,8 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       title: `Reverse Vaporize`,
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
         (1.5 * (1 + stat?.VAPE_DMG + amp)).toFixed(2)
-      )}</span> times.`,
-      show: _.includes([element, swirl], Element.PYRO),
+      )}</span> times. Can be applied to Swirl and Burning.`,
+      show: _.includes([element, swirl], Element.PYRO) || element === Element.PYRO,
       default: false,
     },
     {

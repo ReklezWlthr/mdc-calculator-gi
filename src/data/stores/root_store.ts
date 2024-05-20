@@ -1,4 +1,5 @@
 import { Build, BuildStoreType } from './build_store'
+import { CalculatorStore } from './calculator_store'
 import { CharacterStore, CharacterStoreType } from './character_store'
 import { InventoryStoreType, Inventory } from './inventory_store'
 import { Modal, ModalStoreType } from './modal_store'
@@ -11,6 +12,7 @@ interface RootStoreType {
   artifactStore: InventoryStoreType
   buildStore: BuildStoreType
   charStore: CharacterStoreType
+  calculatorStore: CalculatorStore
   // userStore: UserType
 }
 
@@ -20,6 +22,7 @@ export class RootStore {
   artifactStore: InventoryStoreType
   buildStore: BuildStoreType
   charStore: CharacterStoreType
+  calculatorStore: CalculatorStore
   // userStore: UserType
 
   constructor() {
@@ -28,6 +31,7 @@ export class RootStore {
     this.artifactStore = new Inventory()
     this.buildStore = new Build()
     this.charStore = new CharacterStore()
+    this.calculatorStore = new CalculatorStore()
     // this.userStore = new User()
   }
 
@@ -38,6 +42,7 @@ export class RootStore {
     this.artifactStore.hydrate(data.artifactStore)
     this.buildStore.hydrate(data.buildStore)
     this.charStore.hydrate(data.charStore)
+    this.calculatorStore.hydrate(data.calculatorStore)
     // this.userStore.hydrate(data.userStore)
   }
 }

@@ -122,9 +122,8 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
 })
 
 export const TeamSetup = observer(() => {
-  const [selected, setSelected] = useState(0)
-
   const { teamStore, modalStore, artifactStore } = useStore()
+  const selected = teamStore.selected
 
   const artifactData = _.filter(artifactStore.artifacts, (item) =>
     _.includes(teamStore.characters[selected]?.equipments?.artifacts, item.id)
@@ -180,7 +179,7 @@ export const TeamSetup = observer(() => {
           {_.map(teamStore?.characters, (item, index) => (
             <CharacterSelect
               key={`char_select_${index}`}
-              onClick={() => setSelected(index)}
+              onClick={() => teamStore.setValue('selected', index)}
               isSelected={index === selected}
               codeName={findCharacter(item.cId)?.codeName}
             />

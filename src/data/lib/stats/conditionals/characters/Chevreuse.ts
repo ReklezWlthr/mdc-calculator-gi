@@ -189,7 +189,6 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
         {
           name: 'Press DMG',
           value: [{ scaling: calcScaling(1.152, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-          flat: calcScaling(1155, skill, 'special', 'flat'),
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },

@@ -39,6 +39,7 @@ export const DefaultCharacter = {
 
 export interface TeamStoreType {
   characters: ITeamChar[]
+  selected: number
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setMember: (index: number, character: ITeamChar) => void
@@ -53,10 +54,12 @@ export interface TeamStoreType {
 
 export class Team {
   characters: ITeamChar[]
+  selected: number
   hydrated: boolean = false
 
   constructor() {
     this.characters = Array(4).fill(DefaultCharacter)
+    this.selected = 0
 
     makeAutoObservable(this)
   }

@@ -26,6 +26,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 1.2 * base * (1 + emBonus + stat?.TASER_DMG),
       cd: 0,
       amp: 1,
+      add: 0,
     },
     {
       name: 'Superconduct',
@@ -34,6 +35,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 0.5 * base * (1 + emBonus + stat?.SUPERCONDUCT_DMG),
       cd: 0,
       amp: 1,
+      add: 0,
     },
     {
       name: nilou ? 'Bloom: Bountiful Core' : 'Bloom',
@@ -42,6 +44,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 2 * base * (1 + emBonus + stat?.BLOOM_DMG),
       cd: stat?.CORE_CD,
       amp: 1,
+      add: 0,
     },
     {
       name: 'Hyperbloom',
@@ -50,6 +53,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 3 * base * (1 + emBonus + stat?.HYPERBLOOM_DMG),
       cd: stat?.CORE_CD,
       amp: 1,
+      add: 0,
     },
     {
       name: 'Burgeon',
@@ -58,14 +62,16 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 3 * base * (1 + emBonus + stat?.BURGEON_DMG),
       cd: stat?.CORE_CD,
       amp: 1,
+      add: 0,
     },
     {
       name: 'Burning',
       element: Element.PYRO,
       show: _.includes([Element.DENDRO, Element.PYRO, Element.ANEMO], element),
       dmg: 0.25 * base * (1 + emBonus + stat?.BURNING_DMG),
-      cd: stat?.CORE_CD,
-      amp: 1,
+      cd: stat?.CORE_CD || 0,
+      amp: stat?.PYRO_MULT || 1,
+      add: 0,
     },
     {
       name: 'Overloaded',
@@ -74,6 +80,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 2 * base * (1 + emBonus + stat?.OVERLOAD_DMG),
       cd: 0,
       amp: 1,
+      add: 0,
     },
     {
       name: 'Shattered',
@@ -82,6 +89,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       dmg: 1.5 * base * (1 + emBonus + stat?.SHATTER_DMG),
       cd: 0,
       amp: 1,
+      add: 0,
     },
   ]
 }

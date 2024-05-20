@@ -4,7 +4,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { Element, TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ElementColor, ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
@@ -18,10 +18,12 @@ import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import classNames from 'classnames'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { AscensionIcons } from '../components/ascension_icons'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { EnemyModal } from '../components/enemy_modal'
 
 export const Calculator = observer(({}: {}) => {
-  const { teamStore, artifactStore } = useStore()
-  const [selected, setSelected] = useState(0)
+  const { teamStore, artifactStore, modalStore, calculatorStore } = useStore()
+  const selected = calculatorStore.selected
 
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
@@ -51,32 +53,36 @@ export const Calculator = observer(({}: {}) => {
   )
   const main = conditionals[selected]
 
-  const [form, setForm] = useState<Record<string, any>[]>(
-    _.map(conditionals, (item, index) =>
-      _.reduce(
-        _.concat(
-          item?.content,
-          item?.teammateContent,
-          Reactions(
-            teamStore.characters[index].level,
-            findCharacter(teamStore.characters[index].cId).element,
-            Element.PYRO,
-            computedStats[index]
-          )
-        ),
-        (acc, curr) => {
-          if (curr?.show) acc[curr.id] = curr.default
-          return acc
-        },
-        {}
+  const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
+
+  useEffect(() => {
+    calculatorStore.initForm(
+      _.map(conditionals, (item, index) =>
+        _.reduce(
+          _.concat(
+            item?.content,
+            item?.teammateContent,
+            Reactions(
+              teamStore.characters[index].level,
+              findCharacter(teamStore.characters[index].cId).element,
+              Element.PYRO,
+              computedStats[index]
+            )
+          ),
+          (acc, curr) => {
+            if (curr?.show) acc[curr.id] = curr.default
+            return acc
+          },
+          {}
+        )
       )
     )
-  )
+  }, [teamStore.characters])
 
   useEffect(() => {
     const preCompute = _.map(
       conditionals,
-      (base, index) => base?.preCompute(baseStats[index], form[index]) || baseStats[index]
+      (base, index) => base?.preCompute(baseStats[index], calculatorStore.form[index]) || baseStats[index]
     ) // Compute all self conditionals, return stats of each char
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
@@ -86,7 +92,7 @@ export const Calculator = observer(({}: {}) => {
         if (i !== index)
           x =
             item?.preComputeShared(preCompute[i], x, {
-              ...form[i],
+              ...calculatorStore.form[i],
               weapon: findCharacter(teamStore.characters[index]?.cId)?.weapon,
               element: findCharacter(teamStore.characters[index]?.cId)?.element,
             }) || x
@@ -95,17 +101,18 @@ export const Calculator = observer(({}: {}) => {
     })
     const postCompute = _.map(
       conditionals,
-      (base, index) => base?.postCompute(preComputeShared[index], form[index]) || preComputeShared[index]
+      (base, index) =>
+        base?.postCompute(preComputeShared[index], calculatorStore.form[index]) || preComputeShared[index]
     )
     const postReaction = _.map(postCompute, (base, index) =>
-      calculateReaction(base, form[index], teamStore.characters[index]?.level)
+      calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
     setComputedStats(postReaction)
-  }, [baseStats, form])
+  }, [baseStats, calculatorStore.form])
 
   const reactions = _.flatMap(
     _.map(teamStore.characters, (item, index) =>
-      Reactions(item.level, findCharacter(item.cId)?.element, form[index].swirl, computedStats[index])
+      Reactions(item.level, findCharacter(item.cId)?.element, calculatorStore.form[index]?.swirl, computedStats[index])
     ),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
@@ -117,9 +124,15 @@ export const Calculator = observer(({}: {}) => {
   const teamContent = _.filter(mapped, (item, index) => selected !== item.index)
   const mainReaction = _.filter(reactions, ['index', selected])
 
-  const nilou = _.some(form, (item) => item.bountiful_core)
+  const nilou = _.some(calculatorStore.form, (item) => item.bountiful_core)
   const transformative = _.filter(
-    Transformative(char.level, charData?.element, computedStats[selected], form[selected].swirl, nilou),
+    Transformative(
+      char.level,
+      charData?.element,
+      computedStats[selected],
+      calculatorStore.form[selected]?.swirl,
+      nilou
+    ),
     'show'
   )
 
@@ -130,15 +143,18 @@ export const Calculator = observer(({}: {}) => {
   return (
     <div className="grid w-full grid-cols-3 gap-5 p-5 overflow-y-auto text-white">
       <div className="col-span-2">
-        <div className="flex justify-center w-full gap-4 pt-1 pb-3">
-          {_.map(teamStore?.characters, (item, index) => (
-            <CharacterSelect
-              key={`char_select_${index}`}
-              onClick={() => teamStore.characters[index]?.cId && setSelected(index)}
-              isSelected={index === selected}
-              codeName={findCharacter(item.cId)?.codeName}
-            />
-          ))}
+        <div className="flex items-center">
+          <div className="flex justify-center w-full gap-4 pt-1 pb-3">
+            {_.map(teamStore?.characters, (item, index) => (
+              <CharacterSelect
+                key={`char_select_${index}`}
+                onClick={() => teamStore.characters[index]?.cId && calculatorStore.setValue('selected', index)}
+                isSelected={index === selected}
+                codeName={findCharacter(item.cId)?.codeName}
+              />
+            ))}
+          </div>
+          <PrimaryButton onClick={onOpenEnemyModal} title="Enemy Setting" style="whitespace-nowrap" />
         </div>
         <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
           <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Damage Calculation</p>
@@ -257,22 +273,10 @@ export const Calculator = observer(({}: {}) => {
         <ConditionalBlock
           title="Elemental Reactions"
           contents={_.filter(mainReaction, 'show')}
-          form={form}
-          setForm={setForm}
           tooltipStyle="w-[20vw]"
         />
-        <ConditionalBlock
-          title="Self Conditionals"
-          contents={_.filter(mainContent, 'show')}
-          form={form}
-          setForm={setForm}
-        />
-        <ConditionalBlock
-          title="Team Conditionals"
-          contents={_.filter(teamContent, 'show')}
-          form={form}
-          setForm={setForm}
-        />
+        <ConditionalBlock title="Self Conditionals" contents={_.filter(mainContent, 'show')} />
+        <ConditionalBlock title="Team Conditionals" contents={_.filter(teamContent, 'show')} />
         <StatBlock index={selected} stat={computedStats[selected]} />
         <div className="w-[252px]">
           <AscensionIcons

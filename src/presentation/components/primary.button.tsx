@@ -6,9 +6,10 @@ export interface PrimaryButtonPropsType {
   title?: string
   disabled?: boolean
   icon?: string | React.ReactNode
+  style?: string
 }
 
-export const PrimaryButton = ({ onClick, title, disabled, icon }: PrimaryButtonPropsType) => {
+export const PrimaryButton = ({ onClick, title, disabled, icon, style }: PrimaryButtonPropsType) => {
   //---------------------
   // CONST
   //---------------------
@@ -26,7 +27,7 @@ export const PrimaryButton = ({ onClick, title, disabled, icon }: PrimaryButtonP
   //---------------------
   return (
     <button
-      className={classNames('py-2 px-3 rounded-lg', colorClasses)}
+      className={classNames('py-2 px-3 rounded-lg h-fit', colorClasses, style)}
       disabled={disabled}
       onClick={!disabled ? onClick : undefined}
     >
