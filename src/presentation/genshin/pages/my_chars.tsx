@@ -328,7 +328,7 @@ export const MyCharacters = observer(() => {
                             element={charData?.element}
                             icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
                             size="w-10 h-10"
-                            tooltipSize="w-[34vw]"
+                            tooltipSize="w-[550px]"
                           />
                           {charUpgrade?.talents?.normal && (
                             <div
@@ -349,7 +349,7 @@ export const MyCharacters = observer(() => {
                               codeName === 'Qin' ? '_02' : '_01'
                             }${codeName === 'Diluc' ? '_01' : ''}.png`}
                             size="w-10 h-10"
-                            tooltipSize="w-[35vw]"
+                            tooltipSize="w-[550px]"
                           />
                           {charUpgrade?.talents?.skill && (
                             <div
@@ -370,7 +370,7 @@ export const MyCharacters = observer(() => {
                               _.includes(['Ayaka', 'Ambor'], codeName) ? '' : '_01'
                             }.png`}
                             size="w-10 h-10"
-                            tooltipSize="w-[35vw]"
+                            tooltipSize="w-[550px]"
                           />
                           {charUpgrade?.talents?.burst && (
                             <div

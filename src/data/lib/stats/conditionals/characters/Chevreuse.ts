@@ -18,8 +18,8 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
 
   const [team] = rest
   const teamData = _.map(team, (item) => findCharacter(item.cId)?.element)
-  const pyro = _.filter(teamData, Element.PYRO).length
-  const electro = _.filter(teamData, Element.ELECTRO).length
+  const pyro = _.filter(teamData, (item) => item === Element.PYRO).length
+  const electro = _.filter(teamData, (item) => item === Element.ELECTRO).length
   const a1Active = pyro + electro === teamData.length && pyro >= 1 && electro >= 1
 
   const talents: ITalent = {
@@ -113,6 +113,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       ...talents.a1,
       show: a >= 1 && a1Active,
       default: true,
+      debuff: true,
     },
     {
       type: 'toggle',
@@ -134,7 +135,11 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'chev_a4'), findContentById(content, 'chev_c6')]
+  const teammateContent: IContent[] = [
+    findContentById(content, 'chev_overload'),
+    findContentById(content, 'chev_a4'),
+    findContentById(content, 'chev_c6'),
+  ]
 
   return {
     upgrade,
@@ -262,6 +267,11 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.chev_overload) {
+        base.PYRO_RES_PEN += 0.4
+        base.ELECTRO_RES_PEN += 0.4
+      }
+
       if (form.chev_a4 && _.includes([Element.PYRO, Element.ELECTRO], form.element))
         base[Stats.P_ATK] += _.min([(own.getHP() / 1000) * 0.01, 0.4]) //Only apply to Pyro & Electro
 

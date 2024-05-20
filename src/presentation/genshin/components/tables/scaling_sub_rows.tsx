@@ -7,10 +7,10 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { TalentStatMap } from '../../../../data/lib/stats/baseConstant'
+import { useStore } from '@src/data/providers/app_store_provider'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
-  stats: StatsObject
 }
 
 const propertyColor = {
@@ -18,19 +18,26 @@ const propertyColor = {
   [TalentProperty.SHIELD]: 'text-indigo-300',
 }
 
-export const ElementColor = {
+export const BaseElementColor = {
   [Element.PHYSICAL]: 'text-gray',
+  [Element.ANEMO]: 'text-genshin-anemo',
   [Element.PYRO]: 'text-genshin-pyro',
   [Element.HYDRO]: 'text-genshin-hydro',
   [Element.CRYO]: 'text-genshin-cryo',
   [Element.ELECTRO]: 'text-genshin-electro',
   [Element.GEO]: 'text-genshin-geo',
-  [Element.ANEMO]: 'text-genshin-anemo',
   [Element.DENDRO]: 'text-genshin-dendro',
+}
+
+export const ElementColor = {
+  ...BaseElementColor,
   ...propertyColor,
 }
 
-export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps) => {
+export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
+  const { calculatorStore, teamStore } = useStore()
+  const index = calculatorStore.selected
+  const stats = calculatorStore.computedStats[index]
 
   const element =
     _.includes([TalentProperty.NA, TalentProperty.CA, TalentProperty.PA], scaling.property) &&
@@ -47,6 +54,12 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
   const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0 // Faruzan & Shenhe
   const elementNa = element !== Element.PHYSICAL && scaling.property === TalentProperty.NA ? stats.ELEMENTAL_NA_DMG : 0
   const elementMult = stats[`${element.toUpperCase()}_MULT`] || 1
+  const defPen = (stats.DEF_PEN || 0) + (scaling.defPen || 0)
+
+  const defMult = calculatorStore.getDefMult(teamStore.characters[index]?.level, defPen, stats.DEF_REDUCTION) || 1
+  const resMult = calculatorStore.getResMult(element, stats[`${element.toUpperCase()}_RES_PEN`] || 0)
+  const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
+  const enemyMod = isDamage ? defMult * resMult : 1
 
   const statForScale = {
     [Stats.ATK]: stats.getAtk(),
@@ -69,7 +82,9 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
       talentFlat) *
     (1 + bonusDMG) *
     (scaling.multiplier || 1) *
-    elementMult
+    elementMult *
+    enemyMod
+
   const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + talentCd + elementCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
@@ -93,6 +108,13 @@ export const ScalingSubRows = observer(({ scaling, stats }: ScalingSubRowsProps)
     bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''
   }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
     elementMult > 1 ? ` \u{00d7} <b class="text-amber-400">${toPercentage(elementMult, 2)}</b>` : ''
+  }${
+    isDamage
+      ? ` \u{00d7} <b class="text-orange-300">${toPercentage(
+          defMult,
+          2
+        )}</b> \u{00d7} <b class="text-teal-200">${toPercentage(resMult, 2)}</b>`
+      : ''
   }`
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(

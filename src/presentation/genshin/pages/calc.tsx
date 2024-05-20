@@ -4,7 +4,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { Element, TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { ElementColor, ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
@@ -24,12 +24,11 @@ import { ReactionTooltip } from '../components/tables/reaction_tooltip'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore, modalStore, calculatorStore } = useStore()
-  const selected = calculatorStore.selected
+  const { selected, computedStats } = calculatorStore
 
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
 
-  const [computedStats, setComputedStats] = useState<StatsObject[]>([])
   const mainComputed = computedStats?.[selected]
 
   const baseStats = useMemo(
@@ -108,7 +107,7 @@ export const Calculator = observer(({}: {}) => {
     const postReaction = _.map(postCompute, (base, index) =>
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
-    setComputedStats(postReaction)
+    calculatorStore.setValue('computedStats', postReaction)
   }, [baseStats, calculatorStore.form])
 
   const reactions = _.flatMap(
@@ -179,17 +178,17 @@ export const Calculator = observer(({}: {}) => {
           >
             <div className="space-y-0.5">
               {_.map(mainComputed?.BASIC_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
+                <ScalingSubRows key={item.name} scaling={item} />
               ))}
             </div>
             <div className="py-2 space-y-0.5">
               {_.map(mainComputed?.CHARGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
+                <ScalingSubRows key={item.name} scaling={item} />
               ))}
             </div>
             <div className="space-y-0.5">
               {_.map(mainComputed?.PLUNGE_SCALING, (item) => (
-                <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
+                <ScalingSubRows key={item.name} scaling={item} />
               ))}
             </div>
           </ScalingWrapper>
@@ -204,7 +203,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={main?.upgrade?.skill}
           >
             {_.map(mainComputed?.SKILL_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
+              <ScalingSubRows key={item.name} scaling={item} />
             ))}
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -218,7 +217,7 @@ export const Calculator = observer(({}: {}) => {
             upgraded={main?.upgrade?.burst}
           >
             {_.map(mainComputed?.BURST_SCALING, (item) => (
-              <ScalingSubRows key={item.name} scaling={item} stats={computedStats[selected]} />
+              <ScalingSubRows key={item.name} scaling={item} />
             ))}
           </ScalingWrapper>
         </div>

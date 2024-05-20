@@ -21,6 +21,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       amp: swirl === Element.PYRO ? stat?.PYRO_MULT || 1 : 1,
       cd: 0,
       add: swirl === Element.ELECTRO ? stat?.ELECTRO_F_DMG : 0,
+      resPen: swirl ? stat?.[`${swirl.toUpperCase()}_RES_PEN`] : 0,
     },
     {
       name: 'Electro-Charged',
@@ -33,6 +34,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: 0,
       amp: 1,
       add: 0,
+      resPen: stat?.ELECTRO_RES_PEN,
     },
     {
       name: 'Superconduct',
@@ -45,6 +47,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: 0,
       amp: 1,
       add: 0,
+      resPen: stat?.CRYO_RES_PEN,
     },
     {
       name: nilou ? 'Bloom: Bountiful Core' : 'Bloom',
@@ -57,6 +60,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: stat?.CORE_CD,
       amp: 1,
       add: 0,
+      resPen: stat?.DENDRO_RES_PEN,
     },
     {
       name: 'Hyperbloom',
@@ -69,6 +73,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: stat?.CORE_CD,
       amp: 1,
       add: 0,
+      resPen: stat?.DENDRO_RES_PEN,
     },
     {
       name: 'Burgeon',
@@ -81,6 +86,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: stat?.CORE_CD,
       amp: 1,
       add: 0,
+      resPen: stat?.DENDRO_RES_PEN,
     },
     {
       name: 'Burning',
@@ -93,6 +99,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: stat?.CORE_CD || 0,
       amp: stat?.PYRO_MULT || 1,
       add: 0,
+      resPen: stat?.PYRO_RES_PEN,
     },
     {
       name: 'Overloaded',
@@ -105,6 +112,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: 0,
       amp: 1,
       add: 0,
+      resPen: stat?.PYRO_RES_PEN,
     },
     {
       name: 'Shattered',
@@ -117,6 +125,7 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       cd: 0,
       amp: 1,
       add: 0,
+      resPen: stat?.PHYSICAL_RES_PEN,
     },
   ]
 }

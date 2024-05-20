@@ -1,4 +1,4 @@
-import { ICharStore } from '@src/domain/genshin/constant'
+import { Element, ICharStore } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -8,19 +8,39 @@ enableStaticRendering(typeof window === 'undefined')
 
 export interface CharacterStoreType {
   form: Record<string, any>[]
+  computedStats: StatsObject[]
   selected: number
+  res: Record<Element, number>
+  level: number
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
+  setFormValue: (index: number, key: string, value: any) => void
+  setRes: (element: Element, value: number) => void
   hydrate: (data: CharacterStoreType) => void
 }
 
 export class CalculatorStore {
   form: Record<string, any>[]
+  computedStats: StatsObject[]
+  res: Record<Element, number>
+  level: number
   selected: number
 
   constructor() {
     this.form = []
+    this.computedStats = []
     this.selected = 0
+    this.level = 1
+    this.res = {
+      [Element.ANEMO]: 10,
+      [Element.PYRO]: 10,
+      [Element.HYDRO]: 10,
+      [Element.CRYO]: 10,
+      [Element.ELECTRO]: 10,
+      [Element.GEO]: 10,
+      [Element.DENDRO]: 10,
+      [Element.PHYSICAL]: 10,
+    }
 
     makeAutoObservable(this)
   }
@@ -33,13 +53,27 @@ export class CalculatorStore {
     const mergedData = _.map(initData, (item, index) =>
       _.mapValues(item, (value, key) => this.form[index]?.[key] || value)
     )
-    console.log(this.form, initData, mergedData)
     this.form = _.cloneDeep(mergedData)
   }
 
   setFormValue = (index: number, key: string, value: any) => {
     this.form[index][key] = value
     this.form = _.cloneDeep(this.form)
+  }
+
+  setRes = (element: Element, value: number) => {
+    this.res[element] = value
+  }
+
+  getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
+    return ((level + 100) * (1 - defPen) * (1 - defRed)) / (this.level + 100 + level + 100)
+  }
+
+  getResMult = (element: Element, resPen: number) => {
+    const res = this.res[element] / 100 - resPen
+    if (res < 0) return 1 - res / 2
+    if (res >= 0.75) return 1 / (4 * res + 1)
+    return 1 - res
   }
 
   hydrate = (data: CharacterStoreType) => {

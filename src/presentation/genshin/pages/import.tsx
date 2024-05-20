@@ -27,12 +27,12 @@ export const ImportExport = observer(() => {
     }, 1000)
   }
 
-  const onOpenConfirmModal = useCallback((build: number, artifact: number, onConfirm: () => void) => {
+  const onOpenConfirmModal = useCallback((char: number, build: number, artifact: number, onConfirm: () => void) => {
     modalStore.openModal(
       <CommonModal
         icon="fa-solid fa-circle-question text-yellow"
         title="Overwrite Data?"
-        desc={`The file contains ${build} builds and ${artifact} artifacts. Are you sure you want to overwrite the current data with this?`}
+        desc={`The file contains ${char} characters, ${build} builds and ${artifact} artifacts. Are you sure you want to overwrite the current data with this?`}
         onConfirm={onConfirm}
       />
     )
@@ -68,7 +68,7 @@ export const ImportExport = observer(() => {
             const reader = new FileReader()
             reader.addEventListener('load', (event) => {
               const data = JSON.parse(event.target.result.toString())
-              onOpenConfirmModal(data?.builds?.length, data?.artifacts?.length, () => {
+              onOpenConfirmModal(data?.characters?.length, data?.builds?.length, data?.artifacts?.length, () => {
                 localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
                 updateData(event.target.result)
               })
