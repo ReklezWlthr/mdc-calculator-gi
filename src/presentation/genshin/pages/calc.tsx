@@ -21,6 +21,11 @@ import { AscensionIcons } from '../components/ascension_icons'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { EnemyModal } from '../components/enemy_modal'
 import { ReactionTooltip } from '../components/tables/reaction_tooltip'
+import { getSetCount } from '@src/core/utils/data_format'
+import {
+  calculateArtifact,
+  getArtifactConditionals,
+} from '@src/data/lib/stats/conditionals/artifacts/calculate_artifact'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore, modalStore, calculatorStore } = useStore()
@@ -53,6 +58,15 @@ export const Calculator = observer(({}: {}) => {
   )
   const main = conditionals[selected]
 
+  const artifactConditionals = useMemo(
+    () =>
+      _.map(teamStore.characters, (item) => {
+        const artifacts = _.map(item.equipments.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a))
+        return getArtifactConditionals(artifacts)
+      }),
+    [teamStore.characters, artifactStore.artifacts]
+  )
+
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
 
   useEffect(() => {
@@ -67,7 +81,9 @@ export const Calculator = observer(({}: {}) => {
               findCharacter(teamStore.characters[index].cId).element,
               Element.PYRO,
               computedStats[index]
-            )
+            ),
+            artifactConditionals[index]?.content,
+            artifactConditionals[index]?.teamContent
           ),
           (acc, curr) => {
             if (curr?.show) acc[curr.id] = curr.default
@@ -79,6 +95,7 @@ export const Calculator = observer(({}: {}) => {
     )
   }, [teamStore.characters])
 
+  // Main Calculator
   useEffect(() => {
     const preCompute = _.map(
       conditionals,
@@ -104,11 +121,14 @@ export const Calculator = observer(({}: {}) => {
       (base, index) =>
         base?.postCompute(preComputeShared[index], calculatorStore.form[index]) || preComputeShared[index]
     )
-    const postReaction = _.map(postCompute, (base, index) =>
+    const postArtifact = _.map(postCompute, (base, index) =>
+      calculateArtifact(base, calculatorStore.form[index], teamStore.characters, index)
+    )
+    const postReaction = _.map(postArtifact, (base, index) =>
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
     calculatorStore.setValue('computedStats', postReaction)
-  }, [baseStats, calculatorStore.form])
+  }, [baseStats, calculatorStore.form, teamStore.characters])
 
   const reactions = _.flatMap(
     _.map(teamStore.characters, (item, index) =>
@@ -117,14 +137,21 @@ export const Calculator = observer(({}: {}) => {
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
   const mapped = _.flatMap(
-    _.map(conditionals, (item, index) => (index === selected ? item?.content : item?.teammateContent)),
+    _.map(conditionals, (item, index) =>
+      index === selected
+        ? _.concat(item?.content, artifactConditionals[index]?.content)
+        : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent)
+    ),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
+  // Index is embedded into each conditional for the block to call back to
+  // Because each of the form with represent ALL the value for each character (including team buffs); not the value that we can change in their page
+  // This helps separate buffs trigger of each character and prevent buff stacking
   const mainContent = _.filter(mapped, ['index', selected])
   const teamContent = _.filter(mapped, (item, index) => selected !== item.index)
   const mainReaction = _.filter(reactions, ['index', selected])
 
-  const nilou = _.some(calculatorStore.form, (item) => item.bountiful_core)
+  const nilou = _.some(calculatorStore.form, (item) => item?.bountiful_core)
   const transformative = _.filter(
     Transformative(
       char.level,

@@ -1,4 +1,5 @@
-import { IArtifact, Stats } from '@src/domain/genshin/constant'
+import { IArtifact, Stats, WeaponType } from '@src/domain/genshin/constant'
+import _ from 'lodash'
 
 export const ArtifactSets: IArtifact[] = [
   {
@@ -7,17 +8,25 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15001',
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
+    add: (base, weapon) => {
+      if (_.includes([WeaponType.CLAYMORE, WeaponType.SWORD, WeaponType.POLEARM], weapon)) base.BASIC_DMG += 0.35
+      return base
+    },
     desc: [
       `ATK +18%.`,
       `If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.`,
     ],
   },
   {
-    id: ' 147298547',
+    id: '147298547',
     name: "Wanderer's Troupe",
     icon: 'UI_RelicIcon_15003',
     rarity: [4, 5],
     bonus: [{ stat: Stats.EM, value: 80 }],
+    add: (base, weapon) => {
+      if (_.includes([WeaponType.CATALYST, WeaponType.BOW], weapon)) base.CHARGE_DMG += 0.35
+      return base
+    },
     desc: [
       `Increases Elemental Mastery by 80.`,
       `Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow.`,
@@ -29,6 +38,10 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15007',
     rarity: [4, 5],
     bonus: [],
+    half: (base) => {
+      base.BURST_DMG += 0.6
+      return base
+    },
     desc: [
       `Elemental Burst DMG +20%`,
       `Using an Elemental Burst increases all party members' ATK by 20% for 12s. This effect cannot stack.`,
@@ -62,6 +75,10 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15002',
     rarity: [4, 5],
     bonus: [{ stat: Stats.ANEMO_DMG, value: 0.15 }],
+    add: (base) => {
+      base.SWIRL_DMG += 0.6
+      return base
+    },
     desc: [
       `<b class="text-genshin-anemo">Anemo DMG Bonus</b> +15%`,
       `Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for 10s.`,
@@ -106,6 +123,14 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15005',
     rarity: [4, 5],
     bonus: [{ stat: Stats.ELECTRO_DMG, value: 0.15 }],
+    add: (base) => {
+      base.OVERLOAD_DMG += 0.4
+      base.TASER_DMG += 0.4
+      base.SUPERCONDUCT_DMG += 0.4
+      base.HYPERBLOOM_DMG += 0.4
+      base.AGGRAVATE_DMG += 0.2
+      return base
+    },
     desc: [
       `<b class="text-genshin-electro">Electro DMG Bonus</b> +15%`,
       `Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by 20%. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by 1s. Can only occur once every 0.8s.`,
@@ -128,13 +153,21 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15006',
     rarity: [4, 5],
     bonus: [{ stat: Stats.PYRO_DMG, value: 0.15 }],
+    add: (base) => {
+      base.OVERLOAD_DMG += 0.4
+      base.BURNING_DMG += 0.4
+      base.BURGEON_DMG += 0.4
+      base.VAPE_DMG += 0.15
+      base.MELT_DMG += 0.15
+      return base
+    },
     desc: [
       `<b class="text-genshin-pyro">Pyro DMG Bonus</b> +15%`,
       `Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.`,
     ],
   },
   {
-    id: ' 933076627',
+    id: '933076627',
     name: 'Blizzard Strayer',
     icon: 'UI_RelicIcon_14001',
     rarity: [4, 5],
@@ -145,7 +178,7 @@ export const ArtifactSets: IArtifact[] = [
     ],
   },
   {
-    id: ' 156294403',
+    id: '156294403',
     name: 'Heart of Depth',
     icon: 'UI_RelicIcon_15016',
     rarity: [4, 5],
@@ -167,7 +200,7 @@ export const ArtifactSets: IArtifact[] = [
     ],
   },
   {
-    id: ' 862591315',
+    id: '862591315',
     name: 'Pale Flame',
     icon: 'UI_RelicIcon_15018',
     rarity: [4, 5],
@@ -194,6 +227,10 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15020',
     rarity: [4, 5],
     bonus: [{ stat: Stats.ER, value: 0.2 }],
+    add: (base) => {
+      base.BURST_DMG += _.min([0.25 * base[Stats.ER], 0.75])
+      return base
+    },
     desc: [
       `Energy Recharge +20%`,
       `Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.`,
@@ -295,6 +332,12 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15028',
     rarity: [4, 5],
     bonus: [{ stat: Stats.EM, value: 80 }],
+    add: (base) => {
+      base.BLOOM_DMG += 0.4
+      base.HYPERBLOOM_DMG += 0.4
+      base.BURGEON_DMG += 0.4
+      return base
+    },
     desc: [
       `Increases Elemental Mastery by 80.`,
       `The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.`,
@@ -312,11 +355,16 @@ export const ArtifactSets: IArtifact[] = [
     ],
   },
   {
-    id: ' 235897163',
+    id: '235897163',
     name: "Vourukasha's Glow",
     icon: 'UI_RelicIcon_15030',
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_HP, value: 0.2 }],
+    add: (base) => {
+      base.SKILL_DMG += 0.1
+      base.BURST_DMG += 0.1
+      return base
+    },
     desc: [
       `HP +20%`,
       `Elemental Skill and Elemental Burst DMG will be increased by 10%. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.`,
@@ -328,6 +376,11 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15031',
     rarity: [4, 5],
     bonus: [],
+    half: (base) => {
+      base.BASIC_DMG += 0.15
+      base.CHARGE_DMG += 0.15
+      return base
+    },
     desc: [
       `Normal and Charged Attack DMG +15%.`,
       `When current HP increases or decreases, CRIT Rate will be increased by 12% for 5s. Max 3 stacks.`,
@@ -339,6 +392,14 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15032',
     rarity: [4, 5],
     bonus: [],
+    half: (base) => {
+      base.SKILL_DMG += 0.2
+      return base
+    },
+    add: (base) => {
+      base.SKILL_DMG += 0.25
+      return base
+    },
     desc: [
       `Increases Elemental Skill DMG by 20%.`,
       `Increases Elemental Skill DMG by 25%.
@@ -357,7 +418,7 @@ export const ArtifactSets: IArtifact[] = [
     ],
   },
   {
-    id: ' 279470883',
+    id: '279470883',
     name: 'Nighttime Whispers in the Echoing Woods',
     icon: 'UI_RelicIcon_15034',
     rarity: [4, 5],
@@ -379,7 +440,7 @@ export const ArtifactSets: IArtifact[] = [
     ],
   },
   {
-    id: ' 352459163',
+    id: '352459163',
     name: 'Unfinished Reverie',
     icon: 'UI_RelicIcon_15036',
     rarity: [4, 5],
@@ -395,6 +456,10 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_10001',
     rarity: [3, 4],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
+    add: (base) => {
+      base.CHARGE_CR += 0.3
+      return base
+    },
     desc: [`ATK +18%.`, `Increases Charged Attack CRIT Rate by 30%.`],
   },
   {
@@ -409,7 +474,7 @@ export const ArtifactSets: IArtifact[] = [
     ],
   },
   {
-    id: ' 855894507',
+    id: '855894507',
     name: 'Berserker',
     icon: 'UI_RelicIcon_10005',
     rarity: [3, 4],

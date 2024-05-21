@@ -10,7 +10,7 @@ import {
   getWeaponBonus,
 } from '../utils/data_format'
 import _ from 'lodash'
-import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats } from '@src/domain/genshin/constant'
+import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats, WeaponType } from '@src/domain/genshin/constant'
 import { AscensionGrowth, BaseReactionDmg } from '@src/domain/genshin/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
 import { ArtifactSets } from '@src/data/db/genshin/artifacts'
@@ -24,7 +24,12 @@ export const calculateOutOfCombat = (
   artifacts: IArtifactEquip[]
 ) => {
   const base = calculateBase(conditionals, team[selected], team[selected]?.equipments?.weapon)
-  const withArtifacts = addArtifactStats(base, artifacts)
+  const withArtifacts = addArtifactStats(
+    base,
+    artifacts,
+    findWeapon(team[selected]?.equipments?.weapon?.wId)?.type,
+    team
+  )
   const final = addResonance(withArtifacts, team)
 
   return final
@@ -88,7 +93,12 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   return conditionals
 }
 
-export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifactEquip[]) => {
+export const addArtifactStats = (
+  conditionals: StatsObject,
+  artifacts: IArtifactEquip[],
+  weapon: WeaponType,
+  team: ITeamChar[]
+) => {
   const setBonus = getSetCount(artifacts)
   _.forEach(artifacts, (item) => {
     conditionals[item.main] += getMainStat(item.main, item.quality, item.level)
@@ -99,9 +109,15 @@ export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifact
   _.forEach(setBonus, (value, key) => {
     if (value >= 2) {
       const bonuses = _.find(ArtifactSets, ['id', key])?.bonus
+      const half = _.find(ArtifactSets, ['id', key])?.half
       _.forEach(bonuses, (item) => {
         conditionals[item.stat] += item.value
       })
+      if (half) conditionals = half(conditionals)
+    }
+    if (value >= 4) {
+      const add = _.find(ArtifactSets, ['id', key])?.add
+      if (add) conditionals = add(conditionals, weapon, team)
     }
   })
 

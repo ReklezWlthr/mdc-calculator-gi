@@ -27,8 +27,8 @@ export class CalculatorStore {
   selected: number
 
   constructor() {
-    this.form = []
-    this.computedStats = []
+    this.form = Array(4)
+    this.computedStats = Array(4)
     this.selected = 0
     this.level = 1
     this.res = {

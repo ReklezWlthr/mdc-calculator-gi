@@ -1,3 +1,5 @@
+import { StatsObject } from "@src/data/lib/stats/baseConstant"
+
 export enum GenshinPage {
   TEAM = 'team',
   DMG = 'dmg',
@@ -5,7 +7,7 @@ export enum GenshinPage {
   IMPORT = 'import',
   BUILD = 'build',
   INVENTORY = 'inventory',
-  CHAR = 'char'
+  CHAR = 'char',
 }
 
 export interface ICharacterStats {
@@ -64,6 +66,8 @@ export interface IArtifact {
   icon: string
   rarity: (3 | 4 | 5)[]
   bonus: { stat: Stats; value: number }[]
+  half?: (conditionals: StatsObject) => StatsObject
+  add?: (conditionals: StatsObject, weapon: WeaponType, team: ITeamChar[]) => StatsObject
   desc: string[]
 }
 
@@ -134,7 +138,8 @@ export enum TalentProperty {
   BURST = 'Elemental Burst',
   HEAL = 'Heal',
   SHIELD = 'Shield',
-  ADD = 'Additional Attack'
+  ADD = 'Additional Attack',
+  STATIC = 'Static Attack'
 }
 
 export enum Element {
@@ -171,7 +176,7 @@ export enum Stats {
   I_HEALING = 'Incoming Healing',
   SHIELD = 'Shield Strength',
   ALL_DMG = 'DMG%',
-  ELEMENTAL_DMG = 'Elemental DMG%'
+  ELEMENTAL_DMG = 'Elemental DMG%',
 }
 
 export const StatIcons = {
