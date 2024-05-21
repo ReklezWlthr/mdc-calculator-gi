@@ -66,7 +66,7 @@ export class CalculatorStore {
   }
 
   getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
-    return ((level + 100) * (1 - defPen) * (1 - defRed)) / (this.level + 100 + level + 100)
+    return (level + 100) / ((this.level + 100) * (1 - defPen) * (1 - defRed) + level + 100)
   }
 
   getResMult = (element: Element, resPen: number) => {
