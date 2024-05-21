@@ -18,10 +18,10 @@ export const EnemyModal = observer(() => {
   const defMult = calculatorStore.getDefMult(charLevel, pen, red)
 
   return (
-    <div className="w-[30vw] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
+    <div className="w-[35vw] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
       <p>Target Enemy Setting</p>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-8 space-y-5">
+      <div className="flex justify-between gap-4">
+        <div className="space-y-5">
           <div className="flex items-center gap-x-3">
             <p>Level</p>
             <TextInput
@@ -32,7 +32,7 @@ export const EnemyModal = observer(() => {
           </div>
           <div className="space-y-1">
             <p>DEF</p>
-            <div className="flex items-center gap-2 px-2 py-1 text-sm font-normal rounded-lg bg-primary-darker w-fit text-gray">
+            <div className="flex flex-wrap items-center px-2 py-1 text-sm font-normal rounded-lg gap-x-2 bg-primary-darker w-fit text-gray">
               <p className="font-bold text-yellow">{_.round(def).toLocaleString()}</p>
               <p>=</p>
               <p>
@@ -57,29 +57,36 @@ export const EnemyModal = observer(() => {
             </div>
             <p>DEF Multiplier</p>
             <div className="flex items-center gap-2 px-2 py-1 text-sm font-normal rounded-lg bg-primary-darker w-fit text-gray">
-              <p className="font-bold text-yellow">{toPercentage(defMult)}</p>
+              <p className="font-bold text-orange-300">{toPercentage(defMult)}</p>
               <p>=</p>
               <div className="flex flex-col gap-y-1">
                 <p className="text-center">
-                  <b className="text-red">{_.round(def).toLocaleString()}</b>
+                  <b className="text-yellow">{_.round(def).toLocaleString()}</b>
                 </p>
                 <div className="h-0 border-[1.5px] border-primary-border" />
                 <p className="text-center">
-                  <b className="text-red">{_.round(def).toLocaleString()}</b> + (
+                  <b className="text-yellow">{_.round(def).toLocaleString()}</b> + (
                   <b className="text-blue">{charLevel}</b> &#215; 5) + 500
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-end col-span-4 gap-y-3">
+        <div className="flex flex-col items-end gap-y-3">
+          <i className='fa-solid fa-circle-xmark text-red' title="Immune" />
           {_.map(BaseElementColor, (item, key: Element) => (
             <div className="flex items-center gap-3">
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
               <TextInput
-                value={res[key].toString()}
+                value={res[key] === Infinity ? 'Immune' : res[key].toString()}
                 onChange={(value) => calculatorStore.setRes(key, parseFloat(value) || 0)}
-                style="!w-[60px]"
+                style="!w-[75px]"
+                disabled={res[key] === Infinity}
+              />
+              <input
+                type="checkbox"
+                checked={res[key] === Infinity}
+                onChange={(e) => calculatorStore.setRes(key, e.target.checked ? Infinity : 10)}
               />
             </div>
           ))}
