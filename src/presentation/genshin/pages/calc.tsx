@@ -24,6 +24,7 @@ import { ReactionTooltip } from '../components/tables/reaction_tooltip'
 import { getSetCount } from '@src/core/utils/data_format'
 import {
   calculateArtifact,
+  calculateTeamArtifact,
   getArtifactConditionals,
 } from '@src/data/lib/stats/conditionals/artifacts/calculate_artifact'
 
@@ -121,9 +122,13 @@ export const Calculator = observer(({}: {}) => {
       (base, index) =>
         base?.postCompute(preComputeShared[index], calculatorStore.form[index]) || preComputeShared[index]
     )
-    const postArtifact = _.map(postCompute, (base, index) =>
-      calculateArtifact(base, calculatorStore.form[index], teamStore.characters, index)
-    )
+    const postArtifact = _.map(postCompute, (base, index) => {
+      let x = base
+      _.forEach(calculatorStore.form, (form, i) => {
+        x = i === index ? calculateArtifact(x, form, teamStore.characters, index) : calculateTeamArtifact(x, form)
+      })
+      return x
+    })
     const postReaction = _.map(postArtifact, (base, index) =>
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )

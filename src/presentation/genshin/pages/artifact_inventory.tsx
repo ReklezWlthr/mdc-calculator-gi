@@ -46,7 +46,7 @@ export const ArtifactInventory = observer(() => {
     if (params.subs.length)
       result = _.filter(result, (artifact) => isSubsetOf(params.subs, _.map(artifact.subList, 'stat')))
     return result
-  }, [params.set, params.types, params.subs, params.main])
+  }, [params.set, params.types, params.subs, params.main, artifactStore.artifacts])
 
   const onOpenModal = useCallback(() => {
     modalStore.openModal(<ArtifactModal type={4} />)

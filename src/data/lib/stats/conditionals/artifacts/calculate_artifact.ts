@@ -57,7 +57,7 @@ export const calculateArtifact = (base: StatsObject, form: Record<string, any>, 
     base[Stats.P_DEF] += 0.06 * form['2546254811']
     base[Stats.GEO_DMG] += 0.06 * form['2546254811']
   }
-  if (form['2546254811']) {
+  if (form['1756609915']) {
     base.SKILL_SCALING.push({
       name: 'Sea-Dyed Foam DMG',
       element: Element.PHYSICAL,
@@ -81,7 +81,7 @@ export const calculateArtifact = (base: StatsObject, form: Record<string, any>, 
     base[Stats.P_ATK] += 0.14 * sameCount
     base[Stats.EM] += 50 * diffCount
   }
-  if (form['4145306051']) {
+  if (form['2538235187']) {
     base.ATK_SPD += 0.1
     base.BASIC_DMG += 0.4
     base.CHARGE_DMG += 0.4
@@ -132,6 +132,37 @@ export const calculateArtifact = (base: StatsObject, form: Record<string, any>, 
     base.BASIC_DMG += 0.25
     base.CHARGE_DMG += 0.25
   }
+
+  return base
+}
+
+export const calculateTeamArtifact = (base: StatsObject, form: Record<string, any>) => {
+  if (form['1751039235']) base.BURST_DMG += 0.2
+  if (form['83115355']) base[Stats.I_HEALING] += 0.2
+  if (form['1562601179']) base[`${form['1562601179'].toUpperCase()}_RES_PEN`] += 0.4
+  if (form['2040573235']) base[Stats[`${form['2040573235'].toUpperCase()}_DMG`]] += 0.35
+  if (form['1337666507']) {
+    base[Stats.P_ATK] += 0.2
+    base[Stats.SHIELD] += 0.3
+  }
+  if (form['1756609915']) {
+    base.SKILL_SCALING.push({
+      name: 'Sea-Dyed Foam DMG',
+      element: Element.PHYSICAL,
+      property: TalentProperty.STATIC,
+      value: [{ multiplier: Stats.ATK, scaling: 0 }],
+      flat: parseFloat(form['2546254811']) * 0.9,
+    })
+  }
+  if (form['1675079283']) base.DENDRO_RES_PEN += 0.3
+  if (form['2803305851']) {
+    base.BASIC_F_DMG += form['2803305851'] * 0.08
+    base.CHARGE_F_DMG += form['2803305851'] * 0.08
+    base.PLUNGE_F_DMG += form['2803305851'] * 0.08
+    base.SKILL_F_DMG += form['2803305851'] * 0.08
+    base.BURST_F_DMG += form['2803305851'] * 0.08
+  }
+  if (form['3890292467']) base[Stats.EM] += 120
 
   return base
 }

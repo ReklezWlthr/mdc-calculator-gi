@@ -97,7 +97,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
       <CommonModal
         icon="fa-solid fa-exclamation-circle text-red"
         title="Delete Artifact"
-        desc="Do you want to delete this artifact?"
+        desc="Do you want to delete this artifact? This will also remove and unequip this artifact in every build that uses it."
         onConfirm={onDelete}
       />
     )

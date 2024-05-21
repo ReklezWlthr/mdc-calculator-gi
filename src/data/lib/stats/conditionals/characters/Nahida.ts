@@ -155,7 +155,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       id: 'nahida_burst',
       text: `Shrine of Maya: Pyro`,
       ...talents.burst,
-      show: true,
+      show: pyroCount >= 1,
       default: true,
     },
     {

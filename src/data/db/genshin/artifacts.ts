@@ -227,10 +227,6 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_15020',
     rarity: [4, 5],
     bonus: [{ stat: Stats.ER, value: 0.2 }],
-    add: (base) => {
-      base.BURST_DMG += _.min([0.25 * base[Stats.ER], 0.75])
-      return base
-    },
     desc: [
       `Energy Recharge +20%`,
       `Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.`,
