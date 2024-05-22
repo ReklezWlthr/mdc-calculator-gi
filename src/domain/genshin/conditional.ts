@@ -15,6 +15,15 @@ export interface IScaling {
   defPen?: number //Only used by Yae
 }
 
+export interface IWeaponContent {
+  type?: 'toggle' | 'number' | 'element'
+  id: string
+  default?: number | boolean | Element
+  max?: number
+  min?: number
+  debuff?: boolean
+}
+
 export interface IContent {
   type?: 'toggle' | 'number' | 'element'
   id: string

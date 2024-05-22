@@ -21,7 +21,15 @@ import { findCharacter, findWeapon } from '@src/core/utils/finder'
 import { toPercentage } from '@src/core/utils/converter'
 import { Tooltip } from '@src/presentation/components/tooltip'
 
-const WeaponTooltip = ({ wId, refinement }: { wId: string; refinement: number }) => {
+const WeaponTooltip = ({
+  wId,
+  refinement,
+  children,
+}: {
+  wId: string
+  refinement: number
+  children: React.ReactElement
+}) => {
   const data = findWeapon(wId)
   const properties = data?.desc?.properties
   const formattedString = _.reduce(
@@ -56,7 +64,7 @@ const WeaponTooltip = ({ wId, refinement }: { wId: string; refinement: number })
         position="bottom"
         style="w-[450px]"
       >
-        <i className="text-lg fa-regular fa-question-circle" />
+        {children}
       </Tooltip>
     </div>
   )
@@ -156,7 +164,11 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
                 />
               </div>
             </div>
-            {weaponData && <WeaponTooltip wId={wId} refinement={refinement} />}
+            {weaponData && (
+              <WeaponTooltip wId={wId} refinement={refinement}>
+                <i className="text-lg fa-regular fa-question-circle" />
+              </WeaponTooltip>
+            )}
           </div>
         </div>
         <div className="space-y-3">

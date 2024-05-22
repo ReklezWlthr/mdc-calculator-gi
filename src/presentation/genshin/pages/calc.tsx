@@ -124,8 +124,15 @@ export const Calculator = observer(({}: {}) => {
     )
     const postArtifact = _.map(postCompute, (base, index) => {
       let x = base
+      const artifactData = _.map(teamStore.characters[index].equipments.artifacts, (item) =>
+        _.find(artifactStore.artifacts, ['id', item])
+      )
+      const setBonus = getSetCount(artifactData)
       _.forEach(calculatorStore.form, (form, i) => {
-        x = i === index ? calculateArtifact(x, form, teamStore.characters, index) : calculateTeamArtifact(x, form)
+        x =
+          i === index
+            ? calculateArtifact(x, form, teamStore.characters, index, setBonus['2276480763'] >= 4)
+            : calculateTeamArtifact(x, form)
       })
       return x
     })

@@ -258,4 +258,6 @@ export const TalentStatMap = {
 }
 
 export type StatsObject = typeof baseStatsObject
-export type StatsObjectKeys = keyof typeof baseStatsObject
+export type StatsObjectKeysT = keyof typeof baseStatsObject
+
+export const StatsObjectKeys = _.mapValues(baseStatsObject, (_, key) => key)

@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
         <link href="https://use.fontawesome.com/releases/v6.5.2/css/all.css" rel="stylesheet" />
-        <title>HoYoverse Calculator</title>
+        <title>MD/C Calculator</title>
       </Head>
       <QueryClientProvider client={queryClient}>
         <div className="flex flex-col w-screen h-screen max-h-screen overflow-x-hidden">

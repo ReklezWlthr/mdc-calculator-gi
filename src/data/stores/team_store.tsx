@@ -76,7 +76,11 @@ export class Team {
   setMemberInfo = (index: number, info: Partial<ITeamChar>) => {
     if (index < 0 || index > 4) return
     if (info?.equipments?.artifacts)
-      _.forEach(info.equipments.artifacts, (item, i) => this.setArtifact(index, i + 1, item))
+      _.forEach(info.equipments.artifacts, (aId) =>
+        _.forEach(this.characters, (character, cI) => {
+          if (cI !== index) character.equipments.artifacts = _.without(character.equipments.artifacts, aId)
+        })
+      )
     this.characters[index] = { ...this.characters[index], ...info }
   }
 
