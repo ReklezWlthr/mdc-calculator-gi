@@ -74,7 +74,7 @@ export const useCalculator = () => {
   const weaponAllyConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
       _.filter(WeaponAllyConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId)),
-      (cond) => ({ ...cond, title: '', content: '', index: selected, owner: index })
+      (cond) => ({ ...cond, id: `${cond.id}_${index}`, title: '', content: '', index: selected, owner: index })
     )
   )
   const weaponAllySelectable = (i: number) => _.flatten(_.filter(weaponAllyConditionals, (_, i2) => i !== i2))
@@ -185,6 +185,7 @@ export const useCalculator = () => {
             own: postArtifact[c.owner],
             totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
             index,
+            owner: c.owner,
           })
         }
       )

@@ -55,14 +55,17 @@ export const WeaponConditionalBlock = observer(
               contents,
               (content) =>
                 content.show && (
-                  <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={content.id}>
+                  <div
+                    className="grid items-center grid-cols-12 text-xs gap-x-1"
+                    key={content.id + (content.owner || content.index)}
+                  >
                     <div className="col-span-6">
                       <WeaponTooltip
                         wId={_.split(content.id, '_')[0]}
                         refinement={
                           teamStore.characters[content.owner || content.index]?.equipments?.weapon?.refinement
                         }
-                        position='left'
+                        position="left"
                       >
                         <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                       </WeaponTooltip>

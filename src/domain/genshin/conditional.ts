@@ -52,7 +52,7 @@ export interface IWeaponContent {
     base: StatsObject, // Stats of the character
     form: Record<string, any>,
     r: number,
-    extra: { team: ITeamChar[]; element: Element; own: StatsObject; totalEnergy: number; index: number }
+    extra: { team: ITeamChar[]; element: Element; own: StatsObject; totalEnergy: number; index: number; owner?: number }
     //"element" is the element of the wearer
     // "own" is the stat of the wearer
   ) => StatsObject

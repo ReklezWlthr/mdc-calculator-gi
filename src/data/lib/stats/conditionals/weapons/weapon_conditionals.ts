@@ -1399,8 +1399,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: true,
     id: '14511_a',
-    scaling: (base, form, r) => {
-      if (form['14511_a']) base[Stats.EM] += calcRefinement(40, 2, r)
+    scaling: (base, form, r, { owner }) => {
+      if (form['14511_a_' + owner]) base[Stats.EM] += calcRefinement(40, 2, r)
       return base
     },
   },
@@ -1410,8 +1410,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: false,
     id: '14414_a',
-    scaling: (base, form, r, { team, index }) => {
-      if (form['14414_a']) {
+    scaling: (base, form, r, { team, index, owner }) => {
+      if (form['14414_a_' + owner]) {
         const element = findCharacter(team[index].cId)?.element
         base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.1, 0.025, r)
       }
@@ -1425,6 +1425,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: false,
     id: '14302',
     scaling: (base, form, r) => {
+      // TToDS cannot stack
       if (form['14302']) base[Stats.P_ATK] += calcRefinement(0.24, 0.06, r)
       return base
     },
@@ -1435,8 +1436,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: false,
     id: '11417_a',
-    scaling: (base, form, r) => {
-      if (form['11417_a']) base[Stats.EM] += calcRefinement(60, 15, r)
+    scaling: (base, form, r, { owner }) => {
+      if (form['11417_a_' + owner]) base[Stats.EM] += calcRefinement(60, 15, r)
       return base
     },
   },
@@ -1446,8 +1447,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: false,
     id: '12417_a',
-    scaling: (base, form, r) => {
-      if (form['12417_a']) base[Stats.EM] += calcRefinement(60, 15, r)
+    scaling: (base, form, r, { owner }) => {
+      if (form['12417_a_' + owner]) base[Stats.EM] += calcRefinement(60, 15, r)
       return base
     },
   },
@@ -1457,8 +1458,9 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: true,
     id: '11418_2',
-    scaling: (base, form, r, { own }) => {
-      if (form['11418_2'])
+    scaling: (base, form, r, { own, owner }) => {
+      console.log(form, '11418_2_' + owner)
+      if (form['11418_2_' + owner])
         base.CALLBACK.push((base: StatsObject) => {
           base[Stats.ER] += own[Stats.EM] * calcRefinement(0.00036, 0.00009, r) * 0.3
           return base
@@ -1502,8 +1504,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: false,
     id: '13417_a',
-    scaling: (base, form, r) => {
-      if (form['13417_a']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+    scaling: (base, form, r, { owner }) => {
+      if (form['13417_a_' + owner]) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
       return base
     },
   },
@@ -1513,8 +1515,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: true,
     id: '14416_a',
-    scaling: (base, form, r, { own }) => {
-      if (form['14416_a'])
+    scaling: (base, form, r, { own, owner }) => {
+      if (form['14416_a_' + owner])
         base.CALLBACK.push((base: StatsObject) => {
           base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
           return base
