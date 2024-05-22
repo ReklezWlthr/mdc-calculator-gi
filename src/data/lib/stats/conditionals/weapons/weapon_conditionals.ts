@@ -787,7 +787,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: true,
     id: '12415_a',
     scaling: (base, form, r, { own }) => {
-      if (form['12415_a']) base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM]
+      if (form['12415_a']) base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
       return base
     },
   },
