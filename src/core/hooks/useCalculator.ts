@@ -170,6 +170,7 @@ export const useCalculator = () => {
               element: findCharacter(teamStore.characters[i]?.cId)?.element,
               own: postArtifact[i],
               totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
+              index: i,
             })
           }
         )
@@ -183,6 +184,7 @@ export const useCalculator = () => {
             element: findCharacter(teamStore.characters[c.owner]?.cId)?.element,
             own: postArtifact[c.owner],
             totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
+            index,
           })
         }
       )

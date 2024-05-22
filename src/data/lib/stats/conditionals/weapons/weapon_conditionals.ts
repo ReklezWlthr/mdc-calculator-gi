@@ -3,6 +3,7 @@ import { findCharacter, findContentById } from '@src/core/utils/finder'
 import { IWeaponContent } from '@src/domain/genshin/conditional'
 import { Stats } from '@src/domain/genshin/constant'
 import _ from 'lodash'
+import { StatsObject } from '../../baseConstant'
 
 export const WeaponConditionals: IWeaponContent[] = [
   {
@@ -45,7 +46,7 @@ export const WeaponConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Electro Reaction Buff`,
+    text: `Electro Reaction ATK Bonus`,
     show: true,
     default: true,
     id: '11304',
@@ -155,7 +156,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11418',
     scaling: (base, form, r) => {
-      if (form['11418']) base[Stats.ER] += base[Stats.EM] * calcRefinement(0.00036, 0.00009, r)
+      if (form['11418'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ER] += base[Stats.EM] * calcRefinement(0.00036, 0.00009, r)
+          return base
+        })
+
       return base
     },
   },
@@ -205,10 +211,13 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '11425_2',
     scaling: (base, form, r) => {
       if (form['11425'] && form['11425_2'])
-        base[Stats.ATK] += _.min([
-          (form['11425_2'] / 100) * calcRefinement(0.024, 0.006, r) * base.getHP(),
-          calcRefinement(150, 37.5, r),
-        ])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ATK] += _.min([
+            (form['11425_2'] / 100) * calcRefinement(0.024, 0.006, r) * base.getHP(),
+            calcRefinement(150, 37.5, r),
+          ])
+          return base
+        })
       return base
     },
   },
@@ -620,7 +629,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12424_2',
     scaling: (base, form, r) => {
-      if (form['12424_2']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['12424_2']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
       return base
     },
   },
@@ -878,7 +887,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['13419']) {
         base[Stats.P_ATK] += calcRefinement(0.03, 0.01, r)
-        base[Stats.ALL_DMG] += calcRefinement(0.07, 0.015, r)
+        base[Stats.ELEMENTAL_DMG] += calcRefinement(0.07, 0.015, r)
       }
       return base
     },
@@ -1002,9 +1011,424 @@ export const WeaponConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Against Target with Hydro/Electro`,
+    show: true,
+    default: false,
+    id: '14301',
+    scaling: (base, form, r) => {
+      if (form['14301']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Hydro Reaction ATK Bonus`,
+    show: true,
+    default: false,
+    id: '14304',
+    scaling: (base, form, r) => {
+      if (form['14304']) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Kill Bonus`,
+    show: true,
+    default: false,
+    id: '14305',
+    scaling: (base, form, r) => {
+      if (form['14305']) base[Stats.P_ATK] += calcRefinement(0.12, 0.02, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Recitative [ATK]`,
+    show: true,
+    default: false,
+    id: '14402',
+    scaling: (base, form, r) => {
+      if (form['14402']) base[Stats.P_ATK] += calcRefinement(0.6, 0.15, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Aria [DMG]`,
+    show: true,
+    default: false,
+    id: '14402_2',
+    scaling: (base, form, r) => {
+      if (form['14402_2']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.48, 0.12, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Interlude [EM]`,
+    show: true,
+    default: false,
+    id: '14402_3',
+    scaling: (base, form, r) => {
+      if (form['14402_3']) base[Stats.EM] += calcRefinement(240, 60, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Normal Attack Hit`,
+    show: true,
+    default: false,
+    id: '14405',
+    scaling: (base, form, r) => {
+      if (form['14405']) {
+        base.SKILL_DMG += calcRefinement(0.2, 0.05, r)
+        base.BURST_DMG += calcRefinement(0.2, 0.05, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Skill/Burst Hit`,
+    show: true,
+    default: false,
+    id: '14405_2',
+    scaling: (base, form, r) => {
+      if (form['14405_2']) base.BASIC_DMG += calcRefinement(0.2, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `On-Reaction Bonus`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    id: '14407',
+    scaling: (base, form, r) => {
+      if (form['14407']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.08, 0.02, r) * form['14407']
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `CRIT Rate Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 5,
+    id: '14404',
+    scaling: (base, form, r) => {
+      if (form['14404']) base[Stats.CRIT_RATE] += form['14404'] * calcRefinement(0.08, 0.02, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Ballad Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '14426',
+    scaling: (base, form, r) => {
+      if (form['14426']) {
+        base.BASIC_DMG += form['14426'] * calcRefinement(0.08, 0.02, r)
+        base.CHARGE_DMG += form['14426'] * calcRefinement(0.06, 0.015, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Sprint Bonus`,
+    show: true,
+    default: false,
+    id: '14410',
+    scaling: (base, form, r) => {
+      if (form['14410']) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Normal to Charge Bonus`,
+    show: true,
+    default: false,
+    id: '14413',
+    scaling: (base, form, r) => {
+      if (form['14413']) base.CHARGE_DMG += calcRefinement(0.16, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Charge to ATK Bonus`,
+    show: true,
+    default: false,
+    id: '14413_2',
+    scaling: (base, form, r) => {
+      if (form['14413_2']) base[Stats.P_ATK] += calcRefinement(0.08, 0.02, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Electro Reaction Bonus`,
+    show: true,
+    default: false,
+    id: '14414',
+    scaling: (base, form, r, { element }) => {
+      if (form['14414']) base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.1, 0.025, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Skill ER Bonus`,
+    show: true,
+    default: false,
+    id: '14415',
+    scaling: (base, form, r) => {
+      if (form['14415']) base[Stats.ER] += calcRefinement(0.24, 0.06, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Bonus ATK from EM`,
+    show: true,
+    default: true,
+    id: '14416',
+    scaling: (base, form, r) => {
+      if (form['14416']) base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * base[Stats.EM]
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Wax and Wane Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 5,
+    id: '14417',
+    scaling: (base, form, r) => {
+      if (form['14417']) {
+        base[Stats.EM] += calcRefinement(24, 6, r) * form['14417']
+        base[Stats.P_ATK] -= 0.05 * form['14417']
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Off-Field Bonus`,
+    show: true,
+    default: true,
+    id: '14424',
+    scaling: (base, form, r) => {
+      if (form['14424']) {
+        base[Stats.EM] += calcRefinement(40, 10, r)
+        base[Stats.P_HP] += calcRefinement(0.32, 0.08, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Skill ATK Buff`,
+    show: true,
+    default: true,
+    id: '14425',
+    scaling: (base, form, r) => {
+      if (form['14425']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.08, 0.02, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `BoL% Cleared`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 24,
+    id: '14425_2',
+    scaling: (base, form, r) => {
+      if (form['14425'] && form['14425_2'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ELEMENTAL_DMG] += _.min([
+            (((form['14425_2'] / 100) * base.getHP()) / 1000) * calcRefinement(0.02, 0.005, r),
+            calcRefinement(0.12, 0.03, r),
+          ])
+          return base
+        })
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Seconds In-Combat`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 4,
+    id: '14502',
+    scaling: (base, form, r) => {
+      if (form['14502']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.08, 0.02, r) * form['14502']
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Bonus ATK Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 5,
+    id: '14504',
+    scaling: (base, form, r) => {
+      if (form['14504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['14504']
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Skill/Shield DMG Bonus`,
+    show: true,
+    default: true,
+    id: '14505',
+    scaling: (base, form, r, { element }) => {
+      if (form['14505'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats[`${element.toUpperCase()}_DMG`]] += _.min([
+            calcRefinement(0.003, 0.002, r) * (base.getHP() / 1000),
+            calcRefinement(0.12, 0.08, r),
+          ])
+          return base
+        })
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Kagura Dance Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '14509',
+    scaling: (base, form, r) => {
+      if (form['14509']) base.SKILL_DMG += calcRefinement(0.12, 0.03, r) * form['14509']
+      if (form['14509'] === 3) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Team ATK/EM Bonus`,
+    show: true,
+    default: true,
+    id: '14511',
+    scaling: (base, form, r, { team, element }) => {
+      if (form['14511']) {
+        const elements = _.map(team, (item) => findCharacter(item.cId)?.element)
+        const same = _.filter(elements, (item) => item === element).length - 1
+        const diff = _.filter(elements, (item) => item !== element).length
+
+        base[Stats.EM] += calcRefinement(32, 8, r) * same
+        base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.1, 0.04, r) * diff
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Normal ATK DMG Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 10,
+    id: '14512',
+    scaling: (base, form, r) => {
+      if (form['14512']) base.BASIC_DMG += calcRefinement(0.048, 0.012, r) * form['14512']
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `HP Change Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '14513',
+    scaling: (base, form, r) => {
+      if (form['14513']) {
+        base.BASIC_DMG += calcRefinement(0.14, 0.035, r) * form['14513']
+        base.CHARGE_DMG += calcRefinement(0.14, 0.035, r) * form['14513']
+      }
+      if (form['14513'] === 3) base.ATK_SPD += calcRefinement(0.08, 0.02, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `HP Change Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '14514',
+    scaling: (base, form, r) => {
+      if (form['14514']) base.CHARGE_DMG += calcRefinement(0.14, 0.04, r) * form['14514']
+      return base
+    },
+  },
 ]
 
 export const WeaponAllyConditionals: IWeaponContent[] = [
+  {
+    type: 'toggle',
+    text: `A Thousand Floating Dreams EM Share`,
+    show: true,
+    default: true,
+    id: '14511_a',
+    scaling: (base, form, r) => {
+      if (form['14511_a']) base[Stats.EM] += calcRefinement(40, 2, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Electro Reaction Bonus`,
+    show: true,
+    default: false,
+    id: '14414_a',
+    scaling: (base, form, r, { team, index }) => {
+      if (form['14414_a']) {
+        const element = findCharacter(team[index].cId)?.element
+        base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.1, 0.025, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `TToDS Switch Bonus`,
+    show: true,
+    default: false,
+    id: '14302',
+    scaling: (base, form, r) => {
+      if (form['14302']) base[Stats.P_ATK] += calcRefinement(0.24, 0.06, r)
+      return base
+    },
+  },
   {
     type: 'toggle',
     text: `Leaf of Consciousness`,
@@ -1034,7 +1458,11 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: true,
     id: '11418_2',
     scaling: (base, form, r, { own }) => {
-      if (form['11418_2']) base[Stats.ER] += own[Stats.EM] * calcRefinement(0.00036, 0.00009, r) * 0.3
+      if (form['11418_2'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ER] += own[Stats.EM] * calcRefinement(0.00036, 0.00009, r) * 0.3
+          return base
+        })
       return base
     },
   },
@@ -1045,7 +1473,11 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: false,
     id: '11511_a',
     scaling: (base, form, r, { own }) => {
-      if (form['11511_a']) base[Stats.EM] += calcRefinement(0.002, 0.0005, r) * own.getHP()
+      if (form['11511_a'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.EM] += calcRefinement(0.002, 0.0005, r) * own.getHP()
+          return base
+        })
       return base
     },
   },
@@ -1056,7 +1488,11 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: true,
     id: '12415_a',
     scaling: (base, form, r, { own }) => {
-      if (form['12415_a']) base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
+      if (form['12415_a'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
+          return base
+        })
       return base
     },
   },
@@ -1068,6 +1504,21 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     id: '13417_a',
     scaling: (base, form, r) => {
       if (form['13417_a']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Bonus ATK from Ally EM`,
+    show: true,
+    default: true,
+    id: '14416_a',
+    scaling: (base, form, r, { own }) => {
+      if (form['14416_a'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
+          return base
+        })
       return base
     },
   },
@@ -1096,6 +1547,17 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
         base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
         base.ATK_SPD += calcRefinement(0.12, 0.03, r)
       }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Team Plunge DMG Bonus`,
+    show: true,
+    default: true,
+    id: '14515',
+    scaling: (base, form, r) => {
+      if (form['14515']) base.PLUNGE_DMG += calcRefinement(0.28, 0.13, r)
       return base
     },
   },
