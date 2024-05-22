@@ -318,7 +318,7 @@ export const Weapons = [
     },
   },
   {
-    id: '114117',
+    id: '11417',
     name: 'Sapwood Blade',
     rarity: 4,
     tier: 3,
