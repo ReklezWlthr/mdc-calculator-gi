@@ -9,6 +9,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { WeaponTooltip } from './weapon_block'
+import { findCharacter } from '@src/core/utils/finder'
 
 interface IContentIndex extends IContent {
   index: number
@@ -67,7 +68,10 @@ export const WeaponConditionalBlock = observer(
                         }
                         position="left"
                       >
-                        <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
+                        <p className="w-full text-xs text-center text-white truncate">
+                          {content.owner && `${findCharacter(teamStore.characters[content.owner]?.cId)?.name}: `}
+                          {content.text}
+                        </p>
                       </WeaponTooltip>
                     </div>
                     <div className={classNames('col-span-2 text-center', content.debuff ? 'text-red' : 'text-blue')}>

@@ -1454,7 +1454,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Xiphos Allied Bonus ER`,
+    text: `Xiphos Bonus ER`,
     show: true,
     default: true,
     id: '11418_2',
