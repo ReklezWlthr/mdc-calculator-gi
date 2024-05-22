@@ -51,7 +51,10 @@ export class CalculatorStore {
 
   initForm = (initData: Record<string, any>[]) => {
     const mergedData = _.map(initData, (item, index) =>
-      _.mapValues(item, (value, key) => this.form[index]?.[key] || value)
+      _.mapValues(item, (value, key) => {
+        const old = this.form[index]?.[key]
+        return _.isUndefined(old) ? value : old
+      })
     )
     this.form = _.cloneDeep(mergedData)
   }

@@ -1459,7 +1459,6 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: true,
     id: '11418_2',
     scaling: (base, form, r, { own, owner }) => {
-      console.log(form, '11418_2_' + owner)
       if (form['11418_2_' + owner])
         base.CALLBACK.push((base: StatsObject) => {
           base[Stats.ER] += own[Stats.EM] * calcRefinement(0.00036, 0.00009, r) * 0.3
