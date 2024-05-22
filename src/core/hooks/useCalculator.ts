@@ -163,7 +163,9 @@ export const useCalculator = () => {
       // Apply self self buff then loop for team-wide buff that is in each character's own form
       _.forEach(calculatorStore.form, (form, i) => {
         _.forEach(
-          _.filter(weaponEligible(i), (c) => _.includes(_.keys(form), c.id)),
+          _.filter(i === index ? weaponConditionals[i] : weaponTeamConditionals[i], (c) =>
+            _.includes(_.keys(form), c.id)
+          ),
           (c) => {
             x = c.scaling(x, form, teamStore.characters[i]?.equipments?.weapon?.refinement, {
               team: teamStore.characters,
