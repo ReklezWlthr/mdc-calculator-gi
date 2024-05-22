@@ -232,13 +232,13 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
           name: 'Skill DMG',
           value: [{ scaling: calcScaling(1.216, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
-          property: TalentProperty.SKILL,
+          property: TalentProperty.BURST,
         },
         {
           name: 'Lightning DMG',
           value: [{ scaling: calcScaling(0.96, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
-          property: TalentProperty.SKILL,
+          property: TalentProperty.BURST,
         },
       ]
 

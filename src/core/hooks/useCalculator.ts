@@ -78,7 +78,7 @@ export const useCalculator = () => {
     )
   )
   const weaponAllySelectable = (i: number) => _.flatten(_.filter(weaponAllyConditionals, (_, i2) => i !== i2))
-  const weaponEligible = (i: number) => [...weaponConditionals[i], ...weaponTeamConditionals[i]]
+  const weaponEligible = (i: number) => [...weaponConditionals[i], ..._.flatten(weaponTeamConditionals)]
   const weaponSelectable = (i: number) => [...weaponEligible(i), ...weaponAllySelectable(i)]
 
   useEffect(() => {
@@ -169,6 +169,7 @@ export const useCalculator = () => {
               team: teamStore.characters,
               element: findCharacter(teamStore.characters[i]?.cId)?.element,
               own: postArtifact[i],
+              totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
             })
           }
         )
@@ -181,6 +182,7 @@ export const useCalculator = () => {
             team: teamStore.characters,
             element: findCharacter(teamStore.characters[c.owner]?.cId)?.element,
             own: postArtifact[c.owner],
+            totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
           })
         }
       )

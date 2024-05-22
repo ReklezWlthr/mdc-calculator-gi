@@ -166,7 +166,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
             {weaponData && (
               <div className="flex items-center w-full gap-x-2">
                 <p className="text-sm">Passive</p>
-                <WeaponTooltip wId={wId} refinement={refinement} position='right'>
+                <WeaponTooltip wId={wId} refinement={refinement}>
                   <i className="text-lg fa-regular fa-question-circle" />
                 </WeaponTooltip>
               </div>

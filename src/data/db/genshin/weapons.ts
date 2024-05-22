@@ -718,8 +718,8 @@ export const Weapons = [
     type: WeaponType.CLAYMORE,
     desc: {
       name: "Heat Haze at Horizon's End",
-      detail: `The equipping character gains {{0}}% of their Elemental Mastery as bonus ATK. When an Elemental Skill hits opponents, the Dream of the Scarlet Sands effect will be gained for 10s: The equipping character will gain {{1}}% of their Elemental Mastery as bonus ATK. Max 3 stacks.`,
-      properties: [{ base: 8, growth: 2 }],
+      detail: `After using an Elemental Skill, Normal or Charged Attacks, on hit, deal an additional {{0}}% ATK DMG in a small area. Effect lasts 15s. DMG can only occur once every 3s.`,
+      properties: [{ base: 60, growth: 15 }],
     },
   },
   {
@@ -915,11 +915,12 @@ export const Weapons = [
     icon: 'UI_EquipIcon_Claymore_Dragonfell',
     type: WeaponType.CLAYMORE,
     desc: {
-      name: 'Golden Majesty',
-      detail: `Increases Shield Strength by {{0}}%. Scoring hits on opponents increases ATK by {{1}}% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.`,
+      name: 'Frost Burial',
+      detail: `Hitting an opponent with Normal and Charged Attacks has a {{0}}% chance of forming and dropping an Everfrost Icicle above them, dealing {{1}}% AoE ATK DMG. Opponents affected by Cryo are dealt {{2}}% ATK DMG instead by the icicle. Can only occur once every 10s.`,
       properties: [
-        { base: 20, growth: 5 },
-        { base: 4, growth: 1 },
+        { base: 60, growth: 10 },
+        { base: 80, growth: 15 },
+        { base: 200, growth: 40 },
       ],
     },
   },

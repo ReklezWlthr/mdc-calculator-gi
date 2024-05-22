@@ -28,7 +28,7 @@ export const TooltipBody = ({
   return (
     <div className="space-y-3">
       <p dangerouslySetInnerHTML={{ __html: talent?.content }} />
-      {!!_.size(talent?.value) && unlocked && (
+      {!!_.size(talent?.value) && unlocked && stats && (
         <div>
           {_.map(talent?.value, (item) => (
             <p key={item.name}>

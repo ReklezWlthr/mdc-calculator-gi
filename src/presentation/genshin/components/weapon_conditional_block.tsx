@@ -62,6 +62,7 @@ export const WeaponConditionalBlock = observer(
                         refinement={
                           teamStore.characters[content.owner || content.index]?.equipments?.weapon?.refinement
                         }
+                        position='left'
                       >
                         <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                       </WeaponTooltip>

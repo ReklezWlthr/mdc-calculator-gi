@@ -118,6 +118,11 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
     id: '12510',
     scaling: (base, r) => {
       base[Stats.P_DEF] += calcRefinement(0.27, 0.08, r)
+      base.CALLBACK.push((base: StatsObject) => {
+        base.BASIC_F_DMG += calcRefinement(0.4, 0.1, r) * base.getDef()
+        base.CHARGE_F_DMG += calcRefinement(0.4, 0.1, r) * base.getDef()
+        return base
+      })
       return base
     },
   },

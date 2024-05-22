@@ -69,6 +69,10 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       content: `Decreases swimming Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
+    bonus: {
+      title: `Flawless Strategy`,
+      content: `Sangonomiya Kokomi has a <span class="text-desc">25%</span> Healing Bonus, but a <span class="text-desc">100%</span> decrease in CRIT Rate.`,
+    },
     c1: {
       title: `C1: At Water's Edge`,
       content: `While donning the Ceremonial Garment created by Nereid's Ascension, the final Normal Attack in Sangonomiya Kokomi's combo will unleash a swimming fish to deal <span class="text-desc">30%</span> of her Max HP as <b class="text-genshin-hydro">Hydro DMG</b>.

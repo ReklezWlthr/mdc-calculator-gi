@@ -466,9 +466,9 @@ export const MyCharacters = observer(() => {
                 {charData?.id === '10000054' && (
                   <div className="flex items-center gap-3">
                     <Tooltip
-                      title={charCond?.talents?.util?.title}
-                      body={<TooltipBody talent={charCond?.talents?.util} unlocked />}
-                      style="w-[40vw]"
+                      title={charCond?.talents?.bonus?.title}
+                      body={<TooltipBody talent={charCond?.talents?.bonus} unlocked />}
+                      style="w-[25vw]"
                     >
                       <img
                         src={`https://enka.network/ui/UI_Talent_S_Kokomi_07.png`}
@@ -478,7 +478,7 @@ export const MyCharacters = observer(() => {
                         )}
                       />
                     </Tooltip>
-                    <p>{charCond?.talents?.util?.title}</p>
+                    <p>{charCond?.talents?.bonus?.title}</p>
                   </div>
                 )}
               </div>
