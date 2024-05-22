@@ -88,7 +88,11 @@ export const MyCharacters = observer(() => {
     ? TravelerIconName[charData.element]
     : charData?.codeName
 
-  const { params: form, setParams: setForm, resetParams: resetForm } = useParams({
+  const {
+    params: form,
+    setParams: setForm,
+    resetParams: resetForm,
+  } = useParams({
     level: charUpgrade?.level || 1,
     ascension: charUpgrade?.ascension || 0,
     cons: charUpgrade?.cons || 0,
@@ -430,7 +434,9 @@ export const MyCharacters = observer(() => {
                         }.png`}
                         className={classNames(
                           'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                          ElementIconColor[charData?.element]
+                          charUpgrade
+                            ? ElementIconColor[charData?.element]
+                            : 'bg-primary-light ring-primary-lighter opacity-50'
                         )}
                       />
                     </Tooltip>
@@ -448,7 +454,9 @@ export const MyCharacters = observer(() => {
                         src={`https://enka.network/ui/Skill_S_${charData.codeName}_02.png`}
                         className={classNames(
                           'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                          ElementIconColor[charData?.element]
+                          charUpgrade
+                            ? ElementIconColor[charData?.element]
+                            : 'bg-primary-light ring-primary-lighter opacity-50'
                         )}
                       />
                     </Tooltip>
