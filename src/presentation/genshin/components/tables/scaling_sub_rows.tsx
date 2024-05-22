@@ -113,7 +113,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       ? ` \u{00d7} <b class="text-orange-300">${toPercentage(
           defMult,
           2
-        )}</b> \u{00d7} <b class="text-teal-200">${toPercentage(resMult, 2)}</b>`
+        )}</b> <i class="text-[10px]">DEF Mult</i> \u{00d7} <b class="text-teal-200">${toPercentage(resMult, 2)}</b> <i class="text-[10px]">RES Mult</i>`
       : ''
   }`
 

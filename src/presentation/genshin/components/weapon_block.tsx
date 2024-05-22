@@ -19,16 +19,18 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { findCharacter, findWeapon } from '@src/core/utils/finder'
 import { toPercentage } from '@src/core/utils/converter'
-import { Tooltip } from '@src/presentation/components/tooltip'
+import { Tooltip, TooltipPositionT } from '@src/presentation/components/tooltip'
 
-const WeaponTooltip = ({
+export const WeaponTooltip = ({
   wId,
   refinement,
   children,
+  position = 'bottom',
 }: {
   wId: string
   refinement: number
   children: React.ReactElement
+  position?: TooltipPositionT
 }) => {
   const data = findWeapon(wId)
   const properties = data?.desc?.properties
@@ -49,24 +51,21 @@ const WeaponTooltip = ({
   )
 
   return (
-    <div className="flex items-center w-full gap-x-2">
-      <p className="text-sm">Passive</p>
-      <Tooltip
-        title={data?.desc?.name}
-        body={
-          <div
-            className="font-normal"
-            dangerouslySetInnerHTML={{
-              __html: formattedString,
-            }}
-          />
-        }
-        position="bottom"
-        style="w-[450px]"
-      >
-        {children}
-      </Tooltip>
-    </div>
+    <Tooltip
+      title={data?.desc?.name}
+      body={
+        <div
+          className="font-normal"
+          dangerouslySetInnerHTML={{
+            __html: formattedString,
+          }}
+        />
+      }
+      position={position}
+      style="w-[450px]"
+    >
+      {children}
+    </Tooltip>
   )
 }
 
@@ -165,9 +164,12 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
               </div>
             </div>
             {weaponData && (
-              <WeaponTooltip wId={wId} refinement={refinement}>
-                <i className="text-lg fa-regular fa-question-circle" />
-              </WeaponTooltip>
+              <div className="flex items-center w-full gap-x-2">
+                <p className="text-sm">Passive</p>
+                <WeaponTooltip wId={wId} refinement={refinement} position='right'>
+                  <i className="text-lg fa-regular fa-question-circle" />
+                </WeaponTooltip>
+              </div>
             )}
           </div>
         </div>

@@ -27,7 +27,7 @@ export const ReactionTooltip = observer(
       base
     ).toLocaleString()}</b> <i class="text-[10px]">Base DMG</i>${
       emBonus + dmg ? ` \u{00d7} (1 + <b class="text-yellow">${toPercentage(emBonus + dmg)}</b>)` : ''
-    } \u{00d7} <b class="text-teal-200">${toPercentage(resMult)}</b>`
+    } \u{00d7} <b class="text-teal-200">${toPercentage(resMult)}</b> <i class="text-[10px]">RES Mult</i>`
 
     return (
       <Tooltip

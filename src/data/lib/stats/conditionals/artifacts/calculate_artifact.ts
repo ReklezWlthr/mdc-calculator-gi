@@ -11,8 +11,8 @@ export const getArtifactConditionals = (artifacts: IArtifactEquip[]) => {
   const set = _.findKey(setBonus, (item) => item >= 4)
 
   return {
-    content: _.filter(content, (item) => item.id === set),
-    teamContent: _.filter(teamContent, (item) => item.id === set),
+    content: _.filter(content, (item) => _.includes(item.id, set)),
+    teamContent: _.filter(teamContent, (item) => _.includes(item.id, set)),
   }
 }
 

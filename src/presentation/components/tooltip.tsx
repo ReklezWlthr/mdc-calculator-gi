@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
 import React, { Fragment, MouseEvent, useCallback, useEffect, useRef, useState } from 'react'
 
-type TooltipPositionT = 'top' | 'bottom' | 'left' | 'right'
+export type TooltipPositionT = 'top' | 'bottom' | 'left' | 'right'
 
 export const Tooltip = observer(
   ({

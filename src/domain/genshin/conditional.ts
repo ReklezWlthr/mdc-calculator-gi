@@ -38,6 +38,19 @@ export interface IContent {
   options?: { name: string; value: string }[]
 }
 
+export interface IWeaponContent {
+  type?: 'toggle' | 'number' | 'element'
+  id: string
+  text: string
+  show: boolean
+  default?: number | boolean | Element
+  max?: number
+  min?: number
+  debuff?: boolean
+  options?: { name: string; value: string }[]
+  scaling: (base: StatsObject, form: Record<string, any>, team: ITeamChar[], r: number) => StatsObject
+}
+
 export interface ITalentDisplay {
   title: string
   content: string

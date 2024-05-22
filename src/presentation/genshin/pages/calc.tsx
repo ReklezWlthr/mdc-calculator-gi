@@ -27,6 +27,8 @@ import {
   calculateTeamArtifact,
   getArtifactConditionals,
 } from '@src/data/lib/stats/conditionals/artifacts/calculate_artifact'
+import { WeaponConditionals } from '@src/data/lib/stats/conditionals/weapons/weapon_conditionals'
+import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, artifactStore, modalStore, calculatorStore } = useStore()
@@ -67,6 +69,12 @@ export const Calculator = observer(({}: {}) => {
       }),
     [teamStore.characters, artifactStore.artifacts]
   )
+  const weaponConditionals = _.map(teamStore.characters, (item, index) =>
+    _.map(
+      _.filter(WeaponConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId)),
+      (cond) => ({ ...cond, title: '', content: '', index })
+    )
+  )
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
 
@@ -84,7 +92,8 @@ export const Calculator = observer(({}: {}) => {
               computedStats[index]
             ),
             artifactConditionals[index]?.content,
-            artifactConditionals[index]?.teamContent
+            artifactConditionals[index]?.teamContent,
+            weaponConditionals[index]
           ),
           (acc, curr) => {
             if (curr?.show) acc[curr.id] = curr.default
@@ -136,7 +145,19 @@ export const Calculator = observer(({}: {}) => {
       })
       return x
     })
-    const postReaction = _.map(postArtifact, (base, index) =>
+    const postWeapon = _.map(postArtifact, (base, index) => {
+      let x = base
+      _.forEach(calculatorStore.form, (form, i) => {
+        _.forEach(
+          _.filter(weaponConditionals[index], (c) => _.includes(_.keys(form), c.id)),
+          (c) => {
+            x = c.scaling(x, form, teamStore.characters, teamStore.characters[index]?.equipments?.weapon?.refinement)
+          }
+        )
+      })
+      return x
+    })
+    const postReaction = _.map(postWeapon, (base, index) =>
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
     calculatorStore.setValue('computedStats', postReaction)
@@ -321,6 +342,7 @@ export const Calculator = observer(({}: {}) => {
         />
         <ConditionalBlock title="Self Conditionals" contents={_.filter(mainContent, 'show')} />
         <ConditionalBlock title="Team Conditionals" contents={_.filter(teamContent, 'show')} />
+        <WeaponConditionalBlock contents={weaponConditionals[selected]} index={selected} />
         <StatBlock index={selected} stat={computedStats[selected]} />
         <div className="w-[252px]">
           <AscensionIcons

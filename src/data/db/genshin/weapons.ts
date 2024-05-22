@@ -176,21 +176,6 @@ export const Weapons = [
     },
   },
   {
-    id: '11415',
-    name: 'Cinnabar Spindle',
-    rarity: 4,
-    tier: 1,
-    ascStat: Stats.P_DEF,
-    baseStat: 0.15,
-    icon: 'UI_EquipIcon_Sword_Opus',
-    type: WeaponType.SWORD,
-    desc: {
-      name: 'Spotless Heart',
-      detail: `Elemental Skill DMG is increased by {{0}}% of DEF. The effect will be triggered no more than once every 1.5s and will be cleared 0.1s after the Elemental Skill deals DMG.`,
-      properties: [{ base: 40, growth: 10 }],
-    },
-  },
-  {
     id: '11406',
     name: 'Prototype Rancour',
     rarity: 4,
@@ -303,6 +288,21 @@ export const Weapons = [
     },
   },
   {
+    id: '11415',
+    name: 'Cinnabar Spindle',
+    rarity: 4,
+    tier: 1,
+    ascStat: Stats.P_DEF,
+    baseStat: 0.15,
+    icon: 'UI_EquipIcon_Sword_Opus',
+    type: WeaponType.SWORD,
+    desc: {
+      name: 'Spotless Heart',
+      detail: `Elemental Skill DMG is increased by {{0}}% of DEF. The effect will be triggered no more than once every 1.5s and will be cleared 0.1s after the Elemental Skill deals DMG.`,
+      properties: [{ base: 40, growth: 10 }],
+    },
+  },
+  {
     id: '11416',
     name: 'Kagotsurube Isshin',
     rarity: 4,
@@ -393,7 +393,7 @@ export const Weapons = [
       name: 'An End Sublime',
       detail: `When using an Elemental Skill, ATK will be increased by {{0}}% for 15s, and a <b class="text-genshin-bol">Bond of Life</b> worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the <b class="text-genshin-bol">Bond of Life</b> is cleared, a maximum of {{1}} ATK will be gained based on {{2}}% of the total amount of the Life Bond cleared, lasting for 15s.`,
       properties: [
-        { base: 12, growth: 4 },
+        { base: 12, growth: 3 },
         { base: 150, growth: 37.5 },
         { base: 2.4, growth: 0.6 },
       ],
