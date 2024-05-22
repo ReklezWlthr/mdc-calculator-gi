@@ -57,7 +57,7 @@ export const WeaponConditionalBlock = observer(
                 content.show && (
                   <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={content.id}>
                     <div className="col-span-6">
-                      <WeaponTooltip wId={content.id} refinement={refinement}>
+                      <WeaponTooltip wId={_.split(content.id, '_')[0]} refinement={refinement}>
                         <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                       </WeaponTooltip>
                     </div>

@@ -96,7 +96,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11415',
     scaling: (base, form, team, r) => {
-      if (form['11415']) base.SKILL_F_DMG += base[Stats.DEF] * calcRefinement(0.4, 0.1, r)
+      if (form['11415']) base.SKILL_F_DMG += base.getDef() * calcRefinement(0.4, 0.1, r)
       return base
     },
   },
@@ -133,7 +133,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11410',
     scaling: (base, form, team, r) => {
-      if (form['11410']) base.SKILL_F_DMG += calcRefinement(0.12, 0.04, r)
+      if (form['11410']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.04, r)
       return base
     },
   },
@@ -141,7 +141,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     type: 'toggle',
     text: `Leaf of Consciousness`,
     show: true,
-    default: true,
+    default: false,
     id: '114117',
     scaling: (base, form, team, r) => {
       if (form['114117']) base[Stats.EM] += calcRefinement(60, 15, r)
@@ -238,8 +238,19 @@ export const WeaponConditionals: IWeaponContent[] = [
   },
 ]
 
+export const WeaponAllyConditionals: IWeaponContent[] = [{
+  type: 'toggle',
+  text: `Leaf of Consciousness`,
+  show: true,
+  default: false,
+  id: '114117_a',
+  scaling: (base, form, team, r) => {
+    if (form['114117_a']) base[Stats.EM] += calcRefinement(60, 15, r)
+    return base
+  },
+},]
+
 export const WeaponTeamConditionals: IWeaponContent[] = [
-  findContentById(WeaponConditionals, '114117'),
   {
     type: 'toggle',
     text: `Xiphos Bonus ER`,

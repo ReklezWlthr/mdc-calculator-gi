@@ -27,7 +27,11 @@ import {
   calculateTeamArtifact,
   getArtifactConditionals,
 } from '@src/data/lib/stats/conditionals/artifacts/calculate_artifact'
-import { WeaponConditionals } from '@src/data/lib/stats/conditionals/weapons/weapon_conditionals'
+import {
+  WeaponAllyConditionals,
+  WeaponConditionals,
+  WeaponTeamConditionals,
+} from '@src/data/lib/stats/conditionals/weapons/weapon_conditionals'
 import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 
 export const Calculator = observer(({}: {}) => {
@@ -75,6 +79,21 @@ export const Calculator = observer(({}: {}) => {
       (cond) => ({ ...cond, title: '', content: '', index })
     )
   )
+  const weaponTeamConditionals = _.map(teamStore.characters, (item, index) =>
+    _.map(
+      _.filter(WeaponTeamConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId)),
+      (cond) => ({ ...cond, title: '', content: '', index })
+    )
+  )
+  const weaponAllyConditionals = _.map(teamStore.characters, (item, index) =>
+    _.map(
+      _.filter(WeaponAllyConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId)),
+      (cond) => ({ ...cond, title: '', content: '', index: selected, owner: index })
+    )
+  )
+  const weaponAllySelectable = (i: number) => _.flatten(_.filter(weaponAllyConditionals, (_, i2) => i !== i2))
+  const weaponEligible = (i: number) => [...weaponConditionals[i], ...weaponTeamConditionals[i]]
+  const weaponSelectable = (i: number) => [...weaponEligible(i), ...weaponAllySelectable(i)]
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
 
@@ -93,7 +112,7 @@ export const Calculator = observer(({}: {}) => {
             ),
             artifactConditionals[index]?.content,
             artifactConditionals[index]?.teamContent,
-            weaponConditionals[index]
+            ...weaponSelectable(index)
           ),
           (acc, curr) => {
             if (curr?.show) acc[curr.id] = curr.default
@@ -131,6 +150,7 @@ export const Calculator = observer(({}: {}) => {
       (base, index) =>
         base?.postCompute(preComputeShared[index], calculatorStore.form[index]) || preComputeShared[index]
     )
+    // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
     const postArtifact = _.map(postCompute, (base, index) => {
       let x = base
       const artifactData = _.map(teamStore.characters[index].equipments.artifacts, (item) =>
@@ -147,16 +167,30 @@ export const Calculator = observer(({}: {}) => {
     })
     const postWeapon = _.map(postArtifact, (base, index) => {
       let x = base
+      // Apply self self buff then loop for team-wide buff that is in each character's own form
       _.forEach(calculatorStore.form, (form, i) => {
         _.forEach(
-          _.filter(weaponConditionals[index], (c) => _.includes(_.keys(form), c.id)),
+          _.filter(weaponEligible(i), (c) => _.includes(_.keys(form), c.id)),
           (c) => {
-            x = c.scaling(x, form, teamStore.characters, teamStore.characters[index]?.equipments?.weapon?.refinement)
+            x = c.scaling(x, form, teamStore.characters, teamStore.characters[i]?.equipments?.weapon?.refinement)
           }
         )
       })
+      // Targeted buffs are in each team member form aside from the giver so no need to loop
+      _.forEach(
+        _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(calculatorStore.form[index]), c.id)),
+        (c) => {
+          x = c.scaling(
+            x,
+            calculatorStore.form[index],
+            teamStore.characters,
+            teamStore.characters[c.owner]?.equipments?.weapon?.refinement
+          )
+        }
+      )
       return x
     })
+    // No need to loop; each reaction buff only apply to the character
     const postReaction = _.map(postWeapon, (base, index) =>
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
@@ -342,7 +376,7 @@ export const Calculator = observer(({}: {}) => {
         />
         <ConditionalBlock title="Self Conditionals" contents={_.filter(mainContent, 'show')} />
         <ConditionalBlock title="Team Conditionals" contents={_.filter(teamContent, 'show')} />
-        <WeaponConditionalBlock contents={weaponConditionals[selected]} index={selected} />
+        <WeaponConditionalBlock contents={weaponSelectable(selected)} index={selected} />
         <StatBlock index={selected} stat={computedStats[selected]} />
         <div className="w-[252px]">
           <AscensionIcons
