@@ -20,7 +20,7 @@ import { getSetCount } from '../utils/data_format'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
 
 export const useCalculator = () => {
-  const { teamStore, artifactStore, modalStore, calculatorStore } = useStore()
+  const { teamStore, artifactStore, calculatorStore } = useStore()
   const { selected, computedStats } = calculatorStore
 
   const char = teamStore.characters[selected]
@@ -33,6 +33,7 @@ export const useCalculator = () => {
     [teamStore.characters, artifactStore.artifacts]
   )
 
+  // Conditional objects include talent descriptions, conditional contents and a calculator
   const conditionals = useMemo(
     () =>
       _.map(teamStore.characters, (item) =>
@@ -107,7 +108,16 @@ export const useCalculator = () => {
     )
   }, [teamStore.characters])
 
+  // =================
+  //
   // Main Calculator
+  //
+  // =================
+
+  // Calculate normal stats first, then ones from allies, then ones from artifacts
+  // Those above does not rely on character's own stat (except EoSF) so they are placed first
+  // Some weapon buffs scale off character's stat so we have to calculate ones above first
+  // Reactions are placed last because they only provide damage buff, not stat buffs, and heavily relies on stats
   useEffect(() => {
     const preCompute = _.map(
       conditionals,
@@ -155,7 +165,11 @@ export const useCalculator = () => {
         _.forEach(
           _.filter(weaponEligible(i), (c) => _.includes(_.keys(form), c.id)),
           (c) => {
-            x = c.scaling(x, form, teamStore.characters, teamStore.characters[i]?.equipments?.weapon?.refinement)
+            x = c.scaling(x, form, teamStore.characters[i]?.equipments?.weapon?.refinement, {
+              team: teamStore.characters,
+              element: findCharacter(teamStore.characters[i]?.cId)?.element,
+              own: postArtifact[i],
+            })
           }
         )
       })
@@ -163,12 +177,11 @@ export const useCalculator = () => {
       _.forEach(
         _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(calculatorStore.form[index]), c.id)),
         (c) => {
-          x = c.scaling(
-            x,
-            calculatorStore.form[index],
-            teamStore.characters,
-            teamStore.characters[c.owner]?.equipments?.weapon?.refinement
-          )
+          x = c.scaling(x, calculatorStore.form[index], teamStore.characters[c.owner]?.equipments?.weapon?.refinement, {
+            team: teamStore.characters,
+            element: findCharacter(teamStore.characters[c.owner]?.cId)?.element,
+            own: postArtifact[c.owner],
+          })
         }
       )
       return x
@@ -180,12 +193,21 @@ export const useCalculator = () => {
     calculatorStore.setValue('computedStats', postReaction)
   }, [baseStats, calculatorStore.form, teamStore.characters])
 
+  // =================
+  //
+  // Mapped Contents
+  //
+  // =================
+
+  // Mapped reaction contents
   const reactions = _.flatMap(
     _.map(teamStore.characters, (item, index) =>
       Reactions(item.level, findCharacter(item.cId)?.element, calculatorStore.form[index]?.swirl, computedStats[index])
     ),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
+  // Mapped conditional contents that the selected character can toggle (Self + all team buffs from allies)
+  // Soon might have to implement single target buff
   const mapped = _.flatMap(
     _.map(conditionals, (item, index) =>
       index === selected
@@ -195,12 +217,14 @@ export const useCalculator = () => {
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
   // Index is embedded into each conditional for the block to call back to
-  // Because each of the form with represent ALL the value for each character (including team buffs); not the value that we can change in their page
+  // Because each of the form with represent ALL the buffs that each character has (including team buffs); not the value that we can change in their page
   // This helps separate buffs trigger of each character and prevent buff stacking
+  // Update: This is with the exception of single target buffs that will be put in allies' form instead of the giver so that the buff will not activate all at once
   const mainContent = _.filter(mapped, ['index', selected])
   const teamContent = _.filter(mapped, (item, index) => selected !== item.index)
   const mainReaction = _.filter(reactions, ['index', selected])
 
+  // Content of transformative reaction dmg
   const nilou = _.some(calculatorStore.form, (item) => item?.bountiful_core)
   const transformative = _.filter(
     Transformative(

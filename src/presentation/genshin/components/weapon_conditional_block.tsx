@@ -12,6 +12,7 @@ import { WeaponTooltip } from './weapon_block'
 
 interface IContentIndex extends IContent {
   index: number
+  owner?: number
 }
 
 interface ConditionalBlockProps {
@@ -25,7 +26,6 @@ export const WeaponConditionalBlock = observer(
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, teamStore } = useStore()
-    const refinement = teamStore.characters[index]?.equipments?.weapon?.refinement
 
     return (
       <div className="w-full rounded-lg bg-primary-darker h-fit">
@@ -57,7 +57,12 @@ export const WeaponConditionalBlock = observer(
                 content.show && (
                   <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={content.id}>
                     <div className="col-span-6">
-                      <WeaponTooltip wId={_.split(content.id, '_')[0]} refinement={refinement}>
+                      <WeaponTooltip
+                        wId={_.split(content.id, '_')[0]}
+                        refinement={
+                          teamStore.characters[content.owner || content.index]?.equipments?.weapon?.refinement
+                        }
+                      >
                         <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                       </WeaponTooltip>
                     </div>

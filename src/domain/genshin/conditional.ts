@@ -48,7 +48,14 @@ export interface IWeaponContent {
   min?: number
   debuff?: boolean
   options?: { name: string; value: string }[]
-  scaling: (base: StatsObject, form: Record<string, any>, team: ITeamChar[], r: number) => StatsObject
+  scaling: (
+    base: StatsObject, // Stats of the character
+    form: Record<string, any>,
+    r: number,
+    extra: { team: ITeamChar[]; element: Element; own: StatsObject }
+    //"element" is the element of the wearer
+    // "own" is the stat of the wearer
+  ) => StatsObject
 }
 
 export interface ITalentDisplay {
