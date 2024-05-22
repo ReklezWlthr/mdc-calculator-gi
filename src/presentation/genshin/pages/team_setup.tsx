@@ -22,7 +22,7 @@ import { TalentIcon } from '../components/tables/scaling_wrapper'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
-import { calculateOutOfCombat } from '@src/core/utils/calculator'
+import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
 
 const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
@@ -131,7 +131,8 @@ export const TeamSetup = observer(() => {
 
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
-  const stats = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, teamStore.characters, artifactData)
+  const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, teamStore.characters, artifactData)
+  const stats = calculateFinal(raw)
 
   const onOpenSaveModal = useCallback(() => {
     modalStore.openModal(<SaveBuildModal index={selected} />)

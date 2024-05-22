@@ -107,6 +107,10 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
     id: '11505',
     scaling: (base, r) => {
       base[Stats.P_HP] += calcRefinement(0.2, 0.05, r)
+      base.CALLBACK.push((base: StatsObject) => {
+        base[Stats.ATK] += calcRefinement(0.012, 0.003, r) * base.getHP()
+        return base
+      })
       return base
     },
   },

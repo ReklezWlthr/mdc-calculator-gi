@@ -190,7 +190,15 @@ export const useCalculator = () => {
     const postReaction = _.map(postWeapon, (base, index) =>
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
-    calculatorStore.setValue('computedStats', postReaction)
+    // Cleanup callbacks for buffs that should be applied last
+    const final = _.map(postReaction, (base) => {
+      let x = base
+      _.forEach(base.CALLBACK, (cb) => {
+        x = cb(x)
+      })
+      return x
+    })
+    calculatorStore.setValue('computedStats', final)
   }, [baseStats, calculatorStore.form, teamStore.characters])
 
   // =================

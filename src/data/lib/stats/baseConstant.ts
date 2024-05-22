@@ -218,6 +218,8 @@ export const baseStatsObject = {
     return this.BASE_DEF * (1 + this[Stats.P_DEF]) + this[Stats.DEF]
   },
 
+  CALLBACK: [] as Function[],
+
   //util
   infuse: function (infusion: Element, lock: boolean = false) {
     if (lock) {

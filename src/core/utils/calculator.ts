@@ -35,6 +35,15 @@ export const calculateOutOfCombat = (
   return final
 }
 
+export const calculateFinal = (conditionals: StatsObject) => {
+  const cb = conditionals.CALLBACK
+  let x = conditionals
+  _.forEach(cb, (item) => {
+    x = item(x)
+  })
+  return x
+}
+
 export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon: IWeaponEquip) => {
   const character = findCharacter(char?.cId)
   const weaponData = findWeapon(weapon?.wId)

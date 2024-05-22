@@ -288,17 +288,6 @@ export const WeaponConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'toggle',
-    text: `Bonus ATK from HP`,
-    show: true,
-    default: true,
-    id: '11505',
-    scaling: (base, form, r) => {
-      base[Stats.ATK] += calcRefinement(0.012, 0.003, r) * base.getHP()
-      return base
-    },
-  },
-  {
     type: 'number',
     text: `Mistsplitter's Emblem`,
     show: true,
