@@ -328,7 +328,7 @@ export const MyCharacters = observer(() => {
                             element={charData?.element}
                             icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
                             size="w-10 h-10"
-                            tooltipSize="w-[550px]"
+                            tooltipSize="w-[520px]"
                           />
                           {charUpgrade?.talents?.normal && (
                             <div
