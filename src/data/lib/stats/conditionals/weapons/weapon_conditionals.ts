@@ -733,6 +733,275 @@ export const WeaponConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Slime Bonus DMG`,
+    show: true,
+    default: false,
+    id: '13303',
+    scaling: (base, form, r) => {
+      if (form['13303']) base[Stats.ALL_DMG] += calcRefinement(0.4, 0.2, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Against Target with Hydro/Pyro`,
+    show: true,
+    default: false,
+    id: '13401',
+    scaling: (base, form, r) => {
+      if (form['13401']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Prototype Skill Buff`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    id: '13402',
+    scaling: (base, form, r) => {
+      if (form['13402']) {
+        base.CHARGE_DMG += calcRefinement(0.08, 0.02, r) * form['13402']
+        base.BASIC_DMG += calcRefinement(0.08, 0.02, r) * form['13402']
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `CRIT Rate Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 5,
+    id: '13404',
+    scaling: (base, form, r) => {
+      if (form['13404']) base[Stats.CRIT_RATE] += form['13404'] * calcRefinement(0.08, 0.02, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Nearby Opponents`,
+    show: true,
+    default: 0,
+    min: 0,
+    id: '13405',
+    scaling: (base, form, r) => {
+      if (form['13405'] >= 2) {
+        base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+        base[Stats.P_DEF] += calcRefinement(0.16, 0.04, r)
+      }
+      if (form['13405'] < 2) base[Stats.P_ATK] += calcRefinement(0.24, 0.06, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Lithic Spear Bonus`,
+    show: true,
+    default: true,
+    id: '13406',
+    scaling: (base, form, r, { team }) => {
+      if (form['13406']) {
+        const count = _.filter(
+          _.map(team, (item) => findCharacter(item.cId)?.region),
+          (item) => item === 'Liyue'
+        ).length
+        base[Stats.P_ATK] += count * calcRefinement(0.07, 0.01, r)
+        base[Stats.CRIT_RATE] += count * calcRefinement(0.03, 0.01, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Bonus Burst DMG from Energy`,
+    show: true,
+    default: true,
+    id: '13416',
+    scaling: (base, form, r, { totalEnergy }) => {
+      if (form['13416'])
+        base.BURST_DMG += _.min([calcRefinement(0.0012, 0.0003, r) * totalEnergy, calcRefinement(0.4, 0.02, r)])
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Leaf of Revival`,
+    show: true,
+    default: false,
+    id: '13417',
+    scaling: (base, form, r) => {
+      if (form['13417']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Reaction Bonus`,
+    show: true,
+    default: false,
+    id: '13419',
+    scaling: (base, form, r) => {
+      if (form['13419']) {
+        base[Stats.P_ATK] += calcRefinement(0.12, 0.03, r)
+        base[Stats.EM] += calcRefinement(48, 12, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `3+ Team Element Bonus`,
+    show: true,
+    default: false,
+    id: '13419',
+    scaling: (base, form, r, { team }) => {
+      const count = _.uniq(_.map(team, (item) => findCharacter(item.cId)?.element)).length
+      if (form['13419'] && count >= 3) base[Stats.EM] += calcRefinement(120, 20, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Unity Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '13419',
+    scaling: (base, form, r) => {
+      if (form['13419']) {
+        base[Stats.P_ATK] += calcRefinement(0.03, 0.01, r)
+        base[Stats.ALL_DMG] += calcRefinement(0.07, 0.015, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Current HP < 50%`,
+    show: true,
+    default: false,
+    id: '13501',
+    scaling: (base, form, r) => {
+      if (form['13501']) base[Stats.ATK] += calcRefinement(0.01, 0.002, r) * base.getAtk()
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Bonus ATK Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 5,
+    id: '13504',
+    scaling: (base, form, r) => {
+      if (form['13504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['13504']
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Consummation Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 6,
+    id: '13507',
+    scaling: (base, form, r) => {
+      if (form['13507']) base[Stats.P_ATK] += calcRefinement(0.032, 0.008, r) * form['13507']
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Off-Field Bonus`,
+    show: true,
+    default: true,
+    id: '13507_2',
+    scaling: (base, form, r) => {
+      if (form['13507_2'] && form['13507']) base[Stats.P_ATK] += calcRefinement(0.032, 0.008, r) * form['13507']
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Burst Bonus ER`,
+    show: true,
+    default: true,
+    id: '13508',
+    scaling: (base, form, r) => {
+      if (form['13508']) base[Stats.ER] += calcRefinement(0.3, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Burst Bonus ER`,
+    show: true,
+    default: true,
+    id: '13508',
+    scaling: (base, form, r) => {
+      if (form['13508']) base[Stats.ER] += calcRefinement(0.3, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Burst Bonus ER`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '13511',
+    scaling: (base, form, r) => {
+      if (form['13511']) base[Stats.ATK] += calcRefinement(0.28, 0.07, r) * base[Stats.EM] * form['13511']
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Bond of Life`,
+    show: true,
+    default: true,
+    id: '13512',
+    scaling: (base, form, r) => {
+      if (form['13512']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.035, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Bond of Life >= 30%`,
+    show: true,
+    default: false,
+    id: '13512_2',
+    scaling: (base, form, r) => {
+      if (form['13512_2'] && form['13512']) base[Stats.ALL_DMG] += calcRefinement(0.24, 0.08, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `On-Hit ATK Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 7,
+    id: '13505',
+    scaling: (base, form, r) => {
+      if (form['13505']) base[Stats.P_ATK] += calcRefinement(0.032, 0.007, r) * form['13505']
+      if (form['13505'] === 7) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      return base
+    },
+  },
 ]
 
 export const WeaponAllyConditionals: IWeaponContent[] = [
@@ -788,6 +1057,17 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     id: '12415_a',
     scaling: (base, form, r, { own }) => {
       if (form['12415_a']) base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Leaf of Revival`,
+    show: true,
+    default: false,
+    id: '13417_a',
+    scaling: (base, form, r) => {
+      if (form['13417_a']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
       return base
     },
   },

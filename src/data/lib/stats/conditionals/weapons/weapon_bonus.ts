@@ -1,6 +1,7 @@
 import { StatsObject } from '../../baseConstant'
 import { calcRefinement } from '../../../../../core/utils/data_format'
 import { Stats } from '@src/domain/genshin/constant'
+import _ from 'lodash'
 
 const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number) => StatsObject }[] = [
   {
@@ -173,6 +174,27 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
     id: '13501',
     scaling: (base, r) => {
       base[Stats.P_HP] += calcRefinement(0.2, 0.05, r)
+      base.CALLBACK.push((base: StatsObject) => {
+        base[Stats.ATK] += calcRefinement(0.008, 0.002, r) * base.getAtk()
+      })
+      return base
+    },
+  },
+  {
+    id: '13508',
+    scaling: (base, r) => {
+      base.CALLBACK.push((base: StatsObject) => {
+        base[Stats.ATK] += _.min([calcRefinement(0.28, 0.07, r) * (base[Stats.ER] - 1), calcRefinement(0.8, 0.1, r)])
+      })
+      return base
+    },
+  },
+  {
+    id: '13511',
+    scaling: (base, r) => {
+      base.CALLBACK.push((base: StatsObject) => {
+        base[Stats.ATK] += calcRefinement(0.52, 0.13, r) * base[Stats.EM]
+      })
       return base
     },
   },
