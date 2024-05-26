@@ -45,7 +45,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       <br />Enter Aiming Mode, locking a target in her sights to fire a precise interdiction shot. If Chevreuse has an Overcharged Ball, then she will fire the Overcharged Ball instead, dealing greater <b class="text-genshin-pyro">Pyro DMG</b> in a larger area.
       <br />Chevreuse gains <span class="text-desc">1</span> Overcharged Ball every time a nearby character in the party triggers an Overloaded reaction, and can have up to <span class="text-desc">1</span> Overcharged Ball at a time.
       <br />
-      <br />Arkhe: <b class="text-genshin-ousia">Ousia</b>
+      <br /><b>Arkhe: </b><b class="text-genshin-ousia">Ousia</b>
       <br />Periodically, after Chevreuse's Short-Range Rapid Interdiction Fire hits, a Surging Blade will be called forth that deals <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-pyro">Pyro DMG</b>.
       `,
     },

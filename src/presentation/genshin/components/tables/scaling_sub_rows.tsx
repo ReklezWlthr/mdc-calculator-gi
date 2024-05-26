@@ -113,7 +113,10 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       ? ` \u{00d7} <b class="text-orange-300">${toPercentage(
           defMult,
           2
-        )}</b> <i class="text-[10px]">DEF Mult</i> \u{00d7} <b class="text-teal-200">${toPercentage(resMult, 2)}</b> <i class="text-[10px]">RES Mult</i>`
+        )}</b> <i class="text-[10px]">DEF</i> \u{00d7} <b class="text-teal-200">${toPercentage(
+          resMult,
+          2
+        )}</b> <i class="text-[10px]">RES</i>`
       : ''
   }`
 
@@ -155,6 +158,22 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
               <p className="text-xs">
                 Vulnerability Bonus: <span className="text-desc">{toPercentage(stats.VULNERABILITY)}</span>
               </p>
+            )}
+            {scaling.property === TalentProperty.SHIELD && (
+              <>
+                <p className="text-xs">
+                  Off-Element Absorption:{' '}
+                  <span className="text-desc">{_.round(dmg * (1 + stats[Stats.SHIELD])).toLocaleString()}</span>
+                </p>
+                <p className="text-xs">
+                  On-Element Absorption:{' '}
+                  <span className="text-desc">{_.round(dmg * (2.5 * (1 + stats[Stats.SHIELD]))).toLocaleString()}</span>
+                </p>
+                <p className="text-xs">
+                  Geo Shield Absorption:{' '}
+                  <span className="text-desc">{_.round(dmg * (1.5 * (1 + stats[Stats.SHIELD]))).toLocaleString()}</span>
+                </p>
+              </>
             )}
           </div>
         }

@@ -12,7 +12,7 @@ export const Tooltip = observer(
     body,
     position = 'right',
     style,
-    containerStyle
+    containerStyle,
   }: {
     children: React.ReactElement
     title: string
@@ -54,9 +54,9 @@ export const Tooltip = observer(
         // Check top
         if (tooltip_rect.y < 0) posY = position === 'top' ? text_rect.height + EDGE_MARGIN : 0
         // Check bottom
-        const bottomOverflow = tooltip_rect?.y + height - window.innerHeight
+        const bottomOverflow = tooltip_rect?.y + height - (window.innerHeight + EDGE_MARGIN)
         if (tooltip_rect?.y + height > window.innerHeight + EDGE_MARGIN)
-          posY = position === 'bottom' ? -height - EDGE_MARGIN : -bottomOverflow - EDGE_MARGIN
+          posY = position === 'bottom' ? -height - EDGE_MARGIN : -bottomOverflow
 
         // Apply corrected position
         ref.style.top = posY + 'px'
@@ -65,7 +65,7 @@ export const Tooltip = observer(
     }, [position, hovered, ref])
 
     return (
-      <div className={classNames("relative text-sm text-gray", containerStyle)}>
+      <div className={classNames('relative text-sm text-gray', containerStyle)}>
         {React.cloneElement(children, {
           onMouseEnter: () => setHovered(true),
           onMouseLeave: () => setHovered(false),

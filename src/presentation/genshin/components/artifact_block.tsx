@@ -198,7 +198,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 onClick={onOpenEditModal}
                 title="Edit Artifact"
               />
-              {props.index && (
+              {props.index >= 0 && (
                 <>
                   <MenuButton
                     icon="fa-solid fa-repeat duration-[250ms]"
@@ -213,7 +213,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 </>
               )}
               <MenuButton
-                icon={classNames('fa-solid fa-trash', props.index ? 'duration-[350ms]' : 'duration-[250ms]')}
+                icon={classNames('fa-solid fa-trash', props.index >= 0 ? 'duration-[350ms]' : 'duration-[250ms]')}
                 onClick={onOpenDeleteModal}
                 title="Delete Artifact"
               />

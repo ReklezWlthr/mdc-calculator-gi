@@ -353,7 +353,7 @@ export const MyCharacters = observer(() => {
                               codeName === 'Qin' ? '_02' : '_01'
                             }${codeName === 'Diluc' ? '_01' : ''}.png`}
                             size="w-10 h-10"
-                            tooltipSize="w-[550px]"
+                            tooltipSize="w-[570px]"
                           />
                           {charUpgrade?.talents?.skill && (
                             <div

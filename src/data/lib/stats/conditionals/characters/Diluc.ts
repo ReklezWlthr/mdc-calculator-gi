@@ -32,7 +32,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
     },
     skill: {
       title: `Searing Onslaught`,
-      content: `Performs a forward slash that deals <b class="bg-genshin-pyro">Pyro DMG</b>.
+      content: `Performs a forward slash that deals <b class="text-genshin-pyro">Pyro DMG</b>.
       <br />
       <br />This skill can be consecutively used <span class="text-desc">3</span> times.
       <br />Enters CD if not cast again within a short period.
@@ -40,9 +40,9 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
     },
     burst: {
       title: `Dawn`,
-      content: `Releases intense flames to knock back nearby opponents, dealing <b class="bg-genshin-pyro">Pyro DMG</b>.
-      <br />The flames then converge into the weapon, summoning a Phoenix that flies forward and deals massive <b class="bg-genshin-pyro">Pyro DMG</b> to all opponents in its path. The Phoenix explodes upon reaching its destination, causing a large amount of <b class="bg-genshin-pyro">AoE Pyro DMG</b>.
-      <br />The searing flames that run down his blade cause it to be infused with <b class="bg-genshin-pyro">Pyro</b>.`,
+      content: `Releases intense flames to knock back nearby opponents, dealing <b class="text-genshin-pyro">Pyro DMG</b>.
+      <br />The flames then converge into the weapon, summoning a Phoenix that flies forward and deals massive <b class="text-genshin-pyro">Pyro DMG</b> to all opponents in its path. The Phoenix explodes upon reaching its destination, causing a large amount of <b class="text-genshin-pyro">AoE Pyro DMG</b>.
+      <br />The searing flames that run down his blade cause it to be infused with <b class="text-genshin-pyro">Pyro</b>.`,
     },
     a1: {
       title: `A1: Relentless`,
@@ -50,7 +50,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
     },
     a4: {
       title: `A4: Blessing of Phoenix`,
-      content: `The <b class="bg-genshin-pyro">Pyro Infusion</b> provided by Dawn lasts for <span class="text-desc">4</span>s longer. Additionally, Diluc gains <span class="text-desc">20%</span> <b class="bg-genshin-pyro">Pyro DMG Bonus</b> during the duration of this effect.`,
+      content: `The <b class="text-genshin-pyro">Pyro Infusion</b> provided by Dawn lasts for <span class="text-desc">4</span>s longer. Additionally, Diluc gains <span class="text-desc">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> during the duration of this effect.`,
     },
     util: {
       title: 'Traditional of the Dawn Knight',

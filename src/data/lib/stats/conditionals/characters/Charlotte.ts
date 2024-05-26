@@ -33,7 +33,7 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       <br /><b>Plunging Attack</b>
       <br />Gathering the power of Cryo, Charlotte plunges toward the ground, dealing DMG to all opponents in her path and dealing <b class="text-genshin-cryo">AoE Cryo DMG</b> upon landing.
       <br />
-      <br />Arkhe: <b class="text-genshin-pneuma">Pneuma</b>
+      <br /><b>Arkhe: </b><b class="text-genshin-pneuma">Pneuma</b>
       <br />At certain intervals, upon using a Charged Attack, Charlotte will cause a Spiritbreath Thorn to descend and pierce opponents, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       `,
     },
