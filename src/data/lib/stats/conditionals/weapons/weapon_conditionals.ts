@@ -1390,6 +1390,305 @@ export const WeaponConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Against Target with Hydro/Pyro`,
+    show: true,
+    default: true,
+    id: '15301',
+    scaling: (base, form, r) => {
+      if (form['15301']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Against Weakspot`,
+    show: true,
+    default: true,
+    id: '15302',
+    scaling: (base, form, r) => {
+      if (form['15302']) base[Stats.ALL_DMG] += calcRefinement(0.24, 0.06, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Close-Ranged Bonus`,
+    show: true,
+    default: true,
+    id: '15304',
+    scaling: (base, form, r) => {
+      if (form['15304']) base[Stats.ALL_DMG] += calcRefinement(0.36, 0.06, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `CRIT Rate Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 5,
+    id: '15404',
+    scaling: (base, form, r) => {
+      if (form['15404']) base[Stats.CRIT_RATE] += form['15404'] * calcRefinement(0.08, 0.02, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Weakspot Hit Buff`,
+    show: true,
+    default: true,
+    id: '15406',
+    scaling: (base, form, r) => {
+      if (form['15406']) base[Stats.P_ATK] += form['15404'] * calcRefinement(0.36, 0.09, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `NA/CA Hit Buff Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 4,
+    id: '15407',
+    scaling: (base, form, r) => {
+      if (form['15407']) {
+        base[Stats.P_ATK] += form['15407'] * calcRefinement(0.04, 0.01, r)
+        base.ATK_SPD += form['15407'] * calcRefinement(0.012, 0.003, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Off-Field Buff Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 10,
+    id: '15410',
+    scaling: (base, form, r) => {
+      if (form['15410']) base[Stats.ALL_DMG] += form['15410'] * calcRefinement(0.02, 0.005, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Fading Twilight State Cycle`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '15411',
+    scaling: (base, form, r) => {
+      if (form['15411'] === 1) base[Stats.ALL_DMG] += form['15411'] * calcRefinement(0.06, 0.015, r)
+      if (form['15411'] === 2) base[Stats.ALL_DMG] += form['15411'] * calcRefinement(0.1, 0.025, r)
+      if (form['15411'] === 3) base[Stats.ALL_DMG] += form['15411'] * calcRefinement(0.14, 0.035, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `NA to Skill DMG Bonus`,
+    show: true,
+    default: true,
+    id: '15406',
+    scaling: (base, form, r) => {
+      if (form['15406']) base.SKILL_DMG += calcRefinement(0.2, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Skill to NA DMG Bonus`,
+    show: true,
+    default: true,
+    id: '15406',
+    scaling: (base, form, r) => {
+      if (form['15406']) base.BASIC_DMG += calcRefinement(0.2, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Wish of the Windblume`,
+    show: true,
+    default: true,
+    id: '15413',
+    scaling: (base, form, r) => {
+      if (form['15413']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Energy Full`,
+    show: true,
+    default: true,
+    id: '15414',
+    scaling: (base, form, r) => {
+      if (form['15414']) {
+        base.BASIC_DMG += calcRefinement(0.16, 0.04, r)
+        base.CHARGE_DMG += calcRefinement(0.12, 0.03, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Bonus Burst DMG from Energy`,
+    show: true,
+    default: true,
+    id: '15416',
+    scaling: (base, form, r, { totalEnergy }) => {
+      if (form['15416'])
+        base.BURST_DMG += _.min([calcRefinement(0.0012, 0.0003, r) * totalEnergy, calcRefinement(0.4, 0.02, r)])
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Teachings of the Forest`,
+    show: true,
+    default: true,
+    id: '15417',
+    scaling: (base, form, r) => {
+      if (form['15417']) base[Stats.EM] += calcRefinement(60, 20, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `EM Bonus Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    id: '15419',
+    scaling: (base, form, r) => {
+      if (form['15419']) base[Stats.EM] += form['15419'] * calcRefinement(40, 10, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Heartsearer`,
+    show: true,
+    default: true,
+    id: '15424',
+    scaling: (base, form, r) => {
+      if (form['15424']) base.CHARGE_DMG += calcRefinement(0.28, 0.07, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Healed Bonus`,
+    show: true,
+    default: true,
+    id: '15425',
+    scaling: (base, form, r) => {
+      if (form['15425']) base[Stats.ALL_DMG] += calcRefinement(0.16, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Unity Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '15427',
+    scaling: (base, form, r) => {
+      if (form['15427']) {
+        base[Stats.P_ATK] += calcRefinement(0.03, 0.01, r)
+        base[Stats.ELEMENTAL_DMG] += calcRefinement(0.07, 0.015, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Ashen Nightstar Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 4,
+    id: '15507',
+    scaling: (base, form, r) => {
+      if (form['15507'] === 1) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.1, 0.025, r)
+      if (form['15507'] === 2) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.2, 0.05, r)
+      if (form['15507'] === 3) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.3, 0.075, r)
+      if (form['15507'] === 4) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.48, 0.12, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Nearby Enemy Present`,
+    show: true,
+    default: true,
+    id: '15508',
+    scaling: (base, form, r) => {
+      if (form['15508']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.05, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Thunder Emblem Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 4,
+    id: '15509',
+    scaling: (base, form, r) => {
+      if (form['15509'] === 1) base.BASIC_DMG += form['15509'] * calcRefinement(0.12, 0.03, r)
+      if (form['15509'] === 2) base.BASIC_DMG += form['15509'] * calcRefinement(0.24, 0.06, r)
+      if (form['15509'] === 3) base.BASIC_DMG += form['15509'] * calcRefinement(0.4, 0.1, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Nearby Enemy Present`,
+    show: true,
+    default: true,
+    id: '15511',
+    scaling: (base, form, r) => {
+      if (form['15511'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base.CHARGE_F_DMG += calcRefinement(1.6, 0.4, r) * base[Stats.EM]
+          return base
+        })
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Gimmick Stacks`,
+    show: true,
+    default: true,
+    id: '15512',
+    scaling: (base, form, r, { team, element }) => {
+      if (form['15512']) {
+        const count =
+          _.filter(
+            _.map(team, (item) => findCharacter(item.cId)?.element),
+            (item) => item === element
+          ).length - 1
+        if (count === 1) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+        if (count === 2) base[Stats.P_ATK] += calcRefinement(0.32, 0.08, r)
+        if (count === 3) base[Stats.P_ATK] += calcRefinement(0.48, 0.12, r)
+      }
+      return base
+    },
+  },
 ]
 
 export const WeaponAllyConditionals: IWeaponContent[] = [
@@ -1559,6 +1858,20 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
     id: '14515',
     scaling: (base, form, r) => {
       if (form['14515']) base.PLUNGE_DMG += calcRefinement(0.28, 0.13, r)
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Millennial Movement: Farewell Song`,
+    show: true,
+    default: true,
+    id: '15503',
+    scaling: (base, form, r) => {
+      if (form['15503']) {
+        base[Stats.EM] += calcRefinement(100, 25, r)
+        base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      }
       return base
     },
   },
