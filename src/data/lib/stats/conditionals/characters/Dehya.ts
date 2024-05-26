@@ -236,7 +236,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.fiery_field) base.DMG_REDUCTION += 0.3 + skill * 0.02
+      if (form.fiery_field) base.M_DMG_REDUCTION += 0.3 + skill * 0.02
 
       if (c >= 1) base[Stats.P_HP] += 0.2
 
@@ -264,7 +264,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.fiery_field) base.DMG_REDUCTION += 0.3 + skill * 0.02
+      if (form.fiery_field) base.M_DMG_REDUCTION += 0.3 + skill * 0.02
 
       return base
     },

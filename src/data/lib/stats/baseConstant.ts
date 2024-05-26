@@ -192,6 +192,7 @@ export const baseStatsObject = {
 
   // Mitigation
   DMG_REDUCTION: 0,
+  M_DMG_REDUCTION: 0, // Dehya's Skill gives multiplicative bonus instead
   ATK_REDUCTION: 0,
 
   INFUSION: null,

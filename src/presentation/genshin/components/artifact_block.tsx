@@ -198,21 +198,29 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 onClick={onOpenEditModal}
                 title="Edit Artifact"
               />
-              <MenuButton icon="fa-solid fa-repeat duration-[250ms]" onClick={onOpenSwapModal} title="Swap Artifact" />
+              {props.index && (
+                <>
+                  <MenuButton
+                    icon="fa-solid fa-repeat duration-[250ms]"
+                    onClick={onOpenSwapModal}
+                    title="Swap Artifact"
+                  />
+                  <MenuButton
+                    icon="fa-solid fa-arrow-right-from-bracket rotate-90 duration-[300ms]"
+                    onClick={onOpenConfirmModal}
+                    title="Unequip Artifact"
+                  />
+                </>
+              )}
               <MenuButton
-                icon="fa-solid fa-arrow-right-from-bracket rotate-90 duration-[300ms]"
-                onClick={onOpenConfirmModal}
-                title="Unequip Artifact"
-              />
-              <MenuButton
-                icon="fa-solid fa-trash duration-[350ms]"
+                icon={classNames('fa-solid fa-trash', props.index ? 'duration-[350ms]' : 'duration-[250ms]')}
                 onClick={onOpenDeleteModal}
                 title="Delete Artifact"
               />
             </div>
           )}
         </div>
-      ) : (
+      ) : canEdit ? (
         <div className="flex flex-col items-center justify-center w-full h-full">
           <div
             className="flex items-center justify-center w-full h-full transition-colors duration-200 cursor-pointer hover:bg-primary-darker"
@@ -228,6 +236,8 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             Equip an Artifact
           </div>
         </div>
+      ) : (
+        <div className="flex items-center justify-center w-full h-full">None</div>
       )}
     </div>
   )
