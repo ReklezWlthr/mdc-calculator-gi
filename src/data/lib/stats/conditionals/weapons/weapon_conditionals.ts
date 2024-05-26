@@ -1656,7 +1656,7 @@ export const WeaponConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Nearby Enemy Present`,
+    text: `Tireless Hunt`,
     show: true,
     default: true,
     id: '15511',
