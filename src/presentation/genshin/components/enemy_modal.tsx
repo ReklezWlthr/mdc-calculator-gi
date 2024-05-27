@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { BaseElementColor } from './tables/scaling_sub_rows'
 import { toPercentage } from '@src/core/utils/converter'
 import { observer } from 'mobx-react-lite'
+import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 
 export const EnemyModal = observer(() => {
   const { calculatorStore, teamStore } = useStore()
@@ -80,16 +81,15 @@ export const EnemyModal = observer(() => {
             <div className="flex items-center gap-3">
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
               <TextInput
-                type="number"
+                type={res[key] === Infinity ? 'text' : 'number'}
                 value={res[key] === Infinity ? 'Immune' : res[key].toString()}
                 onChange={(value) => calculatorStore.setRes(key, parseFloat(value) || 0)}
                 style="!w-[75px]"
                 disabled={res[key] === Infinity}
               />
-              <input
-                type="checkbox"
+              <CheckboxInput
                 checked={res[key] === Infinity}
-                onChange={(e) => calculatorStore.setRes(key, e.target.checked ? Infinity : 10)}
+                onClick={(v) => calculatorStore.setRes(key, v ? Infinity : 10)}
               />
             </div>
           ))}
