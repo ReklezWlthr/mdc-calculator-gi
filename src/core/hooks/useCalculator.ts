@@ -18,6 +18,8 @@ import Reactions from '@src/data/lib/stats/conditionals/reactions'
 import { Element } from '@src/domain/genshin/constant'
 import { getSetCount } from '../utils/data_format'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
+import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
+import { Resonance } from '@src/data/db/genshin/characters'
 
 export const useCalculator = () => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
@@ -81,6 +83,15 @@ export const useCalculator = () => {
   const weaponEligible = (i: number) => [...weaponConditionals[i], ..._.flatten(weaponTeamConditionals)]
   const weaponSelectable = (i: number) => [...weaponEligible(i), ...weaponAllySelectable(i)]
 
+  const resonanceConditionals = _.map(ResonanceConditionals(teamStore.characters), (item) => {
+    const res = _.find(Resonance, ['element', Element[item.id.split('_')[0].toUpperCase()]])
+    return {
+      ...item,
+      content: res?.desc,
+      title: res?.name,
+    }
+  })
+
   useEffect(() => {
     calculatorStore.initForm(
       _.map(conditionals, (item, index) =>
@@ -96,7 +107,8 @@ export const useCalculator = () => {
             ),
             artifactConditionals[index]?.content,
             artifactConditionals[index]?.teamContent,
-            ...weaponSelectable(index)
+            ...weaponSelectable(index),
+            resonanceConditionals
           ),
           (acc, curr) => {
             if (curr?.show) acc[curr.id] = curr.default
@@ -138,13 +150,14 @@ export const useCalculator = () => {
       })
       return x
     })
-    const postCompute = _.map(
-      conditionals,
-      (base, index) =>
-        base?.postCompute(preComputeShared[index], calculatorStore.form[index]) || preComputeShared[index]
-    )
+    const postResonance = _.map(preComputeShared, (base, index) => {
+      _.forEach(_.filter(resonanceConditionals, 'show'), (item) => {
+        base = item.scaling(base, calculatorStore.form[index], 0, null)
+      })
+      return base
+    })
     // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
-    const postArtifact = _.map(postCompute, (base, index) => {
+    const postArtifact = _.map(postResonance, (base, index) => {
       let x = base
       const artifactData = _.map(teamStore.characters[index].equipments.artifacts, (item) =>
         _.find(artifactStore.artifacts, ['id', item])
@@ -193,8 +206,12 @@ export const useCalculator = () => {
       )
       return x
     })
+    const postCompute = _.map(
+      conditionals,
+      (base, index) => base?.postCompute(postWeapon[index], calculatorStore.form[index]) || postWeapon[index]
+    )
     // No need to loop; each reaction buff only apply to the character
-    const postReaction = _.map(postWeapon, (base, index) =>
+    const postReaction = _.map(postCompute, (base, index) =>
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
     // Cleanup callbacks for buffs that should be applied last
@@ -226,7 +243,7 @@ export const useCalculator = () => {
   const mapped = _.flatMap(
     _.map(conditionals, (item, index) =>
       index === selected
-        ? _.concat(item?.content, artifactConditionals[index]?.content)
+        ? _.concat(item?.content, artifactConditionals[index]?.content, resonanceConditionals)
         : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent)
     ),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
