@@ -3,6 +3,7 @@ import { CalculatorStore } from './calculator_store'
 import { CharacterStore, CharacterStoreType } from './character_store'
 import { InventoryStoreType, Inventory } from './inventory_store'
 import { Modal, ModalStoreType } from './modal_store'
+import { SettingStore } from './setting_store'
 import { Team, TeamStoreType } from './team_store'
 // import { User, UserType } from './user_store'
 
@@ -13,6 +14,7 @@ interface RootStoreType {
   buildStore: BuildStoreType
   charStore: CharacterStoreType
   calculatorStore: CalculatorStore
+  settingStore: SettingStore
   // userStore: UserType
 }
 
@@ -23,6 +25,7 @@ export class RootStore {
   buildStore: BuildStoreType
   charStore: CharacterStoreType
   calculatorStore: CalculatorStore
+  settingStore: SettingStore
   // userStore: UserType
 
   constructor() {
@@ -32,6 +35,7 @@ export class RootStore {
     this.buildStore = new Build()
     this.charStore = new CharacterStore()
     this.calculatorStore = new CalculatorStore()
+    this.settingStore = new SettingStore()
     // this.userStore = new User()
   }
 
@@ -43,6 +47,7 @@ export class RootStore {
     this.buildStore.hydrate(data.buildStore)
     this.charStore.hydrate(data.charStore)
     this.calculatorStore.hydrate(data.calculatorStore)
+    this.settingStore.hydrate(data.settingStore)
     // this.userStore.hydrate(data.userStore)
   }
 }

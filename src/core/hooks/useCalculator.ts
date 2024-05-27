@@ -101,7 +101,7 @@ export const useCalculator = () => {
             item?.teammateContent,
             Reactions(
               teamStore.characters[index].level,
-              findCharacter(teamStore.characters[index].cId).element,
+              findCharacter(teamStore.characters[index].cId)?.element,
               Element.PYRO,
               computedStats[index]
             ),

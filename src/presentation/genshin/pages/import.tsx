@@ -70,7 +70,7 @@ export const ImportExport = observer(() => {
               const data = JSON.parse(event.target.result.toString())
               onOpenConfirmModal(data?.characters?.length, data?.builds?.length, data?.artifacts?.length, () => {
                 localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
-                updateData(event.target.result)
+                updateData(event.target.result.toString())
               })
             })
             reader.readAsText(file)

@@ -18,7 +18,7 @@ interface CharacterBlockProps {
 }
 
 export const CharacterBlock = observer((props: CharacterBlockProps) => {
-  const { modalStore, teamStore } = useStore()
+  const { modalStore, teamStore, settingStore } = useStore()
   const ascension = teamStore.characters[props.index]?.ascension || 0
   const level = teamStore.characters[props.index]?.level || 1
   const cons = teamStore.characters[props.index]?.cons || 0
@@ -27,6 +27,9 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   const rarity = characterData?.rarity
 
   const isEmpty = !characterData
+
+  const codeName =
+    characterData?.codeName === 'Player' ? settingStore.settings.travelerGender : characterData?.codeName || 'Paimon'
 
   const levels = useMemo(
     () =>
@@ -50,7 +53,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
       <div className="flex">
         <div className="flex items-center w-1/2 px-5 py-3">
           <img
-            src={`https://enka.network/ui/UI_AvatarIcon_${characterData?.codeName || 'Paimon'}.png`}
+            src={`https://enka.network/ui/UI_AvatarIcon_${codeName}.png`}
             className="object-contain w-full border rounded-lg bg-primary-darker border-primary-border aspect-square"
           />
         </div>

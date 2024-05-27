@@ -1582,7 +1582,7 @@ export const Characters = [
     constellation: 'Viatrix',
     weapon: WeaponType.SWORD,
     element: Element.ANEMO,
-    codeName: 'PlayerGirl',
+    codeName: 'Player',
   },
   {
     id: '10000005-506',
@@ -1601,7 +1601,7 @@ export const Characters = [
     constellation: 'Viatrix',
     weapon: WeaponType.SWORD,
     element: Element.GEO,
-    codeName: 'PlayerGirl',
+    codeName: 'Player',
   },
   {
     id: '10000005-507',
@@ -1620,7 +1620,7 @@ export const Characters = [
     constellation: 'Viatrix',
     weapon: WeaponType.SWORD,
     element: Element.ELECTRO,
-    codeName: 'PlayerGirl',
+    codeName: 'Player',
   },
   {
     id: '10000005-508',
@@ -1639,7 +1639,7 @@ export const Characters = [
     constellation: 'Viatrix',
     weapon: WeaponType.SWORD,
     element: Element.DENDRO,
-    codeName: 'PlayerGirl',
+    codeName: 'Player',
   },
   {
     id: '10000005-503',
@@ -1658,6 +1658,6 @@ export const Characters = [
     constellation: 'Viatrix',
     weapon: WeaponType.SWORD,
     element: Element.HYDRO,
-    codeName: 'PlayerGirl',
+    codeName: 'Player',
   },
 ]

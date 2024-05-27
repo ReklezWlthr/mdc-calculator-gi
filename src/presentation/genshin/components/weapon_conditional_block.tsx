@@ -10,6 +10,7 @@ import { observer } from 'mobx-react-lite'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { WeaponTooltip } from './weapon_block'
 import { findCharacter } from '@src/core/utils/finder'
+import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 
 interface IContentIndex extends IContent {
   index: number
@@ -91,17 +92,9 @@ export const WeaponConditionalBlock = observer(
                     )}
                     {content.type === 'toggle' && (
                       <div className="flex items-center justify-center col-span-2">
-                        <input
-                          type="checkbox"
-                          onChange={(e) => {
-                            calculatorStore.setFormValue(content.index, content.id, e.target.checked)
-                            if (content.id === 'melt_forward')
-                              calculatorStore.setFormValue(content.index, 'vape_reverse', false)
-                            if (content.id === 'vape_reverse')
-                              calculatorStore.setFormValue(content.index, 'melt_forward', false)
-                          }}
+                        <CheckboxInput
                           checked={calculatorStore.form[content.index]?.[content.id]}
-                          name={content.id}
+                          onClick={(v) => calculatorStore.setFormValue(content.index, content.id, v)}
                         />
                       </div>
                     )}

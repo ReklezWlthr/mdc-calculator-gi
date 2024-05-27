@@ -17,7 +17,7 @@ interface CharacterModalProps {
 }
 
 export const CharacterModal = observer(({ index }: CharacterModalProps) => {
-  const { teamStore, modalStore, buildStore, charStore } = useStore()
+  const { teamStore, modalStore, buildStore, charStore, settingStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     element: [],
@@ -104,6 +104,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
       <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredChar, (item) => {
           const owned = _.includes(_.map(charStore.characters, 'cId'), item.id)
+          const codeName = item.codeName === 'Player' ? settingStore.settings.travelerGender : item.codeName
           return (
             <div
               className="w-full text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
@@ -138,7 +139,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                   <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
                 </div>
                 <img
-                  src={`https://enka.network/ui/UI_AvatarIcon_${item.codeName || 'PlayerGirl'}.png`}
+                  src={`https://enka.network/ui/UI_AvatarIcon_${codeName}.png`}
                   className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                 />
               </div>

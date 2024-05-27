@@ -37,7 +37,7 @@ const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => voi
 export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlockProps) => {
   const pieceName = ArtifactPiece[props.piece]
 
-  const { modalStore, teamStore, artifactStore, buildStore } = useStore()
+  const { modalStore, teamStore, artifactStore, buildStore, settingStore } = useStore()
   const artifact = _.find(artifactStore.artifacts, ['id', props.aId])
   const setData = findArtifactSet(artifact?.setId)
 
@@ -105,6 +105,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
 
   const wearer = _.find(teamStore.characters, (item) => _.includes(item.equipments.artifacts, props.aId))
   const charData = findCharacter(wearer?.cId)
+  const codeName = charData?.codeName === 'Player' ? settingStore.settings.travelerGender : charData?.codeName
 
   return (
     <div
@@ -142,7 +143,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 {charData?.codeName && props.showWearer && (
                   <div className="absolute flex items-center justify-center p-1 text-xs bg-opacity-75 rounded-full -top-1 w-7 h-7 -right-3 bg-primary-light">
                     <img
-                      src={`https://enka.network/ui/UI_AvatarIcon_Side_${charData?.codeName}.png`}
+                      src={`https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png`}
                       className="absolute scale-125 bottom-1.5"
                     />
                   </div>

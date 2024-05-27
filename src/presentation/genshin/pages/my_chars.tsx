@@ -26,7 +26,7 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 
 export const MyCharacters = observer(() => {
-  const { teamStore, modalStore, charStore } = useStore()
+  const { teamStore, charStore, settingStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     element: [],
@@ -84,9 +84,8 @@ export const MyCharacters = observer(() => {
   const asc =
     _.max([0, (charUpgrade?.ascension || 0) - 2]) * AscensionGrowth[charData?.stat?.ascStat]?.[charData?.rarity - 4]
 
-  const codeName = _.includes(['PlayerBoy', 'PlayerGirl'], charData?.codeName)
-    ? TravelerIconName[charData.element]
-    : charData?.codeName
+  const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
+  const fCodeName = charData?.codeName === 'Player' ? settingStore.settings.travelerGender : charData?.codeName
 
   const {
     params: form,
@@ -131,6 +130,7 @@ export const MyCharacters = observer(() => {
           <div className="grid grid-cols-4 gap-4 rounded-lg hideScrollbar">
             {_.map(filteredChar, (item) => {
               const owned = _.includes(_.map(charStore.characters, 'cId'), item.id)
+              const codeName = item.codeName === 'Player' ? settingStore.settings.travelerGender : item.codeName
               return (
                 <div
                   className={classNames(
@@ -159,7 +159,7 @@ export const MyCharacters = observer(() => {
                       <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
                     </div>
                     <img
-                      src={`https://enka.network/ui/UI_AvatarIcon_${item.codeName || 'PlayerGirl'}.png`}
+                      src={`https://enka.network/ui/UI_AvatarIcon_${codeName}.png`}
                       className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                     />
                   </div>
@@ -181,13 +181,13 @@ export const MyCharacters = observer(() => {
                 <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
               </div>
               <img
-                src={`https://enka.network/ui/UI_Gacha_AvatarImg_${charData.codeName}.png`}
+                src={`https://enka.network/ui/UI_Gacha_AvatarImg_${fCodeName}.png`}
                 className={classNames(
                   'object-cover rounded-full w-1/2 h-fit aspect-square bg-opacity-5 shrink-0',
                   ElementIconColor[charData?.element],
                   loading ? 'hidden' : 'block'
                 )}
-                alt={charData?.codeName}
+                alt={fCodeName}
                 loading="eager"
                 onLoad={() => setLoading(false)}
               />
@@ -349,9 +349,11 @@ export const MyCharacters = observer(() => {
                           <TalentIcon
                             talent={charCond?.talents?.skill}
                             element={charData?.element}
-                            icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'E' : 'S'}_${codeName}${
-                              codeName === 'Qin' ? '_02' : '_01'
-                            }${codeName === 'Diluc' ? '_01' : ''}.png`}
+                            icon={`https://enka.network/ui/Skill_${
+                              iconCodeName === 'PlayerGrass' ? 'E' : 'S'
+                            }_${iconCodeName}${iconCodeName === 'Qin' ? '_02' : '_01'}${
+                              iconCodeName === 'Diluc' ? '_01' : ''
+                            }.png`}
                             size="w-10 h-10"
                             tooltipSize="w-[570px]"
                           />
@@ -370,9 +372,9 @@ export const MyCharacters = observer(() => {
                           <TalentIcon
                             talent={charCond?.talents?.burst}
                             element={charData?.element}
-                            icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'S' : 'E'}_${codeName}${
-                              _.includes(['Ayaka', 'Ambor'], codeName) ? '' : '_01'
-                            }.png`}
+                            icon={`https://enka.network/ui/Skill_${
+                              iconCodeName === 'PlayerGrass' ? 'S' : 'E'
+                            }_${iconCodeName}${_.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'}.png`}
                             size="w-10 h-10"
                             tooltipSize="w-[550px]"
                           />
@@ -396,7 +398,7 @@ export const MyCharacters = observer(() => {
             <p className="my-5 text-xl font-bold">✦ Constellations & Passives ✦</p>
             <div className="flex items-center gap-4">
               <ConsCircle
-                codeName={codeName}
+                codeName={iconCodeName}
                 talents={charCond?.talents}
                 cons={charUpgrade?.cons}
                 element={charData.element}
@@ -405,7 +407,7 @@ export const MyCharacters = observer(() => {
               <div className="flex flex-col text-sm gap-y-5">
                 <div className="flex items-center gap-3">
                   <A1Icon
-                    codeName={codeName}
+                    codeName={iconCodeName}
                     talents={charCond?.talents}
                     ascension={charUpgrade?.ascension}
                     element={charData.element}
@@ -414,7 +416,7 @@ export const MyCharacters = observer(() => {
                 </div>
                 <div className="flex items-center gap-3">
                   <A4Icon
-                    codeName={codeName}
+                    codeName={iconCodeName}
                     talents={charCond?.talents}
                     ascension={charUpgrade?.ascension}
                     element={charData.element}

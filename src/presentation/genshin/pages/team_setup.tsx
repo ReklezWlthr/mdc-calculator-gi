@@ -122,7 +122,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
 })
 
 export const TeamSetup = observer(() => {
-  const { teamStore, modalStore, artifactStore } = useStore()
+  const { teamStore, modalStore, artifactStore, settingStore } = useStore()
   const selected = teamStore.selected
 
   const artifactData = _.filter(artifactStore.artifacts, (item) =>
@@ -169,87 +169,93 @@ export const TeamSetup = observer(() => {
     value: (index + 1).toString(),
   }))
 
-  const codeName = _.includes(['PlayerBoy', 'PlayerGirl'], charData?.codeName)
-    ? TravelerIconName[charData.element]
-    : charData?.codeName
+  const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
 
   return (
     <div className="flex justify-center w-full gap-5 p-5 overflow-y-auto">
       <div className="w-1/3">
         <div className="flex justify-center w-full gap-4 pt-1 pb-3">
-          {_.map(teamStore?.characters, (item, index) => (
-            <CharacterSelect
-              key={`char_select_${index}`}
-              onClick={() => teamStore.setValue('selected', index)}
-              isSelected={index === selected}
-              codeName={findCharacter(item.cId)?.codeName}
-            />
-          ))}
+          {_.map(teamStore?.characters, (item, index) => {
+            const x = findCharacter(item.cId)?.codeName
+            const y = x === 'Player' ? settingStore.settings.travelerGender : x
+            return (
+              <CharacterSelect
+                key={`char_select_${index}`}
+                onClick={() => teamStore.setValue('selected', index)}
+                isSelected={index === selected}
+                codeName={y}
+              />
+            )
+          })}
         </div>
         <CharacterBlock index={selected} />
-        <div className="flex items-center justify-center gap-3 py-3">
-          <div className="relative">
-            <TalentIcon
-              talent={talent?.talents?.normal}
-              element={charData?.element}
-              icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
-              size="w-9 h-9"
+        {charData ? (
+          <div className="flex items-center justify-center gap-3 py-3">
+            <div className="relative">
+              <TalentIcon
+                talent={talent?.talents?.normal}
+                element={charData?.element}
+                icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
+                size="w-9 h-9"
+              />
+              {talent?.upgrade?.normal && (
+                <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+                  +3
+                </div>
+              )}
+            </div>
+            <SelectInput
+              value={char?.talents?.normal?.toString()}
+              onChange={(value) => teamStore.setTalentLevel(selected, 'normal', parseInt(value))}
+              options={talentLevels}
+              style="w-14"
             />
-            {talent?.upgrade?.normal && (
-              <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
-                +3
-              </div>
-            )}
-          </div>
-          <SelectInput
-            value={char?.talents?.normal?.toString()}
-            onChange={(value) => teamStore.setTalentLevel(selected, 'normal', parseInt(value))}
-            options={talentLevels}
-            style="w-14"
-          />
-          <div className="relative ml-3">
-            <TalentIcon
-              talent={talent?.talents?.skill}
-              element={charData?.element}
-              icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'E' : 'S'}_${codeName}${
-                codeName === 'Qin' ? '_02' : '_01'
-              }${codeName === 'Diluc' ? '_01' : ''}.png`}
-              size="w-9 h-9"
+            <div className="relative ml-3">
+              <TalentIcon
+                talent={talent?.talents?.skill}
+                element={charData?.element}
+                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'E' : 'S'}_${iconCodeName}${
+                  iconCodeName === 'Qin' ? '_02' : '_01'
+                }${iconCodeName === 'Diluc' ? '_01' : ''}.png`}
+                size="w-9 h-9"
+              />
+              {talent?.upgrade?.skill && (
+                <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
+                  +3
+                </div>
+              )}
+            </div>
+            <SelectInput
+              value={char?.talents?.skill?.toString()}
+              onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
+              options={talentLevels}
+              style="w-14"
             />
-            {talent?.upgrade?.skill && (
-              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
-                +3
-              </div>
-            )}
-          </div>
-          <SelectInput
-            value={char?.talents?.skill?.toString()}
-            onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
-            options={talentLevels}
-            style="w-14"
-          />
-          <div className="relative ml-3">
-            <TalentIcon
-              talent={talent?.talents?.burst}
-              element={charData?.element}
-              icon={`https://enka.network/ui/Skill_${codeName === 'PlayerGrass' ? 'S' : 'E'}_${codeName}${
-                _.includes(['Ayaka', 'Ambor'], codeName) ? '' : '_01'
-              }.png`}
-              size="w-9 h-9"
+            <div className="relative ml-3">
+              <TalentIcon
+                talent={talent?.talents?.burst}
+                element={charData?.element}
+                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'S' : 'E'}_${iconCodeName}${
+                  _.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'
+                }.png`}
+                size="w-9 h-9"
+              />
+              {talent?.upgrade?.burst && (
+                <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
+                  +3
+                </div>
+              )}
+            </div>
+            <SelectInput
+              value={char?.talents?.burst?.toString()}
+              onChange={(value) => teamStore.setTalentLevel(selected, 'burst', parseInt(value))}
+              options={talentLevels}
+              style="w-14"
             />
-            {talent?.upgrade?.burst && (
-              <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
-                +3
-              </div>
-            )}
           </div>
-          <SelectInput
-            value={char?.talents?.burst?.toString()}
-            onChange={(value) => teamStore.setTalentLevel(selected, 'burst', parseInt(value))}
-            options={talentLevels}
-            style="w-14"
-          />
-        </div>
+        ) : (
+          <div className="h-5" />
+        )}
         <StatBlock index={selected} stat={stats} />
       </div>
       <div className="w-1/5 space-y-5">

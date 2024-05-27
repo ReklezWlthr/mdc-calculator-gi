@@ -67,7 +67,7 @@ export const ConsCircle = observer(
     cons: number
     stats?: StatsObject
   }) => {
-    if (_.includes(['PlayerBoy', 'PlayerGirl'], codeName)) codeName = TravelerIconName[element]
+    if (codeName === 'Player') codeName = TravelerIconName[element]
 
     return (
       <div className="space-y-5">

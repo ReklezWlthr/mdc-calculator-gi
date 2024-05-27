@@ -1,6 +1,7 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/genshin/conditional'
 import { Element } from '@src/domain/genshin/constant'
+import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -77,17 +78,15 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                   )}
                   {content.type === 'toggle' && (
                     <div className="flex items-center justify-center col-span-2">
-                      <input
-                        type="checkbox"
-                        onChange={(e) => {
-                          calculatorStore.setFormValue(content.index, content.id, e.target.checked)
+                      <CheckboxInput
+                        checked={calculatorStore.form[content.index]?.[content.id]}
+                        onClick={(v) => {
+                          calculatorStore.setFormValue(content.index, content.id, v)
                           if (content.id === 'melt_forward')
                             calculatorStore.setFormValue(content.index, 'vape_reverse', false)
                           if (content.id === 'vape_reverse')
                             calculatorStore.setFormValue(content.index, 'melt_forward', false)
                         }}
-                        checked={calculatorStore.form[content.index]?.[content.id]}
-                        name={content.id}
                       />
                     </div>
                   )}
