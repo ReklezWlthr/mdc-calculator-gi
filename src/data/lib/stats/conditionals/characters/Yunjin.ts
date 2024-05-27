@@ -57,7 +57,7 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a1: {
       title: `A1: True to Oneself`,
-      content: `While affected by the Adeptal Legacy state caused by Moonjade Descent, Yaoyao will constantly throw White Jade Radishes at nearby opponents when she is sprinting, jumping, or running. She can throw <span class="text-desc">1</span> White Jade Radish this way once every <span class="text-desc">0.6</span>s.`,
+      content: `Using Opening Flourish at the precise moment when Yun Jin is attacked will unleash its Level 2 Charged (Hold) form.`,
     },
     a4: {
       title: `A4: Breaking Conventions`,
