@@ -25,6 +25,8 @@ export const EnemyModal = observer(() => {
           <div className="flex items-center gap-x-3">
             <p>Level</p>
             <TextInput
+              type="number"
+              min={1}
               value={level.toString()}
               onChange={(value) => calculatorStore.setValue('level', parseFloat(value) || 0)}
               style="!w-[60px]"
@@ -73,11 +75,12 @@ export const EnemyModal = observer(() => {
           </div>
         </div>
         <div className="flex flex-col items-end gap-y-3">
-          <i className='fa-solid fa-circle-xmark text-red' title="Immune" />
+          <i className="fa-solid fa-circle-xmark text-red" title="Immune" />
           {_.map(BaseElementColor, (item, key: Element) => (
             <div className="flex items-center gap-3">
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
               <TextInput
+                type="number"
                 value={res[key] === Infinity ? 'Immune' : res[key].toString()}
                 onChange={(value) => calculatorStore.setRes(key, parseFloat(value) || 0)}
                 style="!w-[75px]"
