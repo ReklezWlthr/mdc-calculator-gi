@@ -160,11 +160,6 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 80
 
-      if (form.diluc_infusion) {
-        base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG] += 0.2
-      }
-
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
@@ -218,7 +213,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.PLUNGE_SCALING = getPlungeScaling('claymore', normal)
 
-      base.SKILL_SCALING = [
+      const baseSkill = [
         {
           name: 'Upward Thrust DMG',
           value: [{ scaling: calcScaling(0.8304, skill, 'elemental', '1'), multiplier: Stats.ATK }],
@@ -243,9 +238,10 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
 
       switch (form.pressure_level) {
         case 1:
-          base.SKILL_SCALING.push(
+          base.SKILL_SCALING = [
+            ..._.cloneDeep(baseSkill),
             {
-              name: 'Level 1 Shattering Pressure DMG',
+              name: 'Level 1 Shattering Pressure Cryo DMG',
               value: [{ scaling: calcScaling(1.0024, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.CRYO,
               property: TalentProperty.SKILL,
@@ -253,19 +249,20 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
               cr: c >= 1 ? 0.15 : 0,
             },
             {
-              name: 'Level 1 Shattering Pressure DMG',
+              name: 'Level 1 Shattering Pressure Physical DMG',
               value: [{ scaling: calcScaling(0.4869, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.SKILL,
               bonus: form.frem_a4 ? 0.4 : 0,
               cr: c >= 1 ? 0.15 : 0,
-            }
-          )
+            },
+          ]
           break
         case 2:
-          base.SKILL_SCALING.push(
+          base.SKILL_SCALING = [
+            ..._.cloneDeep(baseSkill),
             {
-              name: 'Level 2 Shattering Pressure DMG',
+              name: 'Level 2 Shattering Pressure Cryo DMG',
               value: [{ scaling: calcScaling(0.7017, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.CRYO,
               property: TalentProperty.SKILL,
@@ -273,19 +270,20 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
               cr: c >= 1 ? 0.15 : 0,
             },
             {
-              name: 'Level 2 Shattering Pressure DMG',
+              name: 'Level 2 Shattering Pressure Physical DMG',
               value: [{ scaling: calcScaling(0.852, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.SKILL,
               bonus: form.frem_a4 ? 0.4 : 0,
               cr: c >= 1 ? 0.15 : 0,
-            }
-          )
+            },
+          ]
           break
         case 3:
-          base.SKILL_SCALING.push(
+          base.SKILL_SCALING = [
+            ..._.cloneDeep(baseSkill),
             {
-              name: 'Level 2 Shattering Pressure DMG',
+              name: 'Level 3 Shattering Pressure Cryo DMG',
               value: [{ scaling: calcScaling(0.401, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.CRYO,
               property: TalentProperty.SKILL,
@@ -293,34 +291,40 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
               cr: c >= 1 ? 0.15 : 0,
             },
             {
-              name: 'Level 2 Shattering Pressure DMG',
+              name: 'Level 3 Shattering Pressure Physical DMG',
               value: [{ scaling: calcScaling(1.2172, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.SKILL,
               bonus: form.frem_a4 ? 0.4 : 0,
               cr: c >= 1 ? 0.15 : 0,
-            }
-          )
+            },
+          ]
           break
         case 4:
-          base.SKILL_SCALING.push({
-            name: 'Level 4 Shattering Pressure DMG',
-            value: [{ scaling: calcScaling(2.4344, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-            element: Element.PHYSICAL,
-            property: TalentProperty.SKILL,
-            bonus: form.frem_a4 ? 0.4 : 0,
-            cr: c >= 1 ? 0.15 : 0,
-          })
+          base.SKILL_SCALING = [
+            ..._.cloneDeep(baseSkill),
+            {
+              name: 'Level 4 Shattering Pressure DMG',
+              value: [{ scaling: calcScaling(2.4344, skill, 'elemental', '1'), multiplier: Stats.ATK }],
+              element: Element.PHYSICAL,
+              property: TalentProperty.SKILL,
+              bonus: form.frem_a4 ? 0.4 : 0,
+              cr: c >= 1 ? 0.15 : 0,
+            },
+          ]
           break
         default:
-          base.SKILL_SCALING.push({
-            name: 'Level 0 Shattering Pressure DMG',
-            value: [{ scaling: calcScaling(2.0048, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-            element: Element.CRYO,
-            property: TalentProperty.SKILL,
-            bonus: form.frem_a4 ? 0.4 : 0,
-            cr: c >= 1 ? 0.15 : 0,
-          })
+          base.SKILL_SCALING = [
+            ..._.cloneDeep(baseSkill),
+            {
+              name: 'Level 0 Shattering Pressure DMG',
+              value: [{ scaling: calcScaling(2.0048, skill, 'elemental', '1'), multiplier: Stats.ATK }],
+              element: Element.CRYO,
+              property: TalentProperty.SKILL,
+              bonus: form.frem_a4 ? 0.4 : 0,
+              cr: c >= 1 ? 0.15 : 0,
+            },
+          ]
       }
 
       if (form.frem_c4) base[Stats.P_ATK] += 0.09 * form.frem_c4

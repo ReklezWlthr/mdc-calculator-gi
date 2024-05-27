@@ -73,17 +73,14 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
-      ? stats[Stats.HEAL]
+      ? stats[Stats.HEAL] + stats[Stats.I_HEALING]
       : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + elementNa + talentDmg + stats.VULNERABILITY) // Vulnerability effectively stacks with DMG Bonuses
-  const dmg =
-    (_.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) +
-      (scaling.flat || 0) +
-      elementFlat +
-      talentFlat) *
-    (1 + bonusDMG) *
-    (scaling.multiplier || 1) *
-    elementMult *
-    enemyMod
+  const raw =
+    _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) +
+    (scaling.flat || 0) +
+    elementFlat +
+    talentFlat
+  const dmg = raw * (1 + bonusDMG) * (scaling.multiplier || 1) * elementMult * enemyMod
 
   const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + (scaling.cd || 0) + talentCd + elementCd
@@ -172,6 +169,20 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 <p className="text-xs">
                   Geo Shield Absorption:{' '}
                   <span className="text-desc">{_.round(dmg * (1.5 * (1 + stats[Stats.SHIELD]))).toLocaleString()}</span>
+                </p>
+              </>
+            )}
+            {scaling.property === TalentProperty.HEAL && (
+              <>
+                <p className="text-xs">
+                  Outgoing Heal:{' '}
+                  <span className="text-desc">{_.round(raw * (1 + stats[Stats.HEAL])).toLocaleString()}</span>
+                </p>
+                <p className="text-xs">
+                  Incoming Heal:{' '}
+                  <span className="text-desc">
+                    {_.round(raw * (1 + stats[Stats.HEAL] + stats[Stats.I_HEALING])).toLocaleString()}
+                  </span>
                 </p>
               </>
             )}
