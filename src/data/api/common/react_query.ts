@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import { AxiosError, AxiosResponse } from 'axios'
 import { useMutation, useQueries, useQuery, UseQueryOptions } from '@tanstack/react-query'
 import _ from 'lodash'
-import { useStore } from 'src/data/providers/app_store_provider'
 import { appAxios } from './axios'
 
 export type QueryKeyT = [string, object | undefined]

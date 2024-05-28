@@ -24,6 +24,7 @@ export const calculateOutOfCombat = (
   artifacts: IArtifactEquip[],
   applyResonance: boolean = true
 ) => {
+  if (!_.size(team)) return conditionals
   const base = calculateBase(conditionals, team[selected], team[selected]?.equipments?.weapon)
   const withArtifacts = addArtifactStats(
     base,

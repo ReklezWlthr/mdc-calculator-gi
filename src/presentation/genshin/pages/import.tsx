@@ -23,6 +23,7 @@ import { WeaponBlock } from '../components/weapon_block'
 import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
 import { ImportModal } from '../components/import_modal'
+import dayjs from 'dayjs'
 
 export const ImportExport = observer(() => {
   const { modalStore, settingStore, importStore } = useStore()
@@ -31,16 +32,15 @@ export const ImportExport = observer(() => {
 
   const [selected, setSelected] = useState(0)
   const [uid, setUid] = useState('')
-  const {
-    data: accountData,
-    refetch,
-    isFetching,
-    isStale,
-    error,
-  } = useGetGenshinData(uid, { enabled: false, retry: false })
+  const { data: accountData, refetch, isFetching, error } = useGetGenshinData(uid, { enabled: false, retry: false })
 
   useEffect(() => {
     if (accountData) {
+      const date = new Date()
+      localStorage.setItem(
+        'enka_cache',
+        JSON.stringify({ ...JSON.parse(localStorage.getItem('enka_cache')), [uid]: { data: accountData, date } })
+      )
       const { charData, artifactData } = toLocalStructure(accountData)
       importStore.setValue('characters', charData)
       importStore.setValue('artifacts', artifactData)
@@ -140,6 +140,25 @@ export const ImportExport = observer(() => {
     modalStore.openModal(<ImportModal char={char} artifacts={equippedArtifacts} />)
   }, [char, equippedArtifacts])
 
+  const onFetchUID = useCallback(() => {
+    if (uid) {
+      const cache = localStorage.getItem('enka_cache')
+      if (cache) {
+        const { data, date } = JSON.parse(cache)[uid]
+        const now = dayjs()
+        if (now.diff(date, 's') > 60) {
+          refetch()
+        } else {
+          const { charData, artifactData } = toLocalStructure(data)
+          importStore.setValue('characters', charData)
+          importStore.setValue('artifacts', artifactData)
+        }
+      } else {
+        refetch()
+      }
+    }
+  }, [uid])
+
   return (
     <div className="flex flex-col w-full gap-5 p-5 overflow-y-auto text-white">
       <div className="flex gap-5">
@@ -184,14 +203,7 @@ export const ImportExport = observer(() => {
           <div className="font-bold">Method 2: UID</div>
           <div className="flex gap-2">
             <TextInput value={uid} onChange={(v) => setUid(v)} placeholder="Enter Your UID" />
-            <PrimaryButton
-              title="Submit"
-              onClick={async () => {
-                if (uid && isStale) refetch()
-              }}
-              disabled={!isStale}
-              loading={isFetching}
-            />
+            <PrimaryButton title="Submit" onClick={onFetchUID} loading={isFetching} />
           </div>
         </div>
       </div>
@@ -337,7 +349,9 @@ export const ImportExport = observer(() => {
         <div className="flex flex-col items-center justify-center w-full h-full gap-1 rounded-lg bg-primary-darker">
           <p className="text-2xl font-bold">Enter your UID to display your characters.</p>
           <p className="text-sm text-gray">If the data is not up-to-date, please log out from the game to refresh.</p>
-          <p className="text-sm text-red">✦ You may only import data once every minute. ✦</p>
+          <p className="text-sm text-red">
+            ✦ Data is automatically cached in your browser. You can clear them in Settings. ✦
+          </p>
         </div>
       )}
     </div>
