@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { ArtifactPiece, Stats } from '@src/domain/genshin/constant'
+import { ArtifactPiece, IArtifactEquip, Stats } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
@@ -19,6 +19,7 @@ interface ArtifactBlockProps {
   aId: string
   showWearer?: boolean
   canEdit?: boolean
+  override?: IArtifactEquip[]
 }
 
 const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => void; title: string }) => {
@@ -38,7 +39,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
   const pieceName = ArtifactPiece[props.piece]
 
   const { modalStore, teamStore, artifactStore, buildStore, settingStore } = useStore()
-  const artifact = _.find(artifactStore.artifacts, ['id', props.aId])
+  const artifact = _.find(props.override || artifactStore.artifacts, ['id', props.aId])
   const setData = findArtifactSet(artifact?.setId)
 
   const mainStat = getMainStat(artifact?.main, artifact?.quality, artifact?.level)

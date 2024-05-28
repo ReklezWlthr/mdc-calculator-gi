@@ -49,7 +49,6 @@ export const useLocalUpdater = (game: string) => {
   useEffect(() => {
     const data = localStorage.getItem(key)
     const settings = localStorage.getItem(settingKey)
-    console.log(data)
 
     updateData(data)
     updateSettings(settings)

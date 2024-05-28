@@ -7,9 +7,10 @@ export interface PrimaryButtonPropsType {
   disabled?: boolean
   icon?: string | React.ReactNode
   style?: string
+  loading?: boolean
 }
 
-export const PrimaryButton = ({ onClick, title, disabled, icon, style }: PrimaryButtonPropsType) => {
+export const PrimaryButton = ({ onClick, title, disabled, icon, style, loading }: PrimaryButtonPropsType) => {
   //---------------------
   // CONST
   //---------------------
@@ -28,11 +29,12 @@ export const PrimaryButton = ({ onClick, title, disabled, icon, style }: Primary
   return (
     <button
       className={classNames('py-2 px-3 rounded-lg h-fit', colorClasses, style)}
-      disabled={disabled}
-      onClick={!disabled ? onClick : undefined}
+      disabled={disabled || loading}
+      onClick={!(disabled || loading) ? onClick : undefined}
     >
-      {icon && <>{typeof icon === 'string' ? <i className={icon} /> : <>{icon}</>}</>}
-      {title && <p className="text-sm font-bold">{title}</p>}
+      {icon && !loading && <>{typeof icon === 'string' ? <i className={icon} /> : <>{icon}</>}</>}
+      {title && !loading && <p className="text-sm font-bold">{title}</p>}
+      {loading && <i className="text-sm fa-solid fa-circle-notch animate-spin" />}
     </button>
   )
 }

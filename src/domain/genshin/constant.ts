@@ -1,4 +1,4 @@
-import { StatsObject } from "@src/data/lib/stats/baseConstant"
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
 export enum GenshinPage {
   TEAM = 'team',
@@ -139,7 +139,7 @@ export enum TalentProperty {
   HEAL = 'Heal',
   SHIELD = 'Shield',
   ADD = 'Additional Attack',
-  STATIC = 'Static Attack'
+  STATIC = 'Static Attack',
 }
 
 export enum Element {
@@ -302,6 +302,36 @@ export const SubStatOptions = [
 export const PropMap = {
   level: 4001,
   ascension: 1002,
+}
+
+export const EnkaStatsMap = {
+  FIGHT_PROP_HP: Stats.HP,
+  FIGHT_PROP_ATTACK: Stats.ATK,
+  FIGHT_PROP_DEFENSE: Stats.DEF,
+  FIGHT_PROP_HP_PERCENT: Stats.P_HP,
+  FIGHT_PROP_ATTACK_PERCENT: Stats.P_ATK,
+  FIGHT_PROP_DEFENSE_PERCENT: Stats.P_DEF,
+  FIGHT_PROP_CRITICAL: Stats.CRIT_RATE,
+  FIGHT_PROP_CRITICAL_HURT: Stats.CRIT_DMG,
+  FIGHT_PROP_CHARGE_EFFICIENCY: Stats.ER,
+  FIGHT_PROP_HEAL_ADD: Stats.HEAL,
+  FIGHT_PROP_ELEMENT_MASTERY: Stats.EM,
+  FIGHT_PROP_PHYSICAL_ADD_HURT: Stats.PHYSICAL_DMG,
+  FIGHT_PROP_FIRE_ADD_HURT: Stats.PYRO_DMG,
+  FIGHT_PROP_ELEC_ADD_HURT: Stats.ELECTRO_DMG,
+  FIGHT_PROP_WATER_ADD_HURT: Stats.HYDRO_DMG,
+  FIGHT_PROP_WIND_ADD_HURT: Stats.ANEMO_DMG,
+  FIGHT_PROP_ICE_ADD_HURT: Stats.CRYO_DMG,
+  FIGHT_PROP_ROCK_ADD_HURT: Stats.GEO_DMG,
+  FIGHT_PROP_GRASS_ADD_HURT: Stats.DENDRO_DMG,
+}
+
+export const EnkaArtifactTypeMap = {
+  EQUIP_BRACER: 4,
+  EQUIP_NECKLACE: 2,
+  EQUIP_SHOES: 5,
+  EQUIP_RING: 1,
+  EQUIP_DRESS: 3,
 }
 
 export const TravelerIconName = {

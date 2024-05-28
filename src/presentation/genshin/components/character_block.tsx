@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react'
 import { CharacterModal } from './character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
-import { AscensionOptions, ConstellationOptions, WeaponIcon } from '@src/domain/genshin/constant'
+import { AscensionOptions, ConstellationOptions, ITeamChar, WeaponIcon } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { findBaseLevel } from '@src/core/utils/data_format'
 import _ from 'lodash'
@@ -15,15 +15,18 @@ import { findCharacter } from '@src/core/utils/finder'
 
 interface CharacterBlockProps {
   index: number
+  override?: ITeamChar[]
+  disabled?: boolean
 }
 
 export const CharacterBlock = observer((props: CharacterBlockProps) => {
   const { modalStore, teamStore, settingStore } = useStore()
-  const ascension = teamStore.characters[props.index]?.ascension || 0
-  const level = teamStore.characters[props.index]?.level || 1
-  const cons = teamStore.characters[props.index]?.cons || 0
+  const selectedChar = props.override?.[props.index] || teamStore.characters[props.index]
+  const ascension = selectedChar?.ascension || 0
+  const level = selectedChar?.level || 1
+  const cons = selectedChar?.cons || 0
 
-  const characterData = findCharacter(teamStore.characters[props.index]?.cId)
+  const characterData = findCharacter(selectedChar?.cId)
   const rarity = characterData?.rarity
 
   const isEmpty = !characterData
@@ -64,6 +67,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               onClick={onOpenModal}
               value={characterData?.name}
               onClear={() => teamStore.setMember(props.index, DefaultCharacter)}
+              disabled={props.disabled}
             />
           </div>
           <div className="space-y-1">
@@ -73,7 +77,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 onChange={(value) => teamStore.setMemberInfo(props.index, { level: parseInt(value) || 0 })}
                 options={levels}
                 value={level?.toString()}
-                disabled={isEmpty}
+                disabled={isEmpty || props.disabled}
               />
               <SelectInput
                 onChange={(value) => {
@@ -89,7 +93,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 options={AscensionOptions}
                 value={ascension?.toString()}
                 style="w-fit"
-                disabled={isEmpty}
+                disabled={isEmpty || props.disabled}
               />
               <SelectInput
                 onChange={(value) =>
@@ -100,7 +104,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 options={ConstellationOptions}
                 value={cons?.toString()}
                 style="w-fit"
-                disabled={isEmpty || characterData?.id === '10000062'}
+                disabled={isEmpty || props.disabled || characterData?.id === '10000062'}
               />
             </div>
           </div>

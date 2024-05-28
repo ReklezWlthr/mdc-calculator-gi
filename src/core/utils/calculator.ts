@@ -21,7 +21,8 @@ export const calculateOutOfCombat = (
   conditionals: StatsObject,
   selected: number,
   team: ITeamChar[],
-  artifacts: IArtifactEquip[]
+  artifacts: IArtifactEquip[],
+  applyResonance: boolean = true
 ) => {
   const base = calculateBase(conditionals, team[selected], team[selected]?.equipments?.weapon)
   const withArtifacts = addArtifactStats(
@@ -30,7 +31,7 @@ export const calculateOutOfCombat = (
     findWeapon(team[selected]?.equipments?.weapon?.wId)?.type,
     team
   )
-  const final = addResonance(withArtifacts, team)
+  const final = applyResonance ? addResonance(withArtifacts, team) : withArtifacts
 
   return final
 }

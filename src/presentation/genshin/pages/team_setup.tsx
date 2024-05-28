@@ -25,7 +25,7 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
 
-const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
+export const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
   const setDetail = _.find(ArtifactSets, ['id', set])
   const count = _.floor(item / 2) * 2
   return (
