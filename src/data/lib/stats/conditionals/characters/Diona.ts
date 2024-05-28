@@ -189,7 +189,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
           flat: calcScaling(692.8, normal, 'special', 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
-          bonus: c >= 2 ? 0.15 : 0,
+          multiplier: c >= 2 ? 1.15 : 0,
         },
         {
           name: 'Hold Shield',
@@ -197,7 +197,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
           flat: calcScaling(692.8, normal, 'special', 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
-          bonus: 0.75 + (c >= 2 ? 0.15 : 0),
+          multiplier: 1.75 * (c >= 2 ? 1.15 : 0),
         },
       ]
       base.BURST_SCALING = [

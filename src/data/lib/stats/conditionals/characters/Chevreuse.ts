@@ -56,7 +56,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
     },
     a1: {
       title: `A1: Vanguard's Coordinated Tactics`,
-      content: `When all party members are <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters and there is at least one Pyro and one Electro character each in the party:
+      content: `When all party members are <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters and there is at least one <b class="text-genshin-pyro">Pyro</b> and one <b class="text-genshin-electro">Electro</b> character each in the party:
       <br />Chevreuse grants "Coordinated Tactics" to nearby party members: After a character triggers the Overloaded reaction, the <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro RES</b> of the opponent(s) affected by this Overloaded reaction will be decreased by <span class="text-desc">40%</span> for <span class="text-desc">6</span>s.
       <br />The "Coordinated Tactics" effect will be removed when the Elemental Types of the characters in the party do not meet the basic requirements for the Passive Talent.`,
     },

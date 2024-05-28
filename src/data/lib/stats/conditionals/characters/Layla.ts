@@ -181,7 +181,7 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
           flat: calcScaling(1040, skill, 'special', 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
-          bonus: c >= 1 ? 0.2 : 0,
+          multiplier: c >= 1 ? 1.2 : 0,
         },
       ]
       base.BURST_SCALING = [
