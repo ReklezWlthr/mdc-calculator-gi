@@ -21,7 +21,7 @@ export const CommonModal = observer(({ title, desc, onCancel, onConfirm, icon }:
         <i className={classNames('w-8 h-8 flex items-center justify-center text-xl', icon)} />
         <p className="text-lg">{title}</p>
       </div>
-      <p className="text-sm font-normal">{desc}</p>
+      <p className="text-sm font-normal whitespace-pre-wrap">{desc}</p>
       <div className="flex justify-end gap-x-2">
         <GhostButton
           title="Cancel"

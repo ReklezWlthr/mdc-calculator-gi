@@ -76,12 +76,14 @@ export const ImportExport = observer(() => {
           onConfirm={() => modalStore.closeModal()}
         />
       )
-    else
+    else if (error?.message)
       modalStore.openModal(
         <CommonModal
           icon="fa-solid fa-circle-xmark text-red"
-          title="Error"
-          desc={`An error occurred with the following message: "${error?.message}". Please use this to as a reference for inquiry or report.`}
+          title="An Error Occurred"
+          desc={`An error occurred with the following message:
+          \n"${error?.message}"
+          \nPlease use this to as a reference for inquiry or report.`}
           onConfirm={() => modalStore.closeModal()}
         />
       )
@@ -128,7 +130,8 @@ export const ImportExport = observer(() => {
       <CommonModal
         icon="fa-solid fa-circle-question text-yellow"
         title="Overwrite Data?"
-        desc={`The file contains ${char} characters, ${build} builds and ${artifact} artifacts. Are you sure you want to overwrite the current data with this?`}
+        desc={`The file contains ${char} characters, ${build} builds and ${artifact} artifacts.
+Are you sure you want to overwrite the current data with this?`}
         onConfirm={onConfirm}
       />
     )
