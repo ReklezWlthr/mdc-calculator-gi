@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
         <title>MD/C Calculator</title>
       </Head>
       <QueryClientProvider client={queryClient}>
-        <div className="flex flex-col w-screen h-screen max-h-screen overflow-x-hidden">
+        <div className="flex flex-col w-screen h-screen max-h-screen overflow-x-hidden min-w-[1440px]">
           <NavBar />
           <Modal />
           <Component {...pageProps} />

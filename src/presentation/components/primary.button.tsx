@@ -34,7 +34,9 @@ export const PrimaryButton = ({ onClick, title, disabled, icon, style, loading }
     >
       {icon && !loading && <>{typeof icon === 'string' ? <i className={icon} /> : <>{icon}</>}</>}
       {title && !loading && <p className="text-sm font-bold">{title}</p>}
-      {loading && <i className="text-sm fa-solid fa-circle-notch animate-spin" />}
+      {loading && (
+        <i className="flex items-center justify-center w-5 h-5 text-sm fa-solid fa-circle-notch animate-spin" />
+      )}
     </button>
   )
 }

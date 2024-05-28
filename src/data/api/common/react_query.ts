@@ -17,9 +17,9 @@ export const fetcher = async <T>({ queryKey, headers }): Promise<T> => {
 export const useGenericFetch = <T>(
   url: string | null,
   params?: object,
-  config?: UseQueryOptions<T, Error, T, QueryKeyT>
+  config?: UseQueryOptions<T, AxiosError, T, QueryKeyT>
 ) => {
-  return useQuery<T, Error, T, QueryKeyT>(
+  return useQuery<T, AxiosError, T, QueryKeyT>(
     [url, params],
     ({ queryKey }) =>
       fetcher({
@@ -30,7 +30,7 @@ export const useGenericFetch = <T>(
   )
 }
 
-export const useFetch = <T>(url: string | null, params?: object, config?: UseQueryOptions<T, Error, T, QueryKeyT>) => {
+export const useFetch = <T>(url: string | null, params?: object, config?: UseQueryOptions<T, AxiosError, T, QueryKeyT>) => {
   return useGenericFetch(url, params, config)
 }
 

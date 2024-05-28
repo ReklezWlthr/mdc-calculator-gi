@@ -24,6 +24,7 @@ import { TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
+import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 
 export const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
   const setDetail = _.find(ArtifactSets, ['id', set])
@@ -83,6 +84,7 @@ const ResonanceToolTip = observer(({ count, element }: { count: number; element:
 
 const SaveBuildModal = observer(({ index }: { index: number }) => {
   const [name, setName] = useState('')
+  const [isDefault, setDefault] = useState(false)
 
   const { modalStore, teamStore, buildStore } = useStore()
 
@@ -99,7 +101,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
         ...character?.equipments,
       })
       if (pass) {
-        buildStore.setDefault(id)
+        isDefault && buildStore.setDefault(id)
         modalStore.closeModal()
       }
     }
@@ -109,9 +111,13 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
     <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark">
       <div className="space-y-1">
         <p className="font-semibold">
-          Build Name<span className="text-red">*</span>
+          Build Name <span className="text-red">*</span>
         </p>
         <TextInput onChange={setName} value={name} />
+      </div>
+      <div className="flex items-center justify-end gap-x-2">
+        <p className="text-xs text-gray">Set Build as Default</p>
+        <CheckboxInput checked={isDefault} onClick={(v) => setDefault(v)} />
       </div>
       <div className="flex justify-end gap-2">
         <GhostButton title="Cancel" onClick={() => modalStore.closeModal()} />

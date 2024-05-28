@@ -13,15 +13,15 @@ export const CheckboxInput = ({ label, onClick, disabled, checked }: CheckboxInp
   // RENDER
   //---------------------
   return (
-    <label htmlFor={label} onClick={() => onClick(!checked)}>
+    <label htmlFor={label} onClick={() => !disabled && onClick(!checked)}>
       <div
-        className={classNames('w-4 h-4 rounded-[4px] text-white', {
+        className={classNames('w-4 h-4 rounded-[4px]', {
           'bg-white': !disabled && !checked,
           'bg-primary': disabled && !checked,
           'bg-primary-lighter': checked && !disabled,
           'bg-primary-light': checked && disabled,
-          'cursor-not-allowed': disabled,
-          'cursor-pointer': !disabled,
+          'cursor-not-allowed text-primary': disabled,
+          'cursor-pointer text-white': !disabled,
           'border border-dark-4': !checked,
         })}
       >

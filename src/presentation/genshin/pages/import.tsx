@@ -22,6 +22,7 @@ import { ArtifactBlock } from '../components/artifact_block'
 import { WeaponBlock } from '../components/weapon_block'
 import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
+import { ImportModal } from '../components/import_modal'
 
 export const ImportExport = observer(() => {
   const { modalStore, settingStore, importStore } = useStore()
@@ -30,7 +31,13 @@ export const ImportExport = observer(() => {
 
   const [selected, setSelected] = useState(0)
   const [uid, setUid] = useState('')
-  const { data: accountData, refetch, isFetching, isStale } = useGetGenshinData(uid, { enabled: false })
+  const {
+    data: accountData,
+    refetch,
+    isFetching,
+    isStale,
+    error,
+  } = useGetGenshinData(uid, { enabled: false, retry: false })
 
   useEffect(() => {
     if (accountData) {
@@ -40,6 +47,45 @@ export const ImportExport = observer(() => {
       setSelected(0)
     }
   }, [accountData])
+
+  useEffect(() => {
+    if (error?.response?.status === 400)
+      modalStore.openModal(
+        <CommonModal
+          icon="fa-solid fa-circle-xmark text-red"
+          title="Wrong UID Format"
+          desc="Please check the entered UID again."
+          onConfirm={() => modalStore.closeModal()}
+        />
+      )
+    else if (error?.response?.status === 404)
+      modalStore.openModal(
+        <CommonModal
+          icon="fa-solid fa-circle-xmark text-red"
+          title="Account Not Found"
+          desc="This account does not exist, or the owner chooses not to display the characters."
+          onConfirm={() => modalStore.closeModal()}
+        />
+      )
+    else if (error?.response?.status === 424)
+      modalStore.openModal(
+        <CommonModal
+          icon="fa-solid fa-circle-xmark text-red"
+          title="Game Server is Under Maintenance"
+          desc="Please try again after the maintenance ends."
+          onConfirm={() => modalStore.closeModal()}
+        />
+      )
+    else
+      modalStore.openModal(
+        <CommonModal
+          icon="fa-solid fa-circle-xmark text-red"
+          title="Error"
+          desc={`An error occurred with the following message: "${error?.message}". Please use this to as a reference for inquiry or report.`}
+          onConfirm={() => modalStore.closeModal()}
+        />
+      )
+  }, [error])
 
   const char = importStore.characters[selected]
   const selectedCharData = findCharacter(char?.cId)
@@ -88,6 +134,10 @@ export const ImportExport = observer(() => {
     )
   }, [])
 
+  const onOpenImportModal = useCallback(() => {
+    modalStore.openModal(<ImportModal char={char} artifacts={equippedArtifacts} />)
+  }, [char, equippedArtifacts])
+
   return (
     <div className="flex flex-col w-full gap-5 p-5 overflow-y-auto text-white">
       <div className="flex gap-5">
@@ -108,12 +158,12 @@ export const ImportExport = observer(() => {
               }}
             />
           </div>
-
           <input
             id="importer"
             className="hidden"
             type="file"
             multiple={false}
+            accept=".json"
             onChange={(event) => {
               const file = event.target.files[0]
               const reader = new FileReader()
@@ -163,7 +213,7 @@ export const ImportExport = observer(() => {
                 )
               })}
             </div>
-            <PrimaryButton title="Import Character" onClick={() => null} style="shrink-0" />
+            <PrimaryButton title="Import Character" onClick={onOpenImportModal} style="shrink-0" />
           </div>
           <div className="flex justify-center w-full gap-5">
             <div className="w-1/3">
@@ -278,11 +328,6 @@ export const ImportExport = observer(() => {
                 override={importStore.artifacts}
                 canEdit={false}
               />
-              <div className="flex gap-x-2">
-                {/* <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
-          <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
-          <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} /> */}
-              </div>
             </div>
           </div>
         </>
