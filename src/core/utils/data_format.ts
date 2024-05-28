@@ -10,7 +10,6 @@ import {
 } from '@src/domain/genshin/scaling'
 import _ from 'lodash'
 import { findCharacter } from './finder'
-import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0

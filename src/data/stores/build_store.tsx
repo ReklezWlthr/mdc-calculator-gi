@@ -66,8 +66,7 @@ export class Build {
   }
 
   hydrateBuilds = (data: IBuild[]) => {
-    if (!data) return
-    this.builds = data
+    this.builds = data || []
   }
 
   hydrate = (data: BuildStoreType) => {

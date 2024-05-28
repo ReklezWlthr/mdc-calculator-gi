@@ -117,8 +117,7 @@ export class CharacterStore {
   }
 
   hydrateCharacters = (data: ICharStore[]) => {
-    if (!data) return
-    this.characters = data
+    this.characters = data || DefaultAccount
   }
 
   hydrate = (data: CharacterStoreType) => {

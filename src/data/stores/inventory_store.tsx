@@ -50,8 +50,7 @@ export class Inventory {
   }
 
   hydrateArtifacts = (data: IArtifactEquip[]) => {
-    if (!data) return
-    this.artifacts = data
+    this.artifacts = data || []
   }
 
   hydrate = (data: InventoryStoreType) => {

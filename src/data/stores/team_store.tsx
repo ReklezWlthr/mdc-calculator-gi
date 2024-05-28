@@ -121,8 +121,7 @@ export class Team {
   }
 
   hydrateCharacters = (data: ITeamChar[]) => {
-    if (!data) return
-    this.characters = data
+    this.characters = data || Array(4).fill(DefaultCharacter)
   }
 
   hydrate = (data: TeamStoreType) => {
