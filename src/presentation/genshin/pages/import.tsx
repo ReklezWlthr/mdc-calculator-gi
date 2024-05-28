@@ -24,27 +24,24 @@ import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
 
 export const ImportExport = observer(() => {
-  const { modalStore, settingStore } = useStore()
+  const { modalStore, settingStore, importStore } = useStore()
 
   const { data, updateData } = useLocalUpdater('genshin')
 
   const [selected, setSelected] = useState(0)
   const [uid, setUid] = useState('')
-  const [importedData, setImportedData] = useState<{
-    charData: ITeamChar[]
-    artifactData: IArtifactEquip[]
-  }>({ charData: [], artifactData: [] })
-  const { charData, artifactData } = importedData
   const { data: accountData, refetch, isFetching, isStale } = useGetGenshinData(uid, { enabled: false })
 
   useEffect(() => {
     if (accountData) {
-      setImportedData(toLocalStructure(accountData))
+      const { charData, artifactData } = toLocalStructure(accountData)
+      importStore.setValue('characters', charData)
+      importStore.setValue('artifacts', artifactData)
       setSelected(0)
     }
   }, [accountData])
 
-  const char = charData[selected]
+  const char = importStore.characters[selected]
   const selectedCharData = findCharacter(char?.cId)
   const talent = _.find(ConditionalsObject, ['id', char?.cId])?.conditionals(
     char?.cons,
@@ -52,8 +49,14 @@ export const ImportExport = observer(() => {
     char?.talents,
     []
   )
-  const equippedArtifacts = _.filter(artifactData, (item) => _.includes(char?.equipments?.artifacts, item.id))
-  const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, charData, equippedArtifacts, false)
+  const equippedArtifacts = _.filter(importStore.artifacts, (item) => _.includes(char?.equipments?.artifacts, item.id))
+  const raw = calculateOutOfCombat(
+    _.cloneDeep(baseStatsObject),
+    selected,
+    importStore.characters,
+    equippedArtifacts,
+    false
+  )
   const stats = calculateFinal(raw)
   const set = getSetCount(equippedArtifacts)
   const iconCodeName =
@@ -143,11 +146,11 @@ export const ImportExport = observer(() => {
       <p className="flex justify-center gap-2 mb-1 text-2xl font-bold">
         <span className="text-desc">✦</span> Character Data <span className="text-desc">✦</span>
       </p>
-      {_.size(charData) ? (
+      {_.size(importStore.characters) ? (
         <>
           <div className="flex items-center justify-between px-3">
             <div className="flex justify-center w-full gap-4">
-              {_.map(charData, (item, index) => {
+              {_.map(importStore.characters, (item, index) => {
                 const x = findCharacter(item.cId)?.codeName
                 const y = x === 'Player' ? settingStore.settings.travelerGender : x
                 return (
@@ -164,8 +167,8 @@ export const ImportExport = observer(() => {
           </div>
           <div className="flex justify-center w-full gap-5">
             <div className="w-1/3">
-              <CharacterBlock index={selected} override={charData} disabled />
-              {_.size(charData) ? (
+              <CharacterBlock index={selected} override={importStore.characters} disabled />
+              {_.size(importStore.characters) ? (
                 <div className="flex items-center justify-center gap-6 py-3">
                   <div className="relative">
                     <TalentIcon
@@ -233,7 +236,7 @@ export const ImportExport = observer(() => {
                 index={selected}
                 piece={5}
                 aId={char?.equipments?.artifacts?.[2]}
-                override={artifactData}
+                override={importStore.artifacts}
                 canEdit={false}
               />
               <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
@@ -249,14 +252,14 @@ export const ImportExport = observer(() => {
                 index={selected}
                 piece={4}
                 aId={char?.equipments?.artifacts?.[0]}
-                override={artifactData}
+                override={importStore.artifacts}
                 canEdit={false}
               />
               <ArtifactBlock
                 index={selected}
                 piece={1}
                 aId={char?.equipments?.artifacts?.[3]}
-                override={artifactData}
+                override={importStore.artifacts}
                 canEdit={false}
               />
             </div>
@@ -265,14 +268,14 @@ export const ImportExport = observer(() => {
                 index={selected}
                 piece={2}
                 aId={char?.equipments?.artifacts?.[1]}
-                override={artifactData}
+                override={importStore.artifacts}
                 canEdit={false}
               />
               <ArtifactBlock
                 index={selected}
                 piece={3}
                 aId={char?.equipments?.artifacts?.[4]}
-                override={artifactData}
+                override={importStore.artifacts}
                 canEdit={false}
               />
               <div className="flex gap-x-2">
