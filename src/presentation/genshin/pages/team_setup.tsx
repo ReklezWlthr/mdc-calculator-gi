@@ -84,7 +84,7 @@ const ResonanceToolTip = observer(({ count, element }: { count: number; element:
 
 const SaveBuildModal = observer(({ index }: { index: number }) => {
   const [name, setName] = useState('')
-  const [isDefault, setDefault] = useState(false)
+  const [isDefault, setDefault] = useState(true)
 
   const { modalStore, teamStore, buildStore } = useStore()
 
@@ -137,7 +137,13 @@ export const TeamSetup = observer(() => {
 
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
-  const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, teamStore.characters, artifactData)
+  const raw = calculateOutOfCombat(
+    _.cloneDeep(baseStatsObject),
+    selected,
+    teamStore.characters,
+    artifactData,
+    _.size(_.filter(teamStore.characters, (item) => !!item.cId)) >= 4
+  )
   const stats = calculateFinal(raw)
 
   const onOpenSaveModal = useCallback(() => {
@@ -178,123 +184,125 @@ export const TeamSetup = observer(() => {
   const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
 
   return (
-    <div className="flex justify-center w-full gap-5 p-5 overflow-y-auto">
-      <div className="w-1/3">
-        <div className="flex justify-center w-full gap-4 pt-1 pb-3">
-          {_.map(teamStore?.characters, (item, index) => {
-            const x = findCharacter(item.cId)?.codeName
-            const y = x === 'Player' ? settingStore.settings.travelerGender : x
-            return (
-              <CharacterSelect
-                key={`char_select_${index}`}
-                onClick={() => teamStore.setValue('selected', index)}
-                isSelected={index === selected}
-                codeName={y}
-              />
-            )
-          })}
-        </div>
-        <CharacterBlock index={selected} />
-        {charData ? (
-          <div className="flex items-center justify-center gap-3 py-3">
-            <div className="relative">
-              <TalentIcon
-                talent={talent?.talents?.normal}
-                element={charData?.element}
-                icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
-                size="w-9 h-9"
-              />
-              {talent?.upgrade?.normal && (
-                <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
-                  +3
-                </div>
-              )}
-            </div>
-            <SelectInput
-              value={char?.talents?.normal?.toString()}
-              onChange={(value) => teamStore.setTalentLevel(selected, 'normal', parseInt(value))}
-              options={talentLevels}
-              style="w-14"
-            />
-            <div className="relative ml-3">
-              <TalentIcon
-                talent={talent?.talents?.skill}
-                element={charData?.element}
-                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'E' : 'S'}_${iconCodeName}${
-                  iconCodeName === 'Qin' ? '_02' : '_01'
-                }${iconCodeName === 'Diluc' ? '_01' : ''}.png`}
-                size="w-9 h-9"
-              />
-              {talent?.upgrade?.skill && (
-                <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
-                  +3
-                </div>
-              )}
-            </div>
-            <SelectInput
-              value={char?.talents?.skill?.toString()}
-              onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
-              options={talentLevels}
-              style="w-14"
-            />
-            <div className="relative ml-3">
-              <TalentIcon
-                talent={talent?.talents?.burst}
-                element={charData?.element}
-                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'S' : 'E'}_${iconCodeName}${
-                  _.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'
-                }.png`}
-                size="w-9 h-9"
-              />
-              {talent?.upgrade?.burst && (
-                <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
-                  +3
-                </div>
-              )}
-            </div>
-            <SelectInput
-              value={char?.talents?.burst?.toString()}
-              onChange={(value) => teamStore.setTalentLevel(selected, 'burst', parseInt(value))}
-              options={talentLevels}
-              style="w-14"
-            />
+    <div className="w-full overflow-y-auto">
+      <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
+        <div className="w-1/3">
+          <div className="flex justify-center w-full gap-4 pt-1 pb-3">
+            {_.map(teamStore?.characters, (item, index) => {
+              const x = findCharacter(item.cId)?.codeName
+              const y = x === 'Player' ? settingStore.settings.travelerGender : x
+              return (
+                <CharacterSelect
+                  key={`char_select_${index}`}
+                  onClick={() => teamStore.setValue('selected', index)}
+                  isSelected={index === selected}
+                  codeName={y}
+                />
+              )
+            })}
           </div>
-        ) : (
-          <div className="h-5" />
-        )}
-        <StatBlock index={selected} stat={stats} />
-      </div>
-      <div className="w-1/5 space-y-5">
-        <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
-        <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
-        <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
-          {_.every(set, (item) => item < 2) ? (
-            <p className="text-xs text-white">No Set Bonus</p>
+          <CharacterBlock index={selected} />
+          {charData ? (
+            <div className="flex items-center justify-center gap-3 py-3">
+              <div className="relative">
+                <TalentIcon
+                  talent={talent?.talents?.normal}
+                  element={charData?.element}
+                  icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
+                  size="w-9 h-9"
+                />
+                {talent?.upgrade?.normal && (
+                  <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+                    +3
+                  </div>
+                )}
+              </div>
+              <SelectInput
+                value={char?.talents?.normal?.toString()}
+                onChange={(value) => teamStore.setTalentLevel(selected, 'normal', parseInt(value))}
+                options={talentLevels}
+                style="w-14"
+              />
+              <div className="relative ml-3">
+                <TalentIcon
+                  talent={talent?.talents?.skill}
+                  element={charData?.element}
+                  icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'E' : 'S'}_${iconCodeName}${
+                    iconCodeName === 'Qin' ? '_02' : '_01'
+                  }${iconCodeName === 'Diluc' ? '_01' : ''}.png`}
+                  size="w-9 h-9"
+                />
+                {talent?.upgrade?.skill && (
+                  <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
+                    +3
+                  </div>
+                )}
+              </div>
+              <SelectInput
+                value={char?.talents?.skill?.toString()}
+                onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
+                options={talentLevels}
+                style="w-14"
+              />
+              <div className="relative ml-3">
+                <TalentIcon
+                  talent={talent?.talents?.burst}
+                  element={charData?.element}
+                  icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'S' : 'E'}_${iconCodeName}${
+                    _.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'
+                  }.png`}
+                  size="w-9 h-9"
+                />
+                {talent?.upgrade?.burst && (
+                  <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
+                    +3
+                  </div>
+                )}
+              </div>
+              <SelectInput
+                value={char?.talents?.burst?.toString()}
+                onChange={(value) => teamStore.setTalentLevel(selected, 'burst', parseInt(value))}
+                options={talentLevels}
+                style="w-14"
+              />
+            </div>
           ) : (
-            _.map(set, (item, key) => <SetToolTip item={item} set={key} key={key} />)
+            <div className="h-5" />
           )}
+          <StatBlock index={selected} stat={stats} />
         </div>
-      </div>
-      <div className="w-1/5 space-y-5">
-        <ArtifactBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
-        <ArtifactBlock index={selected} piece={1} aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]} />
-        <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
-          {_.isEmpty(resonance) ? (
-            <p className="text-xs text-white">No Resonance Bonus</p>
-          ) : _.size(resonance) === 4 ? (
-            <ResonanceToolTip count={4} element="Unique" />
-          ) : (
-            _.map(resonance, (item, key) => <ResonanceToolTip count={item} element={key} key={key} />)
-          )}
+        <div className="w-1/5 space-y-5">
+          <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
+          <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
+          <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
+            {_.every(set, (item) => item < 2) ? (
+              <p className="text-xs text-white">No Set Bonus</p>
+            ) : (
+              _.map(set, (item, key) => <SetToolTip item={item} set={key} key={key} />)
+            )}
+          </div>
         </div>
-      </div>
-      <div className="w-1/5 space-y-5">
-        <ArtifactBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
-        <ArtifactBlock index={selected} piece={3} aId={teamStore.characters[selected]?.equipments?.artifacts?.[2]} />
-        <div className="flex gap-x-2">
-          <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
-          <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
-          <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
+        <div className="w-1/5 space-y-5">
+          <ArtifactBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
+          <ArtifactBlock index={selected} piece={1} aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]} />
+          <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
+            {_.isEmpty(resonance) || _.size(_.filter(teamStore.characters, (item) => !!item.cId)) < 4 ? (
+              <p className="text-xs text-white">No Resonance Bonus</p>
+            ) : _.size(resonance) === 4 ? (
+              <ResonanceToolTip count={4} element="Unique" />
+            ) : (
+              _.map(resonance, (item, key) => <ResonanceToolTip count={item} element={key} key={key} />)
+            )}
+          </div>
+        </div>
+        <div className="w-1/5 space-y-5">
+          <ArtifactBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
+          <ArtifactBlock index={selected} piece={3} aId={teamStore.characters[selected]?.equipments?.artifacts?.[2]} />
+          <div className="flex gap-x-2">
+            <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
+            <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
+            <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
+          </div>
         </div>
       </div>
     </div>

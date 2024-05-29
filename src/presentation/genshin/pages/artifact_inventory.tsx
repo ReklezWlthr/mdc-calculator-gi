@@ -56,58 +56,70 @@ export const ArtifactInventory = observer(() => {
   }, [modalStore])
 
   return (
-    <div className="flex flex-col items-center w-full gap-5 p-5 overflow-y-auto">
-      <div className="flex items-center justify-between w-full">
-        <p className="text-2xl font-bold text-white w-fit">Artifact Inventory</p>
-        <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />
-      </div>
-      <div className="w-full space-y-1">
-        <div className="flex items-center w-full gap-3">
-          <div className="flex justify-center gap-2">
-            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/flower_of_life.png`} value={4} />
-            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/plume_of_death.png`} value={2} />
-            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/sands_of_eon.png`} value={5} />
-            <TypeButton
-              field="types"
-              icon={`${publicRuntimeConfig.BASE_PATH}/icons/goblet_of_eonothem.png`}
-              value={1}
-            />
-            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/circlet_of_logos.png`} value={3} />
-          </div>
-          <SelectTextInput
-            value={params.set}
-            options={_.map(ArtifactSets, (artifact) => ({
-              name: artifact.name,
-              value: artifact.id.toString(),
-              img: `https://enka.network/ui/${artifact.icon}_4.png`,
-            }))}
-            placeholder="Artifact Set"
-            onChange={(value) => setParams({ set: value?.value })}
-            style="w-[300px]"
-          />
-          <TagSelectInput
-            values={params.main}
-            options={_.map(MainStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
-            onChange={(main) => setParams({ main })}
-            placeholder="Main Stat"
-            renderAsText
-            style="w-[300px]"
-          />
-          <TagSelectInput
-            values={params.subs}
-            options={_.map(SubStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
-            onChange={(subs) => setParams({ subs })}
-            placeholder="Sub Stats"
-            renderAsText
-            maxSelection={4}
-            style="w-[300px]"
-          />
+    <div className="w-full h-full overflow-y-auto">
+      <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto h-full">
+        <div className="flex items-center justify-between w-full">
+          <p className="text-2xl font-bold text-white w-fit">Artifact Inventory</p>
+          <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />
         </div>
-      </div>
-      <div className="grid w-full grid-cols-5 gap-4">
-        {_.map(filteredArtifacts, (artifact) => (
-          <ArtifactBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} showWearer />
-        ))}
+        <div className="w-full space-y-1">
+          <div className="flex items-center w-full gap-3">
+            <div className="flex justify-center gap-2">
+              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/flower_of_life.png`} value={4} />
+              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/plume_of_death.png`} value={2} />
+              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/sands_of_eon.png`} value={5} />
+              <TypeButton
+                field="types"
+                icon={`${publicRuntimeConfig.BASE_PATH}/icons/goblet_of_eonothem.png`}
+                value={1}
+              />
+              <TypeButton
+                field="types"
+                icon={`${publicRuntimeConfig.BASE_PATH}/icons/circlet_of_logos.png`}
+                value={3}
+              />
+            </div>
+            <SelectTextInput
+              value={params.set}
+              options={_.map(ArtifactSets, (artifact) => ({
+                name: artifact.name,
+                value: artifact.id.toString(),
+                img: `https://enka.network/ui/${artifact.icon}_4.png`,
+              }))}
+              placeholder="Artifact Set"
+              onChange={(value) => setParams({ set: value?.value })}
+              style="w-[300px]"
+            />
+            <TagSelectInput
+              values={params.main}
+              options={_.map(MainStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
+              onChange={(main) => setParams({ main })}
+              placeholder="Main Stat"
+              renderAsText
+              style="w-[300px]"
+            />
+            <TagSelectInput
+              values={params.subs}
+              options={_.map(SubStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
+              onChange={(subs) => setParams({ subs })}
+              placeholder="Sub Stats"
+              renderAsText
+              maxSelection={4}
+              style="w-[300px]"
+            />
+          </div>
+        </div>
+        {_.size(filteredArtifacts) ? (
+          <div className="grid w-full grid-cols-5 gap-4 overflow-y-auto rounded-lg hideScrollbar">
+            {_.map(filteredArtifacts, (artifact) => (
+              <ArtifactBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} showWearer />
+            ))}
+          </div>
+        ) : (
+          <div className="flex items-center justify-center w-full h-full text-3xl font-bold text-white rounded-lg bg-primary-darker">
+            No Artifact
+          </div>
+        )}
       </div>
     </div>
   )

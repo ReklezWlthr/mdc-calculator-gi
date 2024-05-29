@@ -18,7 +18,7 @@ export const MyBuilds = observer(() => {
   const selectedBuild = useMemo(() => _.find(buildStore.builds, ['id', selected]), [selected])
 
   return (
-    <div className="flex flex-col items-center w-full gap-5 p-5 overflow-y-auto">
+    <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
       <div className="flex w-full h-full gap-x-5">
         <div className="flex flex-col w-1/3 h-full gap-2 overflow-y-auto rounded-lg shrink-0 hideScrollbar">
           {_.map(buildStore.builds, (build) => (

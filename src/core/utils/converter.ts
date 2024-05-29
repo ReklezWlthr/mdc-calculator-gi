@@ -15,7 +15,7 @@ export const toPercentage = (value: number, precision: number = 1) => {
 export const toLocalStructure = (rawData: Record<string, any>) => {
   if (!rawData) return null
   const displayChars = rawData.avatarInfoList
-  const charData: ITeamChar[] = _.map<any, ITeamChar>(displayChars, (item, i) => {
+  const charData: ITeamChar[] = _.map<any, ITeamChar>(displayChars, (item) => {
     const weapon = _.find(item.equipList, 'weapon')
     const weaponId = weapon?.itemId?.toString()
     const talents = _.map<number>(item.skillLevelMap)
@@ -32,7 +32,7 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
           ascension: parseInt(weapon?.weapon?.promoteLevel) || 0,
           level: parseInt(weapon?.weapon?.level),
         },
-        artifacts: _.map(artifacts, (item) => `${item.itemId}_${i}`),
+        artifacts: _.map(artifacts, (_) => crypto.randomUUID()),
       },
       talents: {
         normal: talents[0],
@@ -41,10 +41,10 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
       },
     }
   })
-  const artifactData: IArtifactEquip[] = _.flatMap<any, IArtifactEquip>(displayChars, (item, i) =>
-    _.map<any, IArtifactEquip>(_.filter(item.equipList, 'reliquary'), (artifact) => {
+  const artifactData: IArtifactEquip[] = _.flatMap<any, IArtifactEquip>(displayChars, (item, i: number) =>
+    _.map<any, IArtifactEquip>(_.filter(item.equipList, 'reliquary'), (artifact, aI) => {
       return {
-        id: `${artifact.itemId}_${i}`,
+        id: charData[i]?.equipments?.artifacts?.[aI],
         setId: artifact.flat.setNameTextMapHash,
         level: artifact.reliquary.level - 1,
         type: EnkaArtifactTypeMap[artifact.flat.equipType],

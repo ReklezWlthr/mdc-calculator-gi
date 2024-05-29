@@ -1,4 +1,5 @@
 import { useParams } from '@src/core/hooks/useParams'
+import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IArtifactEquip, ITeamChar } from '@src/domain/genshin/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
@@ -15,8 +16,8 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
     character: true,
     artifacts: true,
     build: false,
-    buildName: '',
-    default: false,
+    buildName: `${findCharacter(char?.cId)?.name}'s Build`,
+    default: true,
   })
 
   const onSubmit = useCallback(() => {
@@ -73,7 +74,7 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
       </div>
       <div className="p-3 space-y-2 rounded-lg bg-primary-darker">
         <div className="flex items-center justify-between gap-x-2">
-          <p className="font-bold text-white">Import Build</p>
+          <p className="font-bold text-white">Save Build</p>
           <CheckboxInput checked={params.build} onClick={(v) => setParams({ build: v })} />
         </div>
         <div className="border-t border-primary-border" />

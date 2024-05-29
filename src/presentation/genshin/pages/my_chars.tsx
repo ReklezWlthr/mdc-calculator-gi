@@ -123,7 +123,7 @@ export const MyCharacters = observer(() => {
   }, [form, charUpgrade, charData])
 
   return (
-    <div className="flex flex-col items-center w-full gap-5 p-5 overflow-y-auto">
+    <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
       <div className="flex w-full h-full gap-x-10">
         <div className="flex flex-col w-1/3 h-full gap-y-2 shrink-0">
           <p className="text-2xl font-bold text-white">My Characters</p>
