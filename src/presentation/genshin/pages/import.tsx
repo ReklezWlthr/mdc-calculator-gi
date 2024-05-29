@@ -160,8 +160,8 @@ export const ImportExport = observer(() => {
   }, [uid])
 
   return (
-    <div className="w-full h-full overflow-y-auto">
-      <div className="flex flex-col w-full gap-5 p-5 text-white max-w-[1240px] mx-auto h-full">
+    <div className="w-full h-full pb-5 overflow-y-auto">
+      <div className="flex flex-col w-full gap-5 p-5 text-white max-w-[1240px] mx-auto h-fit">
         <div className="flex gap-5">
           <div className="w-1/4 space-y-2">
             <div className="font-bold">Method 1: File</div>
