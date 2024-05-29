@@ -19,7 +19,7 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
     const weapon = _.find(item.equipList, 'weapon')
     const weaponId = weapon?.itemId?.toString()
     const talents = _.map<number>(item.skillLevelMap)
-    const artifacts = _.filter(item.equipList, 'reliquary')
+    const artifacts = _.map(_.filter(item.equipList, 'reliquary'), (a) => (a ? crypto.randomUUID() : null))
     return {
       level: parseInt(item.propMap[PropMap.level].val),
       ascension: parseInt(item.propMap[PropMap.ascension].val),
@@ -32,7 +32,7 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
           ascension: parseInt(weapon?.weapon?.promoteLevel) || 0,
           level: parseInt(weapon?.weapon?.level),
         },
-        artifacts: _.map(artifacts, (_) => crypto.randomUUID()),
+        artifacts,
       },
       talents: {
         normal: talents[0],

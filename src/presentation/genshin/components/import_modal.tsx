@@ -41,8 +41,9 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
     }
     if (params.build && char && artifacts) {
       const id = crypto.randomUUID()
+      const a = char.equipments.artifacts
       buildStore.saveBuild({
-        artifacts: char.equipments.artifacts,
+        artifacts: [a[3], a[1], a[4], a[0], a[2]],
         isDefault: false,
         cId: char.cId,
         name: params.buildName,

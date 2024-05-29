@@ -144,12 +144,12 @@ export const ImportExport = observer(() => {
     if (uid) {
       const cache = localStorage.getItem('enka_cache')
       if (cache) {
-        const { data, date } = JSON.parse(cache)[uid]
+        const json = JSON.parse(cache)[uid]
         const now = dayjs()
-        if (now.diff(date, 's') > 60) {
+        if (!json || now.diff(json?.date, 's') > 60) {
           refetch()
         } else {
-          const { charData, artifactData } = toLocalStructure(data)
+          const { charData, artifactData } = toLocalStructure(json?.data)
           importStore.setValue('characters', charData)
           importStore.setValue('artifacts', artifactData)
         }
