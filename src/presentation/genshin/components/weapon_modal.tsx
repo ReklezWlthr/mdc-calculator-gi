@@ -8,7 +8,10 @@ import { useMemo } from 'react'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { StatIcons, Stats } from '@src/domain/genshin/constant'
 import classNames from 'classnames'
-import { findCharacter, findWeapon } from '@src/core/utils/finder'
+import { findCharacter } from '@src/core/utils/finder'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 interface WeaponModalProps {
   index: number
@@ -48,7 +51,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
         onClick={() => setParams({ stat: checked ? _.without(params.stat, stat) : [...params.stat, stat] })}
         title={stat}
       >
-        <img src={`/icons/${StatIcons[stat]}`} className="p-1" />
+        <img src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[stat]}`} className="p-1" />
       </div>
     )
   }
@@ -88,7 +91,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           >
             <div className="relative">
               <img
-                src={`/icons/${StatIcons[item.ascStat]}`}
+                src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
                 className="absolute p-1 rounded-full w-7 h-7 top-2 left-2 bg-primary"
                 title={item.ascStat}
               />

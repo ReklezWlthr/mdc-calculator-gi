@@ -12,6 +12,9 @@ import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
 import classNames from 'classnames'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { ArtifactListModal } from './artifact_list_modal'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 interface ArtifactBlockProps {
   index?: number
@@ -124,7 +127,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
           })}
         >
           <div className="flex items-center justify-center gap-1">
-            <img src={`/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
+            <img src={`${publicRuntimeConfig.BASE_PATH}/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
             <p>{pieceName}</p>
           </div>
           <div className="flex items-center justify-center gap-1">
@@ -161,7 +164,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                   className="w-4 h-4"
                   src={
                     StatIcons[artifact?.main]
-                      ? `/icons/${StatIcons[artifact?.main]}`
+                      ? `${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[artifact?.main]}`
                       : `https://cdn.wanderer.moe/genshin-impact/elements/${artifact?.main
                           ?.split(' ')?.[0]
                           ?.toLowerCase()}.png`
@@ -180,7 +183,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-4 h-4" src={`/icons/${StatIcons[item.stat]}`} />
+                  <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.stat]}`} />
                   {item.stat}
                 </div>
                 <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>

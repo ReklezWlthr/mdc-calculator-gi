@@ -5,7 +5,7 @@ const nextConfig = {
   basePath: '/mdc-calculator',
   reactStrictMode: true,
   publicRuntimeConfig: {
-    NEXT_PUBLIC_BE_HOST: process.env.NEXT_PUBLIC_BE_HOST,
+    BASE_PATH: '/mdc-calculator',
   },
   images: {
     domains: ['enka.network'],

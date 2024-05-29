@@ -14,6 +14,9 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 export const ArtifactModal = ({ type, index, aId }: { type: number; index?: number; aId?: string }) => {
   const { teamStore, artifactStore, modalStore } = useStore()
@@ -92,11 +95,11 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
   return (
     <div className="w-[300px] p-4 space-y-4 font-semibold text-white rounded-xl bg-primary-dark">
       <div className="flex justify-center gap-2">
-        <TypeButton icon="/icons/flower_of_life.png" buttonType={4} />
-        <TypeButton icon="/icons/plume_of_death.png" buttonType={2} />
-        <TypeButton icon="/icons/sands_of_eon.png" buttonType={5} />
-        <TypeButton icon="/icons/goblet_of_eonothem.png" buttonType={1} />
-        <TypeButton icon="/icons/circlet_of_logos.png" buttonType={3} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/flower_of_life.png`} buttonType={4} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/plume_of_death.png`} buttonType={2} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/sands_of_eon.png`} buttonType={5} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/goblet_of_eonothem.png`} buttonType={1} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/circlet_of_logos.png`} buttonType={3} />
       </div>
       <div className="flex items-center gap-2">
         <div className="border rounded-full w-9 h-9 bg-primary-darker border-primary-light shrink-0">

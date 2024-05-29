@@ -6,6 +6,9 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 export const TooltipBody = ({
   talent,
@@ -79,7 +82,7 @@ export const ConsCircle = observer(
             )}
           />
           <img
-            src={`/icons/cons/${name.replaceAll(' ', '_')}_Shape.webp`}
+            src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${name.replaceAll(' ', '_')}_Shape.webp`}
             className="absolute w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 h-2/3 top-1/2 left-1/2"
           />
           <div className="flex justify-center">

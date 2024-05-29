@@ -12,6 +12,9 @@ import { ArtifactSets } from '@src/data/db/genshin/artifacts'
 import { MainStatOptions, Stats, SubStatOptions } from '@src/domain/genshin/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 export const ArtifactInventory = observer(() => {
   const { params, setParams } = useParams({
@@ -61,11 +64,15 @@ export const ArtifactInventory = observer(() => {
       <div className="w-full space-y-1">
         <div className="flex items-center w-full gap-3">
           <div className="flex justify-center gap-2">
-            <TypeButton field="types" icon="/icons/flower_of_life.png" value={4} />
-            <TypeButton field="types" icon="/icons/plume_of_death.png" value={2} />
-            <TypeButton field="types" icon="/icons/sands_of_eon.png" value={5} />
-            <TypeButton field="types" icon="/icons/goblet_of_eonothem.png" value={1} />
-            <TypeButton field="types" icon="/icons/circlet_of_logos.png" value={3} />
+            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/flower_of_life.png`} value={4} />
+            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/plume_of_death.png`} value={2} />
+            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/sands_of_eon.png`} value={5} />
+            <TypeButton
+              field="types"
+              icon={`${publicRuntimeConfig.BASE_PATH}/icons/goblet_of_eonothem.png`}
+              value={1}
+            />
+            <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/circlet_of_logos.png`} value={3} />
           </div>
           <SelectTextInput
             value={params.set}
@@ -80,7 +87,7 @@ export const ArtifactInventory = observer(() => {
           />
           <TagSelectInput
             values={params.main}
-            options={MainStatOptions}
+            options={_.map(MainStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
             onChange={(main) => setParams({ main })}
             placeholder="Main Stat"
             renderAsText
@@ -88,7 +95,7 @@ export const ArtifactInventory = observer(() => {
           />
           <TagSelectInput
             values={params.subs}
-            options={SubStatOptions}
+            options={_.map(SubStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
             onChange={(subs) => setParams({ subs })}
             placeholder="Sub Stats"
             renderAsText

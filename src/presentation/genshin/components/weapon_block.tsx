@@ -16,10 +16,12 @@ import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
 import { WeaponModal } from './weapon_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
-import { DefaultWeapon } from '@src/data/stores/team_store'
 import { findCharacter, findWeapon } from '@src/core/utils/finder'
 import { toPercentage } from '@src/core/utils/converter'
 import { Tooltip, TooltipPositionT } from '@src/presentation/components/tooltip'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 export const WeaponTooltip = ({
   wId,
@@ -176,7 +178,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs">
             <div className="flex items-center gap-1.5 shrink-0">
-              <img className="w-4 h-4" src={`/icons/${StatIcons[Stats.ATK]}`} />
+              <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[Stats.ATK]}`} />
               <p>Base ATK</p>
             </div>
             <hr className="w-full border border-primary-border" />
@@ -185,7 +187,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
           {weaponData && (
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
-                <img className="w-4 h-4" src={`/icons/${StatIcons[weaponData?.ascStat]}`} />
+                <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[weaponData?.ascStat]}`} />
                 {weaponData?.ascStat || 'N/A'}
               </div>
               <hr className="w-full border border-primary-border" />

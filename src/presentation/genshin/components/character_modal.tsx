@@ -11,6 +11,9 @@ import { useMemo } from 'react'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { DefaultBuild } from '@src/data/stores/build_store'
 import { findWeapon } from '@src/core/utils/finder'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 interface CharacterModalProps {
   index: number
@@ -93,7 +96,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           <FilterIcon type="weapon" value={WeaponType.CATALYST} />
         </div>
         <img
-          src="/icons/artifact_icon.png"
+          src={`${publicRuntimeConfig.BASE_PATH}/icons/artifact_icon.png`}
           className={classNames('w-8 h-8 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
             'bg-primary-lighter': params.hasBuild,
           })}
