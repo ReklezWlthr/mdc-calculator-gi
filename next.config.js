@@ -2,7 +2,6 @@
 
 const nextConfig = {
   output: 'export',
-  // basePath: '/mdc-calculator',
   reactStrictMode: true,
   publicRuntimeConfig: {
     BASE_PATH: '',
