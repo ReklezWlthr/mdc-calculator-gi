@@ -108,23 +108,23 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               />
             </div>
           </div>
-          <div className="flex items-center justify-between gap-2 px-3 pt-1">
-            <div className="flex gap-0.5">
-              {/* <p className="[writing-mode:vertical-rl] rotate-180 text-[10px]">Weapon</p> */}
-              <div className="p-1 rounded-full w-11 h-11 bg-primary" title={characterData?.weapon}>
-                <img src={`https://enka.network/ui/${WeaponIcon[characterData?.weapon]}`} />
+          {characterData && (
+            <div className="flex items-center justify-between gap-2 px-3 pt-1">
+              <div className="flex gap-0.5">
+                <div className="p-1 rounded-full w-11 h-11 bg-primary" title={characterData?.weapon}>
+                  <img src={`https://enka.network/ui/${WeaponIcon[characterData?.weapon]}`} />
+                </div>
+              </div>
+              <RarityGauge rarity={rarity} />
+              <div className="flex gap-0.5">
+                <div className="p-2 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
+                  <img
+                    src={`https://cdn.wanderer.moe/genshin-impact/elements/${characterData?.element?.toLowerCase()}.png`}
+                  />
+                </div>
               </div>
             </div>
-            <RarityGauge rarity={rarity} />
-            <div className="flex gap-0.5">
-              <div className="p-2 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
-                <img
-                  src={`https://cdn.wanderer.moe/genshin-impact/elements/${characterData?.element?.toLowerCase()}.png`}
-                />
-              </div>
-              {/* <p className="[writing-mode:vertical-rl] text-[10px]">Element</p> */}
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
