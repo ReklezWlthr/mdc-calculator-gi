@@ -2,10 +2,10 @@
 
 const nextConfig = {
   output: 'export',
-  basePath: '/mdc-calculator',
+  // basePath: '/mdc-calculator',
   reactStrictMode: true,
   publicRuntimeConfig: {
-    BASE_PATH: '/mdc-calculator',
+    BASE_PATH: '',
   },
   images: {
     domains: ['enka.network'],
