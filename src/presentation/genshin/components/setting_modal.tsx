@@ -1,7 +1,10 @@
 import { useStore } from '@src/data/providers/app_store_provider'
+import { CommonModal } from '@src/presentation/components/common_modal'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { observer } from 'mobx-react-lite'
+import { useCallback } from 'react'
 
 export const SettingModal = observer(() => {
   const { settingStore } = useStore()
@@ -34,6 +37,16 @@ export const SettingModal = observer(() => {
         <p className="text-xs italic text-desc">✦ The saved data will only be available in this browser.</p>
         <p className="text-xs italic text-red">
           ✦ Turning this setting off will potentially remove all your data on the site.
+        </p>
+      </div>
+      <div className="p-3 space-y-3 rounded-lg bg-primary-darker">
+        <div className="flex justify-between">
+          <p className="text-white">Cache Data</p>
+          <PrimaryButton title="Clear Cache" onClick={() => localStorage.removeItem('enka_cache')} />
+        </div>
+        <p className="text-xs italic text-desc">
+          ✦ It is recommended you clear this every once in a while. Right now, the cache is only used for UID account
+          fetch.
         </p>
       </div>
     </div>
