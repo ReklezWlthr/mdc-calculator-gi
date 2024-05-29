@@ -1,4 +1,6 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+
+const nextConfig = {
   output: 'export',
   basePath: '/mdc-calculator',
   reactStrictMode: true,
@@ -9,3 +11,5 @@ module.exports = {
     domains: ['enka.network'],
   },
 }
+
+module.exports = nextConfig
