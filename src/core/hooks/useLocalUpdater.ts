@@ -28,6 +28,12 @@ export const useLocalUpdater = (game: string) => {
   }
 
   useEffect(() => {
+    window.onbeforeunload = function () {
+      return 'Your changes may not be saved.'
+    }
+  }, [])
+
+  useEffect(() => {
     if (hydrated && settingStore.settings.storeData) {
       localStorage.setItem(
         key,
