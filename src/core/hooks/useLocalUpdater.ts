@@ -24,7 +24,6 @@ export const useLocalUpdater = (game: string) => {
   const updateSettings = (data: string) => {
     const json = JSON.parse(data)
     settingStore.setSettingValue(json)
-    setData(data)
   }
 
   useEffect(() => {

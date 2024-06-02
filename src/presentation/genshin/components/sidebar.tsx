@@ -3,6 +3,7 @@ import { GenshinPage } from '@src/domain/genshin/constant'
 import classNames from 'classnames'
 import { useCallback } from 'react'
 import { SettingModal } from './setting_modal'
+import { HelpModal } from './help_modal'
 
 export const Sidebar = ({
   currentPage,
@@ -28,6 +29,7 @@ export const Sidebar = ({
   }
 
   const onOpenSettingModal = useCallback(() => modalStore.openModal(<SettingModal />), [])
+  const onOpenHelpModal = useCallback(() => modalStore.openModal(<HelpModal />), [])
 
   return (
     <div className="flex flex-col justify-between w-1/6 p-2 bg-primary-darker">
@@ -42,7 +44,8 @@ export const Sidebar = ({
         <Pill name="My Builds" page={GenshinPage.BUILD} />
         <Pill name="Artifact Inventory" page={GenshinPage.INVENTORY} />
       </div>
-      <div className="flex justify-end px-3">
+      <div className="flex justify-between px-3">
+        <i className="text-2xl cursor-pointer fa-regular fa-question-circle text-gray" onClick={onOpenHelpModal} />
         <i className="text-2xl cursor-pointer fa-solid fa-cog text-gray" onClick={onOpenSettingModal} />
       </div>
     </div>
