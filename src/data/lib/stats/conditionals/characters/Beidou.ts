@@ -244,6 +244,8 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.beidou_burst) base.DMG_REDUCTION += calcScaling(0.2, burst, 'special', 'beidou')
       if (form.beidou_a4) {
+        base.BASIC_DMG += 0.15
+        base.CHARGE_DMG += 0.15
         base.ATK_SPD += 0.15
         base.CHARGE_ATK_SPD += 0.15
       }

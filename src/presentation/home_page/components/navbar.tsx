@@ -9,7 +9,6 @@ export const NavBar = () => {
       <div className="flex items-center gap-5">
         <Link href="/genshin">Genshin Impact</Link>
         <Link href="/hsr">Honkai: Star Rail</Link>
-        <Link href="/wuwa">Wuthering Waves</Link>
       </div>
     </div>
   )
