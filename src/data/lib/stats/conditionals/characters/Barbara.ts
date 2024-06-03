@@ -91,9 +91,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
     },
   }
 
-  const content: IContent[] = []
-
-  const teammateContent: IContent[] = [
+  const content: IContent[] = [
     {
       type: 'toggle',
       id: 'bar_burst',
@@ -103,6 +101,8 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       default: true,
     },
   ]
+
+  const teammateContent: IContent[] = [findContentById(content, 'bar_burst')]
 
   return {
     upgrade,
@@ -185,6 +185,8 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.HEAL,
         },
       ]
+
+      if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
 
       return base
     },
