@@ -1,6 +1,6 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
+import { Stats, TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback } from 'react'
@@ -18,6 +18,7 @@ import { EnemyModal } from '../components/enemy_modal'
 import { ReactionTooltip } from '../components/tables/reaction_tooltip'
 import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
+import { CrystallizeTooltip } from '../components/tables/crystallize_tooltip'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -122,60 +123,75 @@ export const Calculator = observer(({}: {}) => {
                   ))}
                 </ScalingWrapper>
               </div>
-              <div className="flex flex-col w-2/3 text-sm rounded-lg bg-primary-darker h-fit">
-                <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
-                  Transformative Reactions
-                </p>
-                <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark items-center">
-                  <p className="col-span-3">Reaction</p>
-                  <p className="col-span-2">Element</p>
-                  <p className="col-span-2">Base</p>
-                  <div className="flex items-center justify-center col-span-2 gap-2 text-start">
-                    <p>Amplified</p>
-                    <Tooltip
-                      title="Amplified Reaction"
-                      body={
-                        <div className="space-y-1 font-normal text-start">
-                          <p>
-                            For Swirl Reactions, this represents the <b className="text-genshin-anemo">Swirl DMG</b>{' '}
-                            amplified by either Vaporize, Melt or Aggravate Reaction.
+              <div className="grid grid-cols-3 gap-x-3">
+                <div className="flex flex-col col-span-2 text-sm rounded-lg bg-primary-darker h-fit">
+                  <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
+                    Transformative Reactions
+                  </p>
+                  <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark items-center">
+                    <p className="col-span-3">Reaction</p>
+                    <p className="col-span-2">Element</p>
+                    <p className="col-span-2">Base</p>
+                    <div className="flex items-center justify-center col-span-2 gap-2 text-start">
+                      <p>Amplified</p>
+                      <Tooltip
+                        title="Amplified Reaction"
+                        body={
+                          <div className="space-y-1 font-normal text-start">
+                            <p>
+                              For Swirl Reactions, this represents the <b className="text-genshin-anemo">Swirl DMG</b>{' '}
+                              amplified by either Vaporize, Melt or Aggravate Reaction.
+                            </p>
+                            <p>
+                              For Bloom-related Reactions, this represents the{' '}
+                              <b className="text-genshin-dendro">Dendro Core</b>
+                              's Crit DMG caused by Nahida's C2.
+                            </p>
+                            <p>Burning Reactions can be affected by both.</p>
+                          </div>
+                        }
+                        style="w-[400px]"
+                      >
+                        <i className="text-sm fa-regular fa-question-circle" />
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="py-1 rounded-b-lg bg-primary-darker">
+                    {_.map(transformative, (item) => {
+                      const base = item.base * item.mult * (1 + item.emBonus + item.dmg)
+                      return (
+                        <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
+                          <p className="col-span-3 font-bold">{item.name}</p>
+                          <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
+                          <div className="col-span-2 text-start">
+                            <ReactionTooltip {...item} />
+                          </div>
+                          <p
+                            className={classNames('col-span-2', {
+                              'font-bold text-desc': item.amp > 1 || item.add || item.cd,
+                            })}
+                          >
+                            {item.amp > 1 || item.add || item.cd
+                              ? _.round((base + item.add) * (1 + item.cd) * item.amp)
+                              : '-'}
                           </p>
-                          <p>
-                            For Bloom-related Reactions, this represents the{' '}
-                            <b className="text-genshin-dendro">Dendro Core</b>
-                            's Crit DMG caused by Nahida's C2.
-                          </p>
-                          <p>Burning Reactions can be affected by both.</p>
                         </div>
-                      }
-                      style="w-[400px]"
-                    >
-                      <i className="text-sm fa-regular fa-question-circle" />
-                    </Tooltip>
+                      )
+                    })}
                   </div>
                 </div>
-                <div className="py-1 rounded-b-lg bg-primary-darker">
-                  {_.map(transformative, (item) => {
-                    const base = item.base * item.mult * (1 + item.emBonus + item.dmg)
-                    return (
-                      <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
-                        <p className="col-span-3 font-bold">{item.name}</p>
-                        <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
-                        <div className="col-span-2 text-start">
-                          <ReactionTooltip {...item} />
-                        </div>
-                        <p
-                          className={classNames('col-span-2', {
-                            'font-bold text-desc': item.amp > 1 || item.add || item.cd,
-                          })}
-                        >
-                          {item.amp > 1 || item.add || item.cd
-                            ? _.round((base + item.add) * (1 + item.cd) * item.amp)
-                            : '-'}
-                        </p>
-                      </div>
-                    )
-                  })}
+                <div className="flex flex-col col-span-1 text-sm rounded-lg bg-primary-darker h-fit">
+                  <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Crystallize</p>
+                  <div className="grid w-full py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark items-center">
+                    Raw Shield Value
+                  </div>
+                  <div className="grid-cols-2 gap-2 py-1 rounded-b-lg bg-primary-darker">
+                    <CrystallizeTooltip
+                      em={mainComputed[Stats.EM]}
+                      level={char?.level}
+                      shieldStrength={mainComputed[Stats.SHIELD]}
+                    />
+                  </div>
                 </div>
               </div>
             </>
