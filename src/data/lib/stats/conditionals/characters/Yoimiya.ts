@@ -16,9 +16,6 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const teamData = _.map(team, (item) => findCharacter(item.cId)?.element)
-  const uniqueCount = _.uniq(teamData).length
-
   const talents: ITalent = {
     normal: {
       title: `Firework Flare-Up`,
@@ -237,10 +234,10 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       if (form.yoimiya_c1) base[Stats.P_ATK] += 0.2
       if (form.yoimiya_c2) base[Stats.PYRO_DMG] += 0.25
 
-      if (c >= 6) return base
+      return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.yoimiya_a1) {
+      if (form.yoimiya_a4) {
         base[Stats.P_ATK] += 0.1
         if (form.yoimiya_a1) base[Stats.P_ATK] += form.yoimiya_a1 * 0.01
       }
@@ -248,39 +245,6 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      // base.BASIC_SCALING.push(
-      //   {
-      //     name: '1-Hit [x2]',
-      //     value: [{ scaling: calcScaling(0.356, normal, 'physical', '1'), multiplier: Stats.ATK }],
-      //     element: Element.PYRO,
-      //     property: TalentProperty.NA,
-      //   },
-      //   {
-      //     name: '2-Hit',
-      //     value: [{ scaling: calcScaling(0.684, normal, 'physical', '1'), multiplier: Stats.ATK }],
-      //     element: Element.PYRO,
-      //     property: TalentProperty.NA,
-      //   },
-      //   {
-      //     name: '3-Hit',
-      //     value: [{ scaling: calcScaling(0.889, normal, 'physical', '1'), multiplier: Stats.ATK }],
-      //     element: Element.PYRO,
-      //     property: TalentProperty.NA,
-      //   },
-      //   {
-      //     name: '4-Hit [x2]',
-      //     value: [{ scaling: calcScaling(0.464, normal, 'physical', '1'), multiplier: Stats.ATK }],
-      //     element: Element.PYRO,
-      //     property: TalentProperty.NA,
-      //   },
-      //   {
-      //     name: '5-Hit',
-      //     value: [{ scaling: calcScaling(1.059, normal, 'physical', '1'), multiplier: Stats.ATK }],
-      //     element: Element.PYRO,
-      //     property: TalentProperty.NA,
-      //   }
-      // )
-
       return base
     },
   }

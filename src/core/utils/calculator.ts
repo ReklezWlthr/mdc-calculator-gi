@@ -147,30 +147,35 @@ export const addResonance = (conditionals: StatsObject, team: ITeamChar[]) => {
 }
 
 export const getTeamOutOfCombat = (chars: ITeamChar[], artifacts: IArtifactEquip[]) => {
+  const applyRes = _.size(_.filter(chars, (item) => !!item.cId)) >= 4
   return [
     calculateOutOfCombat(
       _.cloneDeep(baseStatsObject),
       0,
       chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[0]?.equipments?.artifacts, item.id))
+      _.filter(artifacts, (item) => _.includes(chars?.[0]?.equipments?.artifacts, item.id)),
+      applyRes
     ),
     calculateOutOfCombat(
       _.cloneDeep(baseStatsObject),
       1,
       chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[1]?.equipments?.artifacts, item.id))
+      _.filter(artifacts, (item) => _.includes(chars?.[1]?.equipments?.artifacts, item.id)),
+      applyRes
     ),
     calculateOutOfCombat(
       _.cloneDeep(baseStatsObject),
       2,
       chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[2]?.equipments?.artifacts, item.id))
+      _.filter(artifacts, (item) => _.includes(chars?.[2]?.equipments?.artifacts, item.id)),
+      applyRes
     ),
     calculateOutOfCombat(
       _.cloneDeep(baseStatsObject),
       3,
       chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[3]?.equipments?.artifacts, item.id))
+      _.filter(artifacts, (item) => _.includes(chars?.[3]?.equipments?.artifacts, item.id)),
+      applyRes
     ),
   ]
 }

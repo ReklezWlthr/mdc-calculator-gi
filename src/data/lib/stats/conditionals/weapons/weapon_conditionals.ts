@@ -1485,9 +1485,9 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '15411',
     scaling: (base, form, r) => {
-      if (form['15411'] === 1) base[Stats.ALL_DMG] += form['15411'] * calcRefinement(0.06, 0.015, r)
-      if (form['15411'] === 2) base[Stats.ALL_DMG] += form['15411'] * calcRefinement(0.1, 0.025, r)
-      if (form['15411'] === 3) base[Stats.ALL_DMG] += form['15411'] * calcRefinement(0.14, 0.035, r)
+      if (form['15411'] === 1) base[Stats.ALL_DMG] += calcRefinement(0.06, 0.015, r)
+      if (form['15411'] === 2) base[Stats.ALL_DMG] += calcRefinement(0.1, 0.025, r)
+      if (form['15411'] === 3) base[Stats.ALL_DMG] += calcRefinement(0.14, 0.035, r)
       return base
     },
   },
@@ -1621,10 +1621,10 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 4,
     id: '15507',
     scaling: (base, form, r) => {
-      if (form['15507'] === 1) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.1, 0.025, r)
-      if (form['15507'] === 2) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.2, 0.05, r)
-      if (form['15507'] === 3) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.3, 0.075, r)
-      if (form['15507'] === 4) base[Stats.P_ATK] += form['15507'] * calcRefinement(0.48, 0.12, r)
+      if (form['15507'] === 1) base[Stats.P_ATK] += calcRefinement(0.1, 0.025, r)
+      if (form['15507'] === 2) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      if (form['15507'] === 3) base[Stats.P_ATK] += calcRefinement(0.3, 0.075, r)
+      if (form['15507'] === 4) base[Stats.P_ATK] += calcRefinement(0.48, 0.12, r)
       return base
     },
   },
@@ -1645,12 +1645,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     show: true,
     default: 0,
     min: 0,
-    max: 4,
+    max: 3,
     id: '15509',
     scaling: (base, form, r) => {
-      if (form['15509'] === 1) base.BASIC_DMG += form['15509'] * calcRefinement(0.12, 0.03, r)
-      if (form['15509'] === 2) base.BASIC_DMG += form['15509'] * calcRefinement(0.24, 0.06, r)
-      if (form['15509'] === 3) base.BASIC_DMG += form['15509'] * calcRefinement(0.4, 0.1, r)
+      if (form['15509'] === 1) base.BASIC_DMG += calcRefinement(0.12, 0.03, r)
+      if (form['15509'] === 2) base.BASIC_DMG += calcRefinement(0.24, 0.06, r)
+      if (form['15509'] === 3) base.BASIC_DMG += calcRefinement(0.4, 0.1, r)
       return base
     },
   },
