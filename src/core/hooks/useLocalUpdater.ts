@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 export const useLocalUpdater = (game: string) => {
   const router = useRouter()
-  const { teamStore, artifactStore, buildStore, charStore, settingStore } = useStore()
+  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore } = useStore()
   const [data, setData] = useState(null)
   const [hydrated, setHydrated] = useState(false)
 
@@ -24,6 +24,7 @@ export const useLocalUpdater = (game: string) => {
   const updateSettings = (data: string) => {
     const json = JSON.parse(data)
     settingStore.setSettingValue(json)
+    calculatorStore.setValue('level', json?.defaultEnemyLevel || 1)
   }
 
   useEffect(() => {
@@ -49,6 +50,7 @@ export const useLocalUpdater = (game: string) => {
   useEffect(() => {
     if (hydrated) {
       localStorage.setItem(settingKey, JSON.stringify(settingStore.settings))
+      calculatorStore.setValue('level', settingStore?.settings?.defaultEnemyLevel || 1)
     }
   }, [settingStore.settings])
 

@@ -1,6 +1,7 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { observer } from 'mobx-react-lite'
@@ -23,6 +24,17 @@ export const SettingModal = observer(() => {
             />
             <p>Lumine</p>
           </div>
+        </div>
+      </div>
+      <div className="p-3 space-y-1 rounded-lg bg-primary-darker">
+        <p className="text-white">Default Data</p>
+        <div className="flex items-center justify-between gap-x-2">
+          <p className="text-sm text-gray">Default Enemy Level</p>
+          <TextInput
+            value={settingStore.settings?.defaultEnemyLevel?.toString()}
+            onChange={(v) => settingStore.setSettingValue({ defaultEnemyLevel: parseInt(v) })}
+            style="!w-1/4"
+          />
         </div>
       </div>
       <div className="p-3 space-y-1 rounded-lg bg-primary-darker">
