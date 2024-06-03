@@ -88,6 +88,7 @@ export const WeaponConditionalBlock = observer(
                         max={content.max}
                         min={content.min}
                         style="col-span-2"
+                        small
                       />
                     )}
                     {content.type === 'toggle' && (

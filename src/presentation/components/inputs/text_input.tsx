@@ -13,6 +13,7 @@ export interface TextInputProps {
   type?: 'text' | 'number'
   max?: number
   min?: number
+  small?: boolean
 }
 
 export const TextInput = (props: TextInputProps) => {
@@ -48,12 +49,13 @@ export const TextInput = (props: TextInputProps) => {
         }}
         placeholder={props.placeholder}
         className={classNames(
-          'w-full outline-none placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent text-sm',
+          'w-full outline-none placeholder:text-primary-light text-gray transition-colors duration-200 bg-transparent',
           {
             'cursor-not-allowed': props.disabled,
             'border-TextInput-colorBorderDefault text-TextInput-colorTextDisable bg-TextInput-colorBgDisable cursor-not-allowed':
               props.disabled,
-          }
+          },
+          props.small ? 'text-xs' : 'text-sm'
         )}
       />
       {props.iconTailing && (
