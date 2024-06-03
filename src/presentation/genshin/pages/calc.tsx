@@ -187,9 +187,9 @@ export const Calculator = observer(({}: {}) => {
                   </div>
                   <div className="grid-cols-2 gap-2 py-1 rounded-b-lg bg-primary-darker">
                     <CrystallizeTooltip
-                      em={mainComputed[Stats.EM]}
+                      em={mainComputed?.[Stats.EM]}
                       level={char?.level}
-                      shieldStrength={mainComputed[Stats.SHIELD]}
+                      shieldStrength={mainComputed?.[Stats.SHIELD]}
                     />
                   </div>
                 </div>
