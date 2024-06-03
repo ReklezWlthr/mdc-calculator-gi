@@ -69,7 +69,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                       type="number"
                       value={calculatorStore.form[content.index]?.[content.id]}
                       onChange={(value) =>
-                        calculatorStore.setFormValue(content.index, content.id, parseFloat(value) || '')
+                        calculatorStore.setFormValue(content.index, content.id, parseFloat(value) ?? '')
                       }
                       max={content.max}
                       min={content.min}

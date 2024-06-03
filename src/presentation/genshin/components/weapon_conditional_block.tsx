@@ -83,7 +83,7 @@ export const WeaponConditionalBlock = observer(
                         type="number"
                         value={calculatorStore.form[content.index]?.[content.id]}
                         onChange={(value) =>
-                          calculatorStore.setFormValue(content.index, content.id, parseFloat(value) || '')
+                          calculatorStore.setFormValue(content.index, content.id, parseFloat(value) ?? '')
                         }
                         max={content.max}
                         min={content.min}

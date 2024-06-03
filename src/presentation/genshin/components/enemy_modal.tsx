@@ -83,7 +83,7 @@ export const EnemyModal = observer(() => {
               <TextInput
                 type={res[key] === Infinity ? 'text' : 'number'}
                 value={res[key] === Infinity ? 'Immune' : res[key].toString()}
-                onChange={(value) => calculatorStore.setRes(key, parseFloat(value) || 0)}
+                onChange={(value) => calculatorStore.setRes(key, value as any as number)}
                 style="!w-[75px]"
                 disabled={res[key] === Infinity}
               />
