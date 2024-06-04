@@ -1,5 +1,5 @@
 import { Build, BuildStoreType } from './build_store'
-import { CalculatorStore } from './calculator_store'
+import { CalculatorStore, CalculatorStoreType } from './calculator_store'
 import { CharacterStore, CharacterStoreType } from './character_store'
 import { ImportStore } from './import_store'
 import { InventoryStoreType, Inventory } from './inventory_store'
@@ -14,7 +14,7 @@ interface RootStoreType {
   artifactStore: InventoryStoreType
   buildStore: BuildStoreType
   charStore: CharacterStoreType
-  calculatorStore: CalculatorStore
+  calculatorStore: CalculatorStoreType
   settingStore: SettingStore
   importStore: ImportStore
   // userStore: UserType

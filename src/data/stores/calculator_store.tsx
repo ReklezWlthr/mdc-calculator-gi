@@ -6,7 +6,7 @@ import { StatsObject, StatsObjectKeysT } from '../lib/stats/baseConstant'
 
 enableStaticRendering(typeof window === 'undefined')
 
-export interface CharacterStoreType {
+export interface CalculatorStoreType {
   form: Record<string, any>[]
   computedStats: StatsObject[]
   selected: number
@@ -19,7 +19,7 @@ export interface CharacterStoreType {
   setCustomValue: (index: number, key: StatsObjectKeysT, value: any) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setRes: (element: Element, value: number) => void
-  hydrate: (data: CharacterStoreType) => void
+  hydrate: (data: CalculatorStoreType) => void
 }
 
 export class CalculatorStore {
@@ -98,7 +98,7 @@ export class CalculatorStore {
     return 1 - res
   }
 
-  hydrate = (data: CharacterStoreType) => {
+  hydrate = (data: CalculatorStoreType) => {
     if (!data) return
 
     this.form = data.form || []
