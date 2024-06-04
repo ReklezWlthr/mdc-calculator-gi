@@ -39,7 +39,7 @@ export const CustomConditionalBlock = observer(({ index }: CustomConditionalBloc
       </p>
       <div
         className={classNames(
-          'space-y-1 duration-300 ease-out px-4',
+          'space-y-2 duration-300 ease-out px-4 w-full',
           open ? 'h-fit overflow-visible py-3' : 'h-0 overflow-hidden'
         )}
       >
@@ -58,22 +58,25 @@ export const CustomConditionalBlock = observer(({ index }: CustomConditionalBloc
                 <TextInput
                   type="number"
                   value={mod.value?.toString()}
-                  onChange={(value) => calculatorStore.setCustomValue(index, i, mod.name, parseFloat(value) ?? '')}
+                  onChange={(value) =>
+                    calculatorStore.setCustomValue(index, i, mod.name, parseFloat(value) ?? '', mod.debuff)
+                  }
                   style="col-span-2"
                   small
                 />
                 <i
-                  className="flex items-center justify-center w-6 h-6 cursor-pointer fa-solid fa-trash"
+                  className="flex items-center justify-center h-6 cursor-pointer fa-solid fa-trash"
                   onClick={() => calculatorStore.removeCustomValue(index, i)}
                 />
               </div>
             ))}
         </div>
-        <div className="flex items-center justify-center gap-3">
-          <i
-            className="flex items-center justify-center w-6 h-6 text-sm duration-200 rounded-full cursor-pointer fa-solid fa-plus hover:bg-primary"
-            onClick={onOpenCustomModal}
-          />
+        <div
+          className="flex items-center justify-center w-full h-6 gap-2 text-sm duration-200 rounded-lg cursor-pointer hover:bg-primary"
+          onClick={onOpenCustomModal}
+        >
+          <i className="text-xs fa-solid fa-plus" />
+          <p className="text-xs">Add New Custom Modifier</p>
         </div>
       </div>
     </div>
