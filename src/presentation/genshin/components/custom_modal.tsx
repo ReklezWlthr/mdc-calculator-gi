@@ -9,6 +9,8 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 
+export const isFlat = (key: string) => _.includes([Stats.ATK, Stats.HP, Stats.DEF], key) || _.includes(key, '_F_')
+
 export const CustomModal = observer(({ index }: { index: number }) => {
   const { calculatorStore, modalStore } = useStore()
 
@@ -101,20 +103,26 @@ export const CustomModal = observer(({ index }: { index: number }) => {
           value
         )
     }
+    if (selectedTab === 'talent') {
+      calculatorStore.setCustomValue(index, -1, StatsObjectKeys[selectedTalent + key] as any, value)
+    }
+    if (selectedTab === 'reaction') {
+      calculatorStore.setCustomValue(index, -1, key as any, value)
+    }
     modalStore.closeModal()
   }
 
   return (
-    <div className="p-3 space-y-4 rounded-lg bg-primary-dark">
+    <div className="p-3 space-y-4 rounded-lg bg-primary-dark w-[450px]">
       <p className="text-lg font-bold text-white">Add Custom Modifier</p>
-      <div className="flex justify-center gap-x-3">
+      <div className="flex justify-center gap-x-1">
         <Tab title="Stats" value="stats" defaultKey={StatsObjectKeys[Stats.ALL_DMG]} />
         <Tab title="Element" value="element" defaultKey={options.element[0].value} />
         <Tab title="Talent" value="talent" defaultKey={options.talent[0].value} />
         <Tab title="Reaction" value="reaction" defaultKey={StatsObjectKeys.SWIRL_DMG} />
         <Tab title="Debuffs" value="debuff" defaultKey={''} />
       </div>
-      <div className="grid grid-cols-3 gap-x-3">
+      <div className="grid items-center grid-cols-3 gap-x-3">
         {selectedTab === 'stats' && (
           <SelectInput
             value={key}
@@ -136,12 +144,10 @@ export const CustomModal = observer(({ index }: { index: number }) => {
           </>
         )}
         {selectedTab === 'reaction' && (
-          <SelectInput
-            value={key}
-            onChange={(v) => setKey(v)}
-            options={options.reaction}
-            style="col-span-2 !w-1/2 mx-auto"
-          />
+          <>
+            <SelectInput value={key} onChange={(v) => setKey(v)} options={options.reaction} />
+            <p className="text-sm text-gray">Percentage Bonus</p>
+          </>
         )}
         <TextInput
           type="number"

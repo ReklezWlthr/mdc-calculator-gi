@@ -3,7 +3,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { Stats, TravelerIconName, WeaponIcon } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { ElementColor, ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
@@ -24,6 +24,8 @@ import { CustomConditionalBlock } from '../components/custom_conditional_block'
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
   const { selected, computedStats } = calculatorStore
+
+  const [tab, setTab] = useState('mod')
 
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
@@ -203,16 +205,38 @@ export const Calculator = observer(({}: {}) => {
           )}
         </div>
         <div className="flex flex-col items-center w-full gap-3">
-          <ConditionalBlock
-            title="Elemental Reactions"
-            contents={_.filter(contents.reaction, 'show')}
-            tooltipStyle="w-[20vw]"
-          />
-          <ConditionalBlock title="Self Conditionals" contents={_.filter(contents.main, 'show')} />
-          <ConditionalBlock title="Team Conditionals" contents={_.filter(contents.team, 'show')} />
-          <WeaponConditionalBlock contents={contents.weapon(selected)} index={selected} />
-          <CustomConditionalBlock index={selected} />
-          {charData && (
+          <div className="flex gap-5">
+            <div
+              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                'bg-primary': tab === 'mod',
+              })}
+              onClick={() => setTab('mod')}
+            >
+              Modifiers
+            </div>
+            <div
+              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                'bg-primary': tab === 'stats',
+              })}
+              onClick={() => setTab('stats')}
+            >
+              Stats
+            </div>
+          </div>
+          {tab === 'mod' && (
+            <>
+              <ConditionalBlock
+                title="Elemental Reactions"
+                contents={_.filter(contents.reaction, 'show')}
+                tooltipStyle="w-[20vw]"
+              />
+              <ConditionalBlock title="Self Conditionals" contents={_.filter(contents.main, 'show')} />
+              <ConditionalBlock title="Team Conditionals" contents={_.filter(contents.team, 'show')} />
+              <WeaponConditionalBlock contents={contents.weapon(selected)} index={selected} />
+              <CustomConditionalBlock index={selected} />
+            </>
+          )}
+          {charData && tab === 'stats' && (
             <>
               <StatBlock index={selected} stat={computedStats[selected]} />
               <div className="w-[252px]">

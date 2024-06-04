@@ -1,4 +1,4 @@
-import { StatsObject } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 
 export enum GenshinPage {
   TEAM = 'team',
@@ -340,4 +340,42 @@ export const TravelerIconName = {
   [Element.ELECTRO]: 'PlayerElectric',
   [Element.DENDRO]: 'PlayerGrass',
   [Element.HYDRO]: 'PlayerWater',
+}
+
+export const CustomConditionalMap = {
+  MELT_DMG: 'Melt DMG%',
+  VAPE_DMG: 'Vaporize DMG%',
+  BURNING_DMG: 'Burning DMG%',
+  BLOOM_DMG: 'Melt DMG%',
+  HYPERBLOOM_DMG: 'Hyperbloom DMG%',
+  BURGEON_DMG: 'Burgeon DMG%',
+  SPREAD_DMG: 'Spread DMG%',
+  AGGRAVATE_DMG: 'Aggravate DMG%',
+  TASER_DMG: 'Electro-Charged DMG%',
+  OVERLOAD_DMG: 'Overloaded DMG%',
+  SHATTER_DMG: 'Shattered DMG%',
+  SWIRL_DMG: 'Swirl DMG%',
+  SUPERCONDUCT_DMG: 'Superconduct DMG%',
+  PYRO_F_DMG: 'Pyro Flat DMG',
+  CRYO_F_DMG: 'Cryo Flat DMG',
+  HYDRO_F_DMG: 'Hydro Flat DMG',
+  ELECTRO_F_DMG: 'Electro Flat DMG',
+  ANEMO_F_DMG: 'Anemo Flat DMG',
+  GEO_F_DMG: 'Geo Flat DMG',
+  DENDRO_F_DMG: 'Dendro Flat DMG',
+  BASIC_F_DMG: 'Normal Attack Flat DMG',
+  CHARGE_F_DMG: 'Charged Attack Flat DMG',
+  PLUNGE_F_DMG: 'Plunging Attack Flat DMG',
+  SKILL_F_DMG: 'Elemental Skill Flat DMG',
+  BURST_F_DMG: 'Elemental Burst Flat DMG',
+  BASIC_CR: 'Normal Attack CRIT Rate',
+  CHARGE_CR: 'Charged Attack CRIT Rate',
+  PLUNGE_CR: 'Plunging Attack CRIT Rate',
+  SKILL_CR: 'Elemental Skill CRIT Rate',
+  BURST_CR: 'Elemental Burst CRIT Rate',
+  BASIC_CD: 'Normal Attack CRIT DMG',
+  CHARGE_CD: 'Charged Attack CRIT DMG',
+  PLUNGE_CD: 'Plunging Attack CRIT DMG',
+  SKILL_CD: 'Elemental Skill CRIT DMG',
+  BURST_CD: 'Elemental Burst CRIT DMG',
 }

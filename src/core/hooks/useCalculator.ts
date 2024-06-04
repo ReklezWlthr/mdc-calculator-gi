@@ -15,11 +15,12 @@ import {
   WeaponTeamConditionals,
 } from '@src/data/lib/stats/conditionals/weapons/weapon_conditionals'
 import Reactions from '@src/data/lib/stats/conditionals/reactions'
-import { Element } from '@src/domain/constant'
+import { Element, Stats } from '@src/domain/constant'
 import { getSetCount } from '../utils/data_format'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
 import { Resonance } from '@src/data/db/characters'
+import { isFlat } from '@src/presentation/genshin/components/custom_modal'
 
 export const useCalculator = () => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
@@ -156,8 +157,15 @@ export const useCalculator = () => {
       })
       return base
     })
+    const postCustom = _.map(postResonance, (base, index) => {
+      let x = base
+      _.forEach(calculatorStore.custom[index], (v) => {
+        x[v.name as any] += v.value / (isFlat(v.name) ? 1 : 100)
+      })
+      return x
+    })
     // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
-    const postArtifact = _.map(postResonance, (base, index) => {
+    const postArtifact = _.map(postCustom, (base, index) => {
       let x = base
       const artifactData = _.map(teamStore.characters[index].equipments.artifacts, (item) =>
         _.find(artifactStore.artifacts, ['id', item])
@@ -223,7 +231,7 @@ export const useCalculator = () => {
       return x
     })
     calculatorStore.setValue('computedStats', final)
-  }, [baseStats, calculatorStore.form, teamStore.characters])
+  }, [baseStats, calculatorStore.form, calculatorStore.custom, teamStore.characters])
 
   // =================
   //

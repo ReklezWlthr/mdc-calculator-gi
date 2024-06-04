@@ -17,6 +17,7 @@ export interface CharacterStoreType {
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any) => void
   setCustomValue: (index: number, key: StatsObjectKeysT, value: any) => void
+  removeCustomValue: (index: number, innerIndex: number) => void
   setRes: (element: Element, value: number) => void
   hydrate: (data: CharacterStoreType) => void
 }
@@ -74,6 +75,11 @@ export class CalculatorStore {
     } else {
       this.custom[index] = this.custom[index].toSpliced(innerIndex, 1, { name: key, value })
     }
+    this.custom = _.cloneDeep(this.custom)
+  }
+
+  removeCustomValue = (index: number, innerIndex: number) => {
+    this.custom[index] = this.custom[index].toSpliced(innerIndex)
     this.custom = _.cloneDeep(this.custom)
   }
 

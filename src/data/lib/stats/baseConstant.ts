@@ -98,6 +98,10 @@ export const baseStatsObject = {
   GEO_CD: 0,
   DENDRO_CD: 0,
 
+  PHYSICAL_F_DMG: 0,
+  PYRO_F_DMG: 0,
+  HYDRO_F_DMG: 0,
+  GEO_F_DMG: 0,
   ANEMO_F_DMG: 0,
   CRYO_F_DMG: 0,
 
