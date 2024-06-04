@@ -199,7 +199,7 @@ export const Calculator = observer(({}: {}) => {
               </div>
             </>
           ) : (
-            <div className="flex items-center justify-center w-full text-xl rounded-lg h-2/3 bg-primary-darker">
+            <div className="flex items-center justify-center w-full text-xl rounded-lg h-[66vh] bg-primary-darker">
               No Character Selected
             </div>
           )}
