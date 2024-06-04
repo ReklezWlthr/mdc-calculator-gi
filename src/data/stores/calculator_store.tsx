@@ -12,7 +12,7 @@ export interface CharacterStoreType {
   selected: number
   res: Record<Element, number>
   level: number
-  custom: { name: StatsObjectKeysT; value: number }[][]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any) => void
@@ -28,7 +28,7 @@ export class CalculatorStore {
   res: Record<Element, number>
   level: number
   selected: number
-  custom: { name: StatsObjectKeysT; value: number }[][]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
 
   constructor() {
     this.form = Array(4)
@@ -69,11 +69,11 @@ export class CalculatorStore {
     this.form = _.cloneDeep(this.form)
   }
 
-  setCustomValue = (index: number, innerIndex: number, key: StatsObjectKeysT, value: any) => {
+  setCustomValue = (index: number, innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
     if (innerIndex < 0) {
-      this.custom[index] = [...(this.custom[index] || []), { name: key, value }]
+      this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff }]
     } else {
-      this.custom[index] = this.custom[index].toSpliced(innerIndex, 1, { name: key, value })
+      this.custom[index] = this.custom[index].toSpliced(innerIndex, 1, { name: key, value, debuff })
     }
     this.custom = _.cloneDeep(this.custom)
   }

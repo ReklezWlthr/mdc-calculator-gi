@@ -52,7 +52,9 @@ export const CustomConditionalBlock = observer(({ index }: CustomConditionalBloc
                     {CustomConditionalMap[mod.name] || mod.name}
                   </p>
                 </div>
-                <div className={classNames('col-span-2 text-center', 'text-blue')}>{'Buff'}</div>
+                <div className={classNames('col-span-2 text-center', mod.debuff ? 'text-red' : 'text-blue')}>
+                  {mod.debuff ? 'Debuff' : 'Buff'}
+                </div>
                 <TextInput
                   type="number"
                   value={mod.value?.toString()}
