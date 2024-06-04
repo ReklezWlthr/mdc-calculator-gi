@@ -19,6 +19,7 @@ import { ReactionTooltip } from '../components/tables/reaction_tooltip'
 import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
 import { CrystallizeTooltip } from '../components/tables/crystallize_tooltip'
+import { CustomConditionalBlock } from '../components/custom_conditional_block'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -210,6 +211,7 @@ export const Calculator = observer(({}: {}) => {
           <ConditionalBlock title="Self Conditionals" contents={_.filter(contents.main, 'show')} />
           <ConditionalBlock title="Team Conditionals" contents={_.filter(contents.team, 'show')} />
           <WeaponConditionalBlock contents={contents.weapon(selected)} index={selected} />
+          <CustomConditionalBlock index={selected} />
           {charData && (
             <>
               <StatBlock index={selected} stat={computedStats[selected]} />

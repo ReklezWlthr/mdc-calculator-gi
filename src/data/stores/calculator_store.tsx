@@ -2,7 +2,7 @@ import { Element, ICharStore } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
-import { StatsObject } from '../lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeysT } from '../lib/stats/baseConstant'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -12,9 +12,11 @@ export interface CharacterStoreType {
   selected: number
   res: Record<Element, number>
   level: number
+  custom: { name: StatsObjectKeysT; value: number }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any) => void
+  setCustomValue: (index: number, key: StatsObjectKeysT, value: any) => void
   setRes: (element: Element, value: number) => void
   hydrate: (data: CharacterStoreType) => void
 }
@@ -25,6 +27,7 @@ export class CalculatorStore {
   res: Record<Element, number>
   level: number
   selected: number
+  custom: { name: StatsObjectKeysT; value: number }[][]
 
   constructor() {
     this.form = Array(4)
@@ -41,6 +44,7 @@ export class CalculatorStore {
       [Element.DENDRO]: 10,
       [Element.PHYSICAL]: 10,
     }
+    this.custom = Array(4)
 
     makeAutoObservable(this)
   }
@@ -62,6 +66,15 @@ export class CalculatorStore {
   setFormValue = (index: number, key: string, value: any) => {
     this.form[index][key] = value
     this.form = _.cloneDeep(this.form)
+  }
+
+  setCustomValue = (index: number, innerIndex: number, key: StatsObjectKeysT, value: any) => {
+    if (innerIndex < 0) {
+      this.custom[index] = [...(this.custom[index] || []), { name: key, value }]
+    } else {
+      this.custom[index] = this.custom[index].toSpliced(innerIndex, 1, { name: key, value })
+    }
+    this.custom = _.cloneDeep(this.custom)
   }
 
   setRes = (element: Element, value: number) => {
