@@ -108,7 +108,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
   }, [index, name])
 
   return (
-    <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark">
+    <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
       <div className="space-y-1">
         <p className="font-semibold">
           Build Name <span className="text-red">*</span>

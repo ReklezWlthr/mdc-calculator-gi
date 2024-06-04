@@ -13,10 +13,10 @@ export const NavBar = observer(() => {
         </p>
         <p className="text-sm font-normal text-gray">Genshin Impact</p>
       </Link>
-      <div className="flex items-center gap-5">
+      {/* <div className="flex items-center gap-5">
         <p className='font-normal text-gray'>Also Check Out</p>
         <Link href={publicRuntimeConfig.HSR_URL}>Honkai: Star Rail</Link>
-      </div>
+      </div> */}
     </div>
   )
 })

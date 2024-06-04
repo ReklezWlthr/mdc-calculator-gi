@@ -8,6 +8,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { TalentStatMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
+import { findCharacter } from '@src/core/utils/finder'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
@@ -38,6 +39,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const { calculatorStore, teamStore } = useStore()
   const index = calculatorStore.selected
   const stats = calculatorStore.computedStats[index]
+  const names = _.map(teamStore.characters, (item) => findCharacter(item.cId)?.name)
 
   const element =
     _.includes([TalentProperty.NA, TalentProperty.CA, TalentProperty.PA], scaling.property) &&
@@ -73,7 +75,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
-      ? stats[Stats.HEAL] + stats[Stats.I_HEALING]
+      ? stats[Stats.HEAL]
       : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + elementNa + talentDmg + stats.VULNERABILITY) // Vulnerability effectively stacks with DMG Bonuses
   const raw =
     _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) +
@@ -173,18 +175,23 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
               </>
             )}
             {scaling.property === TalentProperty.HEAL && (
-              <>
-                <p className="text-xs">
-                  Outgoing Heal:{' '}
-                  <span className="text-desc">{_.round(raw * (1 + stats[Stats.HEAL])).toLocaleString()}</span>
-                </p>
-                <p className="text-xs">
-                  Incoming Heal:{' '}
-                  <span className="text-desc">
-                    {_.round(raw * (1 + stats[Stats.HEAL] + stats[Stats.I_HEALING])).toLocaleString()}
-                  </span>
-                </p>
-              </>
+              <div className="space-y-1 text-xs">
+                <p>Teammate Incoming Healing</p>
+                {_.map(
+                  names,
+                  (item, i) =>
+                    item && (
+                      <p key={item}>
+                        {item}:{' '}
+                        <span className="text-desc">
+                          {_.round(
+                            raw * (1 + stats[Stats.HEAL] + calculatorStore.computedStats[i]?.[Stats.I_HEALING])
+                          ).toLocaleString()}
+                        </span>
+                      </p>
+                    )
+                )}
+              </div>
             )}
           </div>
         }

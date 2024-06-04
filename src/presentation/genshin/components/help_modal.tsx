@@ -57,10 +57,9 @@ export const HelpModal = observer(() => {
           formula breakdown.
         </p>
         <BulletPoint>
-          <b className="text-heal">Healing</b> amount is defaulted to self-healing amount{' '}
-          <i className="text-xs">(Healing Bonus + Incoming Healing)</i>. <b className="text-indigo-300">Shield</b> value
-          also displays raw value without bonuses from Shield Strength or Elemental Absorption. More detailed values can
-          be found in the formula breakdown.
+          Displayed <b className="text-heal">Healing</b> amount only considers the source's Healing Bonus.{' '}
+          <b className="text-indigo-300">Shield</b> value also displays raw value without bonuses from Shield Strength
+          or Elemental Absorption. More detailed values can be found in the formula breakdown.
         </BulletPoint>
         <BulletPoint>
           The row on the right allows you to toggle the character's conditional effects that can take effect on them.

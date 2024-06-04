@@ -71,7 +71,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
   }
 
   return (
-    <div className="w-[85vw] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
+    <div className="w-[85vw] max-w-[1240px] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
       <div className="flex items-center gap-6">
         <p className="shrink-0">Select a Character</p>
         <TextInput

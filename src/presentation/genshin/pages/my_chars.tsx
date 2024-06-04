@@ -16,14 +16,17 @@ import { AscensionGrowth } from '@src/domain/scaling'
 import {
   AscensionOptions,
   ConstellationOptions,
+  Element,
   Stats,
   TravelerIconName,
   WeaponIcon,
+  WeaponType,
 } from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { TextInput } from '@src/presentation/components/inputs/text_input'
 
 export const MyCharacters = observer(() => {
   const { teamStore, charStore, settingStore } = useStore()
@@ -49,6 +52,29 @@ export const MyCharacters = observer(() => {
       ),
     [params]
   )
+
+  const FilterIcon = ({ type, value }: { type: 'element' | 'weapon'; value: Element | WeaponType }) => {
+    const array = type === 'element' ? params.element : params.weapon
+    const checked = _.includes(array, value)
+    return (
+      <div
+        className={classNames('w-6 h-6 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
+          'bg-primary-lighter': checked,
+          'p-0.5': type === 'element',
+        })}
+        onClick={() => setParams({ [type]: checked ? _.without(array, value) : [...array, value] })}
+        title={value}
+      >
+        <img
+          src={
+            type === 'element'
+              ? `https://cdn.wanderer.moe/genshin-impact/elements/${value?.toLowerCase()}.png`
+              : `https://enka.network/ui/${WeaponIcon[value]}`
+          }
+        />
+      </div>
+    )
+  }
 
   const [loading, setLoading] = useState(true)
   const [edit, setEdit] = useState(false)
@@ -126,7 +152,33 @@ export const MyCharacters = observer(() => {
     <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
       <div className="flex w-full h-full gap-x-10">
         <div className="flex flex-col w-1/3 h-full gap-y-2 shrink-0">
-          <p className="text-2xl font-bold text-white">My Characters</p>
+          <div className='flex items-center justify-between'>
+            <p className="text-2xl font-bold text-white">My Characters</p>
+            <TextInput
+              onChange={(value) => setParams({ searchWord: value })}
+              value={params.searchWord}
+              placeholder="Search Character Name"
+              style='!w-1/2'
+            />
+          </div>
+          <div className="flex items-center gap-6 my-1">
+            <div className="flex gap-2">
+              <FilterIcon type="element" value={Element.ANEMO} />
+              <FilterIcon type="element" value={Element.PYRO} />
+              <FilterIcon type="element" value={Element.HYDRO} />
+              <FilterIcon type="element" value={Element.CRYO} />
+              <FilterIcon type="element" value={Element.ELECTRO} />
+              <FilterIcon type="element" value={Element.GEO} />
+              <FilterIcon type="element" value={Element.DENDRO} />
+            </div>
+            <div className="flex gap-2">
+              <FilterIcon type="weapon" value={WeaponType.SWORD} />
+              <FilterIcon type="weapon" value={WeaponType.CLAYMORE} />
+              <FilterIcon type="weapon" value={WeaponType.POLEARM} />
+              <FilterIcon type="weapon" value={WeaponType.BOW} />
+              <FilterIcon type="weapon" value={WeaponType.CATALYST} />
+            </div>
+          </div>
           <div className="grid grid-cols-4 gap-4 rounded-lg hideScrollbar">
             {_.map(filteredChar, (item) => {
               const owned = _.includes(_.map(charStore.characters, 'cId'), item.id)

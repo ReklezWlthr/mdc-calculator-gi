@@ -228,8 +228,8 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      base[Stats.ALL_DMG] += (0.0007 + burst * 0.0002) * form.fanfare
-      base[Stats.I_HEALING] += (0.0001 + burst * 0.0001) * form.fanfare
+      base[Stats.ALL_DMG] += (0.0005 + burst * 0.0002) * form.fanfare
+      base[Stats.I_HEALING] += burst * 0.0001 * form.fanfare
 
       if (c >= 2 && form.fanfare > maxFanfare) base[Stats.P_HP] += _.min([(form.fanfare - maxFanfare) * 0.0035, 1.4])
       if (form.centerOfAttention)
