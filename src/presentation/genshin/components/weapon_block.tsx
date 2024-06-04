@@ -8,7 +8,7 @@ import {
   StatIcons,
   Stats,
   WeaponType,
-} from '@src/domain/genshin/constant'
+} from '@src/domain/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'

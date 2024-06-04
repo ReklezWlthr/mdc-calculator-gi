@@ -1,7 +1,7 @@
 import { calcRefinement } from '@src/core/utils/data_format'
 import { findCharacter, findContentById } from '@src/core/utils/finder'
-import { IWeaponContent } from '@src/domain/genshin/conditional'
-import { Stats } from '@src/domain/genshin/constant'
+import { IWeaponContent } from '@src/domain/conditional'
+import { Stats } from '@src/domain/constant'
 import _ from 'lodash'
 import { StatsObject } from '../../baseConstant'
 

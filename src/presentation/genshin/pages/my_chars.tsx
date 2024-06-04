@@ -4,7 +4,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
 import { useCallback, useMemo, useState } from 'react'
 import { findCharacter } from '@src/core/utils/finder'
-import { Characters } from '@src/data/db/genshin/characters'
+import { Characters } from '@src/data/db/characters'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import { ConsCircle, ElementIconColor, TooltipBody } from '../components/cons_circle'
@@ -12,14 +12,14 @@ import conditionals, { UtilTalentOverride } from '@src/data/lib/stats/conditiona
 import { A1Icon, A4Icon } from '../components/ascension_icons'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { findBaseLevel, findMaxLevel, getBaseStat } from '@src/core/utils/data_format'
-import { AscensionGrowth } from '@src/domain/genshin/scaling'
+import { AscensionGrowth } from '@src/domain/scaling'
 import {
   AscensionOptions,
   ConstellationOptions,
   Stats,
   TravelerIconName,
   WeaponIcon,
-} from '@src/domain/genshin/constant'
+} from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'

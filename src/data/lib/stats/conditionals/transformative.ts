@@ -1,7 +1,7 @@
-import { IContent } from '@src/domain/genshin/conditional'
+import { IContent } from '@src/domain/conditional'
 import { StatsObject } from '../baseConstant'
-import { Element, Stats } from '@src/domain/genshin/constant'
-import { BaseReactionDmg } from '@src/domain/genshin/scaling'
+import { Element, Stats } from '@src/domain/constant'
+import { BaseReactionDmg } from '@src/domain/scaling'
 import _ from 'lodash'
 import { calcTransformative } from '@src/core/utils/data_format'
 

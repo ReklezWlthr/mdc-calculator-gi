@@ -5,6 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   publicRuntimeConfig: {
     BASE_PATH: '',
+    HSR_URL: process.env.HSR_URL,
   },
   images: {
     domains: ['enka.network'],

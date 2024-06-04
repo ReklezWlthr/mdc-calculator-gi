@@ -1,6 +1,6 @@
 import { StatsObject } from '../../baseConstant'
 import { calcRefinement } from '../../../../../core/utils/data_format'
-import { Stats } from '@src/domain/genshin/constant'
+import { Stats } from '@src/domain/constant'
 import _ from 'lodash'
 
 const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number) => StatsObject }[] = [

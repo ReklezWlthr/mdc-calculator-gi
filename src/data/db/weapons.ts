@@ -1,4 +1,4 @@
-import { Stats, WeaponType } from '@src/domain/genshin/constant'
+import { Stats, WeaponType } from '@src/domain/constant'
 
 export const Weapons = [
   {

@@ -1,4 +1,4 @@
-import { Element, IArtifactEquip, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, IArtifactEquip, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import { StatsObject } from '../../baseConstant'
 import { getSetCount } from '@src/core/utils/data_format'
 import _ from 'lodash'

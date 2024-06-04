@@ -1,4 +1,4 @@
-import { Element } from '@src/domain/genshin/constant'
+import { Element } from '@src/domain/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
 import _ from 'lodash'

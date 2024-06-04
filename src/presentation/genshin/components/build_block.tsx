@@ -1,6 +1,6 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { IBuild } from '@src/domain/genshin/constant'
+import { IBuild } from '@src/domain/constant'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { GhostButton } from '@src/presentation/components/ghost.button'
 import { PrimaryButton } from '@src/presentation/components/primary.button'

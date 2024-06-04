@@ -10,10 +10,10 @@ import {
   getWeaponBonus,
 } from '../utils/data_format'
 import _ from 'lodash'
-import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats, WeaponType } from '@src/domain/genshin/constant'
-import { AscensionGrowth, BaseReactionDmg } from '@src/domain/genshin/scaling'
+import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats, WeaponType } from '@src/domain/constant'
+import { AscensionGrowth, BaseReactionDmg } from '@src/domain/scaling'
 import { findCharacter, findWeapon } from '../utils/finder'
-import { ArtifactSets } from '@src/data/db/genshin/artifacts'
+import { ArtifactSets } from '@src/data/db/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
 import WeaponBonus from '@src/data/lib/stats/conditionals/weapons/weapon_bonus'
 

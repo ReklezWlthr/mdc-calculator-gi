@@ -7,8 +7,8 @@ import { useParams } from '@src/core/hooks/useParams'
 import { useMemo } from 'react'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
-import { ArtifactSets } from '@src/data/db/genshin/artifacts'
-import { MainStatOptions, SubStatOptions } from '@src/domain/genshin/constant'
+import { ArtifactSets } from '@src/data/db/artifacts'
+import { MainStatOptions, SubStatOptions } from '@src/domain/constant'
 import { isSubsetOf } from '@src/core/utils/finder'
 
 export const ArtifactListModal = observer(({ index, type }: { index: number; type: number }) => {

@@ -1,6 +1,6 @@
 import { calcScaling } from '@src/core/utils/data_format'
-import { IScaling } from '@src/domain/genshin/conditional'
-import { Element, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
+import { IScaling } from '@src/domain/conditional'
+import { Element, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
 import _ from 'lodash'
 
 export const getPlungeScaling = (

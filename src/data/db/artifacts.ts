@@ -1,4 +1,4 @@
-import { IArtifact, Stats, WeaponType } from '@src/domain/genshin/constant'
+import { IArtifact, Stats, WeaponType } from '@src/domain/constant'
 import _ from 'lodash'
 
 export const ArtifactSets: IArtifact[] = [

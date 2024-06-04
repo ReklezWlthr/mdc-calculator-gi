@@ -1,6 +1,6 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { Stats, TravelerIconName, WeaponIcon } from '@src/domain/genshin/constant'
+import { Stats, TravelerIconName, WeaponIcon } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback } from 'react'

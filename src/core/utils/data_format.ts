@@ -1,5 +1,5 @@
-import { MainStatValue, SubStatMap } from '@src/domain/genshin/artifact'
-import { Element, IArtifactEquip, ICharacter, ITeamChar, Stats } from '@src/domain/genshin/constant'
+import { MainStatValue, SubStatMap } from '@src/domain/artifact'
+import { Element, IArtifactEquip, ICharacter, ITeamChar, Stats } from '@src/domain/constant'
 import {
   AscensionScaling,
   FiveStarScaling,
@@ -7,7 +7,7 @@ import {
   TalentScaling,
   WeaponScaling,
   WeaponSecondaryScaling,
-} from '@src/domain/genshin/scaling'
+} from '@src/domain/scaling'
 import _ from 'lodash'
 import { findCharacter } from './finder'
 

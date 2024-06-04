@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import { NavBar } from '../src/presentation/home_page/components/navbar'
+import { NavBar } from '../src/presentation/components/navbar'
 import '../styles/globals.css'
 import '../styles/index.css'
 import Head from 'next/head'

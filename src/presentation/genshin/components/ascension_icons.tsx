@@ -1,9 +1,9 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { Tooltip } from '../../components/tooltip'
 import { ElementIconColor, TooltipBody } from './cons_circle'
-import { ITalent } from '@src/domain/genshin/conditional'
+import { ITalent } from '@src/domain/conditional'
 import classNames from 'classnames'
-import { Element } from '@src/domain/genshin/constant'
+import { Element } from '@src/domain/constant'
 
 interface AscensionProps {
   talents: ITalent

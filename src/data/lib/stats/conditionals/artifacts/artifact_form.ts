@@ -1,7 +1,7 @@
-import { Element, IArtifact, Stats } from '@src/domain/genshin/constant'
+import { Element, IArtifact, Stats } from '@src/domain/constant'
 import { StatsObject } from '../../baseConstant'
 import _ from 'lodash'
-import { IContent } from '@src/domain/genshin/conditional'
+import { IContent } from '@src/domain/conditional'
 import { findContentById } from '@src/core/utils/finder'
 
 export const ArtifactForm = () => {

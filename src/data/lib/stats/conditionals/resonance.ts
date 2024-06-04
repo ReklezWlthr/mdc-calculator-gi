@@ -1,6 +1,6 @@
 import { getResonanceCount } from '@src/core/utils/data_format'
-import { IWeaponContent } from '@src/domain/genshin/conditional'
-import { Element, ITeamChar, Stats } from '@src/domain/genshin/constant'
+import { IWeaponContent } from '@src/domain/conditional'
+import { Element, ITeamChar, Stats } from '@src/domain/constant'
 
 export const ResonanceConditionals: (characters: ITeamChar[]) => IWeaponContent[] = (characters) => {
   const set = getResonanceCount(characters)

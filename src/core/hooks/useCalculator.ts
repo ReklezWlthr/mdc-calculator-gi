@@ -15,11 +15,11 @@ import {
   WeaponTeamConditionals,
 } from '@src/data/lib/stats/conditionals/weapons/weapon_conditionals'
 import Reactions from '@src/data/lib/stats/conditionals/reactions'
-import { Element } from '@src/domain/genshin/constant'
+import { Element } from '@src/domain/constant'
 import { getSetCount } from '../utils/data_format'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
-import { Resonance } from '@src/data/db/genshin/characters'
+import { Resonance } from '@src/data/db/characters'
 
 export const useCalculator = () => {
   const { teamStore, artifactStore, calculatorStore } = useStore()

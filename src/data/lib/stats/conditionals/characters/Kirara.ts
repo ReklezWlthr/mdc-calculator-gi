@@ -1,9 +1,9 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
-import { IContent, ITalent } from '@src/domain/genshin/conditional'
+import { IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
 const Kirara = (c: number, a: number, t: ITalentLevel) => {

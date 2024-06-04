@@ -5,7 +5,7 @@ import {
   ITeamChar,
   PropMap,
   Stats,
-} from '@src/domain/genshin/constant'
+} from '@src/domain/constant'
 import _ from 'lodash'
 
 export const toPercentage = (value: number, precision: number = 1) => {

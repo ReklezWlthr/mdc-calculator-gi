@@ -1,8 +1,8 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/genshin/constant'
-import { IContent, ITalent } from '@src/domain/genshin/conditional'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
+import { IContent, ITalent } from '@src/domain/conditional'
 import { toPercentage } from '@src/core/utils/converter'
 import { calcScaling } from '@src/core/utils/data_format'
 

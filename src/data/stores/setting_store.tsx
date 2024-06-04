@@ -1,4 +1,4 @@
-import { Element, ICharStore } from '@src/domain/genshin/constant'
+import { Element, ICharStore } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'

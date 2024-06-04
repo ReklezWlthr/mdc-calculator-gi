@@ -1,7 +1,7 @@
 import { useParams } from '@src/core/hooks/useParams'
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { IArtifactEquip, ITeamChar } from '@src/domain/genshin/constant'
+import { IArtifactEquip, ITeamChar } from '@src/domain/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'

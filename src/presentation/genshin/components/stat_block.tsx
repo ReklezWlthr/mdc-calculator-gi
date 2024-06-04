@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { toPercentage } from '@src/core/utils/converter'
 
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
-import { Stats } from '@src/domain/genshin/constant'
+import { Stats } from '@src/domain/constant'
 
 interface StatBlockProps {
   index: number

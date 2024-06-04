@@ -1,5 +1,5 @@
-import { IScaling } from '@src/domain/genshin/conditional'
-import { Element, StatIcons, Stats, TalentProperty, WeaponType } from '@src/domain/genshin/constant'
+import { IScaling } from '@src/domain/conditional'
+import { Element, StatIcons, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Sidebar } from '../components/sidebar'
 import { TeamSetup } from './team_setup'
-import { GenshinPage } from '@src/domain/genshin/constant'
+import { GenshinPage } from '@src/domain/constant'
 import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
 import { observer } from 'mobx-react-lite'
 import { ArtifactInventory } from './artifact_inventory'

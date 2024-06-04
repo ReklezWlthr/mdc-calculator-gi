@@ -1,6 +1,6 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { IContent } from '@src/domain/genshin/conditional'
-import { Element } from '@src/domain/genshin/constant'
+import { IContent } from '@src/domain/conditional'
+import { Element } from '@src/domain/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'

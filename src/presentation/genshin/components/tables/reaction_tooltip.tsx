@@ -1,7 +1,7 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { TransformativeT } from '@src/data/lib/stats/conditionals/transformative'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { Element } from '@src/domain/genshin/constant'
+import { Element } from '@src/domain/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'

@@ -1,7 +1,7 @@
-import { HomePage } from '@src/presentation/home_page/pages/home_page'
+import { GenshinHome } from '@src/presentation/genshin/pages/index'
 
-const Home = () => {
-  return <HomePage />
+const GenshinHomePage = () => {
+  return <GenshinHome />
 }
 
-export default Home
+export default GenshinHomePage

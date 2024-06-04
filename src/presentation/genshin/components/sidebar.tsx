@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { GenshinPage } from '@src/domain/genshin/constant'
+import { GenshinPage } from '@src/domain/constant'
 import classNames from 'classnames'
 import { useCallback } from 'react'
 import { SettingModal } from './setting_modal'

@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { Element } from '@src/domain/genshin/constant'
+import { Element } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import _ from 'lodash'
 import classNames from 'classnames'
