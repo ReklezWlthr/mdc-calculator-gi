@@ -73,13 +73,13 @@ export class CalculatorStore {
     if (innerIndex < 0) {
       this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff }]
     } else {
-      this.custom[index] = this.custom[index].toSpliced(innerIndex, 1, { name: key, value, debuff })
+      this.custom[index].splice(innerIndex, 1, { name: key, value, debuff })
     }
     this.custom = _.cloneDeep(this.custom)
   }
 
   removeCustomValue = (index: number, innerIndex: number) => {
-    this.custom[index] = this.custom[index].toSpliced(innerIndex)
+    this.custom[index].splice(innerIndex)
     this.custom = _.cloneDeep(this.custom)
   }
 
