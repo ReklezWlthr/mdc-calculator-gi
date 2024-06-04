@@ -21,9 +21,15 @@ export const MyBuilds = observer(() => {
     <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
       <div className="flex w-full h-full gap-x-5">
         <div className="flex flex-col w-1/3 h-full gap-2 overflow-y-auto rounded-lg shrink-0 hideScrollbar">
-          {_.map(buildStore.builds, (build) => (
-            <BuildBlock key={build.id} build={build} onClick={() => setSelected(build.id)} />
-          ))}
+          {_.size(buildStore.builds) ? (
+            _.map(buildStore.builds, (build) => (
+              <BuildBlock key={build.id} build={build} onClick={() => setSelected(build.id)} />
+            ))
+          ) : (
+            <div className="flex items-center justify-center w-full h-full rounded-lg bg-primary-darker text-gray">
+              No Saved Build
+            </div>
+          )}
         </div>
         {selected ? (
           <>
