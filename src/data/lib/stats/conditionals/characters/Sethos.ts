@@ -40,8 +40,8 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
       title: `Secret Rite: Twilight Shadowpiercer`,
       content: `Perform a secret rite, entering the "Twilight Meditation" state, during which Sethos's Normal Attacks will be converted into enemy-piercing Dusk Bolts: Deal <b class="text-genshin-electro">Electro DMG</b> to opponents in its path, with DMG increased based on Sethos's Elemental Mastery.
       <br />Sethos cannot perform Aimed Shots while in this state.
-      <br /DMG dealt by Dusk Bolts is considered Charged Attack DMG.
-      <br /This effect will be canceled when Sethos leaves the field.
+      <br />DMG dealt by Dusk Bolts is considered Charged Attack DMG.
+      <br />This effect will be canceled when Sethos leaves the field.
       `,
     },
     a1: {
@@ -141,6 +141,7 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
       base.MAX_ENERGY = 60
 
       const element = form.seth_burst ? Element.ELECTRO : Element.PHYSICAL
+      const type = form.seth_burst ? TalentProperty.CA : TalentProperty.NA
       const burstScaling = form.seth_burst
         ? [{ scaling: calcScaling(1.9616, burst, 'elemental', '1'), multiplier: Stats.EM }]
         : []
@@ -149,25 +150,25 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
           name: '1-Hit',
           value: [{ scaling: calcScaling(0.5261, normal, 'physical', '1'), multiplier: Stats.ATK }, ...burstScaling],
           element: element,
-          property: TalentProperty.NA,
+          property: type,
         },
         {
           name: '2-Hit [1]',
           value: [{ scaling: calcScaling(0.238, normal, 'physical', '1'), multiplier: Stats.ATK }, ...burstScaling],
           element: element,
-          property: TalentProperty.NA,
+          property: type,
         },
         {
           name: '2-Hit [2]',
           value: [{ scaling: calcScaling(0.2661, normal, 'physical', '1'), multiplier: Stats.ATK }, ...burstScaling],
           element: element,
-          property: TalentProperty.NA,
+          property: type,
         },
         {
           name: '3-Hit',
           value: [{ scaling: calcScaling(0.7399, normal, 'physical', '1'), multiplier: Stats.ATK }, ...burstScaling],
           element: element,
-          property: TalentProperty.NA,
+          property: type,
         },
       ]
       base.CHARGE_SCALING = [

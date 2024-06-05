@@ -735,7 +735,7 @@ export const Weapons = [
     icon: 'UI_EquipIcon_Claymore_Reasoning',
     type: WeaponType.CLAYMORE,
     desc: {
-      name: "Heat Haze at Horizon's End",
+      name: "Blunt Conclusion",
       detail: `After using an Elemental Skill, Normal or Charged Attacks, on hit, deal an additional {{0}}% ATK DMG in a small area. Effect lasts 15s. DMG can only occur once every 3s.`,
       properties: [{ base: 60, growth: 15 }],
     },

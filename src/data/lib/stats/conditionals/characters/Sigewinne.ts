@@ -64,7 +64,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
       value: [
         {
           name: 'Bonus Skill DMG',
-          value: { stat: Stats.HP, scaling: (hp) => _.min([buffStack * (_.max([0, hp - 30000]) / 1000), maxBuff]) },
+          value: { stat: Stats.HP, scaling: (hp) => _.round(_.min([buffStack * (_.max([0, hp - 30000]) / 1000), maxBuff])).toLocaleString() },
         },
       ],
     },

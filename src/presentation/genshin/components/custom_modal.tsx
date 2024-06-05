@@ -9,7 +9,7 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 
-export const isFlat = (key: string) => _.includes([Stats.ATK, Stats.HP, Stats.DEF], key) || _.includes(key, '_F_')
+export const isFlat = (key: string) => _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], key) || _.includes(key, '_F_')
 
 export const CustomModal = observer(({ index }: { index: number }) => {
   const { calculatorStore, modalStore } = useStore()

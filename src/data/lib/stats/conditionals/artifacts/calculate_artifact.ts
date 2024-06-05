@@ -69,12 +69,14 @@ export const calculateArtifact = (
     base[Stats.GEO_DMG] += 0.06 * form['2546254811']
   }
   if (form['1756609915']) {
-    base.SKILL_SCALING.push({
-      name: 'Sea-Dyed Foam DMG',
-      element: Element.PHYSICAL,
-      property: TalentProperty.STATIC,
-      value: [{ multiplier: Stats.ATK, scaling: 0 }],
-      flat: parseFloat(form['2546254811']) * 0.9,
+    base.CALLBACK.push((x: StatsObject) => {
+      x.SKILL_SCALING.push({
+        name: 'Sea-Dyed Foam DMG',
+        element: Element.PHYSICAL,
+        property: TalentProperty.STATIC,
+        value: [{ multiplier: Stats.HEAL, scaling: 0.9, override: parseFloat(form['1756609915']) }],
+      })
+      return x
     })
   }
   if (form['1558036915']) {

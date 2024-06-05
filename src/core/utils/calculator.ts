@@ -83,7 +83,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals[character?.stat?.ascStat] +=
     _.max([0, char?.ascension - 2]) * AscensionGrowth[character?.stat?.ascStat]?.[character?.rarity - 4]
 
-  weaponBonus?.scaling(conditionals, weapon?.refinement)
+  conditionals = weaponBonus?.scaling(conditionals, weapon?.refinement) || conditionals
 
   // Kokomi Passive
   if (character?.id === '10000054') {

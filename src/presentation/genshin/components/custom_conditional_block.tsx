@@ -21,7 +21,7 @@ export const CustomConditionalBlock = observer(({ index }: CustomConditionalBloc
   const { calculatorStore, modalStore } = useStore()
   const custom = calculatorStore.custom[index]
 
-  const onOpenCustomModal = useCallback(() => modalStore.openModal(<CustomModal index={index} />), [])
+  const onOpenCustomModal = useCallback(() => modalStore.openModal(<CustomModal index={index} />), [index])
 
   return (
     <div className="w-full rounded-lg bg-primary-darker h-fit">

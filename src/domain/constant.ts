@@ -140,6 +140,7 @@ export enum TalentProperty {
   SHIELD = 'Shield',
   ADD = 'Additional Attack',
   STATIC = 'Static Attack',
+  CRIT = 'CRIT DMG',
 }
 
 export enum Element {

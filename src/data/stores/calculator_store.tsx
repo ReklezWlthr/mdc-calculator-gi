@@ -79,7 +79,7 @@ export class CalculatorStore {
   }
 
   removeCustomValue = (index: number, innerIndex: number) => {
-    this.custom[index].splice(innerIndex)
+    this.custom[index].splice(innerIndex, 1)
     this.custom = _.cloneDeep(this.custom)
   }
 
