@@ -226,6 +226,7 @@ export const UtilTalentOverride = {
   Qiqi: 'Collect_Local_Liyue',
   Ningguang: 'Collect_Ore',
   Momoka: 'S_Aloy_07',
+  Clorinde: 'S_Liney_07',
 }
 
 export const ReverseConsList = [

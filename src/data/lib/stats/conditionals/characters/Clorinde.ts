@@ -188,7 +188,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
               name: 'Swift Hunt DMG',
               value: [
                 {
-                  scaling: calcScaling(form.clorinde_bol >= 100 ? 0.3879 : 0.2676, skill, 'elemental', '1'),
+                  scaling: calcScaling(form.clorinde_bol >= 100 ? 0.2676 : 0.3879, skill, 'elemental', '1'),
                   multiplier: Stats.ATK,
                 },
               ],
@@ -271,6 +271,16 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.BURST,
         },
       ]
+
+      if (form.clorinde_bol > 0)
+        base.SKILL_SCALING.push({
+          name: 'Impale the Night Healing',
+          value: [
+            { scaling: (form.clorinde_bol >= 100 ? 0.1 : 0.04) * (form.clorinde_bol / 100), multiplier: Stats.HP },
+          ],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+        })
 
       if (form.clorinde_a4) base[Stats.CRIT_RATE] += form.clorinde_a4 * 0.1
       if (c >= 1 && form.clorinde_skill)

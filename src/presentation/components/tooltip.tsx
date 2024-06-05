@@ -34,8 +34,14 @@ export const Tooltip = observer(
         // Get calculated tooltip coordinates and size
         const tooltip_rect = ref?.getBoundingClientRect()
         const text_rect = main?.getBoundingClientRect()
-        const width = tooltip_rect.width * (100 / 95)
-        const height = tooltip_rect.height * (100 / 95)
+        let width = tooltip_rect.width * (100 / 95)
+        let height = tooltip_rect.height * (100 / 95)
+
+        if (height >= window.innerHeight * 0.75) {
+          ref.style.width = width * 1.5 + 'px'
+          width = width * 1.5
+          height = height * 0.8
+        }
 
         // Define tooltip's position
         let posX =
@@ -75,7 +81,7 @@ export const Tooltip = observer(
           show={hovered}
           as="div"
           ref={setRef}
-          enter="ease-out duration-300"
+          enter="ease-out duration-300 transition-transform"
           enterFrom="opacity-0 scale-95"
           enterTo="opacity-100 scale-100"
           leave="ease-in duration-100"

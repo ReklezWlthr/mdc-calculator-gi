@@ -670,7 +670,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Deathly Pact',
-      detail: `CRIT DMG increased by {{0}}%. Increasing the value of a Bond of Life increases the DMG the equipping character deals by {{1}}% for 6s. Max 3 stacks.`,
+      detail: `CRIT DMG increased by {{0}}%. Increasing the value of a <b class="text-genshin-bol">Bond of Life</b> increases the DMG the equipping character deals by {{1}}% for 6s. Max 3 stacks.`,
       properties: [
         { base: 20, growth: 5 },
         { base: 16, growth: 4 },
@@ -2732,6 +2732,21 @@ export const Weapons = [
     },
   },
   {
+    id: '15426',
+    name: 'Cloudforged',
+    rarity: 4,
+    tier: 2,
+    ascStat: Stats.EM,
+    baseStat: 36,
+    icon: 'UI_EquipIcon_Bow_Ultimatum',
+    type: WeaponType.BOW,
+    desc: {
+      name: `Crag-Chiseled Forge`,
+      detail: `After Elemental Energy is decreased, the equipping character's Elemental Mastery will increase by {{0}} for 18s. Max 2 stacks.`,
+      properties: [{ base: 40, growth: 10 }],
+    },
+  },
+  {
     id: '15427',
     name: 'Range Gauge',
     rarity: 4,
@@ -2906,6 +2921,26 @@ export const Weapons = [
         { base: 4, growth: 2 },
         { base: 7, growth: 2 },
         { base: 10, growth: 2 },
+      ],
+    },
+  },
+  {
+    id: '15513',
+    name: 'Silvershower Heartstring',
+    rarity: 5,
+    tier: 1,
+    ascStat: Stats.P_HP,
+    baseStat: 0.144,
+    icon: 'UI_EquipIcon_Bow_Arcdange',
+    type: WeaponType.BOW,
+    desc: {
+      name: `Dryas's Nocturne`,
+      detail: `The equipping character can gain the Remedy effect. When they possess 1/2/3 Remedy stacks, Max HP will increase by {{0}}%/{{1}}%/{{2}}%. 1 stack may be gained when the following conditions are met: 1 stack for 25s when using an Elemental Skill; 1 stack for 25s when the value of a Bond of Life value increases; 1 stack for 20s for performing healing. Stacks can still be triggered when the equipping character is not on the field. Each stack's duration is counted independently. In addition, when 3 stacks are active, Elemental Burst CRIT Rate will be increased by {{3}}%. This effect will be canceled 4s after falling under 3 stacks.`,
+      properties: [
+        { base: 12, growth: 3 },
+        { base: 24, growth: 6 },
+        { base: 40, growth: 50 },
+        { base: 28, growth: 7 },
       ],
     },
   },

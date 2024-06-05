@@ -1688,7 +1688,8 @@ export const WeaponConditionals: IWeaponContent[] = [
       }
       return base
     },
-  },{
+  },
+  {
     type: 'number',
     text: `BoL Increase`,
     show: true,
@@ -1698,6 +1699,37 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '11515',
     scaling: (base, form, r) => {
       if (form['11515']) base[Stats.ALL_DMG] += form['11515'] * calcRefinement(0.16, 0.04, r)
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Remedy Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '15513',
+    scaling: (base, form, r) => {
+      if (form['15513'] === 1) base[Stats.P_HP] += calcRefinement(0.12, 0.03, r)
+      if (form['15513'] === 2) base[Stats.P_HP] += calcRefinement(0.24, 0.06, r)
+      if (form['15513'] === 3) {
+        base[Stats.P_HP] += calcRefinement(0.4, 0.1, r)
+        base.BURST_CR += calcRefinement(0.28, 0.07, r)
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Bonus EM Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    id: '15426',
+    scaling: (base, form, r) => {
+      if (form['15426']) base[Stats.EM] += calcRefinement(40, 10, r)
       return base
     },
   },
