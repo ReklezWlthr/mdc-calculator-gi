@@ -15,6 +15,7 @@ import Chevreuse from './characters/Chevreuse'
 import Childe from './characters/Childe'
 import Chiori from './characters/Chiori'
 import Chongyun from './characters/Chongyun'
+import Clorinde from './characters/Clorinde'
 import Collei from './characters/Collei'
 import Cyno from './characters/Cyno'
 import Dehya from './characters/Dehya'
@@ -59,6 +60,7 @@ import Razor from './characters/Razor'
 import Rosaria from './characters/Rosaria'
 import Sara from './characters/Sara'
 import Sayu from './characters/Sayu'
+import Sethos from './characters/Sethos'
 import Shenhe from './characters/Shenhe'
 import Sucrose from './characters/Sucrose'
 import Thoma from './characters/Thoma'
@@ -165,6 +167,9 @@ export default [
   { id: '10000049', conditionals: Yoimiya },
   { id: '10000064', conditionals: Yunjin },
   { id: '10000030', conditionals: Zhongli },
+  // { id: '10000095', conditionals: Clorinde },
+  { id: '10000097', conditionals: Sethos },
+  { id: '10000098', conditionals: Clorinde },
   // Travelers
   { id: '10000005-504', conditionals: TravelerWind },
   { id: '10000005-506', conditionals: TravelerRock },
@@ -243,6 +248,7 @@ export const ReverseConsList = [
   'Wanderer',
   'Xiangling',
   'Liuyun',
+  'Clorinde',
   'PlayerRock',
   'PlayerWind',
 ]

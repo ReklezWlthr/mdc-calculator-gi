@@ -660,6 +660,24 @@ export const Weapons = [
     },
   },
   {
+    id: '11515',
+    name: 'Absolution',
+    rarity: 5,
+    tier: 1,
+    ascStat: Stats.CRIT_DMG,
+    baseStat: 0.096,
+    icon: 'UI_EquipIcon_Sword_Estoc',
+    type: WeaponType.SWORD,
+    desc: {
+      name: 'Deathly Pact',
+      detail: `CRIT DMG increased by {{0}}%. Increasing the value of a Bond of Life increases the DMG the equipping character deals by {{1}}% for 6s. Max 3 stacks.`,
+      properties: [
+        { base: 20, growth: 5 },
+        { base: 16, growth: 4 },
+      ],
+    },
+  },
+  {
     id: '12301',
     name: 'Ferrous Shadow',
     rarity: 3,
@@ -1640,7 +1658,7 @@ export const Weapons = [
     },
   },
   {
-    id: '13508',
+    id: '13509',
     name: 'Engulfing Lightning',
     rarity: 5,
     tier: 2,

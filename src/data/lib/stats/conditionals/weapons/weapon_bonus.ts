@@ -382,6 +382,13 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
       return base
     },
   },
+  {
+    id: '11515',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG] += calcRefinement(0.2, 0.05, r)
+      return base
+    },
+  },
 ]
 
 export default WeaponBonus

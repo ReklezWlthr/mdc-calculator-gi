@@ -1688,6 +1688,18 @@ export const WeaponConditionals: IWeaponContent[] = [
       }
       return base
     },
+  },{
+    type: 'number',
+    text: `BoL Increase`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '11515',
+    scaling: (base, form, r) => {
+      if (form['11515']) base[Stats.ALL_DMG] += form['11515'] * calcRefinement(0.16, 0.04, r)
+      return base
+    },
   },
 ]
 

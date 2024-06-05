@@ -166,19 +166,19 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
         },
         {
           name: 'Level 1 Aimed Shot',
-          value: [{ scaling: calcScaling(1.24, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.24, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.CA,
         },
         {
           name: 'Wreath Arrow DMG',
-          value: [{ scaling: calcScaling(0.872, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.872, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.CA,
         },
         {
           name: 'Clusterbloom Arrow DMG',
-          value: [{ scaling: calcScaling(0.386, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.386, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.CA,
         },
