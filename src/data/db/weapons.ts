@@ -663,7 +663,7 @@ export const Weapons = [
     id: '11515',
     name: 'Absolution',
     rarity: 5,
-    tier: 1,
+    tier: 3,
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Sword_Estoc',
@@ -2935,7 +2935,7 @@ export const Weapons = [
     type: WeaponType.BOW,
     desc: {
       name: `Dryas's Nocturne`,
-      detail: `The equipping character can gain the Remedy effect. When they possess 1/2/3 Remedy stacks, Max HP will increase by {{0}}%/{{1}}%/{{2}}%. 1 stack may be gained when the following conditions are met: 1 stack for 25s when using an Elemental Skill; 1 stack for 25s when the value of a Bond of Life value increases; 1 stack for 20s for performing healing. Stacks can still be triggered when the equipping character is not on the field. Each stack's duration is counted independently. In addition, when 3 stacks are active, Elemental Burst CRIT Rate will be increased by {{3}}%. This effect will be canceled 4s after falling under 3 stacks.`,
+      detail: `The equipping character can gain the Remedy effect. When they possess 1/2/3 Remedy stacks, Max HP will increase by {{0}}%/{{1}}%/{{2}}%. 1 stack may be gained when the following conditions are met: 1 stack for 25s when using an Elemental Skill; 1 stack for 25s when the value of a <b class="text-genshin-bol">Bond of Life</b> value increases; 1 stack for 20s for performing healing. Stacks can still be triggered when the equipping character is not on the field. Each stack's duration is counted independently. In addition, when 3 stacks are active, Elemental Burst CRIT Rate will be increased by {{3}}%. This effect will be canceled 4s after falling under 3 stacks.`,
       properties: [
         { base: 12, growth: 3 },
         { base: 24, growth: 6 },

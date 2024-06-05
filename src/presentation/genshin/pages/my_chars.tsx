@@ -130,7 +130,7 @@ export const MyCharacters = observer(() => {
   const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
     name: (index + 1).toString(),
     value: (index + 1).toString(),
-  }))
+  })).reverse()
 
   const onSave = useCallback(() => {
     const data = {
@@ -299,7 +299,7 @@ export const MyCharacters = observer(() => {
                               name: _.toString(item + index),
                               value: _.toString(item + index),
                             })
-                          )}
+                          ).reverse()}
                           value={form.level?.toString()}
                           style="w-full"
                         />

@@ -42,7 +42,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
           name: _.toString(item + index),
           value: _.toString(item + index),
         })
-      ),
+      ).reverse(),
     [ascension]
   )
 

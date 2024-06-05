@@ -48,7 +48,7 @@ export const Tooltip = observer(
 
         // Define tooltip's position
         let posX =
-          position === 'right' ? x + text_rect?.width + MAIN_MARGIN : position === 'left' ? y - width - MAIN_MARGIN : x
+          position === 'right' ? x + text_rect?.width + MAIN_MARGIN : position === 'left' ? x - width - MAIN_MARGIN : x
         let posY =
           position === 'top'
             ? y - height - MAIN_MARGIN
@@ -64,9 +64,11 @@ export const Tooltip = observer(
         const rightOverflow = posX + width + EDGE_MARGIN - window.innerWidth
         if (rightOverflow > 0) posX = position === 'right' ? x - width - EDGE_MARGIN : posX - rightOverflow
         // Check left
-        if (tooltip_rect?.x < 0) posX = text_rect?.width + MAIN_MARGIN
+        const leftOverflow = posX + MAIN_MARGIN
+        if (leftOverflow < 0) posX = position === 'left' ? x + text_rect?.width + MAIN_MARGIN : posX - leftOverflow
         // Check top
-        if (tooltip_rect.y < 0) posY = position === 'top' ? text_rect.height + EDGE_MARGIN : 0
+        const topOverflow = posY + MAIN_MARGIN
+        if (topOverflow < 0) posY = position === 'top' ? y + text_rect?.height + MAIN_MARGIN : posY - topOverflow
         // Check bottom
         const bottomOverflow = posY + height + EDGE_MARGIN - window.innerHeight
         console.log(bottomOverflow)

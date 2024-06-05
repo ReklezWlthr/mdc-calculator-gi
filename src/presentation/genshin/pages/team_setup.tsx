@@ -179,7 +179,7 @@ export const TeamSetup = observer(() => {
   const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
     name: (index + 1).toString(),
     value: (index + 1).toString(),
-  }))
+  })).reverse()
 
   const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
 

@@ -57,6 +57,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                       body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
                       key={content.id}
                       style={tooltipStyle}
+                      position='left'
                     >
                       <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                     </Tooltip>

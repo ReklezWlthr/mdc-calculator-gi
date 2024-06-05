@@ -38,14 +38,14 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       content: `Preparing her pistolet, she enters the "Night Vigil" state, using steel and shot together. In this state, Clorinde's Normal Attacks will be transformed into "Swift Hunt" pistolet attacks, and the DMG dealt is converted into <b class="text-genshin-electro">Electro DMG</b> that cannot be overridden by infusions, and she will be unable to use Charged Attacks. Using her Elemental Skill will transform it into "Impale the Night": Perform a lunging attack, dealing <b class="text-genshin-electro">Electro DMG</b>. The DMG done through the aforementioned method is considered Normal Attack DMG.
       <br />
       <br /><b>Swift Hunt</b>
-      <br />When her <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her max HP: Performs a pistolet shot.
-      <br />When her <b class="text-genshin-bol">Bond of Life</b> is less than <span class="text-desc">100%</span>, firing her pistolet will grant her <b class="text-genshin-bol">Bond of Life</b>, with the amount gained based on her max HP. The shots she fires can pierce opponents, and DMG dealt to opponents in their path is increased.
+      <br />- When her <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her max HP: Performs a pistolet shot.
+      <br />- When her <b class="text-genshin-bol">Bond of Life</b> is less than <span class="text-desc">100%</span>, firing her pistolet will grant her <b class="text-genshin-bol">Bond of Life</b>, with the amount gained based on her max HP. The shots she fires can pierce opponents, and DMG dealt to opponents in their path is increased.
       <br />
       <br /><b>Impale the Night</b>
       <br />The current percentage value of Clorinde's <b class="text-genshin-bol">Bond of Life</b> determines its effect:
-      <br />When the <b class="text-genshin-bol">Bond of Life</b> value is <span class="text-desc">0%</span>, perform a normal lunging strike;
-      <br />When the <b class="text-genshin-bol">Bond of Life</b> value is less than <span class="text-desc">100%</span> of her max HP, Clorinde is healed based on the <b class="text-genshin-bol">Bond of Life</b> value, and the AoE of the lunging attack and the DMG dealt is increased;
-      <br />When the value of the <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her max HP, use Impale the Night: Pact. The healing multiplier is increased, and the AoE and DMG dealt by the lunge is increased even further.
+      <br />- When the <b class="text-genshin-bol">Bond of Life</b> value is <span class="text-desc">0%</span>, perform a normal lunging strike;
+      <br />- When the <b class="text-genshin-bol">Bond of Life</b> value is less than <span class="text-desc">100%</span> of her max HP, Clorinde is healed based on the <b class="text-genshin-bol">Bond of Life</b> value, and the AoE of the lunging attack and the DMG dealt is increased;
+      <br />- When the value of the <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her max HP, use Impale the Night: Pact. The healing multiplier is increased, and the AoE and DMG dealt by the lunge is increased even further.
       <br />
       <br />In addition, when Clorinde is in the Night Vigil state, healing effects other than Impale the Night will not take effect and will instead be converted into a <b class="text-genshin-bol">Bond of Life</b> that is a percentage of the healing that would have been received.
       <br />
