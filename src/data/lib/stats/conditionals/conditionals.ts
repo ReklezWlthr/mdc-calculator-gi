@@ -62,6 +62,7 @@ import Sara from './characters/Sara'
 import Sayu from './characters/Sayu'
 import Sethos from './characters/Sethos'
 import Shenhe from './characters/Shenhe'
+import Sigewinne from './characters/Sigewinne'
 import Sucrose from './characters/Sucrose'
 import Thoma from './characters/Thoma'
 import Tighnari from './characters/Tighnari'
@@ -167,7 +168,7 @@ export default [
   { id: '10000049', conditionals: Yoimiya },
   { id: '10000064', conditionals: Yunjin },
   { id: '10000030', conditionals: Zhongli },
-  // { id: '10000095', conditionals: Clorinde },
+  { id: '10000095', conditionals: Sigewinne },
   { id: '10000097', conditionals: Sethos },
   { id: '10000098', conditionals: Clorinde },
   // Travelers

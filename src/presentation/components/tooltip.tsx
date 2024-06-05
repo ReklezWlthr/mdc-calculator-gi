@@ -24,7 +24,7 @@ export const Tooltip = observer(
     const [hovered, setHovered] = useState(false)
     const [ref, setRef] = useState<HTMLElement>(null)
 
-    const EDGE_MARGIN = 4
+    const EDGE_MARGIN = 16
     const MAIN_MARGIN = 16
 
     useEffect(() => {
@@ -37,32 +37,40 @@ export const Tooltip = observer(
         let width = tooltip_rect.width * (100 / 95)
         let height = tooltip_rect.height * (100 / 95)
 
+        const x = text_rect.left + window.scrollX
+        const y = text_rect.top + window.scrollY
+
         if (height >= window.innerHeight * 0.75) {
           ref.style.width = width * 1.5 + 'px'
           width = width * 1.5
-          height = height * 0.8
+          height = height * 0.85
         }
 
         // Define tooltip's position
         let posX =
-          position === 'right' ? text_rect?.width + MAIN_MARGIN : position === 'left' ? -width - MAIN_MARGIN : 0
+          position === 'right' ? x + text_rect?.width + MAIN_MARGIN : position === 'left' ? y - width - MAIN_MARGIN : x
         let posY =
-          position === 'top' ? -height - MAIN_MARGIN : position === 'bottom' ? text_rect?.height + MAIN_MARGIN : 0
+          position === 'top'
+            ? y - height - MAIN_MARGIN
+            : position === 'bottom'
+            ? y + text_rect?.height + MAIN_MARGIN
+            : y
         // Position tooltip
         ref.style.top = posY + 'px'
         ref.style.left = posX + 'px'
 
         // Corrections if out of window
         // Check right
-        if (tooltip_rect?.x + text_rect?.width + width + MAIN_MARGIN > window.innerWidth) posX = -width - MAIN_MARGIN
+        const rightOverflow = posX + width + EDGE_MARGIN - window.innerWidth
+        if (rightOverflow > 0) posX = position === 'right' ? x - width - EDGE_MARGIN : posX - rightOverflow
         // Check left
         if (tooltip_rect?.x < 0) posX = text_rect?.width + MAIN_MARGIN
         // Check top
         if (tooltip_rect.y < 0) posY = position === 'top' ? text_rect.height + EDGE_MARGIN : 0
         // Check bottom
-        const bottomOverflow = tooltip_rect?.y + height - (window.innerHeight + EDGE_MARGIN)
-        if (tooltip_rect?.y + height > window.innerHeight + EDGE_MARGIN)
-          posY = position === 'bottom' ? -height - EDGE_MARGIN : -bottomOverflow
+        const bottomOverflow = posY + height + EDGE_MARGIN - window.innerHeight
+        console.log(bottomOverflow)
+        if (bottomOverflow > 0) posY = position === 'bottom' ? y - height - EDGE_MARGIN : posY - bottomOverflow
 
         // Apply corrected position
         ref.style.top = posY + 'px'
@@ -71,7 +79,7 @@ export const Tooltip = observer(
     }, [position, hovered, ref])
 
     return (
-      <div className={classNames('relative text-sm text-gray', containerStyle)}>
+      <div className={classNames('text-sm text-gray', containerStyle)}>
         {React.cloneElement(children, {
           onMouseEnter: () => setHovered(true),
           onMouseLeave: () => setHovered(false),

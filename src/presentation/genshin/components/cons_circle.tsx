@@ -74,17 +74,7 @@ export const ConsCircle = observer(
 
     return (
       <div className="space-y-5">
-        <div className="flex flex-col justify-around w-[252px] h-[252px] relative">
-          <div
-            className={classNames(
-              'absolute w-4/5 -translate-x-1/2 -translate-y-1/2 rounded-full h-4/5 ring top-1/2 left-1/2 bg-opacity-0 ring-opacity-50',
-              ElementIconColor[element]
-            )}
-          />
-          <img
-            src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${name.replaceAll(' ', '_')}_Shape.webp`}
-            className="absolute w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 h-2/3 top-1/2 left-1/2"
-          />
+        <div className="flex flex-col justify-around w-[252px] h-[252px]">
           <div className="flex justify-center">
             <Tooltip
               title={talents?.c1?.title}
@@ -146,8 +136,20 @@ export const ConsCircle = observer(
               </div>
             </Tooltip>
           </div>
-          <div className="z-10 flex items-center justify-center h-12">
+          <div className="relative flex items-center justify-center h-12 -z-50">
             <p className="w-1/2 px-1 text-lg font-bold text-center">{name}</p>
+            <div
+              className={classNames(
+                'absolute -translate-x-1/2 -translate-y-1/2 rounded-full w-[200px] h-[200px] ring top-1/2 left-1/2 bg-opacity-0 ring-opacity-50 pointer-events-none',
+                ElementIconColor[element]
+              )}
+            />
+            <img
+              src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${name.replaceAll(' ', '_')}_Shape.webp`}
+              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 h-[170px] top-1/2 left-1/2 -z-10"
+              onError={(e) => (e.currentTarget.style.display = 'none')}
+              onLoad={(e) => (e.currentTarget.style.display = 'block')}
+            />
           </div>
           <div className="flex justify-between px-3">
             <Tooltip

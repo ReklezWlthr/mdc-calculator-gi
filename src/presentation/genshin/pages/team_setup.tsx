@@ -204,61 +204,43 @@ export const TeamSetup = observer(() => {
           <CharacterBlock index={selected} />
           {charData ? (
             <div className="flex items-center justify-center gap-3 py-3">
-              <div className="relative">
-                <TalentIcon
-                  talent={talent?.talents?.normal}
-                  element={charData?.element}
-                  icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
-                  size="w-9 h-9"
-                />
-                {talent?.upgrade?.normal && (
-                  <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
-                    +3
-                  </div>
-                )}
-              </div>
+              <TalentIcon
+                talent={talent?.talents?.normal}
+                element={charData?.element}
+                icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
+                size="w-9 h-9"
+                upgraded={talent?.upgrade?.normal}
+              />
               <SelectInput
                 value={char?.talents?.normal?.toString()}
                 onChange={(value) => teamStore.setTalentLevel(selected, 'normal', parseInt(value))}
                 options={talentLevels}
                 style="w-14"
               />
-              <div className="relative ml-3">
-                <TalentIcon
-                  talent={talent?.talents?.skill}
-                  element={charData?.element}
-                  icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'E' : 'S'}_${iconCodeName}${
-                    iconCodeName === 'Qin' ? '_02' : '_01'
-                  }${iconCodeName === 'Diluc' ? '_01' : ''}.png`}
-                  size="w-9 h-9"
-                />
-                {talent?.upgrade?.skill && (
-                  <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
-                    +3
-                  </div>
-                )}
-              </div>
+              <TalentIcon
+                talent={talent?.talents?.skill}
+                element={charData?.element}
+                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'E' : 'S'}_${iconCodeName}${
+                  iconCodeName === 'Qin' ? '_02' : '_01'
+                }${iconCodeName === 'Diluc' ? '_01' : ''}.png`}
+                size="w-9 h-9"
+                upgraded={talent?.upgrade?.skill}
+              />
               <SelectInput
                 value={char?.talents?.skill?.toString()}
                 onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
                 options={talentLevels}
                 style="w-14"
               />
-              <div className="relative ml-3">
-                <TalentIcon
-                  talent={talent?.talents?.burst}
-                  element={charData?.element}
-                  icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'S' : 'E'}_${iconCodeName}${
-                    _.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'
-                  }.png`}
-                  size="w-9 h-9"
-                />
-                {talent?.upgrade?.burst && (
-                  <div className="absolute pointer-events-none flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 bg-cyan-600 text-white">
-                    +3
-                  </div>
-                )}
-              </div>
+              <TalentIcon
+                talent={talent?.talents?.burst}
+                element={charData?.element}
+                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'S' : 'E'}_${iconCodeName}${
+                  _.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'
+                }.png`}
+                size="w-9 h-9"
+                upgraded={talent?.upgrade?.burst}
+              />
               <SelectInput
                 value={char?.talents?.burst?.toString()}
                 onChange={(value) => teamStore.setTalentLevel(selected, 'burst', parseInt(value))}

@@ -22,6 +22,8 @@ export const TalentIcon = observer(
     size,
     tooltipSize,
     crowned,
+    level,
+    upgraded,
   }: {
     icon: string
     element: Element
@@ -29,6 +31,8 @@ export const TalentIcon = observer(
     size?: string
     tooltipSize?: string
     crowned?: boolean
+    level?: number
+    upgraded?: boolean
   }) => {
     const iconColor = {
       [Element.PYRO]: 'bg-genshin-pyro ring-genshin-pyro',
@@ -58,6 +62,21 @@ export const TalentIcon = observer(
               size || 'w-12 h-12'
             )}
           />
+          {level && (
+            <div
+              className={classNames(
+                'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
+                upgraded ? 'bg-cyan-600' : 'bg-primary-light'
+              )}
+            >
+              {level + (upgraded ? 3 : 0)}
+            </div>
+          )}
+          {!level && upgraded && (
+            <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+              +3
+            </div>
+          )}
         </div>
       </Tooltip>
     )

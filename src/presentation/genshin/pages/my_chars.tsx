@@ -152,13 +152,13 @@ export const MyCharacters = observer(() => {
     <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
       <div className="flex w-full h-full gap-x-10">
         <div className="flex flex-col w-1/3 h-full gap-y-2 shrink-0">
-          <div className='flex items-center justify-between'>
+          <div className="flex items-center justify-between">
             <p className="text-2xl font-bold text-white">My Characters</p>
             <TextInput
               onChange={(value) => setParams({ searchWord: value })}
               value={params.searchWord}
               placeholder="Search Character Name"
-              style='!w-1/2'
+              style="!w-1/2"
             />
           </div>
           <div className="flex items-center gap-6 my-1">
@@ -378,69 +378,39 @@ export const MyCharacters = observer(() => {
                       </div>
                       <div className="flex items-center gap-6">
                         <p className="font-bold">Talents</p>
-                        <div className="relative space-y-2">
-                          <TalentIcon
-                            talent={charCond?.talents?.normal}
-                            element={charData?.element}
-                            icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
-                            size="w-10 h-10"
-                            tooltipSize="w-[520px]"
-                          />
-                          {charUpgrade?.talents?.normal && (
-                            <div
-                              className={classNames(
-                                'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
-                                charCond?.upgrade?.normal ? 'bg-cyan-600' : 'bg-primary-light'
-                              )}
-                            >
-                              {charUpgrade?.talents?.normal + (charCond?.upgrade?.normal ? 3 : 0)}
-                            </div>
-                          )}
-                        </div>
-                        <div className="relative space-y-2">
-                          <TalentIcon
-                            talent={charCond?.talents?.skill}
-                            element={charData?.element}
-                            icon={`https://enka.network/ui/Skill_${
-                              iconCodeName === 'PlayerGrass' ? 'E' : 'S'
-                            }_${iconCodeName}${iconCodeName === 'Qin' ? '_02' : '_01'}${
-                              iconCodeName === 'Diluc' ? '_01' : ''
-                            }.png`}
-                            size="w-10 h-10"
-                            tooltipSize="w-[570px]"
-                          />
-                          {charUpgrade?.talents?.skill && (
-                            <div
-                              className={classNames(
-                                'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
-                                charCond?.upgrade?.skill ? 'bg-cyan-600' : 'bg-primary-light'
-                              )}
-                            >
-                              {charUpgrade?.talents?.skill + (charCond?.upgrade?.skill ? 3 : 0)}
-                            </div>
-                          )}
-                        </div>
-                        <div className="relative space-y-2">
-                          <TalentIcon
-                            talent={charCond?.talents?.burst}
-                            element={charData?.element}
-                            icon={`https://enka.network/ui/Skill_${
-                              iconCodeName === 'PlayerGrass' ? 'S' : 'E'
-                            }_${iconCodeName}${_.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'}.png`}
-                            size="w-10 h-10"
-                            tooltipSize="w-[550px]"
-                          />
-                          {charUpgrade?.talents?.burst && (
-                            <div
-                              className={classNames(
-                                'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
-                                charCond?.upgrade?.burst ? 'bg-cyan-600' : 'bg-primary-light'
-                              )}
-                            >
-                              {charUpgrade?.talents?.burst + (charCond?.upgrade?.burst ? 3 : 0)}
-                            </div>
-                          )}
-                        </div>
+                        <TalentIcon
+                          talent={charCond?.talents?.normal}
+                          element={charData?.element}
+                          icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
+                          size="w-10 h-10"
+                          tooltipSize="w-[520px]"
+                          upgraded={charCond?.upgrade?.normal}
+                          level={charUpgrade?.talents?.normal}
+                        />
+                        <TalentIcon
+                          talent={charCond?.talents?.skill}
+                          element={charData?.element}
+                          icon={`https://enka.network/ui/Skill_${
+                            iconCodeName === 'PlayerGrass' ? 'E' : 'S'
+                          }_${iconCodeName}${iconCodeName === 'Qin' ? '_02' : '_01'}${
+                            iconCodeName === 'Diluc' ? '_01' : ''
+                          }.png`}
+                          size="w-10 h-10"
+                          tooltipSize="w-[570px]"
+                          upgraded={charCond?.upgrade?.skill}
+                          level={charUpgrade?.talents?.skill}
+                        />
+                        <TalentIcon
+                          talent={charCond?.talents?.burst}
+                          element={charData?.element}
+                          icon={`https://enka.network/ui/Skill_${
+                            iconCodeName === 'PlayerGrass' ? 'S' : 'E'
+                          }_${iconCodeName}${_.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'}.png`}
+                          size="w-10 h-10"
+                          tooltipSize="w-[550px]"
+                          upgraded={charCond?.upgrade?.burst}
+                          level={charUpgrade?.talents?.burst}
+                        />
                       </div>
                     </>
                   )}

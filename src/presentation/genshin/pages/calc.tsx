@@ -188,7 +188,7 @@ export const Calculator = observer(({}: {}) => {
                   <div className="grid w-full py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark items-center">
                     Raw Shield Value
                   </div>
-                  <div className="grid-cols-2 gap-2 py-1 rounded-b-lg bg-primary-darker">
+                  <div className="flex justify-center py-1 rounded-b-lg bg-primary-darker">
                     <CrystallizeTooltip
                       em={mainComputed?.[Stats.EM]}
                       level={char?.level}

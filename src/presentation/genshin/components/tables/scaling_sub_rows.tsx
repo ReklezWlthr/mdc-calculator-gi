@@ -176,7 +176,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
             )}
             {scaling.property === TalentProperty.HEAL && (
               <div className="space-y-1 text-xs">
-                <p>Teammate Incoming Healing</p>
+                <b>✦ Teammate Incoming Healing ✦</b>
                 {_.map(
                   names,
                   (item, i) =>

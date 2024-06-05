@@ -37,7 +37,7 @@ export const CrystallizeTooltip = observer(
         }
         style="w-fit"
       >
-        <p className="font-bold text-center text-indigo-300">{_.round(calc)}</p>
+        <p className="font-bold text-center text-indigo-300 w-fit">{_.round(calc)}</p>
       </Tooltip>
     )
   }

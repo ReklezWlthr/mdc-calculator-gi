@@ -216,7 +216,8 @@ export const useCalculator = () => {
     })
     const postCompute = _.map(
       conditionals,
-      (base, index) => base?.postCompute(postWeapon[index], calculatorStore.form[index]) || postWeapon[index]
+      (base, index) =>
+        base?.postCompute(postWeapon[index], calculatorStore.form[index], postWeapon, calculatorStore.form) || postWeapon[index]
     )
     // No need to loop; each reaction buff only apply to the character
     const postReaction = _.map(postCompute, (base, index) =>
