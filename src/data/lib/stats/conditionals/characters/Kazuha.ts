@@ -145,7 +145,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       text: `C2 Burst EM Share`,
       ...talents.c2,
       show: c >= 2,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
@@ -159,16 +159,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
 
   const teammateContent: IContent[] = [findContentById(content, 'a4_swirl')]
 
-  const allyContent: IContent[] = [
-    {
-      type: 'toggle',
-      id: 'kazu_c2_ally',
-      text: `C2 Burst EM Share`,
-      ...talents.c2,
-      show: c >= 2,
-      default: true,
-    },
-  ]
+  const allyContent: IContent[] = [findContentById(content, 'kazu_c2')]
 
   return {
     upgrade,
@@ -284,7 +275,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
       if (form.a4_swirl) base[`${form.a4_swirl} DMG%`] += 0.0004 * own[Stats.EM]
-      if (aForm.kazu_c2_ally) base[Stats.EM] += 200
+      if (aForm.kazu_c2) base[Stats.EM] += 200
 
       return base
     },

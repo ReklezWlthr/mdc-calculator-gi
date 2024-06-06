@@ -87,7 +87,7 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
       text: `A4 Pepper ATK Buff`,
       ...talents.a4,
       show: a >= 4,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
