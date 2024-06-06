@@ -59,7 +59,10 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const defPen = (stats.DEF_PEN || 0) + (scaling.defPen || 0)
 
   const defMult = calculatorStore.getDefMult(teamStore.characters[index]?.level, defPen, stats.DEF_REDUCTION) || 1
-  const resMult = calculatorStore.getResMult(element, stats[`${element.toUpperCase()}_RES_PEN`] || 0)
+  const resMult = calculatorStore.getResMult(
+    element,
+    (stats[`${element.toUpperCase()}_RES_PEN`] || 0) + (stats.ALL_TYPE_RES_PEN || 0)
+  )
   const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
   const enemyMod = isDamage ? (scaling.property === TalentProperty.STATIC ? 1 : defMult) * resMult : 1
 
