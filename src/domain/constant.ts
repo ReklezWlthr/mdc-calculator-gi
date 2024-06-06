@@ -1,4 +1,4 @@
-import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 
 export enum GenshinPage {
   TEAM = 'team',
@@ -58,6 +58,14 @@ export interface IBuild {
   isDefault: boolean
   weapon: IWeaponEquip
   artifacts: string[]
+}
+
+export interface ISetup {
+  id: string
+  name: string
+  team: ITeamChar[]
+  mod: Record<string, any>[]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
 }
 
 export interface IArtifact {

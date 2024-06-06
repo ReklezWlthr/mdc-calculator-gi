@@ -1,4 +1,4 @@
-import { Element, ICharStore } from '@src/domain/constant'
+import { Element, ICharStore, ISetup } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -30,6 +30,8 @@ export class CalculatorStore {
   selected: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
 
+  compareStats: StatsObject[][]
+
   constructor() {
     this.form = Array(4)
     this.computedStats = Array(4)
@@ -46,6 +48,8 @@ export class CalculatorStore {
       [Element.PHYSICAL]: 10,
     }
     this.custom = Array(4)
+
+    this.compareStats = Array(4)
 
     makeAutoObservable(this)
   }

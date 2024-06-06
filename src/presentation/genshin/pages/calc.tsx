@@ -20,9 +20,11 @@ import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
 import { CrystallizeTooltip } from '../components/tables/crystallize_tooltip'
 import { CustomConditionalBlock } from '../components/custom_conditional_block'
+import { SaveSetupModal } from '../components/save_setup_modal'
+import { CompareModal } from '../components/compare_modal'
 
 export const Calculator = observer(({}: {}) => {
-  const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
+  const { teamStore, modalStore, calculatorStore, settingStore, setupStore } = useStore()
   const { selected, computedStats } = calculatorStore
 
   const [tab, setTab] = useState('mod')
@@ -33,6 +35,8 @@ export const Calculator = observer(({}: {}) => {
   const { main, mainComputed, contents, transformative } = useCalculator()
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
+  const onOpenSaveSetupModal = useCallback(() => modalStore.openModal(<SaveSetupModal />), [])
+  const onOpenCompareModal = useCallback(() => modalStore.openModal(<CompareModal cId={char.cId} />), [selected])
 
   const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
 
@@ -40,8 +44,8 @@ export const Calculator = observer(({}: {}) => {
     <div className="w-full overflow-y-auto">
       <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1240px] mx-auto">
         <div className="col-span-2">
-          <div className="flex items-center">
-            <div className="flex justify-center w-full gap-4 pt-1 pb-3">
+          <div className="flex items-center justify-between">
+            <div className="flex justify-center gap-4 px-4 pt-1 pb-3">
               {_.map(teamStore?.characters, (item, index) => {
                 const x = findCharacter(item.cId)?.codeName
                 const y = x === 'Player' ? settingStore.settings.travelerGender : x
@@ -55,7 +59,10 @@ export const Calculator = observer(({}: {}) => {
                 )
               })}
             </div>
-            <PrimaryButton onClick={onOpenEnemyModal} title="Enemy Setting" style="whitespace-nowrap" />
+            <div className="flex items-center gap-x-4">
+              <PrimaryButton onClick={onOpenSaveSetupModal} title="Save Setup" style="whitespace-nowrap" />
+              <PrimaryButton onClick={onOpenEnemyModal} title="Enemy Setting" style="whitespace-nowrap" />
+            </div>
           </div>
           {teamStore?.characters[selected]?.cId ? (
             <>
@@ -222,6 +229,14 @@ export const Calculator = observer(({}: {}) => {
             >
               Stats
             </div>
+            <div
+              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                'bg-primary': tab === 'compare',
+              })}
+              onClick={() => setTab('compare')}
+            >
+              Compare
+            </div>
           </div>
           {tab === 'mod' && (
             <>
@@ -257,6 +272,19 @@ export const Calculator = observer(({}: {}) => {
                 stats={computedStats[selected]}
               />
             </>
+          )}
+          {tab === 'compare' && (
+            <div className='flex flex-col items-center w-full gap-y-3'>
+              {_.map(setupStore.compare, (item, index) => (
+                <div>{item?.name || `Setup ${index + 1}`}</div>
+              ))}
+              <PrimaryButton
+                onClick={onOpenCompareModal}
+                title="Add Setup"
+                style="whitespace-nowrap"
+                disabled={_.size(setupStore.compare) === 4}
+              />
+            </div>
           )}
         </div>
       </div>

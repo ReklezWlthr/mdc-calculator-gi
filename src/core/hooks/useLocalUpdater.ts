@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 export const useLocalUpdater = (game: string) => {
   const router = useRouter()
-  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore } = useStore()
+  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore, setupStore } = useStore()
   const [data, setData] = useState(null)
   const [hydrated, setHydrated] = useState(false)
 
@@ -18,6 +18,7 @@ export const useLocalUpdater = (game: string) => {
     artifactStore.hydrateArtifacts(json?.artifacts)
     buildStore.hydrateBuilds(json?.builds)
     charStore.hydrateCharacters(json?.characters)
+    setupStore.hydrateSetup(json?.setup)
     setData(data)
   }
 
@@ -42,10 +43,11 @@ export const useLocalUpdater = (game: string) => {
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
           characters: charStore.characters,
+          setup: setupStore.setup,
         })
       )
     }
-  }, [...teamStore.characters, artifactStore.artifacts, buildStore.builds, charStore.characters])
+  }, [...teamStore.characters, artifactStore.artifacts, buildStore.builds, charStore.characters, setupStore.setup])
 
   useEffect(() => {
     if (hydrated) {
@@ -53,6 +55,14 @@ export const useLocalUpdater = (game: string) => {
       calculatorStore.setValue('level', settingStore?.settings?.defaultEnemyLevel || 1)
     }
   }, [settingStore.settings])
+
+  useEffect(() => {
+    setupStore.updateCompare(0, {
+      team: teamStore.characters,
+      mod: calculatorStore.form,
+      custom: calculatorStore.custom,
+    })
+  }, [...teamStore.characters, ...calculatorStore.form, ...calculatorStore.custom])
 
   useEffect(() => {
     const data = localStorage.getItem(key)
