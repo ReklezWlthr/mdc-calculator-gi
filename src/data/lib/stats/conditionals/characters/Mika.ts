@@ -128,6 +128,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
     talents,
     content,
     teammateContent,
+    allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
 

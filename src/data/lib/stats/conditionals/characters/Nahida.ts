@@ -164,7 +164,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       text: `Compassion Illuminated`,
       ...talents.a1,
       show: a >= 1,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
@@ -187,16 +187,16 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'nahida_em_share'),
-    findContentById(content, 'nahida_c2_def'),
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'nahida_c2_def')]
+
+  const allyContent: IContent[] = [findContentById(content, 'nahida_em_share')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
+    allyContent,
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
 
@@ -260,12 +260,17 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
       if (form.nahida_c2_def) base.DEF_REDUCTION += 0.3
       if (c >= 2) {
         base.CORE_CR = 0.2
         base.CORE_CD = 1
       }
+      if (aForm.nahida_em_share)
+        base.CALLBACK.push((base: StatsObject, team: StatsObject[]) => {
+          base[Stats.EM] += _.min([_.max(_.map(team, (item) => item[Stats.EM])) * 0.25, 250])
+          return base
+        })
 
       return base
     },

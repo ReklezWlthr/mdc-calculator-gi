@@ -157,8 +157,9 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'a4_swirl'),
+  const teammateContent: IContent[] = [findContentById(content, 'a4_swirl')]
+
+  const allyContent: IContent[] = [
     {
       type: 'toggle',
       id: 'kazu_c2_ally',
@@ -174,6 +175,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
     talents,
     content,
     teammateContent,
+    allyContent,
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 80
@@ -280,8 +282,9 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.kazu_c2_ally) base[Stats.EM] += 200
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`] += 0.0004 * own[Stats.EM]
+      if (aForm.kazu_c2_ally) base[Stats.EM] += 200
 
       return base
     },

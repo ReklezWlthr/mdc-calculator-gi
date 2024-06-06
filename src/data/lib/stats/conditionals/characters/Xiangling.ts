@@ -108,17 +108,16 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'xl_a4'),
-    findContentById(content, 'xl_c1'),
-    findContentById(content, 'xl_c6'),
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'xl_c1'), findContentById(content, 'xl_c6')]
+
+  const allyContent: IContent[] = [findContentById(content, 'xl_a4')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
+    allyContent,
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
 
@@ -212,8 +211,8 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.xl_a4) base[Stats.P_ATK] += 0.1
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.xl_a4) base[Stats.P_ATK] += 0.1
       if (form.xl_c1) base.PYRO_RES_PEN += 0.15
       if (form.xl_c6) base[Stats.PYRO_DMG] += 0.15
 

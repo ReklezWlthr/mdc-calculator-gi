@@ -84,6 +84,14 @@ export const useCalculator = () => {
   const weaponEligible = (i: number) => [...weaponConditionals[i], ..._.flatten(weaponTeamConditionals)]
   const weaponSelectable = (i: number) => [...weaponEligible(i), ...weaponAllySelectable(i)]
 
+  const allyContents = (i: number, inverse?: boolean) =>
+    _.flatten(
+      _.filter(
+        _.map(conditionals, (item, index) => _.map(item.allyContent, (content) => ({ ...content }))),
+        (_, index) => (inverse ? index === i : index !== i)
+      )
+    )
+
   const resonanceConditionals = _.map(ResonanceConditionals(teamStore.characters), (item) => {
     const res = _.find(Resonance, ['element', Element[item.id.split('_')[0].toUpperCase()]])
     return {
@@ -100,6 +108,7 @@ export const useCalculator = () => {
           _.concat(
             item?.content,
             item?.teammateContent,
+            allyContents(index),
             Reactions(
               teamStore.characters[index].level,
               findCharacter(teamStore.characters[index].cId)?.element,
@@ -139,15 +148,21 @@ export const useCalculator = () => {
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
       let x = base
+      console.log(calculatorStore.form[index])
       _.forEach(conditionals, (item, i) => {
         // Loop characters, exclude index of the current parent iteration
         if (i !== index)
           x =
-            item?.preComputeShared(preCompute[i], x, {
-              ...calculatorStore.form[i],
-              weapon: findCharacter(teamStore.characters[index]?.cId)?.weapon,
-              element: findCharacter(teamStore.characters[index]?.cId)?.element,
-            }) || x
+            item?.preComputeShared(
+              preCompute[i],
+              x,
+              {
+                ...calculatorStore.form[i],
+                weapon: findCharacter(teamStore.characters[index]?.cId)?.weapon,
+                element: findCharacter(teamStore.characters[index]?.cId)?.element,
+              },
+              calculatorStore.form[index],
+            ) || x
       })
       return x
     })
@@ -217,7 +232,8 @@ export const useCalculator = () => {
     const postCompute = _.map(
       conditionals,
       (base, index) =>
-        base?.postCompute(postWeapon[index], calculatorStore.form[index], postWeapon, calculatorStore.form) || postWeapon[index]
+        base?.postCompute(postWeapon[index], calculatorStore.form[index], postWeapon, calculatorStore.form) ||
+        postWeapon[index]
     )
     // No need to loop; each reaction buff only apply to the character
     const postReaction = _.map(postCompute, (base, index) =>
@@ -227,7 +243,7 @@ export const useCalculator = () => {
     const final = _.map(postReaction, (base) => {
       let x = base
       _.forEach(base.CALLBACK, (cb) => {
-        x = cb(x)
+        x = cb(x, postReaction)
       })
       return x
     })
@@ -257,13 +273,15 @@ export const useCalculator = () => {
     ),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
+  const allyMapped = _.map(allyContents(selected), (item) => ({ ...item, index: selected }))
   // Index is embedded into each conditional for the block to call back to
   // Because each of the form with represent ALL the buffs that each character has (including team buffs); not the value that we can change in their page
   // This helps separate buffs trigger of each character and prevent buff stacking
   // Update: This is with the exception of single target buffs that will be put in allies' form instead of the giver so that the buff will not activate all at once
   const mainContent = _.filter(mapped, ['index', selected])
-  const teamContent = _.filter(mapped, (item, index) => selected !== item.index)
+  const teamContent = [..._.filter(mapped, (item, index) => selected !== item.index), ...allyMapped]
   const mainReaction = _.filter(reactions, ['index', selected])
+  console.log(teamContent)
 
   // Content of transformative reaction dmg
   const nilou = _.some(calculatorStore.form, (item) => item?.bountiful_core)

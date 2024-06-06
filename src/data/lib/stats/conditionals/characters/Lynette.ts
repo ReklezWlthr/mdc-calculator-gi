@@ -143,6 +143,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     talents,
     content,
     teammateContent,
+    allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
