@@ -148,7 +148,6 @@ export const useCalculator = () => {
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
       let x = base
-      console.log(calculatorStore.form[index])
       _.forEach(conditionals, (item, i) => {
         // Loop characters, exclude index of the current parent iteration
         if (i !== index)
@@ -281,7 +280,6 @@ export const useCalculator = () => {
   const mainContent = _.filter(mapped, ['index', selected])
   const teamContent = [..._.filter(mapped, (item, index) => selected !== item.index), ...allyMapped]
   const mainReaction = _.filter(reactions, ['index', selected])
-  console.log(teamContent)
 
   // Content of transformative reaction dmg
   const nilou = _.some(calculatorStore.form, (item) => item?.bountiful_core)

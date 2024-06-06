@@ -12,7 +12,9 @@ export interface SetupStoreType {
   saveSetup: (setup: ISetup) => boolean
   deleteSetup: (sId: string) => boolean
   findSetup: (cId: string) => ISetup[]
+  addCompare: (data: ISetup) => void
   updateCompare: (index: number, data: Partial<ISetup>) => void
+  swapMainCompare: (newMainIndex: number) => ISetup
   hydrateSetup: (data: ISetup[]) => void
   hydrate: (data: SetupStoreType) => void
 }
@@ -55,6 +57,11 @@ export class Setup {
     )
   }
 
+  addCompare = (data: ISetup) => {
+    this.compare.push(data)
+    this.compare = _.cloneDeep(this.compare)
+  }
+
   updateCompare = (index: number, data: Partial<ISetup>) => {
     this.compare[index] = { ...this.compare[index], ...data }
     this.compare = _.cloneDeep(this.compare)
@@ -64,6 +71,7 @@ export class Setup {
     if (newMainIndex <= 0) return
     ;[this.compare[0], this.compare[newMainIndex]] = [this.compare[newMainIndex], this.compare[0]]
     this.compare = _.cloneDeep(this.compare)
+    return this.compare[0]
   }
 
   hydrateSetup = (data: ISetup[]) => {

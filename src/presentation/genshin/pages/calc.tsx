@@ -274,9 +274,21 @@ export const Calculator = observer(({}: {}) => {
             </>
           )}
           {tab === 'compare' && (
-            <div className='flex flex-col items-center w-full gap-y-3'>
+            <div className="flex flex-col items-center w-full gap-y-3">
               {_.map(setupStore.compare, (item, index) => (
-                <div>{item?.name || `Setup ${index + 1}`}</div>
+                <div className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-primary-dark">
+                  <p>{item?.name || `Setup ${index + 1}`}</p>
+                  <PrimaryButton
+                    icon="fa-regular fa-eye"
+                    onClick={() => {
+                      const newCompare = setupStore.swapMainCompare(index)
+                      calculatorStore.setValue('form', newCompare.mod)
+                      calculatorStore.setValue('custom', newCompare.custom)
+                      teamStore.setValue('characters', newCompare.team)
+                    }}
+                    disabled={index === 0}
+                  />
+                </div>
               ))}
               <PrimaryButton
                 onClick={onOpenCompareModal}
