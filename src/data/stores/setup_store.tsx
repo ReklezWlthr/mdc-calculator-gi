@@ -8,6 +8,7 @@ enableStaticRendering(typeof window === 'undefined')
 export interface SetupStoreType {
   setup: ISetup[]
   compare: ISetup[]
+  main: number
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   saveSetup: (setup: ISetup) => boolean
   deleteSetup: (sId: string) => boolean
@@ -22,10 +23,12 @@ export interface SetupStoreType {
 export class Setup {
   setup: ISetup[]
   compare: ISetup[]
+  main: number
 
   constructor() {
     this.setup = []
     this.compare = Array(1)
+    this.main = 0
 
     makeAutoObservable(this)
   }
@@ -68,10 +71,9 @@ export class Setup {
   }
 
   swapMainCompare = (newMainIndex: number) => {
-    if (newMainIndex <= 0) return
-    ;[this.compare[0], this.compare[newMainIndex]] = [this.compare[newMainIndex], this.compare[0]]
-    this.compare = _.cloneDeep(this.compare)
-    return this.compare[0]
+    if (newMainIndex < 0) return
+    this.main = newMainIndex
+    return this.compare[newMainIndex]
   }
 
   hydrateSetup = (data: ISetup[]) => {

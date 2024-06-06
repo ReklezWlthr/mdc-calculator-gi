@@ -282,11 +282,12 @@ export const Calculator = observer(({}: {}) => {
                     icon="fa-regular fa-eye"
                     onClick={() => {
                       const newCompare = setupStore.swapMainCompare(index)
+                      console.log(newCompare)
                       calculatorStore.setValue('form', newCompare.mod)
                       calculatorStore.setValue('custom', newCompare.custom)
                       teamStore.setValue('characters', newCompare.team)
                     }}
-                    disabled={index === 0}
+                    disabled={index === setupStore.main}
                   />
                 </div>
               ))}

@@ -19,7 +19,7 @@ export const PrimaryButton = ({ onClick, title, disabled, icon, style, loading }
       'bg-primary-lighter hover:bg-primary-light active:scale-95 text-white cursor-pointer duration-200': !disabled,
     },
     {
-      'bg-primary-darker border border-primary text-primary-border cursor-not-allowed': disabled,
+      'bg-primary-darker ring-1 ring-primary text-primary-border cursor-not-allowed': disabled,
     }
   )
 
