@@ -190,7 +190,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
           name: 'Spiritbreath Thorn DMG',
           value: [{ scaling: calcScaling(0.328, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
-          property: TalentProperty.SKILL,
+          property: TalentProperty.ADD,
         },
       ]
       base.BURST_SCALING = [

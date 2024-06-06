@@ -208,7 +208,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
           name: 'Spiritbreath Thorn/Surging Blade DMG',
           value: [{ scaling: calcScaling(0.0946, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
-          property: TalentProperty.NA,
+          property: TalentProperty.ADD,
         },
       ]
       base.CHARGE_SCALING = [

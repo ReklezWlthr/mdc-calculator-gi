@@ -217,7 +217,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
           name: 'Surging Blade DMG',
           value: [{ scaling: calcScaling(0.424, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
-          property: TalentProperty.SKILL,
+          property: TalentProperty.ADD,
         },
       ]
 

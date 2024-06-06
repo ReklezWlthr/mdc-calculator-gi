@@ -221,7 +221,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
           name: 'Surging Blade DMG',
           value: [{ scaling: calcScaling(0.288, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
-          property: TalentProperty.SKILL,
+          property: TalentProperty.ADD,
         },
       ]
       base.BURST_SCALING = [

@@ -87,7 +87,7 @@ export const useCalculator = () => {
   const allyContents = (i: number, inverse?: boolean) =>
     _.flatten(
       _.filter(
-        _.map(conditionals, (item, index) => _.map(item.allyContent, (content) => ({ ...content }))),
+        _.map(conditionals, (item) => _.map(item?.allyContent, (content) => ({ ...content }))),
         (_, index) => (inverse ? index === i : index !== i)
       )
     )
@@ -161,7 +161,7 @@ export const useCalculator = () => {
                 weapon: findCharacter(teamStore.characters[index]?.cId)?.weapon,
                 element: findCharacter(teamStore.characters[index]?.cId)?.element,
               },
-              calculatorStore.form[index],
+              calculatorStore.form[index]
             ) || x
       })
       return x

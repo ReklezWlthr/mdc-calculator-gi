@@ -261,7 +261,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           name: 'Surging Blade DMG',
           value: [{ scaling: calcScaling(0.432, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
-          property: TalentProperty.NA,
+          property: TalentProperty.ADD,
         },
       ]
       base.BURST_SCALING = [

@@ -156,6 +156,12 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
           element: Element.CRYO,
           property: TalentProperty.CA,
         },
+        {
+          name: 'Spiritbreath Thorn DMG',
+          value: [{ scaling: calcScaling(0.1117, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.CRYO,
+          property: TalentProperty.ADD,
+        },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal, Element.CRYO)
       base.SKILL_SCALING = [
