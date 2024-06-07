@@ -115,9 +115,9 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       <br />Throughout the duration, Furina's Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to <span class="text-desc">18%</span> of Furina's max HP.
       <br />Throughout the duration, Furina's Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every <span class="text-desc">0.1</span>s after hitting opponents depending on her current Arkhe alignment:
       <br />
-      <br />Arkhe: <b class="text-genshin-ousia">Ousia</b>
+      <br /><b>Arkhe: </b><b class="text-genshin-ousia">Ousia</b>
       <br />Every <span class="text-desc">1</span>s, all nearby characters in the party will be healed by <span class="text-desc">4%</span> of Furina's max HP, for a duration of <span class="text-desc">2.9</span>s. Triggering this effect again will extend its duration.
-      <br />Arkhe: <b class="text-genshin-pneuma">Pneuma</b>
+      <br /><b>Arkhe: </b><b class="text-genshin-pneuma">Pneuma</b>
       <br />This Normal Attack (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attack, or Plunging Attack ground impact DMG will be further increased by an amount equivalent to <span class="text-desc">25%</span> of Furina's max HP. When any of the attacks mentioned previously hit an opponent, all nearby characters in the party will consume <span class="text-desc">1%</span> of their current HP.
       <br />
       <br />During the duration of each instance of "Center of Attention," the above effects can be triggered up to <span class="text-desc">6</span> times. "Center of Attention" will end when its effects have triggered <span class="text-desc">6</span> times or when the duration expires.`,
@@ -208,7 +208,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
           name: 'Spiritbreath Thorn/Surging Blade DMG',
           value: [{ scaling: calcScaling(0.0946, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
-          property: TalentProperty.ADD,
+          property: TalentProperty.NA,
         },
       ]
       base.CHARGE_SCALING = [

@@ -41,7 +41,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Yuegui: Throwing Mode</b>
       <br />Throws out White Jade Radishes that will explode upon hitting characters or opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b> to opponents within a certain AoE, and healing characters within that same AoE based on Yaoyao's Max HP. If a radish does not hit either an opponent or a character, the radish will remain where it is and explode on contact with a character or opponent, or will explode after its duration expires.
       <br />Yuegui: Throwing Mode will choose its radish-throw targets.
-      <br />- If all nearby characters have more than 70% HP remaining, then it will throw the radish at a nearby opponent.
+      <br />- If all nearby characters have more than <span class="text-desc">70%</span> HP remaining, then it will throw the radish at a nearby opponent.
       <br />- If nearby characters have <span class="text-desc">70%</span> or less HP remaining, it will throw a radish at the character with the lowest HP percentage remaining. If no opponents exist nearby, Yuegui will throw White Jade Radishes at characters even if they all have more than <span class="text-desc">70%</span> HP remaining.
       <br />
       <br />A maximum of <span class="text-desc">2</span> instances Yuegui: Throwing Mode can exist at any one time.`,

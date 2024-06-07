@@ -225,7 +225,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
           name: 'Spiritbreath Thorn DMG',
           value: [{ scaling: calcScaling(0.144, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
-          property: TalentProperty.ADD,
+          property: TalentProperty.SKILL,
         },
       ]
       base.BURST_SCALING = [

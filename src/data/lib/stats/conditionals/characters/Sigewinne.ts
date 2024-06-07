@@ -250,7 +250,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
           name: 'Surging Blade DMG',
           value: [{ scaling: calcScaling(0.0068, skill, 'elemental', '1'), multiplier: Stats.HP }],
           element: Element.HYDRO,
-          property: TalentProperty.ADD,
+          property: TalentProperty.SKILL,
         },
       ]
       base.BURST_SCALING = [

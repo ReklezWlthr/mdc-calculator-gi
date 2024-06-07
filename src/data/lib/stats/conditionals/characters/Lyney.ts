@@ -228,7 +228,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           name: 'Spiritbreath Thorn DMG',
           value: [{ scaling: calcScaling(0.2755, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PYRO,
-          property: TalentProperty.ADD,
+          property: TalentProperty.CA,
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal)

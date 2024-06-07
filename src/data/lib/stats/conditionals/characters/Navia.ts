@@ -218,7 +218,7 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           name: 'Surging Blade DMG',
           value: [{ scaling: calcScaling(0.36, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.GEO,
-          property: TalentProperty.ADD,
+          property: TalentProperty.SKILL,
         },
       ]
       base.BURST_SCALING = [
