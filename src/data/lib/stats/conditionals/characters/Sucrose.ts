@@ -188,7 +188,6 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.element === form.sucrose_a1) base[Stats.EM] += 50
       if (form.sucrose_a4) base[Stats.EM] += own[Stats.EM] * 0.2
-      console.log(form.sucrose_a4, own[Stats.EM])
 
       if (form.sucrose_absorb && c>=6) base[Stats[`${form.sucrose_absorb.toUpperCase()}_DMG`]] += 0.2
 

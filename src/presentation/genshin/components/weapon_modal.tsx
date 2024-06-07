@@ -103,7 +103,9 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
                 className="object-contain rounded-t-lg bg-primary-darker aspect-square"
               />
             </div>
-            <p className="w-full px-2 py-1 text-center line-clamp-2">{item.name}</p>
+            <div className="w-full h-10 px-2 py-1">
+              <p className="text-center line-clamp-2">{item.name}</p>
+            </div>
           </div>
         ))}
       </div>

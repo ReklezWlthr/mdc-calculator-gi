@@ -47,7 +47,6 @@ export const ResonanceConditionals: (characters: ITeamChar[]) => IWeaponContent[
       default: true,
       id: 'dendro_2',
       scaling: (base, form) => {
-        console.log(form.dendro_2)
         if (form.dendro_2) base[Stats.EM] += 20
         return base
       },
