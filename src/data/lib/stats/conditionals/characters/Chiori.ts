@@ -73,7 +73,7 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
       title: `C1: Six Paths of Sage Silkcraft`,
       content: `The AoE of the automaton doll "Tamoto" summoned by Fluttering Hasode is increased by <span class="text-desc">50%</span>.
       <br />Additionally, if there is a <b class="text-genshin-geo">Geo</b> party member other than Chiori, Fluttering Hasode will trigger the following after the dash is completed:
-      <br />Summon an additional Tamoto. Only one additional Tamoto can exist at the same time, whether summoned by Chiori this way or through the presence of a Geo Construct.
+      <br />Summon an additional Tamoto. Only one additional Tamoto can exist at the same time, whether summoned by Chiori this way or through the presence of a <b class="text-genshin-geo">Geo Construct</b>.
       <br />Triggers the Passive Talent "The Finishing Touch." This effect requires you to first unlock the Passive Talent "The Finishing Touch."`,
     },
     c2: {

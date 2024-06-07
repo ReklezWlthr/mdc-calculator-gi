@@ -44,7 +44,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       <br />- 3 <b class="text-genshin-geo">Geo</b> characters: Adds "Crunch" - <b class="text-genshin-geo">Geo DMG Bonus</b>.
       <br />
       <br />Gorou can deploy only <span class="text-desc">1</span> General's War Banner on the field at any one time.
-      <br />Characters can only benefit from 1 General's War Banner at a time. When a party member leaves the field, the active buff will last for 2s.
+      <br />Characters can only benefit from 1 General's War Banner at a time. When a party member leaves the field, the active buff will last for <span class="text-desc">2</span>s.
       <br />
       <br /><b>Hold</b>
       <br />Adjust the location of the skill.`,
@@ -56,8 +56,8 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       <br /><b>General's Glory</b>
       <br />This field has the following properties:
       <br />- Like the General's War Banner created by Inuzaka All-Round Defense, provides buffs to active characters within the skill's AoE based on the number of <b class="text-genshin-geo">Geo</b> characters in the party. Also moves together with your active character.
-      <br />- Generates 1 Crystal Collapse every <span class="text-desc">1.5</span>s that deals <b class="text-genshin-geo">AoE Geo DMG</b> to 1 opponent within the skill's AoE.
-      <br />- Pulls 1 elemental shard in the skill's AoE to your active character's position every 1.5s (elemental shards are created by Crystallize reactions).
+      <br />- Generates 1 Crystal Collapse every <span class="text-desc">1.5</span>s that deals <b class="text-genshin-geo">AoE Geo DMG</b> to <span class="text-desc">1</span> opponent within the skill's AoE.
+      <br />- Pulls 1 elemental shard in the skill's AoE to your active character's position every <span class="text-desc">1.5</span>s (elemental shards are created by Crystallize reactions).
       <br />
       <br />If a General's War Banner created by Gorou currently exists on the field when his ability is used, it will be destroyed. In addition, for the duration of General's Glory, Gorou's Elemental Skill "Inuzaka All-Round Defense" will not create the General's War Banner.
       <br />If Gorou falls, the effects of General's Glory will be cleared.

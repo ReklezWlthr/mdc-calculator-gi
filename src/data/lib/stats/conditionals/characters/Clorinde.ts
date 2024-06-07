@@ -164,7 +164,15 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'clorinde_c6',
-      text: `A6 Skill CRIT Buffs`,
+      text: `C6 Skill CRIT Buffs`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+    },
+    {
+      type: 'toggle',
+      id: 'clorinde_c6_red',
+      text: `C6 DMG Reduction`,
       ...talents.c6,
       show: c >= 6,
       default: true,
@@ -303,6 +311,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.NA,
         })
+      if (form.clorinde_c6_red) base.DMG_REDUCTION += 0.8
 
       return base
     },

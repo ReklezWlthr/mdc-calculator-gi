@@ -38,7 +38,7 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
   }
 
   return (
-    <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-10 gap-y-1 gap-x-5 bg-primary-dark">
+    <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-11 gap-y-1 gap-x-5 bg-primary-dark">
       <ExtraDataRow title="HP" base={stat?.BASE_HP} bonus={stat?.BASE_HP * stat?.[Stats.P_HP] + stat?.[Stats.HP]} />
       <ExtraDataRow
         title="ATK"
@@ -56,7 +56,8 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <DataRow title="Healing Bonus" value={toPercentage(stat?.[Stats.HEAL])} />
       <DataRow title="Incoming Healing" value={toPercentage(stat?.[Stats.I_HEALING])} />
       <DataRow title="Energy Recharge" value={toPercentage(stat?.[Stats.ER])} />
-      <DataRow title="CD Reduction" value={toPercentage(0)} />
+      <DataRow title="CD Reduction" value={toPercentage(stat?.CD_RED)} />
+      <DataRow title="ATK SPD" value={toPercentage(_.min([stat?.ATK_SPD, 1.6]))} />
       <DataRow title="Physical DMG%" value={toPercentage(stat?.[Stats.PHYSICAL_DMG])} />
       <DataRow title="Pyro DMG%" value={toPercentage(stat?.[Stats.PYRO_DMG])} />
       <DataRow title="Hydro DMG%" value={toPercentage(stat?.[Stats.HYDRO_DMG])} />
@@ -67,6 +68,7 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <DataRow title="Dendro DMG%" value={toPercentage(stat?.[Stats.DENDRO_DMG])} />
       <DataRow title="DMG%" value={toPercentage(stat?.[Stats.ALL_DMG])} />
       <DataRow title="Shield Strength" value={toPercentage(stat?.[Stats.SHIELD])} />
+      <DataRow title="DMG Mitigation" value={toPercentage(stat?.DMG_REDUCTION)} />
     </div>
   )
 })

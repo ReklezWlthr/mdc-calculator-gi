@@ -62,7 +62,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     a4: {
       title: `A4: Consider, the Adeptus in Her Realm`,
-      content: `When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">0.1</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">9,000</span>.
+      content: `When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">200%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">9,000</span>.
       <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-desc">0.4</span>s.`,
       value: [
         {

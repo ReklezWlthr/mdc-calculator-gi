@@ -114,7 +114,7 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'ayato_burst',
-      text: `Burst Normal DMG Bonus`,
+      text: `Burst Field NA DMG Bonus`,
       ...talents.burst,
       show: true,
       default: true,

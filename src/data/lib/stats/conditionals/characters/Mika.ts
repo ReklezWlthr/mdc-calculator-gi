@@ -113,7 +113,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       type: 'number',
       id: 'detector',
       text: `Detector Stacks`,
-      ...talents.a2,
+      ...talents.a1,
       show: a >= 1,
       default: maxDetector,
       min: 0,
@@ -212,7 +212,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.soulwind) {
-        base.ATK_SPD += 12 + skill
+        base.ATK_SPD += 0.12 + skill / 100
         if (c >= 6) base.PHYSICAL_CD += 0.6
       }
       if (form.detector) base[Stats.PHYSICAL_DMG] += 0.1 * form.detector
@@ -221,7 +221,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.soulwind) {
-        base.ATK_SPD += 12 + skill
+        base.ATK_SPD += 0.12 + skill / 100
         if (c >= 6) base.PHYSICAL_CD += 0.6
       }
       if (form.detector) base[Stats.PHYSICAL_DMG] += 0.1 * form.detector
