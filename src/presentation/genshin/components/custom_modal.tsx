@@ -127,14 +127,14 @@ export const CustomModal = observer(({ index }: { index: number }) => {
   return (
     <div className="p-3 space-y-4 rounded-lg bg-primary-dark w-[450px]">
       <p className="text-lg font-bold text-white">Add Custom Modifier</p>
-      <div className="flex justify-center gap-x-1">
+      <div className="flex justify-center pb-2 border-b gap-x-1 border-primary-border">
         <Tab title="Stats" value="stats" defaultKey={StatsObjectKeys[Stats.ALL_DMG]} />
         <Tab title="Element" value="element" defaultKey={options.element[0].value} />
         <Tab title="Talent" value="talent" defaultKey={options.talent[0].value} />
         <Tab title="Reaction" value="reaction" defaultKey={StatsObjectKeys.SWIRL_DMG} />
         <Tab title="Debuffs" value="debuff" defaultKey={options.debuff[0].value} />
       </div>
-      <div className="grid items-center grid-cols-3 gap-x-3">
+      <div className="grid items-center grid-cols-3 pb-4 border-b gap-x-3 border-primary-border">
         {selectedTab === 'stats' && (
           <SelectInput
             value={key}

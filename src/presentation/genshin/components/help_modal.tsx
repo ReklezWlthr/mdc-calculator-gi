@@ -77,6 +77,26 @@ export const HelpModal = observer(() => {
           Target enemy's level and DMG RES can be set in <span className="text-desc">Enemy Setting</span> menu.
         </BulletPoint>
       </Collapsible>
+      <Collapsible label="Account Data">
+        <BulletPoint>
+          Your account data is saved in <span className="text-desc">My Characters</span>,{' '}
+          <span className="text-desc">My Builds</span> and <span className="text-desc">Artifact Inventory</span>. You
+          can check and modify them in each respective section.
+        </BulletPoint>
+        <BulletPoint>
+          You may manually input your data or alternatively import it from either an{' '}
+          <span className="text-desc">Exported JSON File</span> or with <span className="text-desc">UID</span>.
+        </BulletPoint>
+        <BulletPoint>
+          Changes made in <span className="text-desc">Team Setup</span> Page will not affect your account data.
+        </BulletPoint>
+        <BulletPoint>
+          Your data on this app is <span className="text-red">temporary</span> and will be lost once you close or
+          refresh the app. You may toggle on the{' '}
+          <span className="text-desc">Automatically save my account data to the browser's local storage</span> option in
+          the <span className="text-desc">Settings</span>.
+        </BulletPoint>
+      </Collapsible>
     </div>
   )
 })

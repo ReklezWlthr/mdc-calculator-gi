@@ -99,7 +99,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
           name: _.toString(item + index),
           value: _.toString(item + index),
         })
-      ),
+      ).reverse(),
     [ascension]
   )
 
@@ -187,7 +187,10 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
           {weaponData && (
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
-                <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[weaponData?.ascStat]}`} />
+                <img
+                  className="w-4 h-4"
+                  src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[weaponData?.ascStat]}`}
+                />
                 {weaponData?.ascStat || 'N/A'}
               </div>
               <hr className="w-full border border-primary-border" />

@@ -68,6 +68,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               value={characterData?.name}
               onClear={() => teamStore.setMember(props.index, DefaultCharacter)}
               disabled={props.disabled}
+              placeholder="Select a Character"
             />
           </div>
           <div className="space-y-1">

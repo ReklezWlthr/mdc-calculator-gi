@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Sidebar } from '../components/sidebar'
 import { TeamSetup } from './team_setup'
 import { GenshinPage } from '@src/domain/constant'
@@ -9,6 +9,8 @@ import { MyBuilds } from './my_builds'
 import { ImportExport } from './import'
 import { Calculator } from './calc'
 import { MyCharacters } from './my_chars'
+import { useStore } from '@src/data/providers/app_store_provider'
+import { IntroModal } from '../components/intro_modal'
 
 const InternalPage = ({ page }: { page: GenshinPage }) => {
   switch (page) {
@@ -32,7 +34,12 @@ const InternalPage = ({ page }: { page: GenshinPage }) => {
 export const GenshinHome = observer(() => {
   const [page, setPage] = useState<GenshinPage>(GenshinPage.TEAM)
 
+  const { modalStore } = useStore()
   useLocalUpdater('genshin')
+
+  useEffect(() => {
+    modalStore.openModal(<IntroModal />)
+  }, [])
 
   return (
     <div className="flex flex-shrink w-full h-full overflow-y-auto">

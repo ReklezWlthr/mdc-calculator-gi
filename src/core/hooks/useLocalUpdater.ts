@@ -29,7 +29,7 @@ export const useLocalUpdater = (game: string) => {
 
   useEffect(() => {
     window.onbeforeunload = function () {
-      return 'Your changes may not be saved.'
+      return 'Your changes may not be saved. You can turn on Auto Save in Settings'
     }
   }, [])
 

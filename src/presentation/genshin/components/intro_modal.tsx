@@ -26,11 +26,16 @@ export const IntroModal = observer(() => {
       </Collapsible>
       <Collapsible label="Notes & Limitations">
         <BulletPoint>
-          The resulting stats and sub stat rolls may be slightly off due to hidden decimals and some mathematical wizardry, but the
-          differences should be negligible.
+          UX Design is really not my forte. If you find some parts that is confusing or counterintuitive and should be
+          improved, please let me know.
         </BulletPoint>
         <BulletPoint>
-          It is not recommended to use this app on mobiles or vertical screens because responsive is hard.
+          The resulting stats and sub stat rolls may be slightly off due to hidden decimals and some mathematical
+          wizardry, but the differences should be negligible.
+        </BulletPoint>
+        <BulletPoint>
+          It is not recommended to use this app on mobiles or vertical screens. This is partly due to most information
+          being presented in tooltips.
         </BulletPoint>
         <BulletPoint>
           I also work full-time as a programmer, and usually develop this app in my free time. As a result, updates may
