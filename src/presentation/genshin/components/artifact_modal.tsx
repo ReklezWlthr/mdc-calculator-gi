@@ -19,7 +19,7 @@ import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
 
 export const ArtifactModal = ({ type, index, aId }: { type: number; index?: number; aId?: string }) => {
-  const { teamStore, artifactStore, modalStore } = useStore()
+  const { teamStore, artifactStore, modalStore, toastStore } = useStore()
   const [error, setError] = useState('')
 
   const { watch, control, setValue, handleSubmit, reset, formState } = useForm({
@@ -85,6 +85,11 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
 
     const oldType = _.find(artifactStore.artifacts, ['id', aId])?.type
     const pass = aId ? artifactStore.editArtifact(aId, data) : artifactStore.addArtifact(data)
+    toastStore.openNotification({
+      title: aId ? 'Artifact Edited Successfully' : 'Artifact Created Successfully',
+      icon: 'fa-solid fa-circle-check',
+      color: 'green',
+    })
     if (pass && index >= 0) {
       teamStore.setArtifact(index, rest.type, id)
       if (rest.type !== oldType && oldType) teamStore.setArtifact(index, oldType, null)

@@ -60,8 +60,11 @@ export class Build {
     if (!bId) return
     const selected = _.find(this.builds, ['id', bId])
     const others = _.filter(this.builds, (item) => item.id !== bId && selected.cId === item.cId)
+    console.log(others)
     selected.isDefault = true
-    _.forEach(others, (item) => (item.isDefault = false))
+    for (const item of others) {
+      item.isDefault = false
+    }
     this.builds = [...this.builds]
   }
 

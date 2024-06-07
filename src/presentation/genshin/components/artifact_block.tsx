@@ -41,7 +41,7 @@ const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => voi
 export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlockProps) => {
   const pieceName = ArtifactPiece[props.piece]
 
-  const { modalStore, teamStore, artifactStore, buildStore, settingStore } = useStore()
+  const { modalStore, teamStore, artifactStore, buildStore, settingStore, toastStore } = useStore()
   const artifact = _.find(props.override || artifactStore.artifacts, ['id', props.aId])
   const setData = findArtifactSet(artifact?.setId)
 
@@ -86,6 +86,11 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
     const oldType = _.find(artifactStore.artifacts, ['id', props.aId])?.type
     artifactStore.deleteArtifact(props.aId)
     modalStore.closeModal()
+    toastStore.openNotification({
+      title: 'Artifact Deleted Successfully',
+      icon: 'fa-solid fa-circle-check',
+      color: 'green',
+    })
     const char = _.findIndex(teamStore.characters, (item) => _.includes(item.equipments?.artifacts, props.aId))
     const build = _.filter(buildStore.builds, (item) => _.includes(item.artifacts, props.aId))
     if (char >= 0) {

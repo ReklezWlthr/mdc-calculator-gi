@@ -86,7 +86,7 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
   const [name, setName] = useState('')
   const [isDefault, setDefault] = useState(true)
 
-  const { modalStore, teamStore, buildStore } = useStore()
+  const { modalStore, teamStore, buildStore, toastStore } = useStore()
 
   const onSaveBuild = useCallback(() => {
     const id = crypto.randomUUID()
@@ -103,6 +103,11 @@ const SaveBuildModal = observer(({ index }: { index: number }) => {
       if (pass) {
         isDefault && buildStore.setDefault(id)
         modalStore.closeModal()
+        toastStore.openNotification({
+          title: 'Build Saved Successfully',
+          icon: 'fa-solid fa-circle-check',
+          color: 'green',
+        })
       }
     }
   }, [index, name])

@@ -30,6 +30,13 @@ export class Inventory {
 
   addArtifact = (artifact: IArtifactEquip) => {
     if (!artifact) return false
+    if (
+      _.includes(
+        _.map(this.artifacts, (item) => item.id),
+        artifact.id
+      )
+    )
+      return false
     this.artifacts = [artifact, ...this.artifacts]
     return true
   }

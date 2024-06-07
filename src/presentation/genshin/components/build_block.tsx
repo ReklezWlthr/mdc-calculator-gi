@@ -10,20 +10,29 @@ import { useCallback } from 'react'
 interface BuildBlockProps {
   build: IBuild
   onClick: () => void
+  onDelete: () => void
 }
 
-export const BuildBlock = observer(({ build, onClick }: BuildBlockProps) => {
-  const { buildStore, modalStore } = useStore()
+export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProps) => {
+  const { buildStore, modalStore, toastStore } = useStore()
 
   const char = findCharacter(build.cId)
 
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
       <CommonModal
-        icon="fa-solid fa-question-circle text-yellow"
+        icon="fa-solid fa-exclamation-circle text-red"
         title="Delete Build"
         desc="Are you sure you want to delete this build? Deleting build will NOT delete designated artifacts."
-        onConfirm={() => buildStore.deleteBuild(build.id)}
+        onConfirm={() => {
+          buildStore.deleteBuild(build.id)
+          onDelete()
+          toastStore.openNotification({
+            title: 'Build Deleted Successfully',
+            icon: 'fa-solid fa-circle-check',
+            color: 'green',
+          })
+        }}
       />
     )
   }, [build.id])

@@ -26,7 +26,7 @@ import { ImportModal } from '../components/import_modal'
 import dayjs from 'dayjs'
 
 export const ImportExport = observer(() => {
-  const { modalStore, settingStore, importStore } = useStore()
+  const { modalStore, settingStore, importStore, toastStore } = useStore()
 
   const { data, updateData } = useLocalUpdater('genshin')
 
@@ -199,6 +199,11 @@ export const ImportExport = observer(() => {
                   onOpenConfirmModal(data?.characters?.length, data?.builds?.length, data?.artifacts?.length, () => {
                     localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
                     updateData(event.target.result.toString())
+                    toastStore.openNotification({
+                      title: 'Data Imported Successfully',
+                      icon: 'fa-solid fa-circle-check',
+                      color: 'green',
+                    })
                   })
                 })
                 reader.readAsText(file)

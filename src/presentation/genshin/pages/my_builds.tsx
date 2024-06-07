@@ -23,7 +23,7 @@ export const MyBuilds = observer(() => {
         <div className="flex flex-col w-1/3 h-full gap-2 overflow-y-auto rounded-lg shrink-0 hideScrollbar">
           {_.size(buildStore.builds) ? (
             _.map(buildStore.builds, (build) => (
-              <BuildBlock key={build.id} build={build} onClick={() => setSelected(build.id)} />
+              <BuildBlock key={build.id} build={build} onClick={() => setSelected(build.id)} onDelete={() => setSelected('')} />
             ))
           ) : (
             <div className="flex items-center justify-center w-full h-full rounded-lg bg-primary-darker text-gray">

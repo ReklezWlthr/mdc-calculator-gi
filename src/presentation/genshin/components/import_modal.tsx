@@ -10,7 +10,7 @@ import { observer } from 'mobx-react-lite'
 import { useCallback } from 'react'
 
 export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; artifacts: IArtifactEquip[] }) => {
-  const { artifactStore, charStore, buildStore, modalStore } = useStore()
+  const { artifactStore, charStore, buildStore, modalStore, toastStore } = useStore()
 
   const { params, setParams } = useParams({
     character: true,
@@ -51,13 +51,18 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
         weapon: char.equipments.weapon,
       })
       if (params.default) buildStore.setDefault(id)
+      toastStore.openNotification({
+        title: 'Data Imported Successfully',
+        icon: 'fa-solid fa-circle-check',
+        color: 'green',
+      })
     }
     modalStore.closeModal()
   }, [params])
 
   return (
     <div className="w-[25vw] bg-primary-dark rounded-lg p-3 space-y-2">
-      <p className="text-lg font-bold text-white">Import Character</p>
+      <p className="text-lg font-bold text-white">Choose What to Import</p>
       <div className="p-3 space-y-2 rounded-lg bg-primary-darker">
         <p className="font-bold text-white">Import Character</p>
         <div className="border-t border-primary-border" />
