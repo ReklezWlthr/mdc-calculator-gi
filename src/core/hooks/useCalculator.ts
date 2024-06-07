@@ -21,6 +21,7 @@ import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
 import { Resonance } from '@src/data/db/characters'
 import { isFlat } from '@src/presentation/genshin/components/custom_modal'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
 export const useCalculator = () => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
@@ -148,7 +149,6 @@ export const useCalculator = () => {
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
       let x = base
-      console.log(calculatorStore.form[index])
       _.forEach(conditionals, (item, i) => {
         // Loop characters, exclude index of the current parent iteration
         if (i !== index)
@@ -179,6 +179,7 @@ export const useCalculator = () => {
       })
       return x
     })
+    const emblem = [false, false, false, false]
     // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
     const postArtifact = _.map(postCustom, (base, index) => {
       let x = base
@@ -186,11 +187,9 @@ export const useCalculator = () => {
         _.find(artifactStore.artifacts, ['id', item])
       )
       const setBonus = getSetCount(artifactData)
+      if (setBonus['2276480763'] >= 4) emblem[index] = true
       _.forEach(calculatorStore.form, (form, i) => {
-        x =
-          i === index
-            ? calculateArtifact(x, form, teamStore.characters, index, setBonus['2276480763'] >= 4)
-            : calculateTeamArtifact(x, form)
+        x = i === index ? calculateArtifact(x, form, teamStore.characters, index) : calculateTeamArtifact(x, form)
       })
       return x
     })
@@ -240,11 +239,13 @@ export const useCalculator = () => {
       calculateReaction(base, calculatorStore.form[index], teamStore.characters[index]?.level)
     )
     // Cleanup callbacks for buffs that should be applied last
-    const final = _.map(postReaction, (base) => {
+    const final = _.map(postReaction, (base, index) => {
       let x = base
       _.forEach(base.CALLBACK, (cb) => {
         x = cb(x, postReaction)
       })
+      // EoSF Buff is placed here because some effects increase ER
+      if (emblem[index]) x.BURST_DMG += _.min([x[Stats.ER] * 0.25, 0.75])
       return x
     })
     calculatorStore.setValue('computedStats', final)
@@ -281,7 +282,6 @@ export const useCalculator = () => {
   const mainContent = _.filter(mapped, ['index', selected])
   const teamContent = [..._.filter(mapped, (item, index) => selected !== item.index), ...allyMapped]
   const mainReaction = _.filter(reactions, ['index', selected])
-  console.log(teamContent)
 
   // Content of transformative reaction dmg
   const nilou = _.some(calculatorStore.form, (item) => item?.bountiful_core)

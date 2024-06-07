@@ -120,7 +120,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
         }
       )}
     >
-      <div className="h-10 overflow-hidden rounded-t-lg bg-primary-light">
+      <div className="h-10 overflow-hidden rounded-t-lg bg-primary-light shrink-0">
         <div
           className={classNames('px-5 py-2 space-y-5 duration-200', {
             'group-hover:-translate-y-1/2': canEdit && props.aId,

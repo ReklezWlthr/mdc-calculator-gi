@@ -16,18 +16,7 @@ export const getArtifactConditionals = (artifacts: IArtifactEquip[]) => {
   }
 }
 
-export const calculateArtifact = (
-  base: StatsObject,
-  form: Record<string, any>,
-  team: ITeamChar[],
-  index: number,
-  emblem: boolean
-) => {
-  if (emblem)
-    base.CALLBACK.push((x: StatsObject) => {
-      x.BURST_DMG += _.min([x[Stats.ER] * 0.25, 0.75])
-      return x
-    })
+export const calculateArtifact = (base: StatsObject, form: Record<string, any>, team: ITeamChar[], index: number) => {
   if (form['1751039235']) base.BURST_DMG += 0.2
   if (form['1541919827']) base.CHARGE_DMG += 0.5
   if (form['83115355']) base[Stats.I_HEALING] += 0.2

@@ -345,8 +345,11 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '11512',
     scaling: (base, form, r) => {
       if (form['11512']) {
-        base.BASIC_F_DMG += calcRefinement(1.2, 0.3, r) * base[Stats.EM]
-        base.SKILL_F_DMG += calcRefinement(1.2, 0.3, r) * base[Stats.EM]
+        base.CALLBACK.push((base: StatsObject) => {
+          base.BASIC_F_DMG += calcRefinement(1.2, 0.3, r) * base[Stats.EM]
+          base.SKILL_F_DMG += calcRefinement(1.2, 0.3, r) * base[Stats.EM]
+          return base
+        })
       }
       return base
     },
@@ -570,7 +573,11 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '12415',
     scaling: (base, form, r) => {
-      if (form['12415']) base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * base[Stats.EM]
+      if (form['12415'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * base[Stats.EM]
+          return base
+        })
       return base
     },
   },
@@ -899,7 +906,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '13501',
     scaling: (base, form, r) => {
-      if (form['13501']) base[Stats.ATK] += calcRefinement(0.01, 0.002, r) * base.getAtk()
+      if (form['13501']) base[Stats.ATK] += calcRefinement(0.01, 0.002, r) * base.getHP()
       return base
     },
   },
@@ -964,14 +971,18 @@ export const WeaponConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `Burst Bonus ER`,
+    text: `Skill Hit Bonus ATK`,
     show: true,
     default: 0,
     min: 0,
     max: 3,
     id: '13511',
     scaling: (base, form, r) => {
-      if (form['13511']) base[Stats.ATK] += calcRefinement(0.28, 0.07, r) * base[Stats.EM] * form['13511']
+      if (form['13511'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ATK] += calcRefinement(0.28, 0.07, r) * base[Stats.EM] * form['13511']
+          return base
+        })
       return base
     },
   },
@@ -1206,7 +1217,11 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '14416',
     scaling: (base, form, r) => {
-      if (form['14416']) base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * base[Stats.EM]
+      if (form['14416'])
+        base.CALLBACK.push((base: StatsObject) => {
+          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * base[Stats.EM]
+          return base
+        })
       return base
     },
   },

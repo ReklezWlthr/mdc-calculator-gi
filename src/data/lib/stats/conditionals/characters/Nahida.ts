@@ -275,6 +275,12 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      if (form.nahida_em_share)
+        base.CALLBACK.push((base: StatsObject, team: StatsObject[]) => {
+          base[Stats.EM] += _.min([_.max(_.map(team, (item) => item[Stats.EM])) * 0.25, 250])
+          return base
+        })
+
       const a4Dmg = _.min([0.001 * _.max([base[Stats.EM] - 200, 0]), 0.8])
       const a4Cr = _.min([0.0003 * _.max([base[Stats.EM] - 200, 0]), 0.24])
       base.SKILL_SCALING.push({
