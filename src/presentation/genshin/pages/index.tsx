@@ -37,10 +37,6 @@ export const GenshinHome = observer(() => {
   const { modalStore } = useStore()
   useLocalUpdater('genshin')
 
-  useEffect(() => {
-    modalStore.openModal(<IntroModal />)
-  }, [])
-
   return (
     <div className="flex flex-shrink w-full h-full overflow-y-auto">
       <Sidebar onChange={setPage} currentPage={page} />
