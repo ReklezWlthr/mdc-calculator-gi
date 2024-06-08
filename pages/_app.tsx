@@ -28,6 +28,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
         <link href="https://use.fontawesome.com/releases/v6.5.2/css/all.css" rel="stylesheet" />
+        <link rel="icon" href="/logo.svg" />
         <title>MD✦C Calculator</title>
         <meta name="google-site-verification" content="SWAMBA11X0hqeGKH-lQYsBY-qReI16suADm0Iew1UT8" />
       </Head>

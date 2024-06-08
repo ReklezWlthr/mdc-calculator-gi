@@ -68,6 +68,7 @@ export const IntroModal = observer(() => {
               <a
                 className="cursor-pointer focus:outline-none text-blue"
                 href="https://www.reddit.com/user/ReklezWLTHR/"
+                target="_blank"
               >
                 u/ReklezWLTHR
               </a>
@@ -82,19 +83,20 @@ export const IntroModal = observer(() => {
             <a
               className="cursor-pointer focus:outline-none text-desc"
               href="https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki"
+              target="_blank"
             >
               Genshin Impact Wiki
             </a>{' '}
             for formulas, descriptions and constellation images.
           </BulletPoint>
           <BulletPoint>
-            <a className="cursor-pointer focus:outline-none text-desc" href="https://enka.network">
-              Enka Network
+            <a className="cursor-pointer focus:outline-none text-desc" href="https://enka.network" target="_blank">
+              EnkaNetwork
             </a>{' '}
             for images of characters, talents, weapons and artifacts as well as APIs for in-game data import.
           </BulletPoint>
           <BulletPoint>
-            <a className="cursor-pointer focus:outline-none text-desc" href="https://wanderer.moe">
+            <a className="cursor-pointer focus:outline-none text-desc" href="https://wanderer.moe" target="_blank">
               Wanderer.moe
             </a>{' '}
             for images of elements and emotes.
