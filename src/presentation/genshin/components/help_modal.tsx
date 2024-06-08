@@ -25,6 +25,11 @@ export const HelpModal = observer(() => {
           To view the character's final stats after conditionals, please head to the{' '}
           <b className="text-red">Damage Calculator</b> page.
         </BulletPoint>
+        <BulletPoint>
+          You can save builds for each character and assign one of them as your default build. Once set, every time you
+          select the character, the app will automatically equips them with the weapon and artifacts from the default
+          build.
+        </BulletPoint>
         <p className="pt-1">
           2. <b className="text-desc">Weapon</b>: allows you to select your character's weapon.
         </p>
