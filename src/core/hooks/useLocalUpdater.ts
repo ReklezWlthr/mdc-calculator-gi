@@ -45,12 +45,28 @@ export const useLocalUpdater = (game: string) => {
         })
       )
     }
-  }, [...teamStore.characters, artifactStore.artifacts, buildStore.builds, charStore.characters])
+  }, [
+    ...teamStore.characters,
+    artifactStore.artifacts,
+    buildStore.builds,
+    charStore.characters,
+    settingStore.settings.storeData,
+  ])
 
   useEffect(() => {
     if (hydrated) {
       localStorage.setItem(settingKey, JSON.stringify(settingStore.settings))
       calculatorStore.setValue('level', settingStore?.settings?.defaultEnemyLevel || 1)
+      if (!settingStore.settings.storeData)
+        localStorage.setItem(
+          key,
+          JSON.stringify({
+            team: [],
+            artifacts: [],
+            builds: [],
+            characters: [],
+          })
+        )
     }
   }, [settingStore.settings])
 
@@ -58,7 +74,7 @@ export const useLocalUpdater = (game: string) => {
     const data = localStorage.getItem(key)
     const settings = localStorage.getItem(settingKey)
 
-    updateData(data)
+    if (JSON.parse(settings)?.storeData) updateData(data)
     updateSettings(settings)
 
     setHydrated(true)

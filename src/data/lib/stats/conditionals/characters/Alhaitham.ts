@@ -38,7 +38,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Hold</b>
       <br />Enters Aiming Mode to adjust the direction of Alhaitham's rush attack.
       <br />
-      <br />Chisel-Light Mirror
+      <br /><b>Chisel-Light Mirror</b>
       <br />When this skill is unleashed, Alhaitham will generate <span class="text-desc">1</span> Chisel-Light Mirror. If there are no Mirrors at this time, he will generate <span class="text-desc">1</span> additional Mirror. Chisel-Light Mirrors will have the following properties:
       <br />- When he possesses Chisel-Light Mirrors, Alhaitham's Normal, Charged, and Plunging Attacks will be converted to <b class="text-genshin-dendro">Dendro DMG</b>. This cannot be overridden.
       <br />- When attacks of the aforementioned kinds hit opponents, the Chisel-Light Mirrors will unleash a Projection Attack that deals <b class="text-genshin-dendro">AoE Dendro DMG</b> based on the number of Mirrors on the field.

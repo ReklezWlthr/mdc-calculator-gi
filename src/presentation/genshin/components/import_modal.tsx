@@ -15,7 +15,7 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
   const { params, setParams } = useParams({
     character: true,
     artifacts: true,
-    build: false,
+    build: true,
     buildName: `${findCharacter(char?.cId)?.name}'s Build`,
     default: true,
   })

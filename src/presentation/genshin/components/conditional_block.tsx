@@ -57,7 +57,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                       body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
                       key={content.id}
                       style={tooltipStyle}
-                      position='left'
+                      position="left"
                     >
                       <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                     </Tooltip>
@@ -66,17 +66,20 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                     {content.debuff ? 'Debuff' : 'Buff'}
                   </div>
                   {content.type === 'number' && (
-                    <TextInput
-                      type="number"
-                      value={calculatorStore.form[content.index]?.[content.id]}
-                      onChange={(value) =>
-                        calculatorStore.setFormValue(content.index, content.id, parseFloat(value) ?? '')
-                      }
-                      max={content.max}
-                      min={content.min}
-                      style="col-span-2"
-                      small
-                    />
+                    <>
+                      <TextInput
+                        type="number"
+                        value={calculatorStore.form[content.index]?.[content.id]}
+                        onChange={(value) =>
+                          calculatorStore.setFormValue(content.index, content.id, parseFloat(value) ?? '')
+                        }
+                        max={content.max}
+                        min={content.min}
+                        style="col-span-2"
+                        small
+                      />
+                      <p className="col-span-2 px-1 text-center text-gray">Max: {content.max.toLocaleString()}</p>
+                    </>
                   )}
                   {content.type === 'toggle' && (
                     <div className="flex items-center justify-center col-span-2">

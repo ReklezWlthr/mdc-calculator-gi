@@ -30,8 +30,8 @@ export const IntroModal = observer(() => {
           improved, please let me know.
         </BulletPoint>
         <BulletPoint>
-          The resulting stats and sub stat rolls may be slightly off due to hidden decimals and some mathematical
-          wizardry, but the differences should be negligible.
+          The resulting stats may be slightly off due to hidden decimals and some mathematical wizardry, but the
+          differences should be negligible. Sub stat rolls may also become inaccurate when the roll quality is too high.
         </BulletPoint>
         <BulletPoint>
           It is not recommended to use this app on mobiles or vertical screens. This is partly due to most information
@@ -48,7 +48,7 @@ export const IntroModal = observer(() => {
       </Collapsible>
       <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
         <p className="text-sm font-bold text-white">
-          Hi, <span className="text-desc">MourningDew</span> Here
+          Hi, <span className="text-desc">MourningDew</span> Here...
         </p>
         <div className="space-y-1 overflow-hidden transition-all duration-200">
           <BulletPoint>
