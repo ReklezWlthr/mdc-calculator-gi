@@ -19,6 +19,7 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Dawnstar Piercer`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive spear strikes.
@@ -31,6 +32,7 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Spring Spirit Summoning`,
       content: `The frosted dew, silvery and dense, shall exorcise all demons.
       <br />Grants all nearby party members the Icy Quill effect and deals <b class="text-genshin-cryo">Cryo DMG</b> in different ways based on whether it is pressed or held.
@@ -50,52 +52,62 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Divine Maiden's Deliverance`,
       content: `Unleashes the power of the Talisman Spirit, allowing it to roam free in this plane, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       <br />The Talisman Spirit then creates a field that decreases the <b class="text-genshin-cryo">Cryo RES</b> and <b>Physical RES</b> of opponents within it. It also deals periodic <b class="text-genshin-cryo">Cryo DMG</b> to opponents within the field.
       `,
     },
     a1: {
-      title: `A1: Deific Embrace`,
+      trace: `Ascension 1 Passive`,
+      title: `Deific Embrace`,
       content: `An active character within the field created by Divine Maiden's Deliverance gains <span class="text-desc">15%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b>.`,
     },
     a4: {
-      title: `A4: Spirit Communion Seal`,
+      trace: `Ascension 4 Passive`,
+      title: `Spirit Communion Seal`,
       content: `After Shenhe uses Spring Spirit Summoning, she will grant all nearby party members the following effects:
       <br />- Press: Elemental Skill and Elemental Burst DMG increased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.
       <br />- Hold: Normal, Charged, and Plunging Attack DMG increased by <span class="text-desc">15%</span> for <span class="text-desc">15</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Precise Comings and Goings`,
       content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Liyue Expedition for 20 hours.`,
     },
     c1: {
-      title: `C1: Clarity of Heart`,
+      trace: `Constellation 1`,
+      title: `Clarity of Heart`,
       content: `Spring Spirit Summoning can be used <span class="text-desc">1</span> more time.`,
     },
     c2: {
-      title: `C2: Centered Spirit`,
+      trace: `Constellation 2`,
+      title: `Centered Spirit`,
       content: `Divine Maiden's Deliverance lasts for <span class="text-desc">6</span> seconds longer.
       <br />Active characters within the skill's field deal <span class="text-desc">15%</span> increased <b class="text-genshin-cryo">Cryo</b> CRIT DMG.`,
     },
     c3: {
-      title: `C3: Seclusion`,
+      trace: `Constellation 3`,
+      title: `Seclusion`,
       content: `Increases the Level of Spring Spirit Summoning by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Insight`,
+      trace: `Constellation 4`,
+      title: `Insight`,
       content: `When characters under the effect of Icy Quill applied by Shenhe triggers its DMG Bonus effects, Shenhe will gain a Skyfrost Mantra stack:
       <br />- When Shenhe uses Spring Spirit Summoning, she will consume all stacks of Skyfrost Mantra, increasing the DMG of that Spring Spirit Summoning by <span class="text-desc">5%</span> for each stack consumed.
       <br />- Max <span class="text-desc">50</span> stacks. Stacks last for <span class="text-desc">60</span>s.`,
     },
     c5: {
-      title: `C5: Divine Attainment`,
+      trace: `Constellation 5`,
+      title: `Divine Attainment`,
       content: `Increases the Level of Divine Maiden's Deliverance by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Mystical Abandon`,
+      trace: `Constellation 6`,
+      title: `Mystical Abandon`,
       content: `When characters trigger Icy Quill's effects using Normal and Charged Attack DMG, it does not count toward the Trigger Quota.`,
     },
   }

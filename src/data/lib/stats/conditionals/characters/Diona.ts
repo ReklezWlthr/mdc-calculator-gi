@@ -18,6 +18,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Kätzlein Style`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive shots with a bow.
@@ -31,6 +32,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Icy Paws`,
       content: `Fires an Icy Paw that deals <b class="text-genshin-cryo">Cryo DMG</b> to opponents and forms a shield on hit.
       <br />The shield's DMG Absorption scales based on Diona's Max HP, and its duration scales off the number of Icy Paws that hit their target.
@@ -45,6 +47,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
       <br />The shield has a 250% <b class="text-genshin-cryo">Cryo DMG</b> Absorption Bonus, and will cause your active character to become affected by <b class="text-genshin-cryo">Cryo</b> at the point of formation for a short duration.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Signature Mix`,
       content: `Tosses out a special cold brew that deals <b class="text-genshin-cryo">AoE Cryo DMG</b> and creates a Drunken Mist in an AoE.
       <br />
@@ -54,42 +57,51 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Cat's Tail Secret Menu`,
+      trace: `Ascension 1 Passive`,
+      title: `Cat's Tail Secret Menu`,
       content: `Characters shielded by Icy Paws have their Movement SPD increased by <span class="text-desc">10%</span> and their Stamina Consumption decreased by <span class="text-desc">10%</span>.`,
     },
     a4: {
-      title: `A4: Drunkards' Farce`,
+      trace: `Ascension 4 Passive`,
+      title: `Drunkards' Farce`,
       content: `Opponents who enter the AoE of Signature Mix have <span class="text-desc">10%</span> decreased ATK for <span class="text-desc">15</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Complimentary Bar Food`,
       content: `When a Perfect Cooking is achieved on a dish with restorative effects, Diona has a <span class="text-desc">12%</span> chance to obtain double the product.`,
     },
     c1: {
-      title: `C1: A Lingering Flavor`,
+      trace: `Constellation 1`,
+      title: `A Lingering Flavor`,
       content: `Regenerates <span class="text-desc">15</span> Energy for Diona after the effects of Signature Mix end.`,
     },
     c2: {
-      title: `C2: Shaken, Not Purred`,
+      trace: `Constellation 2`,
+      title: `Shaken, Not Purred`,
       content: `Increases Icy Paws' DMG by <span class="text-desc">15%</span>, and increases its shield's DMG Absorption by <span class="text-desc">15%</span>.
       <br />Additionally, when paws hit their targets, creates a shield for other nearby characters on the field with <span class="text-desc">50%</span> of the Icy Paws shield's DMG Absorption for <span class="text-desc">5</span>s.`,
     },
     c3: {
-      title: `C3: A—Another Round?`,
+      trace: `Constellation 3`,
+      title: `A—Another Round?`,
       content: `Increases the Level of Signature Mix by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Wine Industry Slayer`,
+      trace: `Constellation 4`,
+      title: `Wine Industry Slayer`,
       content: `Within the radius of Signature Mix, Diona's charge time for aimed shots is reduced by <span class="text-desc">60%</span>.`,
     },
     c5: {
-      title: `C5: Double Shot, on the Rocks`,
+      trace: `Constellation 5`,
+      title: `Double Shot, on the Rocks`,
       content: `Increases the Level of Icy Paws by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Cat's Tail Closing Time`,
+      trace: `Constellation 6`,
+      title: `Cat's Tail Closing Time`,
       content: `Characters within Signature Mix's radius will gain the following effects based on their HP amounts:
       <br />Increases Incoming Healing Bonus by <span class="text-desc">30%</span> when HP falls below or is equal to <span class="text-desc">50%</span>.
       <br />Elemental Mastery increased by <span class="text-desc">200</span> when HP is above <span class="text-desc">50%</span>.`,

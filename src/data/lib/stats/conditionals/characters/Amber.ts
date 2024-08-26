@@ -18,6 +18,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Sharpshooter`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive shots with a bow.
@@ -31,6 +32,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Explosive Puppet`,
       content: `The ever-reliable Baron Bunny takes the stage.
       <br />
@@ -44,48 +46,58 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
       <br />The longer the button is held, the further the throw.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Fiery Rain`,
       content: `Fires off a shower of arrows, dealing continuous <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       `,
     },
     a1: {
-      title: `A1: Every Arrow Finds Its Target`,
+      trace: `Ascension 1 Passive`,
+      title: `Every Arrow Finds Its Target`,
       content: `Increases the CRIT Rate of Fiery Rain by <span class="text-desc">10%</span> and widens its AoE by <span class="text-desc">30%</span>.`,
     },
     a4: {
-      title: `A4: Precise Shot`,
+      trace: `Ascension 4 Passive`,
+      title: `Precise Shot`,
       content: `Aimed Shot hits on weak spots increase ATK by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Gliding Champion`,
       content: `Decreases gliding Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
-      title: `C1: One Arrow to Rule Them All`,
+      trace: `Constellation 1`,
+      title: `One Arrow to Rule Them All`,
       content: `Fires <span class="text-desc">2</span> arrows per Aimed Shot. The second arrow deals <span class="text-desc">20%</span> of the first arrow's DMG.`,
     },
     c2: {
-      title: `C2: Bunny Triggered`,
+      trace: `Constellation 2`,
+      title: `Bunny Triggered`,
       content: `Baron Bunny, new and improved! Hitting Baron Bunny's foot with a fully-charged Aimed Shot manually detonates it.
       <br />Explosion via manual detonation deals <span class="text-desc">200%</span> additional DMG.`,
     },
     c3: {
-      title: `C3: It Burns!`,
+      trace: `Constellation 3`,
+      title: `It Burns!`,
       content: `Increases the Level of Fiery Rain by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: It's Not Just Any Doll...`,
+      trace: `Constellation 4`,
+      title: `It's Not Just Any Doll...`,
       content: `Decreases Explosive Puppet's CD by <span class="text-desc">20%</span>. Adds <span class="text-desc">1</span> additional charge.`,
     },
     c5: {
-      title: `C5: It's Baron Bunny!`,
+      trace: `Constellation 5`,
+      title: `It's Baron Bunny!`,
       content: `Increases the Level of Explosive Puppet by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Wildfire`,
+      trace: `Constellation 6`,
+      title: `Wildfire`,
       content: `Fiery Rain increases all party members' Movement SPD by <span class="text-desc">15%</span> and ATK by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
     },
   }

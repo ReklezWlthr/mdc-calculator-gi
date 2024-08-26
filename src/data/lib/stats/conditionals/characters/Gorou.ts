@@ -22,6 +22,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Ripping Fang Fletching`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive shots with a bow.
@@ -34,6 +35,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Inuzaka All-Round Defense`,
       content: `Deals <b class="text-genshin-geo">AoE Geo DMG</b> and sets up a General's War Banner.
       <br />
@@ -50,6 +52,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       <br />Adjust the location of the skill.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Juuga: Forward Unto Victory`,
       content: `Displaying his valor as a general, Gorou deals <b class="text-genshin-geo">AoE Geo DMG</b> and creates a field known as General's Glory to embolden his comrades.
       <br />
@@ -64,43 +67,52 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       `,
     },
     a1: {
-      title: `A1: Heedless of the Wind and Weather`,
+      trace: `Ascension 1 Passive`,
+      title: `Heedless of the Wind and Weather`,
       content: `After using Juuga: Forward Unto Victory, all nearby party members' DEF is increased by <span class="text-desc">25%</span> for <span class="text-desc">12</span>s.`,
     },
     a4: {
-      title: `A4: A Favor Repaid`,
+      trace: `Ascension 4 Passive`,
+      title: `A Favor Repaid`,
       content: `Gorou receives the following DMG Bonuses to his attacks based on his DEF:
       <br />- Inuzaka All-Round Defense: Skill DMG increased by <span class="text-desc">156%</span> of DEF
       <br />- Juuga: Forward Unto Victory: Skill DMG and Crystal Collapse DMG increased by <span class="text-desc">15.6%</span> of DEF`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Seeker of Shinies`,
       content: `Displays the location of nearby resources unique to Inazuma on the mini-map.`,
     },
     c1: {
-      title: `C1: Rushing Hound: Swift as the Wind`,
+      trace: `Constellation 1`,
+      title: `Rushing Hound: Swift as the Wind`,
       content: `When characters (other than Gorou) within the AoE of Gorou's General's War Banner or General's Glory deal <b class="text-genshin-geo">Geo DMG</b> to opponents, the CD of Gorou's Inuzaka All-Round Defense is decreased by <span class="text-desc">2</span>s. This effect can occur once every <span class="text-desc">10</span>s.`,
     },
     c2: {
-      title: `C2: Sitting Hound: Steady as a Clock`,
+      trace: `Constellation 2`,
+      title: `Sitting Hound: Steady as a Clock`,
       content: `While General's Glory is in effect, its duration is extended by <span class="text-desc">1</span>s when a nearby active character obtains an Elemental Shard from a Crystallize reaction. This effect can occur once every <span class="text-desc">0.1</span>s. Max extension is <span class="text-desc">3</span>s.`,
     },
     c3: {
-      title: `C3: Mauling Hound: Fierce as Fire`,
+      trace: `Constellation 3`,
+      title: `Mauling Hound: Fierce as Fire`,
       content: `Increases the Level of Inuzaka All-Round Defense by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Lapping Hound: Warm as Water`,
+      trace: `Constellation 4`,
+      title: `Lapping Hound: Warm as Water`,
       content: `When General's Glory is in the "Impregnable" or "Crunch" states, it will also heal active characters within its AoE by <span class="text-desc">50%</span> of Gorou's own DEF every <span class="text-desc">1.5</span>s.`,
     },
     c5: {
-      title: `C5: Striking Hound: Thunderous Force`,
+      trace: `Constellation 5`,
+      title: `Striking Hound: Thunderous Force`,
       content: `Increases the Level of Juuga: Forward Unto Victory by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Valiant Hound: Mountainous Fealty`,
+      trace: `Constellation 6`,
+      title: `Valiant Hound: Mountainous Fealty`,
       content: `For <span class="text-desc">12</span>s after using Inuzaka All-Round Defense or Juuga: Forward Unto Victory, increases the CRIT DMG of all nearby party members' <b class="text-genshin-geo">Geo DMG</b> based on the buff level of the skill's field at the time of use:
       <br />- "Standing Firm": <span class="text-desc">+10%</span>
       <br />- "Impregnable": <span class="text-desc">+20%</span>

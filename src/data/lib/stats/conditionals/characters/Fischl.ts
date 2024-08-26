@@ -18,6 +18,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Bolts of Downfall`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive shots with a bow.
@@ -31,6 +32,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Nightrider`,
       content: `Summons Oz. The night raven forged of darkness and lightning descends upon the land, dealing <b class="text-genshin-electro">Electro DMG</b> in a small AoE.
       <br />For the ability's duration, Oz will continuously attack nearby opponents with <b class="text-genshin-electro">Freikugel</b>.
@@ -39,6 +41,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Press</b> again any time during the ability's duration to once again summon him to Fischl's side.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Midnight Phantasmagoria`,
       content: `Summons Oz to spread his twin wings of twilight and defend Fischl.
       <br />Has the following properties during the ability's duration:
@@ -48,42 +51,51 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Stellar Predator`,
+      trace: `Ascension 1 Passive`,
+      title: `Stellar Predator`,
       content: `When Fischl hits Oz with a fully-charged Aimed Shot, Oz brings down Thundering Retribution, dealing <b class="text-genshin-electro">AoE Electro DMG</b> equal to <span class="text-desc">152.7%</span> of the arrow's DMG.`,
     },
     a4: {
-      title: `A4: Undone Be Thy Sinful Hex`,
+      trace: `Ascension 4 Passive`,
+      title: `Undone Be Thy Sinful Hex`,
       content: `If your active character triggers an Electro-related Elemental Reaction when Oz is on the field, the opponent shall be stricken with Thundering Retribution that deals <b class="text-genshin-electro">Electro DMG</b> equal to <span class="text-desc">80%</span> of Fischl's ATK.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Mein Hausgarten`,
       content: `When dispatched on an expedition in Mondstadt, time consumed is reduced by <span class="text-desc">25%</span>.`,
     },
     c1: {
-      title: `C1: Gaze of the Deep`,
+      trace: `Constellation 1`,
+      title: `Gaze of the Deep`,
       content: `Even when Oz is not present in combat, he can still watch over Fischl through his raven eyes. When Fischl performs a Normal Attack against an opponent, Oz fires a coordinated attack, dealing DMG equal to <span class="text-desc">22%</span> of Fischl's ATK.`,
     },
     c2: {
-      title: `C2: Devourer of All Sins`,
+      trace: `Constellation 2`,
+      title: `Devourer of All Sins`,
       content: `When Nightrider is used, it deals an additional <span class="text-desc">200%</span> ATK as DMG, and its AoE is increased by <span class="text-desc">50%</span>.`,
     },
     c3: {
-      title: `C3: Wings of Nightmare`,
+      trace: `Constellation 3`,
+      title: `Wings of Nightmare`,
       content: `Increases the Level of Nightrider by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Her Pilgrimage of Bleak`,
+      trace: `Constellation 4`,
+      title: `Her Pilgrimage of Bleak`,
       content: `When Midnight Phantasmagoria is used, it deals <span class="text-desc">222%</span> of ATK as <b class="text-genshin-electro">Electro DMG</b> to surrounding opponents.
       When the skill duration ends, Fischl regenerates <span class="text-desc">20%</span> of her HP.`,
     },
     c5: {
-      title: `C5: Against the Fleeing Light`,
+      trace: `Constellation 5`,
+      title: `Against the Fleeing Light`,
       content: `Increases the Level of Midnight Phantasmagoria by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Evernight Raven`,
+      trace: `Constellation 6`,
+      title: `Evernight Raven`,
       content: `Extends the duration of Oz's presence on the field by <span class="text-desc">2</span>s. Additionally, Oz performs coordinated attacks with your active character when present, dealing <span class="text-desc">30%</span> of Fischl's ATK as <b class="text-genshin-electro">Electro DMG</b>.`,
     },
   }

@@ -23,6 +23,7 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Blunt Refusal`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -36,6 +37,7 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Ceremonial Crystalshot`,
       content: `When a character in the party obtains an Elemental Shard created from the Crystallize reaction, Navia will gain <span class="text-desc">1</span> Crystal Shrapnel stack. Navia can have up to <span class="text-desc">6</span> stacks of Crystal Shrapnel at once. Each time Crystal Shrapnel gain is triggered, the duration of the Crystal Shrapnel stacks you already have will be reset.
       <br />When she fires, Navia will consume all Crystal Shrapnel stacks and open her elegant yet lethal Gunbrella, firing multiple Rosula Shardshots that can penetrate opponents, dealing <b class="text-genshin-geo">Geo DMG</b> to opponents hit.
@@ -52,47 +54,57 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `As the Sunlit Sky's Singing Salute`,
       content: `On the orders of the President of the Spina di Rosula, call for a magnificent Rosula Dorata Salute. Unleashes a massive cannon bombardment on opponents in front of her, dealing <b class="text-genshin-geo">AoE Geo DMG</b> and providing Cannon Fire Support for a duration afterward, periodically dealing <b class="text-genshin-geo">Geo DMG</b> to nearby opponents.
       <br />When cannon attacks hit opponents, Navia will gain <span class="text-desc">1</span> stack of Crystal Shrapnel. This effect can be triggered up to once every <span class="text-desc">2.4</span>s.`,
     },
     a1: {
-      title: `A1: Undisclosed Distribution Channels`,
+      trace: `Ascension 1 Passive`,
+      title: `Undisclosed Distribution Channels`,
       content: `For 4s after using Ceremonial Crystalshot, the DMG dealt by Navia's Normal Attacks, Charged Attacks, and Plunging Attacks will be converted into <b class="text-genshin-geo">Geo DMG</b> which cannot be overridden by other Elemental infusions, and the DMG dealt by Navia's Normal Attacks, Charged Attacks, and Plunging Attacks will be increased by <span class="text-desc">40%</span>.`,
     },
     a4: {
-      title: `A4: Mutual Assistance Network`,
+      trace: `Ascension 4 Passive`,
+      title: `Mutual Assistance Network`,
       content: `For each <b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-electro">Electro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-hydro">Hydro</b> party member, Navia gains <span class="text-desc">20%</span> increased ATK. This effect can stack up to <span class="text-desc">2</span> times.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Painstaking Transaction`,
       content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Fontaine Expedition for 20 hours.`,
     },
     c1: {
-      title: `C1: A Lady's Rules for Keeping a Courteous Distance`,
+      trace: `Constellation 1`,
+      title: `A Lady's Rules for Keeping a Courteous Distance`,
       content: `Each stack of Crystal Shrapnel consumed when Navia uses Ceremonial Crystalshot will restore <span class="text-desc">3</span> Energy to her and decrease the CD of As the Sunlit Sky's Singing Salute by <span class="text-desc">1</span>s. Up to <span class="text-desc">9</span> Energy can be gained this way, and the CD of "As the Sunlit Sky's Singing Salute" can be decreased by up to <span class="text-desc">3</span>s.`,
     },
     c2: {
-      title: `C2: The President's Pursuit of Victory`,
+      trace: `Constellation 2`,
+      title: `The President's Pursuit of Victory`,
       content: `Each stack of Crystal Shrapnel consumed will increase the CRIT Rate of this Ceremonial Crystalshot instance by <span class="text-desc">12%</span>. CRIT Rate can be increased by up to <span class="text-desc">36%</span> in this way.
       <br />In addition, when Ceremonial Crystalshot hits an opponent, one Cannon Fire Support shot from As the Sunlit Sky's Singing Salute will strike near the location of the hit. Up to one instance of Cannon Fire Support can be triggered each time Ceremonial Crystalshot is used, and DMG dealt by said Cannon Fire Support this way is considered Elemental Burst DMG.`,
     },
     c3: {
-      title: `C3: Businesswoman's Broad Vision`,
+      trace: `Constellation 3`,
+      title: `Businesswoman's Broad Vision`,
       content: `Increases the Level of Ceremonial Crystalshot by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: The Oathsworn Never Capitulate`,
+      trace: `Constellation 4`,
+      title: `The Oathsworn Never Capitulate`,
       content: `When As the Sunlit Sky's Singing Salute hits an opponent, that opponent's <b class="text-genshin-geo">Geo RES</b> will be decreased by <span class="text-desc">20%</span> for <span class="text-desc">8</span>s.`,
     },
     c5: {
-      title: `C5: Negotiator's Resolute Negotiations`,
+      trace: `Constellation 5`,
+      title: `Negotiator's Resolute Negotiations`,
       content: `Increases the Level of As the Sunlit Sky's Singing Salute by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: The Flexible Finesse of the Spina's President`,
+      trace: `Constellation 6`,
+      title: `The Flexible Finesse of the Spina's President`,
       content: `If more than <span class="text-desc">3</span> stacks of Crystal Shrapnel are consumed when using Ceremonial Crystalshot, each stack consumed beyond the first <span class="text-desc">3</span> increases the CRIT DMG of that Ceremonial Crystalshot by <span class="text-desc">45%</span>, and any stacks consumed beyond the first <span class="text-desc">3</span> are returned to Navia.`,
     },
   }

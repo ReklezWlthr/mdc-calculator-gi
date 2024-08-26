@@ -19,6 +19,7 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Ripple of Fate`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 water splash attacks that deal <b class="text-genshin-hydro">Hydro DMG</b>.
@@ -31,6 +32,7 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Mirror Reflection of Doom`,
       content: `Creates an illusory Phantom of Fate from coalesced waterspouts.
       <br />
@@ -47,6 +49,7 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Stellaris Phantasm`,
       content: `Mona summons the sparkling waves and creates a reflection of the starry sky, applying the Illusory Bubble status to opponents in a large AoE.
       <br />
@@ -61,6 +64,7 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       <br />During its duration, increases DMG taken by opponents.`,
     },
     sprint: {
+      trace: `Alternate Sprint`,
       title: `Illusory Torrent`,
       content: `<b>Alternate Sprint</b>
       <br />Mona cloaks herself within the water's flow, consuming stamina to move rapidly.
@@ -69,21 +73,25 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       <br />Applies the <b class="text-genshin-hydro">Wet</b> status to nearby opponents when she reappears.`,
     },
     a1: {
-      title: `A1: "Come 'n' Get Me, Hag!"`,
+      trace: `Ascension 1 Passive`,
+      title: `"Come 'n' Get Me, Hag!"`,
       content: `After she has used Illusory Torrent for <span class="text-desc">2</span>s, if there are any opponents nearby, Mona will automatically create a Phantom.
       <br />A Phantom created in this manner lasts for <span class="text-desc">2</span>s, and its explosion DMG is equal to <span class="text-desc">50%</span> of Mirror Reflection of Doom.`,
     },
     a4: {
-      title: `A4: Waterborne Destiny`,
+      trace: `Ascension 4 Passive`,
+      title: `Waterborne Destiny`,
       content: `Increases Mona's Hydro DMG Bonus by a degree equivalent to <span class="text-desc">20%</span> of her Energy Recharge rate.`,
       value: [{ name: 'Current Hydro DMG Bonus', value: { stat: Stats.ER, scaling: (er) => toPercentage(er * 0.2) } }],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: 'Principium of Astrology',
       content: `When Mona crafts Weapon Ascension Materials, she has a <span class="text-desc">1250%</span> chance to refund a portion of the crafting material used.`,
     },
     c1: {
-      title: `C1: Prophecy of Submersion`,
+      trace: `Constellation 1`,
+      title: `Prophecy of Submersion`,
       content: `When any of your own party members hits an opponent affected by an Omen, the effects of <b class="text-genshin-hydro">Hydro</b>-related Elemental Reactions are enhanced for 8s:
       <br />- Electro-Charged DMG increases by <span class="text-desc">15%</span>.
       <br />- Vaporize DMG increases by <span class="text-desc">15%</span>.
@@ -91,26 +99,31 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       <br />- Frozen duration is extended by <span class="text-desc">15%</span>.`,
     },
     c2: {
-      title: `C2: Lunar Chain`,
+      trace: `Constellation 2`,
+      title: `Lunar Chain`,
       content: `When a Normal Attack hits, there is a <span class="text-desc">20%</span> chance that it will be automatically followed by a Charged Attack.
       <br />This effect can only occur once every <span class="text-desc">5</span>s.`,
     },
     c3: {
-      title: `C3: Restless Revolution`,
+      trace: `Constellation 3`,
+      title: `Restless Revolution`,
       content: `Increases the Level of Stellaris Phantasm by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Prophecy of Oblivion`,
+      trace: `Constellation 4`,
+      title: `Prophecy of Oblivion`,
       content: `When any party member attacks an opponent affected by an Omen, their CRIT Rate is increased by <span class="text-desc">15%</span>.`,
     },
     c5: {
-      title: `C5: Mockery of Fortuna`,
+      trace: `Constellation 5`,
+      title: `Mockery of Fortuna`,
       content: `Increases the Level of Mirror Reflection of Doom by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Rhetorics of Calamitas`,
+      trace: `Constellation 6`,
+      title: `Rhetorics of Calamitas`,
       content: `Upon entering Illusory Torrent, Mona gains a <span class="text-desc">60%</span> increase to the DMG of her next Charged Attack per second of movement.
       <br />A maximum DMG Bonus of <span class="text-desc">180%</span> can be achieved in this manner. The effect lasts for no more than <span class="text-desc">8</span>s.`,
     },

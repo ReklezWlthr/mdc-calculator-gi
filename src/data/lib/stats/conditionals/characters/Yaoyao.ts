@@ -19,6 +19,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Toss 'N' Turn Spear`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive spear strikes.
@@ -31,6 +32,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Raphanus Sky Cluster`,
       content: `Calls upon "Yuegui: Throwing Mode," a special device created by a certain adeptus to help Yaoyao solve her problems.
       <br />This skill will be used differently in Holding Mode.
@@ -47,6 +49,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       <br />A maximum of <span class="text-desc">2</span> instances Yuegui: Throwing Mode can exist at any one time.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Moonjade Descent`,
       content: `At the enjoinment of a certain adeptus, Yuegui's full potential can be unleashed in an emergency, dealing Dendro DMG to nearby opponents and entering an (in some sense) unsurpassed Adeptal Legacy state.
       <br />
@@ -59,33 +62,40 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       <br />The Adeptal Legacy state will end once Yaoyao is off-field, and all remaining Yuegui: Jumping Mode will be cleared once this state ends.`,
     },
     a1: {
-      title: `A1: Starscatter`,
+      trace: `Ascension 1 Passive`,
+      title: `Starscatter`,
       content: `While affected by the Adeptal Legacy state caused by Moonjade Descent, Yaoyao will constantly throw White Jade Radishes at nearby opponents when she is sprinting, jumping, or running. She can throw <span class="text-desc">1</span> White Jade Radish this way once every <span class="text-desc">0.6</span>s.`,
     },
     a4: {
-      title: `A4: In Others' Shoes`,
+      trace: `Ascension 4 Passive`,
+      title: `In Others' Shoes`,
       content: `When White Jade Radishes explode, active characters within their AoE will regain HP every <span class="text-desc">1</span>s based on <span class="text-desc">0.8%</span> of Yaoyao's Max HP. This effect lasts <span class="text-desc">5</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Tailing on Tiptoes`,
       content: `When Yaoyao is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.
       <br />Check the "Other" sub-category of the "Living Beings / Wildlife" section in the Archive for creatures this skill works on.`,
     },
     c1: {
-      title: `C1: Adeptus' Tutelage`,
+      trace: `Constellation 1`,
+      title: `Adeptus' Tutelage`,
       content: `When White Jade Radishes explode, active characters within their AoE will gain <span class="text-desc">15%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b> for 8s and have <span class="text-desc">15</span> Stamina restored to them. This form of Stamina Restoration can only be triggered every <span class="text-desc">5</span>s.`,
     },
     c2: {
-      title: `C2: Innocent`,
+      trace: `Constellation 2`,
+      title: `Innocent`,
       content: `While affected by the Adeptal Legacy state caused by Moonjade Descent, if White Jade Radish explosions damage opponents, <span class="text-desc">3</span> Energy will be restored to Yaoyao. This form of Energy regeneration can occur once every <span class="text-desc">0.8</span>s.`,
     },
     c3: {
-      title: `C3: Loyal and Kind`,
+      trace: `Constellation 3`,
+      title: `Loyal and Kind`,
       content: `Increases the Level of Raphanus Sky Cluster by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Winsome`,
+      trace: `Constellation 4`,
+      title: `Winsome`,
       content: `After using Raphanus Sky Cluster or Moonjade Descent, Yaoyao's Elemental Mastery will be increased based on <span class="text-desc">0.3%</span> of her Max HP for <span class="text-desc">8</span>s. The maximum Elemental Mastery she can gain this way is <span class="text-desc">120</span>.`,
       value: [
         {
@@ -95,12 +105,14 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     c5: {
-      title: `C5: Compassionate`,
+      trace: `Constellation 5`,
+      title: `Compassionate`,
       content: `Increases the Level of Moonjade Descent by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Beneficent`,
+      trace: `Constellation 6`,
+      title: `Beneficent`,
       content: `For every <span class="text-desc">2</span> White Jade Radishes Yuegui: Throwing Mode throws out, it will also throw a Mega Radish that will have a larger AoE than the standard White Jade Radish and have the following effects upon exploding:
       <br />Deals <b class="text-genshin-dendro">AoE Dendro DMG</b> based on <span class="text-desc">75%</span> of Yaoyao's ATK.
       <br />Restores HP for the active character based on <span class="text-desc">7.5%</span> of Yaoyao's Max HP.

@@ -18,6 +18,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Shuumatsuban Ninja Blade`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -31,6 +32,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Yoohoo Art: Fuuin Dash`,
       content: `The special technique of the Yoohoo Ninja Arts!
       <br />Sayu curls up into a rolling Fuufuu Windwheel and smashes into opponents at high speed, dealing <b class="text-genshin-anemo">Anemo DMG</b>. When the duration ends, she unleashes a Fuufuu Whirlwind Kick, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.
@@ -52,6 +54,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Yoohoo Art: Mujina Flurry`,
       content: `The other super special technique of the Yoohoo Ninja Arts! It summons a pair of helping hands for Sayu.
       <br />Deals <b class="text-genshin-anemo">Anemo DMG</b> to nearby opponents and heals all nearby party members. The amount of HP restored is based on Sayu's ATK. This skill then summons a Muji-Muji Daruma.
@@ -62,7 +65,8 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- If there are active characters with <span class="text-desc">70%</span> or less HP nearby, it will heal the active character with the lowest percentage HP left. If there are no opponents nearby, it will heal active characters nearby even if they have 70% HP or more.`,
     },
     a1: {
-      title: `A1: Someone More Capable`,
+      trace: `Ascension 1 Passive`,
+      title: `Someone More Capable`,
       content: `When Sayu triggers a Swirl reaction while active, she heals all your characters and nearby allies for 300 HP. She will also heal an additional 1.2 HP for every point of Elemental Mastery she has.
       <br />This effect can be triggered once every 2s.`,
       value: [
@@ -73,43 +77,51 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ],
     },
     a4: {
-      title: `A4: No Work Today!`,
+      trace: `Ascension 4 Passive`,
+      title: `No Work Today!`,
       content: `The Muji-Muji Daruma created by Yoohoo Art: Mujina Flurry gains the following effects:
       <br />- When healing a character, it will also heal characters near that healed character for <span class="text-desc">20%</span> the amount of HP.
       <br />- Increases the AoE of its attack against opponents.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Yoohoo Art: Silencer's Secret`,
       content: `When Yaoyao is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.
       <br />Check the "Other" sub-category of the "Living Beings / Wildlife" section in the Archive for creatures this skill works on.`,
     },
     c1: {
-      title: `C1: Multi-Task no Jutsu`,
+      trace: `Constellation 1`,
+      title: `Multi-Task no Jutsu`,
       content: `The Muji-Muji Daruma created by Yoohoo Art: Mujina Flurry will ignore HP limits and can simultaneously attack nearby opponents and heal characters.`,
     },
     c2: {
-      title: `C2: Egress Prep`,
+      trace: `Constellation 2`,
+      title: `Egress Prep`,
       content: `Yoohoo Art: Fuuin Dash gains the following effects:
       <br />- DMG of Fuufuu Whirlwind Kick in <b>Press</b> Mode increased by <span class="text-desc">3.3%</span>.
       <br />- Every <span class="text-desc">0.5</span>s in the Fuufuu Windwheel state will increase the DMG of this Fuufuu Whirlwind Kick by <span class="text-desc">3.3%</span>. The maximum DMG increase possible through this method is <span class="text-desc">66%</span>.`,
     },
     c3: {
-      title: `C3: Eh, the Bunshin Can Handle It`,
+      trace: `Constellation 3`,
+      title: `Eh, the Bunshin Can Handle It`,
       content: `Increases the Level of Yoohoo Art: Mujina Flurry by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Skiving: New and Improved`,
+      trace: `Constellation 4`,
+      title: `Skiving: New and Improved`,
       content: `Sayu recovers <span class="text-desc">1.2</span> Energy when she triggers a Swirl reaction.
       <br />This effect occurs once every <span class="text-desc">2</span>s.`,
     },
     c5: {
-      title: `C5: Speed Comes First`,
+      trace: `Constellation 5`,
+      title: `Speed Comes First`,
       content: `Increases the Level of Yoohoo Art: Fuuin Dash by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Sleep O'Clock`,
+      trace: `Constellation 6`,
+      title: `Sleep O'Clock`,
       content: `The Muji-Muji Daruma created by Sayu's Yoohoo Art: Mujina Flurry will now also benefit from her Elemental Mastery. Each point of Sayu's Elemental Mastery will produce the following effects:
       <br />- Increases the damage dealt by the Muji-Muji Daruma's attacks by <span class="text-desc">0.2</span> ATK. A maximum DMG increase of <span class="text-desc">400%</span> ATK can be gained via this method.
       <br />- Increases the HP restored by the Muji-Muji Daruma by <span class="text-desc">3</span>. A maximum of <span class="text-desc">6,000</span> additional HP can be restored in this manner.`,

@@ -19,6 +19,7 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Spiritfox Sin-Eater`,
       content: `<b>Normal Attack</b>
       <br />Summons forth kitsune spirits, initiating a maximum of 3 attacks that deal <b class="text-genshin-electro">Electro DMG</b>.
@@ -31,6 +32,7 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Yakan Evocation: Sesshou Sakura`,
       content: `To Yae, such dull tasks as can be accomplished by driving spirits out need not be done personally.
       <br />Moves swiftly, leaving a Sesshou Sakura behind.
@@ -45,17 +47,20 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Great Secret Art: Tenko Kenshin`,
       content: `Legends of "kitsunetsuki," or the manifestations of a kitsune's might, are common in Inazuma's folktales. One that particularly captures the imagination is that of the Sky Kitsune, said to cause lightning to fall down upon the foes of the Grand Narukami Shrine. Summons a lightning strike, dealing <b class="text-genshin-electro">Electro DMG</b>.
       <br />When she uses this skill, Yae Miko will unseal nearby Sesshou Sakura, destroying their outer forms and transforming them into Tenko Thunderbolts that descend from the skies, dealing <b class="text-genshin-electro">Electro DMG</b>. Each Sesshou Sakura destroyed in this way will create one Tenko Thunderbolt.
       `,
     },
     a1: {
-      title: `A1: The Shrine's Sacred Shade`,
+      trace: `Ascension 1 Passive`,
+      title: `The Shrine's Sacred Shade`,
       content: `When casting Great Secret Art: Tenko Kenshin, each Sesshou Sakura destroyed resets the cooldown for <span class="text-desc">1</span> charge of Yakan Evocation: Sesshou Sakura.`,
     },
     a4: {
-      title: `A4: Enlightened Blessing`,
+      trace: `Ascension 4 Passive`,
+      title: `Enlightened Blessing`,
       content: `Every point of Elemental Mastery Yae Miko possesses will increase Sesshou Sakura DMG by <span class="text-desc">0.15%</span>.`,
       value: [
         {
@@ -65,33 +70,40 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Meditations of a Yako`,
       content: `Has a <span class="text-desc">25%</span> chance to get <span class="text-desc">1</span> regional Character Talent Material (base material excluded) when crafting. The rarity is that of the base material.`,
     },
     c1: {
-      title: `C1: Yakan Offering`,
+      trace: `Constellation 1`,
+      title: `Yakan Offering`,
       content: `Each time Great Secret Art: Tenko Kenshin activates a Tenko Thunderbolt, Yae Miko will restore <span class="text-desc">8</span> Elemental Energy for herself.`,
     },
     c2: {
-      title: `C2: Fox's Mooncall`,
+      trace: `Constellation 2`,
+      title: `Fox's Mooncall`,
       content: `Sesshou Sakura start at Level 2 when created, their max level is increased to 4, and their attack range is increased by <span class="text-desc">60%</span>.`,
     },
     c3: {
-      title: `C3: The Seven Glamours`,
+      trace: `Constellation 3`,
+      title: `The Seven Glamours`,
       content: `Increases the Level of Yakan Evocation: Sesshou Sakura by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Sakura Channeling`,
+      trace: `Constellation 4`,
+      title: `Sakura Channeling`,
       content: `When Sesshou Sakura lightning hits opponents, the <b class="text-genshin-electro">Electro DMG Bonus</b> of all nearby party members is increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
     },
     c5: {
-      title: `C5: Mischievous Teasing`,
+      trace: `Constellation 5`,
+      title: `Mischievous Teasing`,
       content: `Increases the Level of Great Secret Art: Tenko Kenshin by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Forbidden Art: Daisesshou`,
+      trace: `Constellation 6`,
+      title: `Forbidden Art: Daisesshou`,
       content: `The Sesshou Sakura's attacks will ignore <span class="text-desc">60%</span> of the opponent's DEF.`,
     },
   }

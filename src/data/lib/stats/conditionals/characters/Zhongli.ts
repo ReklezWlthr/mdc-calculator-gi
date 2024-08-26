@@ -19,11 +19,12 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Rain of Stone`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 6 consecutive spear strikes.
       <br />
-      <br /><b>Dominus Lapidis</b>
+      <br /><b>Charged Attack</b>
       <br />Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
       <br />
       <br /><b>Plunging Attack</b>
@@ -31,7 +32,8 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
-      title: `Opening Flourish`,
+      trace: `Elemental Skill`,
+      title: `Dominus Lapidis`,
       content: `Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
       <br />
       <br /><b>Press</b>
@@ -55,6 +57,7 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Characters protected by the Jade Shield will decrease the <b>Elemental RES</b> and <b>Physical RES</b> of opponents in a small AoE by <span class="text-desc">20%</span>. This effect cannot be stacked.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Planet Befall`,
       content: `Brings a falling meteor down to earth, dealing massive <b class="text-genshin-geo">Geo DMG</b> to opponents caught in its AoE and applying the <b class="text-genshin-geo">Petrification</b> status to them.
       <br />
@@ -62,46 +65,55 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Opponents affected by the <b class="text-genshin-geo">Petrification</b> status cannot move.`,
     },
     a1: {
-      title: `A1: Resonant Waves`,
+      trace: `Ascension 1 Passive`,
+      title: `Resonant Waves`,
       content: `When the Jade Shield takes DMG, it will Fortify:
       <br />- Fortified characters have <span class="text-desc">5%</span> increased Shield Strength.
       <br />Can stack up to <span class="text-desc">5</span> times, and lasts until the Jade Shield disappears.`,
     },
     a4: {
-      title: `A4: Dominance of Earth`,
+      trace: `Ascension 4 Passive`,
+      title: `Dominance of Earth`,
       content: `Zhongli deals bonus DMG based on his Max HP:
       <br />Normal Attack, Charged Attack, and Plunging Attack DMG is increased by <span class="text-desc">1.39%</span> of Max HP.
       <br />Dominus Lapidis' Stone Stele, resonance, and hold DMG is increased by <span class="text-desc">1.9%</span> of Max HP.
       <br />Planet Befall's DMG is increased by <span class="text-desc">33%</span> of Max HP.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Arcanum of Crystal`,
       content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Polearm-type weapons.`,
     },
     c1: {
-      title: `C1: Rock, the Backbone of Earth`,
+      trace: `Constellation 1`,
+      title: `Rock, the Backbone of Earth`,
       content: `Increases the maximum number of Stone Steles created by Dominus Lapidis that may exist simultaneously to <span class="text-desc">2</span>.`,
     },
     c2: {
-      title: `C2: Stone, the Cradle of Jade`,
+      trace: `Constellation 2`,
+      title: `Stone, the Cradle of Jade`,
       content: `Planet Befall grants nearby characters on the field a Jade Shield when it descends.`,
     },
     c3: {
-      title: `C3: Jade, Shimmering through Darkness`,
+      trace: `Constellation 3`,
+      title: `Jade, Shimmering through Darkness`,
       content: `Increases the Level of Dominus Lapidis by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Topaz, Unbreakable and Fearless`,
+      trace: `Constellation 4`,
+      title: `Topaz, Unbreakable and Fearless`,
       content: `Increases Planet Befall's AoE by <span class="text-desc">20%</span> and increases the duration of Planet Befall's Petrification effect by <span class="text-desc">2</span>s.`,
     },
     c5: {
-      title: `C5: Lazuli, Herald of the Order`,
+      trace: `Constellation 5`,
+      title: `Lazuli, Herald of the Order`,
       content: `Increases the Level of Planet Befall by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Chrysos, Bounty of Dominator`,
+      trace: `Constellation 6`,
+      title: `Chrysos, Bounty of Dominator`,
       content: `When the Jade Shield takes DMG, <span class="text-desc">40%</span> of that incoming DMG is converted to HP for the current character.
       <br />A single instance of regeneration cannot exceed 8% of that character's Max HP.`,
     },

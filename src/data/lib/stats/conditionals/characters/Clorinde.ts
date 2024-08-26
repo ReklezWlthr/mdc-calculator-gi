@@ -22,6 +22,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Oath of Hunting Shadows`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -34,6 +35,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Hunter's Vigil`,
       content: `Preparing her pistolet, she enters the "Night Vigil" state, using steel and shot together. In this state, Clorinde's Normal Attacks will be transformed into "Swift Hunt" pistolet attacks, and the DMG dealt is converted into <b class="text-genshin-electro">Electro DMG</b> that cannot be overridden by infusions, and she will be unable to use Charged Attacks. Using her Elemental Skill will transform it into "Impale the Night": Perform a lunging attack, dealing <b class="text-genshin-electro">Electro DMG</b>. The DMG done through the aforementioned method is considered Normal Attack DMG.
       <br />
@@ -56,11 +58,13 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Last Lightfall`,
       content: `Grants herself a <b class="text-genshin-bol">Bond of Life</b> based upon her own max HP before swiftly evading and striking with saber and sidearm as one, dealing <b class="text-genshin-electro">AoE Electro DMG</b>.`,
     },
     a1: {
-      title: `A1: Dark-Shattering Flame`,
+      trace: `Ascension 1 Passive`,
+      title: `Dark-Shattering Flame`,
       content: `After a nearby party member triggers an <b class="text-genshin-electro">Electro</b>-related reaction against an opponent, <b class="text-genshin-electro">Electro DMG</b> dealt by Clorinde's Normal Attacks and Last Lightfall will be increased by <span class="text-desc">20%</span> of Clorinde's ATK for <span class="text-desc">15</span>s. Max <span class="text-desc">3</span> stacks. Each stack is counted independently. The Maximum DMG increase achievable this way for the above attacks is <span class="text-desc">1,800</span>.`,
       value: [
         {
@@ -78,40 +82,48 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     a4: {
-      title: `A4: Lawful Remuneration`,
+      trace: `Ascension 4 Passive`,
+      title: `Lawful Remuneration`,
       content: `If Clorinde's <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her Max HP, her CRIT Rate will increase by <span class="text-desc">10%</span> for <span class="text-desc">15</span>s whenever her Bond of Life value increases or decreases. Max <span class="text-desc">2</span> stacks. Each stack is counted independently.
       <br />Additionally, Hunter's Vigil's Night Vigil state is buffed: While it is active, the percent of healing converted to Bond of Life increases to 100%.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Night Vigil's Harvest`,
       content: `Displays the location of nearby resources unique to Fontaine on the mini-map.`,
     },
     c1: {
-      title: `C1: "From This Day, I Pass the Candle's Shadow-Veil"`,
+      trace: `Constellation 1`,
+      title: `"From This Day, I Pass the Candle's Shadow-Veil"`,
       content: `While Hunter's Vigil's Night Vigil state is active, when <b class="text-genshin-electro">Electro DMG</b> from Clorinde's Normal Attacks hit opponents, they will trigger <span class="text-desc">2</span> coordinated attacks from a Nightvigil Shade summoned near the hit opponent, each dealing <span class="text-desc">30%</span> of Clorinde's ATK as <b class="text-genshin-electro">Electro DMG</b>.
       <br />This effect can occur once every <span class="text-desc">1.2</span>s. DMG dealt this way is considered Normal Attack DMG.`,
     },
     c2: {
-      title: `C2: "Now, As We Face the Perils of the Long Night"`,
+      trace: `Constellation 2`,
+      title: `"Now, As We Face the Perils of the Long Night"`,
       content: `Enhance the Passive Talent "Dark-Shattering Flame": After a nearby party member triggers an <b class="text-genshin-electro">Electro</b>-related reaction against an opponent, <b class="text-genshin-electro">Electro DMG</b> dealt by Clorinde's Normal Attacks and Last Lightfall will be increased by <span class="text-desc">30%</span> of Clorinde's ATK for <span class="text-desc">15</span>s. Max <span class="text-desc">3</span> stacks. Each stack is counted independently. When you have <span class="text-desc">3</span> stacks, Clorinde's interruption resistance will be increased. The Maximum DMG increase achievable this way for the above attacks is <span class="text-desc">2,700</span>.
       <br />You must first unlock the Passive Talent "Dark-Shattering Flame."`,
     },
     c3: {
-      title: `C3: "I Pledge to Remember the Oath of Daylight"`,
+      trace: `Constellation 3`,
+      title: `"I Pledge to Remember the Oath of Daylight"`,
       content: `Increases the Level of Hunter's Vigil by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: "To Enshrine Tears, Life, and Love"`,
+      trace: `Constellation 4`,
+      title: `"To Enshrine Tears, Life, and Love"`,
       content: `When Last Lightfall deals DMG to opponent(s), DMG dealt is increased based on Clorinde's <b class="text-genshin-bol">Bond of Life</b> percentage. Every <span class="text-desc">1%</span> of her current <b class="text-genshin-bol">Bond of Life</b> will increase Last Lightfall DMG by <span class="text-desc">2%</span>. The maximum Last Lightfall DMG increase achievable this way is <span class="text-desc">200%</span>.`,
     },
     c5: {
-      title: `C5: "Holding Dawn's Coming as My Votive"`,
+      trace: `Constellation 5`,
+      title: `"Holding Dawn's Coming as My Votive"`,
       content: `Increases the Level of Last Lightfall by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: "And So Shall I Never Despair"`,
+      trace: `Constellation 6`,
+      title: `"And So Shall I Never Despair"`,
       content: `For <span class="text-desc">12</span>s after Hunter's Vigil is used, Clorinde's CRIT Rate will be increased by <span class="text-desc">10%</span>, and her CRIT DMG by <span class="text-desc">70%</span>.
       <br />Additionally, while Night Vigil is active, a Glimbright Shade will appear under specific circumstances, executing an attack that deals <span class="text-desc">200%</span> of Clorinde's ATK as <b class="text-genshin-electro">Electro DMG</b>. DMG dealt this way is considered Normal Attack DMG.
       <br />The Glimbright Shade will appear under the following circumstances:

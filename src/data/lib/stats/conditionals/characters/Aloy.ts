@@ -18,6 +18,7 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Rapid Fire`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive shots with a bow.
@@ -31,6 +32,7 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Frozen Wilds`,
       content: `Aloy throws a Freeze Bomb in the targeted direction that explodes on impact, dealing Cryo DMG. After it explodes, the Freeze Bomb will split up into many Chillwater Bomblets that explode on contact with opponents or after a short delay, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />When a Freeze Bomb or Chillwater Bomblet hits an opponent, the opponent's ATK is decreased and Aloy receives <span class="text-desc">1</span> Coil stack.
@@ -44,44 +46,54 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
       <br />Coil effects will be cleared <span class="text-desc">30</span>s after Aloy leaves the field.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Prophecies of Dawn`,
       content: `Aloy throws a Power Cell filled with Cryo in the targeted direction, then detonates it with an arrow, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       `,
     },
     a1: {
-      title: `A1: Combat Override`,
+      trace: `Ascension 1 Passive`,
+      title: `Combat Override`,
       content: `When Aloy receives the Coil effect from Frozen Wilds, her ATK is increased by <span class="text-desc">16%</span>, while nearby party members' ATK is increased by <span class="text-desc">8%</span>. This effect lasts <span class="text-desc">10</span>s.`,
     },
     a4: {
-      title: `A4: Strong Strike`,
+      trace: `Ascension 4 Passive`,
+      title: `Strong Strike`,
       content: `When Aloy is in the Rushing Ice state conferred by Frozen Wilds, her <b class="text-genshin-cryo">Cryo DMG Bonus</b> increases by <span class="text-desc">3.5%</span> every <span class="text-desc">1</span>s. A maximum <b class="text-genshin-cryo">Cryo DMG Bonus</b> increase of <span class="text-desc">35%</span> can be gained in this way.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Easy Does It`,
       content: `When Aloy is in the party, animals who produce Fowl, Raw Meat, or Chilled Meat will not be startled when party members approach them.`,
     },
     c1: {
-      title: `C1: Star of Another World`,
+      trace: `Constellation 1`,
+      title: `Star of Another World`,
       content: `The time has not yet come for this person's corner of the night sky to light up.`,
     },
     c2: {
-      title: `C2: Star of Another World`,
+      trace: `Constellation 2`,
+      title: `Star of Another World`,
       content: `The time has not yet come for this person's corner of the night sky to light up.`,
     },
     c3: {
-      title: `C2: Star of Another World`,
+      trace: `Constellation 3`,
+      title: `Star of Another World`,
       content: `The time has not yet come for this person's corner of the night sky to light up.`,
     },
     c4: {
-      title: `C4: Star of Another World`,
+      trace: `Constellation 4`,
+      title: `Star of Another World`,
       content: `The time has not yet come for this person's corner of the night sky to light up.`,
     },
     c5: {
-      title: `C5: Star of Another World`,
+      trace: `Constellation 5`,
+      title: `Star of Another World`,
       content: `The time has not yet come for this person's corner of the night sky to light up.`,
     },
     c6: {
-      title: `C6: Star of Another World`,
+      trace: `Constellation 6`,
+      title: `Star of Another World`,
       content: `The time has not yet come for this person's corner of the night sky to light up.`,
     },
   }

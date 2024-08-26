@@ -23,6 +23,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Favonius Bladework - Maid`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -36,6 +37,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Breastplate`,
       content: `Summons protective stone armor, dealing <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents and creating a shield. The shield's DMG Absorption scales based on Noelle's DEF.
       <br />The shield has the following properties:
@@ -46,6 +48,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Sweeping Time`,
       content: `Gathering the strength of stone around her weapon, Noelle strikes the opponents surrounding her within a large AoE, dealing <b class="text-genshin-geo">Geo DMG</b>.
       <br />Afterwards, Noelle gains the following effects:
@@ -63,45 +66,54 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       // ],
     },
     a1: {
-      title: `A1: Devotion`,
+      trace: `Ascension 1 Passive`,
+      title: `Devotion`,
       content: `When Noelle is in the party but not on the field, this ability triggers automatically when your active character's HP falls below <span class="text-desc">30%</span>:
       <br />Creates a shield for your active character that lasts for <span class="text-desc">20</span>s and absorbs DMG equal to <span class="text-desc">400%</span> of Noelle's DEF.
       <br />The shield has a <span class="text-desc">150%</span> DMG Absorption effectiveness against all <b>Elemental and Physical DMG</b>.
       <br />This effect can only occur once every <span class="text-desc">60</span>s.`,
     },
     a4: {
-      title: `A4: Nice and Clean`,
+      trace: `Ascension 4 Passive`,
+      title: `Nice and Clean`,
       content: `Every <span class="text-desc">4</span> Normal or Charged Attack hits will decrease the CD of Breastplate by <span class="text-desc">1</span>s.
       <br />Hitting multiple opponents with a single attack is only counted as <span class="text-desc">1</span> hit.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Maid's Knighthood`,
       content: `When a Perfect Cooking is achieved on a DEF-boosting dish, Noelle has a <span class="text-desc">12%</span> chance to obtain double the product.`,
     },
     c1: {
-      title: `C1: I Got Your Back`,
+      trace: `Constellation 1`,
+      title: `I Got Your Back`,
       content: `While Sweeping Time and Breastplate are both in effect, the chance of Breastplate's healing effects activating is increased to <span class="text-desc">100%</span>.`,
     },
     c2: {
-      title: `C2: Combat Maid`,
+      trace: `Constellation 2`,
+      title: `Combat Maid`,
       content: `Decreases the Stamina Consumption of Noelle's Charged Attacks by <span class="text-desc">20%</span> and increases her Charged Attack DMG by <span class="text-desc">15%</span>.`,
     },
     c3: {
-      title: `C3: Invulnerable Maid`,
+      trace: `Constellation 3`,
+      title: `Invulnerable Maid`,
       content: `Increases the Level of Breastplate by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: To Be Cleaned`,
+      trace: `Constellation 4`,
+      title: `To Be Cleaned`,
       content: `When Breastplate's duration expires or it is destroyed by DMG, it will deal <span class="text-desc">400%</span> of Noelle's ATK of <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents.`,
     },
     c5: {
-      title: `C5: Favonius Sweeper Master`,
+      trace: `Constellation 5`,
+      title: `Favonius Sweeper Master`,
       content: `Increases the Level of Sweeping Time by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Must Be Spotless`,
+      trace: `Constellation 6`,
+      title: `Must Be Spotless`,
       content: `Sweeping Time increases Noelle's ATK by an additional <span class="text-desc">50%</span> of her DEF.
       <br />Additionally, every opponent defeated during the skill's duration adds 1s to the duration, up to <span class="text-desc">10</span>s.`,
     },

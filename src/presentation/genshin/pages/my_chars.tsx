@@ -211,7 +211,7 @@ export const MyCharacters = observer(() => {
                       <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
                     </div>
                     <img
-                      src={`https://enka.network/ui/UI_AvatarIcon_${codeName}.png`}
+                      src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
                       className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                     />
                   </div>
@@ -233,10 +233,9 @@ export const MyCharacters = observer(() => {
                 <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
               </div>
               <img
-                src={`https://enka.network/ui/UI_Gacha_AvatarImg_${fCodeName}.png`}
+                src={`https://homdgcat.wiki/homdgcat-res/Gacha/UI_Gacha_AvatarImg_${fCodeName}.png`}
                 className={classNames(
-                  'object-cover rounded-full w-1/2 h-fit aspect-square bg-opacity-5 shrink-0',
-                  ElementIconColor[charData?.element],
+                  'object-cover w-1/2 h-fit aspect-square bg-opacity-5 shrink-0',
                   loading ? 'hidden' : 'block'
                 )}
                 alt={fCodeName}
@@ -262,7 +261,7 @@ export const MyCharacters = observer(() => {
                     )}
                     <div className="flex gap-0.5">
                       <div className="p-1 rounded-full w-14 h-14 bg-primary" title={charData?.weapon}>
-                        <img src={`https://enka.network/ui/${WeaponIcon[charData?.weapon]}`} />
+                        <img src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${WeaponIcon[charData?.weapon]}`} />
                       </div>
                     </div>
                     <div className="flex gap-0.5">
@@ -381,7 +380,7 @@ export const MyCharacters = observer(() => {
                         <TalentIcon
                           talent={charCond?.talents?.normal}
                           element={charData?.element}
-                          icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
+                          icon={`https://homdgcat.wiki/homdgcat-res/AvatarSkill${WeaponIcon[charData?.weapon]}`}
                           size="w-10 h-10"
                           tooltipSize="w-[520px]"
                           upgraded={charCond?.upgrade?.normal}
@@ -390,7 +389,7 @@ export const MyCharacters = observer(() => {
                         <TalentIcon
                           talent={charCond?.talents?.skill}
                           element={charData?.element}
-                          icon={`https://enka.network/ui/Skill_${
+                          icon={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/Skill_${
                             iconCodeName === 'PlayerGrass' ? 'E' : 'S'
                           }_${iconCodeName}${iconCodeName === 'Qin' ? '_02' : '_01'}${
                             iconCodeName === 'Diluc' ? '_01' : ''
@@ -403,7 +402,7 @@ export const MyCharacters = observer(() => {
                         <TalentIcon
                           talent={charCond?.talents?.burst}
                           element={charData?.element}
-                          icon={`https://enka.network/ui/Skill_${
+                          icon={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/Skill_${
                             iconCodeName === 'PlayerGrass' ? 'S' : 'E'
                           }_${iconCodeName}${_.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'}.png`}
                           size="w-10 h-10"
@@ -453,7 +452,7 @@ export const MyCharacters = observer(() => {
                       style="w-[25vw]"
                     >
                       <img
-                        src={`https://enka.network/ui/UI_Talent_${
+                        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${
                           UtilTalentOverride[charData.codeName] || `S_${charData.codeName}_07`
                         }.png`}
                         className={classNames(
@@ -475,7 +474,7 @@ export const MyCharacters = observer(() => {
                       style="w-[25vw]"
                     >
                       <img
-                        src={`https://enka.network/ui/Skill_S_${charData.codeName}_02.png`}
+                        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/Skill_S_${charData.codeName}_02.png`}
                         className={classNames(
                           'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                           charUpgrade
@@ -484,10 +483,10 @@ export const MyCharacters = observer(() => {
                         )}
                       />
                     </Tooltip>
-                    <p>Alternative Sprint: {charCond?.talents?.sprint?.title}</p>
+                    <p>{charCond?.talents?.sprint?.title}</p>
                   </div>
                 )}
-                {charData?.id === '10000054' && (
+                {charCond?.talents?.bonus && (
                   <div className="flex items-center gap-3">
                     <Tooltip
                       title={charCond?.talents?.bonus?.title}
@@ -495,7 +494,7 @@ export const MyCharacters = observer(() => {
                       style="w-[25vw]"
                     >
                       <img
-                        src={`https://enka.network/ui/UI_Talent_S_Kokomi_07.png`}
+                        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${charCond?.talents?.bonus?.image}`}
                         className={classNames(
                           'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                           ElementIconColor[charData?.element]

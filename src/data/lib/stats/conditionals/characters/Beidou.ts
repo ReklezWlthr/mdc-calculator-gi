@@ -19,6 +19,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Oceanborne`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive strikes.
@@ -32,6 +33,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Tidecaller`,
       content: `Nothing to worry about. Should anyone raise a hand against her or her men, she will avenge it ten-fold with sword and thunder.
       <br />
@@ -47,6 +49,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Stormbreaker`,
       content: `Recalling her slaying of the great beast Haishan, Beidou calls upon that monstrous strength and the lightning to create a Thunderbeast's Targe around herself, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.
       <br />
@@ -57,46 +60,55 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       <br />A maximum of <span class="text-desc">1</span> lightning discharge can be triggered per second.`,
     },
     a1: {
-      title: `A1: Retribution`,
+      trace: `Ascension 1 Passive`,
+      title: `Retribution`,
       content: `Counterattacking with Tidecaller at the precise moment when the character is hit grants the maximum DMG Bonus.`,
     },
     a4: {
-      title: `A4: Lightning Storm	`,
+      trace: `Ascension 4 Passive`,
+      title: `Lightning Storm	`,
       content: `Gain the following effects for 10s after unleashing Tidecaller with its maximum DMG Bonus:
       <br />- DMG dealt by Normal and Charged Attacks is increased by <span class="text-desc">15%</span>. ATK SPD of Normal and Charged Attacks is increased by <span class="text-desc">15%</span>.
       <br />- Greatly reduced delay before unleashing Charged Attacks.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Conqueror of Tides`,
       content: `Decreases swimming Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
-      title: `C1: Sea Beast's Scourge`,
+      trace: `Constellation 1`,
+      title: `Sea Beast's Scourge`,
       content: `When Stormbreaker is used:
       <br />Creates a shield that absorbs up to <span class="text-desc">16%</span> of Beidou's Max HP for <span class="text-desc">15</span>s.
       <br />This shield absorbs <b class="text-genshin-electro">Electro DMG</b> <span class="text-desc">250%</span> more effectively.`,
     },
     c2: {
-      title: `C2: Summoner of Storm`,
+      trace: `Constellation 2`,
+      title: `Summoner of Storm`,
       content: `Stormbreaker's arc lightning can jump to <span class="text-desc">2</span> additional targets.`,
     },
     c3: {
-      title: `C3: Star of Tomorrow`,
+      trace: `Constellation 3`,
+      title: `Star of Tomorrow`,
       content: `Increases the Level of Tidecaller by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Stunning Revenge`,
+      trace: `Constellation 4`,
+      title: `Stunning Revenge`,
       content: `Upon being attacked, Beidou's Normal Attacks gain an additional instance of <span class="text-desc">20%</span> <b class="text-genshin-electro">Electro DMG</b> for <span class="text-desc">10</span>s.`,
     },
     c5: {
-      title: `C5: Crimson Tidewalker`,
+      trace: `Constellation 5`,
+      title: `Crimson Tidewalker`,
       content: `Increases the Level of Stormbreaker by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Bane of Evil`,
+      trace: `Constellation 6`,
+      title: `Bane of Evil`,
       content: `During the duration of Stormbreaker, the <b class="text-genshin-electro">Electro RES</b> of surrounding opponents is decreased by <span class="text-desc">15%</span>.`,
     },
   }

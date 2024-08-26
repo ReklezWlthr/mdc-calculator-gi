@@ -43,6 +43,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: 'Akara',
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 attacks that deal <b class="text-genshin-dendro">Dendro DMG</b> to opponents in front of her.
@@ -55,6 +56,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: 'All Schemes to Know',
       content: `Sends forth karmic bonds of wood and tree from her side, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b> and marking up to 8 opponents hit with the Seed of Skandha.
       <br />When held, this skill will trigger differently.
@@ -72,6 +74,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       upgrade: ['a4', 'c2', 'c3', 'c4', 'c6'],
     },
     burst: {
+      trace: `Elemental Burst`,
       title: 'Illusory Heart',
       content: `Manifests the Court of Dreams and expands the Shrine of Maya.
       <br />
@@ -93,13 +96,15 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       upgrade: ['a1', 'c1', 'c5'],
     },
     a1: {
-      title: 'A1: Compassion Illuminated',
+      trace: `Ascension 1 Passive`,
+      title: 'Compassion Illuminated',
       content: `When unleashing Illusory Heart, the Shrine of Maya will gain the following effects:
     <br />The Elemental Mastery of the active character within the field will be increased by <span class="text-desc">25%</span> of the Elemental Mastery of the party member with the highest Elemental Mastery.
     <br />You can gain a maximum of <span class="text-desc">250</span> Elemental Mastery in this manner.`,
     },
     a4: {
-      title: 'A4: Awakening Elucidated',
+      trace: `Ascension 4 Passive`,
+      title: 'Awakening Elucidated',
       content: `Each point of Nahida's Elemental Mastery beyond <span class="text-desc">200</span> will grant <span class="text-desc">0.1%</span> Bonus DMG and <span class="text-desc">0.03%</span> CRIT Rate to Tri-Karma Purification from All Schemes to Know.
       <br />A maximum of <span class="text-desc">80%</span> Bonus DMG and <span class="text-desc">24%</span> CRIT Rate can be granted to Tri-Karma Purification in this manner.`,
       value: [
@@ -114,35 +119,42 @@ const Nahida = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `On All Things Meditated`,
       content: `Nahida can use All Schemes to Know to interact with some harvestable items within a fixed AoE. This skill may even have some other effects...`,
     },
     c1: {
-      title: 'C1: The Seed of Stored Knowledge',
+      trace: `Constellation 1`,
+      title: 'The Seed of Stored Knowledge',
       content: `When the Shrine of Maya is unleashed and the Elemental Types of the party members are being tabulated, the count will add 1 to the number of <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-electro">Electro</b>, and <b class="text-genshin-hydro">Hydro</b> characters respectively.`,
     },
     c2: {
-      title: 'C2: The Root of All Fullness',
+      trace: `Constellation 2`,
+      title: 'The Root of All Fullness',
       content: `Opponents that are marked by Seeds of Skandha applied by Nahida herself will be affected by the following effects:
       <br />- Burning, Bloom, Hyperbloom, and Burgeon Reaction DMG can score CRIT Hits. CRIT Rate and CRIT DMG are fixed at <span class="text-desc">20%</span> and <span class="text-desc">100%</span> respectively.
       <br />- Within <span class="text-desc">8</span>s of being affected by Quicken, Aggravate, Spread, DEF is decreased by <span class="text-desc">30%</span>.`,
     },
     c3: {
-      title: 'C3: The Shoot of Conscious Attainment',
+      trace: `Constellation 3`,
+      title: 'The Shoot of Conscious Attainment',
       content: `Increases the Level of All Schemes to Know by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'C4: The Stem of Manifest Inference',
+      trace: `Constellation 4`,
+      title: 'The Stem of Manifest Inference',
       content: `When <span class="text-desc">1/2/3/(4 or more)</span> nearby opponents are affected by All Schemes to Know's Seeds of Skandha, Nahida's Elemental Mastery will be increased by <span class="text-desc">100/120/140/160</span>.`,
     },
     c5: {
-      title: 'C5: The Leaves of Enlightening Speech',
+      trace: `Constellation 5`,
+      title: 'The Leaves of Enlightening Speech',
       content: `Increases the Level of Illusory Heart by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: "C6: The Fruit of Reason's Culmination",
+      trace: `Constellation 6`,
+      title: "The Fruit of Reason's Culmination",
       content: `When Nahida hits an opponent affected by All Schemes to Know's Seeds of Skandha with Normal or Charged Attacks after unleashing Illusory Heart, she will use Tri-Karma Purification: Karmic Oblivion on this opponent and all connected opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b> based on <span class="text-desc">200%</span> of Nahida's ATK and <span class="text-desc">400%</span> of her Elemental Mastery.
       <br />DMG dealt by Tri-Karma Purification: Karmic Oblivion is considered Elemental Skill DMG and can be triggered once every <span class="text-desc">0.2</span>s.
       <br />This effect can last up to 10s and will be removed after Nahida has unleashed <span class="text-desc">6</span> instances of Tri-Karma Purification: Karmic Oblivion.`,

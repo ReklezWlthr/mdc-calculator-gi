@@ -19,6 +19,7 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Lightning Touch`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 lightning attacks that deal <b class="text-genshin-electro">Electro DMG</b>.
@@ -31,6 +32,7 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Violet Arc`,
       content: `Channels the power of lightning to sweep bothersome matters away.
       <br />
@@ -44,49 +46,59 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Lightning Rose`,
       content: `Summons a Lightning Rose that unleashes powerful lightning bolts, launching surrounding opponents and dealing <b class="text-genshin-electro">Electro DMG</b>.
       <br />The Lightning Rose will continuously emit lightning to knock back opponents and deal <b class="text-genshin-electro">Electro DMG</b> throughout the ability's duration.`,
     },
     a1: {
-      title: `A1: Induced Aftershock`,
+      trace: `Ascension 1 Passive`,
+      title: `Induced Aftershock`,
       content: `Hits by Charged Attacks apply Violet Arc's Conductive status to opponents.`,
     },
     a4: {
-      title: `A4: Static Electricity Field`,
+      trace: `Ascension 4 Passive`,
+      title: `Static Electricity Field`,
       content: `Opponents hit by Lightning Rose have their DEF decreased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `General Pharmaceutics`,
       content: `When Lisa crafts a potion, she has a <span class="text-desc">20%</span> chance to refund a portion of the crafting materials used.`,
     },
     c1: {
-      title: `C1: Infinite Circuit`,
+      trace: `Constellation 1`,
+      title: `Infinite Circuit`,
       content: `Lisa regenerates <span class="text-desc">2</span> Energy for every opponent hit while holding Violet Arc.
       <br />A maximum of <span class="text-desc">10</span> Energy can be regenerated in this manner at any one time.`,
     },
     c2: {
-      title: `C2: Electromagnetic Field`,
+      trace: `Constellation 2`,
+      title: `Electromagnetic Field`,
       content: `Holding Violet Arc has the following effects:
       <br />- Increases DEF by <span class="text-desc">25%</span>.
       <br />- Increases Lisa's resistance to interruption.`,
     },
     c3: {
-      title: `C3: Resonant Thunder`,
+      trace: `Constellation 3`,
+      title: `Resonant Thunder`,
       content: `Increases the Level of Lightning Rose by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Plasma Eruption`,
+      trace: `Constellation 4`,
+      title: `Plasma Eruption`,
       content: `Lightning Rose now unleashes 1-3 lightning bolts when it attacks.`,
     },
     c5: {
-      title: `C5: Electrocute`,
+      trace: `Constellation 5`,
+      title: `Electrocute`,
       content: `Increases the Level of Violet Arc by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Pulsating Witch`,
+      trace: `Constellation 6`,
+      title: `Pulsating Witch`,
       content: `When Lisa takes the field, she applies 3<span class="text-desc">3</span> stacks of Violet Arc's Conductive status onto nearby opponents.
       <br />This effect can only occur once every <span class="text-desc">5</span>s.`,
     },

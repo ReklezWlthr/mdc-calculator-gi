@@ -18,6 +18,7 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Khanda Barrier-Buster`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive shots with a bow.
@@ -33,22 +34,26 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Vijnana-Phala Mine`,
       content: `Tighnari throws a Vijnana Stormheart ahead that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>, creating a Vijnana-Khanda Field that creates mysterious illusions that taunt opponents and draw their fire.
       <br />Additionally, Tighnari gains the Vijnana Suffusion effect, which will decrease the Wreath Arrow's charging time by <span class="text-desc">2.4</span>s. This effect will dissipate once the skill duration ends or after Tighnari has fired <span class="text-desc">3</span> Wreath Arrows.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Fashioner's Tanglevine Shaft`,
       content: `Combines the power of all seeds to fire <span class="text-desc">6</span> Tanglevine Shafts that can track opponents and deal <b class="text-genshin-dendro">Dendro DMG</b>.
       <br />After they hit, the Tanglevine Shafts will create a secondary wave of Tanglevine Shafts that can also track nearby opponents and deal <b class="text-genshin-dendro">Dendro DMG</b> on hit.
       `,
     },
     a1: {
-      title: `A1: Keen Sight`,
+      trace: `Ascension 1 Passive`,
+      title: `Keen Sight`,
       content: `After Tighnari fires a Wreath Arrow, his Elemental Mastery is increased by <span class="text-desc">50</span> for <span class="text-desc">4</span>s.`,
     },
     a4: {
-      title: `A4: Scholarly Blade`,
+      trace: `Ascension 4 Passive`,
+      title: `Scholarly Blade`,
       content: `For every point of Elemental Mastery Tighnari possesses, his Charged Attack and Fashioner's Tanglevine Shaft DMG are increased by <span class="text-desc">0.06%</span>.
       <br />The maximum DMG Bonus obtainable this way is <span class="text-desc">60%</span>.`,
       value: [
@@ -59,34 +64,41 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Encyclopedic Knowledge`,
       content: `Displays the location of nearby resources unique to Sumeru on the mini-map.`,
     },
     c1: {
-      title: `C1: Beginnings Determined at the Roots`,
+      trace: `Constellation 1`,
+      title: `Beginnings Determined at the Roots`,
       content: `Tighnari's Charged Attack CRIT Rate is increased by <span class="text-desc">15%</span>.`,
     },
     c2: {
-      title: `C2: Origins Known From the Stem`,
+      trace: `Constellation 2`,
+      title: `Origins Known From the Stem`,
       content: `When there are opponents within the Vijnana-Khanda Field created by Vijnana-Phala Mine, Tighnari gains <span class="text-desc">20%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b>.
       <br />The effect will last up to <span class="text-desc">6</span>s if the field's duration ends or if it no longer has opponents within it.`,
     },
     c3: {
-      title: `C3: Fortunes Read Amongst the Branches`,
+      trace: `Constellation 3`,
+      title: `Fortunes Read Amongst the Branches`,
       content: `Increases the Level of Fashioner's Tanglevine Shaft by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Withering Glimpsed in the Leaves`,
+      trace: `Constellation 4`,
+      title: `Withering Glimpsed in the Leaves`,
       content: `When Fashioner's Tanglevine Shaft is unleashed, all nearby party members gain <span class="text-desc">60</span> Elemental Mastery for <span class="text-desc">8</span>s. If the Fashioner's Tanglevine Shaft triggers a Burning, Bloom, Quicken, or Spread reaction, their Elemental Mastery will be further increased by <span class="text-desc">60</span>. This latter case will also refresh the buff state's duration.`,
     },
     c5: {
-      title: `C5: Comprehension Amidst the Flowers`,
+      trace: `Constellation 5`,
+      title: `Comprehension Amidst the Flowers`,
       content: `Increases the Level of Vijnana-Phala Mine by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Karma Adjudged From the Leaden Fruit`,
+      trace: `Constellation 6`,
+      title: `Karma Adjudged From the Leaden Fruit`,
       content: `Wreath Arrow's charging time is decreased by <span class="text-desc">0.9</span>s, and will produce <span class="text-desc">1</span> additional Clusterbloom Arrow upon hit. This arrow deals <span class="text-desc">150%</span> of Tighnari's ATK as DMG.`,
     },
   }

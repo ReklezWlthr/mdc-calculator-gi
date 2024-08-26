@@ -19,6 +19,7 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Dough-Fu`,
       content: `<b>Normal Attack</b>
       <br />Performs up to five consecutive spear strikes.
@@ -31,51 +32,62 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Guoba Attack`,
       content: `Summons Guoba, who will continuously breathe fire at opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Pyronado`,
       content: `Displaying her mastery over both fire and polearms, Xiangling sends a Pyronado whirling around her. The Pyronado will move with your character for the ability's duration, dealing <b class="text-genshin-pyro">Pyro DMG</b> to all opponents in its path.
       `,
     },
     a1: {
-      title: `A1: Crossfire`,
+      trace: `Ascension 1 Passive`,
+      title: `Crossfire`,
       content: `Increases the flame range of Guoba by <span class="text-desc">20%</span>.`,
     },
     a4: {
-      title: `A4: Beware, It's Super Hot!`,
+      trace: `Ascension 4 Passive`,
+      title: `Beware, It's Super Hot!`,
       content: `When Guoba Attack's effects end, Guoba leaves a chili pepper on the spot where it disappeared. Picking up a chili pepper increases ATK by <span class="text-desc">10%</span> for <span class="text-desc">10</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Chef de Cuisine`,
       content: `When Xiangling cooks an ATK-boosting dish perfectly, she has a <span class="text-desc">12%</span> chance to receive double the product.`,
     },
     c1: {
-      title: `C1: Crispy Outside, Tender Inside`,
+      trace: `Constellation 1`,
+      title: `Crispy Outside, Tender Inside`,
       content: `Opponents hit by Guoba's attacks have their <b class="text-genshin-pyro">Pyro RES</b> reduced by 15% for 6s.`,
     },
     c2: {
-      title: `C2: Oil Meets Fire`,
+      trace: `Constellation 2`,
+      title: `Oil Meets Fire`,
       content: `The last attack in a Normal Attack sequence applies the Implode status onto the opponent for <span class="text-desc">2</span>s. An explosion will occur once this duration ends, dealing <span class="text-desc">75%</span> of Xiangling's ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
     },
     c3: {
-      title: `C3: Deepfry`,
+      trace: `Constellation 3`,
+      title: `Deepfry`,
       content: `Increases the Level of Pyronado by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Slowbake`,
+      trace: `Constellation 4`,
+      title: `Slowbake`,
       content: `Pyronado's duration is increased by <span class="text-desc">40%</span>.`,
     },
     c5: {
-      title: `C5: Guoba Mad`,
+      trace: `Constellation 5`,
+      title: `Guoba Mad`,
       content: `Increases the Level of Guoba Attack by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Condensed Pyronado`,
+      trace: `Constellation 6`,
+      title: `Condensed Pyronado`,
       content: `For the duration of Pyronado, all party members receive a <span class="text-desc">15%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b>.`,
     },
   }

@@ -19,6 +19,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Secret Spear of Wangsheng`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 6 consecutive spear strikes.
@@ -31,6 +32,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Guide to Afterlife`,
       content: `Only an unwavering flame can cleanse the impurities of this world.
       <br />Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the Paramita Papilio state.
@@ -49,48 +51,58 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Spirit Soother`,
       content: `Commands a blazing spirit to attack, dealing <b class="text-genshin-pyro">Pyro DMG</b> in a large AoE.
       <br />Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP. This effect can be triggered up to <span class="text-desc">5</span> times, based on the number of enemies hit.
       <br />If Hu Tao's HP is below or equal to <span class="text-desc">50%</span> when the enemy is hit, both the DMG and HP Regeneration are increased.`,
     },
     a1: {
-      title: `A1: Flutter By`,
+      trace: `Ascension 1 Passive`,
+      title: `Flutter By`,
       content: `When a Paramita Papilio state activated by Guide to Afterlife ends, all allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by <span class="text-desc">12%</span> for <span class="text-desc">8</span>s.`,
     },
     a4: {
-      title: `A4: Sanguine Rouge`,
+      trace: `Ascension 4 Passive`,
+      title: `Sanguine Rouge`,
       content: `When Hu Tao's HP is equal to or less than <span class="text-desc">50%</span>, her <b class="text-genshin-pyro">Pyro DMG Bonus</b> is increased by <span class="text-desc">33%</span>.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `The More the Merrier`,
       content: `When Hu Tao cooks a dish perfectly, she has a <span class="text-desc">18%</span> chance to receive an additional "Suspicious" dish of the same type.`,
     },
     c1: {
-      title: `C1: Crimson Bouquet`,
+      trace: `Constellation 1`,
+      title: `Crimson Bouquet`,
       content: `While in a Paramita Papilio state activated by Guide to Afterlife, Hu Tao's Charged Attacks do not consume Stamina.`,
     },
     c2: {
-      title: `C2: Ominous Rainfall`,
+      trace: `Constellation 2`,
+      title: `Ominous Rainfall`,
       content: `Increases the Blood Blossom DMG by an amount equal to <span class="text-desc">10%</span> of Hu Tao's Max HP at the time the effect is applied.
       <br />Additionally, Spirit Soother will also apply the Blood Blossom effect.`,
     },
     c3: {
-      title: `C3: Lingering Carmine`,
+      trace: `Constellation 3`,
+      title: `Lingering Carmine`,
       content: `Increases the Level of Guide to Afterlife by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Garden of Eternal Rest`,
+      trace: `Constellation 4`,
+      title: `Garden of Eternal Rest`,
       content: `Upon defeating an enemy affected by a Blood Blossom that Hu Tao applied herself, all nearby allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by <span class="text-desc">12%</span> for <span class="text-desc">15</span>s.`,
     },
     c5: {
-      title: `C5: Butterfly's Embrace`,
+      trace: `Constellation 5`,
+      title: `Butterfly's Embrace`,
       content: `Increases the Level of Spirit Soother by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: The Overflow`,
+      trace: `Constellation 6`,
+      title: `The Overflow`,
       content: `Triggers when Hu Tao's HP drops below <span class="text-desc">25%</span>, or when she suffers a lethal strike:
       <br />Hu Tao will not fall as a result of the DMG sustained. Additionally, for the next <span class="text-desc">10</span>s, all of her <b>Elemental and Physical RES</b> is increased by <span class="text-desc">200%</span>, her CRIT Rate is increased by <span class="text-desc">100%</span>, and her resistance to interruption is greatly increased.
       <br />This effect triggers automatically when Hu Tao has <span class="text-desc">1</span> HP left.

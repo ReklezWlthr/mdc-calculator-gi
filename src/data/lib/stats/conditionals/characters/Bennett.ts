@@ -19,6 +19,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Strike of Fortune`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -31,6 +32,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Passion Overload`,
       content: `Bennett puts all his fire and passion for adventuring into his sword. Results may vary based on how fired up he is...
       <br />
@@ -45,6 +47,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Fantastic Voyage`,
       content: `Bennett performs a jumping attack that deals Pyro DMG, creating an Inspiration Field.
       <br />
@@ -54,42 +57,51 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       <br />- Imbues characters within the AoE with <b class="text-genshin-pyro">Pyro</b>.`,
     },
     a1: {
-      title: `A1: Rekindle`,
+      trace: `Ascension 1 Passive`,
+      title: `Rekindle`,
       content: `Decreases Passion Overload's CD by <span class="text-desc">20%</span>.`,
     },
     a4: {
-      title: `A4: Fearnaught`,
+      trace: `Ascension 4 Passive`,
+      title: `Fearnaught`,
       content: `When inside Fantastic Voyage's circle, Passion Overload's CD is decreased by <span class="text-desc">50%</span> and Bennett cannot be launched by this skill's explosion.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `It Should Be Safe...`,
       content: `When dispatched on an expedition in Mondstadt, time consumed is reduced by <span class="text-desc">25%</span>.`,
     },
     c1: {
-      title: `C1: Grand Expectation`,
+      trace: `Constellation 1`,
+      title: `Grand Expectation`,
       content: `Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional <span class="text-desc">20%</span> of Bennett's Base ATK.`,
     },
     c2: {
-      title: `C2: Impasse Conqueror`,
+      trace: `Constellation 2`,
+      title: `Impasse Conqueror`,
       content: `When Bennett's HP falls below <span class="text-desc">70%</span>, his Energy Recharge is increased by <span class="text-desc">30%</span>.`,
     },
     c3: {
-      title: `C3: Unstoppable Fervor`,
+      trace: `Constellation 3`,
+      title: `Unstoppable Fervor`,
       content: `Increases the Level of Passion Overload by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Unexpected Odyssey`,
+      trace: `Constellation 4`,
+      title: `Unexpected Odyssey`,
       content: `Using a Normal Attack as the second attack of Passion Overload's Charge Level 1 will perform a follow-up attack.
       This additional attack does <span class="text-desc">135%</span> of the second attack's DMG.`,
     },
     c5: {
-      title: `C5: True Explorer`,
+      trace: `Constellation 5`,
+      title: `True Explorer`,
       content: `Increases the Level of Fantastic Voyage by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Fire Ventures With Me`,
+      trace: `Constellation 6`,
+      title: `Fire Ventures With Me`,
       content: `Sword, Claymore, or Polearm-wielding characters inside Fantastic Voyage's radius gain a <span class="text-desc">15%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and their weapons are infused with <b class="text-genshin-pyro">Pyro</b>.`,
     },
   }

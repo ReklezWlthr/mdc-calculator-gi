@@ -19,6 +19,7 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Guhua Style`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -31,6 +32,7 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Guhua Sword: Fatal Rainscreen`,
       content: `Xingqiu performs twin strikes with his sword, dealing <b class="text-genshin-hydro">Hydro DMG</b>. At the same time, this ability creates the maximum number of Rain Swords, which will orbit your active character.
       <br />The Rain Swords have the following properties:
@@ -45,6 +47,7 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Guhua Sword: Raincutter`,
       content: `Initiate Rainbow Bladework and fight using an illusory sword rain, while creating the maximum number of Rain Swords.
       <br />
@@ -53,42 +56,51 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel) => {
       <br />- Rain Swords will remain at the maximum number throughout the ability's duration.`,
     },
     a1: {
-      title: `A1: Hydropathic`,
+      trace: `Ascension 1 Passive`,
+      title: `Hydropathic`,
       content: `When a Rain Sword is shattered or when its duration expires, it regenerates the current character's HP based on <span class="text-desc">6%</span> of Xingqiu's Max HP.`,
     },
     a4: {
-      title: `A4: Blades Amidst Raindrops`,
+      trace: `Ascension 4 Passive`,
+      title: `Blades Amidst Raindrops`,
       content: `Xingqiu gains a <span class="text-desc">20%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Flash of Genius`,
       content: `When Xingqiu crafts Character Talent Materials, he has a <span class="text-desc">25%</span> chance to refund a portion of the crafting materials used.`,
     },
     c1: {
-      title: `C1: The Scent Remained`,
+      trace: `Constellation 1`,
+      title: `The Scent Remained`,
       content: `Increases the maximum number of Rain Swords by <span class="text-desc">1</span>.`,
     },
     c2: {
-      title: `C2: Rainbow Upon the Azure Sky`,
+      trace: `Constellation 2`,
+      title: `Rainbow Upon the Azure Sky`,
       content: `Extends the duration of Guhua Sword: Raincutter by <span class="text-desc">3</span>s.
       <br />Decreases the <b class="text-genshin-hydro">Hydro RES</b> of opponents hit by sword rain attacks by <span class="text-desc">15%</span> for <span class="text-desc">4</span>s.`,
     },
     c3: {
-      title: `C3: Weaver of Verses`,
+      trace: `Constellation 3`,
+      title: `Weaver of Verses`,
       content: `Increases the Level of Guhua Sword: Raincutter by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Evilsoother`,
+      trace: `Constellation 4`,
+      title: `Evilsoother`,
       content: `Throughout the duration of Guhua Sword: Raincutter, the DMG dealt by Guhua Sword: Fatal Rainscreen is increased by <span class="text-desc">50%</span>.`,
     },
     c5: {
-      title: `C5: Embrace of Rain`,
+      trace: `Constellation 5`,
+      title: `Embrace of Rain`,
       content: `Increases the Level of Guhua Sword: Fatal Rainscreen by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Hence, Call Them My Own Verses`,
+      trace: `Constellation 6`,
+      title: `Hence, Call Them My Own Verses`,
       content: `Activating <span class="text-desc">2</span> of Guhua Sword: Raincutter's sword rain attacks greatly enhances the third sword rain attack. On hit, the third sword rain attack also regenerates <span class="text-desc">3</span> Energy for Xingqiu.`,
     },
   }

@@ -19,6 +19,7 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Wind Spirit Creation`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 attacks using Wind Spirits, dealing <b class="text-genshin-anemo">Anemo DMG</b>.
@@ -31,11 +32,13 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Astable Anemohypostasis Creation - 6308`,
       content: `Creates a small Wind Spirit that pulls opponents and objects towards its location, launches opponents within its AoE, and deals <b class="text-genshin-anemo">Anemo DMG</b>.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Forbidden Creation - Isomer 75 / Type II`,
       content: `Sucrose hurls an unstable concoction that creates a Large Wind Spirit.
       <br />While it persists, the Large Wind Spirit will continuously pull in surrounding opponents and objects, launch nearby opponents, and deal <b class="text-genshin-anemo">Anemo DMG</b>.
@@ -45,41 +48,50 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Elemental Absorption may only occur once per use.`,
     },
     a1: {
-      title: `A1: Catalyst Conversion`,
+      trace: `Ascension 1 Passive`,
+      title: `Catalyst Conversion`,
       content: `When Sucrose triggers a Swirl effect, all characters in the party with the matching element (excluding Sucrose) have their Elemental Mastery increased by <span class="text-desc">50</span> for <span class="text-desc">8</span>s.`,
     },
     a4: {
-      title: `A4: Mollis Favonius`,
+      trace: `Ascension 4 Passive`,
+      title: `Mollis Favonius`,
       content: `When Astable Anemohypostasis Creation - 6308 or Forbidden Creation - Isomer 75 / Type II hits an opponent, increases all party members' (excluding Sucrose) Elemental Mastery based on <span class="text-desc">20%</span> of Sucrose's Elemental Mastery for <span class="text-desc">8</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Astable Invention`,
       content: `When Sucrose crafts Character and Weapon Enhancement Materials, she has a <span class="text-desc">10%</span> chance to obtain double the product.`,
     },
     c1: {
-      title: `C1: Clustered Vacuum Field`,
+      trace: `Constellation 1`,
+      title: `Clustered Vacuum Field`,
       content: `Astable Anemohypostasis Creation - 6308 gains <span class="text-desc">1</span> additional charge.`,
     },
     c2: {
-      title: `C2: Beth: Unbound Form`,
+      trace: `Constellation 2`,
+      title: `Beth: Unbound Form`,
       content: `The duration of Forbidden Creation - Isomer 75 / Type II is increased by <span class="text-desc">2</span>s.`,
     },
     c3: {
-      title: `C3: Flawless Alchemistress`,
+      trace: `Constellation 3`,
+      title: `Flawless Alchemistress`,
       content: `Increases the Level of Astable Anemohypostasis Creation - 6308 by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Alchemania`,
+      trace: `Constellation 4`,
+      title: `Alchemania`,
       content: `Every <span class="text-desc">7</span> Normal and Charged Attacks, Sucrose will reduce the CD of Astable Anemohypostasis Creation - 6308 by <span class="text-desc">1-7</span>s.`,
     },
     c5: {
-      title: `C5: Caution: Standard Flask`,
+      trace: `Constellation 5`,
+      title: `Caution: Standard Flask`,
       content: `Increases the Level of Forbidden Creation - Isomer 75 / Type II by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Chaotic Entropy`,
+      trace: `Constellation 6`,
+      title: `Chaotic Entropy`,
       content: `If Forbidden Creation - Isomer 75 / Type II triggers an Elemental Absorption, all party members gain a <span class="text-desc">20%</span> Elemental DMG Bonus for the corresponding absorbed element during its duration.`,
     },
   }

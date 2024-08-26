@@ -18,6 +18,7 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Ancient Sword Art`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -30,6 +31,7 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Adeptus Art: Herald of Frost`,
       content: `Using the Icevein Talisman, Qiqi brings forth the Herald of Frost, dealing <b class="text-genshin-cryo">Cryo DMG</b> to surrounding opponents.
       <br />
@@ -40,6 +42,7 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Adeptus Art: Preserver of Fortune`,
       content: `Qiqi releases the adeptus power sealed within her body, marking nearby opponents with a Fortune-Preserving Talisman that deals <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />
@@ -47,41 +50,50 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />When opponents affected by this Talisman take DMG, the character that dealt this DMG regenerates HP.`,
     },
     a1: {
-      title: `A1: Life-Prolonging Methods`,
+      trace: `Ascension 1 Passive`,
+      title: `Life-Prolonging Methods`,
       content: `When a character under the effects of Adeptus Art: Herald of Frost triggers an Elemental Reaction, their Incoming Healing Bonus is increased by <span class="text-desc">20%</span> for <span class="text-desc">8</span>s.`,
     },
     a4: {
-      title: `A4: A Glimpse Into Arcanum	`,
+      trace: `Ascension 4 Passive`,
+      title: `A Glimpse Into Arcanum	`,
       content: `When Qiqi hits opponents with her Normal and Charged Attacks, she has a <span class="text-desc">50%</span> chance to apply a Fortune-Preserving Talisman to them for <span class="text-desc">6</span>s. This effect can only occur once every <span class="text-desc">30</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Former Life Memories`,
       content: `Displays the location of nearby resources unique to Liyue on the mini-map.`,
     },
     c1: {
-      title: `C1: Ascetics of Frost`,
+      trace: `Constellation 1`,
+      title: `Ascetics of Frost`,
       content: `When the Herald of Frost hits an opponent marked by a Fortune-Preserving Talisman, Qiqi regenerates <span class="text-desc">2</span> Energy.`,
     },
     c2: {
-      title: `C2: Frozen to the Bone`,
+      trace: `Constellation 2`,
+      title: `Frozen to the Bone`,
       content: `Qiqi's Normal and Charge Attack DMG against opponents affected by <b class="text-genshin-cryo">Cryo</b> is increased by <span class="text-desc">15%</span>.`,
     },
     c3: {
-      title: `C3: Ascendant Praise`,
+      trace: `Constellation 3`,
+      title: `Ascendant Praise`,
       content: `Increases the Level of Adeptus Art: Preserver of Fortune by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Divine Suppression`,
+      trace: `Constellation 4`,
+      title: `Divine Suppression`,
       content: `Targets marked by the Fortune-Preserving Talisman have their ATK decreased by <span class="text-desc">20%</span>.`,
     },
     c5: {
-      title: `C5: Crimson Lotus Bloom`,
+      trace: `Constellation 5`,
+      title: `Crimson Lotus Bloom`,
       content: `Increases the Level of Adeptus Art: Herald of Frost by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Rite of Resurrection`,
+      trace: `Constellation 6`,
+      title: `Rite of Resurrection`,
       content: `Using Adeptus Art: Preserver of Fortune revives all fallen party members nearby and regenerates <span class="text-desc">50%</span> of their HP.
       <br />This effect can only occur once every <span class="text-desc">15</span> mins.`,
     },

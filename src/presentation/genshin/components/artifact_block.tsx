@@ -152,7 +152,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 {charData?.codeName && props.showWearer && (
                   <div className="absolute flex items-center justify-center p-1 text-xs bg-opacity-75 rounded-full -top-1 w-7 h-7 -right-3 bg-primary-light">
                     <img
-                      src={`https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png`}
+                      src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_Side_${codeName}.png`}
                       className="absolute scale-125 bottom-1.5"
                     />
                   </div>

@@ -19,6 +19,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `The Shape of Water`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 3 consecutive attacks that take the form of swimming fish, dealing <b class="text-genshin-hydro">Hydro DMG</b>.
@@ -31,6 +32,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Kurage's Oath`,
       content: `Summons a "Bake-Kurage" created from water that can heal her allies.
       <br />Using this skill will apply the <b class="text-genshin-hydro">Wet</b> status to Sangonomiya Kokomi.
@@ -40,6 +42,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Nereid's Ascension`,
       content: `Summons the might of Watatsumi, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents, before robing Kokomi in a Ceremonial Garment made from the flowing waters of Sangonomiya.
       <br />
@@ -51,11 +54,13 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       <br />These effects will be cleared once Sangonomiya Kokomi leaves the field.`,
     },
     a1: {
-      title: `A1: Tamakushi Casket`,
+      trace: `Ascension 1 Passive`,
+      title: `Tamakushi Casket`,
       content: `If Sangonomiya Kokomi's own Bake-Kurage are on the field when she uses Nereid's Ascension, the Bake-Kurage's duration will be refreshed.`,
     },
     a4: {
-      title: `A4: Song of Pearls`,
+      trace: `Ascension 4 Passive`,
+      title: `Song of Pearls`,
       content: `While donning the Ceremonial Garment created by Nereid's Ascension, the Normal and Charged Attack DMG Bonus Sangonomiya Kokomi gains based on her Max HP will receive a further increase based on <span class="text-desc">15%</span> of her Healing Bonus.`,
       value: [
         {
@@ -65,42 +70,51 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Princess of Watatsumi`,
       content: `Decreases swimming Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     bonus: {
+      trace: `Bonus Ability`,
       title: `Flawless Strategy`,
       content: `Sangonomiya Kokomi has a <span class="text-desc">25%</span> Healing Bonus, but a <span class="text-desc">100%</span> decrease in CRIT Rate.`,
+      image: `UI_Talent_S_Kokomi_07.png`,
     },
     c1: {
-      title: `C1: At Water's Edge`,
+      trace: `Constellation 1`,
+      title: `At Water's Edge`,
       content: `While donning the Ceremonial Garment created by Nereid's Ascension, the final Normal Attack in Sangonomiya Kokomi's combo will unleash a swimming fish to deal <span class="text-desc">30%</span> of her Max HP as <b class="text-genshin-hydro">Hydro DMG</b>.
       <br />This DMG is not considered Normal Attack DMG.`,
     },
     c2: {
-      title: `C2: The Clouds Like Waves Rippling`,
+      trace: `Constellation 2`,
+      title: `The Clouds Like Waves Rippling`,
       content: `Sangonomiya Kokomi gains the following Healing Bonuses with regard to characters with 50% or less HP via the following methods:
       <br />- Kurage's Oath Bake-Kurage: <span class="text-desc">4.5%</span> of Kokomi's Max HP.
       <br />- Nereid's Ascension Normal and Charged Attacks: <span class="text-desc">0.6%</span> of Kokomi's Max HP.`,
     },
     c3: {
-      title: `C3: The Moon, A Ship O'er the Seas`,
+      trace: `Constellation 3`,
+      title: `The Moon, A Ship O'er the Seas`,
       content: `Increases the Level of Nereid's Ascension by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: The Moon Overlooks the Waters`,
+      trace: `Constellation 4`,
+      title: `The Moon Overlooks the Waters`,
       content: `While donning the Ceremonial Garment created by Nereid's Ascension, Sangonomiya Kokomi's Normal Attack SPD is increased by <span class="text-desc">10%</span>, and Normal Attacks that hit opponents will restore <span class="text-desc">0.8</span> Energy for her.
       <br />This effect can occur once every <span class="text-desc">0.2</span>s.`,
     },
     c5: {
-      title: `C5: All Streams Flow to the Sea`,
+      trace: `Constellation 5`,
+      title: `All Streams Flow to the Sea`,
       content: `Increases the Level of Kurage's Oath by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Sango Isshin`,
+      trace: `Constellation 6`,
+      title: `Sango Isshin`,
       content: `While donning the Ceremonial Garment created by Nereid's Ascension, Sangonomiya Kokomi gains a <span class="text-desc">40%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b> for <span class="text-desc">4</span>s when her Normal and Charged Attacks heal, or would heal, any party member with <span class="text-desc">80%</span> or more HP.`,
     },
   }

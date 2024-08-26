@@ -21,6 +21,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Rapid Ritesword`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 rapid strikes.
@@ -33,6 +34,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Enigmatic Feint`,
       content: `Flicks her mantle and executes an Enigma Thrust, dealing <b class="text-genshin-anemo">Anemo DMG</b>.
       <br />When the Enigma Thrust hits an opponent, it will restore Lynette's HP based on her Max HP, and in the <span class="text-desc">4</span>s afterward, she will lose a certain amount of HP per second.
@@ -52,6 +54,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Magic Trick: Astonishing Shift`,
       content: `Lynette raises her mantle high, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>, using skillful sleight of hand to make a giant Bogglecat Box appear!
       <br />
@@ -62,41 +65,50 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Elemental Absorption of this kind will only occur once during this ability's duration.`,
     },
     a1: {
-      title: `A1: Sophisticated Synergy`,
+      trace: `Ascension 1 Passive`,
+      title: `Sophisticated Synergy`,
       content: `Within <span class="text-desc">10</span>s after using Magic Trick: Astonishing Shift, when there are <span class="text-desc">1/2/3/4</span> Elemental Types in the party, all party members' ATK will be increased by <span class="text-desc">8%/12%/16%/20%</span> respectively.`,
     },
     a4: {
-      title: `A4: Props Positively Prepped`,
+      trace: `Ascension 4 Passive`,
+      title: `Props Positively Prepped`,
       content: `After the Bogglecat Box summoned by Magic Trick: Astonishing Shift performs Elemental Conversion, Lynette's Elemental Burst will deal <span class="text-desc">15%</span> more DMG. This effect will persist until the Bogglecat Box's duration ends.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Loci-Based Mnemonics`,
       content: `Shows the location of nearby Recovery Orbs on the minimap. The Aquatic Stamina and HP gained from touching Orbs will be increased by <span class="text-desc">25%</span>.`,
     },
     c1: {
-      title: `C1: A Cold Blade Like a Shadow`,
+      trace: `Constellation 1`,
+      title: `A Cold Blade Like a Shadow`,
       content: `When Enigmatic Feint's Enigma Thrust hits an opponent with Shadowsign, a vortex will be created at that opponent's position that will pull nearby opponents in.`,
     },
     c2: {
-      title: `C2: Endless Mysteries`,
+      trace: `Constellation 2`,
+      title: `Endless Mysteries`,
       content: `Whenever the Bogglecat Box summoned by Magic Trick: Astonishing Shift fires a Vivid Shot, it will fire an extra Vivid Shot.`,
     },
     c3: {
-      title: `C3: Cognition-Inverting Gaze`,
+      trace: `Constellation 3`,
+      title: `Cognition-Inverting Gaze`,
       content: `Increases the Level of Magic Trick: Astonishing Shift by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Tacit Coordination`,
+      trace: `Constellation 4`,
+      title: `Tacit Coordination`,
       content: `Increases Enigmatic Feint's charges by <span class="text-desc">1</span>.`,
     },
     c5: {
-      title: `C5: Obscuring Ambiguity`,
+      trace: `Constellation 5`,
+      title: `Obscuring Ambiguity`,
       content: `Increases the Level of Enigmatic Feint by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Watchful Eye`,
+      trace: `Constellation 6`,
+      title: `Watchful Eye`,
       content: `When Lynette uses Enigmatic Feint's Enigma Thrust, she will gain an <b class="text-genshin-anemo">Anemo Infusion</b> and <span class="text-desc">20%</span> <b class="text-genshin-anemo">Anemo DMG Bonus</b> for <span class="text-desc">6</span>s.`,
     },
   }

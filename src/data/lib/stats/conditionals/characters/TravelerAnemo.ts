@@ -19,6 +19,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Foreign Ironwind`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -31,6 +32,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Palm Vortex`,
       content: `Grasping the wind's might, you form a vortex of vacuum in your palm, causing continuous <b class="text-genshin-anemo">Anemo DMG</b> to opponents in front of you.
       <br />The vacuum vortex explodes when the skill duration ends, causing a greater amount of <b class="text-genshin-anemo">Anemo DMG</b> over a larger area.
@@ -44,6 +46,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Gust Surge`,
       content: `Guiding the path of the wind currents, you summon a forward-moving tornado that pulls objects and opponents towards itself, dealing continuous <b class="text-genshin-anemo">Anemo DMG</b>.
       <br />
@@ -52,37 +55,45 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       <br />Elemental Absorption may only occur once per use.`,
     },
     a1: {
-      title: `A1: Slitting Wind`,
+      trace: `Ascension 1 Passive`,
+      title: `Slitting Wind`,
       content: `The last hit of a Normal Attack combo unleashes a wind blade, dealing <span class="text-desc">60%</span> of ATK as <b class="text-genshin-anemo">Anemo DMG</b> to all opponents in its path.`,
     },
     a4: {
-      title: `A4: Second Wind`,
+      trace: `Ascension 4 Passive`,
+      title: `Second Wind`,
       content: `Palm Vortex kills regenerate <span class="text-desc">2%</span> HP for <span class="text-desc">5</span>s. This effect can only occur once every <span class="text-desc">5</span>s.`,
     },
     c1: {
-      title: `C1: Raging Vortex`,
+      trace: `Constellation 1`,
+      title: `Raging Vortex`,
       content: `Palm Vortex pulls in opponents and objects within a <span class="text-desc">5</span>m radius.`,
     },
     c2: {
-      title: `C2: Uprising Whirlwind`,
+      trace: `Constellation 2`,
+      title: `Uprising Whirlwind`,
       content: `Increases Energy Recharge by <span class="text-desc">16%</span>.`,
     },
     c3: {
-      title: `C3: Sweeping Gust`,
+      trace: `Constellation 3`,
+      title: `Sweeping Gust`,
       content: `Increases the Level of Gust Surge by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Cherishing Breezes`,
+      trace: `Constellation 4`,
+      title: `Cherishing Breezes`,
       content: `Reduces DMG taken while casting Palm Vortex by 10%.`,
     },
     c5: {
-      title: `C5: Viridian Transience`,
+      trace: `Constellation 5`,
+      title: `Viridian Transience`,
       content: `Increases the Level of Palm Vortex by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Intertwined Winds`,
+      trace: `Constellation 6`,
+      title: `Intertwined Winds`,
       content: `Targets who take DMG from Gust Surge have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">20%</span>.
       <br />If an Elemental Absorption occurred, then their <b>RES</b> towards the corresponding Element is also decreased by <span class="text-desc">20%</span>.`,
     },

@@ -18,6 +18,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Sandstorm Assault`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes using her Claymore and her martial arts.
@@ -31,6 +32,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Molten Inferno`,
       content: `This art of Dehya's own invention changes its method of use depending on the combat situation.
       <br />
@@ -53,6 +55,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Leonine Bite`,
       content: `Unleashing her burning anger and casting her inconvenient blade aside, Dehya enters the Blazing Lioness state and increases her resistance to interruption.
       <br />In this state, Dehya will automatically and continuously unleash the Flame-Mane's Fists, dealing <b class="text-genshin-pyro">Pyro DMG</b> based on her ATK and Max HP, and when its duration ends, she will unleash an Incineration Drive, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> based on her ATK and Max HP.
@@ -63,46 +66,55 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
       <br />Unleashing Roaring Barrage within <span class="text-desc">0.4</span>s after each Flame-Mane's Fist strike will increase the speed at which the next Flame-Mane's Fist strike will be triggered.`,
     },
     a1: {
-      title: `A1: Unstinting Succor`,
+      trace: `Ascension 1 Passive`,
+      title: `Unstinting Succor`,
       content: `Within <span class="text-desc">6</span> seconds after Dehya retrieves the Fiery Sanctum field through Molten Inferno: Ranging Flame or Leonine Bite, she will take <span class="text-desc">60%</span> less DMG when receiving DMG from Redmane's Blood. This effect can be triggered once every <span class="text-desc">2</span>s.
       Additionally, within <span class="text-desc">9</span>s after Dehya unleashes Molten Inferno: Indomitable Flame, she will grant all party members the Gold-Forged Form state. This state will further increase a character's resistance to interruption when they are within the Fiery Sanctum field. Gold-Forged Form can be activated once every <span class="text-desc">18</span>s.`,
     },
     a4: {
-      title: `A4: Stalwart and True`,
+      trace: `Ascension 4 Passive`,
+      title: `Stalwart and True`,
       content: `When her HP is less than <span class="text-desc">40%</span>, Dehya will recover <span class="text-desc">20%</span> of her Max HP and will restore <span class="text-desc">6%</span> of her Max HP every <span class="text-desc">2</span>s for the next <span class="text-desc">10</span>s. This effect can be triggered once every <span class="text-desc">20</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `The Sunlit Way`,
       content: `During the day (6:00 - 18:00), your party members gain the Swift Stride effect: Movement SPD increased by <span class="text-desc">10%</span>.
       <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
     },
     c1: {
-      title: `C1: The Flame Incandescent`,
+      trace: `Constellation 1`,
+      title: `The Flame Incandescent`,
       content: `Dehya's Max HP is increased by <span class="text-desc">20%</span>, and she deals bonus DMG based on her Max HP when using the following attacks:
       <br />- Molten Inferno's DMG will be increased by <span class="text-desc">3.6%</span> of her Max HP.
       <br />- Leonine Bite's DMG will be increased by <span class="text-desc">6%</span> of her Max HP.`,
     },
     c2: {
-      title: `C2: The Sand-Blades Glittering`,
+      trace: `Constellation 2`,
+      title: `The Sand-Blades Glittering`,
       content: `When Dehya uses Molten Inferno: Ranging Flame, the duration of the recreated Fiery Sanctum field will be increased by <span class="text-desc">6</span>s.
       <br />Additionally, when a Fiery Sanctum exists on the field, DMG dealt by its next coordinated attack will be increased by <span class="text-desc">50%</span> when active character(s) within the Fiery Sanctum field are attacked.`,
     },
     c3: {
-      title: `C3: A Rage Swift as Fire`,
+      trace: `Constellation 3`,
+      title: `A Rage Swift as Fire`,
       content: `Increases the Level of Leonine Bite by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: An Oath Abiding`,
+      trace: `Constellation 4`,
+      title: `An Oath Abiding`,
       content: `When Flame-Mane's Fist and Incineration Drive attacks unleashed during Leonine Bite hit opponents, they will restore <span class="text-desc">1.5</span> Energy for Dehya and <span class="text-desc">2.5%</span> of her Max HP. This effect can be triggered once every <span class="text-desc">0.2</span>s.`,
     },
     c5: {
-      title: `C5: The Alpha Unleashed`,
+      trace: `Constellation 5`,
+      title: `The Alpha Unleashed`,
       content: `Increases the Level of Molten Inferno by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: The Burning Claws Cleaving`,
+      trace: `Constellation 6`,
+      title: `The Burning Claws Cleaving`,
       content: `The CRIT Rate of Leonine Bite is increased by <span class="text-desc">10%</span>.
       <br />Additionally, after a Flame-Mane's Fist attack hits an opponent and deals CRIT Hits during a single Blazing Lioness state, it will cause the CRIT DMG of Leonine Bite to increase by <span class="text-desc">15%</span> for the rest of Blazing Lioness's duration and extend that duration by <span class="text-desc">0.5</span>s. This effect can be triggered every <span class="text-desc">0.2</span>s. The duration can be extended for a maximum of <span class="text-desc">2</span>s and CRIT DMG can be increased by a maximum of <span class="text-desc">60%</span> this way.`,
     },

@@ -21,7 +21,7 @@ export const A1Icon = ({ talents, stats, ascension, codeName, element }: Ascensi
       style="w-[25vw]"
     >
       <img
-        src={`https://enka.network/ui/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${
+        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${
           codeName === 'PlayerGrass'
             ? '_01'
             : codeName === 'Ningguang'
@@ -47,7 +47,7 @@ export const A4Icon = ({ talents, stats, ascension, codeName, element }: Ascensi
       style="w-[25vw]"
     >
       <img
-        src={`https://enka.network/ui/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${
+        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${codeName === 'PlayerGrass' ? 'U' : 'S'}_${codeName}${
           codeName === 'PlayerGrass' ? '_02' : '_06'
         }.png`}
         className={classNames(

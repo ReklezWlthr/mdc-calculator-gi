@@ -21,6 +21,7 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `The Classics of Acupuncture`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 attacks that deal <b class="text-genshin-dendro">Dendro DMG</b> to opponents in front of him.
@@ -33,12 +34,14 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Universal Diagnosis`,
       content: `Controls a Gossamer Sprite that cruises and attacks nearby opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b>.
       <br />After it performs <span class="text-desc">3</span> attacks or if there are no opponents nearby, the Sprite will return, healing all nearby party members based on Baizhu's Max HP.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Holistic Revivification`,
       content: `Enters the Pulsing Clarity state, creating a Seamless Shield that absorbs <b class="text-genshin-dendro">Dendro DMG</b> with <span class="text-desc">250%</span> effectiveness.
       <br />While in this state, Baizhu will generate a new Seamless Shield every <span class="text-desc">2.5</span>s.
@@ -49,13 +52,15 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Five Fortunes Forever`,
+      trace: `Ascension 1 Passive`,
+      title: `Five Fortunes Forever`,
       content: `Baizhu gains different effects according to the current HP of your current active character:
       <br />When their HP is less than <span class="text-desc">50%</span>, Baizhu gains <span class="text-desc">20%</span> Healing Bonus.
       <br />When their HP is equal to or more than <span class="text-desc">50%</span>, Baizhu gains <span class="text-desc">25%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b>.`,
     },
     a4: {
-      title: `A4: All Things Are of the Earth`,
+      trace: `Ascension 4 Passive`,
+      title: `All Things Are of the Earth`,
       content: `Characters who are healed by Seamless Shields will gain the Year of Verdant Favor effect: Each <span class="text-desc">1,000</span> Max HP that Baizhu possesses that does not exceed <span class="text-desc">50,000</span> will increase the Burning, Bloom, Hyperbloom, and Burgeon reaction DMG dealt by these characters by <span class="text-desc">2%</span>, while the Aggravate and Spread reaction DMG dealt by these characters will be increased by <span class="text-desc">0.8%</span>. This effect lasts <span class="text-desc">6</span>s.`,
       value: [
         {
@@ -69,36 +74,43 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Herbal Nourishment`,
       content: `When Baizhu is in the party, interacting with certain harvestable items will heal your current active character for <span class="text-desc">2.5%</span> of Baizhu's Max HP.`,
     },
     c1: {
-      title: `C1: Attentive Observation`,
+      trace: `Constellation 1`,
+      title: `Attentive Observation`,
       content: `Universal Diagnosis gains <span class="text-desc">1</span> additional charge.`,
     },
     c2: {
-      title: `C2: Incisive Discernment`,
+      trace: `Constellation 2`,
+      title: `Incisive Discernment`,
       content: `When your own active character hits a nearby opponent with their attacks, Baizhu will unleash a Gossamer Sprite: Splice.
       <br />Gossamer Sprite: Splice will initiate 1 attack before returning, dealing <span class="text-desc">250%</span> of Baizhu's ATK as <b class="text-genshin-dendro">Dendro DMG</b> and healing for <span class="text-desc">20%</span> of Universal Diagnosis's Gossamer Sprite's normal healing.
       <br />DMG dealt this way is considered Elemental Skill DMG.
       <br />This effect can be triggered once every <span class="text-desc">5</span>s.`,
     },
     c3: {
-      title: `C3: All Aspects Stabilized`,
+      trace: `Constellation 3`,
+      title: `All Aspects Stabilized`,
       content: `Increases the Level of Holistic Revivification by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Ancient Art of Perception`,
+      trace: `Constellation 4`,
+      title: `Ancient Art of Perception`,
       content: `For <span class="text-desc">15</span>s after Holistic Revivification is used, Baizhu will increase all nearby party members' Elemental Mastery by <span class="text-desc">80</span>.`,
     },
     c5: {
-      title: `C5: The Hidden Ebb and Flow`,
+      trace: `Constellation 5`,
+      title: `The Hidden Ebb and Flow`,
       content: `Increases the Level of Universal Diagnosis by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Elimination of Malicious Qi`,
+      trace: `Constellation 6`,
+      title: `Elimination of Malicious Qi`,
       content: `Increases the DMG dealt by Holistic Revivification's Spiritveins by <span class="text-desc">8%</span> of Baizhu's Max HP.
       <br />Additionally, when a Gossamer Sprite or Gossamer Sprite: Splice hits opponents, there is a <span class="text-desc">100%</span> chance of generating one of Holistic Revivification's Seamless Shields. This effect can only be triggered once by each Gossamer Sprite or Gossamer Sprite: Splice.`,
     },

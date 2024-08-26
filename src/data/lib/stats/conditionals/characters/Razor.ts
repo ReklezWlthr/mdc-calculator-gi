@@ -18,6 +18,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Steel Fang`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -31,6 +32,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Claw and Thunder`,
       content: `Hunts his prey using the techniques taught to him by his master and his lupical.
       <br />
@@ -45,6 +47,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Lightning Fang`,
       content: `Summons the Wolf Within, which deals <b class="text-genshin-electro">Electro DMG</b> to all nearby opponents. This clears all of Razor's Electro Sigils, which will be converted into Elemental Energy for him.
       <br />The Wolf Within will fight alongside Razor for the skill's duration.
@@ -60,42 +63,51 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />When Razor leaves the field, a maximum of <span class="text-desc">10</span> Energy will be returned to him based off the duration remaining on this skill.`,
     },
     a1: {
-      title: `A1: Awakening`,
+      trace: `Ascension 1 Passive`,
+      title: `Awakening`,
       content: `Decreases Claw and Thunder's CD by <span class="text-desc">18%</span>. Using Lightning Fang resets the CD of Claw and Thunder.`,
     },
     a4: {
-      title: `A4: Hunger`,
+      trace: `Ascension 4 Passive`,
+      title: `Hunger`,
       content: `When Razor's Energy is below <span class="text-desc">50%</span>, increases Energy Recharge by <span class="text-desc">30%</span>.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Wolvensprint`,
       content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
-      title: `C1: Wolf's Instinct`,
+      trace: `Constellation 1`,
+      title: `Wolf's Instinct`,
       content: `Picking up an Elemental Orb or Particle increases Razor's DMG by <span class="text-desc">10%</span> for <span class="text-desc">8</span>s.`,
     },
     c2: {
-      title: `C2: Suppression`,
+      trace: `Constellation 2`,
+      title: `Suppression`,
       content: `Increases CRIT Rate against opponents with less than <span class="text-desc">30%</span> HP by <span class="text-desc">10%</span>.`,
     },
     c3: {
-      title: `C3: Soul Companion`,
+      trace: `Constellation 3`,
+      title: `Soul Companion`,
       content: `Increases the Level of Lightning Fang by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Bite`,
+      trace: `Constellation 4`,
+      title: `Bite`,
       content: `When casting Claw and Thunder <b>Press</b>, opponents hit will have their DEF decreased by <span class="text-desc">15%</span> for <span class="text-desc">7</span>s.`,
     },
     c5: {
-      title: `C5: Sharpened Claws`,
+      trace: `Constellation 5`,
+      title: `Sharpened Claws`,
       content: `Increases the Level of Claw and Thunder by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Lupus Fulguris`,
+      trace: `Constellation 6`,
+      title: `Lupus Fulguris`,
       content: `Every <span class="text-desc">10</span>s, Razor's sword charges up, causing the next Normal Attack to release lightning that deals <span class="text-desc">100%</span> of Razor's ATK as <b class="text-genshin-electro">Electro DMG</b>.
       <br />When Razor is not using Lightning Fang, a lightning strike on an opponent will grant Razor an Electro Sigil for Claw and Thunder.`,
     },

@@ -104,7 +104,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           title="Has Default Build"
         />
       </div>
-      <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
+      <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredChar, (item) => {
           const owned = _.includes(_.map(charStore.characters, 'cId'), item.id)
           const codeName = item.codeName === 'Player' ? settingStore.settings.travelerGender : item.codeName
@@ -142,7 +142,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                   <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
                 </div>
                 <img
-                  src={`https://enka.network/ui/UI_AvatarIcon_${codeName}.png`}
+                  src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
                   className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                 />
               </div>

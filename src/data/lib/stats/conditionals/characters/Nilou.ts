@@ -23,6 +23,7 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Dance of Samser`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 3 consecutive sword strikes.
@@ -35,6 +36,7 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Dance of Haftkarsvar`,
       content: `Enters the Pirouette state, dealing <b class="text-genshin-hydro">Hydro DMG</b> to nearby opponents based on Nilou's Max HP.
       <br />While she is in the Pirouette state, Nilou's Normal Attacks and Elemental Skill will cause her to enter the Sword Dance and Whirling Steps stances respectively, causing DMG she deals to be converted to <b class="text-genshin-hydro">Hydro DMG</b> that cannot be overridden and that is considered Elemental Skill DMG.
@@ -47,12 +49,14 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Dance of Abzendegi: Distant Dreams, Listening Spring`,
       content: `Begins the dance of faraway dreams and springs that hear, causing a Lotus of Distant Waters to bloom, dealing <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Nilou's Max HP and applying the Lingering Aeon effect to all opponents hit.
       <br />After an interval, opponents affected by Lingering Aeon will take <b class="text-genshin-hydro">Hydro DMG</b>.`,
     },
     a1: {
-      title: `A1: Court of Dancing Petals	`,
+      trace: `Ascension 1 Passive`,
+      title: `Court of Dancing Petals	`,
       content: `When all characters in the party are all <b class="text-genshin-dendro">Dendro</b> or <b class="text-genshin-hydro">Hydro</b>, and there are at least one <b class="text-genshin-dendro">Dendro</b> character and one <b class="text-genshin-hydro">Hydro</b> character:
       <br />The completion of the third dance step of Nilou's Dance of Haftkarsvar will grant all nearby characters the Golden Chalice's Bounty for <span class="text-desc">30</span>s.
       <br />Characters under the effect of Golden Chalice's Bounty will increase the Elemental Mastery of all nearby characters by <span class="text-desc">100</span> for <span class="text-desc">10</span>s whenever they are hit by <b class="text-genshin-dendro">Dendro attacks</b>. Also, triggering the Bloom reaction will create <b class="text-genshin-dendro">Bountiful Cores</b> instead of <b class="text-genshin-dendro">Dendro Cores</b>.
@@ -61,7 +65,8 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Should the party not meet the conditions for this Passive Talent, any existing Golden Chalice's Bounty effects will be canceled.`,
     },
     a4: {
-      title: `A4: Dreamy Dance of Aeons`,
+      trace: `Ascension 4 Passive`,
+      title: `Dreamy Dance of Aeons`,
       content: `Every <span class="text-desc">1,000</span> points of Nilou's Max HP above <span class="text-desc">30,000</span> will cause the DMG dealt by <b class="text-genshin-dendro">Bountiful Cores</b> created by characters affected by Golden Chalice's Bounty to increase by <span class="text-desc">9%</span>.
       <br />The maximum increase in <b class="text-genshin-dendro">Bountiful Core DMG</b> that can be achieved this way is <span class="text-desc">400%</span>.`,
       value: [
@@ -72,36 +77,43 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `White Jade Lotus`,
       content: `When Perfect Cooking is achieved on Food with Adventure-related effects, there is a <span class="text-desc">12%</span> chance to obtain double the product.`,
     },
     c1: {
-      title: `C1: Dance of the Waning Moon`,
+      trace: `Constellation 1`,
+      title: `Dance of the Waning Moon`,
       content: `Dance of Haftkarsvar will be enhanced as follows:
       <br />- Luminous Illusion DMG is increased by <span class="text-desc">65%</span>.
       <br />- The Tranquility Aura's duration is extended by <span class="text-desc">6</span>s.`,
     },
     c2: {
-      title: `C2: The Starry Skies Their Flowers Rain`,
+      trace: `Constellation 2`,
+      title: `The Starry Skies Their Flowers Rain`,
       content: `After characters affected by the Golden Chalice's Bounty deal <b class="text-genshin-hydro">Hydro DMG</b> to an opponent, that opponent's <b class="text-genshin-hydro">Hydro RES</b> will be decreased by <span class="text-desc">35%</span> for <span class="text-desc">10</span>s. After a triggered Bloom reaction deals DMG to opponents, their <b class="text-genshin-dendro">Dendro RES</b> will be decreased by <span class="text-desc">35%</span> for <span class="text-desc">10</span>s.
       <br />You need to have unlocked the "Court of Dancing Petals" Talent.`,
     },
     c3: {
-      title: `C3: Beguiling Shadowstep`,
+      trace: `Constellation 3`,
+      title: `Beguiling Shadowstep`,
       content: `Increases the Level of Dance of Abzendegi: Distant Dreams, Listening Spring by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Fricative Pulse`,
+      trace: `Constellation 4`,
+      title: `Fricative Pulse`,
       content: `After the third dance step of Dance of Haftkarsvar's Pirouette hits opponents, Nilou will gain <span class="text-desc">15</span> Elemental Energy, and DMG from her Dance of Abzendegi: Distant Dreams, Listening Spring will be increased by <span class="text-desc">50%</span> for <span class="text-desc">8</span>s.`,
     },
     c5: {
-      title: `C5: Twirling Light`,
+      trace: `Constellation 5`,
+      title: `Twirling Light`,
       content: `Increases the Level of Dance of Haftkarsvar by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Frostbreaker's Melody`,
+      trace: `Constellation 6`,
+      title: `Frostbreaker's Melody`,
       content: `For every <span class="text-desc">1,000</span> points of Max HP, Nilou's CRIT Rate and CRIT DMG will increase by <span class="text-desc">0.6%</span> and <span class="text-desc">1.2%</span> respectively.
       <br />The maximum increase in CRIT Rate and CRIT DMG via this method is <span class="text-desc">30%</span> and <span class="text-desc">60%</span> respectively.`,
       value: [

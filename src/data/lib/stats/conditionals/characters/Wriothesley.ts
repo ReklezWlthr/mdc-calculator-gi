@@ -19,6 +19,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Forceful Fists of Frost`,
       content: `<b>Normal Attack</b>
       <br />Coalescing frost about his fist, Wriothesley will unleash powerful Repelling Fists, performing up to 5 rapid attacks that deal <b class="text-genshin-cryo">Cryo DMG</b>.
@@ -32,6 +33,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Icefang Rush`,
       content: `Adjusting his breathing, rhythm, and pace, Wriothesley sprints forward a short distance, entering the Chilling Penalty state and unleashing more powerful attacks than before.
       <br />
@@ -42,6 +44,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Darkgold Wolfbite`,
       content: `Activating his boxing gloves, Wriothesley strikes out with an icy straight, then uses Icicle Impact to cause multiple instances of <b class="text-genshin-cryo">AoE Cryo DMG</b> in a frontal area.
       <br />
@@ -49,20 +52,24 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
       <br />After Icicle Impact ends, a Surging Blade will descend upon the opponent's position, dealing <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-cryo">Cryo DMG</b>.`,
     },
     a1: {
-      title: `A1: There Shall Be a Plea for Justice`,
+      trace: `Ascension 1 Passive`,
+      title: `There Shall Be a Plea for Justice`,
       content: `When Wriothesley's HP is less than <span class="text-desc">60%</span>, he will obtain a Gracious Rebuke. The next Charged Attack of his Normal Attack: Forceful Fists of Frost will be enhanced to become Rebuke: Vaulting Fist. It will not consume Stamina, will deal <span class="text-desc">50%</span> increased DMG, and after hitting will restore HP for Wriothesley equal to <span class="text-desc">30%</span> of his Max HP.
       <br />You can gain a Gracious Rebuke this way once every <span class="text-desc">5</span>s.`,
     },
     a4: {
-      title: `A4: There Shall Be a Reckoning for Sin`,
+      trace: `Ascension 4 Passive`,
+      title: `There Shall Be a Reckoning for Sin`,
       content: `When Wriothesley's current HP increases or decreases, if he is in the Chilling Penalty state conferred by Icefang Rush, Chilling Penalty will gain one stack of Prosecution Edict. Max <span class="text-desc">5</span> stacks. Each stack will increase Wriothesley's ATK by <span class="text-desc">6%</span>.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `The Duke's Grace`,
       content: `When Wriothesley crafts Weapon Ascension Materials, he has a <span class="text-desc">10%</span> chance to receive double the product.`,
     },
     c1: {
-      title: `C1: Terror for the Evildoers`,
+      trace: `Constellation 1`,
+      title: `Terror for the Evildoers`,
       content: `The Gracious Rebuke from the Passive Talent "There Shall Be a Plea for Justice" is changed to this:
       <br />When Wriothesley's HP is less than <span class="text-desc">60%</span> or while he is in the Chilling Penalty state caused by Icefang Rush, when the fifth attack of Repelling Fists hits, it will create a Gracious Rebuke. 1 Gracious Rebuke effect can be obtained every <span class="text-desc">2.5</span>s.
       <br />
@@ -73,27 +80,32 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
       <br />You must first unlock the Passive Talent "There Shall Be a Plea for Justice."`,
     },
     c2: {
-      title: `C2: Punishment for the Frauds`,
+      trace: `Constellation 2`,
+      title: `Punishment for the Frauds`,
       content: `When using Darkgold Wolfbite, each Prosecution Edict stack from the Passive Talent "There Shall Be a Reckoning for Sin" will increase said ability's DMG dealt by <span class="text-desc">40%</span>.
       <br />You must first unlock the Passive Talent "There Shall Be a Reckoning for Sin."`,
     },
     c3: {
-      title: `C3: Sanban: Moonflower Kusemai`,
+      trace: `Constellation 3`,
+      title: `Sanban: Moonflower Kusemai`,
       content: `Increases the Level of Normal Attack: Forceful Fists of Frost by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Redemption for the Suffering`,
+      trace: `Constellation 4`,
+      title: `Redemption for the Suffering`,
       content: `The HP restored to Wriothesley through Rebuke: Vaulting Fist will be increased to <span class="text-desc">50%</span> of his Max HP. You must first unlock the Passive Talent "There Shall Be a Plea for Justice."
       <br />Additionally, when Wriothesley is healed, if the amount of healing overflows, the following effects will occur depending on whether he is on the field or not. If he is on the field, his ATK SPD will be increased by <span class="text-desc">20%</span> for <span class="text-desc">4</span>s. If he is off-field, all of your own party members' ATK SPD will be increased by <span class="text-desc">100%</span> for <span class="text-desc">6</span>s. These two methods of increasing ATK SPD cannot stack.`,
     },
     c5: {
-      title: `C5: Mercy for the Wronged`,
+      trace: `Constellation 5`,
+      title: `Mercy for the Wronged`,
       content: `Increases the Level of Darkgold Wolfbite by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Esteem for the Innocent`,
+      trace: `Constellation 6`,
+      title: `Esteem for the Innocent`,
       content: `The CRIT Rate of Rebuke: Vaulting Fist will be increased by <span class="text-desc">10%</span>, and its CRIT DMG by <span class="text-desc">80%</span>. When unleashed, it will also create an additional icicle that deals 100% of Rebuke: Vaulting Fist's Base DMG as <b class="text-genshin-cryo">Cryo DMG</b>. DMG dealt this way is regarded as Charged Attack DMG.
       <br />You must first unlock the Passive Talent "There Shall Be a Plea for Justice."`,
     },

@@ -21,6 +21,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: "Soloist's Solicitation",
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -38,6 +39,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       upgrade: ['c6'],
     },
     skill: {
+      trace: `Elemental Skill`,
       title: 'Salon Solitaire',
       content: `Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance. Will summon either the Salon Members or the Singer of Many Waters based on Furina's current Arkhe alignment.
       <br />
@@ -55,6 +57,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       upgrade: ['a4', 'c4', 'c5', 'c6'],
     },
     burst: {
+      trace: `Elemental Burst`,
       title: 'Let the People Rejoice',
       content: `Rouses the impulse to revel, creating a stage of foam that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Furina's Max HP and cause nearby party members to enter the Universal Revelry state: During this time, when nearby party members' HP increases or decreases, <span class="text-desc">1</span> Fanfare point will be granted to Furina for each percentage point of their Max HP by which their HP changes.
       <br />At the same time, Furina will increase the DMG dealt by and Incoming Healing Bonus of all nearby party members based on the amount of Fanfare she has.
@@ -63,11 +66,13 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       upgrade: ['c1', 'c2', 'c3'],
     },
     a1: {
-      title: 'A1: Endless Waltz',
+      trace: `Ascension 1 Passive`,
+      title: 'Endless Waltz',
       content: `When the active character in your party receives healing, if the source of the healing is not Furina herself and the healing overflows, then Furina will heal nearby party members for <span class="text-desc">2%</span> of their Max HP once every <span class="text-desc">2</span>s within the next <span class="text-desc">4</span>s.`,
     },
     a4: {
-      title: 'A4: Unheard Confession',
+      trace: `Ascension 4 Passive`,
+      title: 'Unheard Confession',
       content: `Every <span class="text-desc">1,000</span> points of Furina's Max HP can buff the different Arkhe-aligned Salon Solitaire in the following ways:
       <br />Will increase Salon Member DMG dealt by <span class="text-desc">0.7%</span>, up to a maximum of <span class="text-desc">28%</span>.
       <br />Will decrease active character healing interval of the Singer of Many Waters by <span class="text-desc">0.4%</span>, up to a maximum of <span class="text-desc">16%</span>.`,
@@ -83,34 +88,41 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `The Sea Is My Stage`,
       content: `Xenochromatic Fontemer Aberrant ability CD decreased by <span class="text-desc">30%</span>.`,
     },
     c1: {
-      title: 'C1: "Love Is a Rebellious Bird That None Can Tame"',
+      trace: `Constellation 1`,
+      title: '"Love Is a Rebellious Bird That None Can Tame"',
       content: `When using Let the People Rejoice, Furina will gain <span class="text-desc">150</span> Fanfare.
       <br />Additionally, Furina's Fanfare limit is increased by <span class="text-desc">100</span>.`,
     },
     c2: {
-      title: 'C2: "A Woman Adapts Like Duckweed in Water"',
+      trace: `Constellation 2`,
+      title: '"A Woman Adapts Like Duckweed in Water"',
       content: `While Let the People Rejoice lasts, Furina's Fanfare gain from increases or decreases in nearby characters' HP is increased by <span class="text-desc">250%</span>. Each point of Fanfare above the limit will increase Furina's Max HP by <span class="text-desc">0.35%</span>. Her maximum Max HP increase is <span class="text-desc">140%</span>.`,
     },
     c3: {
-      title: 'C3: "My Secret Is Hidden Within Me, No One Will Know My Name"',
+      trace: `Constellation 3`,
+      title: '"My Secret Is Hidden Within Me, No One Will Know My Name"',
       content: `Increases the Level of Let the People Rejoice by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'C4: "They Know Not Life, Who Dwelt in the Netherworld Not!"',
+      trace: `Constellation 4`,
+      title: '"They Know Not Life, Who Dwelt in the Netherworld Not!"',
       content: `When the Salon Members from Salon Solitaire hit an opponent, or the Singer of Many Waters restores HP to nearby active characters, Furina will restore <span class="text-desc">4</span> Energy. This effect can be triggered once every <span class="text-desc">5</span>s.`,
     },
     c5: {
-      title: 'C5: "His Name I Now Know, It Is...!"',
+      trace: `Constellation 5`,
+      title: '"His Name I Now Know, It Is...!"',
       content: `Increases the Level of Salon Solitaire by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'C6: "Hear Me — Let Us Raise the Chalice of Love!"',
+      trace: `Constellation 6`,
+      title: '"Hear Me — Let Us Raise the Chalice of Love!"',
       content: `When using Salon Solitaire, Furina gains "Center of Attention" for <span class="text-desc">10</span>s.
       <br />Throughout the duration, Furina's Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to <span class="text-desc">18%</span> of Furina's max HP.
       <br />Throughout the duration, Furina's Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every <span class="text-desc">0.1</span>s after hitting opponents depending on her current Arkhe alignment:

@@ -18,6 +18,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Flowing Eddies`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -31,6 +32,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Pressurized Floe`,
       content: `Performs an upward thrust that deals <b class="text-genshin-cryo">Cryo DMG</b> and causes Freminet to enter Pers Timer for <span class="text-desc">10</span>s.
       <br />While Pers Timer is active, his Elemental Skill will turn into Shattering Pressure.
@@ -50,6 +52,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Shadowhunter's Ambush`,
       content: `Unleashes a wave of untouchable cold, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>, resetting the CD of the Elemental Skill "Pressurized Floe," and causing Freminet to enter the Subnautical Hunter mode for <span class="text-desc">10</span>s.
       <br />
@@ -60,42 +63,51 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       <br />These effects will be canceled when Freminet leaves the field.`,
     },
     a1: {
-      title: `A1: Saturation Deep Dive`,
+      trace: `Ascension 1 Passive`,
+      title: `Saturation Deep Dive`,
       content: `When Freminet unleashes Pressurized Floe: Shattering Pressure, if Pers Timer has yet to reach Pressure Level 4, the CD of Pressurized Floe will be decreased by <span class="text-desc">1</span>s.`,
     },
     a4: {
-      title: `A4: Parallel Condensers`,
+      trace: `Ascension 4 Passive`,
+      title: `Parallel Condensers`,
       content: `When Freminet triggers Shatter against opponents, the DMG dealt by Pressurized Floe: Shattering Pressure will be increased by <span class="text-desc">40%</span> for <span class="text-desc">5</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Deepwater Navigation`,
       content: `Decreases Aquatic Stamina consumption for your own party members by <span class="text-desc">35%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
-      title: `C1: Dreams of the Foamy Deep`,
+      trace: `Constellation 1`,
+      title: `Dreams of the Foamy Deep`,
       content: `The CRIT Rate of Pressurized Floe: Shattering Pressure will be increased by <span class="text-desc">15%</span>.`,
     },
     c2: {
-      title: `C2: Penguins and the Land of Plenty`,
+      trace: `Constellation 2`,
+      title: `Penguins and the Land of Plenty`,
       content: `Unleashing Pressurized Floe: Shattering Pressure will restore <span class="text-desc">2</span> Energy to Freminet. If a Pressure Level 4 Shattering Pressure is unleashed, this will restore <span class="text-desc">3</span> Energy.`,
     },
     c3: {
-      title: `C3: Song of the Eddies and Bleached Sands`,
+      trace: `Constellation 3`,
+      title: `Song of the Eddies and Bleached Sands`,
       content: `Increases the Level of Normal Attack: Flowing Eddies by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Dance of the Snowy Moon and Flute`,
+      trace: `Constellation 4`,
+      title: `Dance of the Snowy Moon and Flute`,
       content: `After Freminet triggers Frozen, Shatter, or Superconduct against opponents, his ATK will be increased by <span class="text-desc">9%</span> for <span class="text-desc">6</span>s. Max <span class="text-desc">2</span> stacks. This can be triggered once every <span class="text-desc">0.3</span>s.`,
     },
     c5: {
-      title: `C5: Nights of Hearth and Happiness`,
+      trace: `Constellation 5`,
+      title: `Nights of Hearth and Happiness`,
       content: `Increases the Level of Pressurized Floe by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Moment of Waking and Resolve`,
+      trace: `Constellation 6`,
+      title: `Moment of Waking and Resolve`,
       content: `After Freminet triggers Frozen, Shatter, or Superconduct against opponents, his CRIT DMG will be increased by <span class="text-desc">12%</span> for <span class="text-desc">6</span>s. Max <span class="text-desc">3</span> stacks. This can be triggered once every <span class="text-desc">0.3</span>s.`,
     },
   }

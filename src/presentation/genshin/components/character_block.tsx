@@ -56,7 +56,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
       <div className="flex">
         <div className="flex items-center w-1/2 px-5 py-3">
           <img
-            src={`https://enka.network/ui/UI_AvatarIcon_${codeName}.png`}
+            src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
             className="object-contain w-full duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
             onClick={onOpenModal}
           />

@@ -21,6 +21,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Card Force Translocation`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive shots with a bow.
@@ -47,6 +48,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Bewildering Lights`,
       content: `Lyney does a flourish with his hat, unleashing a firework surprise!
       <br />When used, he will clear all current Prop Surplus stacks and deal <b class="text-genshin-pyro">AoE Pyro DMG</b> to opponents in front of him. DMG will be increased according to the stacks cleared, and this will also regenerate Lyney's HP based on his Max HP.
@@ -55,6 +57,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />The DMG dealt through the Grin-Malkin Hat in this way is considered Charged Attack DMG.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Wondrous Trick: Miracle Parade`,
       content: `Unleashing his magic, Lyney turns himself into a Grin-Malkin Cat that can move around quickly. (Not to be mistaken for the Grin-Malkin Hat. They're two different props!)
       <br />When the Grin-Malkin Cat gets close to opponents, it will send flames falling down on them, dealing at most <span class="text-desc">1</span> instance of <b class="text-genshin-pyro">Pyro DMG</b> to each opponent. When the duration ends, he will dismiss the Grin-Malkin Cat and ignite fireworks that deal <b class="text-genshin-pyro">AoE Pyro DMG</b>, summon <span class="text-desc">1</span> Grin-Malkin Hat, and grant himself <span class="text-desc">1</span> Prop Surplus stack.
@@ -63,45 +66,54 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     a1: {
-      title: `A1: Perilous Performance`,
+      trace: `Ascension 1 Passive`,
+      title: `Perilous Performance`,
       content: `If Lyney consumes HP when firing off a Prop Arrow, the Grin-Malkin hat summoned by the arrow will, upon hitting an opponent, restore <span class="text-desc">3</span> Energy to Lyney and increase DMG dealt by <span class="text-desc">80%</span> of his ATK.`,
     },
     a4: {
-      title: `A4: Conclusive Ovation`,
+      trace: `Ascension 4 Passive`,
+      title: `Conclusive Ovation`,
       content: `The DMG Lyney deals to opponents affected by <b class="text-genshin-pyro">Pyro</b> will receive the following buffs:
       <br />- Increases the DMG dealt by <span class="text-desc">60%</span>.
       <br />- Each <b class="text-genshin-pyro">Pyro</b> party member other than Lyney will cause the DMG dealt to increase by an additional <span class="text-desc">20%</span>.
       <br />Lyney can deal up to <span class="text-desc">100%</span> increased DMG to opponents affected by <b class="text-genshin-pyro">Pyro</b> in this way.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Trivial Observations`,
       content: `Displays the location of nearby resources unique to Fontaine on the mini-map.`,
     },
     c1: {
-      title: `C1: Whimsical Wonders`,
+      trace: `Constellation 1`,
+      title: `Whimsical Wonders`,
       content: `Lyney can have <span class="text-desc">2</span> Grin-Malkin Hats present at once.
       <br />Additionally, Prop Arrows will summon <span class="text-desc">2</span> Grin-Malkin Hats and grant Lyney <span class="text-desc">1</span> extra stack of Prop Surplus. This effect can occur once every <span class="text-desc">15</span>s.`,
     },
     c2: {
-      title: `C2: Loquacious Cajoling`,
+      trace: `Constellation 2`,
+      title: `Loquacious Cajoling`,
       content: `When Lyney is on the field, he will gain a stack of Crisp Focus every <span class="text-desc">2</span>s. This will increase his CRIT DMG by <span class="text-desc">20%</span>. Max <span class="text-desc">3</span> stacks. This effect will be canceled when Lyney leaves the field.`,
     },
     c3: {
-      title: `C3: Prestidigitation`,
+      trace: `Constellation 3`,
+      title: `Prestidigitation`,
       content: `Increases the Level of Normal Attack: Card Force Translocation by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Well-Versed, Well-Rehearsed`,
+      trace: `Constellation 4`,
+      title: `Well-Versed, Well-Rehearsed`,
       content: `After an opponent is hit by Lyney's <b class="text-genshin-pyro">Pyro</b> Charged Attack, this opponent's <b class="text-genshin-pyro">Pyro RES</b> will be decreased by <span class="text-desc">20%</span> for <span class="text-desc">6</span>s.`,
     },
     c5: {
-      title: `C5: To Pierce Enigmas`,
+      trace: `Constellation 5`,
+      title: `To Pierce Enigmas`,
       content: `Increases the Level of Wondrous Trick: Miracle Parade by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Guarded Smile`,
+      trace: `Constellation 6`,
+      title: `Guarded Smile`,
       content: `When Lyney fires a Prop Arrow, he will fire a Pyrotechnic Strike: Reprised that will deal <span class="text-desc">80%</span> of a Pyrotechnic Strike's DMG. This DMG is considered Charged Attack DMG.`,
     },
   }

@@ -19,6 +19,7 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Sparkling Scatter`,
       content: `<b>Normal Attack</b>
       <br />Shoots gems that deal <b class="text-genshin-geo">Geo DMG</b>.
@@ -33,6 +34,7 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Jade Screen`,
       content: `Ningguang creates a Jade Screen out of gold, obsidian and her great opulence, dealing <b class="text-genshin-geo">AoE Geo DMG</b>.
       <br />
@@ -44,47 +46,57 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Starshatter`,
       content: `Gathering a great number of gems, Ningguang scatters them all at once, sending homing projectiles at her opponents that deal massive <b class="text-genshin-geo">Geo DMG</b>.
       <br />If Starshatter is cast when a Jade Screen is nearby, the Jade Screen will fire additional gem projectiles at the same time.`,
     },
     a1: {
-      title: `A1: Backup Plan`,
+      trace: `Ascension 1 Passive`,
+      title: `Backup Plan`,
       content: `When Ningguang is in possession of Star Jades, her Charged Attack does not consume Stamina.`,
     },
     a4: {
-      title: `A4: Strategic Reserve`,
+      trace: `Ascension 4 Passive`,
+      title: `Strategic Reserve`,
       content: `A character that passes through the Jade Screen will gain a <span class="text-desc">12%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for <span class="text-desc">10</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Trove of Marvelous Treasures`,
       content: `Displays the location of nearby ore veins used in forging on the mini-map.`,
     },
     c1: {
-      title: `C1: Piercing Fragments`,
+      trace: `Constellation 1`,
+      title: `Piercing Fragments`,
       content: `When a Normal Attack hits, it deals AoE DMG.`,
     },
     c2: {
-      title: `C2: Shock Effect`,
+      trace: `Constellation 2`,
+      title: `Shock Effect`,
       content: `When Jade Screen is shattered, its CD will reset.
       <br />Can occur once every <span class="text-desc">6</span>s.`,
     },
     c3: {
-      title: `C3: Majesty Be the Array of Stars`,
+      trace: `Constellation 3`,
+      title: `Majesty Be the Array of Stars`,
       content: `Increases the Level of Starshatter by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Exquisite be the Jade, Outshining All Beneath`,
+      trace: `Constellation 4`,
+      title: `Exquisite be the Jade, Outshining All Beneath`,
       content: `Jade Screen increases nearby characters' <b>Elemental RES</b> by <span class="text-desc">10%</span>.`,
     },
     c5: {
-      title: `C5: Invincible Be the Jade Screen`,
+      trace: `Constellation 5`,
+      title: `Invincible Be the Jade Screen`,
       content: `Increases the Level of Jade Screen by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Grandeur Be the Seven Stars`,
+      trace: `Constellation 6`,
+      title: `Grandeur Be the Seven Stars`,
       content: `When Starshatter is used, Ningguang gains <span class="text-desc">7</span> Star Jades.`,
     },
   }

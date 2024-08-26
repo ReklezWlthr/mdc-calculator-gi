@@ -18,6 +18,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Favonius Bladework - Edel`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive strikes.
@@ -31,6 +32,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Icetide Vortex`,
       content: `Sharp frost, swift blade.
       <br />
@@ -48,6 +50,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Glacial Illumination`,
       content: `Brandishes her greatsword, dealing <b class="text-genshin-cryo">Cryo DMG</b> to nearby opponents and creating a Lightfall Sword that follows her around for a duration of up to <span class="text-desc">7</span>s.
       <br />While present, the Lightfall Sword increases Eula's resistance to interruption. When Eula's own Normal Attack, Elemental Skill, and Elemental Burst deal DMG to opponents, they will charge the Lightfall Sword, which can gain an energy stack once every <span class="text-desc">0.1</span>s.
@@ -56,42 +59,51 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
       <br />If Eula leaves the field, the Lightfall Sword will explode immediately.`,
     },
     a1: {
-      title: `A1: Roiling Rime`,
+      trace: `Ascension 1 Passive`,
+      title: `Roiling Rime`,
       content: `If <span class="text-desc">2</span> stacks of Grimheart are consumed upon unleashing the Holding Mode of Icetide Vortex, a Shattered Lightfall Sword will be created that will explode immediately, dealing <span class="text-desc">50%</span> of the basic <b>Physical DMG</b> dealt by a Lightfall Sword created by Glacial Illumination.`,
     },
     a4: {
-      title: `A4: Wellspring of War-Lust`,
+      trace: `Ascension 4 Passive`,
+      title: `Wellspring of War-Lust`,
       content: `When Glacial Illumination is cast, the CD of Icetide Vortex is reset and Eula gains <span class="text-desc">1</span> stack of Grimheart.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Aristocratic Introspection`,
       content: `When Eula crafts Character Talent Materials, she has a <span class="text-desc">10%</span> chance to receive double the product.`,
     },
     c1: {
-      title: `C1: Tidal Illusion`,
+      trace: `Constellation 1`,
+      title: `Tidal Illusion`,
       content: `Every time Icetide Vortex's Grimheart stacks are consumed, Eula's <b>Physical DMG</b> is increased by <span class="text-desc">30%</span> for <span class="text-desc">6</span>s.
       <br />Each stack consumed will increase the duration of this effect by 6s up to a maximum of <span class="text-desc">18</span>s.`,
     },
     c2: {
-      title: `C2: Lady of Seafoam`,
+      trace: `Constellation 2`,
+      title: `Lady of Seafoam`,
       content: `Decreases the CD of Icetide Vortex's Holding Mode, rendering it identical to Press CD.`,
     },
     c3: {
-      title: `C3: Lawrence Pedigree`,
+      trace: `Constellation 3`,
+      title: `Lawrence Pedigree`,
       content: `Increases the Level of Glacial Illumination by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: The Obstinacy of One's Inferiors`,
+      trace: `Constellation 4`,
+      title: `The Obstinacy of One's Inferiors`,
       content: `Lightfall Swords deal <span class="text-desc">25%</span> increased DMG against opponents with less than <span class="text-desc">50%</span> HP.`,
     },
     c5: {
-      title: `C5: Chivalric Quality`,
+      trace: `Constellation 5`,
+      title: `Chivalric Quality`,
       content: `Increases the Level of Icetide Vortex by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Noble Obligation`,
+      trace: `Constellation 6`,
+      title: `Noble Obligation`,
       content: `Lightfall Swords created by Glacial Illumination start with <span class="text-desc">5</span> stacks of energy. Normal Attacks, Elemental Skills, and Elemental Bursts have a <span class="text-desc">50%</span> chance to grant the Lightfall Sword an additional stack of energy.`,
     },
   }

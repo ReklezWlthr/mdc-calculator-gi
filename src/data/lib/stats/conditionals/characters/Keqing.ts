@@ -18,6 +18,7 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Yunlai Swordsmanship`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -30,6 +31,7 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Stellar Restoration`,
       content: `Hurls a Lightning Stiletto that annihilates her opponents like the swift thunder.
       <br />When the Stiletto hits its target, it deals <b class="text-genshin-electro">Electro DMG</b> to opponents in a small AoE, and places a Stiletto Mark on the spot hit.
@@ -45,48 +47,58 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Starward Sword`,
       content: `Keqing unleashes the power of lightning, dealing <b class="text-genshin-electro">Electro DMG</b> in an AOE.
       <br />She then blends into the shadow of her blade, striking a series of thunderclap-blows to nearby opponents simultaneously that deal multiple instances of <b class="text-genshin-electro">Electro DMG</b>.
       <br />The final attack deals massive <b class="text-genshin-electro">AoE Electro DMG</b>.`,
     },
     a1: {
-      title: `A1: Thundering Penance`,
+      trace: `Ascension 1 Passive`,
+      title: `Thundering Penance`,
       content: `After recasting Stellar Restoration while a Lightning Stiletto is present, Keqing's weapon gains an <b class="text-genshin-electro">Electro Infusion</b> for <span class="text-desc">5</span>s.`,
     },
     a4: {
-      title: `A4: Aristocratic Dignity`,
+      trace: `Ascension 4 Passive`,
+      title: `Aristocratic Dignity`,
       content: `When casting Starward Sword, Keqing's CRIT Rate is increased by <span class="text-desc">15%</span>, and her Energy Recharge is increased by <span class="text-desc">15%</span>. This effect lasts for <span class="text-desc">8</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Land's Overseer`,
       content: `When dispatched on an expedition in Liyue, time consumed is reduced by <span class="text-desc">25%</span>.`,
     },
     c1: {
-      title: `C1: Thundering Might`,
+      trace: `Constellation 1`,
+      title: `Thundering Might`,
       content: `Recasting Stellar Restoration while a Lightning Stiletto is present causes Keqing to deal <span class="text-desc">50%</span> of her ATK as <b class="text-genshin-electro">AoE Electro DMG</b> at the start point and terminus of her Blink.`,
     },
     c2: {
-      title: `C2: Keen Extraction`,
+      trace: `Constellation 2`,
+      title: `Keen Extraction`,
       content: `When Keqing's Normal and Charged Attacks hit opponents affected by <b class="text-genshin-electro">Electro</b>, they have a <span class="text-desc">50%</span> chance of producing an Elemental Particle.
       <br />This effect can only occur once every <span class="text-desc">5</span>s.`,
     },
     c3: {
-      title: `C3: Foreseen Reformation`,
+      trace: `Constellation 3`,
+      title: `Foreseen Reformation`,
       content: `Increases the Level of Starward Sword by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Attunement`,
+      trace: `Constellation 4`,
+      title: `Attunement`,
       content: `For 10s after Keqing triggers an <b class="text-genshin-electro">Electro</b>-related Elemental Reaction, her ATK is increased by <span class="text-desc">25%</span>.`,
     },
     c5: {
-      title: `C5: Beckoning Stars`,
+      trace: `Constellation 5`,
+      title: `Beckoning Stars`,
       content: `Increases the Level of Stellar Restoration by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Tenacious Star`,
+      trace: `Constellation 6`,
+      title: `Tenacious Star`,
       content: `When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a <span class="text-desc">6%</span> <b class="text-genshin-electro">Electro DMG Bonus</b> for 8s.
       <br />Effects triggered by Normal Attacks, Charged Attacks, Elemental Skills and Elemental Bursts are considered independent entities.`,
     },

@@ -18,6 +18,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Garyuu Bladework`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -33,6 +34,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Chihayaburu`,
       content: `Unleashes a secret technique as fierce as the rushing wind that pulls objects and opponents towards Kazuha's current position before launching opponents within the AoE, dealing <b class="text-genshin-anemo">Anemo DMG</b> and lifting Kazuha into the air on a rushing gust of wind.
       <br />Within <span class="text-desc">10</span>s of remaining airborne after casting Chihayaburu, Kazuha can unleash a powerful Plunging Attack known as Midare Ranzan.
@@ -49,6 +51,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Kazuha Slash`,
       content: `The signature technique of Kazuha's self-styled bladework — a single slash that strikes with the force of the first winds of autumn, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.
       <br />The blade's passage will leave behind a field named "Autumn Whirlwind" that periodically deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to opponents within its range.
@@ -58,26 +61,31 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       <br />Elemental Absorption may only occur once per use.`,
     },
     a1: {
-      title: `A1: Soumon Swordsmanship`,
+      trace: `Ascension 1 Passive`,
+      title: `Soumon Swordsmanship`,
       content: `If Chihayaburu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when cast, Chihayaburu will absorb that element and if Plunging Attack: Midare Ranzan is used before the effect expires, it will deal an additional <span class="text-desc">200%</span> ATK of the absorbed elemental type as DMG. This will be considered Plunging Attack DMG.
       <br />Elemental Absorption may only occur once per use of Chihayaburu.`,
     },
     a4: {
-      title: `A4: Poetics of Fuubutsu`,
+      trace: `Ascension 4 Passive`,
+      title: `Poetics of Fuubutsu`,
       content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-desc">0.04%</span> Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for 8s. Bonuses for different elements obtained through this method can co-exist.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Cloud Strider`,
       content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
-      title: `C1: Scarlet Hills`,
+      trace: `Constellation 1`,
+      title: `Scarlet Hills`,
       content: `Decreases Chihayaburu's CD by <span class="text-desc">10%</span>.
       <br />Using Kazuha Slash resets the CD of Chihayaburu.`,
     },
     c2: {
-      title: `C2: Yamaarashi Tailwind`,
+      trace: `Constellation 2`,
+      title: `Yamaarashi Tailwind`,
       content: `The Autumn Whirlwind field created by Kazuha Slash has the following effects:
       <br />- Increases Kaedehara Kazuha's own Elemental Mastery by <span class="text-desc">200</span> for its duration.
       <br />- Increases the Elemental Mastery of characters within the field by <span class="text-desc">200</span>.
@@ -85,23 +93,27 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       <br />The Elemental Mastery-increasing effects of this Constellation do not stack.`,
     },
     c3: {
-      title: `C3: Maple Monogatari`,
+      trace: `Constellation 3`,
+      title: `Maple Monogatari`,
       content: `Increases the Level of Chihayaburu by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Oozora Genpou`,
+      trace: `Constellation 4`,
+      title: `Oozora Genpou`,
       content: `When Kaedehara Kazuha's Energy is lower than <span class="text-desc">45</span>, he obtains the following effects:
       <br /><b>Pressing</b> or <b>Holding</b> Chihayaburu regenerates <span class="text-desc">3</span> or <span class="text-desc">4</span> Energy for Kaedehara Kazuha, respectively.
       <br />When gliding, Kaedehara Kazuha regenerates <span class="text-desc">2</span> Energy per second.`,
     },
     c5: {
-      title: `C5: Wisdom of Bansei`,
+      trace: `Constellation 5`,
+      title: `Wisdom of Bansei`,
       content: `Increases the Level of Kazuha Slash by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Crimson Momiji`,
+      trace: `Constellation 6`,
+      title: `Crimson Momiji`,
       content: `After using Chihayaburu or Kazuha Slash, Kaedehara Kazuha gains an <b class="text-genshin-anemo">Anemo Infusion</b> for 5s. Additionally, each point of Elemental Mastery will increase the DMG dealt by Kaedehara Kazuha's Normal, Charged, and Plunging Attacks by <span class="text-desc">0.2%</span>.`,
     },
   }

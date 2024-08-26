@@ -18,6 +18,7 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Dance on Fire`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -31,6 +32,7 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Sweeping Fervor`,
       content: `Xinyan brandishes her instrument, dealing <b class="text-genshin-pyro">Pyro DMG</b> on nearby opponents, forming a shield made out of her audience's passion.
       <br />The shield's DMG Absorption scales based on Xinyan's DEF and on the number of opponents hit.
@@ -44,49 +46,59 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Riff Revolution`,
       content: `Strumming rapidly, Xinyan launches nearby opponents and deals <b>Physical DMG</b> to them, hyping up the crowd.
       <br />The sheer intensity of the atmosphere will cause explosions that deal <b class="text-genshin-pyro">Pyro DMG</b> to nearby opponents.`,
     },
     a1: {
-      title: `A1: "The Show Goes On, Even Without An Audience..."`,
+      trace: `Ascension 1 Passive`,
+      title: `"The Show Goes On, Even Without An Audience..."`,
       content: `Decreases the number of opponents Sweeping Fervor must hit to trigger each level of shielding.
       <br />- Shield Level 2: <b>Lead-In</b> requirement reduced to <span class="text-desc">1</span> opponent hit.
       <br />- Shield Level 3: <b>Rave</b> requirement reduced to <span class="text-desc">2</span> opponents hit or more.`,
     },
     a4: {
-      title: `A4: "...Now That's Rock 'N' Roll!"`,
+      trace: `Ascension 4 Passive`,
+      title: `"...Now That's Rock 'N' Roll!"`,
       content: `Characters shielded by Sweeping Fervor deal <span class="text-desc">15%</span> increased <b>Physical DMG</b>.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `A Rad Recipe`,
       content: `When a Perfect Cooking is achieved on a DEF-boosting dish, Xinyan has a <span class="text-desc">12%</span> chance to obtain double the product.`,
     },
     c1: {
-      title: `C1: Fatal Acceleration`,
+      trace: `Constellation 1`,
+      title: `Fatal Acceleration`,
       content: `Upon scoring a CRIT Hit, increases ATK SPD of Xinyan's Normal and Charged Attacks by <span class="text-desc">12%</span> for <span class="text-desc">5</span>s.
       <br />Can only occur once every <span class="text-desc">5</span>s.`,
     },
     c2: {
-      title: `C2: Impromptu Opening`,
+      trace: `Constellation 2`,
+      title: `Impromptu Opening`,
       content: `Riff Revolution's <b>Physical DMG</b> has its CRIT Rate increased by <span class="text-desc">100%</span>, and will form a shield at Shield Level 3: <b>Rave</b> when cast.`,
     },
     c3: {
-      title: `C3: Double-Stop`,
+      trace: `Constellation 3`,
+      title: `Double-Stop`,
       content: `Increases the Level of Sweeping Fervor by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Wildfire Rhythm`,
+      trace: `Constellation 4`,
+      title: `Wildfire Rhythm`,
       content: `Sweeping Fervor's swing DMG decreases opponent's <b>Physical RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">12</span>s.`,
     },
     c5: {
-      title: `C5: Screamin' for an Encore`,
+      trace: `Constellation 5`,
+      title: `Screamin' for an Encore`,
       content: `Increases the Level of Riff Revolution by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Rockin' in a Flaming World`,
+      trace: `Constellation 6`,
+      title: `Rockin' in a Flaming World`,
       content: `Decreases the Stamina Consumption of Xinyan's Charged Attacks by <span class="text-desc">30%</span>. Additionally, Xinyan's Charged Attacks gain an ATK Bonus equal to <span class="text-desc">50%</span> of her DEF.`,
     },
   }

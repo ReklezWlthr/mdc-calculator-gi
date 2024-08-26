@@ -18,6 +18,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Tempered Sword`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -31,6 +32,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Searing Onslaught`,
       content: `Performs a forward slash that deals <b class="text-genshin-pyro">Pyro DMG</b>.
       <br />
@@ -39,49 +41,59 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Dawn`,
       content: `Releases intense flames to knock back nearby opponents, dealing <b class="text-genshin-pyro">Pyro DMG</b>.
       <br />The flames then converge into the weapon, summoning a Phoenix that flies forward and deals massive <b class="text-genshin-pyro">Pyro DMG</b> to all opponents in its path. The Phoenix explodes upon reaching its destination, causing a large amount of <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       <br />The searing flames that run down his blade cause it to be infused with <b class="text-genshin-pyro">Pyro</b>.`,
     },
     a1: {
-      title: `A1: Relentless`,
+      trace: `Ascension 1 Passive`,
+      title: `Relentless`,
       content: `Diluc's Charged Attack Stamina Cost is decreased by <span class="text-desc">50%</span>, and its duration is increased by <span class="text-desc">3</span>s.`,
     },
     a4: {
-      title: `A4: Blessing of Phoenix`,
+      trace: `Ascension 4 Passive`,
+      title: `Blessing of Phoenix`,
       content: `The <b class="text-genshin-pyro">Pyro Infusion</b> provided by Dawn lasts for <span class="text-desc">4</span>s longer. Additionally, Diluc gains <span class="text-desc">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> during the duration of this effect.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: 'Traditional of the Dawn Knight',
       content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Claymore-type weapons.`,
     },
     c1: {
-      title: `C1: Conviction`,
+      trace: `Constellation 1`,
+      title: `Conviction`,
       content: `Diluc deals <span class="text-desc">15%</span> more DMG to opponents whose HP is above <span class="text-desc">50%</span>.`,
     },
     c2: {
-      title: `C2: Searing Ember`,
+      trace: `Constellation 2`,
+      title: `Searing Ember`,
       content: `When Diluc takes DMG, his ATK increases by <span class="text-desc">10%</span> and his ATK SPD increases by <span class="text-desc">5%</span>. Lasts for <span class="text-desc">10</span>s.
       This effect can stack up to <span class="text-desc">3</span> times and can only occur once every <span class="text-desc">1.5</span>s.`,
     },
     c3: {
-      title: `C3: Fire and Steel`,
+      trace: `Constellation 3`,
+      title: `Fire and Steel`,
       content: `Increases the Level of Searing Onslaught by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Flowing Flame`,
+      trace: `Constellation 4`,
+      title: `Flowing Flame`,
       content: `Casting Searing Onslaught in rhythm greatly increases damage dealt.
       <br /><span class="text-desc">2</span>s after casting Searing Onslaught, casting the next Searing Onslaught in the combo deals <span class="text-desc">40%</span> additional DMG. This effect lasts for <span class="text-desc">2</span>s.`,
     },
     c5: {
-      title: `C5: Phoenix, Harbinger of Dawn`,
+      trace: `Constellation 5`,
+      title: `Phoenix, Harbinger of Dawn`,
       content: `Increases the Level of Dawn by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Flaming Sword, Nemesis of the Dark`,
+      trace: `Constellation 6`,
+      title: `Flaming Sword, Nemesis of the Dark`,
       content: `After casting Searing Onslaught, the next <span class="text-desc">2</span> Normal Attacks within the next <span class="text-desc">6</span>s will have their DMG and ATK SPD increased by <span class="text-desc">30%</span>.
       <br />Additionally, Searing Onslaught will not interrupt the Normal Attack combo.`,
     },

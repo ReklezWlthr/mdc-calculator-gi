@@ -18,6 +18,7 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Kamisato Art: Kabuki`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -30,11 +31,13 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Kamisato Art: Hyouka`,
       content: `Summons blooming ice to launch nearby opponents, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Kamisato Art: Soumetsu`,
       content: `Summons forth a snowstorm with flawless poise, unleashing a Frostflake Seki no To that moves forward continuously.
       <br />
@@ -43,6 +46,7 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       <br />- The snowstorm explodes after its duration ends, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.`,
     },
     sprint: {
+      trace: `Alternate Sprint`,
       title: `Kamisato Art: Senho`,
       content: `<b>Alternate Sprint</b>
       <br />Ayaka consumes Stamina and cloaks herself in a frozen fog that moves with her.
@@ -53,43 +57,52 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       <br />- Coldness condenses around Ayaka's blade, infusing her attacks with <b class="text-genshin-cryo">Cryo</b> for a brief period.`,
     },
     a1: {
-      title: `A1: Amatsumi Kunitsumi Sanctification`,
+      trace: `Ascension 1 Passive`,
+      title: `Amatsumi Kunitsumi Sanctification`,
       content: `After using Kamisato Art: Hyouka, Kamisato Ayaka's Normal and Charged attacks deal <span class="text-desc">30%</span> increased DMG for <span class="text-desc">6</span>s.`,
     },
     a4: {
-      title: `A4: Kanten Senmyou Blessing`,
+      trace: `Ascension 4 Passive`,
+      title: `Kanten Senmyou Blessing`,
       content: `When the Cryo application at the end of Kamisato Art: Senho hits an opponent, Kamisato Ayaka gains the following effects:
       <br />- Restores <span class="text-desc">10</span> Stamina
       <br />- Gains <span class="text-desc">18%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b> for <span class="text-desc">10</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: 'Fruits of Shinsa',
       content: `When Ayaka crafts Weapon Ascension Materials, she has a <span class="text-desc">10%</span> chance to receive double the product.`,
     },
     c1: {
-      title: `C1: Snowswept Sakura`,
+      trace: `Constellation 1`,
+      title: `Snowswept Sakura`,
       content: `When Kamisato Ayaka's Normal or Charged Attacks deal <b class="text-genshin-cryo">Cryo DMG</b> to opponents, it has a <span class="text-desc">50%</span> chance of decreasing the CD of Kamisato Art: Hyouka by <span class="text-desc">0.3</span>s. This effect can occur once every <span class="text-desc">0.1</span>s.`,
     },
     c2: {
-      title: `C2: Blizzard Blade Seki no To`,
+      trace: `Constellation 2`,
+      title: `Blizzard Blade Seki no To`,
       content: `When casting Kamisato Art: Soumetsu, unleashes <span class="text-desc">2</span> smaller additional Frostflake Seki no To, each dealing <span class="text-desc">20%</span> of the original storm's DMG.`,
     },
     c3: {
-      title: `C3: Frostbloom Kamifubuki`,
+      trace: `Constellation 3`,
+      title: `Frostbloom Kamifubuki`,
       content: `Increases the Level of Kamisato Art: Soumetsu by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Ebb and Flow`,
+      trace: `Constellation 4`,
+      title: `Ebb and Flow`,
       content: `Opponents damaged by Kamisato Art: Soumetsu's Frostflake Seki no To will have their DEF decreased by <span class="text-desc">30%</span> for <span class="text-desc">6</span>s.`,
     },
     c5: {
-      title: `C5: Blossom Cloud Irutsuki`,
+      trace: `Constellation 5`,
+      title: `Blossom Cloud Irutsuki`,
       content: `Increases the Level of Kamisato Art: Hyouka by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Dance of Suigetsu`,
+      trace: `Constellation 6`,
+      title: `Dance of Suigetsu`,
       content: `Kamisato Ayaka gains Usurahi Butou every <span class="text-desc">10</span>s, increasing her Charged Attack DMG by <span class="text-desc">298%</span>. This buff will be cleared <span class="text-desc">0.5</span>s after Ayaka's Charged ATK hits an opponent, after which the timer for this ability will restart.`,
     },
   }

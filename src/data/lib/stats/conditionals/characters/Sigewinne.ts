@@ -21,6 +21,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Targeted Treatment`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 3 consecutive shots with a bow.
@@ -34,6 +35,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Rebound Hydrotherapy`,
       content: `Blows a Bolstering Bubblebalm that can stimulate blood flow and help patients drift off to sleep using a bubblegun specially made in the Fortress of Meropide.
       <br />Bolstering Bubblebalms will bounce between nearby opponents, dealing <b class="text-genshin-hydro">Hydro DMG</b> based on Sigewinne's max HP to opponents it hits. When it bounces, it will restore HP to all nearby party members except Sigewinne herself. The amount healed is based on Sigewinne's max HP.
@@ -53,13 +55,15 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
       <br />Bolstering Bubblebalms periodically call down a Surging Blade on the position they hit, dealing <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-hydro">Hydro DMG</b> based on Sigewinne's max HP.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Super Saturated Syringing`,
       content: `Takes out a special Fortress of Meropide-made syringe and assault the area in front with waves of kindness and medicine, dealing <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Sigewinne's max HP.
       <br />In addition, Sigewinne absorbs up to <span class="text-desc">2</span> nearby Sourcewater Droplets within a certain range when she uses this skill.
       `,
     },
     a1: {
-      title: `A1: Requires Appropriate Rest`,
+      trace: `Ascension 1 Passive`,
+      title: `Requires Appropriate Rest`,
       content: `Sigewinne grants herself the "Semi-Strict Bedrest" effect for <span class="text-desc">18</span>s after using Rebound Hydrotherapy: Sigewinne gains an <span class="text-desc">8%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b> and <span class="text-desc">10</span> stacks of Convalescence. When the Elemental Skills of your nearby off-field party members other than Sigewinne deal DMG, consume <span class="text-desc">1</span> stack of Convalescence, and increase the DMG dealt by this instance of Elemental Skill DMG. Every <span class="text-desc">1,000</span> Max HP Sigewinne has above <span class="text-desc">30,000</span> increases the DMG by <span class="text-desc">80</span>. The maximum DMG increase for Elemental Skills that can be gained in this way is <span class="text-desc">2,800</span>.`,
       value: [
         {
@@ -69,41 +73,49 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     a4: {
-      title: `A4: Detailed Diagnosis, Thorough Treatment`,
+      trace: `Ascension 4 Passive`,
+      title: `Detailed Diagnosis, Thorough Treatment`,
       content: `When Sigewinne performs healing, the amount healed for this instance is increased based on the total current value of the <b class="text-genshin-bol">Bond of Life</b> on all party members: For each <span class="text-desc">1,000</span> HP worth of Bonds of Life, the outgoing healing is increased by <span class="text-desc">3%</span>. The amount of healing provided can be increased by up to <span class="text-desc">30%</span> in this way.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Emergency Dose`,
       content: `While underwater, heal your active character over <span class="text-desc">2.5</span>s when their HP falls under <span class="text-desc">50%</span>. The amount healed is equal to 50% of their Max HP, and their All Elemental and Physical RES will be decreased by <span class="text-desc">10%</span> for <span class="text-desc">10</span>s. This effect can be triggered up to once every <span class="text-desc">20</span>s.`,
     },
     c1: {
-      title: `C1: "Can the Happiest of Spirits Understand Anxiety?"`,
+      trace: `Constellation 1`,
+      title: `"Can the Happiest of Spirits Understand Anxiety?"`,
       content: `Rebound Hydrotherapy's Bolstering Bubblebalm can bounce <span class="text-desc">3</span> extra times, and the first <span class="text-desc">3</span> bounces will not cause big Bubblebalms to become smaller.
       <br />The Passive Talent "Requires Appropriate Rest" is enhanced: Each Bubblebalm bounce adds <span class="text-desc">1</span> stack to her Convalescence tally, and the values for the Convalescence stacks' DMG bonus will be modified to: Every <span class="text-desc">1,000</span> max HP Sigewinne has above <span class="text-desc">30,000</span> increases the DMG by <span class="text-desc">100</span>. The maximum DMG increase for Elemental Skills that can be gained in this way is <span class="text-desc">3,500</span>. You must first unlock the Passive Talent "Requires Appropriate Rest."
       `,
     },
     c2: {
-      title: `C2: "Can the Most Merciful of Spirits Defeat Its Foes?"`,
+      trace: `Constellation 2`,
+      title: `"Can the Most Merciful of Spirits Defeat Its Foes?"`,
       content: `When using Rebound Hydrotherapy and Super Saturated Syringing, Sigewinne can create a Bubbly Shield worth <span class="text-desc">30%</span> of her Max HP that absorbs <b class="text-genshin-hydro">Hydro DMG</b> with <span class="text-desc">250%</span> efficiency. The Bubbly Shield will persist until Sigewinne finishes using relevant skills.
       <br />Additionally, after Rebound Hydrotherapy's Bolstering Bubblebalm or Super Saturated Syringing hits an opponent, that opponent's <b class="text-genshin-hydro">Hydro RES</b> will be decreased by <span class="text-desc">35%</span> for <span class="text-desc">8</span>s.
       `,
     },
     c3: {
-      title: `C3: "Can the Healthiest of Spirits Cure Fevers?"`,
+      trace: `Constellation 3`,
+      title: `"Can the Healthiest of Spirits Cure Fevers?"`,
       content: `Increases the Level of Rebound Hydrotherapy by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: "Can the Loveliest of Spirits Keep Decay at Bay?"`,
+      trace: `Constellation 4`,
+      title: `"Can the Loveliest of Spirits Keep Decay at Bay?"`,
       content: `The duration of Super Saturated Syringing is extended by <span class="text-desc">3</span>s.`,
     },
     c5: {
-      title: `C5: "Can the Most Joyful of Spirits Alleviate Agony?"`,
+      trace: `Constellation 5`,
+      title: `"Can the Most Joyful of Spirits Alleviate Agony?"`,
       content: `Increases the Level of Super Saturated Syringing by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: "Can the Most Radiant of Spirits Pray For Me?"`,
+      trace: `Constellation 6`,
+      title: `"Can the Most Radiant of Spirits Pray For Me?"`,
       content: `When Sigewinne performs healing, she will increase the CRIT Rate and CRIT DMG of her Super Saturated Syringing based on her Max HP. Every <span class="text-desc">1,000</span> Max HP she has will increase CRIT Rate by <span class="text-desc">0.4%</span> and CRIT DMG by <span class="text-desc">202%</span> for <span class="text-desc">15</span>s. The maximum increase achievable this way is <span class="text-desc">20%</span> CRIT Rate and <span class="text-desc">110%</span> CRIT DMG.`,
       value: [
         { name: 'Bonus CRIT Rate', value: { stat: Stats.HP, scaling: (hp) => _.min([(hp / 1000) * 0.004, 0.2]) } },

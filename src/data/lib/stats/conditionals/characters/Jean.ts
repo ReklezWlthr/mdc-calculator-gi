@@ -18,6 +18,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Weaving Blade`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive strikes.
@@ -31,6 +32,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Gale Blade`,
       content: `Focusing the might of the formless wind around her blade, Jean releases a miniature storm, launching opponents in the direction she aims at, dealing massive <b class="text-genshin-anemo">Anemo DMG</b>.
       <br />
@@ -41,6 +43,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Dandelion Breeze`,
       content: `Calling upon the wind's protection, Jean creates a swirling Dandelion Field, launching surrounding opponents and dealing <b class="text-genshin-anemo">Anemo DMG</b>.
       <br />At the same time, she instantly regenerates a large amount of HP for all party members. The amount of HP restored scales off Jean's ATK.
@@ -50,41 +53,50 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       <br />- Deals <b class="text-genshin-anemo">Anemo DMG</b> to opponents entering or exiting the Dandelion Field.`,
     },
     a1: {
-      title: `A1: Wind Companion`,
+      trace: `Ascension 1 Passive`,
+      title: `Wind Companion`,
       content: `On hit, Jean's Normal Attacks have a <span class="text-desc">50%</span> chance to regenerate HP equal to <span class="text-desc">15%</span> of Jean's ATK for all party members.`,
     },
     a4: {
-      title: `A4: Let the Wind Lead`,
+      trace: `Ascension 4 Passive`,
+      title: `Let the Wind Lead`,
       content: `Using Dandelion Breeze will regenerate <span class="text-desc">20%</span> of its Energy.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Guiding Breeze`,
       content: `When Perfect Cooking is achieved on a dish with restorative effects, there is a <span class="text-desc">12%</span> chance to obtain double the product.`,
     },
     c1: {
-      title: `C1: Spiraling Tempest`,
+      trace: `Constellation 1`,
+      title: `Spiraling Tempest`,
       content: `Increases the pulling speed of Gale Blade after holding for more than <span class="text-desc">1</span>s, and increases the DMG dealt by <span class="text-desc">40%</span>.`,
     },
     c2: {
-      title: `C2: People's Aegis`,
+      trace: `Constellation 2`,
+      title: `People's Aegis`,
       content: `When Jean picks up an Elemental Orb/Particle, all party members have their Movement SPD and ATK SPD increased by <span class="text-desc">15%</span> for <span class="text-desc">15</span>s.`,
     },
     c3: {
-      title: `C3: When the West Wind Arises`,
+      trace: `Constellation 3`,
+      title: `When the West Wind Arises`,
       content: `Increases the Level of Dandelion Breeze by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Lands of Dandelion`,
+      trace: `Constellation 4`,
+      title: `Lands of Dandelion`,
       content: `Within the Field created by Dandelion Breeze, all opponents have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">40%</span>.`,
     },
     c5: {
-      title: `C5: Outbursting Gust`,
+      trace: `Constellation 5`,
+      title: `Outbursting Gust`,
       content: `Increases the Level of Gale Blade by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Lion's Fang, Fair Protector of Mondstadt`,
+      trace: `Constellation 6`,
+      title: `Lion's Fang, Fair Protector of Mondstadt`,
       content: `Incoming DMG is decreased by <span class="text-desc">35%</span> within the Field created by Dandelion Breeze. Upon leaving the Dandelion Field, this effect lasts for <span class="text-desc">3</span> attacks or <span class="text-desc">10</span>s.`,
     },
   }

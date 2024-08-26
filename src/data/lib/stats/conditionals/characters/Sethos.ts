@@ -18,6 +18,7 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Royal Reed Archery`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 3 consecutive shots with a bow.
@@ -33,10 +34,12 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Ancient Rite: The Thundering Sands`,
       content: `Gathers the might of thunder, dealing <b class="text-genshin-electro">AoE Electro DMG</b> and quickly retreating. If this attack triggers Electro-Charged, Superconduct, Overloaded, Quicken, Aggravate, or <b class="text-genshin-electro">Electro</b> Swirl reactions, Sethos recovers a certain amount of Elemental Energy.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Secret Rite: Twilight Shadowpiercer`,
       content: `Perform a secret rite, entering the "Twilight Meditation" state, during which Sethos's Normal Attacks will be converted into enemy-piercing Dusk Bolts: Deal <b class="text-genshin-electro">Electro DMG</b> to opponents in its path, with DMG increased based on Sethos's Elemental Mastery.
       <br />Sethos cannot perform Aimed Shots while in this state.
@@ -45,11 +48,13 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Black Kite's Enigma`,
+      trace: `Ascension 1 Passive`,
+      title: `Black Kite's Enigma`,
       content: `When Aiming, the charging time is decreased by <span class="text-desc">0.285</span>s based on each point of Sethos's current Elemental Energy. Charging time can be reduced to a minimum of <span class="text-desc">0.3</span>s through this method and a maximum of <span class="text-desc">20</span> Energy can be tallied. If a Shadowpiercing Shot is fired, consume the tallied amount of Elemental Energy; if it is a Charge Level 1 shot, then consume <span class="text-desc">50%</span> of the tallied amount of Elemental Energy.`,
     },
     a4: {
-      title: `A4: The Sand King's Boon`,
+      trace: `Ascension 4 Passive`,
+      title: `The Sand King's Boon`,
       content: `Sethos gains the "Scorching Sandshade" effect, increasing the DMG dealt by Shadowpiercing Shots by <span class="text-desc">700%</span> of Sethos's Elemental Mastery.
       <br />The Scorching Sandshade effect will be canceled when any of the following conditions are met:
       <br />- <span class="text-desc">5</span>s after a Shadowpiercing Shot first hits an opponent.
@@ -58,36 +63,43 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
       <br />When a Shadowpiercing Shot affected by Scorching Sandshade first hits an opponent, Sethos will regain Scorching Sandshade after <span class="text-desc">15</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Thoth's Revelation`,
       content: `Displays the location of nearby resources unique to Sumeru on the mini-map.`,
     },
     c1: {
-      title: `C1: Sealed Shrine's Spiritsong`,
+      trace: `Constellation 1`,
+      title: `Sealed Shrine's Spiritsong`,
       content: `The CRIT Rate of Shadowpiercing Shot is increased by <span class="text-desc">15%</span>.`,
     },
     c2: {
-      title: `C2: Papyrus Scripture of Silent Secrets`,
+      trace: `Constellation 2`,
+      title: `Papyrus Scripture of Silent Secrets`,
       content: `When any of the following conditions are met, Sethos gains a <span class="text-desc">15%</span> <b class="text-genshin-electro">Electro DMG Bonus</b> for <span class="text-desc">10</span>s that may stack twice, with each stack duration counted independently:
       <br />- Consuming Elemental Energy through Aimed Shots; you must first unlock the Passive Talent "Black Kite's Enigma" to trigger this condition.
       <br />- Regaining Elemental Energy by triggering Elemental Reactions using Ancient Rite: The Thundering Sands.
       <br />- Using Secret Rite: Twilight Shadowpiercer.`,
     },
     c3: {
-      title: `C3: Ode to the Moonrise Sage`,
+      trace: `Constellation 3`,
+      title: `Ode to the Moonrise Sage`,
       content: `Increases the Level of Normal Attack: Royal Reed Archery by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Beneficent Plumage`,
+      trace: `Constellation 4`,
+      title: `Beneficent Plumage`,
       content: `When a Shadowpiercing Shot or Dusk Bolt strikes <span class="text-desc">2</span> or more opponents, all nearby party members gain <span class="text-desc">80</span> Elemental Mastery for <span class="text-desc">10</span>s.`,
     },
     c5: {
-      title: `C5: Record of the Desolate God's Burning Sands`,
+      trace: `Constellation 5`,
+      title: `Record of the Desolate God's Burning Sands`,
       content: `Increases the Level of Secret Rite: Twilight Shadowpiercer by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Pylon of the Sojourning Sun Temple`,
+      trace: `Constellation 6`,
+      title: `Pylon of the Sojourning Sun Temple`,
       content: `After Shadowpiercing Shot strikes an opponent, the Elemental Energy consumed by the Passive Talent "Black Kite's Enigma" will be returned. This effect can be triggered up to once every <span class="text-desc">15</span>s. You must first unlock the Passive Talent "Black Kite's Enigma."`,
     },
   }

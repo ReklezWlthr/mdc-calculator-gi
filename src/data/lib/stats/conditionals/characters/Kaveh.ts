@@ -18,6 +18,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Schematic Setup`,
       content: `<b>Normal Attack</b>
       <br />Uses Mehrak to perform up to 4 consecutive attacks.
@@ -31,11 +32,13 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Artistic Ingenuity`,
       content: `Uses Mehrak's mapping ability for offensive purposes, initiating a radial scan that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>. It will also scan all <b class="text-genshin-dendro">Dendro Cores</b> in its AoE and cause them to immediately burst.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Painted Dome`,
       content: `Completely unleashes Mehrak's energy and creates a cubic scanned space, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b> to all opponents within it, causing all <b class="text-genshin-dendro">Dendro Cores</b> in its AoE to immediately burst, and granting Kaveh the following enhanced combat abilities for a specific duration:
       <br />- Increases Kaveh's Normal, Charged, and Plunging Attack AoE, and converts his attack DMG to <b class="text-genshin-dendro">Dendro DMG</b> that cannot be overridden.
@@ -44,42 +47,51 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       <br />These effects will be canceled once Kaveh leaves the field.`,
     },
     a1: {
-      title: `A1: An Architect's Undertaking`,
+      trace: `Ascension 1 Passive`,
+      title: `An Architect's Undertaking`,
       content: `When DMG dealt by a <b class="text-genshin-dendro">Dendro Core</b> (including DMG from Burgeon and Hyperbloom) hits Kaveh, Kaveh will regain HP equal to <span class="text-desc">300%</span> of his Elemental Mastery. This effect can be triggered once every <span class="text-desc">0.5</span>s.`,
     },
     a4: {
-      title: `A4: A Craftsman's Curious Conceptions`,
+      trace: `Ascension 4 Passive`,
+      title: `A Craftsman's Curious Conceptions`,
       content: `During Painted Dome, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by <span class="text-desc">25</span>. This effect can be triggered once every <span class="text-desc">0.1</span>s. Max <span class="text-desc">4</span> stacks.
       <br />This effect will be canceled when Painted Dome's effects end.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: 'The Art of Budgeting',
       content: `When Kaveh crafts Landscape, Building, and Courtyard-type Furnishings, he has a <span class="text-desc">100%</span> chance to refund a portion of the materials used.`,
     },
     c1: {
-      title: `C1: Sublime Salutations`,
+      trace: `Constellation 1`,
+      title: `Sublime Salutations`,
       content: `Within 3s after using Artistic Ingenuity, Kaveh's <b class="text-genshin-dendro">Dendro RES</b> and Incoming Healing Bonus will be increased by <span class="text-desc">50%</span> and <span class="text-desc">25%</span> respectively.`,
     },
     c2: {
-      title: `C2: Grace of Royal Roads`,
+      trace: `Constellation 2`,
+      title: `Grace of Royal Roads`,
       content: `Kaveh's Normal Attack SPD increases by <span class="text-desc">15%</span> during Painted Dome.`,
     },
     c3: {
-      title: `C3: Profferings of Dur Untash`,
+      trace: `Constellation 3`,
+      title: `Profferings of Dur Untash`,
       content: `Increases the Level of Painted Dome by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Feast of Apadana`,
+      trace: `Constellation 4`,
+      title: `Feast of Apadana`,
       content: `<b class="text-genshin-dendro">Dendro Cores</b> created from Bloom reactions Kaveh triggers will deal <span class="text-desc">60%</span> more DMG when they burst.`,
     },
     c5: {
-      title: `C5: Treasures of Bonkhanak`,
+      trace: `Constellation 5`,
+      title: `Treasures of Bonkhanak`,
       content: `Increases the Level of Artistic Ingenuity by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Pairidaeza's Dreams`,
+      trace: `Constellation 6`,
+      title: `Pairidaeza's Dreams`,
       content: `When Kaveh's Normal, Charged, or Plunging Attacks hit opponents during Painted Dome, they will unleash Pairidaeza's Light upon the opponent's position, dealing <span class="text-desc">61.8%</span> of Kaveh's ATK as <b class="text-genshin-dendro">AoE Dendro DMG</b> and causing all <b class="text-genshin-dendro">Dendro Cores</b> within that AoE to burst. This effect can be triggered once every <span class="text-desc">3</span>s.`,
     },
   }

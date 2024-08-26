@@ -18,6 +18,7 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Divine Marksmanship`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 6 consecutive shots with a bow.
@@ -31,6 +32,7 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Skyward Sonnet`,
       content: `O wind upon which all hymns and songs fly, bear these earth-walkers up into the sky!
       <br />
@@ -44,6 +46,7 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
       <br />Opponents hit by Skyward Sonnet will fall to the ground slowly.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Wind's Grand Ode`,
       content: `Fires off an arrow made of countless coalesced winds, creating a huge Stormeye that sucks in opponents and deals continuous <b class="text-genshin-anemo">Anemo DMG</b>.
       <br />
@@ -53,43 +56,52 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Embrace of Winds`,
+      trace: `Ascension 1 Passive`,
+      title: `Embrace of Winds`,
       content: `Holding Skyward Sonnet creates an upcurrent that lasts for <span class="text-desc">20</span>s.`,
     },
     a4: {
-      title: `A4: Stormeye`,
+      trace: `Ascension 4 Passive`,
+      title: `Stormeye`,
       content: `Regenerates <span class="text-desc">15</span> Energy for Venti after the effects of Wind's Grand Ode end. If an Elemental Absorption occurred, this also restores <span class="text-desc">15</span> Energy to all characters of that corresponding element in the party.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Windrider`,
       content: `Decreases gliding Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
     },
     c1: {
-      title: `C1: Splitting Gales`,
+      trace: `Constellation 1`,
+      title: `Splitting Gales`,
       content: `Fires <span class="text-desc">2</span> additional arrows per Aimed Shot, each dealing <span class="text-desc">33%</span> of the original arrow's DMG.`,
     },
     c2: {
-      title: `C2: Breeze of Reminiscence`,
+      trace: `Constellation 2`,
+      title: `Breeze of Reminiscence`,
       content: `Skyward Sonnet decreases opponents' <b class="text-genshin-anemo">Anemo RES</b> and <b>Physical RES</b> by <span class="text-desc">12%</span> for <span class="text-desc">10</span>s.
       <br />Opponents launched by Skyward Sonnet suffer an additional <span class="text-desc">12%</span> <b class="text-genshin-anemo">Anemo RES</b> and <b>Physical RES</b> decrease while airborne.`,
     },
     c3: {
-      title: `C3: Ode to Thousand Winds`,
+      trace: `Constellation 3`,
+      title: `Ode to Thousand Winds`,
       content: `Increases the Level of Wind's Grand Ode by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Hurricane of Freedom`,
+      trace: `Constellation 4`,
+      title: `Hurricane of Freedom`,
       content: `When Venti picks up an Elemental Orb or Particle, he receives a <span class="text-desc">25%</span> <b class="text-genshin-anemo">Anemo DMG</b> Bonus for <span class="text-desc">10</span>s.`,
     },
     c5: {
-      title: `C5: Concerto dal Cielo`,
+      trace: `Constellation 5`,
+      title: `Concerto dal Cielo`,
       content: `Increases the Level of Skyward Sonnet by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Storm of Defiance`,
+      trace: `Constellation 6`,
+      title: `Storm of Defiance`,
       content: `Targets who take DMG from Wind's Grand Ode have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">20%</span>.
       <br />If an Elemental Absorption occurred, then their <b>RES</b> towards the corresponding Element is also decreased by <span class="text-desc">20%</span>.`,
     },

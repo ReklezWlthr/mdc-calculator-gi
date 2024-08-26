@@ -19,6 +19,7 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Foreign Rockblade`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -31,6 +32,7 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Starfell Sword`,
       content: `You disgorge a meteorite from the depths of the earth, dealing <b class="text-genshin-geo">AoE Geo DMG</b>.
       <br />The meteorite is considered a <b class="text-genshin-geo">Geo Construct</b>, and can be climbed or used to block attacks.
@@ -40,6 +42,7 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Wake of Earth`,
       content: `Energizing the Geo deep underground, you set off expanding shockwaves.
       <br />Launches surrounding opponents back and deals <b class="text-genshin-geo">AoE Geo DMG</b>.
@@ -47,38 +50,46 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
       <br />The stone wall is considered a <b class="text-genshin-geo">Geo Construct</b>, and may be used to block attacks.`,
     },
     a1: {
-      title: `A1: Shattered Darkrock`,
+      trace: `Ascension 1 Passive`,
+      title: `Shattered Darkrock`,
       content: `Reduces Starfell Sword's CD by <span class="text-desc">2</span>s.`,
     },
     a4: {
-      title: `A4: Frenzied Rockslide`,
+      trace: `Ascension 4 Passive`,
+      title: `Frenzied Rockslide`,
       content: `The final hit of a Normal Attack combo triggers a collapse, dealing <span class="text-desc">60%</span> of ATK as <b class="text-genshin-geo">AoE Geo DMG</b>.`,
     },
     c1: {
-      title: `C1: Invincible Stonewall`,
+      trace: `Constellation 1`,
+      title: `Invincible Stonewall`,
       content: `Party members within the radius of Wake of Earth have their CRIT Rate increased by <span class="text-desc">10%</span> and have increased resistance against interruption.`,
     },
     c2: {
-      title: `C2: Rockcore Meltdown`,
+      trace: `Constellation 2`,
+      title: `Rockcore Meltdown`,
       content: `When the meteorite created by Starfell Sword is destroyed, it will also explode, dealing additional <b class="text-genshin-geo">AoE Geo DMG</b> equal to the amount of damage dealt by Starfell Sword.`,
     },
     c3: {
-      title: `C3: Will of the Rock`,
+      trace: `Constellation 3`,
+      title: `Will of the Rock`,
       content: `Increases the Level of Wake of Earth by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Reaction Force`,
+      trace: `Constellation 4`,
+      title: `Reaction Force`,
       content: `The shockwave triggered by Wake of Earth regenerates <span class="text-desc">5</span> Energy for every opponent hit.
       <br />A maximum of <span class="text-desc">25</span> Energy can be regenerated in this manner at any one time.`,
     },
     c5: {
-      title: `C5: Meteorite Impact`,
+      trace: `Constellation 5`,
+      title: `Meteorite Impact`,
       content: `Increases the Level of Starfell Sword by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Everlasting Boulder`,
+      trace: `Constellation 6`,
+      title: `Everlasting Boulder`,
       content: `The barrier created by Wake of Earth lasts <span class="text-desc">5</span>s longer.
       <br />The meteorite created by Starfell Sword lasts <span class="text-desc">10</span>s longer.`,
     },

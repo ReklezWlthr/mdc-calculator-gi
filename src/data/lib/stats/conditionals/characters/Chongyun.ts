@@ -19,6 +19,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Demonbane`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive strikes.
@@ -32,54 +33,65 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Spirit Blade: Chonghua's Layered Frost`,
       content: `Chongyun strikes the ground with his greatsword, causing a <b class="text-genshin-cryo">Cryo</b> explosion in a circular AoE in front of him that deals <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />After a short delay, the cold air created by the <b class="text-genshin-cryo">Cryo</b> explosion will coalesce into a Chonghua Frost Field, within which all Sword, Claymore and Polearm-wielding characters' weapons will be infused with <b class="text-genshin-cryo">Cryo</b>.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Spirit Blade: Cloud-Parting Star`,
       content: `Performing the secret hand seals, Chongyun summons 3 giant spirit blades in mid-air that fall to the earth one by one after a short delay, exploding as they hit the ground.
       <br />When the spirit blades explode, they will deal <b class="text-genshin-cryo">AoE Cryo DMG</b> and launch opponents.`,
     },
     a1: {
-      title: `A1: Steady Breathing`,
+      trace: `Ascension 1 Passive`,
+      title: `Steady Breathing`,
       content: `Sword, Claymore, or Polearm-wielding characters within the field created by Spirit Blade: Chonghua's Layered Frost have their Normal ATK SPD increased by <span class="text-desc">8%</span>.`,
     },
     a4: {
-      title: `A4: Rimechaser Blade`,
+      trace: `Ascension 4 Passive`,
+      title: `Rimechaser Blade`,
       content: `When the field created by Spirit Blade: Chonghua's Layered Frost disappears, another spirit blade will be summoned to strike nearby opponents, dealing <span class="text-desc">100%</span> of Chonghua's Layered Frost's Skill DMG as <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       <br />Opponents hit by this blade will have their <b class="text-genshin-cryo">Cryo RES</b> decreased by <span class="text-desc">10%</span> for <span class="text-desc">8</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Gallant Journey`,
       content: `When dispatched on an expedition in Liyue, time consumed is reduced by <span class="text-desc">25%</span>.`,
     },
     c1: {
-      title: `C1: Ice Unleashed`,
+      trace: `Constellation 1`,
+      title: `Ice Unleashed`,
       content: `The last attack of Chongyun's Normal Attack combo releases 3 ice blades. Each blade deals <span class="text-desc">50%</span> of Chongyun's ATK as <b class="text-genshin-cryo">Cryo DMG</b> to all opponents in its path.`,
     },
     c2: {
-      title: `C2: Atmospheric Revolution`,
+      trace: `Constellation 2`,
+      title: `Atmospheric Revolution`,
       content: `Elemental Skills and Elemental Bursts cast within the Frost Field created by Spirit Blade: Chonghua's Layered Frost have their CD time decreased by <span class="text-desc">15%</span>.`,
     },
     c3: {
-      title: `C3: Cloudburst`,
+      trace: `Constellation 3`,
+      title: `Cloudburst`,
       content: `Increases the Level of Spirit Blade: Cloud-Parting Star by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Frozen Skies`,
+      trace: `Constellation 4`,
+      title: `Frozen Skies`,
       content: `Chongyun regenerates <span class="text-desc">1</span> Energy every time he hits an opponent affected by <b class="text-genshin-cryo">Cryo</b>.
       This effect can only occur once every <span class="text-desc">2</span>s.`,
     },
     c5: {
-      title: `C5: The True Path`,
+      trace: `Constellation 5`,
+      title: `The True Path`,
       content: `Increases the Level of Spirit Blade: Chonghua's Layered Frost by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Rally of Four Blades`,
+      trace: `Constellation 6`,
+      title: `Rally of Four Blades`,
       content: `Spirit Blade: Cloud-Parting Star deals <span class="text-desc">15%</span> more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.
       <br />This skill will also summon <span class="text-desc">1</span> additional spirit blade.`,
     },

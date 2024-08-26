@@ -19,6 +19,7 @@ const TravelerGrass = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Foreign Fieldcleaver`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 rapid strikes.
@@ -31,11 +32,13 @@ const TravelerGrass = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Razorgrass Blade`,
       content: `With a flourish of your blade, you unleash a spray of razor-sharp leaves that go before you and deal <b class="text-genshin-dendro">Dendro DMG</b>.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Surgent Manifestation`,
       content: `Calling upon the might of the flora all around you, you create a Lea Lotus Lamp.
       <br />This Lamp will deal continuous <b class="text-genshin-dendro">Dendro DMG</b> to opponents within its AoE.
@@ -50,38 +53,46 @@ const TravelerGrass = (c: number, a: number, t: ITalentLevel) => {
       <br />Only one Lamp created by the Traveler can exist at any one time.`,
     },
     a1: {
-      title: `A1: Verdant Overgrowth`,
+      trace: `Ascension 1 Passive`,
+      title: `Verdant Overgrowth`,
       content: `Lea Lotus Lamp will obtain one level of Overflowing Lotuslight every second it is on the field, increasing the Elemental Mastery of active character(s) within its AoE by <span class="text-desc">6</span>. Overflowing Lotuslight has a maximum of <span class="text-desc">10</span> stacks.`,
     },
     a4: {
-      title: `A4: Verdant Luxury`,
+      trace: `Ascension 4 Passive`,
+      title: `Verdant Luxury`,
       content: `Every point of Elemental Mastery the Traveler possesses increases the DMG dealt by Razorgrass Blade by <span class="text-desc">0.15%</span> and the DMG dealt by Surgent Manifestation by <span class="text-desc">0.1%</span>.`,
     },
     c1: {
-      title: `C1: Symbiotic Creeper`,
+      trace: `Constellation 1`,
+      title: `Symbiotic Creeper`,
       content: `After Razorgrass Blade hits an opponent, it will regenerate <span class="text-desc">3.5</span> Energy for the Traveler.`,
     },
     c2: {
-      title: `C2: Green Resilience`,
+      trace: `Constellation 2`,
+      title: `Green Resilience`,
       content: `Lea Lotus Lamp's duration is increased by <span class="text-desc">3</span>s.`,
     },
     c3: {
-      title: `C3: Whirling Weeds`,
+      trace: `Constellation 3`,
+      title: `Whirling Weeds`,
       content: `Increases the Level of Razorgrass Blade by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Treacle Grass`,
+      trace: `Constellation 4`,
+      title: `Treacle Grass`,
       content: `After the Lea Lotus Lamp triggers a Lotuslight Transfiguration, it will obtain <span class="text-desc">5</span> stacks of the Overflowing Lotuslight effect from the Passive Talent "Verdant Overgrowth."
       <br />You must have unlocked this Passive Talent first.`,
     },
     c5: {
-      title: `C5: Viridian Transience`,
+      trace: `Constellation 5`,
+      title: `Viridian Transience`,
       content: `Increases the Level of Surgent Manifestation by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Withering Aggregation`,
+      trace: `Constellation 6`,
+      title: `Withering Aggregation`,
       content: `The <b class="text-genshin-dendro">Dendro DMG Bonus</b> of the character under the effect of Overflowing Lotuslight as created by the Lea Lotus Lamp is increased by <span class="text-desc">12%</span>. If the Lamp has experienced a Lotuslight Transfiguration previously, the character will also gain <span class="text-desc">12%</span> DMG Bonus for the corresponding element.`,
     },
   }

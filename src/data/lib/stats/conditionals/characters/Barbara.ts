@@ -19,6 +19,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Whisper of Water`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 water splash attacks that deal <b class="text-genshin-hydro">Hydro DMG</b>.
@@ -31,6 +32,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Let the Show Begin♪`,
       content: `Summons water droplets resembling musical notes that form a Melody Loop, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents and applying the <b class="text-genshin-hydro">Wet</b> status to them.
       <br />
@@ -42,48 +44,58 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Shining Miracle♪`,
       content: `Heals your own party members and nearby teammates for a large amount of HP that scales with Barbara's Max HP.`,
     },
     a1: {
-      title: `A1: Glorious Season`,
+      trace: `Ascension 1 Passive`,
+      title: `Glorious Season`,
       content: `The Stamina Consumption of characters within Let the Show Begin♪'s Melody Loop is reduced by <span class="text-desc">12%</span>.`,
     },
     a4: {
-      title: `A4: Encore`,
+      trace: `Ascension 4 Passive`,
+      title: `Encore`,
       content: `When your active character gains an Elemental Orb/Particle, the duration of the Melody Loop of Let the Show Begin♪ is extended by <span class="text-desc">1</span>s.
       <br />The maximum extension is <span class="text-desc">5</span>s.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `With My Whole Heart♪`,
       content: `When Perfect Cooking is achieved on a dish with restorative effects, Barbara has a <span class="text-desc">12%</span> chance to obtain double the product.`,
     },
     c1: {
-      title: `C1: Gleeful Songs`,
+      trace: `Constellation 1`,
+      title: `Gleeful Songs`,
       content: `Barbara regenerates <span class="text-desc">1</span> Energy every <span class="text-desc">10</span>s.`,
     },
     c2: {
-      title: `C2: Vitality Burst`,
+      trace: `Constellation 2`,
+      title: `Vitality Burst`,
       content: `Decreases the CD of Let the Show Begin♪ by <span class="text-desc">15%</span>.
       <br />During the ability's duration, your active character gains a <span class="text-desc">15%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>.`,
     },
     c3: {
-      title: `C3: Star of Tomorrow`,
+      trace: `Constellation 3`,
+      title: `Star of Tomorrow`,
       content: `Increases the Level of Shining Miracle♪ by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Attentiveness Be My Power`,
+      trace: `Constellation 4`,
+      title: `Attentiveness Be My Power`,
       content: `Every opponent Barbara hits with her Charged Attack regenerates <span class="text-desc">1</span> Energy for her.
       A maximum of <span class="text-desc">5</span> energy can be regenerated in this manner with any one Charged Attack.`,
     },
     c5: {
-      title: `C5: The Purest Companionship`,
+      trace: `Constellation 5`,
+      title: `The Purest Companionship`,
       content: `Increases the Level of Let the Show Begin♪ by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Dedicating Everything to You`,
+      trace: `Constellation 6`,
+      title: `Dedicating Everything to You`,
       content: `When Barbara is in the party but not on the field, and one of your own party members falls:
       <br />- Automatically revives the fallen character.
       <br />- Fully restores the revived character's HP to <span class="text-desc">100%</span>.

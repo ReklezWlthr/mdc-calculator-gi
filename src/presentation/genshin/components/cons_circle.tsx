@@ -83,7 +83,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_S_${codeName}${
+                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
                     codeName === 'Aloy' ? '_Lock' : codeName === 'Shenhe' ? '_02' : '_01'
                   }.png`}
                   className={classNames(
@@ -102,7 +102,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_S_${codeName}${
+                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
                     codeName === 'PlayerGrass' ? '_06' : codeName === 'Aloy' ? '_Lock' : '_04'
                   }.png`}
                   className={classNames(
@@ -119,7 +119,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_S_${codeName}${
+                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
                     codeName === 'Aloy'
                       ? '_Lock'
                       : codeName === 'Ningguang'
@@ -159,7 +159,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_${
+                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${
                     _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
                   }_${codeName}${
                     codeName === 'PlayerGrass'
@@ -184,7 +184,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_${
+                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${
                     _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
                   }_${codeName}${
                     codeName === 'PlayerGrass'
@@ -211,7 +211,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/UI_Talent_S_${codeName}${
+                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
                     codeName === 'PlayerGrass'
                       ? '_04'
                       : codeName === 'Aloy'

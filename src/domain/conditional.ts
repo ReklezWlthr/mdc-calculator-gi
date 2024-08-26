@@ -63,6 +63,10 @@ export interface ITalentDisplay {
   content: string
   upgrade?: string[]
   value?: { name: string; value: { stat: Stats; scaling: (v: number) => number | string } }[]
+  trace: string
+  level?: number
+  image?: string
+  tag?: string
 }
 
 export interface ITalent {

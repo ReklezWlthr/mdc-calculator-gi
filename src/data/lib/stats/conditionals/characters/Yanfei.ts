@@ -19,6 +19,7 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Seal of Approval`,
       content: `<b>Normal Attack</b>
       <br />Shoots fireballs that deal up to three counts of <b class="text-genshin-pyro">Pyro DMG</b>.
@@ -34,12 +35,14 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Signed Edict`,
       content: `Summons blistering flames that deal <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       <br />Opponents hit by the flames will grant Yanfei the maximum number of Scarlet Seals.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Done Deal`,
       content: `Triggers a spray of intense flames that rush at nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>, granting Yanfei the maximum number of Scarlet Seals, and applying Brilliance to her.
       <br />
@@ -51,43 +54,52 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     a1: {
-      title: `A1: Proviso`,
+      trace: `Ascension 1 Passive`,
+      title: `Proviso`,
       content: `When Yanfei consumes Scarlet Seals by using a Charged Attack, each Scarlet Seal will increase Yanfei's <b class="text-genshin-pyro">Pyro DMG Bonus</b> by <span class="text-desc">5%</span>. This effect lasts for <span class="text-desc">6</span>s. When a Charged Attack is used again during the effect's duration, it will dispel the previous effect.`,
     },
     a4: {
-      title: `A4: Blazing Eye`,
+      trace: `Ascension 4 Passive`,
+      title: `Blazing Eye`,
       content: `When Yanfei's Charged Attack deals a CRIT Hit to opponents, she will deal an additional instance of <b class="text-genshin-pyro">AoE Pyro DMG</b> equal to <span class="text-desc">80%</span> of her ATK. This DMG counts as Charged Attack DMG.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Encyclopedic Expertise`,
       content: `Displays the location of nearby resources unique to Liyue on the mini-map.`,
     },
     c1: {
-      title: `C1: The Law Knows No Kindness`,
+      trace: `Constellation 1`,
+      title: `The Law Knows No Kindness`,
       content: `When Yanfei uses her Charged Attack, each existing Scarlet Seal additionally reduces the stamina cost of this Charged Attack by <span class="text-desc">10%</span> and increases resistance against interruption during its release.`,
     },
     c2: {
-      title: `C2: Right of Final Interpretation`,
+      trace: `Constellation 2`,
+      title: `Right of Final Interpretation`,
       content: `Increases Yanfei's Charged Attack CRIT Rate by <span class="text-desc">20%</span> against enemies below <span class="text-desc">50%</span> HP.`,
     },
     c3: {
-      title: `C3: Samadhi Fire-Forged`,
+      trace: `Constellation 3`,
+      title: `Samadhi Fire-Forged`,
       content: `Increases the Level of Signed Edict by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Supreme Amnesty`,
+      trace: `Constellation 4`,
+      title: `Supreme Amnesty`,
       content: `When Done Deal is used:
       <br />Creates a shield that absorbs up to <span class="text-desc">45%</span> of Yanfei's Max HP for <span class="text-desc">15</span>s.
       <br />This shield absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-desc">250%</span> more effectively.`,
     },
     c5: {
-      title: `C5: Abiding Affidavit`,
+      trace: `Constellation 5`,
+      title: `Abiding Affidavit`,
       content: `Increases the Level of Done Deal by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Extra Clause`,
+      trace: `Constellation 6`,
+      title: `Extra Clause`,
       content: `Increases the maximum number of Scarlet Seals by <span class="text-desc">1</span>.`,
     },
   }

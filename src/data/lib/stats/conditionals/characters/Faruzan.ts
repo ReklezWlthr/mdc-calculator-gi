@@ -18,6 +18,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Parthian Shot`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive shots with a bow.
@@ -31,6 +32,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Wind Realm of Nasamjnin`,
       content: `Faruzan deploys a polyhedron that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to nearby opponents. She will also enter the Manifest Gale state.
       <br />While in the Manifest Gale state, Faruzan's next fully charged shot will consume this state and will become a Hurricane Arrow that contains high-pressure currents. This arrow deals <b class="text-genshin-anemo">Anemo DMG</b> based on the DMG of a fully charged Aimed Shot from "Normal Attack: Parthian Shot."
@@ -40,6 +42,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       <br />The vortex DMG is considered Elemental Skill DMG.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `The Wind's Secret Ways`,
       content: `Faruzan deploys a Dazzling Polyhedron that unleashes a Whirlwind Pulse and deals <b class="text-genshin-anemo">AoE Anemo DMG</b>.
       <br />While the Dazzling Polyhedron persists, it will continuously move along a triangular path. Once it reaches each corner of that triangular path, it will unleash 1 more Whirlwind Pulse.
@@ -50,11 +53,13 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Impetuous Flow`,
+      trace: `Ascension 1 Passive`,
+      title: `Impetuous Flow`,
       content: `When Faruzan is in the Manifest Gale state created by Wind Realm of Nasamjnin, the amount of time taken to charge a shot is decreased by <span class="text-desc">60%</span>, and she can apply The Wind's Secret Ways' Perfidious Wind's Bale to opponents who are hit by the vortex created by Pressurized Collapse.`,
     },
     a4: {
-      title: `A4: Lost Wisdom of the Seven Caverns`,
+      trace: `Ascension 4 Passive`,
+      title: `Lost Wisdom of the Seven Caverns`,
       content: `When characters affected by The Wind's Secret Ways' Prayerful Wind's Gift deal <b class="text-genshin-anemo">Anemo DMG</b> using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on <span class="text-desc">32%</span> of Faruzan's Base ATK. <span class="text-desc">1</span> instance of Hurricane Guard can occur once every <span class="text-desc">0.8</span>s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.`,
       value: [
         {
@@ -64,34 +69,41 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Tomes Light the Path`,
       content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Inazuma Expedition for 20 hours.`,
     },
     c1: {
-      title: `C1: Truth by Any Means`,
+      trace: `Constellation 1`,
+      title: `Truth by Any Means`,
       content: `Faruzan can fire off a maximum of 2 Hurricane Arrows using fully charged Aimed Shots while under the effect of a single Manifest Gale created by Wind Realm of Nasamjnin.`,
     },
     c2: {
-      title: `C2: Overzealous Intellect`,
+      trace: `Constellation 2`,
+      title: `Overzealous Intellect`,
       content: `The duration of the Dazzling Polyhedron created by The Wind's Secret Ways is increased by <span class="text-desc">6</span>s.`,
     },
     c3: {
-      title: `C3: Spirit-Orchard Stroll`,
+      trace: `Constellation 3`,
+      title: `Spirit-Orchard Stroll`,
       content: `Increases the Level of Wind Realm of Nasamjnin by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Divine Comprehension`,
+      trace: `Constellation 4`,
+      title: `Divine Comprehension`,
       content: `The vortex created by Pressurized Collapses will restore Energy to Faruzan based on the number of opponents hit: If it hits 1 opponent, it will restore <span class="text-desc">2</span> Energy for Faruzan. Each additional opponent hit will restore <span class="text-desc">0.5</span> more Energy for Faruzan.
       <br />A maximum of <span class="text-desc">4</span> Energy can be restored to her per vortex.`,
     },
     c5: {
-      title: `C5: Wonderland of Rumination`,
+      trace: `Constellation 5`,
+      title: `Wonderland of Rumination`,
       content: `Increases the Level of The Wind's Secret Ways by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: The Wondrous Path of Truth`,
+      trace: `Constellation 6`,
+      title: `The Wondrous Path of Truth`,
       content: `Characters affected by The Wind's Secret Ways' Prayerful Wind's Benefit have <span class="text-desc">40%</span> increased CRIT DMG when they deal <b class="text-genshin-anemo">Anemo DMG</b>. When the active character deals DMG while affected by Prayerful Wind's Benefit, they will apply Pressurized Collapse to the opponent damaged. This effect can be triggered once every <span class="text-desc">3</span>s. This CD is shared between all party members.`,
     },
   }

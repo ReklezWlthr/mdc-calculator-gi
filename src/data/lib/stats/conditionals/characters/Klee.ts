@@ -19,6 +19,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Kaboom!`,
       content: `<b>Normal Attack</b>
       <br />Throws things that go boom when they hit things! Performs up to 3 explosive attacks, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
@@ -31,6 +32,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Jumpy Dumpty`,
       content: `Jumpy Dumpty is tons of boom-bang-fun!
       <br />When thrown, Jumpy Dumpty bounces thrice, igniting and dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> with every bounce.
@@ -42,45 +44,55 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Sparks 'n' Splash`,
       content: `Klee's Blazing Delight! For the duration of this ability, continuously summons Sparks 'n' Splash to attack nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
     },
     a1: {
-      title: `A1: Pounding Surprise`,
+      trace: `Ascension 1 Passive`,
+      title: `Pounding Surprise`,
       content: `When Jumpy Dumpty and Normal Attacks deal DMG, Klee has a <span class="text-desc">50%</span> chance to obtain an Explosive Spark. This Explosive Spark is consumed by the next Charged Attack, which costs no Stamina and deals <span class="text-desc">50%</span> increased DMG.`,
     },
     a4: {
-      title: `A4: Sparkling Burst`,
+      trace: `Ascension 4 Passive`,
+      title: `Sparkling Burst`,
       content: `When Klee's Charged Attack results in a CRIT Hit, all party members gain <span class="text-desc">2</span> Elemental Energy.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `All Of My Treasures!`,
       content: `Displays the location of nearby resources unique to Mondstadt on the mini-map.`,
     },
     c1: {
-      title: `C1: Chained Reactions`,
+      trace: `Constellation 1`,
+      title: `Chained Reactions`,
       content: `Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to <span class="text-desc">120%</span> of Sparks 'n' Splash's DMG.`,
     },
     c2: {
-      title: `C2: Explosive Frags`,
+      trace: `Constellation 2`,
+      title: `Explosive Frags`,
       content: `Being hit by Jumpy Dumpty's mines decreases opponents' DEF by <span class="text-desc">23%</span> for <span class="text-desc">10</span>s.`,
     },
     c3: {
-      title: `C3: Exquisite Compound`,
+      trace: `Constellation 3`,
+      title: `Exquisite Compound`,
       content: `Increases the Level of Jumpy Dumpty by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Sparkly Explosion`,
+      trace: `Constellation 4`,
+      title: `Sparkly Explosion`,
       content: `If Klee leaves the field during the duration of Sparks 'n' Splash, her departure triggers an explosion that deals <span class="text-desc">555%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
     },
     c5: {
-      title: `C5: Nova Burst`,
+      trace: `Constellation 5`,
+      title: `Nova Burst`,
       content: `Increases the Level of Sparks 'n' Splash by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Blazing Delight`,
+      trace: `Constellation 6`,
+      title: `Blazing Delight`,
       content: `While under the effects of Sparks 'n' Splash, Klee will regenerate <span class="text-desc">3</span> Energy for all members of the party (excluding Klee) every <span class="text-desc">3</span>s.
       <br />When Sparks 'n' Splash is used, all party members will gain a <span class="text-desc">10%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> for <span class="text-desc">25</span>s.`,
     },

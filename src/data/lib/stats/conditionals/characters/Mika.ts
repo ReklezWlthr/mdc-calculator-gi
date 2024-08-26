@@ -19,6 +19,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Spear of Favonius - Arrow's Passage`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive strikes using his crossbow and spear.
@@ -31,6 +32,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Starfrost Swirl`,
       content: `Mika uses his crossbow to attack, granting all nearby characters in your party Soulwind. When characters in the Soulwind state are on the field, their ATK SPD will be increased.
       <br />Will take effect in different ways if Pressed or Held.
@@ -43,6 +45,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Skyfeather Song`,
       content: `Derives the ability to spur his teammates on from the recited prayers of the knightly order, regenerating HP for all nearby party members. This healing is based on Mika's Max HP and will grant them the Eagleplume state.
       <br />
@@ -52,47 +55,56 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Suppressive Barrage`,
+      trace: `Ascension 1 Passive`,
+      title: `Suppressive Barrage`,
       content: `Per the following circumstances, the Soulwind state caused by Starfrost Swirl will grant characters the Detector effect, increasing their <b>Physical DMG</b> by <span class="text-desc">10%</span> when they are on the field.
       <br />- If the Flowfrost Arrow hits more than one opponent, each additional opponent hit will generate <span class="text-desc">1</span> Detector stack.
       <br />- When a Rimestar Shard hits an opponent, it will generate <span class="text-desc">1</span> Detector stack. Each Rimestar Shard can trigger the effect <span class="text-desc">1</span> time.
       <br />The Soulwind state can have a maximum of <span class="text-desc">3</span> Detector stacks, and if Starfrost Swirl is cast again during this duration, the pre-existing Soulwind state and all its Detector stacks will be cleared.`,
     },
     a4: {
-      title: `A4: Topographical Mapping`,
+      trace: `Ascension 4 Passive`,
+      title: `Topographical Mapping`,
       content: `When an active character affected by both Skyfeather Song's Eagleplume and Starfrost Swirl's Soulwind at once scores a CRIT Hit with their attacks, Soulwind will grant them <span class="text-desc">1</span> stack of Detector from Suppressive Barrage. During a single instance of Soulwind, <span class="text-desc">1</span> Detector stack can be gained in this manner.
       <br />Additionally, the maximum number of stacks that can be gained through Soulwind alone is increased by <span class="text-desc">1</span>.
       <br />Requires Suppressive Barrage to be unlocked first.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Demarcation`,
       content: `Displays the location of nearby resources unique to Mondstadt on the mini-map.`,
     },
     c1: {
-      title: `C1: Factor Confluence`,
+      trace: `Constellation 1`,
+      title: `Factor Confluence`,
       content: `The Soulwind state of Starfrost Swirl can decrease the healing interval between instances caused by Skyfeather Song's Eagleplume state. This decrease percentage is equal to the ATK SPD increase provided by Soulwind.`,
     },
     c2: {
-      title: `C2: Companion's Ingress`,
+      trace: `Constellation 2`,
+      title: `Companion's Ingress`,
       content: `When Starfrost Swirl's Flowfrost Arrow first hits an opponent, or its Rimestar Flare hits an opponent, <span class="text-desc">1</span> Detector stack from Passive Talent "Suppressive Barrage" will be generated.
       <br />You must have unlocked the Passive Talent "Suppressive Barrage" first.`,
     },
     c3: {
-      title: `C3: Reconnaissance Experience`,
+      trace: `Constellation 3`,
+      title: `Reconnaissance Experience`,
       content: `Increases the Level of Skyfeather Song by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Sunfrost Encomium`,
+      trace: `Constellation 4`,
+      title: `Sunfrost Encomium`,
       content: `When Mika's own Skyfeather Song's Eagleplume state heals party members, this will restore <span class="text-desc">3</span> Energy to Mika. This form of Energy restoration can occur <span class="text-desc">5</span> times during the Eagleplume state created by <span class="text-desc">1</span> use of Skyfeather Song.`,
     },
     c5: {
-      title: `C5: Signal Arrow`,
+      trace: `Constellation 5`,
+      title: `Signal Arrow`,
       content: `Increases the Level of Starfrost Swirl by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Companion's Counsel`,
+      trace: `Constellation 6`,
+      title: `Companion's Counsel`,
       content: `The maximum number of Detector stacks that Starfrost Swirl's Soulwind can gain is increased by <span class="text-desc">1</span>. You need to have unlocked the Passive Talent "Suppressive Barrage" first.
       <br />Additionally, active characters affected by Soulwind will deal <span class="text-desc">60%</span> more <b>Physical</b> CRIT DMG.`,
     },

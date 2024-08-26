@@ -19,6 +19,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: 'Origin',
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive spear strikes.
@@ -32,6 +33,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       upgrade: ['c6'],
     },
     skill: {
+      trace: `Elemental Skill`,
       title: 'Transcendence: Baleful Omen',
       content: `The Raiden Shogun unveils a shard of her Euthymia, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents, and granting nearby party members the Eye of Stormy Judgment.
       <br />
@@ -45,6 +47,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       upgrade: ['a4', 'c4', 'c5', 'c6'],
     },
     burst: {
+      trace: `Elemental Burst`,
       title: 'Secret Art: Musou Shinsetsu',
       content: `Gathering truths unnumbered and wishes uncounted, the Raiden Shogun unleashes the Musou no Hitotachi and deals <b class="text-genshin-electro">AoE Electro DMG</b>, using Musou Isshin in combat for a certain duration afterward. The DMG dealt by Musou no Hitotachi and Musou Isshin's attacks will be increased based on the number of Chakra Desiderata's Resolve stacks consumed when this skill is used.
       <br />
@@ -64,12 +67,14 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       upgrade: ['c1', 'c2', 'c3'],
     },
     a1: {
-      title: 'A1: Wishes Unnumbered',
+      trace: `Ascension 1 Passive`,
+      title: 'Wishes Unnumbered',
       content: `When nearby party members gain Elemental Orbs or Particles, Chakra Desiderata gains <span class="text-desc">2</span> Resolve stacks.
       <br />This effect can occur once every 3s.`,
     },
     a4: {
-      title: 'A4: Enlightened One',
+      trace: `Ascension 4 Passive`,
+      title: 'Enlightened One',
       content: `Each <span class="text-desc">1%</span> above <span class="text-desc">100%</span> Energy Recharge that the Raiden Shogun possesses grants her:
       <br />- <span class="text-desc">0.6%</span> greater Energy restoration from Musou Isshin
       <br />- <span class="text-desc">0.4%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.
@@ -89,33 +94,40 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       ],
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `All-Preserver`,
       content: `Mora expended when ascending Swords and Polearms is decreased by <span class="text-desc">50%</span>.`,
     },
     c1: {
-      title: 'C1: Ominous Inscription',
+      trace: `Constellation 1`,
+      title: 'Ominous Inscription',
       content: `Chakra Desiderata will gather Resolve even faster. When <b class="text-genshin-electro">Electro</b> characters use their Elemental Bursts, the Resolve gained is increased by <span class="text-desc">80%</span>. When characters of other Elemental Types use their Elemental Bursts, the Resolve gained is increased by <span class="text-desc">20%</span>.`,
     },
     c2: {
-      title: 'C2: Steelbreaker',
+      trace: `Constellation 2`,
+      title: 'Steelbreaker',
       content: `While using Musou no Hitotachi and in the Musou Isshin state applied by Secret Art: Musou Shinsetsu, the Raiden Shogun's attacks ignore <span class="text-desc">60%</span> of opponents' DEF.`,
     },
     c3: {
-      title: 'C3: Shinkage Bygones',
+      trace: `Constellation 3`,
+      title: 'Shinkage Bygones',
       content: `Increases the Level of Secret Art: Musou Shinsetsu by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'C4: Pledge of Propriety',
+      trace: `Constellation 4`,
+      title: 'Pledge of Propriety',
       content: `When the Musou Isshin state applied by Secret Art: Musou Shinsetsu expires, all nearby party members (excluding the Raiden Shogun) gain <span class="text-desc">30%</span> bonus ATK for <span class="text-desc">10</span>s.`,
     },
     c5: {
-      title: "C5: Shogun's Descent",
+      trace: `Constellation 5`,
+      title: "Shogun's Descent",
       content: `Increases the Level of Transcendence: Baleful Omen by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'C6: Wishbearer',
+      trace: `Constellation 6`,
+      title: 'Wishbearer',
       content: `While in the Musou Isshin state applied by Secret Art: Musou Shinsetsu, attacks by the Raiden Shogun that are considered part of her Elemental Burst will decrease all nearby party members' (but not including the Raiden Shogun herself) Elemental Burst CD by <span class="text-desc">1</span>s when they hit opponents.
       <br />This effect can trigger once every <span class="text-desc">1</span>s, and can trigger a total of <span class="text-desc">5</span> times during the state's duration.`,
     },

@@ -19,6 +19,7 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Swiftshatter Spear`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive spear strikes.
@@ -31,6 +32,7 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Blazing Blessing`,
       content: `Thoma vaults forward with his polearm and delivers a flame-filled flying kick that deals <b class="text-genshin-pyro">AoE Pyro DMG</b>, while also summoning a defensive Blazing Barrier. At the moment of casting, Thoma's Elemental Skill applies <b class="text-genshin-pyro">Pyro</b> to himself.
       <br />The DMG Absorption of the Blazing Barrier scales off Thoma's Max HP.
@@ -42,6 +44,7 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Crimson Ooyoroi`,
       content: `Thoma spins his polearm, slicing at his foes with roaring flames that deal <b class="text-genshin-pyro">AoE Pyro DMG</b> and weave themselves into a Scorching Ooyoroi.
       <br />
@@ -59,43 +62,52 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     a1: {
-      title: `A1: Imbricated Armor`,
+      trace: `Ascension 1 Passive`,
+      title: `Imbricated Armor`,
       content: `When your current active character obtains or refreshes a Blazing Barrier, this character's Shield Strength will increase by <span class="text-desc">5%</span> for <span class="text-desc">6</span>s.
       <br />This effect can be triggered once every <span class="text-desc">0.3</span> seconds. Max <span class="text-desc">5</span> stacks.`,
     },
     a4: {
-      title: `A4: Flaming Assault`,
+      trace: `Ascension 4 Passive`,
+      title: `Flaming Assault`,
       content: `DMG dealt by Crimson Ooyoroi's Fiery Collapse is increased by <span class="text-desc">2.2%</span> of Thoma's Max HP.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Snap and Swing`,
       content: `When you fish successfully in Inazuma, Thoma's help grants a <span class="text-desc">20%</span> chance of scoring a double catch.`,
     },
     c1: {
-      title: `C1: A Comrade's Duty`,
+      trace: `Constellation 1`,
+      title: `A Comrade's Duty`,
       content: `When a character protected by Thoma's own Blazing Barrier (Thoma excluded) is attacked, Thoma's own Blazing Blessing CD is decreased by <span class="text-desc">3</span>s, while his own Crimson Ooyoroi's CD is decreased by <span class="text-desc">3</span>s.
       <br />This effect can be triggered once every <span class="text-desc">20</span>s.`,
     },
     c2: {
-      title: `C2: A Subordinate's Skills`,
+      trace: `Constellation 2`,
+      title: `A Subordinate's Skills`,
       content: `Crimson Ooyoroi's duration is increased by <span class="text-desc">3</span>s.`,
     },
     c3: {
-      title: `C3: Fortified Resolve`,
+      trace: `Constellation 3`,
+      title: `Fortified Resolve`,
       content: `Increases the Level of Blazing Blessing by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Long-Term Planning`,
+      trace: `Constellation 4`,
+      title: `Long-Term Planning`,
       content: `After using Crimson Ooyoroi, <span class="text-desc">15</span> Energy will be restored to Thoma.`,
     },
     c5: {
-      title: `C5: Raging Wildfire`,
+      trace: `Constellation 5`,
+      title: `Raging Wildfire`,
       content: `Increases the Level of Crimson Ooyoroi by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Burning Heart`,
+      trace: `Constellation 6`,
+      title: `Burning Heart`,
       content: `When a Blazing Barrier is obtained or refreshed, the DMG dealt by all party members' Normal, Charged, and Plunging Attacks is increased by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.`,
     },
   }

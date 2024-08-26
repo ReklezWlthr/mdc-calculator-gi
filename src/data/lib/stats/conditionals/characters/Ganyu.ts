@@ -18,6 +18,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Liutian Archery`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 6 consecutive shots with a bow.
@@ -33,6 +34,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Trail of the Qilin`,
       content: `Leaving a single Ice Lotus behind, Ganyu dashes backward, shunning all impurity and dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       <br />
@@ -42,50 +44,60 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
       <br />- Blooms profusely when destroyed or once its duration ends, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Celestial Shower`,
       content: `Coalesces atmospheric frost and snow to summon a Sacred Cryo Pearl that exorcises evil.
       <br />During its ability duration, the Sacred Cryo Pearl will continuously rain down shards of ice, striking opponents within an AoE and dealing <b class="text-genshin-cryo">Cryo DMG</b>.
       `,
     },
     a1: {
-      title: `A1: Undivided Heart`,
+      trace: `Ascension 1 Passive`,
+      title: `Undivided Heart`,
       content: `After firing a Frostflake Arrow, the CRIT Rate of subsequent Frostflake Arrows and their resulting bloom effects is increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
     },
     a4: {
-      title: `A4: Harmony between Heaven and Earth`,
+      trace: `Ascension 4 Passive`,
+      title: `Harmony between Heaven and Earth`,
       content: `Celestial Shower grants a <span class="text-desc">20%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b> to active members in the AoE.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: 'Preserved for the Hunt',
       content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Bow-type weapons.`,
     },
     c1: {
-      title: `C1: Dew-Drinker`,
+      trace: `Constellation 1`,
+      title: `Dew-Drinker`,
       content: `Taking DMG from a Charge Level 2 Frostflake Arrow or Frostflake Arrow Bloom decreases opponents' <b class="text-genshin-cryo">Cryo RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.
       <br />A hit regenerates <span class="text-desc">2</span> Energy for Ganyu. This effect can only occur once per Charge Level 2 Frostflake Arrow, regardless if Frostflake Arrow itself or its Bloom hit the target.`,
     },
     c2: {
-      title: `C2: The Auspicious`,
+      trace: `Constellation 2`,
+      title: `The Auspicious`,
       content: `Trail of the Qilin gains <span class="text-desc">1</span> additional charge.`,
     },
     c3: {
-      title: `C3: Cloud-Strider`,
+      trace: `Constellation 3`,
+      title: `Cloud-Strider`,
       content: `Increases the Level of Celestial Shower by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Westward Sojourn`,
+      trace: `Constellation 4`,
+      title: `Westward Sojourn`,
       content: `Opponents standing within the AoE of Celestial Shower take increased DMG. This effect strengthens over time.
       <br />Increased DMG taken begins at <span class="text-desc">5%</span> and increases by <span class="text-desc">5%</span> every <span class="text-desc">3</span>s, up to a maximum of 25%.
       <br />The effect lingers for <span class="text-desc">3</span>s after the opponent leaves the AoE.`,
     },
     c5: {
-      title: `C5: The Merciful`,
+      trace: `Constellation 5`,
+      title: `The Merciful`,
       content: `Increases the Level of Trail of the Qilin by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: The Clement`,
+      trace: `Constellation 6`,
+      title: `The Clement`,
       content: `Using Trail of the Qilin causes the next Frostflake Arrow shot within <span class="text-desc">30</span>s to not require charging.`,
     },
   }

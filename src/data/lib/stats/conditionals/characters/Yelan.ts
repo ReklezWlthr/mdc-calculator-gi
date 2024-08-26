@@ -21,6 +21,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Stealthy Bowshot`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 4 consecutive shots with a bow.
@@ -37,6 +38,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Lingering Lifeline`,
       content: `Fires off a Lifeline that allows her to move rapidly, entangling and marking opponents along its path.
       <br />When this rapid movement ends, the Lifeline will explode, dealing <b class="text-genshin-hydro">Hydro DMG</b> to the marked opponents based on Yelan's Max HP.
@@ -51,6 +53,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Additionally, each opponent marked by the Lifeline when it explodes grants Yelan a <span class="text-desc">34%</span> chance to reset her Breakthrough state.`,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Depth-Clarion Dice`,
       content: `Deals <b class="text-genshin-hydro">AoE Hydro DMG</b> and creates an "Exquisite Throw," which aids her in battle.
       <br />
@@ -61,43 +64,52 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       `,
     },
     a1: {
-      title: `A1: Turn Control`,
+      trace: `Ascension 1 Passive`,
+      title: `Turn Control`,
       content: `When the party has <span class="text-desc">1/2/3/4</span> Elemental Types, Yelan's Max HP is increased by <span class="text-desc">6%/12%/18%/30%</span>.`,
     },
     a4: {
-      title: `A4: Adapt With Ease`,
+      trace: `Ascension 4 Passive`,
+      title: `Adapt With Ease`,
       content: `So long as an Exquisite Throw is in play, your own active character deals <span class="text-desc">1%</span> more DMG. This increases by a further <span class="text-desc">3.5%</span> DMG every second. The maximum increase to DMG dealt is <span class="text-desc">50%</span>.
       <br />The pre-existing effect will be dispelled if Depth-Clarion Dice is recast during its duration.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Necessary Calculation`,
       content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on a Liyue Expedition for 20 hours.`,
     },
     c1: {
-      title: `C1: Enter the Plotters`,
+      trace: `Constellation 1`,
+      title: `Enter the Plotters`,
       content: `Lingering Lifeline gains <span class="text-desc">1</span> additional charge.`,
     },
     c2: {
-      title: `C2: Taking All Comers`,
+      trace: `Constellation 2`,
+      title: `Taking All Comers`,
       content: `When Exquisite Throw conducts a coordinated attack, it will fire an additional water arrow that will deal <span class="text-desc">14%</span> of Yelan's Max HP as Hydro DMG.
       <br />This effect can trigger once every <span class="text-desc">1.8</span>s.`,
     },
     c3: {
-      title: `C3: Beware the Trickster's Dice`,
+      trace: `Constellation 3`,
+      title: `Beware the Trickster's Dice`,
       content: `Increases the Level of Depth-Clarion Dice by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Bait-and-Switch`,
+      trace: `Constellation 4`,
+      title: `Bait-and-Switch`,
       content: `Increases all party members' Max HP by <span class="text-desc">10%</span> for <span class="text-desc">25</span>s for every opponent marked by Lifeline when the Lifeline explodes. A maximum increase of <span class="text-desc">40%</span> Max HP can be attained in this manner.`,
     },
     c5: {
-      title: `C5: Dealer's Sleight`,
+      trace: `Constellation 5`,
+      title: `Dealer's Sleight`,
       content: `Increases the Level of Lingering Lifeline by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Winner Takes All`,
+      trace: `Constellation 6`,
+      title: `Winner Takes All`,
       content: `After using Depth-Clarion Dice, Yelan will enter the Mastermind state.
       <br />In this state, all of Yelan's Normal Attacks will be special Breakthrough Barbs. These Breakthrough Barbs will have similar abilities to normal ones and the DMG dealt will be considered Charged Attack DMG, dealing <span class="text-desc">156%</span> of a normal Breakthrough Barb's DMG.
       <br />

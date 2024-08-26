@@ -48,6 +48,7 @@ import Lynette from './characters/Lynette'
 import Lyney from './characters/Lyney'
 import Mika from './characters/Mika'
 import Mona from './characters/Mona'
+import Mualani from './characters/Mualani'
 import Nahida from './characters/Nahida'
 import Navia from './characters/Navia'
 import Neuvillette from './characters/Neuvillette'
@@ -171,6 +172,7 @@ export default [
   { id: '10000095', conditionals: Sigewinne },
   { id: '10000097', conditionals: Sethos },
   { id: '10000098', conditionals: Clorinde },
+  { id: '10000102', conditionals: Mualani },
   // Travelers
   { id: '10000005-504', conditionals: TravelerWind },
   { id: '10000005-506', conditionals: TravelerRock },
@@ -228,6 +230,7 @@ export const UtilTalentOverride = {
   Ningguang: 'Collect_Ore',
   Momoka: 'S_Aloy_07',
   Clorinde: 'S_Liney_07',
+  Mualani: 'S_Kachina_08',
 }
 
 export const ReverseConsList = [

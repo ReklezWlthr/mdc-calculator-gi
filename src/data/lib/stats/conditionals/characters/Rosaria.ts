@@ -19,6 +19,7 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      trace: `Normal Attack`,
       title: `Spear of the Church`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 5 consecutive spear strikes.
@@ -31,56 +32,67 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      trace: `Elemental Skill`,
       title: `Ravaging Confession`,
       content: `Rosaria swiftly shifts her position to appear behind her opponent, then stabs and slashes them with her polearm, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />This ability cannot be used to travel behind opponents of a larger build.
       `,
     },
     burst: {
+      trace: `Elemental Burst`,
       title: `Rites of Termination`,
       content: `Rosaria's unique take on this prayer ritual: First, she swings her weapon to slash surrounding opponents; then, she summons a frigid Ice Lance that strikes the ground. Both actions deal <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />While active, the Ice Lance periodically releases a blast of cold air, dealing <b class="text-genshin-cryo">Cryo DMG</b> to surrounding opponents.
       `,
     },
     a1: {
-      title: `A1: Regina Probationum`,
+      trace: `Ascension 1 Passive`,
+      title: `Regina Probationum`,
       content: `When Rosaria strikes an opponent from behind using Ravaging Confession, Rosaria's CRIT Rate increases by <span class="text-desc">12%</span> for <span class="text-desc">5</span>s.`,
     },
     a4: {
-      title: `A4: Shadow Samaritan`,
+      trace: `Ascension 4 Passive`,
+      title: `Shadow Samaritan`,
       content: `Casting Rites of Termination increases CRIT Rate of all nearby party members (except Rosaria herself) by <span class="text-desc">15%</span> of Rosaria's CRIT Rate for <span class="text-desc">10</span>s.
       <br />CRIT Rate Bonus gained this way cannot exceed <span class="text-desc">15%</span>.`,
     },
     util: {
+      trace: `Utiliy Passive`,
       title: `Night Walk`,
       content: `At night (18:00 - 6:00), your party members gain the Swift Stride effect: Movement SPD increased by <span class="text-desc">10%</span>.
       <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
     },
     c1: {
-      title: `C1: Unholy Revelation`,
+      trace: `Constellation 1`,
+      title: `Unholy Revelation`,
       content: `When Rosaria deals a CRIT Hit, her ATK SPD increases by <span class="text-desc">10%</span> and her Normal Attack DMG increases by <span class="text-desc">10%</span> for <span class="text-desc">4</span>s.`,
     },
     c2: {
-      title: `C2: Land Without Promise`,
+      trace: `Constellation 2`,
+      title: `Land Without Promise`,
       content: `The duration of the Ice Lance created by Rites of Termination is increased by <span class="text-desc">4</span>s.`,
     },
     c3: {
-      title: `C3: The Wages of Sin`,
+      trace: `Constellation 3`,
+      title: `The Wages of Sin`,
       content: `Increases the Level of Ravaging Confession by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `C4: Painful Grace`,
+      trace: `Constellation 4`,
+      title: `Painful Grace`,
       content: `Ravaging Confession's CRIT Hits regenerate <span class="text-desc">5</span> Energy for Rosaria.
       <br />Can only be triggered once each time Ravaging Confession is cast.`,
     },
     c5: {
-      title: `C5: Last Rites`,
+      trace: `Constellation 5`,
+      title: `Last Rites`,
       content: `Increases the Level of Rites of Termination by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `C6: Divine Retribution`,
+      trace: `Constellation 6`,
+      title: `Divine Retribution`,
       content: `Rites of Termination's attack decreases opponents' <b>Physical RES</b> by <span class="text-desc">20%</span> for <span class="text-desc">10</span>s.`,
     },
   }
