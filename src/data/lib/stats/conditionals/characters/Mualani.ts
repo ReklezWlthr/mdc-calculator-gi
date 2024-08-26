@@ -111,26 +111,43 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const content: IContent[] = [
     {
       type: 'toggle',
-      id: 'zhongli_res',
-      text: `Jade Shield RES Shred`,
+      id: 'mualani_ns',
+      text: `Nightsoul's Blessing`,
       ...talents.skill,
       show: true,
       default: true,
-      debuff: true,
     },
     {
       type: 'number',
-      id: 'zhongli_a1',
-      text: `A1 Shield Strength`,
-      ...talents.c4,
-      show: c >= 4,
-      default: 5,
+      id: 'wave_momentum',
+      text: `Wave Momentum Stacks`,
+      ...talents.skill,
+      show: true,
+      default: 3,
       min: 0,
-      max: 5,
+      max: 3,
+    },
+    {
+      type: 'number',
+      id: 'exploit',
+      text: `Wavechaser's Exploits Stacks`,
+      ...talents.a4,
+      show: a >= 4,
+      default: 3,
+      min: 0,
+      max: 3,
+    },
+    {
+      type: 'toggle',
+      id: 'mualani_c1',
+      text: `C1 Sharky's Surging Bite Buff`,
+      ...talents.c1,
+      show: c >= 1,
+      default: true,
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'zhongli_res'), findContentById(content, 'zhongli_a1')]
+  const teammateContent: IContent[] = []
 
   return {
     upgrade,
@@ -142,26 +159,49 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
 
-      base.BASIC_SCALING = [
-        {
-          name: '1-Hit',
-          value: [{ scaling: calcScaling(0.51396, normal, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.HYDRO,
-          property: TalentProperty.NA,
-        },
-        {
-          name: '2-Hit',
-          value: [{ scaling: calcScaling(0.44626, normal, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.HYDRO,
-          property: TalentProperty.NA,
-        },
-        {
-          name: '3-Hit',
-          value: [{ scaling: calcScaling(0.70034, normal, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.HYDRO,
-          property: TalentProperty.NA,
-        },
-      ]
+      base.BASIC_SCALING = form.mualani_ns
+        ? [
+            {
+              name: `Sharky's Bite DMG`,
+              value: [
+                { scaling: calcScaling(0.0868, skill, 'elemental', '1'), multiplier: Stats.HP },
+                ...(form.wave_momentum
+                  ? [
+                      {
+                        scaling: calcScaling(0.0434, skill, 'elemental', '1') * form.wave_momentum,
+                        multiplier: Stats.HP,
+                      },
+                    ]
+                  : []),
+                ...(form.wave_momentum >= 3
+                  ? [{ scaling: calcScaling(0.217, skill, 'elemental', '1'), multiplier: Stats.HP }]
+                  : []),
+              ],
+              element: Element.HYDRO,
+              property: TalentProperty.NA,
+              bonus: form.mualani_c1 ? 0.66 : 0,
+            },
+          ]
+        : [
+            {
+              name: '1-Hit',
+              value: [{ scaling: calcScaling(0.51396, normal, 'elemental', '1'), multiplier: Stats.ATK }],
+              element: Element.HYDRO,
+              property: TalentProperty.NA,
+            },
+            {
+              name: '2-Hit',
+              value: [{ scaling: calcScaling(0.44626, normal, 'elemental', '1'), multiplier: Stats.ATK }],
+              element: Element.HYDRO,
+              property: TalentProperty.NA,
+            },
+            {
+              name: '3-Hit',
+              value: [{ scaling: calcScaling(0.70034, normal, 'elemental', '1'), multiplier: Stats.ATK }],
+              element: Element.HYDRO,
+              property: TalentProperty.NA,
+            },
+          ]
       base.CHARGE_SCALING = [
         {
           name: 'Charged Attack',
@@ -171,39 +211,16 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal, Element.HYDRO)
-      base.SKILL_SCALING = [
-        {
-          name: 'Stone Stele Summon DMG',
-          value: [{ scaling: calcScaling(0.16, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.GEO,
-          property: TalentProperty.SKILL,
-        },
-        {
-          name: 'Resonance DMG DMG',
-          value: [{ scaling: calcScaling(0.32, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.GEO,
-          property: TalentProperty.SKILL,
-        },
-        {
-          name: 'Hold DMG',
-          value: [{ scaling: calcScaling(0.8, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.GEO,
-          property: TalentProperty.SKILL,
-        },
-        {
-          name: 'Shield DMG Absorption',
-          value: [{ scaling: calcScaling(0.128, skill, 'elemental', '1'), multiplier: Stats.HP }],
-          flat: calcScaling(1232, skill, 'special', 'flat'),
-          element: TalentProperty.SHIELD,
-          property: TalentProperty.SHIELD,
-        },
-      ]
+      base.SKILL_SCALING = []
       base.BURST_SCALING = [
         {
           name: 'Skill DMG',
-          value: [{ scaling: calcScaling(4.0108, burst, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.GEO,
+          value: [
+            { scaling: calcScaling(0.58439, burst, 'elemental', '1') + form.exploit * 0.15, multiplier: Stats.HP },
+          ],
+          element: Element.HYDRO,
           property: TalentProperty.BURST,
+          bonus: c >= 4 ? 0.75 : 0,
         },
       ]
 
