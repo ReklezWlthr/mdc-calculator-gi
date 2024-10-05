@@ -205,8 +205,8 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.kokomi_c2 && c >= 4) base.ATK_SPD += 0.1
-      if (form.kokomi_c6) base[Stats.HYDRO_DMG] += 0.4
+      if (form.kokomi_c2 && c >= 4) base.ATK_SPD.push({value: 0.1, name: '', source: ``})
+      if (form.kokomi_c6) base[Stats.HYDRO_DMG].push({value: 0.4, name: '', source: ``})
 
       return base
     },

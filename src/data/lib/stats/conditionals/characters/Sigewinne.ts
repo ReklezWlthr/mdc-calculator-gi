@@ -274,7 +274,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.sig_a1) base[Stats.HYDRO_DMG] += 0.08
+      if (form.sig_a1) base[Stats.HYDRO_DMG].push({value: 0.08, name: '', source: ``})
       if (c >= 2)
         base.SKILL_SCALING.push({
           name: 'Bubbly Shield Absorption',
@@ -282,13 +282,13 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
         })
-      if (form.sig_c2) base.HYDRO_RES_PEN += 0.35
+      if (form.sig_c2) base.HYDRO_RES_PEN.push({value: 0.35, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.sig_a1_ally) base.SKILL_F_DMG += _.min([buffStack * (_.max([0, own.getHP() - 30000]) / 1000), maxBuff])
-      if (form.sig_c2) base.HYDRO_RES_PEN += 0.35
+      if (form.sig_c2) base.HYDRO_RES_PEN.push({value: 0.35, name: '', source: ``})
 
       return base
     },

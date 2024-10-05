@@ -151,7 +151,7 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.diluc_infusion) {
         base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG] += 0.2
+        if (a >= 4) base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``})
       }
 
       base.BASIC_SCALING = [
@@ -233,8 +233,8 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.ADD,
         })
-      if (form.dori_low_hp) base[Stats.I_HEALING] += 0.5
-      if (form.dori_low_energy) base[Stats.ER] += 0.3
+      if (form.dori_low_hp) base[Stats.I_HEALING].push({value: 0.5, name: '', source: ``})
+      if (form.dori_low_energy) base[Stats.ER].push({value: 0.3, name: '', source: ``})
 
       if (form.dori_c6_infusion) {
         base.infuse(Element.ELECTRO)

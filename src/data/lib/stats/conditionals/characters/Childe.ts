@@ -311,7 +311,7 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
         }
       )
 
-      if (c>=1) base.SKILL_CD_RED += 0.2
+      if (c>=1) base.SKILL_CD_RED.push({value: 0.2, name: '', source: ``})
 
       return base
     },

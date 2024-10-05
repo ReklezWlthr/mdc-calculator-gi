@@ -207,7 +207,7 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
 
       if (form.yanfei_burst) base.CHARGE_DMG += calcScaling(0.334, burst, 'elemental', '2')
-      if (form.seal_stack && a >= 1) base[Stats.PYRO_DMG] += 0.05 * form.seal_stack
+      if (form.seal_stack && a >= 1) base[Stats.PYRO_DMG].push({value: 0.05, name: '', source: ``}) * form.seal_stack
 
       if (a >= 4)
         base.CHARGE_SCALING.push({

@@ -206,7 +206,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.amber_a4) base[Stats.P_ATK] += 0.15
+      if (form.amber_a4) base[Stats.P_ATK].push({value: 0.15, name: '', source: ``})
 
       if (c >= 1)
         base.CHARGE_SCALING.push(
@@ -232,13 +232,13 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         })
 
-      if (c >= 4) base.SKILL_CD_RED += 0.2
-      if (form.amber_c6) base[Stats.P_ATK] += 0.15
+      if (c >= 4) base.SKILL_CD_RED.push({value: 0.2, name: '', source: ``})
+      if (form.amber_c6) base[Stats.P_ATK].push({value: 0.15, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.amber_c6) base[Stats.P_ATK] += 0.15
+      if (form.amber_c6) base[Stats.P_ATK].push({value: 0.15, name: '', source: ``})
 
       return base
     },

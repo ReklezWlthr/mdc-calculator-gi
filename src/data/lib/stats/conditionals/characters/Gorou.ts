@@ -235,11 +235,11 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
 
       if (form.gorou_skill) {
         if (geoCount >= 1) base[Stats.DEF] += calcScaling(206.16, skill, 'elemental', '1')
-        if (geoCount >= 3) base[Stats.GEO_DMG] += 0.15
+        if (geoCount >= 3) base[Stats.GEO_DMG].push({value: 0.15, name: '', source: ``})
       }
 
       if (form.gorou_a1) {
-        base[Stats.P_DEF] += 0.25
+        base[Stats.P_DEF].push({value: 0.25, name: '', source: ``})
       }
 
       if (c >= 4)
@@ -251,9 +251,9 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
         })
 
       if (form.gorou_c6) {
-        if (geoCount >= 1) base[Stats.CRIT_DMG] += 0.1
-        if (geoCount >= 2) base[Stats.CRIT_DMG] += 0.2
-        if (geoCount >= 3) base[Stats.CRIT_DMG] += 0.4
+        if (geoCount >= 1) base[Stats.CRIT_DMG].push({value: 0.1, name: '', source: ``})
+        if (geoCount >= 2) base[Stats.CRIT_DMG].push({value: 0.2, name: '', source: ``})
+        if (geoCount >= 3) base[Stats.CRIT_DMG].push({value: 0.4, name: '', source: ``})
       }
 
       return base
@@ -261,17 +261,17 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.gorou_skill) {
         if (geoCount >= 1) base[Stats.DEF] += calcScaling(206.16, skill, 'elemental', '1')
-        if (geoCount >= 3) base[Stats.GEO_DMG] += 0.15
+        if (geoCount >= 3) base[Stats.GEO_DMG].push({value: 0.15, name: '', source: ``})
       }
 
       if (form.gorou_a1) {
-        base[Stats.P_DEF] += 0.25
+        base[Stats.P_DEF].push({value: 0.25, name: '', source: ``})
       }
 
       if (form.gorou_c6) {
-        if (geoCount >= 1) base[Stats.CRIT_DMG] += 0.1
-        if (geoCount >= 2) base[Stats.CRIT_DMG] += 0.2
-        if (geoCount >= 3) base[Stats.CRIT_DMG] += 0.4
+        if (geoCount >= 1) base[Stats.CRIT_DMG].push({value: 0.1, name: '', source: ``})
+        if (geoCount >= 2) base[Stats.CRIT_DMG].push({value: 0.2, name: '', source: ``})
+        if (geoCount >= 3) base[Stats.CRIT_DMG].push({value: 0.4, name: '', source: ``})
       }
 
       return base

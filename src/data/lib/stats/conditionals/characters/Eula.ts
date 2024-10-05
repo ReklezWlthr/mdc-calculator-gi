@@ -170,7 +170,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.diluc_infusion) {
         base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG] += 0.2
+        if (a >= 4) base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``})
       }
 
       base.BASIC_SCALING = [
@@ -287,10 +287,10 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.grimheart) base[Stats.DEF] += 0.3 * form.grimheart
+      if (form.grimheart) base[Stats.DEF].push({value: 0.3, name: '', source: ``}) * form.grimheart
       if (form.grimheart_consume) {
-        base.PHYSICAL_RES_PEN += 0.15 * _.min([skill * 0.01, 0.1])
-        base.CRYO_RES_PEN += 0.15 * _.min([skill * 0.01, 0.1])
+        base.PHYSICAL_RES_PEN.push({value: 0.15, name: '', source: ``}) * _.min([skill * 0.01, 0.1])
+        base.CRYO_RES_PEN.push({value: 0.15, name: '', source: ``}) * _.min([skill * 0.01, 0.1])
       }
 
       if (a >= 1)
@@ -301,7 +301,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.BURST,
           bonus: form.eula_c4 ? 0.25 : 0,
         })
-      if (form.c1_grimheart_consume) base[Stats.PHYSICAL_DMG] += 0.3
+      if (form.c1_grimheart_consume) base[Stats.PHYSICAL_DMG].push({value: 0.3, name: '', source: ``})
 
       return base
     },

@@ -300,22 +300,22 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.nilou_a1_em) base[Stats.EM] += 100
+      if (form.nilou_a1_em) base[Stats.EM].push({value: 100, name: '', source: ``})
 
-      if (form.c2_hydro_shred) base.HYDRO_RES_PEN += 0.35
-      if (form.c2_dendro_shred) base.DENDRO_RES_PEN += 0.35
-      if (form.nilou_c4) base.BURST_DMG += 0.5
+      if (form.c2_hydro_shred) base.HYDRO_RES_PEN.push({value: 0.35, name: '', source: ``})
+      if (form.c2_dendro_shred) base.DENDRO_RES_PEN.push({value: 0.35, name: '', source: ``})
+      if (form.nilou_c4) base.BURST_DMG.push({value: 0.5, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.nilou_a1_em) base[Stats.EM] += 100
+      if (form.nilou_a1_em) base[Stats.EM].push({value: 100, name: '', source: ``})
       if (form.bountiful_core && a >= 4) {
         base.BLOOM_DMG += _.min([(_.max([own.getHP() - 30000, 0]) / 1000) * 0.09, 4])
       }
 
-      if (form.c2_hydro_shred) base.HYDRO_RES_PEN += 0.35
-      if (form.c2_dendro_shred) base.DENDRO_RES_PEN += 0.35
+      if (form.c2_hydro_shred) base.HYDRO_RES_PEN.push({value: 0.35, name: '', source: ``})
+      if (form.c2_dendro_shred) base.DENDRO_RES_PEN.push({value: 0.35, name: '', source: ``})
 
       return base
     },

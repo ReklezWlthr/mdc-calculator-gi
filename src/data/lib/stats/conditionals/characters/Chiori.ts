@@ -221,7 +221,7 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.chiori_a4) base[Stats.GEO_DMG] += 0.2
+      if (form.chiori_a4) base[Stats.GEO_DMG].push({value: 0.2, name: '', source: ``})
 
       if (c >= 2)
         base.SKILL_SCALING.push({

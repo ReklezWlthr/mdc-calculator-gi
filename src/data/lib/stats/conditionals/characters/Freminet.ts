@@ -340,8 +340,8 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
           ]
       }
 
-      if (form.frem_c4) base[Stats.P_ATK] += 0.09 * form.frem_c4
-      if (form.frem_c6) base[Stats.CRIT_DMG] += 0.12 * form.frem_c6
+      if (form.frem_c4) base[Stats.P_ATK].push({value: 0.09, name: '', source: ``}) * form.frem_c4
+      if (form.frem_c6) base[Stats.CRIT_DMG].push({value: 0.12, name: '', source: ``}) * form.frem_c6
 
       return base
     },

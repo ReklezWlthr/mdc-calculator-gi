@@ -9,7 +9,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     add: (base, weapon) => {
-      if (_.includes([WeaponType.CLAYMORE, WeaponType.SWORD, WeaponType.POLEARM], weapon)) base.BASIC_DMG += 0.35
+      if (_.includes([WeaponType.CLAYMORE, WeaponType.SWORD, WeaponType.POLEARM], weapon))
+        base.BASIC_DMG.push({ value: 0.35, name: '', source: `` })
       return base
     },
     desc: [
@@ -24,7 +25,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.EM, value: 80 }],
     add: (base, weapon) => {
-      if (_.includes([WeaponType.CATALYST, WeaponType.BOW], weapon)) base.CHARGE_DMG += 0.35
+      if (_.includes([WeaponType.CATALYST, WeaponType.BOW], weapon))
+        base.CHARGE_DMG.push({ value: 0.35, name: '', source: `` })
       return base
     },
     desc: [
@@ -39,7 +41,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [],
     half: (base) => {
-      base.BURST_DMG += 0.6
+      base.BURST_DMG.push({ value: 0.6, name: '', source: `` })
       return base
     },
     desc: [
@@ -76,7 +78,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ANEMO_DMG, value: 0.15 }],
     add: (base) => {
-      base.SWIRL_DMG += 0.6
+      base.SWIRL_DMG.push({ value: 0.6, name: '', source: `` })
       return base
     },
     desc: [
@@ -124,11 +126,11 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ELECTRO_DMG, value: 0.15 }],
     add: (base) => {
-      base.OVERLOAD_DMG += 0.4
-      base.TASER_DMG += 0.4
-      base.SUPERCONDUCT_DMG += 0.4
-      base.HYPERBLOOM_DMG += 0.4
-      base.AGGRAVATE_DMG += 0.2
+      base.OVERLOAD_DMG.push({ value: 0.4, name: '', source: `` })
+      base.TASER_DMG.push({ value: 0.4, name: '', source: `` })
+      base.SUPERCONDUCT_DMG.push({ value: 0.4, name: '', source: `` })
+      base.HYPERBLOOM_DMG.push({ value: 0.4, name: '', source: `` })
+      base.AGGRAVATE_DMG.push({ value: 0.2, name: '', source: `` })
       return base
     },
     desc: [
@@ -154,11 +156,11 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.PYRO_DMG, value: 0.15 }],
     add: (base) => {
-      base.OVERLOAD_DMG += 0.4
-      base.BURNING_DMG += 0.4
-      base.BURGEON_DMG += 0.4
-      base.VAPE_DMG += 0.15
-      base.MELT_DMG += 0.15
+      base.OVERLOAD_DMG.push({ value: 0.4, name: '', source: `` })
+      base.BURNING_DMG.push({ value: 0.4, name: '', source: `` })
+      base.BURGEON_DMG.push({ value: 0.4, name: '', source: `` })
+      base.VAPE_DMG.push({ value: 0.15, name: '', source: `` })
+      base.MELT_DMG.push({ value: 0.15, name: '', source: `` })
       return base
     },
     desc: [
@@ -329,9 +331,9 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.EM, value: 80 }],
     add: (base) => {
-      base.BLOOM_DMG += 0.4
-      base.HYPERBLOOM_DMG += 0.4
-      base.BURGEON_DMG += 0.4
+      base.BLOOM_DMG.push({ value: 0.4, name: '', source: `` })
+      base.HYPERBLOOM_DMG.push({ value: 0.4, name: '', source: `` })
+      base.BURGEON_DMG.push({ value: 0.4, name: '', source: `` })
       return base
     },
     desc: [
@@ -357,8 +359,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_HP, value: 0.2 }],
     add: (base) => {
-      base.SKILL_DMG += 0.1
-      base.BURST_DMG += 0.1
+      base.SKILL_DMG.push({ value: 0.1, name: '', source: `` })
+      base.BURST_DMG.push({ value: 0.1, name: '', source: `` })
       return base
     },
     desc: [
@@ -373,8 +375,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [],
     half: (base) => {
-      base.BASIC_DMG += 0.15
-      base.CHARGE_DMG += 0.15
+      base.BASIC_DMG.push({ value: 0.15, name: '', source: `` })
+      base.CHARGE_DMG.push({ value: 0.15, name: '', source: `` })
       return base
     },
     desc: [
@@ -389,11 +391,11 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [],
     half: (base) => {
-      base.SKILL_DMG += 0.2
+      base.SKILL_DMG.push({ value: 0.2, name: '', source: `` })
       return base
     },
     add: (base) => {
-      base.SKILL_DMG += 0.25
+      base.SKILL_DMG.push({ value: 0.25, name: '', source: `` })
       return base
     },
     desc: [
@@ -447,13 +449,35 @@ export const ArtifactSets: IArtifact[] = [
     ],
   },
   {
+    id: '2949388203',
+    name: 'Scroll of the Hero of Cinder City',
+    icon: 'UI_RelicIcon_15037',
+    rarity: [4, 5],
+    bonus: [],
+    desc: [
+      `When a nearby party member triggers a <b>Nightsoul Burst</b>, the equipping character regenerates <span class="text-desc">6</span> Elemental Energy.`,
+      `After the equipping character triggers a reaction related to their Elemental Type, all nearby party members gain a <span class="text-desc">12%</span> Elemental DMG Bonus for the Elemental Types involved in the elemental reaction for <span class="text-desc">15</span>s. If the equipping character is in the <b>Nightsoul's Blessing</b> state when triggering this effect, all nearby party members gain an additional <span class="text-desc">28%</span> Elemental DMG Bonus for the Elemental Types involved in the elemental reaction for <span class="text-desc">20</span>s. The equipping character can trigger this effect while off-field, and the DMG bonus from Artifact Sets with the same name do not stack.`,
+    ],
+  },
+  {
+    id: '1774579403',
+    name: 'Obsidian Codex',
+    icon: 'UI_RelicIcon_15038',
+    rarity: [4, 5],
+    bonus: [],
+    desc: [
+      `While the equipping character is in <b>Nightsoul's Blessing</b> and is on the field, their DMG dealt is increased by <span class="text-desc">15%</span>.`,
+      `After the equipping character consumes <span class="text-desc">1</span> <b>Nightsoul</b> point while on the field, CRIT Rate increases by <span class="text-desc">40%</span> for <span class="text-desc">6</span>s. This effect can trigger once every second.`,
+    ],
+  },
+  {
     id: '2364208851',
     name: 'Resolution of Sojourner',
     icon: 'UI_RelicIcon_10001',
     rarity: [3, 4],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     add: (base) => {
-      base.CHARGE_CR += 0.3
+      base.CHARGE_CR.push({ value: 0.3, name: '', source: `` })
       return base
     },
     desc: [`ATK +18%.`, `Increases Charged Attack CRIT Rate by 30%.`],

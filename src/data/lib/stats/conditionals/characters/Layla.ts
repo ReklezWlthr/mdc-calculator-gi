@@ -207,7 +207,7 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.layla_a1) base[Stats.SHIELD] += 0.06 * form.layla_a1
+      if (form.layla_a1) base[Stats.SHIELD].push({value: 0.06, name: '', source: ``}) * form.layla_a1
       if (c >= 2)
         base.SKILL_SCALING.push({
           name: 'Allied Curtain of Slumber Shield',
@@ -217,7 +217,7 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SHIELD,
           bonus: 0.2,
         })
-      if (form.kuki_c6) base[Stats.EM] += 125
+      if (form.kuki_c6) base[Stats.EM].push({value: 125, name: '', source: ``})
 
       return base
     },

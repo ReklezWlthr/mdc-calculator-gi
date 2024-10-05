@@ -224,19 +224,19 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.soulwind) {
-        base.ATK_SPD += 0.12 + skill / 100
-        if (c >= 6) base.PHYSICAL_CD += 0.6
+        base.ATK_SPD.push({value: 0.12, name: '', source: ``}) + skill / 100
+        if (c >= 6) base.PHYSICAL_CD.push({value: 0.6, name: '', source: ``})
       }
-      if (form.detector) base[Stats.PHYSICAL_DMG] += 0.1 * form.detector
+      if (form.detector) base[Stats.PHYSICAL_DMG].push({value: 0.1, name: '', source: ``}) * form.detector
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.soulwind) {
-        base.ATK_SPD += 0.12 + skill / 100
-        if (c >= 6) base.PHYSICAL_CD += 0.6
+        base.ATK_SPD.push({value: 0.12, name: '', source: ``}) + skill / 100
+        if (c >= 6) base.PHYSICAL_CD.push({value: 0.6, name: '', source: ``})
       }
-      if (form.detector) base[Stats.PHYSICAL_DMG] += 0.1 * form.detector
+      if (form.detector) base[Stats.PHYSICAL_DMG].push({value: 0.1, name: '', source: ``}) * form.detector
 
       return base
     },

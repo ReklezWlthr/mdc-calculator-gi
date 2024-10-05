@@ -225,19 +225,19 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.qiqi_a1) base[Stats.I_HEALING] += 0.2
+      if (form.qiqi_a1) base[Stats.I_HEALING].push({value: 0.2, name: '', source: ``})
 
       if (form.qiqi_c2) {
-        base.BASIC_DMG += 0.15
-        base.CHARGE_DMG += 0.15
+        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
       }
-      if (form.qiqi_c4) base.ATK_REDUCTION += 0.2
+      if (form.qiqi_c4) base.ATK_REDUCTION.push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.qiqi_c4) base.ATK_REDUCTION += 0.2
-      if (form.qiqi_a1) base[Stats.I_HEALING] += 0.2
+      if (form.qiqi_c4) base.ATK_REDUCTION.push({value: 0.2, name: '', source: ``})
+      if (form.qiqi_a1) base[Stats.I_HEALING].push({value: 0.2, name: '', source: ``})
 
       return base
     },

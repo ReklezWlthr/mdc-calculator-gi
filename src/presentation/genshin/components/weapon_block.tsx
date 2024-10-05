@@ -134,9 +134,9 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
         <div className="flex gap-2">
           <div className="flex flex-col justify-between w-1/2 gap-1">
             <img
-              src={`https://enka.network/ui/${weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD]}${
-                ascension >= 2 ? '_Awaken' : ''
-              }.png`}
+              src={`https://homdgcat.wiki/homdgcat-res/Weapon/${
+                weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD]
+              }${ascension >= 2 ? '_Awaken' : ''}.png`}
               className="w-full pt-1 border rounded-lg bg-primary-darker border-primary-border aspect-square"
             />
             <RarityGauge rarity={rarity} />

@@ -226,19 +226,19 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       if (a >= 1) {
         switch (uniqueCount) {
           case 1:
-            base[Stats.P_HP] += 0.06
+            base[Stats.P_HP].push({value: 0.06, name: '', source: ``})
             break
           case 2:
-            base[Stats.P_HP] += 0.12
+            base[Stats.P_HP].push({value: 0.12, name: '', source: ``})
             break
           case 3:
-            base[Stats.P_HP] += 0.18
+            base[Stats.P_HP].push({value: 0.18, name: '', source: ``})
             break
           case 4:
-            base[Stats.P_HP] += 0.3
+            base[Stats.P_HP].push({value: 0.3, name: '', source: ``})
         }
       }
-      if (form.yelan_a4) base[Stats.ALL_DMG] += 0.01 + form.yelan_a4 * 0.035
+      if (form.yelan_a4) base[Stats.ALL_DMG].push({value: 0.01, name: '', source: ``}) + form.yelan_a4 * 0.035
       if (c >= 2)
         base.BURST_SCALING.push({
           name: `C2 Additional Arrow`,
@@ -258,7 +258,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.yelan_a4) base[Stats.ALL_DMG] += 0.01 + form.yelan_a4 * 0.035
+      if (form.yelan_a4) base[Stats.ALL_DMG].push({value: 0.01, name: '', source: ``}) + form.yelan_a4 * 0.035
       if (form.yelan_c4) base[Stats.P_HP] += form.yelan_c4 * 0.1
 
       return base

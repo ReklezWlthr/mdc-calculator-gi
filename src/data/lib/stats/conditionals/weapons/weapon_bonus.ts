@@ -1,28 +1,32 @@
 import { StatsObject } from '../../baseConstant'
 import { calcRefinement } from '../../../../../core/utils/data_format'
-import { Element, Stats, TalentProperty } from '@src/domain/constant'
+import { Element, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import _ from 'lodash'
+import { findCharacter } from '@src/core/utils/finder'
 
-const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number) => StatsObject }[] = [
+const WeaponBonus: {
+  id: string
+  scaling: (base: StatsObject, refinement: number, team?: ITeamChar[]) => StatsObject
+}[] = [
   {
     id: '15502',
     scaling: (base, r) => {
-      base.BASIC_DMG += calcRefinement(0.12, 0.03, r)
-      base.CHARGE_DMG += calcRefinement(0.12, 0.03, r)
+      base.BASIC_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base.CHARGE_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15508',
     scaling: (base, r) => {
-      base[Stats.P_HP] += calcRefinement(0.16, 0.04, r)
+      base[Stats.P_HP].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11501',
     scaling: (base, r) => {
-      base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
         base.SKILL_SCALING.push(
           {
@@ -46,23 +50,23 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '13507',
     scaling: (base, r) => {
-      base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15503',
     scaling: (base, r) => {
-      base[Stats.EM] += calcRefinement(60, 15, r)
+      base[Stats.EM].push({ value: calcRefinement(60, 15, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '14506',
     scaling: (base, r) => {
-      base[Stats.HEAL] += calcRefinement(0.1, 0.025, r)
+      base[Stats.HEAL].push({ value: calcRefinement(0.1, 0.025, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
-        base.BASIC_F_DMG += calcRefinement(0.01, 0.005, r) * base.getHP()
+        base.BASIC_F_DMG.push({ value: calcRefinement(0.01, 0.005, r), name: '', source: `` }) * base.getHP()
         return base
       })
       return base
@@ -71,66 +75,66 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '11503',
     scaling: (base, r) => {
-      base[Stats.ALL_DMG] += calcRefinement(0.1, 0.025, r)
+      base[Stats.ALL_DMG].push({ value: calcRefinement(0.1, 0.025, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11510',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
+      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15511',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
+      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11511',
     scaling: (base, r) => {
-      base[Stats.P_HP] += calcRefinement(0.2, 0.05, r)
+      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11512',
     scaling: (base, r) => {
-      base[Stats.CRIT_RATE] += calcRefinement(0.04, 0.01, r)
+      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.04, 0.01, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '14504',
     scaling: (base, r) => {
-      base[Stats.SHIELD] += calcRefinement(0.2, 0.05, r)
+      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11509',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
+      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15507',
     scaling: (base, r) => {
-      base.SKILL_DMG += calcRefinement(0.12, 0.03, r)
-      base.BURST_DMG += calcRefinement(0.12, 0.03, r)
+      base.SKILL_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base.BURST_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11505',
     scaling: (base, r) => {
-      base[Stats.P_HP] += calcRefinement(0.2, 0.05, r)
+      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK] += calcRefinement(0.012, 0.003, r) * base.getHP()
+        base[Stats.ATK].push({ value: calcRefinement(0.012, 0.003, r), name: '', source: `` }) * base.getHP()
         return base
       })
       return base
@@ -139,10 +143,10 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '12510',
     scaling: (base, r) => {
-      base[Stats.P_DEF] += calcRefinement(0.27, 0.08, r)
+      base[Stats.P_DEF].push({ value: calcRefinement(0.27, 0.08, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
-        base.BASIC_F_DMG += calcRefinement(0.4, 0.1, r) * base.getDef()
-        base.CHARGE_F_DMG += calcRefinement(0.4, 0.1, r) * base.getDef()
+        base.BASIC_F_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` }) * base.getDef()
+        base.CHARGE_F_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` }) * base.getDef()
         return base
       })
       return base
@@ -151,7 +155,7 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '14501',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
+      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Wandering Clouds DMG`,
@@ -167,7 +171,7 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '11502',
     scaling: (base, r) => {
-      base[Stats.CRIT_RATE] += calcRefinement(0.04, 0.01, r)
+      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.04, 0.01, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Skypiercing Might DMG`,
@@ -183,7 +187,7 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '15501',
     scaling: (base, r) => {
-      base[Stats.CRIT_DMG] += calcRefinement(0.2, 0.05, r)
+      base[Stats.CRIT_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Echoing Ballad DMG`,
@@ -199,7 +203,7 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '12501',
     scaling: (base, r) => {
-      base[Stats.ALL_DMG] += calcRefinement(0.08, 0.02, r)
+      base[Stats.ALL_DMG].push({ value: calcRefinement(0.08, 0.02, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Vacuum Blade DMG`,
@@ -215,8 +219,8 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '13502',
     scaling: (base, r) => {
-      base[Stats.CRIT_RATE] += calcRefinement(0.08, 0.02, r)
-      base.ATK_SPD += 0.12
+      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.08, 0.02, r), name: '', source: `` })
+      base.ATK_SPD.push({ value: 0.12, name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Vacuum Blade DMG`,
@@ -232,16 +236,16 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '12503',
     scaling: (base, r) => {
-      base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '13501',
     scaling: (base, r) => {
-      base[Stats.P_HP] += calcRefinement(0.2, 0.05, r)
+      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK] += calcRefinement(0.008, 0.002, r) * base.getHP()
+        base[Stats.ATK].push({ value: calcRefinement(0.008, 0.002, r), name: '', source: `` }) * base.getHP()
         return base
       })
       return base
@@ -251,7 +255,11 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
     id: '13508',
     scaling: (base, r) => {
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK] += _.min([calcRefinement(0.28, 0.07, r) * (base[Stats.ER] - 1), calcRefinement(0.8, 0.1, r)])
+        base[Stats.ATK].push({
+          value: _.min([calcRefinement(0.28, 0.07, r) * (base.getValue(Stats.ER) - 1), calcRefinement(0.8, 0.1, r)]),
+          name: '',
+          source: ``,
+        })
         return base
       })
       return base
@@ -261,7 +269,7 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
     id: '13511',
     scaling: (base, r) => {
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK] += calcRefinement(0.52, 0.13, r) * base[Stats.EM]
+        base[Stats.ATK].push({ value: calcRefinement(0.52, 0.13, r), name: '', source: `` }) * base.getValue(Stats.EM)
         return base
       })
       return base
@@ -270,132 +278,132 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '11504',
     scaling: (base, r) => {
-      base[Stats.SHIELD] += calcRefinement(0.2, 0.05, r)
+      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15512',
     scaling: (base, r) => {
-      base.CHARGE_DMG += calcRefinement(0.16, 0.04, r)
+      base.CHARGE_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '12504',
     scaling: (base, r) => {
-      base[Stats.SHIELD] += calcRefinement(0.16, 0.04, r)
+      base[Stats.SHIELD].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11509',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG] += calcRefinement(0.2, 0.05, r)
+      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15509',
     scaling: (base, r) => {
-      base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '14514',
     scaling: (base, r) => {
-      base[Stats.P_HP] += calcRefinement(0.16, 0.04, r)
+      base[Stats.P_HP].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '14512',
     scaling: (base, r) => {
-      base.ATK_SPD += calcRefinement(0.1, 0.025, r)
+      base.ATK_SPD.push({ value: calcRefinement(0.1, 0.025, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11514',
     scaling: (base, r) => {
-      base[Stats.P_DEF] += calcRefinement(0.2, 0.05, r)
-      base.BASIC_DMG += calcRefinement(0.16, 0.04, r)
-      base.SKILL_DMG += calcRefinement(0.24, 0.06, r)
+      base[Stats.P_DEF].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '12512',
     scaling: (base, r) => {
-      base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '13504',
     scaling: (base, r) => {
-      base[Stats.SHIELD] += calcRefinement(0.2, 0.05, r)
+      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '12502',
     scaling: (base, r) => {
-      base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '12426',
     scaling: (base, r) => {
-      base[Stats.P_ATK] += calcRefinement(0.12, 0.03, r)
+      base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '13301',
     scaling: (base, r) => {
-      base.BASIC_DMG += calcRefinement(0.24, 0.06, r)
+      base.BASIC_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11424',
     scaling: (base, r) => {
-      base.SKILL_DMG += calcRefinement(0.16, 0.04, r)
-      base.BURST_DMG += calcRefinement(0.16, 0.04, r)
+      base.SKILL_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base.BURST_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15402',
     scaling: (base, r) => {
-      base.SKILL_DMG += calcRefinement(0.24, 0.06, r)
-      base.BURST_DMG += calcRefinement(0.24, 0.06, r)
+      base.SKILL_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
+      base.BURST_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11409',
     scaling: (base, r) => {
-      base.BASIC_DMG += calcRefinement(0.2, 0.05, r)
-      base.CHARGE_DMG += calcRefinement(0.2, 0.05, r)
+      base.BASIC_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base.CHARGE_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15405',
     scaling: (base, r) => {
-      base.BASIC_DMG += calcRefinement(0.4, 0.1, r)
-      base.CHARGE_DMG -= 0.1
+      base.BASIC_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` })
+      base.CHARGE_DMG.push({ value: -0.1, name: '', source: `` })
       return base
     },
   },
   {
     id: '12412',
     scaling: (base, r) => {
-      base.BURST_DMG += calcRefinement(0.12, 0.03, r)
+      base.BURST_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BURST_SCALING.push({
           name: `Tuna DMG`,
@@ -411,52 +419,52 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
   {
     id: '13414',
     scaling: (base, r) => {
-      base.SKILL_DMG += calcRefinement(0.06, 0.015, r)
+      base.SKILL_DMG.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '12414',
     scaling: (base, r) => {
-      base.SKILL_DMG += calcRefinement(0.06, 0.015, r)
+      base.SKILL_DMG.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '15414',
     scaling: (base, r) => {
-      base.BASIC_DMG += calcRefinement(0.16, 0.04, r)
-      base.CHARGE_DMG -= calcRefinement(0.16, 0.04, r)
+      base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base.CHARGE_DMG.push({ value: -calcRefinement(0.16, 0.04, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11426',
     scaling: (base, r) => {
-      base.SKILL_CR += calcRefinement(0.08, 0.02, r)
+      base.SKILL_CR.push({ value: calcRefinement(0.08, 0.02, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11413',
     scaling: (base, r) => {
-      base.SKILL_DMG += calcRefinement(0.16, 0.04, r)
-      base.SKILL_CR += calcRefinement(0.06, 0.015, r)
+      base.SKILL_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base.SKILL_CR.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '13415',
     scaling: (base, r) => {
-      base.BURST_DMG += calcRefinement(0.4, 0.1, r)
-      base.BURST_CR += calcRefinement(0.06, 0.015, r)
+      base.BURST_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` })
+      base.BURST_CR.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
       return base
     },
   },
   {
     id: '11515',
     scaling: (base, r) => {
-      base[Stats.CRIT_DMG] += calcRefinement(0.2, 0.05, r)
+      base[Stats.CRIT_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
       return base
     },
   },
@@ -810,6 +818,126 @@ const WeaponBonus: { id: string; scaling: (base: StatsObject, refinement: number
           property: TalentProperty.HEAL,
         })
         return base
+      })
+      return base
+    },
+  },
+  {
+    id: '14516',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        value: calcRefinement(0.2, 0.05, r),
+        name: 'Passive',
+        source: `Surf's Up`,
+      })
+      return base
+    },
+  },
+  {
+    id: '13513',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        value: calcRefinement(0.15, 0.04, r),
+        name: 'Passive',
+        source: `Lumidouce Elegy`,
+      })
+      return base
+    },
+  },
+  {
+    id: '15431',
+    scaling: (base, r, team) => {
+      const count = _.filter(team, (item) => {
+        const c = findCharacter(item.cId)
+        return c?.region === 'Natlan' || (c?.element !== base.ELEMENT && c?.name !== base.NAME)
+      }).length
+      base[Stats.P_ATK].push({
+        value: calcRefinement(0.048, 0.012, r) * count,
+        name: 'Passive',
+        source: `Chain Breaker`,
+      })
+      if (count >= 3)
+        base[Stats.EM].push({
+          value: calcRefinement(24, 6, r),
+          name: 'Passive',
+          source: `Chain Breaker`,
+        })
+      return base
+    },
+  },
+  {
+    id: '12410',
+    scaling: (base, r, team) => {
+      const count = _.filter(
+        _.map(team, (item) => findCharacter(item.cId)?.region),
+        (item) => item === 'Liyue'
+      ).length
+      base[Stats.P_ATK].push({
+        value: count * calcRefinement(0.07, 0.01, r),
+        name: 'Passive',
+        source: `Lithic Blade`,
+      })
+      base[Stats.CRIT_RATE].push({
+        value: count * calcRefinement(0.03, 0.01, r),
+        name: 'Passive',
+        source: `Lithic Blade`,
+      })
+      return base
+    },
+  },
+  {
+    id: '13406',
+    scaling: (base, r, team) => {
+      const count = _.filter(
+        _.map(team, (item) => findCharacter(item.cId)?.region),
+        (item) => item === 'Liyue'
+      ).length
+      base[Stats.P_ATK].push({
+        value: count * calcRefinement(0.07, 0.01, r),
+        name: 'Passive',
+        source: `Lithic Spear`,
+      })
+      base[Stats.CRIT_RATE].push({
+        value: count * calcRefinement(0.03, 0.01, r),
+        name: 'Passive',
+        source: `Lithic Spear`,
+      })
+      return base
+    },
+  },
+  {
+    id: '14427',
+    scaling: (base, r) => {
+      base.CALLBACK.push((x) => {
+        x.SKILL_SCALING.push({
+          name: `Ash-Graven Drinking Horn DMG`,
+          value: [{ scaling: calcRefinement(0.4, 0.1, r), multiplier: Stats.HP }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.ADD,
+        })
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '13430',
+    scaling: (base, r) => {
+      base.SKILL_DMG.push({
+        value: calcRefinement(0.12, 0.03, r),
+        name: 'Passive',
+        source: `Mountain-Bracing Bolt`,
+      })
+      return base
+    },
+  },
+  {
+    id: '12430',
+    scaling: (base, r) => {
+      base.PLUNGE_CR.push({
+        value: calcRefinement(0.16, 0.04, r),
+        name: 'Passive',
+        source: `Fruitful Hook`,
       })
       return base
     },

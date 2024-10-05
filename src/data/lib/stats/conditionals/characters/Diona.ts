@@ -235,21 +235,21 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.diona_a4) base.ATK_REDUCTION += 0.1
+      if (form.diona_a4) base.ATK_REDUCTION.push({value: 0.1, name: '', source: ``})
 
       if (form.diona_c6) {
-        base[Stats.EM] += 200
+        base[Stats.EM].push({value: 200, name: '', source: ``})
       } else {
-        base[Stats.I_HEALING] += 0.3
+        base[Stats.I_HEALING].push({value: 0.3, name: '', source: ``})
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.diona_c6) {
-        base[Stats.EM] += 200
+        base[Stats.EM].push({value: 200, name: '', source: ``})
       } else {
-        base[Stats.I_HEALING] += 0.3
+        base[Stats.I_HEALING].push({value: 0.3, name: '', source: ``})
       }
 
       return base

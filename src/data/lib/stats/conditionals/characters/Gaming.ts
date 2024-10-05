@@ -134,7 +134,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.diluc_infusion) {
         base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG] += 0.2
+        if (a >= 4) base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``})
       }
 
       base.BASIC_SCALING = [
@@ -240,7 +240,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (!form.gaming_a4) base[Stats.I_HEALING] += 0.2
+      if (!form.gaming_a4) base[Stats.I_HEALING].push({value: 0.2, name: '', source: ``})
       if (c >= 1)
         base.BURST_SCALING.push({
           name: `C1 Meetup Healing`,
@@ -248,7 +248,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })
-      if (form.gaming_c2) base[Stats.P_ATK] += 0.2
+      if (form.gaming_c2) base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
 
       return base
     },

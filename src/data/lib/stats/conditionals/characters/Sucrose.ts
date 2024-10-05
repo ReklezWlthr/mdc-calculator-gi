@@ -193,15 +193,15 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.BURST,
         },
       ]
-      if (form.sucrose_absorb && c>=6) base[Stats[`${form.sucrose_absorb.toUpperCase()}_DMG`]] += 0.2
+      if (form.sucrose_absorb && c>=6) base[Stats[`${form.sucrose_absorb.toUpperCase()}_DMG`]].push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.element === form.sucrose_a1) base[Stats.EM] += 50
+      if (form.element === form.sucrose_a1) base[Stats.EM].push({value: 50, name: '', source: ``})
       if (form.sucrose_a4) base[Stats.EM] += own[Stats.EM] * 0.2
 
-      if (form.sucrose_absorb && c>=6) base[Stats[`${form.sucrose_absorb.toUpperCase()}_DMG`]] += 0.2
+      if (form.sucrose_absorb && c>=6) base[Stats[`${form.sucrose_absorb.toUpperCase()}_DMG`]].push({value: 0.2, name: '', source: ``})
 
       return base
     },

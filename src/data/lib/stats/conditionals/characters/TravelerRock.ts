@@ -189,12 +189,12 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         })
 
-      if (form.gmc_c1) base[Stats.CRIT_RATE] += 0.1
+      if (form.gmc_c1) base[Stats.CRIT_RATE].push({value: 0.1, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.gmc_c1) base[Stats.CRIT_RATE] += 0.1
+      if (form.gmc_c1) base[Stats.CRIT_RATE].push({value: 0.1, name: '', source: ``})
 
       return base
     },

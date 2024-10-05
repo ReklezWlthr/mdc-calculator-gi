@@ -249,7 +249,7 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
           ]
 
       if (form.cyno_burst) {
-        base[Stats.EM] += 100
+        base[Stats.EM].push({value: 100, name: '', source: ``})
         base.infuse(Element.ELECTRO, true)
 
         base.SKILL_SCALING.push({
@@ -259,7 +259,7 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         })
 
-        if (c >= 1) base.ATK_SPD += 0.2
+        if (c >= 1) base.ATK_SPD.push({value: 0.2, name: '', source: ``})
       }
 
       if (form.cyno_c2) base[Stats.ELECTRO_DMG] += form.cyno_c2 * 0.1

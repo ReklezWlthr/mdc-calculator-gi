@@ -249,9 +249,9 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.fiery_field) base.M_DMG_REDUCTION += 0.3 + skill * 0.02
+      if (form.fiery_field) base.M_DMG_REDUCTION.push({value: 0.3, name: '', source: ``}) + skill * 0.02
 
-      if (c >= 1) base[Stats.P_HP] += 0.2
+      if (c >= 1) base[Stats.P_HP].push({value: 0.2, name: '', source: ``})
 
       if (a >= 4) {
         base.SKILL_SCALING.push({
@@ -271,13 +271,13 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
         })
       }
 
-      if (c >= 6) base.BURST_CR += 0.1
-      if (form.dehya_c6) base.BURST_CD += 0.15 * form.dehya_c6
+      if (c >= 6) base.BURST_CR.push({value: 0.1, name: '', source: ``})
+      if (form.dehya_c6) base.BURST_CD.push({value: 0.15, name: '', source: ``}) * form.dehya_c6
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.fiery_field) base.M_DMG_REDUCTION += 0.3 + skill * 0.02
+      if (form.fiery_field) base.M_DMG_REDUCTION.push({value: 0.3, name: '', source: ``}) + skill * 0.02
 
       return base
     },

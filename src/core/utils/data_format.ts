@@ -10,6 +10,8 @@ import {
 } from '@src/domain/scaling'
 import _ from 'lodash'
 import { findCharacter } from './finder'
+import { ITalentDisplay } from '@src/domain/conditional'
+import { toPercentage } from './converter'
 
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0

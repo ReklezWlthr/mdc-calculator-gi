@@ -247,9 +247,9 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.ayato_burst) base.BASIC_DMG += 0.1 + _.min([burst + 0.01, 0.1])
-      if (form.namisen >= 3 && c >= 2) base[Stats.P_HP] += 0.5
-      if (form.ayato_c4) base.ATK_SPD += 0.15
+      if (form.ayato_burst) base.BASIC_DMG.push({value: 0.1, name: '', source: ``}) + _.min([burst + 0.01, 0.1])
+      if (form.namisen >= 3 && c >= 2) base[Stats.P_HP].push({value: 0.5, name: '', source: ``})
+      if (form.ayato_c4) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
 
       if (form.ayato_infusion && c >= 6)
         base.BASIC_SCALING.push({
@@ -263,8 +263,8 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.ayato_burst) base.BASIC_DMG += 0.1 + _.min([burst + 0.01, 0.1])
-      if (form.ayato_c4) base.ATK_SPD += 0.15
+      if (form.ayato_burst) base.BASIC_DMG.push({value: 0.1, name: '', source: ``}) + _.min([burst + 0.01, 0.1])
+      if (form.ayato_c4) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
 
       return base
     },

@@ -224,13 +224,13 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.HEAL,
         })
 
-      if (form.xq_c2) base.HYDRO_RES_PEN += 0.15
+      if (form.xq_c2) base.HYDRO_RES_PEN.push({value: 0.15, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.xq_skill) base.DMG_REDUCTION += _.min([0.19 + skill * 0.01, 0.29]) + 0.2 * own[Stats.HYDRO_DMG]
-      if (form.xq_c2) base.HYDRO_RES_PEN += 0.15
+      if (form.xq_c2) base.HYDRO_RES_PEN.push({value: 0.15, name: '', source: ``})
 
       return base
     },

@@ -220,14 +220,27 @@ const Xiao = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.xiao_burst) {
         base.infuse(Element.ANEMO, true)
-        base.BASIC_DMG += calcScaling(0.5845, burst, 'elemental', '2')
-        base.CHARGE_DMG += calcScaling(0.5845, burst, 'elemental', '2')
-        base.PLUNGE_DMG += calcScaling(0.5845, burst, 'elemental', '2')
+        base.BASIC_DMG.push({
+          value: calcScaling(0.5845, burst, 'elemental', '2'),
+          name: 'Elemental Burst',
+          source: 'Self',
+        })
+        base.CHARGE_DMG.push({
+          value: calcScaling(0.5845, burst, 'elemental', '2'),
+          name: 'Elemental Burst',
+          source: 'Self',
+        })
+        base.PLUNGE_DMG.push({
+          value: calcScaling(0.5845, burst, 'elemental', '2'),
+          name: 'Elemental Burst',
+          source: 'Self',
+        })
       }
-      if (form.xiao_a1) base[Stats.ALL_DMG] += 0.05 * form.xiao_a1
-      if (form.xiao_a4) base.SKILL_DMG += 0.15 * form.xiao_a4
-      if (form.xiao_c2) base[Stats.ER] += 0.25
-      if (form.xiao_c4) base[Stats.P_DEF] += 1
+      if (form.xiao_a1)
+        base[Stats.ALL_DMG].push({ value: 0.05 * form.xiao_a1, name: 'Ascension 1 Passive', source: `Self` })
+      if (form.xiao_a4) base.SKILL_DMG.push({ value: 0.15 * form.xiao_a4, name: 'Ascension 4 Passive', source: `Self` })
+      if (form.xiao_c2) base[Stats.ER].push({ value: 0.25, name: 'Constellation 2', source: `Self` })
+      if (form.xiao_c4) base[Stats.P_DEF].push({ value: 1, name: 'Constellation 4', source: `Self` })
 
       return base
     },

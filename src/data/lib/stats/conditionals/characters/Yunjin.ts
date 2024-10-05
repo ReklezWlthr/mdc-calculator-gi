@@ -227,12 +227,12 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (c >= 1) base.SKILL_CD_RED += 0.18
+      if (c >= 1) base.SKILL_CD_RED.push({value: 0.18, name: '', source: ``})
       if (form.yunjin_burst) {
-        if (c >= 2) base.BASIC_DMG += 0.15
-        if (c >= 6) base.ATK_SPD += 0.12
+        if (c >= 2) base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        if (c >= 6) base.ATK_SPD.push({value: 0.12, name: '', source: ``})
       }
-      if (form.yunjin_c4) base[Stats.P_DEF] += 0.2
+      if (form.yunjin_c4) base[Stats.P_DEF].push({value: 0.2, name: '', source: ``})
 
       return base
     },
@@ -240,8 +240,8 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       const a4Bonus = a >= 4 ? uniqueCount * 0.025 + (uniqueCount === 4 ? 0.015 : 0) : 0
       if (form.yunjin_burst) {
         base.BASIC_F_DMG += (calcScaling(0.3216, burst, 'elemental', '1') + a4Bonus) * own.getDef()
-        if (c >= 2) base.BASIC_DMG += 0.15
-        if (c >= 6) base.ATK_SPD += 0.12
+        if (c >= 2) base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        if (c >= 6) base.ATK_SPD.push({value: 0.12, name: '', source: ``})
       }
 
       return base

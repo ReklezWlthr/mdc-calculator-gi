@@ -224,21 +224,21 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.a1_shield) base[Stats.SHIELD] += 0.05 * form.a1_shield
+      if (form.a1_shield) base[Stats.SHIELD].push({value: 0.05, name: '', source: ``}) * form.a1_shield
       if (form.thoma_c6) {
-        base.BASIC_DMG += 0.15
-        base.CHARGE_DMG += 0.15
-        base.PLUNGE_DMG += 0.15
+        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.PLUNGE_DMG.push({value: 0.15, name: '', source: ``})
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.a1_shield) base[Stats.SHIELD] += 0.05 * form.a1_shield
+      if (form.a1_shield) base[Stats.SHIELD].push({value: 0.05, name: '', source: ``}) * form.a1_shield
       if (form.thoma_c6) {
-        base.BASIC_DMG += 0.15
-        base.CHARGE_DMG += 0.15
-        base.PLUNGE_DMG += 0.15
+        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.PLUNGE_DMG.push({value: 0.15, name: '', source: ``})
       }
 
       return base

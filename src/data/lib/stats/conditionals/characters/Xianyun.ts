@@ -262,7 +262,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
       if (form.storm_pinion) base[Stats.CRIT_RATE] += form.storm_pinion * 0.2 + 0.2
-      if (c >= 2 && form.skyladder) base[Stats.P_ATK] += 0.2
+      if (c >= 2 && form.skyladder) base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
 
       if (c >= 6 && form.skyladder)
         base.PLUNGE_SCALING.push({

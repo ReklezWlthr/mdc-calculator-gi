@@ -280,23 +280,23 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.PA,
         })
 
-      if (form.kazu_c2) base[Stats.EM] += 200
+      if (form.kazu_c2) base[Stats.EM].push({value: 200, name: '', source: ``})
       if (form.kazu_c6_infusion) base.infuse(Element.ANEMO)
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
-      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`] += 0.0004 * own[Stats.EM]
-      if (aForm.kazu_c2) base[Stats.EM] += 200
+      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`].push({value: 0.0004, name: '', source: ``}) * own[Stats.EM]
+      if (aForm.kazu_c2) base[Stats.EM].push({value: 200, name: '', source: ``})
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`] += 0.0004 * base[Stats.EM]
+      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`].push({value: 0.0004, name: '', source: ``}) * base[Stats.EM]
       if (c >= 6) {
-        base.BASIC_DMG += 0.002 * base[Stats.EM]
-        base.CHARGE_DMG += 0.002 * base[Stats.EM]
-        base.PLUNGE_DMG += 0.002 * base[Stats.EM]
+        base.BASIC_DMG.push({value: 0.002, name: '', source: ``}) * base[Stats.EM]
+        base.CHARGE_DMG.push({value: 0.002, name: '', source: ``}) * base[Stats.EM]
+        base.PLUNGE_DMG.push({value: 0.002, name: '', source: ``}) * base[Stats.EM]
       }
 
       return base

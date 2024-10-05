@@ -241,16 +241,16 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.HEAL,
         })
 
-      if (form.jean_c2) base.ATK_SPD += 0.15
-      if (form.jean_c4) base.ANEMO_RES_PEN += 0.4
-      if (form.jean_c6) base.DMG_REDUCTION += 0.35
+      if (form.jean_c2) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
+      if (form.jean_c4) base.ANEMO_RES_PEN.push({value: 0.4, name: '', source: ``})
+      if (form.jean_c6) base.DMG_REDUCTION.push({value: 0.35, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.jean_c2) base.ATK_SPD += 0.15
-      if (form.jean_c4) base.ANEMO_RES_PEN += 0.4
-      if (form.jean_c6) base.DMG_REDUCTION += 0.35
+      if (form.jean_c2) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
+      if (form.jean_c4) base.ANEMO_RES_PEN.push({value: 0.4, name: '', source: ``})
+      if (form.jean_c6) base.DMG_REDUCTION.push({value: 0.35, name: '', source: ``})
 
       return base
     },

@@ -279,18 +279,18 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.hu_skill) base.infuse(Element.PYRO, true)
-      if (form.hu_low) base[Stats.PYRO_DMG] += 0.33
+      if (form.hu_low) base[Stats.PYRO_DMG].push({value: 0.33, name: '', source: ``})
 
       if (form.hu_c6) {
-        base.ALL_TYPE_RES += 2
-        base[Stats.CRIT_RATE] += 1
+        base.ALL_TYPE_RES.push({value: 2, name: '', source: ``})
+        base[Stats.CRIT_RATE].push({value: 1, name: '', source: ``})
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.hu_a1) base[Stats.CRIT_RATE] += 0.12
-      if (form.hu_a4) base[Stats.CRIT_RATE] += 0.12
+      if (form.hu_a1) base[Stats.CRIT_RATE].push({value: 0.12, name: '', source: ``})
+      if (form.hu_a4) base[Stats.CRIT_RATE].push({value: 0.12, name: '', source: ``})
 
       return base
     },

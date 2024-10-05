@@ -212,13 +212,13 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.lisa_a4) base.DEF_REDUCTION += 0.15
-      if (form.lisa_c2) base[Stats.DEF] += 0.25
+      if (form.lisa_a4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
+      if (form.lisa_c2) base[Stats.DEF].push({value: 0.25, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.lisa_a4) base.DEF_REDUCTION += 0.15
+      if (form.lisa_a4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
 
       return base
     },

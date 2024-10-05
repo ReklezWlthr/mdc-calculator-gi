@@ -209,9 +209,9 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.xl_a4) base[Stats.P_ATK] += 0.1
-      if (form.xl_c1) base.PYRO_RES_PEN += 0.15
-      if (form.xl_c6) base[Stats.PYRO_DMG] += 0.15
+      if (form.xl_a4) base[Stats.P_ATK].push({value: 0.1, name: '', source: ``})
+      if (form.xl_c1) base.PYRO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.xl_c6) base[Stats.PYRO_DMG].push({value: 0.15, name: '', source: ``})
 
       if (c >= 2)
         base.BASIC_SCALING.push({
@@ -224,9 +224,9 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
-      if (aForm.xl_a4) base[Stats.P_ATK] += 0.1
-      if (form.xl_c1) base.PYRO_RES_PEN += 0.15
-      if (form.xl_c6) base[Stats.PYRO_DMG] += 0.15
+      if (aForm.xl_a4) base[Stats.P_ATK].push({value: 0.1, name: '', source: ``})
+      if (form.xl_c1) base.PYRO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.xl_c6) base[Stats.PYRO_DMG].push({value: 0.15, name: '', source: ``})
 
       return base
     },

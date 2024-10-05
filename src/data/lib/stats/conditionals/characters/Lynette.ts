@@ -246,19 +246,19 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       if (form.lynette_a1) {
         switch (uniqueCount) {
           case 1:
-            base[Stats.P_ATK] += 0.08
+            base[Stats.P_ATK].push({value: 0.08, name: '', source: ``})
           case 2:
-            base[Stats.P_ATK] += 0.12
+            base[Stats.P_ATK].push({value: 0.12, name: '', source: ``})
           case 3:
-            base[Stats.P_ATK] += 0.16
+            base[Stats.P_ATK].push({value: 0.16, name: '', source: ``})
           case 4:
-            base[Stats.P_ATK] += 0.2
+            base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
         }
       }
-      if (form.lynette_a4) base.BURST_DMG += 0.15
+      if (form.lynette_a4) base.BURST_DMG.push({value: 0.15, name: '', source: ``})
       if (form.lynette_c6_infusion) {
         base.infuse(Element.ANEMO)
-        base[Stats.ANEMO_DMG] += 0.2
+        base[Stats.ANEMO_DMG].push({value: 0.2, name: '', source: ``})
       }
 
       return base
@@ -267,13 +267,13 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       if (form.lynette_a1) {
         switch (uniqueCount) {
           case 1:
-            base[Stats.P_ATK] += 0.08
+            base[Stats.P_ATK].push({value: 0.08, name: '', source: ``})
           case 2:
-            base[Stats.P_ATK] += 0.12
+            base[Stats.P_ATK].push({value: 0.12, name: '', source: ``})
           case 3:
-            base[Stats.P_ATK] += 0.16
+            base[Stats.P_ATK].push({value: 0.16, name: '', source: ``})
           case 4:
-            base[Stats.P_ATK] += 0.2
+            base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
         }
       }
 

@@ -229,18 +229,18 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.a1_crit) base[Stats.CRIT_RATE] += 0.12
+      if (form.a1_crit) base[Stats.CRIT_RATE].push({value: 0.12, name: '', source: ``})
       if (form.c1_crit) {
-        base.ATK_SPD += 0.1
-        base.BASIC_DMG += 0.1
+        base.ATK_SPD.push({value: 0.1, name: '', source: ``})
+        base.BASIC_DMG.push({value: 0.1, name: '', source: ``})
       }
-      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN += 0.2
+      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN.push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.a4_crit) base[Stats.CRIT_RATE] += _.min([own[Stats.CRIT_RATE] * 0.15, 0.15])
-      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN += 0.2
+      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN.push({value: 0.2, name: '', source: ``})
 
       return base
     },

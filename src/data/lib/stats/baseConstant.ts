@@ -57,152 +57,167 @@ export const getPlungeScaling = (
   ]
 }
 
+export interface StatsArray {
+  name: string
+  source: string
+  value: number
+  base?: string | number
+  multiplier?: number
+  flat?: number | string
+}
+
 export const baseStatsObject = {
   // Base Stats
+  BASE_ATK_C: 0,
+  BASE_ATK_L: 0,
   BASE_ATK: 0,
   BASE_HP: 0,
   BASE_DEF: 0,
 
+  // Meta
+  MAX_ENERGY: 0,
+  NAME: '',
+  WEAPON: null as WeaponType,
+  ELEMENT: null as Element,
+
   // Basic Stats
-  [Stats.ATK]: 0,
-  [Stats.HP]: 0,
-  [Stats.DEF]: 0,
-  [Stats.P_ATK]: 0,
-  [Stats.P_HP]: 0,
-  [Stats.P_DEF]: 0,
-  [Stats.CRIT_RATE]: 0.05,
-  [Stats.CRIT_DMG]: 0.5,
-  [Stats.EM]: 0,
-  [Stats.ER]: 1,
-  [Stats.HEAL]: 0,
-  [Stats.I_HEALING]: 0,
-  [Stats.SHIELD]: 0,
+  [Stats.ATK]: [] as StatsArray[],
+  [Stats.HP]: [] as StatsArray[],
+  [Stats.DEF]: [] as StatsArray[],
+  [Stats.P_ATK]: [] as StatsArray[],
+  [Stats.P_HP]: [] as StatsArray[],
+  [Stats.P_DEF]: [] as StatsArray[],
+  [Stats.CRIT_RATE]: [{ name: 'Base Value', source: 'Self', value: 0.05 }] as StatsArray[],
+  [Stats.CRIT_DMG]: [{ name: 'Base Value', source: 'Self', value: 0.5 }] as StatsArray[],
+  [Stats.EM]: [] as StatsArray[],
+  [Stats.ER]: [{ name: 'Base Value', source: 'Self', value: 1 }] as StatsArray[],
+  [Stats.HEAL]: [] as StatsArray[],
+  [Stats.I_HEALING]: [] as StatsArray[],
+  [Stats.SHIELD]: [] as StatsArray[],
 
   // DMG Bonuses
-  [Stats.ANEMO_DMG]: 0,
-  [Stats.PYRO_DMG]: 0,
-  [Stats.HYDRO_DMG]: 0,
-  [Stats.ELECTRO_DMG]: 0,
-  [Stats.CRYO_DMG]: 0,
-  [Stats.GEO_DMG]: 0,
-  [Stats.DENDRO_DMG]: 0,
-  [Stats.PHYSICAL_DMG]: 0,
-  [Stats.ALL_DMG]: 0,
+  [Stats.ANEMO_DMG]: [] as StatsArray[],
+  [Stats.PYRO_DMG]: [] as StatsArray[],
+  [Stats.HYDRO_DMG]: [] as StatsArray[],
+  [Stats.ELECTRO_DMG]: [] as StatsArray[],
+  [Stats.CRYO_DMG]: [] as StatsArray[],
+  [Stats.GEO_DMG]: [] as StatsArray[],
+  [Stats.DENDRO_DMG]: [] as StatsArray[],
+  [Stats.PHYSICAL_DMG]: [] as StatsArray[],
+  [Stats.ALL_DMG]: [] as StatsArray[],
 
-  PHYSICAL_CD: 0,
-  PYRO_CD: 0,
-  HYDRO_CD: 0,
-  CRYO_CD: 0,
-  ELECTRO_CD: 0,
-  ANEMO_CD: 0,
-  GEO_CD: 0,
-  DENDRO_CD: 0,
+  PHYSICAL_CD: [] as StatsArray[],
+  PYRO_CD: [] as StatsArray[],
+  HYDRO_CD: [] as StatsArray[],
+  CRYO_CD: [] as StatsArray[],
+  ELECTRO_CD: [] as StatsArray[],
+  ANEMO_CD: [] as StatsArray[],
+  GEO_CD: [] as StatsArray[],
+  DENDRO_CD: [] as StatsArray[],
 
-  PHYSICAL_F_DMG: 0,
-  PYRO_F_DMG: 0,
-  HYDRO_F_DMG: 0,
-  GEO_F_DMG: 0,
-  ANEMO_F_DMG: 0,
-  CRYO_F_DMG: 0,
+  PHYSICAL_F_DMG: [] as StatsArray[],
+  PYRO_F_DMG: [] as StatsArray[],
+  HYDRO_F_DMG: [] as StatsArray[],
+  GEO_F_DMG: [] as StatsArray[],
+  ANEMO_F_DMG: [] as StatsArray[],
+  CRYO_F_DMG: [] as StatsArray[],
 
   // Hidden Stats
-  ATK_SPD: 1,
-  CHARGE_ATK_SPD: 1,
-  DEF_PEN: 0,
-  DEF_REDUCTION: 0,
-  CD_RED: 0,
-  SKILL_CD_RED: 0,
-  BURST_CD_RED: 0,
+  ATK_SPD: [{ name: 'Base Value', source: 'Self', value: 1 }] as StatsArray[],
+  CHARGE_ATK_SPD: [{ name: 'Base Value', source: 'Self', value: 1 }] as StatsArray[],
+  DEF_PEN: [] as StatsArray[],
+  DEF_REDUCTION: [] as StatsArray[],
+  CD_RED: [] as StatsArray[],
+  SKILL_CD_RED: [] as StatsArray[],
+  BURST_CD_RED: [] as StatsArray[],
 
   // RES PEN
-  ALL_TYPE_RES_PEN: 0,
-  PHYSICAL_RES_PEN: 0,
-  PYRO_RES_PEN: 0,
-  HYDRO_RES_PEN: 0,
-  CRYO_RES_PEN: 0,
-  ELECTRO_RES_PEN: 0,
-  ANEMO_RES_PEN: 0,
-  GEO_RES_PEN: 0,
-  DENDRO_RES_PEN: 0,
+  ALL_TYPE_RES_PEN: [] as StatsArray[],
+  PHYSICAL_RES_PEN: [] as StatsArray[],
+  PYRO_RES_PEN: [] as StatsArray[],
+  HYDRO_RES_PEN: [] as StatsArray[],
+  CRYO_RES_PEN: [] as StatsArray[],
+  ELECTRO_RES_PEN: [] as StatsArray[],
+  ANEMO_RES_PEN: [] as StatsArray[],
+  GEO_RES_PEN: [] as StatsArray[],
+  DENDRO_RES_PEN: [] as StatsArray[],
 
-  VULNERABILITY: 0,
+  VULNERABILITY: [] as StatsArray[],
 
   // RES
-  ALL_TYPE_RES: 0,
-  PHYSICAL_RES: 0,
-  PYRO_RES: 0,
-  HYDRO_RES: 0,
-  CRYO_RES: 0,
-  ELECTRO_RES: 0,
-  ANEMO_RES: 0,
-  GEO_RES: 0,
-  DENDRO_RES: 0,
+  ALL_TYPE_RES: [] as StatsArray[],
+  PHYSICAL_RES: [] as StatsArray[],
+  PYRO_RES: [] as StatsArray[],
+  HYDRO_RES: [] as StatsArray[],
+  CRYO_RES: [] as StatsArray[],
+  ELECTRO_RES: [] as StatsArray[],
+  ANEMO_RES: [] as StatsArray[],
+  GEO_RES: [] as StatsArray[],
+  DENDRO_RES: [] as StatsArray[],
 
   // Talent Boosts
-  BASIC_DMG: 0,
-  CHARGE_DMG: 0,
-  PLUNGE_DMG: 0,
-  SKILL_DMG: 0,
-  BURST_DMG: 0,
+  BASIC_DMG: [] as StatsArray[],
+  CHARGE_DMG: [] as StatsArray[],
+  PLUNGE_DMG: [] as StatsArray[],
+  SKILL_DMG: [] as StatsArray[],
+  BURST_DMG: [] as StatsArray[],
 
-  ELEMENTAL_NA_DMG: 0, // Only used by Candace
+  ELEMENTAL_NA_DMG: [] as StatsArray[], // Only used by Candace
 
-  BASIC_F_DMG: 0,
-  CHARGE_F_DMG: 0,
-  PLUNGE_F_DMG: 0,
-  SKILL_F_DMG: 0,
-  BURST_F_DMG: 0,
+  BASIC_F_DMG: [] as StatsArray[],
+  CHARGE_F_DMG: [] as StatsArray[],
+  PLUNGE_F_DMG: [] as StatsArray[],
+  SKILL_F_DMG: [] as StatsArray[],
+  BURST_F_DMG: [] as StatsArray[],
 
-  BASIC_CR: 0,
-  CHARGE_CR: 0,
-  PLUNGE_CR: 0,
-  SKILL_CR: 0,
-  BURST_CR: 0,
+  BASIC_CR: [] as StatsArray[],
+  CHARGE_CR: [] as StatsArray[],
+  PLUNGE_CR: [] as StatsArray[],
+  SKILL_CR: [] as StatsArray[],
+  BURST_CR: [] as StatsArray[],
 
-  BASIC_CD: 0,
-  CHARGE_CD: 0,
-  PLUNGE_CD: 0,
-  SKILL_CD: 0,
-  BURST_CD: 0,
+  BASIC_CD: [] as StatsArray[],
+  CHARGE_CD: [] as StatsArray[],
+  PLUNGE_CD: [] as StatsArray[],
+  SKILL_CD: [] as StatsArray[],
+  BURST_CD: [] as StatsArray[],
 
   // Reaction
-  BURNING_DMG: 0,
-  BLOOM_DMG: 0,
-  HYPERBLOOM_DMG: 0,
-  BURGEON_DMG: 0,
-  VAPE_DMG: 0,
-  MELT_DMG: 0,
-  AGGRAVATE_DMG: 0,
-  SPREAD_DMG: 0,
-  SUPERCONDUCT_DMG: 0,
-  TASER_DMG: 0,
-  OVERLOAD_DMG: 0,
-  SHATTER_DMG: 0,
+  BURNING_DMG: [] as StatsArray[],
+  BLOOM_DMG: [] as StatsArray[],
+  HYPERBLOOM_DMG: [] as StatsArray[],
+  BURGEON_DMG: [] as StatsArray[],
+  VAPE_DMG: [] as StatsArray[],
+  MELT_DMG: [] as StatsArray[],
+  AGGRAVATE_DMG: [] as StatsArray[],
+  SPREAD_DMG: [] as StatsArray[],
+  SUPERCONDUCT_DMG: [] as StatsArray[],
+  TASER_DMG: [] as StatsArray[],
+  OVERLOAD_DMG: [] as StatsArray[],
+  SHATTER_DMG: [] as StatsArray[],
 
-  SWIRL_DMG: 0,
-  PYRO_SWIRL_DMG: 0,
-  HYDRO_SWIRL_DMG: 0,
-  ELECTRO_SWIRL_DMG: 0,
-  CRYO_SWIRL_DMG: 0,
+  SWIRL_DMG: [] as StatsArray[],
+  PYRO_SWIRL_DMG: [] as StatsArray[],
+  HYDRO_SWIRL_DMG: [] as StatsArray[],
+  ELECTRO_SWIRL_DMG: [] as StatsArray[],
+  CRYO_SWIRL_DMG: [] as StatsArray[],
 
-  CORE_CR: 0,
-  CORE_CD: 0,
+  CORE_CR: [] as StatsArray[],
+  CORE_CD: [] as StatsArray[],
 
-  PYRO_MULT: 0, // Vape + Melt
-  HYDRO_MULT: 0, // Vape
-  CRYO_MULT: 0, // Melt
-  DENDRO_F_DMG: 0, // Spread
-  ELECTRO_F_DMG: 0, // Aggravate
+  PYRO_MULT: [] as StatsArray[], // Vape + Melt
+  HYDRO_MULT: [] as StatsArray[], // Vape
+  CRYO_MULT: [] as StatsArray[], // Melt
+  DENDRO_F_DMG: [] as StatsArray[], // Spread
+  ELECTRO_F_DMG: [] as StatsArray[], // Aggravate
 
   // Mitigation
-  DMG_REDUCTION: 0,
-  M_DMG_REDUCTION: 0, // Dehya's Skill gives multiplicative bonus instead
-  ATK_REDUCTION: 0,
+  DMG_REDUCTION: [] as StatsArray[],
+  M_DMG_REDUCTION: [] as StatsArray[], // Dehya's Skill gives multiplicative bonus instead
+  ATK_REDUCTION: [] as StatsArray[],
 
   INFUSION: null,
   INFUSION_LOCKED: false,
-
-  MAX_ENERGY: 60,
 
   // Multipliers
   BASIC_SCALING: [] as IScaling[],
@@ -213,17 +228,35 @@ export const baseStatsObject = {
   A1_SCALING: [] as IScaling[],
   A4_SCALING: [] as IScaling[],
 
-  getAtk: function () {
-    return this.BASE_ATK * (1 + this[Stats.P_ATK]) + this[Stats.ATK]
+  getAtk: function (exclude?: boolean) {
+    return (
+      this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) +
+      _.sumBy(this[Stats.ATK], 'value') +
+      (exclude ? 0 : this.getValue('X_ATK'))
+    )
   },
-  getHP: function () {
-    return this.BASE_HP * (1 + this[Stats.P_HP]) + this[Stats.HP]
+  getHP: function (exclude?: boolean) {
+    return (
+      this.BASE_HP * (1 + _.sumBy(this[Stats.P_HP], 'value')) +
+      _.sumBy(this[Stats.HP], 'value') +
+      (exclude ? 0 : this.getValue('X_HP'))
+    )
   },
   getDef: function () {
-    return this.BASE_DEF * (1 + this[Stats.P_DEF]) + this[Stats.DEF]
+    return this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value')) + _.sumBy(this[Stats.DEF], 'value')
+  },
+  getValue: function (key: string, exclude?: StatsArray[]) {
+    return (
+      _.sumBy(
+        _.size(exclude)
+          ? _.filter(this[key], (item) => _.every(exclude, (e) => !(e.source === item.source && e.name === item.name)))
+          : this[key],
+        'value'
+      ) || 0
+    )
   },
 
-  CALLBACK: [] as Function[],
+  CALLBACK: [] as ((base: any, all: any[]) => any)[],
 
   //util
   infuse: function (infusion: Element, lock: boolean = false) {

@@ -266,7 +266,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.razor_c4) base.DEF_REDUCTION += 0.15
+      if (form.razor_c4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
 
       return base
     },

@@ -237,18 +237,18 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.xinyan_a4) base[Stats.PHYSICAL_DMG] += 0.15
+      if (form.xinyan_a4) base[Stats.PHYSICAL_DMG].push({value: 0.15, name: '', source: ``})
       if (form.xinyan_c1) {
-        base.ATK_SPD += 0.12
-        base.CHARGE_ATK_SPD += 0.12
+        base.ATK_SPD.push({value: 0.12, name: '', source: ``})
+        base.CHARGE_ATK_SPD.push({value: 0.12, name: '', source: ``})
       }
-      if (form.xinyan_c4) base.PHYSICAL_RES_PEN += 0.15
+      if (form.xinyan_c4) base.PHYSICAL_RES_PEN.push({value: 0.15, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.xinyan_c4) base.PHYSICAL_RES_PEN += 0.15
-      if (form.xinyan_a4) base[Stats.PHYSICAL_DMG] += 0.15
+      if (form.xinyan_c4) base.PHYSICAL_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.xinyan_a4) base[Stats.PHYSICAL_DMG].push({value: 0.15, name: '', source: ``})
 
       return base
     },

@@ -211,7 +211,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
         base.HYPERBLOOM_DMG += bloomDmg
         base.BURGEON_DMG += bloomDmg
 
-        if (c >= 2) base.ATK_SPD += 0.15
+        if (c >= 2) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
       }
       if (a >= 1)
         base.SKILL_SCALING.push({
@@ -220,16 +220,16 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })
-      if (form.kaveh_a4) base[Stats.EM] += 25 * form.kaveh_a4
+      if (form.kaveh_a4) base[Stats.EM].push({value: 25 , name: '', source: ``})* form.kaveh_a4
 
       if (form.kaveh_c1) {
-        base.DENDRO_RES += 0.5
-        base[Stats.I_HEALING] += 0.25
+        base.DENDRO_RES.push({value: 0.5, name: '', source: ``})
+        base[Stats.I_HEALING].push({value: 0.25, name: '', source: ``})
       }
       if (form.kaveh_c4) {
-        base.BLOOM_DMG += 0.6
-        base.HYPERBLOOM_DMG += 0.6
-        base.BURGEON_DMG += 0.6
+        base.BLOOM_DMG.push({value: 0.6, name: '', source: ``})
+        base.HYPERBLOOM_DMG.push({value: 0.6, name: '', source: ``})
+        base.BURGEON_DMG.push({value: 0.6, name: '', source: ``})
       }
       if (c >= 6) {
         const kavehC6 = {

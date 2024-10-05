@@ -213,8 +213,8 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.BURST,
         },
       ]
-      if (form.windfavored_pyro) base[Stats.P_ATK] += 0.3
-      if (form.windfavored_cryo) base[Stats.CRIT_RATE] += 0.2
+      if (form.windfavored_pyro) base[Stats.P_ATK].push({value: 0.3, name: '', source: ``})
+      if (form.windfavored_cryo) base[Stats.CRIT_RATE].push({value: 0.2, name: '', source: ``})
 
       if (a >= 4)
         base.SKILL_SCALING.push({
@@ -223,7 +223,7 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           element: Element.ANEMO,
           property: TalentProperty.ADD,
         })
-      if (c >= 1 && form.windfavored) base.ATK_SPD += 0.1
+      if (c >= 1 && form.windfavored) base.ATK_SPD.push({value: 0.1, name: '', source: ``})
       if (form.wanderer_c2) base.BURST_DMG += _.min([form.wanderer_c2 * 0.04, 2])
 
       if (c >= 6)

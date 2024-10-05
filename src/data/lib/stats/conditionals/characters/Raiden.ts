@@ -348,18 +348,18 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.musou) {
         base.infuse(Element.ELECTRO, true)
-        if (c >= 2) base.DEF_PEN += 0.6
+        if (c >= 2) base.DEF_PEN.push({value: 0.6, name: '', source: ``})
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.raidenSkill) base.BURST_DMG += calcScaling(0.0022, skill, 'elemental', '1') * base.MAX_ENERGY //Target Energy
-      if (form.raidenC4) base[Stats.P_ATK] += 0.3
+      if (form.raidenC4) base[Stats.P_ATK].push({value: 0.3, name: '', source: ``})
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (a >= 4) base[Stats.ELECTRO_DMG] += 0.4 * (base[Stats.ER] - 1)
+      if (a >= 4) base[Stats.ELECTRO_DMG].push({value: 0.4, name: '', source: ``}) * (base[Stats.ER] - 1)
 
       return base
     },

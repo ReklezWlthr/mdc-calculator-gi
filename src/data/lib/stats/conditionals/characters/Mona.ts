@@ -223,11 +223,11 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       if (form.mona_omen) {
         base.VULNERABILITY += _.min([0.4 + burst * 0.02, 0.6])
         if (c >= 1) {
-          base.TASER_DMG += 0.15
-          base.VAPE_DMG += 0.15
-          base.HYDRO_SWIRL_DMG += 0.15
+          base.TASER_DMG.push({value: 0.15, name: '', source: ``})
+          base.VAPE_DMG.push({value: 0.15, name: '', source: ``})
+          base.HYDRO_SWIRL_DMG.push({value: 0.15, name: '', source: ``})
         }
-        if (c >= 4) base[Stats.CRIT_RATE] += 0.15
+        if (c >= 4) base[Stats.CRIT_RATE].push({value: 0.15, name: '', source: ``})
       }
       if (a >= 1)
         base.SKILL_SCALING.push({
@@ -245,17 +245,17 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       if (form.mona_omen) {
         base.VULNERABILITY += _.min([0.4 + burst * 0.02, 0.6])
         if (c >= 1) {
-          base.TASER_DMG += 0.15
-          base.VAPE_DMG += 0.15
-          base.HYDRO_SWIRL_DMG += 0.15
+          base.TASER_DMG.push({value: 0.15, name: '', source: ``})
+          base.VAPE_DMG.push({value: 0.15, name: '', source: ``})
+          base.HYDRO_SWIRL_DMG.push({value: 0.15, name: '', source: ``})
         }
-        if (c >= 4) base[Stats.CRIT_RATE] += 0.15
+        if (c >= 4) base[Stats.CRIT_RATE].push({value: 0.15, name: '', source: ``})
       }
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (a >= 4) base[Stats.HYDRO_DMG] += 0.2 * base[Stats.ER]
+      if (a >= 4) base[Stats.HYDRO_DMG].push({value: 0.2, name: '', source: ``}) * base[Stats.ER]
 
       return base
     },

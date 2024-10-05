@@ -215,17 +215,17 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.candace_burst) {
-        base.ELEMENTAL_NA_DMG += 0.2
+        base.ELEMENTAL_NA_DMG.push({value: 0.2, name: '', source: ``})
         base.infuse(Element.HYDRO)
       }
-      if (form.candace_c2) base[Stats.P_HP] += 0.2
+      if (form.candace_c2) base[Stats.P_HP].push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)
       if (form.candace_burst) {
-        base.ELEMENTAL_NA_DMG += 0.2
+        base.ELEMENTAL_NA_DMG.push({value: 0.2, name: '', source: ``})
         if (canInfuse) base.infuse(Element.HYDRO)
       }
 

@@ -272,13 +272,13 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
         })
 
       if (form.kirara_c6) {
-        base[Stats.ANEMO_DMG] += 0.12
-        base[Stats.PYRO_DMG] += 0.12
-        base[Stats.HYDRO_DMG] += 0.12
-        base[Stats.ELECTRO_DMG] += 0.12
-        base[Stats.CRYO_DMG] += 0.12
-        base[Stats.GEO_DMG] += 0.12
-        base[Stats.DENDRO_DMG] += 0.12
+        base[Stats.ANEMO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.PYRO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.HYDRO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.ELECTRO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.CRYO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.GEO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.DENDRO_DMG].push({value: 0.12, name: '', source: ``})
       }
 
       return base
@@ -292,13 +292,13 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
         base.BURST_DMG += (base.getHP() / 1000) * 0.003
       }
       if (form.kirara_c6) {
-        base[Stats.ANEMO_DMG] += 0.12
-        base[Stats.PYRO_DMG] += 0.12
-        base[Stats.HYDRO_DMG] += 0.12
-        base[Stats.ELECTRO_DMG] += 0.12
-        base[Stats.CRYO_DMG] += 0.12
-        base[Stats.GEO_DMG] += 0.12
-        base[Stats.DENDRO_DMG] += 0.12
+        base[Stats.ANEMO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.PYRO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.HYDRO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.ELECTRO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.CRYO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.GEO_DMG].push({value: 0.12, name: '', source: ``})
+        base[Stats.DENDRO_DMG].push({value: 0.12, name: '', source: ``})
       }
 
       return base

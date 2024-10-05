@@ -199,12 +199,12 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
+      if (form.bar_burst) base[Stats.HYDRO_DMG].push({value: 0.15, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
+      if (form.bar_burst) base[Stats.HYDRO_DMG].push({value: 0.15, name: '', source: ``})
 
       return base
     },

@@ -236,12 +236,12 @@ const Heizou = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.heizou_c1) base.ATK_SPD += 0.15
+      if (form.heizou_c1) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
       
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.heizou_a4) base[Stats.EM] += 80
+      if (form.heizou_a4) base[Stats.EM].push({value: 80, name: '', source: ``})
       
       return base
     },

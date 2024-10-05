@@ -204,14 +204,14 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.ADD,
         })
 
-      if (form.klee_c2) base.DEF_REDUCTION += 0.23
-      if (form.klee_c6) base[Stats.PYRO_DMG] += 0.1
+      if (form.klee_c2) base.DEF_REDUCTION.push({value: 0.23, name: '', source: ``})
+      if (form.klee_c6) base[Stats.PYRO_DMG].push({value: 0.1, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.klee_c6) base[Stats.PYRO_DMG] += 0.1
-      if (form.klee_c2) base.DEF_REDUCTION += 0.23
+      if (form.klee_c6) base[Stats.PYRO_DMG].push({value: 0.1, name: '', source: ``})
+      if (form.klee_c2) base.DEF_REDUCTION.push({value: 0.23, name: '', source: ``})
 
       return base
     },

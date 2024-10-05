@@ -252,8 +252,8 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       ]
 
       if (form.chev_overload) {
-        base.PYRO_RES_PEN += 0.4
-        base.ELECTRO_RES_PEN += 0.4
+        base.PYRO_RES_PEN.push({value: 0.4, name: '', source: ``})
+        base.ELECTRO_RES_PEN.push({value: 0.4, name: '', source: ``})
       }
 
       if (c >= 2)
@@ -273,24 +273,24 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
         })
 
       if (form.chev_c6) {
-        base[Stats.PYRO_DMG] += 0.2 * form.chev_c6
-        base[Stats.ELECTRO_DMG] += 0.2 * form.chev_c6
+        base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
+        base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.chev_overload) {
-        base.PYRO_RES_PEN += 0.4
-        base.ELECTRO_RES_PEN += 0.4
+        base.PYRO_RES_PEN.push({value: 0.4, name: '', source: ``})
+        base.ELECTRO_RES_PEN.push({value: 0.4, name: '', source: ``})
       }
 
       if (form.chev_a4 && _.includes([Element.PYRO, Element.ELECTRO], form.element))
         base[Stats.P_ATK] += _.min([(own.getHP() / 1000) * 0.01, 0.4]) //Only apply to Pyro & Electro
 
       if (form.chev_c6) {
-        base[Stats.PYRO_DMG] += 0.2 * form.chev_c6
-        base[Stats.ELECTRO_DMG] += 0.2 * form.chev_c6
+        base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
+        base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
       }
 
       return base

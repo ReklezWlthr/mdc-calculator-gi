@@ -227,7 +227,7 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.kuki_low) base[Stats.HEAL] += 0.15
+      if (form.kuki_low) base[Stats.HEAL].push({value: 0.15, name: '', source: ``})
       if (c >= 4)
         base.SKILL_SCALING.push({
           name: 'Thundergrass Mark DMG',
@@ -235,7 +235,7 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.ADD,
         })
-      if (form.kuki_c6) base[Stats.EM] += 125
+      if (form.kuki_c6) base[Stats.EM].push({value: 125, name: '', source: ``})
 
       return base
     },

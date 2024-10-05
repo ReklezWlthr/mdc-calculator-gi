@@ -233,12 +233,12 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.al_c2Em > 0) base[Stats.EM] += 50 * form.al_c2Em
-      if (form.al_c4Em > 0) base[Stats.EM] += 30 * form.al_c4Em
-      if (form.al_c4Dmg > 0) base[Stats.DENDRO_DMG] += 0.1 * form.al_c4Dmg
+      if (form.al_c2Em > 0) base[Stats.EM].push({value: 50 , name: '', source: ``})* form.al_c2Em
+      if (form.al_c4Em > 0) base[Stats.EM].push({value: 30 , name: '', source: ``})* form.al_c4Em
+      if (form.al_c4Dmg > 0) base[Stats.DENDRO_DMG].push({value: 0.1, name: '', source: ``}) * form.al_c4Dmg
       if (form.c6_crit) {
-        base[Stats.CRIT_RATE] += 0.1
-        base[Stats.CRIT_DMG] += 0.7
+        base[Stats.CRIT_RATE].push({value: 0.1, name: '', source: ``})
+        base[Stats.CRIT_DMG].push({value: 0.7, name: '', source: ``})
       }
 
       return base

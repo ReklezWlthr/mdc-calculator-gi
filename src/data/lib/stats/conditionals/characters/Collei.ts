@@ -206,12 +206,12 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         })
 
-      if (form.collei_c1) base[Stats.ER] += 0.2
+      if (form.collei_c1) base[Stats.ER].push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.collei_c4) base[Stats.EM] += 60
+      if (form.collei_c4) base[Stats.EM].push({value: 60, name: '', source: ``})
 
       return base
     },

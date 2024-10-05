@@ -147,7 +147,8 @@ export const TeamSetup = observer(() => {
     selected,
     teamStore.characters,
     artifactData,
-    _.size(_.filter(teamStore.characters, (item) => !!item.cId)) >= 4
+    _.size(_.filter(teamStore.characters, (item) => !!item.cId)) >= 4,
+    false
   )
   const stats = calculateFinal(raw)
 
@@ -212,7 +213,6 @@ export const TeamSetup = observer(() => {
               <TalentIcon
                 talent={talent?.talents?.normal}
                 element={charData?.element}
-                icon={`https://enka.network/ui${WeaponIcon[charData?.weapon]}`}
                 size="w-9 h-9"
                 upgraded={talent?.upgrade?.normal}
               />
@@ -225,9 +225,6 @@ export const TeamSetup = observer(() => {
               <TalentIcon
                 talent={talent?.talents?.skill}
                 element={charData?.element}
-                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'E' : 'S'}_${iconCodeName}${
-                  iconCodeName === 'Qin' ? '_02' : '_01'
-                }${iconCodeName === 'Diluc' ? '_01' : ''}.png`}
                 size="w-9 h-9"
                 upgraded={talent?.upgrade?.skill}
               />
@@ -240,9 +237,6 @@ export const TeamSetup = observer(() => {
               <TalentIcon
                 talent={talent?.talents?.burst}
                 element={charData?.element}
-                icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'S' : 'E'}_${iconCodeName}${
-                  _.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'
-                }.png`}
                 size="w-9 h-9"
                 upgraded={talent?.upgrade?.burst}
               />

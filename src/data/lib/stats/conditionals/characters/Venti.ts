@@ -262,25 +262,25 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
         )
 
       if (form.venti_c2) {
-        base.ANEMO_RES_PEN += 0.12 * form.venti_c2
-        base.PHYSICAL_RES_PEN += 0.12 * form.venti_c2
+        base.ANEMO_RES_PEN.push({value: 0.12, name: '', source: ``}) * form.venti_c2
+        base.PHYSICAL_RES_PEN.push({value: 0.12, name: '', source: ``}) * form.venti_c2
       }
-      if (form.venti_c4) base[Stats.ANEMO_DMG] += 0.25
+      if (form.venti_c4) base[Stats.ANEMO_DMG].push({value: 0.25, name: '', source: ``})
       if (form.venti_c6) {
-        base.ANEMO_RES_PEN += 0.2
-        base[`${form.venti_absorb.toUpperCase()}_RES_PEN`] += 0.2
+        base.ANEMO_RES_PEN.push({value: 0.2, name: '', source: ``})
+        base[`${form.venti_absorb.toUpperCase()}_RES_PEN`].push({value: 0.2, name: '', source: ``})
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.venti_c2) {
-        base.ANEMO_RES_PEN += 0.12 * form.venti_c2
-        base.PHYSICAL_RES_PEN += 0.12 * form.venti_c2
+        base.ANEMO_RES_PEN.push({value: 0.12, name: '', source: ``}) * form.venti_c2
+        base.PHYSICAL_RES_PEN.push({value: 0.12, name: '', source: ``}) * form.venti_c2
       }
       if (form.venti_c6) {
-        base.ANEMO_RES_PEN += 0.2
-        base[`${form.venti_absorb.toUpperCase()}_RES_PEN`] += 0.2
+        base.ANEMO_RES_PEN.push({value: 0.2, name: '', source: ``})
+        base[`${form.venti_absorb.toUpperCase()}_RES_PEN`].push({value: 0.2, name: '', source: ``})
       }
 
       return base

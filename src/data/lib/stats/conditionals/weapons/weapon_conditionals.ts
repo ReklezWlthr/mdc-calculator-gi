@@ -16,8 +16,16 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '15502',
     scaling: (base, form, r) => {
       if (form['15502']) {
-        base.BASIC_DMG += form['15502'] * calcRefinement(0.08, 0.02, r)
-        base.CHARGE_DMG += form['15502'] * calcRefinement(0.08, 0.02, r)
+        base.BASIC_DMG.push({
+          value: form['15502'] * calcRefinement(0.08, 0.02, r),
+          name: 'Passive',
+          source: `Amos' Bow`,
+        })
+        base.CHARGE_DMG.push({
+          value: form['15502'] * calcRefinement(0.08, 0.02, r),
+          name: 'Passive',
+          source: `Amos' Bow`,
+        })
       }
       return base
     },
@@ -29,7 +37,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11301',
     scaling: (base, form, r) => {
-      if (form['11301']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['11301']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -40,7 +48,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11302',
     scaling: (base, form, r) => {
-      if (form['11302']) base[Stats.CRIT_RATE] += calcRefinement(0.14, 0.035, r)
+      if (form['11302'])
+        base[Stats.CRIT_RATE].push({ value: calcRefinement(0.14, 0.035, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -51,7 +60,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11304',
     scaling: (base, form, r) => {
-      if (form['11304']) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      if (form['11304']) base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -62,7 +71,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11306',
     scaling: (base, form, r) => {
-      if (form['11306']) base[Stats.P_ATK] += calcRefinement(0.12, 0.03, r)
+      if (form['11306']) base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -86,7 +95,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11405',
     scaling: (base, form, r) => {
-      if (form['11405']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.04, r)
+      if (form['11405']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.2, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -134,7 +143,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11410',
     scaling: (base, form, r) => {
-      if (form['11410']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.04, r)
+      if (form['11410']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -145,7 +154,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '11417',
     scaling: (base, form, r) => {
-      if (form['11417']) base[Stats.EM] += calcRefinement(60, 15, r)
+      if (form['11417']) base[Stats.EM].push({ value: calcRefinement(60, 15, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -172,7 +181,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11422',
     scaling: (base, form, r) => {
-      if (form['11422']) base[Stats.ALL_DMG] += calcRefinement(0.16, 0.04, r)
+      if (form['11422']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       return base
     },
     debuff: true,
@@ -197,7 +206,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11425',
     scaling: (base, form, r) => {
-      if (form['11425']) base[Stats.P_ATK] += calcRefinement(0.12, 0.03, r)
+      if (form['11425']) base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -228,7 +237,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11426',
     scaling: (base, form, r) => {
-      if (form['11426']) base[Stats.ER] += calcRefinement(0.16, 0.04, r)
+      if (form['11426']) base[Stats.ER].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -241,7 +250,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '11427',
     scaling: (base, form, r) => {
-      if (form['11427']) base[Stats.EM] += calcRefinement(40, 10, r) * form['11427']
+      if (form['11427'])
+        base[Stats.EM].push({ value: calcRefinement(40, 10, r), name: 'Passive', source: `` }) * form['11427']
       return base
     },
   },
@@ -252,7 +262,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11502',
     scaling: (base, form, r) => {
-      if (form['11502']) base.ATK_SPD += 0.1
+      if (form['11502']) base.ATK_SPD.push({ value: 0.1, name: 'Passive', source: `` })
       return base
     },
   },
@@ -264,10 +274,10 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '11503',
     scaling: (base, form, r) => {
       if (form['11503']) {
-        base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
-        base.BASIC_DMG += calcRefinement(0.16, 0.04, r)
-        base.CHARGE_DMG += calcRefinement(0.16, 0.04, r)
-        base.PLUNGE_DMG += calcRefinement(0.16, 0.04, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
+        base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
+        base.CHARGE_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
+        base.PLUNGE_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -281,7 +291,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 5,
     id: '11504',
     scaling: (base, form, r) => {
-      if (form['11504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['11504']
+      if (form['11504'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.04, 0.01, r), name: 'Passive', source: `` }) * form['11504']
       return base
     },
   },
@@ -292,7 +303,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '11504_2',
     scaling: (base, form, r) => {
-      if (form['11504_2'] && form['11504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['11504']
+      if (form['11504_2'] && form['11504'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.04, 0.01, r), name: 'Passive', source: `` }) * form['11504']
       return base
     },
   },
@@ -305,9 +317,24 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '11509',
     scaling: (base, form, r, { element }) => {
-      if (form['11509'] === 1) base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.08, 0.02, r)
-      if (form['11509'] === 2) base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.16, 0.04, r)
-      if (form['11509'] === 3) base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.28, 0.07, r)
+      if (form['11509'] === 1)
+        base[Stats[`${element.toUpperCase()}_DMG`]].push({
+          value: calcRefinement(0.08, 0.02, r),
+          name: 'Passive',
+          source: ``,
+        })
+      if (form['11509'] === 2)
+        base[Stats[`${element.toUpperCase()}_DMG`]].push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: 'Passive',
+          source: ``,
+        })
+      if (form['11509'] === 3)
+        base[Stats[`${element.toUpperCase()}_DMG`]].push({
+          value: calcRefinement(0.28, 0.07, r),
+          name: 'Passive',
+          source: ``,
+        })
       return base
     },
   },
@@ -320,7 +347,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 2,
     id: '11510',
     scaling: (base, form, r) => {
-      if (form['11510']) base.BASIC_DMG += calcRefinement(0.2, 0.05, r) * form['11510']
+      if (form['11510'])
+        base.BASIC_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` }) * form['11510']
       return base
     },
   },
@@ -333,7 +361,10 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '11511',
     scaling: (base, form, r) => {
-      if (form['11511']) base[Stats.EM] += calcRefinement(0.0012, 0.0003, r) * base.getHP() * form['11510']
+      if (form['11511'])
+        base[Stats.EM].push({ value: calcRefinement(0.0012, 0.0003, r), name: 'Passive', source: `` }) *
+          base.getHP() *
+          form['11510']
       return base
     },
   },
@@ -346,8 +377,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['11512']) {
         base.CALLBACK.push((base: StatsObject) => {
-          base.BASIC_F_DMG += calcRefinement(1.2, 0.3, r) * base[Stats.EM]
-          base.SKILL_F_DMG += calcRefinement(1.2, 0.3, r) * base[Stats.EM]
+          base.BASIC_F_DMG.push({ value: calcRefinement(1.2, 0.3, r), name: 'Passive', source: `` }) * base[Stats.EM]
+          base.SKILL_F_DMG.push({ value: calcRefinement(1.2, 0.3, r), name: 'Passive', source: `` }) * base[Stats.EM]
           return base
         })
       }
@@ -363,7 +394,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '11513',
     scaling: (base, form, r) => {
-      if (form['11513']) base.SKILL_DMG += calcRefinement(0.08, 0.02, r) * form['11513']
+      if (form['11513'])
+        base.SKILL_DMG.push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` }) * form['11513']
       return base
     },
   },
@@ -376,7 +408,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 2,
     id: '11513_2',
     scaling: (base, form, r) => {
-      if (form['11513_2']) base[Stats.P_HP] += calcRefinement(0.14, 0.035, r) * form['11513_2']
+      if (form['11513_2'])
+        base[Stats.P_HP].push({ value: calcRefinement(0.14, 0.035, r), name: 'Passive', source: `` }) * form['11513_2']
       return base
     },
   },
@@ -388,8 +421,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '11514',
     scaling: (base, form, r) => {
       if (form['11514']) {
-        base.BASIC_DMG += calcRefinement(0.16, 0.04, r)
-        base.SKILL_DMG += calcRefinement(0.24, 0.06, r)
+        base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
+        base.SKILL_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -401,7 +434,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '12301',
     scaling: (base, form, r) => {
-      if (form['12301']) base.CHARGE_DMG += calcRefinement(0.3, 0.05, r)
+      if (form['12301']) base.CHARGE_DMG.push({ value: calcRefinement(0.3, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -412,7 +445,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '12302',
     scaling: (base, form, r) => {
-      if (form['12302']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['12302']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -425,7 +458,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 4,
     id: '12306',
     scaling: (base, form, r) => {
-      if (form['12306']) base[Stats.P_ATK] += calcRefinement(0.06, 0.01, r) * form['12306']
+      if (form['12306'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.06, 0.01, r), name: 'Passive', source: `` }) * form['12306']
       return base
     },
   },
@@ -436,7 +470,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '12402',
     scaling: (base, form, r) => {
-      if (form['12402']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['12402']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -460,7 +494,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '12405',
     scaling: (base, form, r) => {
-      if (form['12405']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.04, r)
+      if (form['12405']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.2, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -474,8 +508,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '12407',
     scaling: (base, form, r) => {
       if (form['12407']) {
-        base[Stats.P_ATK] += calcRefinement(0.06, 0.015, r)
-        base[Stats.P_DEF] += calcRefinement(0.06, 0.015, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.06, 0.015, r), name: 'Passive', source: `` })
+        base[Stats.P_DEF].push({ value: calcRefinement(0.06, 0.015, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -550,24 +584,6 @@ export const WeaponConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Lithic Blade Bonus`,
-    show: true,
-    default: true,
-    id: '12410',
-    scaling: (base, form, r, { team }) => {
-      if (form['12410']) {
-        const count = _.filter(
-          _.map(team, (item) => findCharacter(item.cId)?.region),
-          (item) => item === 'Liyue'
-        ).length
-        base[Stats.P_ATK] += count * calcRefinement(0.07, 0.01, r)
-        base[Stats.CRIT_RATE] += count * calcRefinement(0.03, 0.01, r)
-      }
-      return base
-    },
-  },
-  {
-    type: 'toggle',
     text: `Bonus ATK from EM`,
     show: true,
     default: true,
@@ -575,7 +591,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['12415'])
         base.CALLBACK.push((base: StatsObject) => {
-          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * base[Stats.EM]
+          base[Stats.ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` }) * base[Stats.EM]
           return base
         })
       return base
@@ -600,7 +616,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12417',
     scaling: (base, form, r) => {
-      if (form['12417']) base[Stats.EM] += calcRefinement(60, 15, r)
+      if (form['12417']) base[Stats.EM].push({ value: calcRefinement(60, 15, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -612,8 +628,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '12418',
     scaling: (base, form, r) => {
       if (form['12418']) {
-        base[Stats.P_ATK] += calcRefinement(0.12, 0.03, r)
-        base[Stats.EM] += calcRefinement(40, 12, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
+        base[Stats.EM].push({ value: calcRefinement(40, 12, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -625,7 +641,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12424',
     scaling: (base, form, r) => {
-      if (form['12424']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      if (form['12424']) base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -636,7 +652,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12424_2',
     scaling: (base, form, r) => {
-      if (form['12424_2']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['12424_2'])
+        base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -647,7 +664,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12425',
     scaling: (base, form, r) => {
-      if (form['12425']) base[Stats.P_ATK] += calcRefinement(0.24, 0.06, r)
+      if (form['12425']) base[Stats.P_ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -673,7 +690,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '12427',
     scaling: (base, form, r) => {
-      if (form['12427']) base[Stats.EM] += calcRefinement(40, 10, r) * form['12427']
+      if (form['12427'])
+        base[Stats.EM].push({ value: calcRefinement(40, 10, r), name: 'Passive', source: `` }) * form['12427']
       return base
     },
   },
@@ -686,7 +704,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 5,
     id: '12504',
     scaling: (base, form, r) => {
-      if (form['12504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['12504']
+      if (form['12504'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.04, 0.01, r), name: 'Passive', source: `` }) * form['12504']
       return base
     },
   },
@@ -699,7 +718,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 5,
     id: '12504',
     scaling: (base, form, r) => {
-      if (form['12504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['12504']
+      if (form['12504'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.04, 0.01, r), name: 'Passive', source: `` }) * form['12504']
       return base
     },
   },
@@ -710,7 +730,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12511',
     scaling: (base, form, r) => {
-      if (form['12511']) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      if (form['12511']) base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -721,7 +741,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12511_2',
     scaling: (base, form, r) => {
-      if (form['12511_2']) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      if (form['12511_2']) base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -732,7 +752,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '12511_3',
     scaling: (base, form, r) => {
-      if (form['12511_3']) base[Stats.P_HP] += calcRefinement(0.32, 0.08, r)
+      if (form['12511_3']) base[Stats.P_HP].push({ value: calcRefinement(0.32, 0.08, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -745,7 +765,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 2,
     id: '12512',
     scaling: (base, form, r) => {
-      if (form['12512']) base.SKILL_DMG += calcRefinement(0.18, 0.045, r) * form['12512']
+      if (form['12512'])
+        base.SKILL_DMG.push({ value: calcRefinement(0.18, 0.045, r), name: 'Passive', source: `` }) * form['12512']
       return base
     },
   },
@@ -756,7 +777,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '13303',
     scaling: (base, form, r) => {
-      if (form['13303']) base[Stats.ALL_DMG] += calcRefinement(0.4, 0.2, r)
+      if (form['13303']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.4, 0.2, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -767,7 +788,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '13401',
     scaling: (base, form, r) => {
-      if (form['13401']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.04, r)
+      if (form['13401']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.2, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -781,8 +802,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '13402',
     scaling: (base, form, r) => {
       if (form['13402']) {
-        base.CHARGE_DMG += calcRefinement(0.08, 0.02, r) * form['13402']
-        base.BASIC_DMG += calcRefinement(0.08, 0.02, r) * form['13402']
+        base.CHARGE_DMG.push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` }) * form['13402']
+        base.BASIC_DMG.push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` }) * form['13402']
       }
       return base
     },
@@ -809,28 +830,11 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '13405',
     scaling: (base, form, r) => {
       if (form['13405'] >= 2) {
-        base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
-        base[Stats.P_DEF] += calcRefinement(0.16, 0.04, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
+        base[Stats.P_DEF].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       }
-      if (form['13405'] < 2) base[Stats.P_ATK] += calcRefinement(0.24, 0.06, r)
-      return base
-    },
-  },
-  {
-    type: 'toggle',
-    text: `Lithic Spear Bonus`,
-    show: true,
-    default: true,
-    id: '13406',
-    scaling: (base, form, r, { team }) => {
-      if (form['13406']) {
-        const count = _.filter(
-          _.map(team, (item) => findCharacter(item.cId)?.region),
-          (item) => item === 'Liyue'
-        ).length
-        base[Stats.P_ATK] += count * calcRefinement(0.07, 0.01, r)
-        base[Stats.CRIT_RATE] += count * calcRefinement(0.03, 0.01, r)
-      }
+      if (form['13405'] < 2)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -853,7 +857,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '13417',
     scaling: (base, form, r) => {
-      if (form['13417']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      if (form['13417']) base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -865,8 +869,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '13419',
     scaling: (base, form, r) => {
       if (form['13419']) {
-        base[Stats.P_ATK] += calcRefinement(0.12, 0.03, r)
-        base[Stats.EM] += calcRefinement(48, 12, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
+        base[Stats.EM].push({ value: calcRefinement(48, 12, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -879,7 +883,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '13419',
     scaling: (base, form, r, { team }) => {
       const count = _.uniq(_.map(team, (item) => findCharacter(item.cId)?.element)).length
-      if (form['13419'] && count >= 3) base[Stats.EM] += calcRefinement(120, 20, r)
+      if (form['13419'] && count >= 3)
+        base[Stats.EM].push({ value: calcRefinement(120, 20, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -893,8 +898,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '13419',
     scaling: (base, form, r) => {
       if (form['13419']) {
-        base[Stats.P_ATK] += calcRefinement(0.03, 0.01, r)
-        base[Stats.ELEMENTAL_DMG] += calcRefinement(0.07, 0.015, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.03, 0.01, r), name: 'Passive', source: `` })
+        base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.07, 0.015, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -906,7 +911,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '13501',
     scaling: (base, form, r) => {
-      if (form['13501']) base[Stats.ATK] += calcRefinement(0.01, 0.002, r) * base.getHP()
+      if (form['13501'])
+        base[Stats.ATK].push({ value: calcRefinement(0.01, 0.002, r), name: 'Passive', source: `` }) * base.getHP()
       return base
     },
   },
@@ -919,7 +925,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 5,
     id: '13504',
     scaling: (base, form, r) => {
-      if (form['13504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['13504']
+      if (form['13504'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.04, 0.01, r), name: 'Passive', source: `` }) * form['13504']
       return base
     },
   },
@@ -932,7 +939,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 6,
     id: '13507',
     scaling: (base, form, r) => {
-      if (form['13507']) base[Stats.P_ATK] += calcRefinement(0.032, 0.008, r) * form['13507']
+      if (form['13507'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.032, 0.008, r), name: 'Passive', source: `` }) * form['13507']
       return base
     },
   },
@@ -943,7 +951,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '13507_2',
     scaling: (base, form, r) => {
-      if (form['13507_2'] && form['13507']) base[Stats.P_ATK] += calcRefinement(0.032, 0.008, r) * form['13507']
+      if (form['13507_2'] && form['13507'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.032, 0.008, r), name: 'Passive', source: `` }) * form['13507']
       return base
     },
   },
@@ -954,7 +963,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '13508',
     scaling: (base, form, r) => {
-      if (form['13508']) base[Stats.ER] += calcRefinement(0.3, 0.05, r)
+      if (form['13508']) base[Stats.ER].push({ value: calcRefinement(0.3, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -965,7 +974,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '13508',
     scaling: (base, form, r) => {
-      if (form['13508']) base[Stats.ER] += calcRefinement(0.3, 0.05, r)
+      if (form['13508']) base[Stats.ER].push({ value: calcRefinement(0.3, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -980,7 +989,9 @@ export const WeaponConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['13511'])
         base.CALLBACK.push((base: StatsObject) => {
-          base[Stats.ATK] += calcRefinement(0.28, 0.07, r) * base[Stats.EM] * form['13511']
+          base[Stats.ATK].push({ value: calcRefinement(0.28, 0.07, r), name: 'Passive', source: `` }) *
+            base[Stats.EM] *
+            form['13511']
           return base
         })
       return base
@@ -993,7 +1004,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '13512',
     scaling: (base, form, r) => {
-      if (form['13512']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.035, r)
+      if (form['13512'])
+        base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.035, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1004,7 +1016,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '13512_2',
     scaling: (base, form, r) => {
-      if (form['13512_2'] && form['13512']) base[Stats.ALL_DMG] += calcRefinement(0.24, 0.08, r)
+      if (form['13512_2'] && form['13512'])
+        base[Stats.ALL_DMG].push({ value: calcRefinement(0.24, 0.08, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1017,8 +1030,10 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 7,
     id: '13505',
     scaling: (base, form, r) => {
-      if (form['13505']) base[Stats.P_ATK] += calcRefinement(0.032, 0.007, r) * form['13505']
-      if (form['13505'] === 7) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['13505'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.032, 0.007, r), name: 'Passive', source: `` }) * form['13505']
+      if (form['13505'] === 7)
+        base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1029,7 +1044,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14301',
     scaling: (base, form, r) => {
-      if (form['14301']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.04, r)
+      if (form['14301']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.2, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1040,7 +1055,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14304',
     scaling: (base, form, r) => {
-      if (form['14304']) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      if (form['14304']) base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1051,7 +1066,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14305',
     scaling: (base, form, r) => {
-      if (form['14305']) base[Stats.P_ATK] += calcRefinement(0.12, 0.02, r)
+      if (form['14305']) base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.02, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1062,7 +1077,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14402',
     scaling: (base, form, r) => {
-      if (form['14402']) base[Stats.P_ATK] += calcRefinement(0.6, 0.15, r)
+      if (form['14402']) base[Stats.P_ATK].push({ value: calcRefinement(0.6, 0.15, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1073,7 +1088,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14402_2',
     scaling: (base, form, r) => {
-      if (form['14402_2']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.48, 0.12, r)
+      if (form['14402_2'])
+        base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.48, 0.12, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1084,7 +1100,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14402_3',
     scaling: (base, form, r) => {
-      if (form['14402_3']) base[Stats.EM] += calcRefinement(240, 60, r)
+      if (form['14402_3']) base[Stats.EM].push({ value: calcRefinement(240, 60, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1096,8 +1112,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '14405',
     scaling: (base, form, r) => {
       if (form['14405']) {
-        base.SKILL_DMG += calcRefinement(0.2, 0.05, r)
-        base.BURST_DMG += calcRefinement(0.2, 0.05, r)
+        base.SKILL_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
+        base.BURST_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -1109,7 +1125,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14405_2',
     scaling: (base, form, r) => {
-      if (form['14405_2']) base.BASIC_DMG += calcRefinement(0.2, 0.05, r)
+      if (form['14405_2']) base.BASIC_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1122,7 +1138,9 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 2,
     id: '14407',
     scaling: (base, form, r) => {
-      if (form['14407']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.08, 0.02, r) * form['14407']
+      if (form['14407'])
+        base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` }) *
+          form['14407']
       return base
     },
   },
@@ -1162,7 +1180,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14410',
     scaling: (base, form, r) => {
-      if (form['14410']) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+      if (form['14410']) base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1173,7 +1191,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14413',
     scaling: (base, form, r) => {
-      if (form['14413']) base.CHARGE_DMG += calcRefinement(0.16, 0.04, r)
+      if (form['14413']) base.CHARGE_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1184,7 +1202,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14413_2',
     scaling: (base, form, r) => {
-      if (form['14413_2']) base[Stats.P_ATK] += calcRefinement(0.08, 0.02, r)
+      if (form['14413_2']) base[Stats.P_ATK].push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1195,7 +1213,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14414',
     scaling: (base, form, r, { element }) => {
-      if (form['14414']) base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.1, 0.025, r)
+      if (form['14414'])
+        base[Stats[`${element.toUpperCase()}_DMG`]].push({
+          value: calcRefinement(0.1, 0.025, r),
+          name: 'Passive',
+          source: ``,
+        })
       return base
     },
   },
@@ -1206,7 +1229,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: false,
     id: '14415',
     scaling: (base, form, r) => {
-      if (form['14415']) base[Stats.ER] += calcRefinement(0.24, 0.06, r)
+      if (form['14415']) base[Stats.ER].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1219,7 +1242,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['14416'])
         base.CALLBACK.push((base: StatsObject) => {
-          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * base[Stats.EM]
+          base[Stats.ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` }) * base[Stats.EM]
           return base
         })
       return base
@@ -1235,7 +1258,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '14417',
     scaling: (base, form, r) => {
       if (form['14417']) {
-        base[Stats.EM] += calcRefinement(24, 6, r) * form['14417']
+        base[Stats.EM].push({ value: calcRefinement(24, 6, r), name: 'Passive', source: `` }) * form['14417']
         base[Stats.P_ATK] -= 0.05 * form['14417']
       }
       return base
@@ -1249,8 +1272,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '14424',
     scaling: (base, form, r) => {
       if (form['14424']) {
-        base[Stats.EM] += calcRefinement(40, 10, r)
-        base[Stats.P_HP] += calcRefinement(0.32, 0.08, r)
+        base[Stats.EM].push({ value: calcRefinement(40, 10, r), name: 'Passive', source: `` })
+        base[Stats.P_HP].push({ value: calcRefinement(0.32, 0.08, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -1262,7 +1285,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '14425',
     scaling: (base, form, r) => {
-      if (form['14425']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.08, 0.02, r)
+      if (form['14425'])
+        base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1295,7 +1319,9 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 4,
     id: '14502',
     scaling: (base, form, r) => {
-      if (form['14502']) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.08, 0.02, r) * form['14502']
+      if (form['14502'])
+        base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` }) *
+          form['14502']
       return base
     },
   },
@@ -1308,7 +1334,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 5,
     id: '14504',
     scaling: (base, form, r) => {
-      if (form['14504']) base[Stats.P_ATK] += calcRefinement(0.04, 0.01, r) * form['14504']
+      if (form['14504'])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.04, 0.01, r), name: 'Passive', source: `` }) * form['14504']
       return base
     },
   },
@@ -1339,8 +1366,10 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '14509',
     scaling: (base, form, r) => {
-      if (form['14509']) base.SKILL_DMG += calcRefinement(0.12, 0.03, r) * form['14509']
-      if (form['14509'] === 3) base[Stats.ELEMENTAL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['14509'])
+        base.SKILL_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` }) * form['14509']
+      if (form['14509'] === 3)
+        base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1356,8 +1385,12 @@ export const WeaponConditionals: IWeaponContent[] = [
         const same = _.filter(elements, (item) => item === element).length - 1
         const diff = _.filter(elements, (item) => item !== element).length
 
-        base[Stats.EM] += calcRefinement(32, 8, r) * same
-        base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.1, 0.04, r) * diff
+        base[Stats.EM].push({ value: calcRefinement(32, 8, r), name: 'Passive', source: `` }) * same
+        base[Stats[`${element.toUpperCase()}_DMG`]].push({
+          value: calcRefinement(0.1, 0.04, r),
+          name: 'Passive',
+          source: ``,
+        }) * diff
       }
       return base
     },
@@ -1371,7 +1404,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 10,
     id: '14512',
     scaling: (base, form, r) => {
-      if (form['14512']) base.BASIC_DMG += calcRefinement(0.048, 0.012, r) * form['14512']
+      if (form['14512'])
+        base.BASIC_DMG.push({ value: calcRefinement(0.048, 0.012, r), name: 'Passive', source: `` }) * form['14512']
       return base
     },
   },
@@ -1385,10 +1419,10 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '14513',
     scaling: (base, form, r) => {
       if (form['14513']) {
-        base.BASIC_DMG += calcRefinement(0.14, 0.035, r) * form['14513']
-        base.CHARGE_DMG += calcRefinement(0.14, 0.035, r) * form['14513']
+        base.BASIC_DMG.push({ value: calcRefinement(0.14, 0.035, r), name: 'Passive', source: `` }) * form['14513']
+        base.CHARGE_DMG.push({ value: calcRefinement(0.14, 0.035, r), name: 'Passive', source: `` }) * form['14513']
       }
-      if (form['14513'] === 3) base.ATK_SPD += calcRefinement(0.08, 0.02, r)
+      if (form['14513'] === 3) base.ATK_SPD.push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1401,7 +1435,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '14514',
     scaling: (base, form, r) => {
-      if (form['14514']) base.CHARGE_DMG += calcRefinement(0.14, 0.04, r) * form['14514']
+      if (form['14514'])
+        base.CHARGE_DMG.push({ value: calcRefinement(0.14, 0.04, r), name: 'Passive', source: `` }) * form['14514']
       return base
     },
   },
@@ -1412,7 +1447,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15301',
     scaling: (base, form, r) => {
-      if (form['15301']) base[Stats.ALL_DMG] += calcRefinement(0.12, 0.03, r)
+      if (form['15301']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1423,7 +1458,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15302',
     scaling: (base, form, r) => {
-      if (form['15302']) base[Stats.ALL_DMG] += calcRefinement(0.24, 0.06, r)
+      if (form['15302']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1434,7 +1469,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15304',
     scaling: (base, form, r) => {
-      if (form['15304']) base[Stats.ALL_DMG] += calcRefinement(0.36, 0.06, r)
+      if (form['15304']) base[Stats.ALL_DMG].push({ value: calcRefinement(0.36, 0.06, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1487,7 +1522,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 10,
     id: '15410',
     scaling: (base, form, r) => {
-      if (form['15410']) base[Stats.ALL_DMG] += form['15410'] * calcRefinement(0.02, 0.005, r)
+      if (form['15410'])
+        base[Stats.ALL_DMG].push({
+          value: form['15410'] * calcRefinement(0.02, 0.005, r),
+          name: 'Passive',
+          source: `Alley Hunter`,
+        })
       return base
     },
   },
@@ -1500,9 +1540,20 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '15411',
     scaling: (base, form, r) => {
-      if (form['15411'] === 1) base[Stats.ALL_DMG] += calcRefinement(0.06, 0.015, r)
-      if (form['15411'] === 2) base[Stats.ALL_DMG] += calcRefinement(0.1, 0.025, r)
-      if (form['15411'] === 3) base[Stats.ALL_DMG] += calcRefinement(0.14, 0.035, r)
+      if (form['15411'] === 1)
+        base[Stats.ALL_DMG].push({
+          value: calcRefinement(0.06, 0.015, r),
+          name: 'Evengleam',
+          source: `Fading Twilight`,
+        })
+      if (form['15411'] === 2)
+        base[Stats.ALL_DMG].push({ value: calcRefinement(0.1, 0.025, r), name: 'Afterglow', source: `Fading Twilight` })
+      if (form['15411'] === 3)
+        base[Stats.ALL_DMG].push({
+          value: calcRefinement(0.14, 0.035, r),
+          name: 'Dawnblaze',
+          source: `Fading Twilight`,
+        })
       return base
     },
   },
@@ -1513,7 +1564,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15406',
     scaling: (base, form, r) => {
-      if (form['15406']) base.SKILL_DMG += calcRefinement(0.2, 0.05, r)
+      if (form['15406'])
+        base.SKILL_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Mitternachts Waltz` })
       return base
     },
   },
@@ -1524,7 +1576,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15406',
     scaling: (base, form, r) => {
-      if (form['15406']) base.BASIC_DMG += calcRefinement(0.2, 0.05, r)
+      if (form['15406'])
+        base.BASIC_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Mitternachts Waltz` })
       return base
     },
   },
@@ -1535,7 +1588,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15413',
     scaling: (base, form, r) => {
-      if (form['15413']) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      if (form['15413'])
+        base[Stats.P_ATK].push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: 'Wish of the Windblume',
+          source: `Windblume Ode`,
+        })
       return base
     },
   },
@@ -1547,8 +1605,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '15414',
     scaling: (base, form, r) => {
       if (form['15414']) {
-        base.BASIC_DMG += calcRefinement(0.16, 0.04, r)
-        base.CHARGE_DMG += calcRefinement(0.12, 0.03, r)
+        base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Hamayumi` })
+        base.CHARGE_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Hamayumi` })
       }
       return base
     },
@@ -1561,7 +1619,11 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '15416',
     scaling: (base, form, r, { totalEnergy }) => {
       if (form['15416'])
-        base.BURST_DMG += _.min([calcRefinement(0.0012, 0.0003, r) * totalEnergy, calcRefinement(0.4, 0.02, r)])
+        base.BURST_DMG.push({
+          value: _.min([calcRefinement(0.0012, 0.0003, r) * totalEnergy, calcRefinement(0.4, 0.02, r)]),
+          name: 'Passive',
+          source: `Mouun's Moon`,
+        })
       return base
     },
   },
@@ -1572,7 +1634,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15417',
     scaling: (base, form, r) => {
-      if (form['15417']) base[Stats.EM] += calcRefinement(60, 20, r)
+      if (form['15417'])
+        base[Stats.EM].push({
+          value: calcRefinement(60, 20, r),
+          name: 'Teachings of the Forest',
+          source: `King's Squire`,
+        })
       return base
     },
   },
@@ -1585,7 +1652,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 2,
     id: '15419',
     scaling: (base, form, r) => {
-      if (form['15419']) base[Stats.EM] += form['15419'] * calcRefinement(40, 10, r)
+      if (form['15419'])
+        base[Stats.EM].push({
+          value: form['15419'] * calcRefinement(40, 10, r),
+          name: 'Passive',
+          source: `Ibis Piercer`,
+        })
       return base
     },
   },
@@ -1596,7 +1668,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15424',
     scaling: (base, form, r) => {
-      if (form['15424']) base.CHARGE_DMG += calcRefinement(0.28, 0.07, r)
+      if (form['15424'])
+        base.CHARGE_DMG.push({
+          value: calcRefinement(0.28, 0.07, r),
+          name: 'Heartsearer',
+          source: `Scion of the Blazing Sun`,
+        })
       return base
     },
   },
@@ -1607,7 +1684,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15425',
     scaling: (base, form, r) => {
-      if (form['15425']) base[Stats.ALL_DMG] += calcRefinement(0.16, 0.04, r)
+      if (form['15425'])
+        base[Stats.ALL_DMG].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Song of Stillness` })
       return base
     },
   },
@@ -1621,8 +1699,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     id: '15427',
     scaling: (base, form, r) => {
       if (form['15427']) {
-        base[Stats.P_ATK] += calcRefinement(0.03, 0.01, r)
-        base[Stats.ELEMENTAL_DMG] += calcRefinement(0.07, 0.015, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.03, 0.01, r), name: `Unity's Symbol`, source: `Range Gauge` })
+        base[Stats.ELEMENTAL_DMG].push({
+          value: calcRefinement(0.07, 0.015, r),
+          name: `Unity's Symbol`,
+          source: `Range Gauge`,
+        })
       }
       return base
     },
@@ -1636,10 +1718,14 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 4,
     id: '15507',
     scaling: (base, form, r) => {
-      if (form['15507'] === 1) base[Stats.P_ATK] += calcRefinement(0.1, 0.025, r)
-      if (form['15507'] === 2) base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
-      if (form['15507'] === 3) base[Stats.P_ATK] += calcRefinement(0.3, 0.075, r)
-      if (form['15507'] === 4) base[Stats.P_ATK] += calcRefinement(0.48, 0.12, r)
+      if (form['15507'] === 1)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.1, 0.025, r), name: 'Ashen Nightstar', source: `Polar Star` })
+      if (form['15507'] === 2)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Ashen Nightstar', source: `Polar Star` })
+      if (form['15507'] === 3)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.3, 0.075, r), name: 'Ashen Nightstar', source: `Polar Star` })
+      if (form['15507'] === 4)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.48, 0.12, r), name: 'Ashen Nightstar', source: `Polar Star` })
       return base
     },
   },
@@ -1650,7 +1736,8 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15508',
     scaling: (base, form, r) => {
-      if (form['15508']) base[Stats.ALL_DMG] += calcRefinement(0.2, 0.05, r)
+      if (form['15508'])
+        base[Stats.ALL_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Aqua Simulacra` })
       return base
     },
   },
@@ -1663,9 +1750,20 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '15509',
     scaling: (base, form, r) => {
-      if (form['15509'] === 1) base.BASIC_DMG += calcRefinement(0.12, 0.03, r)
-      if (form['15509'] === 2) base.BASIC_DMG += calcRefinement(0.24, 0.06, r)
-      if (form['15509'] === 3) base.BASIC_DMG += calcRefinement(0.4, 0.1, r)
+      if (form['15509'] === 1)
+        base.BASIC_DMG.push({
+          value: calcRefinement(0.12, 0.03, r),
+          name: 'Thunder Emblem',
+          source: `Thundering Pulse`,
+        })
+      if (form['15509'] === 2)
+        base.BASIC_DMG.push({
+          value: calcRefinement(0.24, 0.06, r),
+          name: 'Thunder Emblem',
+          source: `Thundering Pulse`,
+        })
+      if (form['15509'] === 3)
+        base.BASIC_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: 'Thunder Emblem', source: `Thundering Pulse` })
       return base
     },
   },
@@ -1678,7 +1776,11 @@ export const WeaponConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['15511'])
         base.CALLBACK.push((base: StatsObject) => {
-          base.CHARGE_F_DMG += calcRefinement(1.6, 0.4, r) * base[Stats.EM]
+          base.CHARGE_F_DMG.push({
+            value: calcRefinement(1.6, 0.4, r) * base.getValue(Stats.EM),
+            name: 'Tireless Hunt',
+            source: `Hunter's Path`,
+          })
           return base
         })
       return base
@@ -1697,9 +1799,24 @@ export const WeaponConditionals: IWeaponContent[] = [
             _.map(team, (item) => findCharacter(item.cId)?.element),
             (item) => item === element
           ).length - 1
-        if (count === 1) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
-        if (count === 2) base[Stats.P_ATK] += calcRefinement(0.32, 0.08, r)
-        if (count === 3) base[Stats.P_ATK] += calcRefinement(0.48, 0.12, r)
+        if (count === 1)
+          base[Stats.P_ATK].push({
+            value: calcRefinement(0.16, 0.04, r),
+            name: 'Gimmick',
+            source: `The First Great Magic`,
+          })
+        if (count === 2)
+          base[Stats.P_ATK].push({
+            value: calcRefinement(0.32, 0.08, r),
+            name: 'Gimmick',
+            source: `The First Great Magic`,
+          })
+        if (count === 3)
+          base[Stats.P_ATK].push({
+            value: calcRefinement(0.48, 0.12, r),
+            name: 'Gimmick',
+            source: `The First Great Magic`,
+          })
       }
       return base
     },
@@ -1713,7 +1830,12 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '11515',
     scaling: (base, form, r) => {
-      if (form['11515']) base[Stats.ALL_DMG] += form['11515'] * calcRefinement(0.16, 0.04, r)
+      if (form['11515'])
+        base[Stats.ALL_DMG].push({
+          value: form['11515'] * calcRefinement(0.16, 0.04, r),
+          name: 'Passive',
+          source: `Absolution`,
+        })
       return base
     },
   },
@@ -1726,11 +1848,13 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 3,
     id: '15513',
     scaling: (base, form, r) => {
-      if (form['15513'] === 1) base[Stats.P_HP] += calcRefinement(0.12, 0.03, r)
-      if (form['15513'] === 2) base[Stats.P_HP] += calcRefinement(0.24, 0.06, r)
+      if (form['15513'] === 1)
+        base[Stats.P_HP].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
+      if (form['15513'] === 2)
+        base[Stats.P_HP].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` })
       if (form['15513'] === 3) {
-        base[Stats.P_HP] += calcRefinement(0.4, 0.1, r)
-        base.BURST_CR += calcRefinement(0.28, 0.07, r)
+        base[Stats.P_HP].push({ value: calcRefinement(0.4, 0.1, r), name: 'Passive', source: `` })
+        base.BURST_CR.push({ value: calcRefinement(0.28, 0.07, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -1744,7 +1868,205 @@ export const WeaponConditionals: IWeaponContent[] = [
     max: 2,
     id: '15426',
     scaling: (base, form, r) => {
-      if (form['15426']) base[Stats.EM] += calcRefinement(40, 10, r)
+      if (form['15426']) base[Stats.EM].push({ value: calcRefinement(40, 10, r), name: 'Passive', source: `` })
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Canopy's Favor Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 6,
+    id: '12513',
+    scaling: (base, form, r) => {
+      if (form['12513']) {
+        base.SKILL_DMG.push({
+          value: calcRefinement(0.1, 0.025, r) * form['12513'],
+          name: `Canopy's Favor`,
+          source: `Fang of the Mountain King`,
+        })
+        base.BURST_DMG.push({
+          value: calcRefinement(0.1, 0.025, r) * form['12513'],
+          name: `Canopy's Favor`,
+          source: `Fang of the Mountain King`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Scorching Summer`,
+    show: true,
+    default: true,
+    id: '14516',
+    scaling: (base, form, r) => {
+      if (form['14516']) {
+        base.BASIC_DMG.push({
+          value: calcRefinement(0.12, 0.03, r),
+          name: `Scorching Summer`,
+          source: `Surf's Up`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Burning Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    id: '13513',
+    scaling: (base, form, r) => {
+      if (form['13513']) {
+        base[Stats.ALL_DMG].push({
+          value: calcRefinement(0.18, 0.05, r) * form['13513'],
+          name: `Passive`,
+          source: `Lumidouce Elegy`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Jade-Forged Crown`,
+    show: true,
+    default: true,
+    id: '14431',
+    scaling: (base, form, r) => {
+      if (form['14431']) {
+        base.CALLBACK.push((x: StatsObject) => {
+          const base = x.getHP() / 1000
+          const multiplier = calcRefinement(0.006, 0.001, r)
+          x.BASIC_DMG.push({
+            value: _.min([base * multiplier, calcRefinement(0.16, 0.04, r)]),
+            name: `Jade-Forged Crown`,
+            source: `Ring of Yaxche`,
+            base: base.toFixed(1),
+            multiplier,
+          })
+          return x
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Skill DEF Bonus`,
+    show: true,
+    default: true,
+    id: '13431',
+    scaling: (base, form, r) => {
+      if (form['13431']) {
+        base[Stats.P_DEF].push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: `Passive`,
+          source: `Footprint of the Rainbow`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Party Skill Cast Bonus`,
+    show: true,
+    default: true,
+    id: '13430',
+    scaling: (base, form, r) => {
+      if (form['13430']) {
+        const buff = _.find(base.SKILL_DMG, (item) => item.source === 'Mountain-Bracing Bolt')
+        buff.value += buff.value
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Pyro Reaction Bonus`,
+    show: true,
+    default: true,
+    id: '12431',
+    scaling: (base, form, r) => {
+      if (form['12431']) {
+        base.SKILL_DMG.push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: `Passive`,
+          source: `Earth Shaker`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Plunge Bonus`,
+    show: true,
+    default: true,
+    id: '12430',
+    scaling: (base, form, r) => {
+      if (form['12430']) {
+        base.BASIC_DMG.push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: `Passive`,
+          source: `Fruitful Hook`,
+        })
+        base.CHARGE_DMG.push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: `Passive`,
+          source: `Fruitful Hook`,
+        })
+        base.PLUNGE_DMG.push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: `Passive`,
+          source: `Fruitful Hook`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Skill DEF Bonus`,
+    show: true,
+    default: true,
+    id: '11431',
+    scaling: (base, form, r) => {
+      if (form['11431']) {
+        base[Stats.P_DEF].push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: `Passive`,
+          source: `Flute of Ezpitzal`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Sprint DMG Bonus`,
+    show: true,
+    default: true,
+    id: '11430',
+    scaling: (base, form, r) => {
+      if (form['11430']) {
+        base.CALLBACK.push((x: StatsObject) => {
+          x.BASIC_F_DMG.push({
+            value: calcRefinement(0.16, 0.04, r) * x.getAtk(),
+            name: 'Passive',
+            source: `Sturdy Bone`,
+            base: x.getAtk(),
+            multiplier: calcRefinement(0.16, 0.04, r),
+          })
+          return x
+        })
+      }
       return base
     },
   },
@@ -1758,7 +2080,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: true,
     id: '14511_a',
     scaling: (base, form, r, { owner }) => {
-      if (form['14511_a_' + owner]) base[Stats.EM] += calcRefinement(40, 2, r)
+      if (form['14511_a_' + owner])
+        base[Stats.EM].push({ value: calcRefinement(40, 2, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1771,7 +2094,11 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     scaling: (base, form, r, { team, index, owner }) => {
       if (form['14414_a_' + owner]) {
         const element = findCharacter(team[index].cId)?.element
-        base[Stats[`${element.toUpperCase()}_DMG`]] += calcRefinement(0.1, 0.025, r)
+        base[Stats[`${element.toUpperCase()}_DMG`]].push({
+          value: calcRefinement(0.1, 0.025, r),
+          name: 'Passive',
+          source: ``,
+        })
       }
       return base
     },
@@ -1784,7 +2111,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     id: '14302',
     scaling: (base, form, r) => {
       // TToDS cannot stack
-      if (form['14302']) base[Stats.P_ATK] += calcRefinement(0.24, 0.06, r)
+      if (form['14302']) base[Stats.P_ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1795,7 +2122,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: false,
     id: '11417_a',
     scaling: (base, form, r, { owner }) => {
-      if (form['11417_a_' + owner]) base[Stats.EM] += calcRefinement(60, 15, r)
+      if (form['11417_a_' + owner])
+        base[Stats.EM].push({ value: calcRefinement(60, 15, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1806,7 +2134,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: false,
     id: '12417_a',
     scaling: (base, form, r, { owner }) => {
-      if (form['12417_a_' + owner]) base[Stats.EM] += calcRefinement(60, 15, r)
+      if (form['12417_a_' + owner])
+        base[Stats.EM].push({ value: calcRefinement(60, 15, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1819,7 +2148,11 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     scaling: (base, form, r, { own, owner }) => {
       if (form['11418_2_' + owner])
         base.CALLBACK.push((base: StatsObject) => {
-          base[Stats.ER] += own[Stats.EM] * calcRefinement(0.00036, 0.00009, r) * 0.3
+          base[Stats.ER].push({
+            value: own.getValue(Stats.EM) * calcRefinement(0.00036, 0.00009, r) * 0.3,
+            name: 'Passive',
+            source: `Xiphos' Moonglow`,
+          })
           return base
         })
       return base
@@ -1834,7 +2167,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     scaling: (base, form, r, { own }) => {
       if (form['11511_a'])
         base.CALLBACK.push((base: StatsObject) => {
-          base[Stats.EM] += calcRefinement(0.002, 0.0005, r) * own.getHP()
+          base[Stats.EM].push({ value: calcRefinement(0.002, 0.0005, r), name: 'Passive', source: `` }) * own.getHP()
           return base
         })
       return base
@@ -1849,7 +2182,9 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     scaling: (base, form, r, { own }) => {
       if (form['12415_a'])
         base.CALLBACK.push((base: StatsObject) => {
-          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
+          base[Stats.ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` }) *
+            own.getValue(Stats.EM) *
+            0.3
           return base
         })
       return base
@@ -1862,7 +2197,8 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     default: false,
     id: '13417_a',
     scaling: (base, form, r, { owner }) => {
-      if (form['13417_a_' + owner]) base[Stats.P_ATK] += calcRefinement(0.16, 0.04, r)
+      if (form['13417_a_' + owner])
+        base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1875,7 +2211,9 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     scaling: (base, form, r, { own, owner }) => {
       if (form['14416_a_' + owner])
         base.CALLBACK.push((base: StatsObject) => {
-          base[Stats.ATK] += calcRefinement(0.24, 0.06, r) * own[Stats.EM] * 0.3
+          base[Stats.ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` }) *
+            own.getValue(Stats.EM) *
+            0.3
           return base
         })
       return base
@@ -1891,7 +2229,7 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
     default: true,
     id: '12502',
     scaling: (base, form, r) => {
-      if (form['12502']) base[Stats.P_ATK] += calcRefinement(0.4, 0.1, r)
+      if (form['12502']) base[Stats.P_ATK].push({ value: calcRefinement(0.4, 0.1, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1903,8 +2241,8 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
     id: '12503',
     scaling: (base, form, r) => {
       if (form['12503']) {
-        base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
-        base.ATK_SPD += calcRefinement(0.12, 0.03, r)
+        base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
+        base.ATK_SPD.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `` })
       }
       return base
     },
@@ -1916,7 +2254,7 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
     default: true,
     id: '14515',
     scaling: (base, form, r) => {
-      if (form['14515']) base.PLUNGE_DMG += calcRefinement(0.28, 0.13, r)
+      if (form['14515']) base.PLUNGE_DMG.push({ value: calcRefinement(0.28, 0.13, r), name: 'Passive', source: `` })
       return base
     },
   },
@@ -1928,8 +2266,8 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
     id: '15503',
     scaling: (base, form, r) => {
       if (form['15503']) {
-        base[Stats.EM] += calcRefinement(100, 25, r)
-        base[Stats.P_ATK] += calcRefinement(0.2, 0.05, r)
+        base[Stats.EM].push({ value: calcRefinement(100, 25, r), name: 'Passive', source: `` })
+        base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `` })
       }
       return base
     },

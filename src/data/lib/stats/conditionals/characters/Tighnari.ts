@@ -221,10 +221,10 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.tigh_a1) base[Stats.EM] += 50
-      if (c >= 1) base.CHARGE_CR += 0.15
-      if (form.tigh_c2) base[Stats.DENDRO_DMG] += 0.2
-      if (form.tigh_c4) base[Stats.EM] += 60 * form.tigh_c4
+      if (form.tigh_a1) base[Stats.EM].push({value: 50, name: '', source: ``})
+      if (c >= 1) base.CHARGE_CR.push({value: 0.15, name: '', source: ``})
+      if (form.tigh_c2) base[Stats.DENDRO_DMG].push({value: 0.2, name: '', source: ``})
+      if (form.tigh_c4) base[Stats.EM].push({value: 60 , name: '', source: ``})* form.tigh_c4
 
       if (c >= 6)
         base.CHARGE_SCALING.push({
@@ -237,7 +237,7 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.tigh_c4) base[Stats.EM] += 60 * form.tigh_c4
+      if (form.tigh_c4) base[Stats.EM].push({value: 60 , name: '', source: ``})* form.tigh_c4
 
       return base
     },

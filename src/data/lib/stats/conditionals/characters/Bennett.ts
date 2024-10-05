@@ -237,12 +237,19 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
+      const multiplier = calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)
       if (form.benny_atk_share)
-        base[Stats.ATK] += (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * base.BASE_ATK
-      if (a >= 1) base.SKILL_CD_RED += 0.2
-      if (a >= 4 && form.benny_atk_share) base.SKILL_CD_RED += 0.5
+        base[Stats.ATK].push({
+          name: 'Ultimate',
+          source: 'Self',
+          value: base.BASE_ATK * multiplier,
+          base: base.BASE_ATK,
+          multiplier,
+        })
+      if (a >= 1) base.SKILL_CD_RED.push({ value: 0.2, name: '', source: `` })
+      if (a >= 4 && form.benny_atk_share) base.SKILL_CD_RED.push({ value: 0.5, name: '', source: `` })
 
-      if (form.benny_c2) base[Stats.ER] += 0.3
+      if (form.benny_c2) base[Stats.ER].push({ value: 0.3, name: '', source: `` })
 
       if (c >= 4)
         base.SKILL_SCALING.push({
@@ -253,7 +260,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
         })
 
       if (c >= 6 && form.benny_atk_share) {
-        base[Stats.PYRO_DMG] += 0.15
+        base[Stats.PYRO_DMG].push({ value: 0.15, name: '', source: `` })
         base.INFUSION = Element.PYRO
       }
 
@@ -261,10 +268,17 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)
+      const multiplier = calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)
       if (form.benny_atk_share)
-        base[Stats.ATK] += (calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)) * own.BASE_ATK
+        base[Stats.ATK].push({
+          name: 'Elemental Burst',
+          source: 'Self',
+          value: own.BASE_ATK * multiplier,
+          base: own.BASE_ATK,
+          multiplier,
+        })
       if (c >= 6 && form.benny_atk_share) {
-        base[Stats.PYRO_DMG] += 0.15
+        base[Stats.PYRO_DMG].push({ value: 0.15, name: '', source: `` })
         if (canInfuse) base.infuse(Element.PYRO)
       }
 

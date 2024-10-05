@@ -78,7 +78,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           <FilterIcon stat={Stats.PHYSICAL_DMG} />
         </div>
       </div>
-      <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
+      <div className="grid w-full grid-cols-11 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredWeapon, (item) => (
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
@@ -92,14 +92,14 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
             <div className="relative">
               <img
                 src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
-                className="absolute p-1 rounded-full w-7 h-7 top-2 left-2 bg-primary"
+                className="absolute w-6 h-6 p-1 rounded-full top-2 left-2 bg-primary"
                 title={item.ascStat}
               />
               <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                 <RarityGauge rarity={item.rarity} />
               </div>
               <img
-                src={`https://enka.network/ui/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
+                src={`https://homdgcat.wiki/homdgcat-res/Weapon/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
                 className="object-contain rounded-t-lg bg-primary-darker aspect-square"
               />
             </div>

@@ -244,14 +244,14 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
 
       if (form.yoimiya_a1) base[Stats.PYRO_DMG] += form.yoimiya_a1 * 0.02
-      if (form.yoimiya_c1) base[Stats.P_ATK] += 0.2
-      if (form.yoimiya_c2) base[Stats.PYRO_DMG] += 0.25
+      if (form.yoimiya_c1) base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
+      if (form.yoimiya_c2) base[Stats.PYRO_DMG].push({value: 0.25, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.yoimiya_a4) {
-        base[Stats.P_ATK] += 0.1
+        base[Stats.P_ATK].push({value: 0.1, name: '', source: ``})
         if (form.yoimiya_a1) base[Stats.P_ATK] += form.yoimiya_a1 * 0.01
       }
 

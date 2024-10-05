@@ -141,7 +141,7 @@ export const WeaponScaling = {
 export const AscensionGrowth = {
   [Stats.P_ATK]: [0.06, 0.072],
   [Stats.P_HP]: [0.06, 0.072],
-  [Stats.P_DEF]: [0.075, 0],
+  [Stats.P_DEF]: [0.075, 0.09],
   [Stats.EM]: [24, 28.8],
   [Stats.ER]: [0.067, 0.08],
   [Stats.HEAL]: [0, 0.055],

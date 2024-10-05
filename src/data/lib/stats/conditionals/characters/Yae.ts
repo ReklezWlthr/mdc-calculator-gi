@@ -205,12 +205,12 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.yae_c4) base[Stats.ELECTRO_DMG] += 0.2
+      if (form.yae_c4) base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.yae_c4) base[Stats.ELECTRO_DMG] += 0.2
+      if (form.yae_c4) base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``})
 
       return base
     },

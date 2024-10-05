@@ -181,9 +181,9 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
       if (form.navia_infusion) {
         base.infuse(Element.GEO, true)
-        base.BASIC_DMG += 0.4
-        base.CHARGE_DMG += 0.4
-        base.PLUNGE_DMG += 0.4
+        base.BASIC_DMG.push({value: 0.4, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.4, name: '', source: ``})
+        base.PLUNGE_DMG.push({value: 0.4, name: '', source: ``})
       }
 
       base.BASIC_SCALING = [
@@ -257,17 +257,17 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.electro_sigil) base[Stats.ER] += 0.2 * form.electro_sigil
+      if (form.electro_sigil) base[Stats.ER].push({value: 0.2, name: '', source: ``}) * form.electro_sigil
       if (form.razor_burst) {
         base.ATK_SPD += _.min([0.24 + _.min([burst, 6]) * 0.02 * (_.max([burst - 6, 0]) * 0.01), 0.4])
-        base.ELECTRO_RES += 0.8
+        base.ELECTRO_RES.push({value: 0.8, name: '', source: ``})
       }
-      if (a >= 1) base.SKILL_CD_RED += 0.18
-      if (form.razor_low_energy) base[Stats.ER] += 0.3
-      if (form.razor_c1) base[Stats.ALL_DMG] += 0.1
-      if (form.razor_c2) base[Stats.CRIT_RATE] += 0.1
+      if (a >= 1) base.SKILL_CD_RED.push({value: 0.18, name: '', source: ``})
+      if (form.razor_low_energy) base[Stats.ER].push({value: 0.3, name: '', source: ``})
+      if (form.razor_c1) base[Stats.ALL_DMG].push({value: 0.1, name: '', source: ``})
+      if (form.razor_c2) base[Stats.CRIT_RATE].push({value: 0.1, name: '', source: ``})
 
-      if (form.razor_c4) base.DEF_REDUCTION += 0.15
+      if (form.razor_c4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
 
       if (c >= 6)
         base.BASIC_SCALING.push({
@@ -280,7 +280,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.razor_c4) base.DEF_REDUCTION += 0.15
+      if (form.razor_c4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
 
       return base
     },

@@ -220,12 +220,12 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.seth_c2) base[Stats.ELECTRO_DMG] += form.seth_c2 * 0.15
-      if (form.seth_c4) base[Stats.EM] += 80
+      if (form.seth_c4) base[Stats.EM].push({value: 80, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.seth_c4) base[Stats.EM] += 80
+      if (form.seth_c4) base[Stats.EM].push({value: 80, name: '', source: ``})
 
       return base
     },

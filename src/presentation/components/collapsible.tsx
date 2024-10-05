@@ -2,10 +2,10 @@ import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 
-export const BulletPoint = observer(({ children }: { children: React.ReactNode }) => {
+export const BulletPoint = observer(({ children, color }: { children: React.ReactNode; color?: string }) => {
   return (
     <p className="pl-3">
-      <span className="mr-2 text-blue">✦</span>
+      <span className={classNames('mr-2', color || 'text-blue')}>✦</span>
       {children}
     </p>
   )

@@ -20,6 +20,7 @@ import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
 import { CrystallizeTooltip } from '../components/tables/crystallize_tooltip'
 import { CustomConditionalBlock } from '../components/custom_conditional_block'
+import { StatsModal } from '../components/stats_modal'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -30,11 +31,16 @@ export const Calculator = observer(({}: {}) => {
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
 
-  const { main, mainComputed, contents, transformative } = useCalculator()
+  const { main, mainComputed, contents, transformative, finalStats } = useCalculator({})
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
 
   const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
+
+  const onOpenStatsModal = useCallback(
+    () => modalStore.openModal(<StatsModal stats={mainComputed} weapon={charData.weapon} />),
+    [mainComputed, charData, finalStats]
+  )
 
   return (
     <div className="w-full overflow-y-auto">
@@ -75,7 +81,6 @@ export const Calculator = observer(({}: {}) => {
                 </div>
                 <ScalingWrapper
                   talent={main?.talents?.normal}
-                  icon={`https://enka.network/ui${WeaponIcon[charData.weapon]}`}
                   element={charData.element}
                   level={char.talents?.normal}
                   upgraded={main?.upgrade?.normal}
@@ -100,9 +105,6 @@ export const Calculator = observer(({}: {}) => {
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
                   talent={main?.talents?.skill}
-                  icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'E' : 'S'}_${iconCodeName}${
-                    iconCodeName === 'Qin' ? '_02' : '_01'
-                  }${iconCodeName === 'Diluc' ? '_01' : ''}.png`}
                   element={charData.element}
                   level={char.talents?.skill}
                   upgraded={main?.upgrade?.skill}
@@ -114,9 +116,6 @@ export const Calculator = observer(({}: {}) => {
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
                   talent={main?.talents?.burst}
-                  icon={`https://enka.network/ui/Skill_${iconCodeName === 'PlayerGrass' ? 'S' : 'E'}_${iconCodeName}${
-                    _.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'
-                  }.png`}
                   element={charData.element}
                   level={char.talents?.burst}
                   upgraded={main?.upgrade?.burst}
@@ -190,9 +189,9 @@ export const Calculator = observer(({}: {}) => {
                   </div>
                   <div className="flex justify-center py-1 rounded-b-lg bg-primary-darker">
                     <CrystallizeTooltip
-                      em={mainComputed?.[Stats.EM]}
+                      em={mainComputed?.getValue(Stats.EM)}
                       level={char?.level}
-                      shieldStrength={mainComputed?.[Stats.SHIELD]}
+                      shieldStrength={mainComputed?.getValue(Stats.SHIELD)}
                     />
                   </div>
                 </div>
@@ -238,6 +237,12 @@ export const Calculator = observer(({}: {}) => {
           )}
           {charData && tab === 'stats' && (
             <>
+              <div className="flex items-center justify-between w-full">
+                <p className="px-4 text-lg font-bold">
+                  <span className="text-desc">✦</span> Final Stats <span className="text-desc">✦</span>
+                </p>
+                <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
+              </div>
               <StatBlock index={selected} stat={computedStats[selected]} />
               <div className="w-[252px]">
                 <AscensionIcons

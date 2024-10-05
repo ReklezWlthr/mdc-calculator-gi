@@ -220,14 +220,14 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.itto_burst) base.ALL_TYPE_RES += 0.2
+      if (form.itto_burst) base.ALL_TYPE_RES.push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.itto_c4) {
-        base[Stats.DEF] += 0.2
-        base[Stats.P_ATK] += 0.2
+        base[Stats.DEF].push({value: 0.2, name: '', source: ``})
+        base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
       }
       return base
     },

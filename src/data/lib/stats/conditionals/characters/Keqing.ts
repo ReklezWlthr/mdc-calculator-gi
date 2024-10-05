@@ -250,8 +250,8 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.keq_infusion) base.infuse(Element.ELECTRO)
       if (form.keq_a4) {
-        base[Stats.CRIT_RATE] += 0.15
-        base[Stats.ER] += 0.15
+        base[Stats.CRIT_RATE].push({value: 0.15, name: '', source: ``})
+        base[Stats.ER].push({value: 0.15, name: '', source: ``})
       }
       if (c >= 1)
         base.SKILL_SCALING.push({
@@ -260,8 +260,8 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.SKILL,
         })
-      if (form.keq_c4) base[Stats.P_ATK] += 0.25
-      if (form.keq_c6) base[Stats.ELECTRO_DMG] += 0.06 * form.keq_c6
+      if (form.keq_c4) base[Stats.P_ATK].push({value: 0.25, name: '', source: ``})
+      if (form.keq_c6) base[Stats.ELECTRO_DMG].push({value: 0.06, name: '', source: ``}) * form.keq_c6
 
       return base
     },

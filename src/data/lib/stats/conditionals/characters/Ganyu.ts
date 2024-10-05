@@ -238,15 +238,15 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.ganyu_a4) base[Stats.CRYO_DMG] += 0.2
-      if (form.ganyu_c1) base.CRYO_RES_PEN += 0.15
-      if (form.ganyu_c4) base.VULNERABILITY += 0.5 * form.ganyu_a4
+      if (form.ganyu_a4) base[Stats.CRYO_DMG].push({value: 0.2, name: '', source: ``})
+      if (form.ganyu_c1) base.CRYO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.ganyu_c4) base.VULNERABILITY.push({value: 0.5, name: '', source: ``}) * form.ganyu_a4
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.ganyu_c1) base.CRYO_RES_PEN += 0.15
-      if (form.ganyu_c4) base.VULNERABILITY += 0.5 * form.ganyu_a4
+      if (form.ganyu_c1) base.CRYO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.ganyu_c4) base.VULNERABILITY.push({value: 0.5, name: '', source: ``}) * form.ganyu_a4
 
       return base
     },

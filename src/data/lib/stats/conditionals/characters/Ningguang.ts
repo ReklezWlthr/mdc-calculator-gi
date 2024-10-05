@@ -183,18 +183,18 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.ning_a4) base[Stats.GEO_DMG] += 0.12
+      if (form.ning_a4) base[Stats.GEO_DMG].push({value: 0.12, name: '', source: ``})
       if (form.ning_c4) {
-        base.ALL_TYPE_RES += 0.1
+        base.ALL_TYPE_RES.push({value: 0.1, name: '', source: ``})
         base.PHYSICAL_RES -= 0.1
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.ning_a4) base[Stats.GEO_DMG] += 0.12
+      if (form.ning_a4) base[Stats.GEO_DMG].push({value: 0.12, name: '', source: ``})
       if (form.ning_c4) {
-        base.ALL_TYPE_RES += 0.1
+        base.ALL_TYPE_RES.push({value: 0.1, name: '', source: ``})
         base.PHYSICAL_RES -= 0.1
       }
 

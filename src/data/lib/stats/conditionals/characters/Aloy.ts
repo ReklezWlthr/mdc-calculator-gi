@@ -237,13 +237,13 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
         if (form.coil_stack === 3) base.BASIC_DMG += calcScaling(0.1754, skill, 'elemental', '1')
       }
       if (form.rushing_ice) base.BASIC_DMG += calcScaling(0.2923, skill, 'elemental', '1')
-      if (form.aloy_a1) base[Stats.P_ATK] += 0.16
-      if (form.aloy_a4) base[Stats.CRYO_DMG] += 0.035 * form.aloy_a4
+      if (form.aloy_a1) base[Stats.P_ATK].push({value: 0.16, name: '', source: ``})
+      if (form.aloy_a4) base[Stats.CRYO_DMG].push({value: 0.035, name: '', source: ``}) * form.aloy_a4
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.aloy_a1) base[Stats.P_ATK] += 0.08
+      if (form.aloy_a1) base[Stats.P_ATK].push({value: 0.08, name: '', source: ``})
 
       return base
     },

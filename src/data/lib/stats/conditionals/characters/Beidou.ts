@@ -257,10 +257,10 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.beidou_burst) base.DMG_REDUCTION += calcScaling(0.2, burst, 'special', 'beidou')
       if (form.beidou_a4) {
-        base.BASIC_DMG += 0.15
-        base.CHARGE_DMG += 0.15
-        base.ATK_SPD += 0.15
-        base.CHARGE_ATK_SPD += 0.15
+        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.ATK_SPD.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_ATK_SPD.push({value: 0.15, name: '', source: ``})
       }
 
       if (c >= 1)
@@ -286,13 +286,13 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
         })
       }
 
-      if (form.c6_electro_res) base.ELECTRO_RES_PEN += 0.15
+      if (form.c6_electro_res) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.bar_burst) base[Stats.HYDRO_DMG] += 0.15
-      if (form.c6_electro_res) base.ELECTRO_RES_PEN += 0.15
+      if (form.bar_burst) base[Stats.HYDRO_DMG].push({value: 0.15, name: '', source: ``})
+      if (form.c6_electro_res) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
 
       return base
     },

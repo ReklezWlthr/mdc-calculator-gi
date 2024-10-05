@@ -238,7 +238,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.HEAL,
         })
 
-      if (form.yaoyaoC1) base[Stats.DENDRO_DMG] += 0.15
+      if (form.yaoyaoC1) base[Stats.DENDRO_DMG].push({value: 0.15, name: '', source: ``})
       if (c >= 6)
         base.SKILL_SCALING.push(
           {

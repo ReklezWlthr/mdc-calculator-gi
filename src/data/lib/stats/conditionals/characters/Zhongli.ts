@@ -240,13 +240,13 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.zhongli_res) base.ALL_TYPE_RES_PEN += 0.2
+      if (form.zhongli_res) base.ALL_TYPE_RES_PEN.push({value: 0.2, name: '', source: ``})
       if (form.zhongli_a1) base[Stats.SHIELD] += form.zhongli_a1 * 0.05
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.zhongli_res) base.ALL_TYPE_RES_PEN += 0.2
+      if (form.zhongli_res) base.ALL_TYPE_RES_PEN.push({value: 0.2, name: '', source: ``})
       if (form.zhongli_a1) base[Stats.SHIELD] += form.zhongli_a1 * 0.05
 
       return base

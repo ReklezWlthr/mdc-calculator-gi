@@ -146,14 +146,6 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       max: 200,
     },
     {
-      type: 'toggle',
-      id: 'clorinde_skill',
-      text: `Night Vigil`,
-      ...talents.skill,
-      show: true,
-      default: true,
-    },
-    {
       type: 'number',
       id: 'clorinde_a1',
       text: `A1 Electro Reaction Bonus`,
@@ -203,64 +195,59 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
 
-      base.BASIC_SCALING = form.clorinde_skill
-        ? [
-            {
-              name: 'Swift Hunt DMG',
-              value: [
-                {
-                  scaling: calcScaling(form.clorinde_bol >= 100 ? 0.2676 : 0.3879, skill, 'elemental', '1'),
-                  multiplier: Stats.ATK,
-                },
-              ],
-              element: Element.ELECTRO,
-              property: TalentProperty.NA,
-            },
-          ]
-        : [
-            {
-              name: '1-Hit',
-              value: [{ scaling: calcScaling(0.5406, normal, 'physical', '1'), multiplier: Stats.ATK }],
-              element: Element.PHYSICAL,
-              property: TalentProperty.NA,
-            },
-            {
-              name: '2-Hit',
-              value: [{ scaling: calcScaling(0.5163, normal, 'physical', '1'), multiplier: Stats.ATK }],
-              element: Element.PHYSICAL,
-              property: TalentProperty.NA,
-            },
-            {
-              name: '3-Hit [x2]',
-              value: [{ scaling: calcScaling(0.3419, normal, 'physical', '1'), multiplier: Stats.ATK }],
-              element: Element.PHYSICAL,
-              property: TalentProperty.NA,
-            },
-            {
-              name: '4-Hit [x3]',
-              value: [{ scaling: calcScaling(0.2313, normal, 'physical', '1'), multiplier: Stats.ATK }],
-              element: Element.PHYSICAL,
-              property: TalentProperty.NA,
-            },
-            {
-              name: '5-Hit',
-              value: [{ scaling: calcScaling(0.9001, normal, 'physical', '1'), multiplier: Stats.ATK }],
-              element: Element.PHYSICAL,
-              property: TalentProperty.NA,
-            },
-          ]
-      base.CHARGE_SCALING = form.clorinde_skill
-        ? []
-        : [
-            {
-              name: 'Charged Attack DMG',
-              value: [{ scaling: calcScaling(1.2814, normal, 'physical', '1'), multiplier: Stats.ATK }],
-              element: Element.PHYSICAL,
-              property: TalentProperty.CA,
-            },
-          ]
+      base.BASIC_SCALING = [
+        {
+          name: '1-Hit',
+          value: [{ scaling: calcScaling(0.5406, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '2-Hit',
+          value: [{ scaling: calcScaling(0.5163, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '3-Hit [x2]',
+          value: [{ scaling: calcScaling(0.3419, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '4-Hit [x3]',
+          value: [{ scaling: calcScaling(0.2313, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: '5-Hit',
+          value: [{ scaling: calcScaling(0.9001, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+      ]
+      base.CHARGE_SCALING = [
+        {
+          name: 'Charged Attack DMG',
+          value: [{ scaling: calcScaling(1.2814, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.CA,
+        },
+      ]
       base.PLUNGE_SCALING = getPlungeScaling('base', normal)
       base.SKILL_SCALING = [
+        {
+          name: 'Swift Hunt DMG',
+          value: [
+            {
+              scaling: calcScaling(form.clorinde_bol >= 100 ? 0.2676 : 0.3879, skill, 'elemental', '1'),
+              multiplier: Stats.ATK,
+            },
+          ],
+          element: Element.ELECTRO,
+          property: TalentProperty.NA,
+        },
         {
           name: form.clorinde_bol >= 100 ? 'Impale the Night DMG [x3]' : 'Impale the Night DMG',
           value: [
@@ -303,7 +290,8 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.HEAL,
         })
 
-      if (form.clorinde_a4) base[Stats.CRIT_RATE] += form.clorinde_a4 * 0.1
+      if (form.clorinde_a4)
+        base[Stats.CRIT_RATE].push({ value: form.clorinde_a4 * 0.1, name: 'Ascension 4 Passive', source: 'Self' })
       if (c >= 1 && form.clorinde_skill)
         base.BASIC_SCALING.push({
           name: 'Nightvigil Shade DMG [x2]',
@@ -311,10 +299,15 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.NA,
         })
-      if (c >= 4 && form.clorinde_bol) base.BURST_DMG += _.min([2, (form.clorinde_bol * 2) / 100])
+      if (c >= 4 && form.clorinde_bol)
+        base.BURST_DMG.push({
+          value: _.min([2, (form.clorinde_bol * 2) / 100]),
+          name: 'Constellation 4',
+          source: 'Self',
+        })
       if (form.clorinde_c6) {
-        base[Stats.CRIT_RATE] += 0.1
-        base[Stats.CRIT_DMG] += 0.7
+        base[Stats.CRIT_RATE].push({ value: 0.1, name: '', source: `` })
+        base[Stats.CRIT_DMG].push({ value: 0.7, name: '', source: `` })
       }
       if (c >= 6)
         base.SKILL_SCALING.push({
@@ -323,7 +316,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.NA,
         })
-      if (form.clorinde_c6_red) base.DMG_REDUCTION += 0.8
+      if (form.clorinde_c6_red) base.DMG_REDUCTION.push({ value: 0.8, name: '', source: `` })
 
       return base
     },
@@ -332,8 +325,20 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (form.clorinde_a1) {
-        base.BASIC_F_DMG += _.min([maxFlat, form.clorinde_a1 * flatStack * base.getAtk()])
-        base.BURST_F_DMG += _.min([maxFlat, form.clorinde_a1 * flatStack * base.getAtk()])
+        base.BASIC_F_DMG.push({
+          value: _.min([maxFlat, form.clorinde_a1 * flatStack * base.getAtk()]),
+          name: 'Ascension 1 Passive',
+          source: 'Self',
+          base: base.getAtk(),
+          multiplier: form.clorinde_a1 * flatStack,
+        })
+        base.BURST_F_DMG.push({
+          value: _.min([maxFlat, form.clorinde_a1 * flatStack * base.getAtk()]),
+          name: 'Ascension 1 Passive',
+          source: 'Self',
+          base: base.getAtk(),
+          multiplier: form.clorinde_a1 * flatStack,
+        })
       }
 
       return base

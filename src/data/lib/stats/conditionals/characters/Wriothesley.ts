@@ -244,12 +244,12 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
         base[Stats.P_ATK] += form.edict * 0.05
         if (c >= 2) base.BURST_DMG += form.edict * 0.4
       }
-      if (form.wrio_c4_self) base.ATK_SPD += 0.2
+      if (form.wrio_c4_self) base.ATK_SPD.push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.wrio_c4_ally) base.ATK_SPD += 0.1
+      if (form.wrio_c4_ally) base.ATK_SPD.push({value: 0.1, name: '', source: ``})
 
       return base
     },

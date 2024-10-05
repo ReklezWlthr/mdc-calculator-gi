@@ -158,7 +158,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.diluc_infusion) {
         base.infuse(Element.PYRO)
-        if (a >= 4) base[Stats.PYRO_DMG] += 0.2
+        if (a >= 4) base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``})
       }
 
       base.BASIC_SCALING = [
@@ -246,15 +246,15 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.diluc_c1) base[Stats.ALL_DMG] += 0.15
+      if (form.diluc_c1) base[Stats.ALL_DMG].push({value: 0.15, name: '', source: ``})
       if (form.diluc_c2) {
-        base[Stats.P_ATK] += 0.1 * form.diluc_c2
-        base.ATK_SPD += 0.05 * form.diluc_c2
+        base[Stats.P_ATK].push({value: 0.1, name: '', source: ``}) * form.diluc_c2
+        base.ATK_SPD.push({value: 0.05, name: '', source: ``}) * form.diluc_c2
       }
 
       if (form.diluc_c6) {
-        base.ATK_SPD += 0.3
-        base.BASIC_DMG += 0.3
+        base.ATK_SPD.push({value: 0.3, name: '', source: ``})
+        base.BASIC_DMG.push({value: 0.3, name: '', source: ``})
       }
 
       return base

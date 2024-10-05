@@ -142,7 +142,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.chongyun_infusion) {
         base.infuse(Element.CRYO)
-        if (a >= 1) base.ATK_SPD += 0.08
+        if (a >= 1) base.ATK_SPD.push({value: 0.08, name: '', source: ``})
       }
 
       base.BASIC_SCALING = [
@@ -207,7 +207,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.chongyun_a1) base.ATK_SPD += 0.08
+      if (form.chongyun_a1) base.ATK_SPD.push({value: 0.08, name: '', source: ``})
 
       if (a >= 4)
         base.SKILL_SCALING.push({
@@ -217,7 +217,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         })
 
-      if (form.chongyun_a4) base.CRYO_RES_PEN += 0.1
+      if (form.chongyun_a4) base.CRYO_RES_PEN.push({value: 0.1, name: '', source: ``})
 
       if (c >= 1)
         base.BASIC_SCALING.push({
@@ -228,8 +228,8 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
         })
 
       if (c >= 2) {
-        base.SKILL_CD_RED += 0.15
-        base.BURST_CD_RED += 0.15
+        base.SKILL_CD_RED.push({value: 0.15, name: '', source: ``})
+        base.BURST_CD_RED.push({value: 0.15, name: '', source: ``})
       }
 
       return base
@@ -237,13 +237,13 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.chongyun_infusion && !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)) {
         base.infuse(Element.CRYO)
-        if (a >= 1) base.ATK_SPD += 0.08
+        if (a >= 1) base.ATK_SPD.push({value: 0.08, name: '', source: ``})
       }
-      if (form.chongyun_a4) base.CRYO_RES_PEN += 0.1
+      if (form.chongyun_a4) base.CRYO_RES_PEN.push({value: 0.1, name: '', source: ``})
 
       if (c >= 2) {
-        base.SKILL_CD_RED += 0.15
-        base.BURST_CD_RED += 0.15
+        base.SKILL_CD_RED.push({value: 0.15, name: '', source: ``})
+        base.BURST_CD_RED.push({value: 0.15, name: '', source: ``})
       }
 
       return base

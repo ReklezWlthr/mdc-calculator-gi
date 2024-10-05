@@ -153,9 +153,9 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
       if (form.navia_infusion) {
         base.infuse(Element.GEO, true)
-        base.BASIC_DMG += 0.4
-        base.CHARGE_DMG += 0.4
-        base.PLUNGE_DMG += 0.4
+        base.BASIC_DMG.push({value: 0.4, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.4, name: '', source: ``})
+        base.PLUNGE_DMG.push({value: 0.4, name: '', source: ``})
       }
 
       base.BASIC_SCALING = [
@@ -249,12 +249,12 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
 
       if (a >= 4) base[Stats.P_ATK] += _.min([elementCount, 2]) * 0.2
-      if (form.navia_c4) base.GEO_RES_PEN += 0.2
+      if (form.navia_c4) base.GEO_RES_PEN.push({value: 0.2, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.navia_c4) base.GEO_RES_PEN += 0.2
+      if (form.navia_c4) base.GEO_RES_PEN.push({value: 0.2, name: '', source: ``})
 
       return base
     },

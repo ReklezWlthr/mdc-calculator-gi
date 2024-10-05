@@ -243,12 +243,12 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
         )
 
       if (form.bai_a1) {
-        base[Stats.DENDRO_DMG] += 0.25
+        base[Stats.DENDRO_DMG].push({value: 0.25, name: '', source: ``})
       } else {
-        base[Stats.HEAL] += 0.2
+        base[Stats.HEAL].push({value: 0.2, name: '', source: ``})
       }
 
-      if (form.bai_c4) base[Stats.EM] += 80
+      if (form.bai_c4) base[Stats.EM].push({value: 80, name: '', source: ``})
 
       return base
     },
@@ -265,7 +265,7 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
         base.AGGRAVATE_DMG += a4Add
       }
 
-      if (form.bai_c4) base[Stats.EM] += 80
+      if (form.bai_c4) base[Stats.EM].push({value: 80, name: '', source: ``})
 
       return base
     },

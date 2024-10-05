@@ -5,7 +5,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
-import { StatsObject } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { TalentStatMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter } from '@src/core/utils/finder'
@@ -48,17 +48,25 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       ? stats.INFUSION
       : scaling.element
 
-  const talentDmg = stats[`${TalentStatMap[scaling.property]}_DMG`] || 0
-  const talentFlat = stats[`${TalentStatMap[scaling.property]}_F_DMG`] || 0
-  const talentCr = stats[`${TalentStatMap[scaling.property]}_CR`] || 0
-  const talentCd = stats[`${TalentStatMap[scaling.property]}_CD`] || 0
-  const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
-  const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0 // Faruzan & Shenhe
-  const elementNa = element !== Element.PHYSICAL && scaling.property === TalentProperty.NA ? stats.ELEMENTAL_NA_DMG : 0
-  const elementMult = stats[`${element.toUpperCase()}_MULT`] || 1
-  const defPen = (stats.DEF_PEN || 0) + (scaling.defPen || 0)
+  const talentDmg = stats.getValue(`${TalentStatMap[scaling.property]}_DMG`) || 0
+  const talentFlat = stats.getValue(`${TalentStatMap[scaling.property]}_F_DMG`) || 0
+  const talentCr = stats.getValue(`${TalentStatMap[scaling.property]}_CR`) || 0
+  const talentCd = stats.getValue(`${TalentStatMap[scaling.property]}_CD`) || 0
+  const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
+  const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0 // Faruzan & Shenhe
+  const elementNa =
+    element !== Element.PHYSICAL && scaling.property === TalentProperty.NA
+      ? stats.getValue(StatsObjectKeys.ELEMENTAL_NA_DMG)
+      : 0
+  const elementMult = stats.getValue(`${element.toUpperCase()}_MULT`) || 1
+  const defPen = (stats.getValue(StatsObjectKeys.DEF_PEN) || 0) + (scaling.defPen || 0)
 
-  const defMult = calculatorStore.getDefMult(teamStore.characters[index]?.level, defPen, stats.DEF_REDUCTION) || 1
+  const defMult =
+    calculatorStore.getDefMult(
+      teamStore.characters[index]?.level,
+      defPen,
+      stats.getValue(StatsObjectKeys.DEF_REDUCTION)
+    ) || 1
   const resMult = calculatorStore.getResMult(
     element,
     (stats[`${element.toUpperCase()}_RES_PEN`] || 0) + (stats.ALL_TYPE_RES_PEN || 0)
@@ -70,7 +78,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     [Stats.ATK]: stats.getAtk(),
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: stats.getHP(),
-    [Stats.EM]: stats[Stats.EM],
+    [Stats.EM]: stats.getValue(Stats.EM),
   }
 
   const bonusDMG =
@@ -78,8 +86,12 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
-      ? stats[Stats.HEAL]
-      : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + elementNa + talentDmg + stats.VULNERABILITY) // Vulnerability effectively stacks with DMG Bonuses
+      ? stats.getValue(Stats.HEAL)
+      : stats.getValue(Stats.ALL_DMG) +
+        stats.getValue(`${element} DMG%`) +
+        elementNa +
+        talentDmg +
+        stats.getValue(StatsObjectKeys.VULNERABILITY)) // Vulnerability effectively stacks with DMG Bonuses
   const raw =
     _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) +
     (scaling.flat || 0) +
@@ -90,9 +102,11 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const totalCr =
     scaling.property === TalentProperty.CRIT
       ? 1
-      : _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
+      : _.max([_.min([stats.getValue(Stats.CRIT_RATE) + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd =
-    scaling.property === TalentProperty.CRIT ? 0 : stats[Stats.CRIT_DMG] + (scaling.cd || 0) + talentCd + elementCd
+    scaling.property === TalentProperty.CRIT
+      ? 0
+      : stats.getValue(Stats.CRIT_DMG) + (scaling.cd || 0) + talentCd + elementCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
   const scalingArray = _.map(
@@ -156,9 +170,9 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 Talent-Exclusive Bonus: <span className="text-desc">{toPercentage(scaling.bonus)}</span>
               </p>
             )}
-            {!!stats[`${element} DMG%`] && (
+            {!!stats.getValue(`${element} DMG%`) && (
               <p className="text-xs">
-                {element} Bonus: <span className="text-desc">{toPercentage(stats[`${element} DMG%`])}</span>
+                {element} Bonus: <span className="text-desc">{toPercentage(stats.getValue(`${element} DMG%`))}</span>
               </p>
             )}
             {!!(talentDmg || elementNa) && (
@@ -166,24 +180,31 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 {scaling.property} Bonus: <span className="text-desc">{toPercentage(talentDmg + elementNa)}</span>
               </p>
             )}
-            {!!stats.VULNERABILITY && (
+            {!!stats.getValue(StatsObjectKeys.VULNERABILITY) && (
               <p className="text-xs">
-                Vulnerability Bonus: <span className="text-desc">{toPercentage(stats.VULNERABILITY)}</span>
+                Vulnerability Bonus:{' '}
+                <span className="text-desc">{toPercentage(stats.getValue(StatsObjectKeys.VULNERABILITY))}</span>
               </p>
             )}
             {scaling.property === TalentProperty.SHIELD && (
               <>
                 <p className="text-xs">
                   Off-Element Absorption:{' '}
-                  <span className="text-desc">{_.round(dmg * (1 + stats[Stats.SHIELD])).toLocaleString()}</span>
+                  <span className="text-desc">
+                    {_.round(dmg * (1 + stats.getValue(Stats.SHIELD))).toLocaleString()}
+                  </span>
                 </p>
                 <p className="text-xs">
                   On-Element Absorption:{' '}
-                  <span className="text-desc">{_.round(dmg * (2.5 * (1 + stats[Stats.SHIELD]))).toLocaleString()}</span>
+                  <span className="text-desc">
+                    {_.round(dmg * (2.5 * (1 + stats.getValue(Stats.SHIELD)))).toLocaleString()}
+                  </span>
                 </p>
                 <p className="text-xs">
                   Geo Shield Absorption:{' '}
-                  <span className="text-desc">{_.round(dmg * (1.5 * (1 + stats[Stats.SHIELD]))).toLocaleString()}</span>
+                  <span className="text-desc">
+                    {_.round(dmg * (1.5 * (1 + stats.getValue(Stats.SHIELD)))).toLocaleString()}
+                  </span>
                 </p>
               </>
             )}
@@ -198,7 +219,10 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                         {item}:{' '}
                         <span className="text-desc">
                           {_.round(
-                            raw * (1 + stats[Stats.HEAL] + calculatorStore.computedStats[i]?.[Stats.I_HEALING])
+                            raw *
+                              (1 +
+                                stats.getValue(Stats.HEAL) +
+                                calculatorStore.computedStats[i]?.getValue(Stats.I_HEALING))
                           ).toLocaleString()}
                         </span>
                       </p>

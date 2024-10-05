@@ -199,8 +199,8 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.dmc_a6) base[Stats.DENDRO_DMG] += 0.12
-      if (form.emc_c2) base.ELECTRO_RES_PEN += 0.15
+      if (form.dmc_a6) base[Stats.DENDRO_DMG].push({value: 0.12, name: '', source: ``})
+      if (form.emc_c2) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
 
       if (c >= 6)
         base.BURST_SCALING.push({
@@ -213,13 +213,13 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.amulet) base[Stats.ER] += 0.2 + (a >= 4 ? own[Stats.ER] * 0.1 : 0)
-      if (form.emc_c2) base.ELECTRO_RES_PEN += 0.15
+      if (form.amulet) base[Stats.ER].push({value: 0.2, name: '', source: ``}) + (a >= 4 ? own[Stats.ER] * 0.1 : 0)
+      if (form.emc_c2) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.amulet) base[Stats.ER] += 0.2 + (a >= 4 ? base[Stats.ER] * 0.1 : 0)
+      if (form.amulet) base[Stats.ER].push({value: 0.2, name: '', source: ``}) + (a >= 4 ? base[Stats.ER] * 0.1 : 0)
 
       return base
     },

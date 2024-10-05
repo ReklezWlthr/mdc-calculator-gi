@@ -272,18 +272,18 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })
-      if (form.amc_c4) base.DMG_REDUCTION += 0.1
+      if (form.amc_c4) base.DMG_REDUCTION.push({value: 0.1, name: '', source: ``})
       if (form.amc_c6) {
-        base.ANEMO_RES_PEN += 0.2
-        if (form.amc_burst_absorb) base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`] += 0.2
+        base.ANEMO_RES_PEN.push({value: 0.2, name: '', source: ``})
+        if (form.amc_burst_absorb) base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`].push({value: 0.2, name: '', source: ``})
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.amc_c6) {
-        base.ANEMO_RES_PEN += 0.2
-        if (form.amc_burst_absorb) base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`] += 0.2
+        base.ANEMO_RES_PEN.push({value: 0.2, name: '', source: ``})
+        if (form.amc_burst_absorb) base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`].push({value: 0.2, name: '', source: ``})
       }
 
       return base

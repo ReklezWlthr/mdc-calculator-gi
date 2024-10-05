@@ -1,12 +1,12 @@
 import { IContent } from '@src/domain/conditional'
-import { StatsObject } from '../baseConstant'
+import { StatsObject, StatsObjectKeys } from '../baseConstant'
 import { Element, Stats } from '@src/domain/constant'
 import { BaseReactionDmg } from '@src/domain/scaling'
 import _ from 'lodash'
 import { calcTransformative } from '@src/core/utils/data_format'
 
 const Transformative = (level: number, element: Element, stat: StatsObject, swirl: Element, nilou?: boolean) => {
-  const emBonus = calcTransformative(stat?.[Stats.EM] || 0)
+  const emBonus = calcTransformative(stat?.getValue(Stats.EM) || 0)
   const base = BaseReactionDmg[level - 1]
 
   return [
@@ -17,11 +17,18 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 0.6,
       emBonus,
-      dmg: stat?.SWIRL_DMG,
-      amp: swirl === Element.PYRO ? stat?.PYRO_MULT || 1 : 1,
+      dmg: stat?.getValue(StatsObjectKeys.SWIRL_DMG),
+      amp:
+        swirl === Element.PYRO
+          ? stat?.getValue(StatsObjectKeys.PYRO_MULT) || 1
+          : swirl === Element.CRYO
+          ? stat?.getValue(StatsObjectKeys.CRYO_MULT) || 1
+          : swirl === Element.HYDRO
+          ? stat?.getValue(StatsObjectKeys.HYDRO_MULT) || 1
+          : 1,
       cd: 0,
-      add: swirl === Element.ELECTRO ? stat?.ELECTRO_F_DMG : 0,
-      resPen: swirl ? stat?.[`${swirl.toUpperCase()}_RES_PEN`] : 0,
+      add: swirl === Element.ELECTRO ? stat?.getValue(StatsObjectKeys.ELECTRO_F_DMG) : 0,
+      resPen: swirl ? stat?.getValue(`${swirl.toUpperCase()}_RES_PEN`) : 0,
     },
     {
       name: 'Electro-Charged',
@@ -30,11 +37,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 1.2,
       emBonus,
-      dmg: stat?.TASER_DMG,
+      dmg: stat?.getValue(StatsObjectKeys.TASER_DMG),
       cd: 0,
       amp: 1,
       add: 0,
-      resPen: stat?.ELECTRO_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.ELECTRO_RES_PEN),
     },
     {
       name: 'Superconduct',
@@ -43,11 +50,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 0.5,
       emBonus,
-      dmg: stat?.SUPERCONDUCT_DMG,
+      dmg: stat?.getValue(StatsObjectKeys.SUPERCONDUCT_DMG),
       cd: 0,
       amp: 1,
       add: 0,
-      resPen: stat?.CRYO_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.CRYO_RES_PEN),
     },
     {
       name: nilou ? 'Bloom: Bountiful Core' : 'Bloom',
@@ -56,11 +63,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 2,
       emBonus,
-      dmg: stat?.BLOOM_DMG,
-      cd: stat?.CORE_CD,
+      dmg: stat?.getValue(StatsObjectKeys.BLOOM_DMG),
+      cd: stat?.getValue(StatsObjectKeys.CORE_CD),
       amp: 1,
       add: 0,
-      resPen: stat?.DENDRO_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.DENDRO_RES_PEN),
     },
     {
       name: 'Hyperbloom',
@@ -69,11 +76,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 3,
       emBonus,
-      dmg: stat?.HYPERBLOOM_DMG,
-      cd: stat?.CORE_CD,
+      dmg: stat?.getValue(StatsObjectKeys.HYPERBLOOM_DMG),
+      cd: stat?.getValue(StatsObjectKeys.CORE_CD),
       amp: 1,
       add: 0,
-      resPen: stat?.DENDRO_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.DENDRO_RES_PEN),
     },
     {
       name: 'Burgeon',
@@ -82,11 +89,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 3,
       emBonus,
-      dmg: stat?.BURGEON_DMG,
-      cd: stat?.CORE_CD,
+      dmg: stat?.getValue(StatsObjectKeys.BURGEON_DMG),
+      cd: stat?.getValue(StatsObjectKeys.CORE_CD),
       amp: 1,
       add: 0,
-      resPen: stat?.DENDRO_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.DENDRO_RES_PEN),
     },
     {
       name: 'Burning',
@@ -95,11 +102,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 0.25,
       emBonus,
-      dmg: stat?.BURNING_DMG,
-      cd: stat?.CORE_CD || 0,
-      amp: stat?.PYRO_MULT || 1,
+      dmg: stat?.getValue(StatsObjectKeys.BURNING_DMG),
+      cd: stat?.getValue(StatsObjectKeys.CORE_CD) || 0,
+      amp: stat?.getValue(StatsObjectKeys.PYRO_MULT) || 1,
       add: 0,
-      resPen: stat?.PYRO_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.PYRO_RES_PEN),
     },
     {
       name: 'Overloaded',
@@ -108,11 +115,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 2,
       emBonus,
-      dmg: stat?.OVERLOAD_DMG,
+      dmg: stat?.getValue(StatsObjectKeys.OVERLOAD_DMG),
       cd: 0,
       amp: 1,
       add: 0,
-      resPen: stat?.PYRO_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.PYRO_RES_PEN),
     },
     {
       name: 'Shattered',
@@ -121,11 +128,11 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       base,
       mult: 1.5,
       emBonus,
-      dmg: stat?.SHATTER_DMG,
+      dmg: stat?.getValue(StatsObjectKeys.SHATTER_DMG),
       cd: 0,
       amp: 1,
       add: 0,
-      resPen: stat?.PHYSICAL_RES_PEN,
+      resPen: stat?.getValue(StatsObjectKeys.PHYSICAL_RES_PEN),
     },
   ]
 }

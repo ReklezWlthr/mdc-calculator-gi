@@ -1,5 +1,5 @@
 import { IContent } from '@src/domain/conditional'
-import { StatsObject } from '../baseConstant'
+import { StatsObject, StatsObjectKeys } from '../baseConstant'
 import { Element, Stats } from '@src/domain/constant'
 import { BaseReactionDmg } from '@src/domain/scaling'
 import _ from 'lodash'
@@ -11,8 +11,8 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
   swirl,
   stat
 ) => {
-  const amp = calcAmplifying(stat?.[Stats.EM] || 0)
-  const add = calcAdditive(stat?.[Stats.EM] || 0)
+  const amp = calcAmplifying(stat?.getValue(Stats.EM) || 0)
+  const add = calcAdditive(stat?.getValue(Stats.EM) || 0)
   const base = BaseReactionDmg[level - 1]
 
   return [
@@ -32,7 +32,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       text: `Forward Melt`,
       title: `Forward Melt`,
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
-        (2 * (1 + stat?.MELT_DMG + amp)).toFixed(2)
+        (2 * (1 + stat?.getValue(StatsObjectKeys.MELT_DMG) + amp)).toFixed(2)
       )}</span> times. Can be applied to Swirl and Burning.`,
       show: _.includes([element, swirl], Element.PYRO) || element === Element.PYRO,
       default: false,
@@ -43,7 +43,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       text: `Reverse Melt`,
       title: `Reverse Melt`,
       content: `Increase <b class="text-genshin-cryo">Cryo DMG</b> by <span class="text-desc">${parseFloat(
-        (1.5 * (1 + stat?.MELT_DMG + amp)).toFixed(2)
+        (1.5 * (1 + stat?.getValue(StatsObjectKeys.MELT_DMG) + amp)).toFixed(2)
       )}</span> times.`,
       show: _.includes([element, swirl], Element.CRYO),
       default: false,
@@ -54,7 +54,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       text: `Forward Vaporize`,
       title: `Forward Vaporize`,
       content: `Increase <b class="text-genshin-hydro">Hydro DMG</b> by <span class="text-desc">${parseFloat(
-        (2 * (1 + stat?.VAPE_DMG + amp)).toFixed(2)
+        (2 * (1 + stat?.getValue(StatsObjectKeys.VAPE_DMG) + amp)).toFixed(2)
       )}</span> times.`,
       show: _.includes([element, swirl], Element.HYDRO),
       default: false,
@@ -65,7 +65,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       text: `Reverse Vaporize`,
       title: `Reverse Vaporize`,
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
-        (1.5 * (1 + stat?.VAPE_DMG + amp)).toFixed(2)
+        (1.5 * (1 + stat?.getValue(StatsObjectKeys.VAPE_DMG) + amp)).toFixed(2)
       )}</span> times. Can be applied to Swirl and Burning.`,
       show: _.includes([element, swirl], Element.PYRO) || element === Element.PYRO,
       default: false,
@@ -76,7 +76,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       text: `Spread`,
       title: `Spread`,
       content: `Increase <b class="text-genshin-dendro">Dendro Base DMG</b> by <span class="text-desc">${_.round(
-        1.25 * base * (1 + stat?.SPREAD_DMG + add)
+        1.25 * base * (1 + stat?.getValue(StatsObjectKeys.SPREAD_DMG) + add)
       ).toLocaleString()}</span>.`,
       show: element === Element.DENDRO,
       default: false,
@@ -87,7 +87,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       text: `Aggravate`,
       title: `Aggravate`,
       content: `Increase <b class="text-genshin-electro">Electro Base DMG</b> by <span class="text-desc">${_.round(
-        1.15 * base * (1 + stat?.AGGRAVATE_DMG + add)
+        1.15 * base * (1 + stat?.getValue(StatsObjectKeys.AGGRAVATE_DMG) + add)
       ).toLocaleString()}</span>.`,
       show: _.includes([element, swirl], Element.ELECTRO),
       default: false,

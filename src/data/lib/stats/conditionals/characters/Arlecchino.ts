@@ -256,7 +256,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      base[Stats.PYRO_DMG] += 0.4
+      base[Stats.PYRO_DMG].push({value: 0.4, name: '', source: ``})
 
       if (c >= 2)
         base.CHARGE_SCALING.push({
@@ -265,12 +265,12 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         })
-      if (form.c2DueConsume) base.ALL_TYPE_RES += 0.2
+      if (form.c2DueConsume) base.ALL_TYPE_RES.push({value: 0.2, name: '', source: ``})
       if (form.c6Crit) {
-        base.BASIC_CR += 0.1
-        base.BASIC_CD += 0.7
-        base.BURST_CR += 0.1
-        base.BURST_CD += 0.7
+        base.BASIC_CR.push({value: 0.1, name: '', source: ``})
+        base.BASIC_CD.push({value: 0.7, name: '', source: ``})
+        base.BURST_CR.push({value: 0.1, name: '', source: ``})
+        base.BURST_CD.push({value: 0.7, name: '', source: ``})
       }
 
       return base

@@ -382,6 +382,15 @@ export const ArtifactForm = () => {
       default: true,
       id: '2890909531',
     },
+    {
+      type: 'toggle',
+      text: `Martial Artist`,
+      title: `Martial Artist`,
+      content: `After using Elemental Skill, increases Normal Attack and Charged Attack DMG by <span class="text-desc">25%</span> for <span class="text-desc">8</span>s.`,
+      show: true,
+      default: true,
+      id: '1774579403',
+    },
   ]
 
   const teamContent: IContent[] = [

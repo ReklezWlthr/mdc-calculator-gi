@@ -15,7 +15,7 @@ export const Tooltip = observer(
     containerStyle,
   }: {
     children: React.ReactElement
-    title: string
+    title: React.ReactNode
     body: React.ReactNode
     position?: TooltipPositionT
     style?: string

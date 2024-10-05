@@ -234,10 +234,10 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.ayaka_a1) {
-        base.BASIC_DMG += 0.3
-        base.CHARGE_DMG += 0.3
+        base.BASIC_DMG.push({value: 0.3, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.3, name: '', source: ``})
       }
-      if (form.ayaka_a4) base[Stats.CRYO_DMG] += 0.18
+      if (form.ayaka_a4) base[Stats.CRYO_DMG].push({value: 0.18, name: '', source: ``})
 
       if (c >= 2)
         base.BURST_SCALING.push(
@@ -255,12 +255,12 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
           }
         )
 
-        if(form.ayaka_c4) base.DEF_REDUCTION += 0.3
+        if(form.ayaka_c4) base.DEF_REDUCTION.push({value: 0.3, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if(form.ayaka_c4) base.DEF_REDUCTION += 0.3
+      if(form.ayaka_c4) base.DEF_REDUCTION.push({value: 0.3, name: '', source: ``})
 
       return base
     },

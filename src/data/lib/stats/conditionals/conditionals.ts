@@ -38,6 +38,7 @@ import Kaeya from './characters/Kaeya'
 import Kaveh from './characters/Kaveh'
 import Kazuha from './characters/Kazuha'
 import Keqing from './characters/Keqing'
+import Kinich from './characters/Kinich'
 import Kirara from './characters/Kirara'
 import Klee from './characters/Klee'
 import Kokomi from './characters/Kokomi'
@@ -172,6 +173,7 @@ export default [
   { id: '10000095', conditionals: Sigewinne },
   { id: '10000097', conditionals: Sethos },
   { id: '10000098', conditionals: Clorinde },
+  { id: '10000101', conditionals: Kinich },
   { id: '10000102', conditionals: Mualani },
   // Travelers
   { id: '10000005-504', conditionals: TravelerWind },

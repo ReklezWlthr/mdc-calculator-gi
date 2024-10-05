@@ -218,7 +218,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.faruzan_burst) base[Stats.ANEMO_DMG] += calcScaling(0.18, burst, 'elemental', '1')
-      if (form.faruzan_burst_shred) base.ANEMO_RES_PEN += 0.3
+      if (form.faruzan_burst_shred) base.ANEMO_RES_PEN.push({value: 0.3, name: '', source: ``})
 
       return base
     },
@@ -227,14 +227,14 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.hurricane_guard) base.ANEMO_F_DMG += hurricane
 
-      if (form.faruzan_burst && c >= 6) base.ANEMO_CD += 0.4
+      if (form.faruzan_burst && c >= 6) base.ANEMO_CD.push({value: 0.4, name: '', source: ``})
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       const hurricane = base.getAtk() * 0.32
 
       if (form.hurricane_guard) if (form.hurricane_guard) base.ANEMO_F_DMG += hurricane
-      if (form.faruzan_burst && c >= 6) base.ANEMO_CD += 0.4
+      if (form.faruzan_burst && c >= 6) base.ANEMO_CD.push({value: 0.4, name: '', source: ``})
 
       return base
     },

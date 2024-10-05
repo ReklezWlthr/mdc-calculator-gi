@@ -252,16 +252,16 @@ const Albedo = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.dustOfPurification) base[Stats.ALL_DMG] += 0.17
-      if (form.homuncularNature) base[Stats.EM] += 125
-      if (form.descentOfDivinity) base.PLUNGE_DMG += 0.3
+      if (form.dustOfPurification) base[Stats.ALL_DMG].push({value: 0.17, name: '', source: ``})
+      if (form.homuncularNature) base[Stats.EM].push({value: 125, name: '', source: ``})
+      if (form.descentOfDivinity) base.PLUNGE_DMG.push({value: 0.3, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.dustOfPurification) base[Stats.ALL_DMG] += 0.17
-      if (form.homuncularNature) base[Stats.EM] += 250
-      if (form.descentOfDivinity) base.PLUNGE_DMG += 0.3
+      if (form.dustOfPurification) base[Stats.ALL_DMG].push({value: 0.17, name: '', source: ``})
+      if (form.homuncularNature) base[Stats.EM].push({value: 250, name: '', source: ``})
+      if (form.descentOfDivinity) base.PLUNGE_DMG.push({value: 0.3, name: '', source: ``})
 
       return base
     },

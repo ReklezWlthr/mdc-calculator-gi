@@ -276,8 +276,8 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
 
       if (form.lyney_a4) base[Stats.ALL_DMG] += _.min([0.6 + pyroCount * 0.2, 1])
-      if (form.lyney_c2) base[Stats.CRIT_DMG] += 0.2 * form.lyney_c2
-      if (form.lyney_c4) base.PYRO_RES_PEN += 0.2
+      if (form.lyney_c2) base[Stats.CRIT_DMG].push({value: 0.2, name: '', source: ``}) * form.lyney_c2
+      if (form.lyney_c4) base.PYRO_RES_PEN.push({value: 0.2, name: '', source: ``})
 
       if (c >= 6)
         base.CHARGE_SCALING.push({

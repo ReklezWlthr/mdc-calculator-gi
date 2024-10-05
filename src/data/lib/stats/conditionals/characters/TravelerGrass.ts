@@ -216,19 +216,19 @@ const TravelerGrass = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.dmc_a1) base[Stats.EM] += form.dmc_a1 * 6
-      if (form.dmc_a6) base[Stats.DENDRO_DMG] += 0.12
+      if (form.dmc_a6) base[Stats.DENDRO_DMG].push({value: 0.12, name: '', source: ``})
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.dmc_c6_transfig) base[Stats[`${form.dmc_c6_transfig.toUpperCase()}_DMG`]] += 0.12
+      if (form.dmc_c6_transfig) base[Stats[`${form.dmc_c6_transfig.toUpperCase()}_DMG`]].push({value: 0.12, name: '', source: ``})
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (a >= 4) {
-        base.SKILL_DMG += 0.0015 * base[Stats.EM]
-        base.BURST_DMG += 0.001 * base[Stats.EM]
+        base.SKILL_DMG.push({value: 0.0015, name: '', source: ``}) * base[Stats.EM]
+        base.BURST_DMG.push({value: 0.001, name: '', source: ``}) * base[Stats.EM]
       }
 
       return base

@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import getConfig from 'next/config'
+import { TalentIcon } from './tables/scaling_wrapper'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -76,65 +77,35 @@ export const ConsCircle = observer(
       <div className="space-y-5">
         <div className="flex flex-col justify-around w-[252px] h-[252px]">
           <div className="flex justify-center">
-            <Tooltip
-              title={talents?.c1?.title}
-              body={<TooltipBody talent={talents?.c1} stats={stats} unlocked={cons >= 1} />}
-              style="w-[30vw]"
-            >
-              <div className="rounded-full bg-primary-bg">
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
-                    codeName === 'Aloy' ? '_Lock' : codeName === 'Shenhe' ? '_02' : '_01'
-                  }.png`}
-                  className={classNames(
-                    'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                    cons >= 1 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                  )}
-                />
-              </div>
-            </Tooltip>
+            <div className="rounded-full bg-primary-bg">
+              <TalentIcon
+                talent={talents?.c1}
+                element={element}
+                active={cons >= 1}
+                tooltipSize="w-[30vw]"
+                type={talents?.c1?.trace}
+              />
+            </div>
           </div>
           <div className="flex justify-between px-3">
-            <Tooltip
-              title={talents?.c6?.title}
-              body={<TooltipBody talent={talents?.c6} stats={stats} unlocked={cons >= 6} />}
-              style="w-[30vw]"
-            >
-              <div className="rounded-full bg-primary-bg">
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
-                    codeName === 'PlayerGrass' ? '_06' : codeName === 'Aloy' ? '_Lock' : '_04'
-                  }.png`}
-                  className={classNames(
-                    'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                    cons >= 6 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                  )}
-                />
-              </div>
-            </Tooltip>
-            <Tooltip
-              title={talents?.c2?.title}
-              body={<TooltipBody talent={talents?.c2} stats={stats} unlocked={cons >= 2} />}
-              style="w-[30vw]"
-            >
-              <div className="rounded-full bg-primary-bg">
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
-                    codeName === 'Aloy'
-                      ? '_Lock'
-                      : codeName === 'Ningguang'
-                      ? '_05'
-                      : codeName === 'Shenhe'
-                      ? '_01'
-                      : '_02'
-                  }.png`}
-                  className={classNames(
-                    'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                    cons >= 2 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                  )}
-                />
-              </div>
-            </Tooltip>
+            <div className="rounded-full bg-primary-bg">
+              <TalentIcon
+                talent={talents?.c6}
+                element={element}
+                active={cons >= 6}
+                tooltipSize="w-[30vw]"
+                type={talents?.c6?.trace}
+              />
+            </div>
+            <div className="rounded-full bg-primary-bg">
+              <TalentIcon
+                talent={talents?.c2}
+                element={element}
+                active={cons >= 2}
+                tooltipSize="w-[30vw]"
+                type={talents?.c2?.trace}
+              />
+            </div>
           </div>
           <div className="relative flex items-center justify-center h-12 -z-50">
             <p className="w-1/2 px-1 text-lg font-bold text-center">{name}</p>
@@ -152,81 +123,35 @@ export const ConsCircle = observer(
             />
           </div>
           <div className="flex justify-between px-3">
-            <Tooltip
-              title={talents?.c5?.title}
-              body={<TooltipBody talent={talents?.c5} stats={stats} unlocked={cons >= 5} />}
-              style="w-[25vw]"
-            >
-              <div className="rounded-full bg-primary-bg">
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${
-                    _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
-                  }_${codeName}${
-                    codeName === 'PlayerGrass'
-                      ? '_05'
-                      : codeName === 'Aloy'
-                      ? '_Lock'
-                      : _.includes(ReverseConsList, codeName)
-                      ? '_01'
-                      : '_02'
-                  }.png`}
-                  className={classNames(
-                    'shrink-0 w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                    cons >= 5 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                  )}
-                />
-              </div>
-            </Tooltip>
-            <Tooltip
-              title={talents?.c3?.title}
-              body={<TooltipBody talent={talents?.c3} stats={stats} unlocked={cons >= 3} />}
-              style="w-[25vw]"
-            >
-              <div className="rounded-full bg-primary-bg">
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${
-                    _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
-                  }_${codeName}${
-                    codeName === 'PlayerGrass'
-                      ? '_03'
-                      : codeName === 'Aloy'
-                      ? '_Lock'
-                      : _.includes(ReverseConsList, codeName)
-                      ? '_02'
-                      : '_01'
-                  }.png`}
-                  className={classNames(
-                    'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                    cons >= 3 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                  )}
-                />
-              </div>
-            </Tooltip>
+            <div className="rounded-full bg-primary-bg">
+              <TalentIcon
+                talent={talents?.c5}
+                element={element}
+                active={cons >= 5}
+                tooltipSize="w-[30vw]"
+                type={talents?.c5?.trace}
+              />
+            </div>
+            <div className="rounded-full bg-primary-bg">
+              <TalentIcon
+                talent={talents?.c3}
+                element={element}
+                active={cons >= 3}
+                tooltipSize="w-[30vw]"
+                type={talents?.c3?.trace}
+              />
+            </div>
           </div>
           <div className="flex justify-center">
-            <Tooltip
-              title={talents?.c4?.title}
-              body={<TooltipBody talent={talents?.c4} stats={stats} unlocked={cons >= 4} />}
-              style="w-[30vw]"
-            >
-              <div className="rounded-full bg-primary-bg">
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_S_${codeName}${
-                    codeName === 'PlayerGrass'
-                      ? '_04'
-                      : codeName === 'Aloy'
-                      ? '_Lock'
-                      : codeName === 'Tartaglia'
-                      ? '_05'
-                      : '_03'
-                  }.png`}
-                  className={classNames(
-                    'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                    cons >= 4 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
-                  )}
-                />
-              </div>
-            </Tooltip>
+            <div className="rounded-full bg-primary-bg">
+              <TalentIcon
+                talent={talents?.c4}
+                element={element}
+                active={cons >= 4}
+                tooltipSize="w-[30vw]"
+                type={talents?.c4?.trace}
+              />
+            </div>
           </div>
         </div>
       </div>

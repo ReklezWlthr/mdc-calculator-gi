@@ -32,7 +32,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   const isEmpty = !characterData
 
   const codeName =
-    characterData?.codeName === 'Player' ? settingStore.settings.travelerGender : characterData?.codeName || 'Paimon'
+    characterData?.codeName === 'Player' ? settingStore.settings.travelerGender : characterData?.codeName || ''
 
   const levels = useMemo(
     () =>
@@ -54,14 +54,41 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-3 text-xl rounded-t-lg bg-primary-lighter">Character</div>
       <div className="flex">
-        <div className="flex items-center w-1/2 px-5 py-3">
-          <img
-            src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
-            className="object-contain w-full duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
-            onClick={onOpenModal}
-          />
+        <div
+          className="relative h-[136px] m-3 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
+          onClick={onOpenModal}
+        >
+          {characterData && (
+            <>
+              <img
+                src={`https://api.hakush.in/gi/UI/UI_AvatarIcon_${codeName}.webp`}
+                className="object-cover aspect-square object-[0_20%]"
+              />
+              <div className="flex gap-0.5 absolute bottom-1 left-1">
+                <div
+                  className="flex items-center justify-center w-8 h-8 p-1 bg-opacity-75 rounded-full bg-primary-darker"
+                  title={characterData?.weapon}
+                >
+                  <img src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${WeaponIcon[characterData?.weapon]}`} />
+                </div>
+              </div>
+              <div className="absolute px-1.5 py-0.5 rounded-lg bottom-1 right-1 bg-primary-darker">
+                <RarityGauge rarity={rarity} textSize="text-xs" />
+              </div>
+              <div className="flex gap-0.5 absolute bottom-10 left-1">
+                <div
+                  className="flex items-center justify-center w-8 h-8 p-1.5 rounded-full bg-primary-darker bg-opacity-75"
+                  title={characterData?.element}
+                >
+                  <img
+                    src={`https://cdn.wanderer.moe/genshin-impact/elements/${characterData?.element?.toLowerCase()}.png`}
+                  />
+                </div>
+              </div>
+            </>
+          )}
         </div>
-        <div className="w-1/2 px-2 py-3 space-y-2">
+        <div className="w-full py-3 pl-2 pr-5 space-y-2">
           <div className="space-y-1">
             <p className="text-sm font-semibold">Name</p>
             <PillInput
@@ -110,23 +137,6 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               />
             </div>
           </div>
-          {characterData && (
-            <div className="flex items-center justify-between gap-2 px-3 pt-1">
-              <div className="flex gap-0.5">
-                <div className="p-1 rounded-full w-11 h-11 bg-primary" title={characterData?.weapon}>
-                  <img src={`https://enka.network/ui/${WeaponIcon[characterData?.weapon]}`} />
-                </div>
-              </div>
-              <RarityGauge rarity={rarity} />
-              <div className="flex gap-0.5">
-                <div className="p-2 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
-                  <img
-                    src={`https://cdn.wanderer.moe/genshin-impact/elements/${characterData?.element?.toLowerCase()}.png`}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

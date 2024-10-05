@@ -8,7 +8,7 @@ enableStaticRendering(typeof window === 'undefined')
 
 export const DefaultBuild = {
   weapon: DefaultWeapon,
-  artifacts: Array(5),
+  artifacts: Array(5).fill(null),
 }
 
 export interface BuildStoreType {

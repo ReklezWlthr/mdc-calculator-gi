@@ -265,18 +265,18 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.shenhe_shred) {
-        base.PHYSICAL_RES_PEN += 5 + _.min([burst, 10])
-        base.CRYO_RES_PEN += 5 + _.min([burst, 10])
+        base.PHYSICAL_RES_PEN.push({value: 5 , name: '', source: ``})+ _.min([burst, 10])
+        base.CRYO_RES_PEN.push({value: 5 , name: '', source: ``})+ _.min([burst, 10])
       }
-      if (form.shenhe_a1) base[Stats.CRYO_DMG] += 0.15
+      if (form.shenhe_a1) base[Stats.CRYO_DMG].push({value: 0.15, name: '', source: ``})
       if (form.shenhe_a4_press) {
-        base.SKILL_DMG += 0.15
-        base.BURST_DMG += 0.15
+        base.SKILL_DMG.push({value: 0.15, name: '', source: ``})
+        base.BURST_DMG.push({value: 0.15, name: '', source: ``})
       }
       if (form.shenhe_a4_hold) {
-        base.BASIC_DMG += 0.15
-        base.CHARGE_DMG += 0.15
-        base.PLUNGE_DMG += 0.15
+        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.PLUNGE_DMG.push({value: 0.15, name: '', source: ``})
       }
 
       return base
@@ -284,29 +284,29 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.icy_quill)
         if (form.icy_quill) base.CRYO_F_DMG += calcScaling(0.4566, skill, 'elemental', '1') * own.getAtk()
-      if (form.shenhe_a1) base[Stats.CRYO_DMG] += 0.15
-      if (form.shenhe_c2) base.CRYO_CD += 0.15
+      if (form.shenhe_a1) base[Stats.CRYO_DMG].push({value: 0.15, name: '', source: ``})
+      if (form.shenhe_c2) base.CRYO_CD.push({value: 0.15, name: '', source: ``})
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (form.icy_quill) base.CRYO_F_DMG += calcScaling(0.4566, skill, 'elemental', '1') * base.getAtk()
-      if (form.shenhe_a1) base[Stats.CRYO_DMG] += 0.15
-      if (form.shenhe_c2) base.CRYO_CD += 0.15
+      if (form.shenhe_a1) base[Stats.CRYO_DMG].push({value: 0.15, name: '', source: ``})
+      if (form.shenhe_c2) base.CRYO_CD.push({value: 0.15, name: '', source: ``})
 
       if (form.shenhe_shred) {
-        base.PHYSICAL_RES_PEN += 5 + _.min([burst, 10])
-        base.CRYO_RES_PEN += 5 + _.min([burst, 10])
+        base.PHYSICAL_RES_PEN.push({value: 5 , name: '', source: ``})+ _.min([burst, 10])
+        base.CRYO_RES_PEN.push({value: 5 , name: '', source: ``})+ _.min([burst, 10])
       }
-      if (form.shenhe_a1) base[Stats.CRYO_DMG] += 0.15
+      if (form.shenhe_a1) base[Stats.CRYO_DMG].push({value: 0.15, name: '', source: ``})
       if (form.shenhe_a4_press) {
-        base.SKILL_DMG += 0.15
-        base.BURST_DMG += 0.15
+        base.SKILL_DMG.push({value: 0.15, name: '', source: ``})
+        base.BURST_DMG.push({value: 0.15, name: '', source: ``})
       }
       if (form.shenhe_a4_hold) {
-        base.BASIC_DMG += 0.15
-        base.CHARGE_DMG += 0.15
-        base.PLUNGE_DMG += 0.15
+        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.PLUNGE_DMG.push({value: 0.15, name: '', source: ``})
       }
 
       return base

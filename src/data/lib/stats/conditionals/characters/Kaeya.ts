@@ -193,8 +193,8 @@ const Kaeya = (c: number, a: number, t: ITalentLevel) => {
         })
 
       if (form.kae_c1) {
-        base.BASIC_CR += 0.15
-        base.CHARGE_CR += 0.15
+        base.BASIC_CR.push({value: 0.15, name: '', source: ``})
+        base.CHARGE_CR.push({value: 0.15, name: '', source: ``})
       }
       if (c >= 4)
         base.SKILL_SCALING.push({
