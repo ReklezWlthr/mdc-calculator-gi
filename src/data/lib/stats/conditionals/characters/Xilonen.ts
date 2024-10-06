@@ -92,7 +92,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'UI_Talent_S_Xilonen_08',
     },
     bonus: {
-      trace: `Utiliy Passive`,
+      trace: `Night Realm's Gift`,
       title: `Blessing of Forge-Fire`,
       content: `After her <b class="text-genshin-geo">Nightsoul</b> points are fully depleted, Xilonen will switch to consuming <b class="text-genshin-pyro">Phlogiston</b> to maintain her <b class="text-genshin-geo">Nightsoul's Blessing</b>.
       <br />While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, she can use <b>Nightsoul Transmission: Xilonen</b>. When the active character is currently sprinting, climbing, in a movement mode caused by certain Talents, or at a certain height in the air, the following will trigger when switching to Xilonen: Xilonen will enter the <b class="text-genshin-geo">Nightsoul's Blessing</b> state and gain <span class="text-desc">20</span> <b class="text-genshin-geo">Nightsoul</b> points. In this situation, Xilonen's <b class="text-genshin-geo">Nightsoul</b> points have a <span class="text-desc">4</span>s time limit, after which her <b class="text-genshin-geo">Nightsoul</b> points will immediately expire. After she uses <b>Yohual's Scratch</b> within this time limit, her <b class="text-genshin-geo">Nightsoul</b> point time limit will be extended by <span class="text-desc">9</span>s. <b>Nightsoul Transmission</b> can be triggered once every <span class="text-desc">10</span>s by your own team.

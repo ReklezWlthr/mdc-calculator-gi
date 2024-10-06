@@ -70,9 +70,9 @@ const Kinich = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     util: {
       trace: `Utiliy Passive`,
-      title: `A Rad Recipe`,
+      title: `Swift Envoy`,
       content: `While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, interacting with some harvestable items will increase your own party members' Movement SPD by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s. Additionally, the location of nearby resources unique to Natlan will appear on your mini-map.`,
-      image: 'UI_Talent_S_Kinich_08',
+      image: 'UI_Talent_S_Kachina_08',
     },
     bonus: {
       trace: `Night Realm's Gift`,

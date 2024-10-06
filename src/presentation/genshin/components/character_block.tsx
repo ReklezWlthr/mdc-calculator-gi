@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { CharacterModal } from './character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
@@ -8,10 +8,10 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { findBaseLevel } from '@src/core/utils/data_format'
 import _ from 'lodash'
 import { findMaxLevel } from '../../../core/utils/data_format'
-import classNames from 'classnames'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultCharacter } from '@src/data/stores/team_store'
 import { findCharacter } from '@src/core/utils/finder'
+import { getElementImage, getWeaponImage } from '@src/core/utils/fetcher'
 
 interface CharacterBlockProps {
   index: number
@@ -69,7 +69,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                   className="flex items-center justify-center w-8 h-8 p-1 bg-opacity-75 rounded-full bg-primary-darker"
                   title={characterData?.weapon}
                 >
-                  <img src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${WeaponIcon[characterData?.weapon]}`} />
+                  <img src={getWeaponImage(characterData?.weapon)} />
                 </div>
               </div>
               <div className="absolute px-1.5 py-0.5 rounded-lg bottom-1 right-1 bg-primary-darker">
@@ -80,9 +80,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                   className="flex items-center justify-center w-8 h-8 p-1.5 rounded-full bg-primary-darker bg-opacity-75"
                   title={characterData?.element}
                 >
-                  <img
-                    src={`https://cdn.wanderer.moe/genshin-impact/elements/${characterData?.element?.toLowerCase()}.png`}
-                  />
+                  <img src={getElementImage(characterData?.element)} />
                 </div>
               </div>
             </>

@@ -2,29 +2,25 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { GenshinPage } from '@src/domain/constant'
 import classNames from 'classnames'
 import { useCallback } from 'react'
+import Link from 'next/link'
 import { SettingModal } from './setting_modal'
 import { HelpModal } from './help_modal'
 import { IntroModal } from './intro_modal'
 
-export const Sidebar = ({
-  currentPage,
-  onChange,
-}: {
-  currentPage: GenshinPage
-  onChange: (page: GenshinPage) => void
-}) => {
+export const Sidebar = ({ currentPage, onChange }: { currentPage: GenshinPage; onChange: (page: GenshinPage) => void }) => {
   const { modalStore } = useStore()
 
-  const Pill = ({ name, page }: { name: string; page: GenshinPage }) => {
+  const Pill = ({ name, page, icon }: { name: string; page: GenshinPage; icon: string }) => {
     return (
       <div
         className={classNames(
-          'px-4 py-2 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray',
+          'flex items-center gap-2 px-3 py-2 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray',
           page === currentPage ? 'bg-primary' : 'hover:bg-primary-dark'
         )}
         onClick={() => onChange(page)}
       >
-        {name}
+        <i className={classNames(icon, 'w-5 flex items-center justify-center text-white')} />
+        <p>{name}</p>
       </div>
     )
   }
@@ -36,15 +32,23 @@ export const Sidebar = ({
   return (
     <div className="flex flex-col justify-between w-1/6 p-2 bg-primary-darker shrink-0">
       <div className="space-y-2">
+        <Link href="/" className="flex flex-col items-end py-2 mx-3 text-white gap-x-2">
+          <p className="flex items-center w-full text-2xl">
+            MD<span className="text-base text-desc">✦</span>C Calculator
+          </p>
+          <p className="text-xs font-normal text-gray">Genshin Impact</p>
+        </Link>
+        <div className="border-t border-primary-light" />
         <p className="p-2 font-bold text-white">Calculator</p>
-        <Pill name="Team Setup" page={GenshinPage.TEAM} />
-        <Pill name="Damage Calculator" page={GenshinPage.DMG} />
-        {/* <Pill name="ER Requirement" page={GenshinPage.ER} /> */}
-        <Pill name="Import / Export" page={GenshinPage.IMPORT} />
+        <Pill name="Team Setup" page={GenshinPage.TEAM} icon="fa-solid fa-user" />
+        <Pill name="Damage Calculator" page={GenshinPage.DMG} icon="fa-solid fa-chart-simple" />
+        {/* <Pill name="Turn Cycle" page={HsrPage.CYCLE} /> */}
+        {/* <Pill name="Compare" page={GenshinPage.COMPARE} icon="fa-solid fa-arrow-right-arrow-left" /> */}
+        <Pill name="Import / Export" page={GenshinPage.IMPORT} icon="fa-solid fa-file-import" />
         <p className="p-2 font-bold text-white">Account</p>
-        <Pill name="My Characters" page={GenshinPage.CHAR} />
-        <Pill name="My Builds" page={GenshinPage.BUILD} />
-        <Pill name="Artifact Inventory" page={GenshinPage.INVENTORY} />
+        <Pill name="My Characters" page={GenshinPage.CHAR} icon="fa-solid fa-user-group" />
+        <Pill name="My Builds" page={GenshinPage.BUILD} icon="fa-solid fa-screwdriver-wrench" />
+        <Pill name="Relic Inventory" page={GenshinPage.INVENTORY} icon="fa-solid fa-briefcase" />
       </div>
       <div className="flex items-end justify-between px-3">
         <div className="space-y-3 text-sm">

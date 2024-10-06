@@ -35,7 +35,6 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <Toast />
         <div className="flex flex-col w-screen h-screen max-h-screen overflow-x-hidden min-w-[1440px]">
-          <NavBar />
           <Modal />
           <Component {...pageProps} />
         </div>

@@ -2,6 +2,7 @@ import { ICharStore } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
+import { Characters } from '../db/characters'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -85,7 +86,7 @@ export class CharacterStore {
 
   constructor() {
     this.characters = DefaultAccount
-    this.selected = ''
+    this.selected = _.head(_.orderBy(Characters, ['name'])).id
     this.loading = true
 
     makeAutoObservable(this)
