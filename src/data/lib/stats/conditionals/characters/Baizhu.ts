@@ -32,24 +32,27 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Calling upon the might of Dendro, Baizhu plunges towards the ground from mid-air, damaging all opponents in his path. Deals <b class="text-genshin-dendro">AoE Dendro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Universal Diagnosis`,
-      content: `Controls a Gossamer Sprite that cruises and attacks nearby opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b>.
-      <br />After it performs <span class="text-desc">3</span> attacks or if there are no opponents nearby, the Sprite will return, healing all nearby party members based on Baizhu's Max HP.
+      content: `Controls a <b>Gossamer Sprite</b> that cruises and attacks nearby opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b>.
+      <br />After it performs <span class="text-desc">3</span> attacks or if there are no opponents nearby, the <b>Sprite</b> will return, healing all nearby party members based on Baizhu's Max HP.
       `,
+      image: 'Skill_S_Baizhuer_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Holistic Revivification`,
-      content: `Enters the Pulsing Clarity state, creating a Seamless Shield that absorbs <b class="text-genshin-dendro">Dendro DMG</b> with <span class="text-desc">250%</span> effectiveness.
-      <br />While in this state, Baizhu will generate a new Seamless Shield every <span class="text-desc">2.5</span>s.
+      content: `Enters the Pulsing Clarity state, creating a <b class="text-genshin-dendro">Seamless Shield</b> that absorbs <b class="text-genshin-dendro">Dendro DMG</b> with <span class="text-desc">250%</span> effectiveness.
+      <br />While in this state, Baizhu will generate a new <b class="text-genshin-dendro">Seamless Shield</b> every <span class="text-desc">2.5</span>s.
       <br />
-      <br />The Seamless Shield will heal your own active character based on Baizhu's Max HP and attack opponents by unleashing Spiritveins, dealing <b class="text-genshin-dendro">Dendro DMG</b> under the following circumstances:
-      <br />- When a character is under the protection of a Seamless Shield and a new Seamless Shield is generated.
-      <br />- When the Seamless Shield's effects expire, or when it is shattered.
+      <br />The <b class="text-genshin-dendro">Seamless Shield</b> will heal your own active character based on Baizhu's Max HP and attack opponents by unleashing <b>Spiritveins</b>, dealing <b class="text-genshin-dendro">Dendro DMG</b> under the following circumstances:
+      <br />- When a character is under the protection of a <b class="text-genshin-dendro">Seamless Shield</b> and a new <b class="text-genshin-dendro">Seamless Shield</b> is generated.
+      <br />- When the <b class="text-genshin-dendro">Seamless Shield</b>'s effects expire, or when it is shattered.
       `,
+      image: 'Skill_E_Baizhuer_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
@@ -57,62 +60,61 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       content: `Baizhu gains different effects according to the current HP of your current active character:
       <br />When their HP is less than <span class="text-desc">50%</span>, Baizhu gains <span class="text-desc">20%</span> Healing Bonus.
       <br />When their HP is equal to or more than <span class="text-desc">50%</span>, Baizhu gains <span class="text-desc">25%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b>.`,
+      image: 'UI_Talent_S_Baizhuer_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `All Things Are of the Earth`,
-      content: `Characters who are healed by Seamless Shields will gain the Year of Verdant Favor effect: Each <span class="text-desc">1,000</span> Max HP that Baizhu possesses that does not exceed <span class="text-desc">50,000</span> will increase the Burning, Bloom, Hyperbloom, and Burgeon reaction DMG dealt by these characters by <span class="text-desc">2%</span>, while the Aggravate and Spread reaction DMG dealt by these characters will be increased by <span class="text-desc">0.8%</span>. This effect lasts <span class="text-desc">6</span>s.`,
-      value: [
-        {
-          name: 'Transformative DMG Bonus',
-          value: { stat: Stats.HP, scaling: (hp) => toPercentage((_.min([hp, 50000]) / 1000) * 0.02) },
-        },
-        {
-          name: 'Additive DMG Bonus',
-          value: { stat: Stats.HP, scaling: (hp) => toPercentage((_.min([hp, 50000]) / 1000) * 0.008) },
-        },
-      ],
+      content: `Characters who are healed by <b class="text-genshin-dendro">Seamless Shield</b> will gain the <b class="text-genshin-dendro">Year of Verdant Favor</b> effect: Each <span class="text-desc">1,000</span> Max HP that Baizhu possesses that does not exceed <span class="text-desc">50,000</span> will increase the Burning, Bloom, Hyperbloom, and Burgeon reaction DMG dealt by these characters by <span class="text-desc">2%</span>, while the Aggravate and Spread reaction DMG dealt by these characters will be increased by <span class="text-desc">0.8%</span>. This effect lasts <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Baizhuer_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Herbal Nourishment`,
       content: `When Baizhu is in the party, interacting with certain harvestable items will heal your current active character for <span class="text-desc">2.5%</span> of Baizhu's Max HP.`,
+      image: 'UI_Talent_S_Baizhuer_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Attentive Observation`,
-      content: `Universal Diagnosis gains <span class="text-desc">1</span> additional charge.`,
+      content: `<b>Universal Diagnosis</b> gains <span class="text-desc">1</span> additional charge.`,
+      image: 'UI_Talent_S_Baizhuer_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Incisive Discernment`,
-      content: `When your own active character hits a nearby opponent with their attacks, Baizhu will unleash a Gossamer Sprite: Splice.
-      <br />Gossamer Sprite: Splice will initiate 1 attack before returning, dealing <span class="text-desc">250%</span> of Baizhu's ATK as <b class="text-genshin-dendro">Dendro DMG</b> and healing for <span class="text-desc">20%</span> of Universal Diagnosis's Gossamer Sprite's normal healing.
+      content: `When your own active character hits a nearby opponent with their attacks, Baizhu will unleash a <b>Gossamer Sprite: Splice</b>.
+      <br /><b>Gossamer Sprite: Splice</b> will initiate <span class="text-desc">1</span> attack before returning, dealing <span class="text-desc">250%</span> of Baizhu's ATK as <b class="text-genshin-dendro">Dendro DMG</b> and healing for <span class="text-desc">20%</span> of <b>Universal Diagnosis</b>'s <b>Gossamer Sprite</b>'s normal healing.
       <br />DMG dealt this way is considered Elemental Skill DMG.
       <br />This effect can be triggered once every <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Baizhuer_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `All Aspects Stabilized`,
-      content: `Increases the Level of Holistic Revivification by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Holistic Revivification</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Baizhuer_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Ancient Art of Perception`,
-      content: `For <span class="text-desc">15</span>s after Holistic Revivification is used, Baizhu will increase all nearby party members' Elemental Mastery by <span class="text-desc">80</span>.`,
+      content: `For <span class="text-desc">15</span>s after <b>Holistic Revivification</b> is used, Baizhu will increase all nearby party members' Elemental Mastery by <span class="text-desc">80</span>.`,
+      image: 'UI_Talent_S_Baizhuer_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `The Hidden Ebb and Flow`,
-      content: `Increases the Level of Universal Diagnosis by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Universal Diagnosis</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Baizhuer_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Elimination of Malicious Qi`,
-      content: `Increases the DMG dealt by Holistic Revivification's Spiritveins by <span class="text-desc">8%</span> of Baizhu's Max HP.
-      <br />Additionally, when a Gossamer Sprite or Gossamer Sprite: Splice hits opponents, there is a <span class="text-desc">100%</span> chance of generating one of Holistic Revivification's Seamless Shields. This effect can only be triggered once by each Gossamer Sprite or Gossamer Sprite: Splice.`,
+      content: `Increases the DMG dealt by <b>Holistic Revivification</b>'s <b>Spiritveins</b> by <span class="text-desc">8%</span> of Baizhu's Max HP.
+      <br />Additionally, when a <b>Gossamer Sprite</b> or <b>Gossamer Sprite: Splice</b> hits opponents, there is a <span class="text-desc">100%</span> chance of generating one of <b>Holistic Revivification</b>'s <b class="text-genshin-dendro">Seamless Shields</b>. This effect can only be triggered once by each <b>Gossamer Sprite</b> or <b>Gossamer Sprite: Splice</b>.`,
+      image: 'UI_Talent_S_Baizhuer_04',
     },
   }
 
@@ -122,8 +124,16 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       id: 'bai_a1',
       text: `Active Character HP >= 50%`,
       ...talents.a1,
-      show: true,
+      show: a >= 1,
       default: true,
+    },
+    {
+      type: 'toggle',
+      id: 'bai_a4',
+      text: `Year of Verdant Fervor`,
+      ...talents.a4,
+      show: a >= 4,
+      default: false,
     },
     {
       type: 'toggle',
@@ -142,7 +152,7 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'bai_a4')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
 
@@ -243,43 +253,69 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
         )
 
       if (form.bai_a1) {
-        base[Stats.DENDRO_DMG].push({value: 0.25, name: '', source: ``})
+        base[Stats.DENDRO_DMG].push({ value: 0.25, name: 'Ascension 1 Passive', source: `Self` })
       } else {
-        base[Stats.HEAL].push({value: 0.2, name: '', source: ``})
+        base[Stats.HEAL].push({ value: 0.2, name: 'Ascension 1 Passive', source: `Self` })
       }
 
-      if (form.bai_c4) base[Stats.EM].push({value: 80, name: '', source: ``})
+      if (form.bai_c4) base[Stats.EM].push({ value: 80, name: 'Constellation 4', source: `Self` })
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      const a4Trans = (_.min([own.getHP(), 50000]) / 1000) * 0.02
-      const a4Add = (_.min([own.getHP(), 50000]) / 1000) * 0.008
-
-      if (a >= 4) {
-        base.BURNING_DMG += a4Trans
-        base.BLOOM_DMG += a4Trans
-        base.HYPERBLOOM_DMG += a4Trans
-        base.BURGEON_DMG += a4Trans
-        base.SPREAD_DMG += a4Add
-        base.AGGRAVATE_DMG += a4Add
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      const b = _.min([own.getHP(), 50000]) / 1000
+      const a4Trans = {
+        value: b * 0.02,
+        name: 'Ascension 4 Passive',
+        source: 'Baizhu',
+        base: b,
+        multiplier: 0.02,
+      }
+      const a4Add = {
+        value: b * 0.008,
+        name: 'Ascension 4 Passive',
+        source: 'Baizhu',
+        base: b,
+        multiplier: 0.008,
       }
 
-      if (form.bai_c4) base[Stats.EM].push({value: 80, name: '', source: ``})
+      if (aForm.bai_a4) {
+        base.BURNING_DMG.push(a4Trans)
+        base.BLOOM_DMG.push(a4Trans)
+        base.HYPERBLOOM_DMG.push(a4Trans)
+        base.BURGEON_DMG.push(a4Trans)
+        base.SPREAD_DMG.push(a4Add)
+        base.AGGRAVATE_DMG.push(a4Add)
+      }
+
+      if (form.bai_c4) base[Stats.EM].push({ value: 80, name: '', source: `` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      const a4Trans = (_.min([base.getHP(), 50000]) / 1000) * 0.02
-      const a4Add = (_.min([base.getHP(), 50000]) / 1000) * 0.008
+      const b = _.min([base.getHP(), 50000]) / 1000
+      const a4Trans = {
+        value: b * 0.02,
+        name: 'Ascension 4 Passive',
+        source: 'Self',
+        base: b,
+        multiplier: 0.02,
+      }
+      const a4Add = {
+        value: b * 0.008,
+        name: 'Ascension 4 Passive',
+        source: 'Self',
+        base: b,
+        multiplier: 0.008,
+      }
 
-      if (a >= 4) {
-        base.BURNING_DMG += a4Trans
-        base.BLOOM_DMG += a4Trans
-        base.HYPERBLOOM_DMG += a4Trans
-        base.BURGEON_DMG += a4Trans
-        base.SPREAD_DMG += a4Add
-        base.AGGRAVATE_DMG += a4Add
+      if (form.bai_a4) {
+        base.BURNING_DMG.push(a4Trans)
+        base.BLOOM_DMG.push(a4Trans)
+        base.HYPERBLOOM_DMG.push(a4Trans)
+        base.BURGEON_DMG.push(a4Trans)
+        base.SPREAD_DMG.push(a4Add)
+        base.AGGRAVATE_DMG.push(a4Add)
       }
 
       return base

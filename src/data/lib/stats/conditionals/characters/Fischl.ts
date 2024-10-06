@@ -30,6 +30,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -39,6 +40,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b>Hold</b> to adjust the location Oz will be summoned to.
       <br /><b>Press</b> again any time during the ability's duration to once again summon him to Fischl's side.`,
+      image: 'Skill_S_Fischl_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -49,54 +51,64 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       <br />- Strikes nearby opponents with lightning, dealing <b class="text-genshin-electro">Electro DMG</b> to opponents she comes into contact with. Each opponent can only be struck once.
       <br />- Once this ability's effects end, Oz will remain on the battlefield and attack his Prinzessin's foes. If Oz is already on the field, then this will reset the duration of his presence.
       `,
+      image: 'Skill_E_Fischl_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Stellar Predator`,
-      content: `When Fischl hits Oz with a fully-charged Aimed Shot, Oz brings down Thundering Retribution, dealing <b class="text-genshin-electro">AoE Electro DMG</b> equal to <span class="text-desc">152.7%</span> of the arrow's DMG.`,
+      content: `When Fischl hits Oz with a fully-charged Aimed Shot, Oz brings down <b>Thundering Retribution</b>, dealing <b class="text-genshin-electro">AoE Electro DMG</b> equal to <span class="text-desc">152.7%</span> of the arrow's DMG.`,
+      image: 'UI_Talent_S_Fischl_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Undone Be Thy Sinful Hex`,
-      content: `If your active character triggers an Electro-related Elemental Reaction when Oz is on the field, the opponent shall be stricken with Thundering Retribution that deals <b class="text-genshin-electro">Electro DMG</b> equal to <span class="text-desc">80%</span> of Fischl's ATK.`,
+      content: `If your active character triggers an <b class="text-genshin-electro">Electro</b>-related Elemental Reaction when Oz is on the field, the opponent shall be stricken with <b>Thundering Retribution</b> that deals <b class="text-genshin-electro">Electro DMG</b> equal to <span class="text-desc">80%</span> of Fischl's ATK.`,
+      image: 'UI_Talent_S_Fischl_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Mein Hausgarten`,
       content: `When dispatched on an expedition in Mondstadt, time consumed is reduced by <span class="text-desc">25%</span>.`,
+      image: 'UI_Talent_Expedition_Mengde',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Gaze of the Deep`,
       content: `Even when Oz is not present in combat, he can still watch over Fischl through his raven eyes. When Fischl performs a Normal Attack against an opponent, Oz fires a coordinated attack, dealing DMG equal to <span class="text-desc">22%</span> of Fischl's ATK.`,
+      image: 'UI_Talent_S_Fischl_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Devourer of All Sins`,
-      content: `When Nightrider is used, it deals an additional <span class="text-desc">200%</span> ATK as DMG, and its AoE is increased by <span class="text-desc">50%</span>.`,
+      content: `When <b>Nightrider</b> is used, it deals an additional <span class="text-desc">200%</span> ATK as DMG, and its AoE is increased by <span class="text-desc">50%</span>.`,
+      image: 'UI_Talent_S_Fischl_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Wings of Nightmare`,
-      content: `Increases the Level of Nightrider by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Nightrider</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Fischl_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Her Pilgrimage of Bleak`,
-      content: `When Midnight Phantasmagoria is used, it deals <span class="text-desc">222%</span> of ATK as <b class="text-genshin-electro">Electro DMG</b> to surrounding opponents.
-      When the skill duration ends, Fischl regenerates <span class="text-desc">20%</span> of her HP.`,
+      content: `When <b>Midnight Phantasmagoria</b> is used, it deals <span class="text-desc">222%</span> of ATK as <b class="text-genshin-electro">Electro DMG</b> to surrounding opponents.
+      <br />When the skill duration ends, Fischl regenerates <span class="text-desc">20%</span> of her HP.`,
+      image: 'UI_Talent_S_Fischl_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Against the Fleeing Light`,
-      content: `Increases the Level of Midnight Phantasmagoria by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Midnight Phantasmagoria</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Fischl_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Evernight Raven`,
       content: `Extends the duration of Oz's presence on the field by <span class="text-desc">2</span>s. Additionally, Oz performs coordinated attacks with your active character when present, dealing <span class="text-desc">30%</span> of Fischl's ATK as <b class="text-genshin-electro">Electro DMG</b>.`,
+      image: 'UI_Talent_S_Fischl_04',
     },
   }
 

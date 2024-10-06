@@ -30,25 +30,27 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_03',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Guide to Afterlife`,
       content: `Only an unwavering flame can cleanse the impurities of this world.
-      <br />Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the Paramita Papilio state.
+      <br />Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the <b class="text-genshin-pyro">Paramita Papilio</b> state.
       <br />
-      <br /><b>Paramita Papilio</b>
+      <br /><b class="text-genshin-pyro">Paramita Papilio</b>
       <br />- Increases Hu Tao's ATK based on her Max HP at the time of entering this state. ATK Bonus gained this way cannot exceed <span class="text-desc">400%</span> of Hu Tao's Base ATK.
       <br />- Converts attack DMG to <b class="text-genshin-pyro">Pyro DMG</b>, which cannot be overridden by any other elemental infusion.
-      <br />- Charged Attacks apply the Blood Blossom effect to the enemies hit.
+      <br />- Charged Attacks apply the <b class="text-genshin-pyro">Blood Blossom</b> effect to the enemies hit.
       <br />- Increases Hu Tao's resistance to interruption.
       <br />
-      <br /><b>Blood Blossom</b>
-      <br />Enemies affected by Blood Blossom will take <b class="text-genshin-pyro">Pyro DMG</b> every <span class="text-desc">4</span>s. This DMG is considered Elemental Skill DMG.
-      <br />Each enemy can be affected by only one Blood Blossom effect at a time, and its duration may only be refreshed by Hu Tao herself.
+      <br /><b class="text-genshin-pyro">Blood Blossom</b>
+      <br />Enemies affected by <b class="text-genshin-pyro">Blood Blossom</b> will take <b class="text-genshin-pyro">Pyro DMG</b> every <span class="text-desc">4</span>s. This DMG is considered Elemental Skill DMG.
+      <br />Each enemy can be affected by only one <b class="text-genshin-pyro">Blood Blossom</b> effect at a time, and its duration may only be refreshed by Hu Tao herself.
       <br />
-      <br />Paramita Papilio ends when its duration is over, or Hu Tao has left the battlefield or fallen.
+      <br /><b class="text-genshin-pyro">Paramita Papilio</b> ends when its duration is over, or Hu Tao has left the battlefield or fallen.
       `,
+      image: 'Skill_S_Hutao_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -56,49 +58,58 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       content: `Commands a blazing spirit to attack, dealing <b class="text-genshin-pyro">Pyro DMG</b> in a large AoE.
       <br />Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP. This effect can be triggered up to <span class="text-desc">5</span> times, based on the number of enemies hit.
       <br />If Hu Tao's HP is below or equal to <span class="text-desc">50%</span> when the enemy is hit, both the DMG and HP Regeneration are increased.`,
+      image: 'Skill_E_Hutao_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Flutter By`,
-      content: `When a Paramita Papilio state activated by Guide to Afterlife ends, all allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by <span class="text-desc">12%</span> for <span class="text-desc">8</span>s.`,
+      content: `When a <b class="text-genshin-pyro">Paramita Papilio</b> state activated by <b>Guide to Afterlife</b> ends, all allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by <span class="text-desc">12%</span> for <span class="text-desc">8</span>s.`,
+      image: 'UI_Talent_S_Hutao_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Sanguine Rouge`,
       content: `When Hu Tao's HP is equal to or less than <span class="text-desc">50%</span>, her <b class="text-genshin-pyro">Pyro DMG Bonus</b> is increased by <span class="text-desc">33%</span>.`,
+      image: 'UI_Talent_S_Hutao_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `The More the Merrier`,
       content: `When Hu Tao cooks a dish perfectly, she has a <span class="text-desc">18%</span> chance to receive an additional "Suspicious" dish of the same type.`,
+      image: 'UI_Talent_Cook_ExtraFailedItem',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Crimson Bouquet`,
-      content: `While in a Paramita Papilio state activated by Guide to Afterlife, Hu Tao's Charged Attacks do not consume Stamina.`,
+      content: `While in a <b class="text-genshin-pyro">Paramita Papilio</b> state activated by <b>Guide to Afterlife</b>, Hu Tao's Charged Attacks do not consume Stamina.`,
+      image: 'UI_Talent_S_Hutao_03',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Ominous Rainfall`,
-      content: `Increases the Blood Blossom DMG by an amount equal to <span class="text-desc">10%</span> of Hu Tao's Max HP at the time the effect is applied.
-      <br />Additionally, Spirit Soother will also apply the Blood Blossom effect.`,
+      content: `Increases the <b class="text-genshin-pyro">Blood Blossom</b> DMG by an amount equal to <span class="text-desc">10%</span> of Hu Tao's Max HP at the time the effect is applied.
+      <br />Additionally, <b>Spirit Soother</b> will also apply the <b class="text-genshin-pyro">Blood Blossom</b> effect.`,
+      image: 'UI_Talent_S_Hutao_01',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Lingering Carmine`,
-      content: `Increases the Level of Guide to Afterlife by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Guide to Afterlife</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Hutao_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Garden of Eternal Rest`,
-      content: `Upon defeating an enemy affected by a Blood Blossom that Hu Tao applied herself, all nearby allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by <span class="text-desc">12%</span> for <span class="text-desc">15</span>s.`,
+      content: `Upon defeating an enemy affected by a <b class="text-genshin-pyro">Blood Blossom</b> that Hu Tao applied herself, all nearby allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by <span class="text-desc">12%</span> for <span class="text-desc">15</span>s.`,
+      image: 'UI_Talent_S_Hutao_02',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Butterfly's Embrace`,
-      content: `Increases the Level of Spirit Soother by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Spirit Soother</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Hutao_02',
     },
     c6: {
       trace: `Constellation 6`,
@@ -107,6 +118,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       <br />Hu Tao will not fall as a result of the DMG sustained. Additionally, for the next <span class="text-desc">10</span>s, all of her <b>Elemental and Physical RES</b> is increased by <span class="text-desc">200%</span>, her CRIT Rate is increased by <span class="text-desc">100%</span>, and her resistance to interruption is greatly increased.
       <br />This effect triggers automatically when Hu Tao has <span class="text-desc">1</span> HP left.
       <br />Can only occur once every <span class="text-desc">60</span>s.`,
+      image: 'UI_Talent_S_Hutao_04',
     },
   }
 
@@ -141,7 +153,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'hu_a1',
-      text: `Skill Expired`,
+      text: `A1 Team CRIT Bonus`,
       ...talents.a1,
       show: a >= 1,
       default: false,
@@ -149,7 +161,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'hu_a4',
-      text: `On Blood Blossom Target Kill`,
+      text: `C4 Team CRIT Bonus`,
       ...talents.c4,
       show: c >= 4,
       default: false,
@@ -279,24 +291,30 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.hu_skill) base.infuse(Element.PYRO, true)
-      if (form.hu_low) base[Stats.PYRO_DMG].push({value: 0.33, name: '', source: ``})
+      if (form.hu_low) base[Stats.PYRO_DMG].push({ value: 0.33, name: 'Ascension 4 Passive', source: `Self` })
 
       if (form.hu_c6) {
-        base.ALL_TYPE_RES.push({value: 2, name: '', source: ``})
-        base[Stats.CRIT_RATE].push({value: 1, name: '', source: ``})
+        base.ALL_TYPE_RES.push({ value: 2, name: 'Constellation 6', source: `Self` })
+        base[Stats.CRIT_RATE].push({ value: 1, name: 'Constellation 6', source: `Self` })
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.hu_a1) base[Stats.CRIT_RATE].push({value: 0.12, name: '', source: ``})
-      if (form.hu_a4) base[Stats.CRIT_RATE].push({value: 0.12, name: '', source: ``})
+      if (form.hu_a1) base[Stats.CRIT_RATE].push({ value: 0.12, name: 'Ascension 1 Passive', source: `Hu Tao` })
+      if (form.hu_a4) base[Stats.CRIT_RATE].push({ value: 0.12, name: 'Constellation 4', source: `Hu Tao` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (form.hu_skill)
-        base[Stats.ATK] += _.min([calcScaling(0.0384, skill, 'elemental', '1') * base.getHP(), base.BASE_ATK * 4])
+        base[Stats.ATK].push({
+          value: _.min([calcScaling(0.0384, skill, 'elemental', '1') * base.getHP(), base.BASE_ATK * 4]),
+          name: 'Paramita Papilio',
+          source: 'Self',
+          base: base.getHP(),
+          multiplier: calcScaling(0.0384, skill, 'elemental', '1'),
+        })
 
       return base
     },

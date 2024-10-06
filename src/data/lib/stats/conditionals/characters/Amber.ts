@@ -30,75 +30,87 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Explosive Puppet`,
-      content: `The ever-reliable Baron Bunny takes the stage.
+      content: `The ever-reliable <b>Baron Bunny</b> takes the stage.
       <br />
       <br /><b>Baron Bunny</b>
       <br />- Continuously taunts the enemy, drawing their fire.
-      <br />- Baron Bunny's HP scales with Amber's Max HP.
-      <br />- When destroyed or when its timer expires, Baron Bunny explodes, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
+      <br />- <b>Baron Bunny</b>'s HP scales with Amber's Max HP.
+      <br />- When destroyed or when its timer expires, <b>Baron Bunny</b> explodes, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       <br />
       <br /><b>Hold</b>
-      <br />Adjusts the throwing direction of Baron Bunny.
+      <br />Adjusts the throwing direction of <b>Baron Bunny</b>.
       <br />The longer the button is held, the further the throw.`,
+      image: 'Skill_S_Ambor_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Fiery Rain`,
       content: `Fires off a shower of arrows, dealing continuous <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       `,
+      image: 'Skill_E_Ambor',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Every Arrow Finds Its Target`,
-      content: `Increases the CRIT Rate of Fiery Rain by <span class="text-desc">10%</span> and widens its AoE by <span class="text-desc">30%</span>.`,
+      content: `Increases the CRIT Rate of <b>Fiery Rain</b> by <span class="text-desc">10%</span> and widens its AoE by <span class="text-desc">30%</span>.`,
+      image: 'UI_Talent_S_Ambor_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Precise Shot`,
       content: `Aimed Shot hits on weak spots increase ATK by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Ambor_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Gliding Champion`,
       content: `Decreases gliding Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_Explosion_Glide',
     },
     c1: {
       trace: `Constellation 1`,
       title: `One Arrow to Rule Them All`,
       content: `Fires <span class="text-desc">2</span> arrows per Aimed Shot. The second arrow deals <span class="text-desc">20%</span> of the first arrow's DMG.`,
+      image: 'UI_Talent_S_Ambor_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Bunny Triggered`,
-      content: `Baron Bunny, new and improved! Hitting Baron Bunny's foot with a fully-charged Aimed Shot manually detonates it.
+      content: `<b>Baron Bunny</b>, new and improved! Hitting <b>Baron Bunny</b>'s foot with a fully-charged Aimed Shot manually detonates it.
       <br />Explosion via manual detonation deals <span class="text-desc">200%</span> additional DMG.`,
+      image: 'UI_Talent_S_Ambor_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `It Burns!`,
-      content: `Increases the Level of Fiery Rain by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Fiery Rain</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ambor_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `It's Not Just Any Doll...`,
-      content: `Decreases Explosive Puppet's CD by <span class="text-desc">20%</span>. Adds <span class="text-desc">1</span> additional charge.`,
+      content: `Decreases <b>Explosive Puppet</b>'s CD by <span class="text-desc">20%</span>. Adds <span class="text-desc">1</span> additional charge.`,
+      image: 'UI_Talent_S_Ambor_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `It's Baron Bunny!`,
-      content: `Increases the Level of Explosive Puppet by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Explosive Puppet</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ambor_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Wildfire`,
-      content: `Fiery Rain increases all party members' Movement SPD by <span class="text-desc">15%</span> and ATK by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
+      content: `<b>Fiery Rain</b> increases all party members' Movement SPD by <span class="text-desc">15%</span> and ATK by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Ambor_04',
     },
   }
 
@@ -206,7 +218,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.amber_a4) base[Stats.P_ATK].push({value: 0.15, name: '', source: ``})
+      if (form.amber_a4) base[Stats.P_ATK].push({ value: 0.15, name: '', source: `` })
 
       if (c >= 1)
         base.CHARGE_SCALING.push(
@@ -232,13 +244,13 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         })
 
-      if (c >= 4) base.SKILL_CD_RED.push({value: 0.2, name: '', source: ``})
-      if (form.amber_c6) base[Stats.P_ATK].push({value: 0.15, name: '', source: ``})
+      if (c >= 4) base.SKILL_CD_RED.push({ value: 0.2, name: '', source: `` })
+      if (form.amber_c6) base[Stats.P_ATK].push({ value: 0.15, name: '', source: `` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.amber_c6) base[Stats.P_ATK].push({value: 0.15, name: '', source: ``})
+      if (form.amber_c6) base[Stats.P_ATK].push({ value: 0.15, name: '', source: `` })
 
       return base
     },

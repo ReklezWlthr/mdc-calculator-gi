@@ -31,6 +31,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -44,72 +45,83 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       <br />Lifts her weapon up as a shield. Max DMG absorbed scales off Beidou's Max HP.
       <br />Attacks using the energy stored within the greatsword upon release or once this ability's duration expires, dealing <b class="text-genshin-electro">Electro DMG</b>. DMG dealt scales with the number of times Beidou is attacked in the skill's duration. The greatest DMG Bonus will be attained once this effect is triggered twice.
       <br />The shield possesses the following properties:
-      <br />Has <span class="text-desc">250%</span> <b class="text-genshin-electro">Electro DMG</b> Absorption Efficiency.
-      <br />Applies the <b class="text-genshin-electro">Electro</b> element to Beidou upon activation.
+      <br />- Has <span class="text-desc">250%</span> <b class="text-genshin-electro">Electro DMG</b> Absorption Efficiency.
+      <br />- Applies the <b class="text-genshin-electro">Electro</b> element to Beidou upon activation.
       `,
+      image: 'Skill_S_Beidou_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Stormbreaker`,
-      content: `Recalling her slaying of the great beast Haishan, Beidou calls upon that monstrous strength and the lightning to create a Thunderbeast's Targe around herself, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.
+      content: `Recalling her slaying of the great beast Haishan, Beidou calls upon that monstrous strength and the lightning to create a <b class="text-genshin-electro">Thunderbeast's Targe</b> around herself, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.
       <br />
-      <br /><b>Thunderbeast's Targe</b>
+      <br /><b class="text-genshin-electro">Thunderbeast's Targe</b>
       <br />- When Normal and Charged Attacks hit, they create a lightning discharge that can jump between opponents, dealing <b class="text-genshin-electro">Electro DMG</b>.
       <br />- Increases the character's resistance to interruption, and decreases DMG taken.
       <br />
       <br />A maximum of <span class="text-desc">1</span> lightning discharge can be triggered per second.`,
+      image: 'Skill_E_Beidou_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Retribution`,
-      content: `Counterattacking with Tidecaller at the precise moment when the character is hit grants the maximum DMG Bonus.`,
+      content: `Counterattacking with <b>Tidecaller</b> at the precise moment when the character is hit grants the maximum DMG Bonus.`,
+      image: 'UI_Talent_S_Beidou_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Lightning Storm	`,
-      content: `Gain the following effects for 10s after unleashing Tidecaller with its maximum DMG Bonus:
+      content: `Gain the following effects for 10s after unleashing <b>Tidecaller</b> with its maximum DMG Bonus:
       <br />- DMG dealt by Normal and Charged Attacks is increased by <span class="text-desc">15%</span>. ATK SPD of Normal and Charged Attacks is increased by <span class="text-desc">15%</span>.
       <br />- Greatly reduced delay before unleashing Charged Attacks.`,
+      image: 'UI_Talent_S_Beidou_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Conqueror of Tides`,
       content: `Decreases swimming Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_Explosion_Swim',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Sea Beast's Scourge`,
-      content: `When Stormbreaker is used:
+      content: `When <b>Stormbreaker</b> is used:
       <br />Creates a shield that absorbs up to <span class="text-desc">16%</span> of Beidou's Max HP for <span class="text-desc">15</span>s.
       <br />This shield absorbs <b class="text-genshin-electro">Electro DMG</b> <span class="text-desc">250%</span> more effectively.`,
+      image: 'UI_Talent_S_Beidou_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Summoner of Storm`,
-      content: `Stormbreaker's arc lightning can jump to <span class="text-desc">2</span> additional targets.`,
+      content: `<b>Stormbreaker</b>'s arc lightning can jump to <span class="text-desc">2</span> additional targets.`,
+      image: 'UI_Talent_S_Beidou_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Star of Tomorrow`,
-      content: `Increases the Level of Tidecaller by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Tidecaller</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Beidou_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Stunning Revenge`,
       content: `Upon being attacked, Beidou's Normal Attacks gain an additional instance of <span class="text-desc">20%</span> <b class="text-genshin-electro">Electro DMG</b> for <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Beidou_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Crimson Tidewalker`,
-      content: `Increases the Level of Stormbreaker by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Stormbreaker</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Beidou_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Bane of Evil`,
-      content: `During the duration of Stormbreaker, the <b class="text-genshin-electro">Electro RES</b> of surrounding opponents is decreased by <span class="text-desc">15%</span>.`,
+      content: `During the duration of <b>Stormbreaker</b>, the <b class="text-genshin-electro">Electro RES</b> of surrounding opponents is decreased by <span class="text-desc">15%</span>.`,
+      image: 'UI_Talent_S_Beidou_04',
     },
   }
 
@@ -150,17 +162,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [
-    {
-      type: 'toggle',
-      id: 'bar_burst',
-      text: `Burst Hydro DMG`,
-      ...talents.c2,
-      show: c >= 2,
-      default: true,
-    },
-    findContentById(content, 'c6_electro_res'),
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'c6_electro_res')]
 
   return {
     upgrade,
@@ -255,12 +257,17 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.beidou_burst) base.DMG_REDUCTION += calcScaling(0.2, burst, 'special', 'beidou')
+      if (form.beidou_burst)
+        base.DMG_REDUCTION.push({
+          value: calcScaling(0.2, burst, 'special', 'beidou'),
+          name: 'Elemental Burst',
+          source: 'Self',
+        })
       if (form.beidou_a4) {
-        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
-        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
-        base.ATK_SPD.push({value: 0.15, name: '', source: ``})
-        base.CHARGE_ATK_SPD.push({value: 0.15, name: '', source: ``})
+        base.BASIC_DMG.push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
+        base.CHARGE_DMG.push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
+        base.ATK_SPD.push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
+        base.CHARGE_ATK_SPD.push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
       }
 
       if (c >= 1)
@@ -286,13 +293,12 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
         })
       }
 
-      if (form.c6_electro_res) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.c6_electro_res) base.ELECTRO_RES_PEN.push({ value: 0.15, name: 'Constellation 6', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.bar_burst) base[Stats.HYDRO_DMG].push({value: 0.15, name: '', source: ``})
-      if (form.c6_electro_res) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.c6_electro_res) base.ELECTRO_RES_PEN.push({ value: 0.15, name: 'Constellation 6', source: `Beidou` })
 
       return base
     },

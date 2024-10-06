@@ -30,80 +30,92 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Spirit-Warding Lamp: Troubleshooter Cannon`,
-      content: `Directs a Spirit-Warding Lamp to fire off a Troubleshooter Shot at opponents, dealing <b class="text-genshin-electro">Electro DMG</b>.
-      <br />After the Troubleshooter Shot hits, it will create 2 After-Sales Service Rounds that will automatically track nearby opponents and deal <b class="text-genshin-electro">Electro DMG</b>.
+      content: `Directs a Spirit-Warding Lamp to fire off a <b>Troubleshooter Shot</b> at opponents, dealing <b class="text-genshin-electro">Electro DMG</b>.
+      <br />After the <b>Troubleshooter Shot</b> hits, it will create <span class="text-desc">2</span> <b>After-Sales Service Rounds</b> that will automatically track nearby opponents and deal <b class="text-genshin-electro">Electro DMG</b>.
       `,
+      image: 'Skill_S_Dori_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Alcazarzaray's Exactitude`,
-      content: `Summons forth the Jinni within the lamp to give the client various kinds of aid.
+      content: `Summons forth the <b class="text-genshin-electro">Jinni</b> within the lamp to give the client various kinds of aid.
       <br />
-      <br /><b>Jinni</b>
-      <br />- Connects to a nearby character. The connected character will:
+      <br /><b class="text-genshin-electro">Jinni</b>
+      <br />Connects to a nearby character. The connected character will:
       <br />- Continuously restore HP based on Dori's Max HP.
       <br />- Continuously regenerate Energy.
       <br />- Be affected by <b class="text-genshin-electro">Electro</b>.
-      <br />When the connector between the Jinni and the character touches opponents, it will deal one instance of <b class="text-genshin-electro">Electro DMG</b> to them every <span class="text-desc">0.4</span>s.
+      <br />When the connector between the <b class="text-genshin-electro">Jinni</b> and the character touches opponents, it will deal one instance of <b class="text-genshin-electro">Electro DMG</b> to them every <span class="text-desc">0.4</span>s.
       <br />
-      <br />Only one Jinni can exist at one time.`,
+      <br />Only one <b class="text-genshin-electro">Jinni</b> can exist at one time.`,
+      image: 'Skill_E_Dori_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `An Eye for Gold`,
-      content: `After a character connected to the Jinni triggers an Electro-Charged, Superconduct, Overloaded, Quicken, Aggravate, Hyperbloom, or an Electro Swirl or Crystallize reaction, the CD of Spirit-Warding Lamp: Troubleshooter Cannon is decreased by <span class="text-desc">1</span>s.
+      content: `After a character connected to the <b class="text-genshin-electro">Jinni</b> triggers an Electro-Charged, Superconduct, Overloaded, Quicken, Aggravate, Hyperbloom, or an Electro Swirl or Crystallize reaction, the CD of <b>Spirit-Warding Lamp: Troubleshooter Cannon</b> is decreased by <span class="text-desc">1</span>s.
       <br />This effect can be triggered once every <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_Dori_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Compound Interest`,
-      content: `When the Troubleshooter Shots or After-Sales Service Rounds from Spirit-Warding Lamp: Troubleshooter Cannon hit opponents, Dori will restore <span class="text-desc">5</span> Elemental Energy for every <span class="text-desc">100%</span> Energy Recharge possessed.
-      <br />Per Spirit-Warding Lamp: Troubleshooter Cannon, only one instance of Energy restoration can be triggered and a maximum of <span class="text-desc">15</span> Energy can be restored this way.`,
+      content: `When the <b>Troubleshooter Shots</b> or <b>After-Sales Service Rounds</b> from <b>Spirit-Warding Lamp: Troubleshooter Cannon</b> hit opponents, Dori will restore <span class="text-desc">5</span> Elemental Energy for every <span class="text-desc">100%</span> Energy Recharge possessed.
+      <br />Per <b>Spirit-Warding Lamp: Troubleshooter Cannon</b>, only one instance of Energy restoration can be triggered and a maximum of <span class="text-desc">15</span> Energy can be restored this way.`,
+      image: 'UI_Talent_S_Dori_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Unexpected Order`,
       content: `Has a <span class="text-desc">25%</span> chance to recover some of the materials used when crafting Character and Weapon Materials.`,
+      image: 'UI_Talent_S_Dori_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Additional Investment`,
-      content: `The number of After-Sales Service Rounds created by Troubleshooter Shots is increased by <span class="text-desc">1</span>.`,
+      content: `The number of <b>After-Sales Service Rounds</b> created by <b>Troubleshooter Shots</b> is increased by <span class="text-desc">1</span>.`,
+      image: 'UI_Talent_S_Dori_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Special Franchise`,
-      content: `When you are in combat and the Jinni heals the character it is connected to, it will fire a Jinni Toop from that character's position that deals <span class="text-desc">50%</span> of Dori's ATK DMG.`,
+      content: `When you are in combat and the <b class="text-genshin-electro">Jinni</b> heals the character it is connected to, it will fire a <b>Jinni Toop</b> from that character's position that deals <span class="text-desc">50%</span> of Dori's ATK DMG.`,
+      image: 'UI_Talent_S_Dori_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Wonders Never Cease`,
-      content: `Increases the Level of Alcazarzaray's Exactitude by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Alcazarzaray's Exactitude</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Dori_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Discretionary Supplement`,
-      content: `The character connected to the Jinni will obtain the following buffs based on their current HP and Energy:
+      content: `The character connected to the <b class="text-genshin-electro">Jinni</b> will obtain the following buffs based on their current HP and Energy:
       <br />- When their HP is lower than <span class="text-desc">50%</span>, they gain <span class="text-desc">50%</span> Incoming Healing Bonus.
       <br />- When their Energy is less than <span class="text-desc">50%</span>, they gain <span class="text-desc">50%</span> Energy Recharge.`,
+      image: 'UI_Talent_S_Dori_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Value for Mora`,
-      content: `Increases the Level of Spirit-Warding Lamp: Troubleshooter Cannon by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Spirit-Warding Lamp: Troubleshooter Cannon</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Dori_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Sprinkling Weight`,
-      content: `Dori gains the following effects for <span class="text-desc">3</span>s after using Spirit-Warding Lamp: Troubleshooter Cannon:
-      <br /><b class="text-genshin-electro">Electro Infusion</b>.
-      <br />When Normal Attacks hit opponents, all nearby party members will heal HP equivalent to <span class="text-desc">4%</span> of Dori's Max HP. This type of healing can occur once every <span class="text-desc">0.1</span>s.`,
+      content: `Dori gains the following effects for <span class="text-desc">3</span>s after using <b>Spirit-Warding Lamp: Troubleshooter Cannon</b>:
+      <br />- <b class="text-genshin-electro">Electro Infusion</b>.
+      <br />- When Normal Attacks hit opponents, all nearby party members will heal HP equivalent to <span class="text-desc">4%</span> of Dori's Max HP. This type of healing can occur once every <span class="text-desc">0.1</span>s.`,
+      image: 'UI_Talent_S_Dori_04',
     },
   }
 
@@ -134,24 +146,21 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'dori_low_hp'),
-    findContentById(content, 'dori_low_energy'),
-  ]
+  const teammateContent: IContent[] = []
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'dori_low_hp'), findContentById(content, 'dori_low_energy')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 40
 
       if (form.diluc_infusion) {
         base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``})
+        if (a >= 4) base[Stats.PYRO_DMG].push({ value: 0.2, name: '', source: `` })
       }
 
       base.BASIC_SCALING = [
@@ -228,13 +237,13 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
 
       if (c >= 2)
         base.BURST_SCALING.push({
-          name: `Jinni Toop`,
+          name: `Jinni Toop DMG`,
           value: [{ scaling: 0.5, multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.ADD,
         })
-      if (form.dori_low_hp) base[Stats.I_HEALING].push({value: 0.5, name: '', source: ``})
-      if (form.dori_low_energy) base[Stats.ER].push({value: 0.3, name: '', source: ``})
+      if (form.dori_low_hp) base[Stats.I_HEALING].push({ value: 0.5, name: 'Constellation 4', source: `Self` })
+      if (form.dori_low_energy) base[Stats.ER].push({ value: 0.3, name: 'Constellation 4', source: `Self` })
 
       if (form.dori_c6_infusion) {
         base.infuse(Element.ELECTRO)
@@ -248,7 +257,10 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.dori_low_hp) base[Stats.I_HEALING].push({ value: 0.5, name: 'Constellation 4', source: `Dori` })
+      if (aForm.dori_low_energy) base[Stats.ER].push({ value: 0.3, name: 'Constellation 4', source: `Dori` })
+
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {

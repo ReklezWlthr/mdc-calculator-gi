@@ -18,7 +18,13 @@ export const CharacterSelect = ({
       onClick={onClick}
     >
       <img
-        src={codeName ? `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_Side_${codeName}.png` : ''}
+        src={codeName ? `https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png` : ''}
+        onError={(e) =>
+          (e.target as HTMLElement).setAttribute(
+            'src',
+            codeName ? `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_Side_${codeName}.png` : ''
+          )
+        }
         className="absolute scale-150 bottom-3"
       />
     </div>

@@ -35,8 +35,9 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       <br />Gathering the power of Cryo, Charlotte plunges toward the ground, dealing DMG to all opponents in her path and dealing <b class="text-genshin-cryo">AoE Cryo DMG</b> upon landing.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-pneuma">Pneuma</b>
-      <br />At certain intervals, upon using a Charged Attack, Charlotte will cause a Spiritbreath Thorn to descend and pierce opponents, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-cryo">AoE Cryo DMG</b>.
+      <br />At certain intervals, upon using a Charged Attack, Charlotte will cause a <b class="text-genshin-pneuma">Spiritbreath Thorn</b> to descend and pierce opponents, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -44,68 +45,80 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       content: `Using the keen instincts of an ace reporter, Charlotte uses her photography skills to produce different effects based on whether the ability is Tapped or Held.
       <br />
       <br /><b>Press</b>
-      <br />Takes a snapshot using Monsieur Verite, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b> to opponents in front of her and applying Snappy Silhouette to a maximum of <span class="text-desc">5</span> opponents. During this effect's duration, it will deal <b class="text-genshin-cryo">Cryo DMG</b> to affected opponents at intervals.
+      <br />Takes a snapshot using Monsieur Verite, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b> to opponents in front of her and applying <b class="text-genshin-cryo">Snappy Silhouette</b> to a maximum of <span class="text-desc">5</span> opponents. During this effect's duration, it will deal <b class="text-genshin-cryo">Cryo DMG</b> to affected opponents at intervals.
       <br />
       <br /><b>Hold</b>
-      <br />Popping Monsieur Verite's viewfinder open, Charlotte enters Composition Mode, and during this time, the viewfinder will expand as you hold until you reach a Finisher Frame state. In this state, Charlotte can move and change direction freely.
-      <br />When the hold state ends, Monsieur Verite will deal <b class="text-genshin-cryo">Cryo DMG</b> to all opponents locked on within the viewfinder, and apply the same Snappy Silhouette as Tap Mode does to them. If you unleash this ability only after reaching Finisher Frame, you will instead apply Focused Impression, which lasts longer and deals more DMG, although the Skill CD will be longer.
-      <br />Composition Mode lasts a maximum of <span class="text-desc">15</span>s and allows a maximum of <span class="text-desc">5</span> opponents to be selected.
+      <br />Popping Monsieur Verite's viewfinder open, Charlotte enters <b>Composition Mode</b>, and during this time, the viewfinder will expand as you hold until you reach a Finisher Frame state. In this state, Charlotte can move and change direction freely.
+      <br />When the hold state ends, Monsieur Verite will deal <b class="text-genshin-cryo">Cryo DMG</b> to all opponents locked on within the viewfinder, and apply the same <b class="text-genshin-cryo">Snappy Silhouette</b> as Tap Mode does to them. If you unleash this ability only after reaching <b>Finisher Frame</b>, you will instead apply <b class="text-genshin-cryo">Focused Impression</b>, which lasts longer and deals more DMG, although the Skill CD will be longer.
+      <br /><b>Composition Mode</b> lasts a maximum of <span class="text-desc">15</span>s and allows a maximum of <span class="text-desc">5</span> opponents to be selected.
       `,
+      image: 'Skill_S_Charlotte_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Still Photo: Comprehensive Confirmation`,
-      content: `Condensing ice to create The Steambird's signature, Charlotte creates a Newsflash Field that will deal <b class="text-genshin-cryo">AoE Cryo DMG</b> and restores HP for all nearby party members based on Charlotte's ATK.
+      content: `Condensing ice to create The Steambird's signature, Charlotte creates a <b>Newsflash Field</b> that will deal <b class="text-genshin-cryo">AoE Cryo DMG</b> and restores HP for all nearby party members based on Charlotte's ATK.
+      <br />
       <br /><b>Newsflash Field</b>
       <br />- While the ability is active, Monsieur Verite will deal <b class="text-genshin-cryo">Cryo DMG</b> at intervals to opponents within its AoE.
       <br />- Will continuously restore HP to active character(s) within its AoE based on Charlotte's ATK.`,
+      image: 'Skill_E_Charlotte_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Moment of Impact`,
-      content: `When opponents marked by "Focused Impression" are defeated, Framing: Freezing Point Composition's CD will be decreased by <span class="text-desc">2</span>s. This CD decrease can be triggered <span class="text-desc">4</span> times every <span class="text-desc">12</span>s.`,
+      content: `When opponents marked by <b>Focused Impression</b> are defeated, <b>Framing: Freezing Point Composition</b>'s CD will be decreased by <span class="text-desc">2</span>s. This CD decrease can be triggered <span class="text-desc">4</span> times every <span class="text-desc">12</span>s.`,
+      image: 'UI_Talent_S_Charlotte_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Diversified Investigation`,
       content: `When the party contains <span class="text-desc">1/2/3</span> Fontainians other than herself, Charlotte gains a <span class="text-desc">5%/10%/15%</span> Healing Bonus. When the party contains <span class="text-desc">1/2/3</span> non-Fontainians, Charlotte gains a <span class="text-desc">5%/10%/15%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b>.`,
+      image: 'UI_Talent_S_Charlotte_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `First-Person Shutter`,
-      content: `After activating the Special Analysis Zoom Lens, Charlotte's "Framing: Freezing Point Composition" Hold Mode cannot trigger its original effects, but instead enables her to take photos in a rather unique manner...`,
+      content: `After activating the <b>Special Analysis Zoom Lens</b>, Charlotte's <b>Framing: Freezing Point Composition</b> Hold Mode cannot trigger its original effects, but instead enables her to take photos in a rather unique manner...`,
+      image: 'UI_Talent_S_Charlotte_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `A Need to Verify Facts`,
-      content: `After Still Photo: Comprehensive Confirmation heals a character, it will mark them with Verification, which will heal them once every <span class="text-desc">2</span>s for <span class="text-desc">80%</span> of Charlotte's ATK. This effect lasts <span class="text-desc">6</span>s.`,
+      content: `After <b>Still Photo: Comprehensive Confirmation</b> heals a character, it will mark them with <b class="text-genshin-cryo">Verification</b>, which will heal them once every <span class="text-desc">2</span>s for <span class="text-desc">80%</span> of Charlotte's ATK. This effect lasts <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Charlotte_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `A Duty to Pursue Truth`,
-      content: `When using Framing: Freezing Point Composition, when Monsieur Verite hits <span class="text-desc">1/2/3</span> (or more) opponents, Charlotte's own ATK will be increased by <span class="text-desc">10%/20%/30%</span> for <span class="text-desc">12</span>s.`,
+      content: `When using <b>Framing: Freezing Point Composition</b>, when Monsieur Verite hits <span class="text-desc">1/2/3</span> (or more) opponents, Charlotte's own ATK will be increased by <span class="text-desc">10%/20%/30%</span> for <span class="text-desc">12</span>s.`,
+      image: 'UI_Talent_S_Charlotte_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `An Imperative to Independence`,
-      content: `Increases the Still Photo: Comprehensive Confirmation by <span class="text-desc">3</span>.
+      content: `Increases the <b>Still Photo: Comprehensive Confirmation</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Charlotte_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `A Responsibility to Oversee`,
-      content: `When Still Photo: Comprehensive Confirmation hits an opponent marked by Snappy Silhouette or Focused Impression, it will deal <span class="text-desc">10%</span> more DMG and restore <span class="text-desc">2</span> Energy to Charlotte. This restoration can be triggered <span class="text-desc">5</span> times every <span class="text-desc">20</span>s.`,
+      content: `When <b>Still Photo: Comprehensive Confirmation</b> hits an opponent marked by <b class="text-genshin-cryo">Snappy Silhouette</b> or <b class="text-genshin-cryo">Focused Impression</b>, it will deal <span class="text-desc">10%</span> more DMG and restore <span class="text-desc">2</span> Energy to Charlotte. This restoration can be triggered <span class="text-desc">5</span> times every <span class="text-desc">20</span>s.`,
+      image: 'UI_Talent_S_Charlotte_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `A Principle of Conscience`,
-      content: `Increases the Level of Framing: Freezing Point Composition by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Framing: Freezing Point Composition</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Charlotte_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `A Summation of Interest`,
-      content: `When the active character's Normal and Charged Attacks hit an opponent marked by Framing: Freezing Point Composition's Focused Impression, Monsieur Verite will initiate a coordinated attack that deals <span class="text-desc">180%</span> of Charlotte's ATK as AoE Cryo DMG and heals active character(s) within the AoE for <span class="text-desc">42%</span> of Charlotte's ATK. This effect can be triggered once every <span class="text-desc">6</span>s and both DMG and healing dealt in this way will be considered as having been done by Charlotte's Elemental Burst.`,
+      content: `When the active character's Normal and Charged Attacks hit an opponent marked by <b>Framing: Freezing Point Composition</b>'s <b class="text-genshin-cryo">Focused Impression</b>, Monsieur Verite will initiate a coordinated attack that deals <span class="text-desc">180%</span> of Charlotte's ATK as AoE Cryo DMG and heals active character(s) within the AoE for <span class="text-desc">42%</span> of Charlotte's ATK. This effect can be triggered once every <span class="text-desc">6</span>s and both DMG and healing dealt in this way will be considered as having been done by Charlotte's Elemental Burst.`,
+      image: 'UI_Talent_S_Charlotte_04',
     },
   }
 
@@ -234,8 +247,16 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       ]
 
       if (a >= 4) {
-        base[Stats.HEAL] += fontainian * 0.05
-        base[Stats.CRYO_DMG] += nonFontainian * 0.05
+        base[Stats.HEAL].push({
+          value: fontainian * 0.05,
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+        })
+        base[Stats.CRYO_DMG].push({
+          value: nonFontainian * 0.05,
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+        })
       }
 
       if (c >= 1)
@@ -246,7 +267,12 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
           property: TalentProperty.HEAL,
         })
 
-      if (form.verite_hit) base[Stats.P_ATK] += _.min([form.verite_hit * 0.1, 0.3])
+      if (form.verite_hit)
+        base[Stats.P_ATK].push({
+          value: _.min([form.verite_hit * 0.1, 0.3]),
+          name: 'Constellation 2',
+          source: 'Self',
+        })
 
       if (c >= 6)
         //Duplicate to ally when stat is fixed

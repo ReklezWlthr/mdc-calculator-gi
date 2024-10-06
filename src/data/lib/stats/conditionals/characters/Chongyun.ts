@@ -31,69 +31,81 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Spirit Blade: Chonghua's Layered Frost`,
       content: `Chongyun strikes the ground with his greatsword, causing a <b class="text-genshin-cryo">Cryo</b> explosion in a circular AoE in front of him that deals <b class="text-genshin-cryo">Cryo DMG</b>.
-      <br />After a short delay, the cold air created by the <b class="text-genshin-cryo">Cryo</b> explosion will coalesce into a Chonghua Frost Field, within which all Sword, Claymore and Polearm-wielding characters' weapons will be infused with <b class="text-genshin-cryo">Cryo</b>.
+      <br />After a short delay, the cold air created by the <b class="text-genshin-cryo">Cryo</b> explosion will coalesce into a <b class="text-genshin-cryo">Chonghua Frost Field</b>, within which all Sword, Claymore and Polearm-wielding characters' weapons will be infused with <b class="text-genshin-cryo">Cryo</b>.
       `,
+      image: 'Skill_S_Chongyun_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Spirit Blade: Cloud-Parting Star`,
       content: `Performing the secret hand seals, Chongyun summons 3 giant spirit blades in mid-air that fall to the earth one by one after a short delay, exploding as they hit the ground.
       <br />When the spirit blades explode, they will deal <b class="text-genshin-cryo">AoE Cryo DMG</b> and launch opponents.`,
+      image: 'Skill_E_Chongyun_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Steady Breathing`,
-      content: `Sword, Claymore, or Polearm-wielding characters within the field created by Spirit Blade: Chonghua's Layered Frost have their Normal ATK SPD increased by <span class="text-desc">8%</span>.`,
+      content: `Sword, Claymore, or Polearm-wielding characters within the field created by <b>Spirit Blade: Chonghua's Layered Frost</b> have their Normal ATK SPD increased by <span class="text-desc">8%</span>.`,
+      image: 'UI_Talent_S_Chongyun_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Rimechaser Blade`,
-      content: `When the field created by Spirit Blade: Chonghua's Layered Frost disappears, another spirit blade will be summoned to strike nearby opponents, dealing <span class="text-desc">100%</span> of Chonghua's Layered Frost's Skill DMG as <b class="text-genshin-cryo">AoE Cryo DMG</b>.
+      content: `When the field created by <b>Spirit Blade: Chonghua's Layered Frost</b> disappears, another spirit blade will be summoned to strike nearby opponents, dealing <span class="text-desc">100%</span> of <b>Chonghua's Layered Frost</b>'s Skill DMG as <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       <br />Opponents hit by this blade will have their <b class="text-genshin-cryo">Cryo RES</b> decreased by <span class="text-desc">10%</span> for <span class="text-desc">8</span>s.`,
+      image: 'UI_Talent_S_Chongyun_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Gallant Journey`,
       content: `When dispatched on an expedition in Liyue, time consumed is reduced by <span class="text-desc">25%</span>.`,
+      image: 'UI_Talent_Expedition_Liyue',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Ice Unleashed`,
-      content: `The last attack of Chongyun's Normal Attack combo releases 3 ice blades. Each blade deals <span class="text-desc">50%</span> of Chongyun's ATK as <b class="text-genshin-cryo">Cryo DMG</b> to all opponents in its path.`,
+      content: `The last attack of Chongyun's Normal Attack combo releases <span class="text-desc">3</span> ice blades. Each blade deals <span class="text-desc">50%</span> of Chongyun's ATK as <b class="text-genshin-cryo">Cryo DMG</b> to all opponents in its path.`,
+      image: 'UI_Talent_S_Chongyun_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Atmospheric Revolution`,
-      content: `Elemental Skills and Elemental Bursts cast within the Frost Field created by Spirit Blade: Chonghua's Layered Frost have their CD time decreased by <span class="text-desc">15%</span>.`,
+      content: `Elemental Skills and Elemental Bursts cast within the <b class="text-genshin-cryo">Frost Field</b> created by <b>Spirit Blade: Chonghua's Layered Frost</b> have their CD time decreased by <span class="text-desc">15%</span>.`,
+      image: 'UI_Talent_S_Chongyun_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Cloudburst`,
-      content: `Increases the Level of Spirit Blade: Cloud-Parting Star by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Spirit Blade: Cloud-Parting Star</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Chongyun_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Frozen Skies`,
       content: `Chongyun regenerates <span class="text-desc">1</span> Energy every time he hits an opponent affected by <b class="text-genshin-cryo">Cryo</b>.
-      This effect can only occur once every <span class="text-desc">2</span>s.`,
+      <br />This effect can only occur once every <span class="text-desc">2</span>s.`,
+      image: 'UI_Talent_S_Chongyun_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `The True Path`,
-      content: `Increases the Level of Spirit Blade: Chonghua's Layered Frost by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Spirit Blade: Chonghua's Layered Frost</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Chongyun_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Rally of Four Blades`,
-      content: `Spirit Blade: Cloud-Parting Star deals <span class="text-desc">15%</span> more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.
+      content: `<b>Spirit Blade: Cloud-Parting Star</b> deals <span class="text-desc">15%</span> more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.
       <br />This skill will also summon <span class="text-desc">1</span> additional spirit blade.`,
+      image: 'UI_Talent_S_Chongyun_04',
     },
   }
 
@@ -125,24 +137,21 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'chongyun_infusion'),
-    findContentById(content, 'chongyun_a4'),
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'chongyun_a4')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'chongyun_infusion')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 40
 
       if (form.chongyun_infusion) {
         base.infuse(Element.CRYO)
-        if (a >= 1) base.ATK_SPD.push({value: 0.08, name: '', source: ``})
+        if (a >= 1) base.ATK_SPD.push({ value: 0.08, name: '', source: `` })
       }
 
       base.BASIC_SCALING = [
@@ -207,7 +216,8 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.chongyun_a1) base.ATK_SPD.push({value: 0.08, name: '', source: ``})
+      if (form.chongyun_infusion && a >= 1)
+        base.ATK_SPD.push({ value: 0.08, name: 'Ascension 1 Passive', source: `Self` })
 
       if (a >= 4)
         base.SKILL_SCALING.push({
@@ -217,7 +227,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         })
 
-      if (form.chongyun_a4) base.CRYO_RES_PEN.push({value: 0.1, name: '', source: ``})
+      if (form.chongyun_a4) base.CRYO_RES_PEN.push({ value: 0.1, name: 'Ascension 4 Passive', source: `Self` })
 
       if (c >= 1)
         base.BASIC_SCALING.push({
@@ -227,23 +237,23 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         })
 
-      if (c >= 2) {
-        base.SKILL_CD_RED.push({value: 0.15, name: '', source: ``})
-        base.BURST_CD_RED.push({value: 0.15, name: '', source: ``})
+      if (form.chongyun_infusion && c >= 2) {
+        base.SKILL_CD_RED.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
+        base.BURST_CD_RED.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
       }
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.chongyun_infusion && !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)) {
-        base.infuse(Element.CRYO)
-        if (a >= 1) base.ATK_SPD.push({value: 0.08, name: '', source: ``})
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.chongyun_infusion) {
+        if (!_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)) base.infuse(Element.CRYO)
+        if (a >= 1) base.ATK_SPD.push({ value: 0.08, name: 'Ascension 1 Passive', source: `Chongyun` })
       }
-      if (form.chongyun_a4) base.CRYO_RES_PEN.push({value: 0.1, name: '', source: ``})
+      if (form.chongyun_a4) base.CRYO_RES_PEN.push({ value: 0.1, name: 'Ascension 4 Passive', source: `Chongyun` })
 
-      if (c >= 2) {
-        base.SKILL_CD_RED.push({value: 0.15, name: '', source: ``})
-        base.BURST_CD_RED.push({value: 0.15, name: '', source: ``})
+      if (aForm.chongyun_infusion && c >= 2) {
+        base.SKILL_CD_RED.push({ value: 0.15, name: 'Constellation 2', source: `Chongyun` })
+        base.BURST_CD_RED.push({ value: 0.15, name: 'Constellation 2', source: `Chongyun` })
       }
 
       return base

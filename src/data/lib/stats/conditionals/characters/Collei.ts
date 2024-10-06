@@ -30,74 +30,86 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Floral Brush`,
-      content: `Throws out a Floral Ring that deals 1 instance of <b class="text-genshin-dendro">Dendro DMG</b> to targets it comes into contact with.
+      content: `Throws out a Floral Ring that deals <span class="text-desc">1</span> instance of <b class="text-genshin-dendro">Dendro DMG</b> to targets it comes into contact with.
       <br />The Floral Ring will return after a set time, dealing <b class="text-genshin-dendro">Dendro DMG</b> once again.
       `,
+      image: 'Skill_S_Collei_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Trump-Card Kitty`,
       content: `Trusty Cuilein-Anbar comes to save the day!
-      <br />Throws the doll named Cuilein-Anbar, causing an explosion that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>, creating a Cuilein-Anbar Zone. Cuilein-Anbar will bounce around within this zone, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b>.`,
+      <br />Throws the doll named Cuilein-Anbar, causing an explosion that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>, creating a <b class="text-genshin-dendro">Cuilein-Anbar Zone</b>. Cuilein-Anbar will bounce around within this zone, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b>.`,
+      image: 'Skill_E_Collei_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Floral Sidewinder`,
-      content: `If one of your party members has triggered Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions before the Floral Ring returns, it will grant the character the Sprout effect upon return, which will continuously deal <b class="text-genshin-dendro">Dendro DMG</b> equivalent to <span class="text-desc">40%</span> of Collei's ATK to nearby opponents for <span class="text-desc">3</span>s.
-      <br />If another Sprout effect is triggered during its initial duration, the initial effect will be removed. DMG dealt by Sprout is considered Elemental Skill DMG.`,
+      content: `If one of your party members has triggered Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions before the Floral Ring returns, it will grant the character the <b class="text-genshin-dendro">Sprout</b> effect upon return, which will continuously deal <b class="text-genshin-dendro">Dendro DMG</b> equivalent to <span class="text-desc">40%</span> of Collei's ATK to nearby opponents for <span class="text-desc">3</span>s.
+      <br />If another <b class="text-genshin-dendro">Sprout</b> effect is triggered during its initial duration, the initial effect will be removed. DMG dealt by <b class="text-genshin-dendro">Sprout</b> is considered Elemental Skill DMG.`,
+      image: 'UI_Talent_S_Collei_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `The Languid Wood`,
-      content: `When a character within the Cuilein-Anbar Zone triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the Zone's duration will be increased by <span class="text-desc">1</span>s.
-      <br />A single Trump-Card Kitty can be extended by up to <span class="text-desc">3</span>s.`,
+      content: `When a character within the <b class="text-genshin-dendro">Cuilein-Anbar Zone</b> triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the <b class="text-genshin-dendro">Zone</b>'s duration will be increased by <span class="text-desc">1</span>s.
+      <br />A single <b>Trump-Card Kitty</b> can be extended by up to <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_Collei_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Gliding Champion of Sumeru`,
       content: `Decreases gliding Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_Explosion_Glide',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Deepwood Patrol`,
       content: `When in the party and not on the field, Collei's Energy Recharge is increased by <span class="text-desc">20%</span>.`,
+      image: 'UI_Talent_S_Collei_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Through Hill and Copse`,
-      content: `The Passive Talent Floral Sidewinder is changed to this:
-      <br />The Floral Ring will grant the character the Sprout effect from Floral Sidewinder upon return, dealing <span class="text-desc">40%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents for <span class="text-desc">3</span>s.
-      <br />From the moment of using Floral Brush to the moment when this instance of Sprout effect ends, if any of your party members triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the Sprout effect will be extended by <span class="text-desc">3</span>s.
-      <br />The Sprout effect can only be extended this way once. If another Sprout effect is triggered during its initial duration, the initial effect will be removed.
-      <br />Requires you to have unlocked the Floral Sidewinder Passive Talent.`,
+      content: `The Passive <b>Talent Floral Sidewinder</b> is changed to this:
+      <br />The Floral Ring will grant the character the <b class="text-genshin-dendro">Sprout</b> effect from Floral Sidewinder upon return, dealing <span class="text-desc">40%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents for <span class="text-desc">3</span>s.
+      <br />From the moment of using <b>Floral Brush</b> to the moment when this instance of <b class="text-genshin-dendro">Sprout</b> effect ends, if any of your party members triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the <b class="text-genshin-dendro">Sprout</b> effect will be extended by <span class="text-desc">3</span>s.
+      <br />The <b class="text-genshin-dendro">Sprout</b> effect can only be extended this way once. If another <b class="text-genshin-dendro">Sprout</b> effect is triggered during its initial duration, the initial effect will be removed.
+      <br />Requires you to have unlocked the <b>Floral Sidewinder</b> Passive Talent.`,
+      image: 'UI_Talent_S_Collei_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Scent of Summer`,
-      content: `Increases the Level of Floral Brush by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Floral Brush</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Collei_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Gift of the Woods`,
-      content: `Using Trump-Card Kitty will increase all nearby characters' Elemental Mastery by <span class="text-desc">60</span> for <span class="text-desc">12</span>s (not including Collei herself).`,
+      content: `Using <b>Trump-Card Kitty</b> will increase all nearby characters' Elemental Mastery by <span class="text-desc">60</span> for <span class="text-desc">12</span>s (not including Collei herself).`,
+      image: 'UI_Talent_S_Collei_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `All Embers`,
-      content: `Increases the Level of Trump-Card Kitty by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Trump-Card Kitty</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Collei_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Forest of Falling Arrows`,
       content: `When the Floral Ring hits, it will create a miniature Cuilein-Anbar that will deal <span class="text-desc">200%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b>.
-      <br />Each Floral Brush can only create one such miniature Cuilein-Anbar.`,
+      <br />Each <b>Floral Brush</b> can only create one such miniature Cuilein-Anbar.`,
+      image: 'UI_Talent_S_Collei_04',
     },
   }
 
@@ -105,7 +117,7 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'collei_c1',
-      text: `Off-Field Energy Recharge`,
+      text: `Off-Field ER Bonus`,
       ...talents.c1,
       show: c >= 1,
       default: false,
@@ -206,12 +218,12 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         })
 
-      if (form.collei_c1) base[Stats.ER].push({value: 0.2, name: '', source: ``})
+      if (form.collei_c1) base[Stats.ER].push({ value: 0.2, name: 'Constellation 1', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.collei_c4) base[Stats.EM].push({value: 60, name: '', source: ``})
+      if (form.collei_c4) base[Stats.EM].push({ value: 60, name: 'Constellation 4', source: `Collei` })
 
       return base
     },

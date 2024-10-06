@@ -176,19 +176,25 @@ const Kinich = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       base.BASIC_SCALING = [
         {
           name: '1-Hit',
-          value: [{ scaling: calcScaling(0.99, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.99, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '2-Hit',
-          value: [{ scaling: calcScaling(0.829, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.829, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
           name: '3-Hit',
-          value: [{ scaling: calcScaling(1.235, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.235, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NA,
+        },
+        {
+          name: 'Mid-Air Attack DMG',
+          value: [{ scaling: calcScaling(1.677, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },

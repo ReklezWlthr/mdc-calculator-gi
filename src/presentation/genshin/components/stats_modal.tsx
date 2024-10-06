@@ -1,3 +1,4 @@
+import React from 'react'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatsArray, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
@@ -42,7 +43,9 @@ export const AttributeBlock = ({ stat, array, stats, flat }: NormalBlockProps) =
                   <>
                     {' '}
                     = {_.isNumber(item.base) ? _.round(item.base).toLocaleString() : item.base} {`\u{00d7}`}{' '}
-                    <span className="text-blue">{format(item.multiplier)}</span>
+                    <span className="text-blue">
+                      {_.isNumber(item.multiplier) ? format(+item.multiplier) : item.multiplier}
+                    </span>
                     {item.flat && (
                       <>
                         {' '}
@@ -103,7 +106,9 @@ export const StatsModal = observer(
                     <>
                       {' '}
                       = {_.isNumber(item.base) ? _.round(item.base).toLocaleString() : item.base} {`\u{00d7}`}{' '}
-                      <span className="text-blue">{toPercentage(item.multiplier)}</span>
+                      <span className="text-blue">
+                        {_.isNumber(item.multiplier) ? toPercentage(+item.multiplier) : item.multiplier}
+                      </span>
                       {item.flat && (
                         <>
                           {' '}

@@ -144,7 +144,7 @@ export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifact
   _.forEach(main, (item, key) => {
     conditionals[key]?.push({
       name: `Main Stat`,
-      source: 'Relic',
+      source: 'Artifact',
       value: item,
     })
   })
@@ -160,7 +160,7 @@ export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifact
   _.forEach(sub, (item, key) => {
     conditionals[key]?.push({
       name: `Sub Stat`,
-      source: 'Relic',
+      source: 'Artifact',
       value: item,
     })
   })

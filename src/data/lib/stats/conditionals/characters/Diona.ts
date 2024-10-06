@@ -30,81 +30,93 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Icy Paws`,
-      content: `Fires an Icy Paw that deals <b class="text-genshin-cryo">Cryo DMG</b> to opponents and forms a shield on hit.
-      <br />The shield's DMG Absorption scales based on Diona's Max HP, and its duration scales off the number of Icy Paws that hit their target.
+      content: `Fires an <b>Icy Paw</b> that deals <b class="text-genshin-cryo">Cryo DMG</b> to opponents and forms a shield on hit.
+      <br />The shield's DMG Absorption scales based on Diona's Max HP, and its duration scales off the number of <b>Icy Paws</b> that hit their target.
       <br />
       <br /><b>Press</b>
-      <br />Rapidly fires off 2 Icy Paws.
+      <br />Rapidly fires off <span class="text-desc">2</span> <b>Icy Paws</b>.
       <br />
       <br /><b>Hold</b>
-      <br />Dashes back quickly before firing 5 Icy Paws.
-      <br />The shield created by a Hold attack will gain a 75% DMG Absorption Bonus.
+      <br />Dashes back quickly before firing <span class="text-desc">5</span> <b>Icy Paws</b>.
+      <br />The shield created by a Hold attack will gain a <span class="text-desc">75%</span> DMG Absorption Bonus.
       <br />
-      <br />The shield has a 250% <b class="text-genshin-cryo">Cryo DMG</b> Absorption Bonus, and will cause your active character to become affected by <b class="text-genshin-cryo">Cryo</b> at the point of formation for a short duration.`,
+      <br />The shield has a <span class="text-desc">250%</span> <b class="text-genshin-cryo">Cryo DMG</b> Absorption Bonus, and will cause your active character to become affected by <b class="text-genshin-cryo">Cryo</b> at the point of formation for a short duration.`,
+      image: 'Skill_S_Diona_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Signature Mix`,
-      content: `Tosses out a special cold brew that deals <b class="text-genshin-cryo">AoE Cryo DMG</b> and creates a Drunken Mist in an AoE.
+      content: `Tosses out a special cold brew that deals <b class="text-genshin-cryo">AoE Cryo DMG</b> and creates a <b class="text-genshin-cryo">Drunken Mist</b> in an AoE.
       <br />
-      <br /><b>Drunken Mist</b>
-      <br />Deals continuous <b class="text-genshin-cryo">Cryo DMG</b> to opponents within the AoE.
-      <br />Continuously regenerates the HP of characters within the AoE.
+      <br /><b class="text-genshin-cryo">Drunken Mist</b>
+      <br />- Deals continuous <b class="text-genshin-cryo">Cryo DMG</b> to opponents within the AoE.
+      <br />- Continuously regenerates the HP of characters within the AoE.
       `,
+      image: 'Skill_E_Diona_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Cat's Tail Secret Menu`,
-      content: `Characters shielded by Icy Paws have their Movement SPD increased by <span class="text-desc">10%</span> and their Stamina Consumption decreased by <span class="text-desc">10%</span>.`,
+      content: `Characters shielded by <b>Icy Paws</b> have their Movement SPD increased by <span class="text-desc">10%</span> and their Stamina Consumption decreased by <span class="text-desc">10%</span>.`,
+      image: 'UI_Talent_S_Diona_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Drunkards' Farce`,
-      content: `Opponents who enter the AoE of Signature Mix have <span class="text-desc">10%</span> decreased ATK for <span class="text-desc">15</span>s.`,
+      content: `Opponents who enter the AoE of <b>Signature Mix</b> have <span class="text-desc">10%</span> decreased ATK for <span class="text-desc">15</span>s.`,
+      image: 'UI_Talent_S_Diona_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Complimentary Bar Food`,
       content: `When a Perfect Cooking is achieved on a dish with restorative effects, Diona has a <span class="text-desc">12%</span> chance to obtain double the product.`,
+      image: 'UI_Talent_Cook_Heal',
     },
     c1: {
       trace: `Constellation 1`,
       title: `A Lingering Flavor`,
-      content: `Regenerates <span class="text-desc">15</span> Energy for Diona after the effects of Signature Mix end.`,
+      content: `Regenerates <span class="text-desc">15</span> Energy for Diona after the effects of <b>Signature Mix</b> end.`,
+      image: 'UI_Talent_S_Diona_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Shaken, Not Purred`,
-      content: `Increases Icy Paws' DMG by <span class="text-desc">15%</span>, and increases its shield's DMG Absorption by <span class="text-desc">15%</span>.
+      content: `Increases <b>Icy Paws</b>' DMG by <span class="text-desc">15%</span>, and increases its shield's DMG Absorption by <span class="text-desc">15%</span>.
       <br />Additionally, when paws hit their targets, creates a shield for other nearby characters on the field with <span class="text-desc">50%</span> of the Icy Paws shield's DMG Absorption for <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Diona_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `A—Another Round?`,
-      content: `Increases the Level of Signature Mix by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Signature Mix</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Diona_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Wine Industry Slayer`,
-      content: `Within the radius of Signature Mix, Diona's charge time for aimed shots is reduced by <span class="text-desc">60%</span>.`,
+      content: `Within the radius of <b>Signature Mix</b>, Diona's charge time for aimed shots is reduced by <span class="text-desc">60%</span>.`,
+      image: 'UI_Talent_S_Diona_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Double Shot, on the Rocks`,
-      content: `Increases the Level of Icy Paws by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Icy Paws</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Diona_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Cat's Tail Closing Time`,
-      content: `Characters within Signature Mix's radius will gain the following effects based on their HP amounts:
-      <br />Increases Incoming Healing Bonus by <span class="text-desc">30%</span> when HP falls below or is equal to <span class="text-desc">50%</span>.
-      <br />Elemental Mastery increased by <span class="text-desc">200</span> when HP is above <span class="text-desc">50%</span>.`,
+      content: `Characters within <b>Signature Mix</b>'s radius will gain the following effects based on their HP amounts:
+      <br />- Increases Incoming Healing Bonus by <span class="text-desc">30%</span> when HP falls below or is equal to <span class="text-desc">50%</span>.
+      <br />- Elemental Mastery increased by <span class="text-desc">200</span> when HP is above <span class="text-desc">50%</span>.`,
+      image: 'UI_Talent_S_Diona_04',
     },
   }
 
@@ -112,7 +124,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'diona_a4',
-      text: `Burst ATK Reduction`,
+      text: `A4 Burst ATK Reduction`,
       ...talents.a4,
       show: a >= 4,
       default: false,
@@ -120,22 +132,30 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
     },
     {
       type: 'toggle',
-      id: 'diona_c6',
-      text: `Current HP > 50%`,
+      id: 'diona_c6_low',
+      text: `C6 Diona Heal Bonus`,
       ...talents.c6,
       show: c >= 6,
-      default: true,
+      default: false,
+    },
+    {
+      type: 'toggle',
+      id: 'diona_c6_high',
+      text: `C6 Diona EM Bonus`,
+      ...talents.c6,
+      show: c >= 6,
+      default: false,
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'diona_c6')]
+  const teammateContent: IContent[] = []
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'diona_c6_low'), findContentById(content, 'diona_c6_high')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
@@ -235,21 +255,25 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.diona_a4) base.ATK_REDUCTION.push({value: 0.1, name: '', source: ``})
+      if (form.diona_a4) base.ATK_REDUCTION.push({ value: 0.1, name: 'Ascension 4 Passive', source: `Self` })
 
-      if (form.diona_c6) {
-        base[Stats.EM].push({value: 200, name: '', source: ``})
-      } else {
-        base[Stats.I_HEALING].push({value: 0.3, name: '', source: ``})
+      if (form.diona_c6_high) {
+        base[Stats.EM].push({ value: 200, name: 'Constellation 6', source: `Self` })
+      }
+      if (form.diona_c6_low) {
+        base[Stats.I_HEALING].push({ value: 0.3, name: 'Constellation 6', source: `Self` })
       }
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.diona_c6) {
-        base[Stats.EM].push({value: 200, name: '', source: ``})
-      } else {
-        base[Stats.I_HEALING].push({value: 0.3, name: '', source: ``})
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (form.diona_a4) base.ATK_REDUCTION.push({ value: 0.1, name: 'Ascension 4 Passive', source: `Diona` })
+
+      if (aForm.diona_c6_high) {
+        base[Stats.EM].push({ value: 200, name: 'Constellation 6', source: `Diona` })
+      }
+      if (aForm.diona_c6_low) {
+        base[Stats.I_HEALING].push({ value: 0.3, name: 'Constellation 6', source: `Diona` })
       }
 
       return base

@@ -238,7 +238,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.HEAL,
         })
 
-      if (form.yaoyaoC1) base[Stats.DENDRO_DMG].push({value: 0.15, name: '', source: ``})
+      if (form.yaoyaoC1) base[Stats.DENDRO_DMG].push({ value: 0.15, name: '', source: `` })
       if (c >= 6)
         base.SKILL_SCALING.push(
           {
@@ -261,7 +261,12 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.yaoyaoC4) base[Stats.EM] += _.min([0.003 * base.getHP(), 120])
+      if (form.yaoyaoC4)
+        base[Stats.EM].push({
+          value: _.min([0.003 * base.getHP(), 120]),
+          name: 'Constellation 4',
+          source: 'Self',
+        })
 
       return base
     },

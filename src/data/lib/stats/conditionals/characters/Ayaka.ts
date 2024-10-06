@@ -29,21 +29,24 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Kamisato Art: Hyouka`,
       content: `Summons blooming ice to launch nearby opponents, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       `,
+      image: 'Skill_S_Ayaka_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Kamisato Art: Soumetsu`,
-      content: `Summons forth a snowstorm with flawless poise, unleashing a Frostflake Seki no To that moves forward continuously.
+      content: `Summons forth a snowstorm with flawless poise, unleashing a <b>Frostflake Seki no To</b> that moves forward continuously.
       <br />
       <br /><b>Frostflake Seki no To</b>
       <br />- A storm of whirling icy winds that slashes repeatedly at every enemy it touches, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />- The snowstorm explodes after its duration ends, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.`,
+      image: 'Skill_E_Ayaka',
     },
     sprint: {
       trace: `Alternate Sprint`,
@@ -51,59 +54,69 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       content: `<b>Alternate Sprint</b>
       <br />Ayaka consumes Stamina and cloaks herself in a frozen fog that moves with her.
       <br />
-      <br />In Senho form, she moves swiftly upon water.
+      <br />In <b>Senho</b> form, she moves swiftly upon water.
       <br />When she reappears, the following effects occur:
       <br />- Ayaka unleashes frigid energy to apply <b class="text-genshin-cryo">Cryo</b> on nearby opponents.
       <br />- Coldness condenses around Ayaka's blade, infusing her attacks with <b class="text-genshin-cryo">Cryo</b> for a brief period.`,
+      image: 'Skill_S_Ayaka_02',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Amatsumi Kunitsumi Sanctification`,
-      content: `After using Kamisato Art: Hyouka, Kamisato Ayaka's Normal and Charged attacks deal <span class="text-desc">30%</span> increased DMG for <span class="text-desc">6</span>s.`,
+      content: `After using <b>Kamisato Art: Hyouka</b>, Kamisato Ayaka's Normal and Charged attacks deal <span class="text-desc">30%</span> increased DMG for <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Ayaka_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Kanten Senmyou Blessing`,
-      content: `When the Cryo application at the end of Kamisato Art: Senho hits an opponent, Kamisato Ayaka gains the following effects:
+      content: `When the <b class="text-genshin-cryo">Cryo</b> application at the end of <b>Kamisato Art: Senho</b> hits an opponent, Kamisato Ayaka gains the following effects:
       <br />- Restores <span class="text-desc">10</span> Stamina
       <br />- Gains <span class="text-desc">18%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b> for <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Ayaka_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: 'Fruits of Shinsa',
       content: `When Ayaka crafts Weapon Ascension Materials, she has a <span class="text-desc">10%</span> chance to receive double the product.`,
+      image: 'UI_Talent_S_Alhatham_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Snowswept Sakura`,
-      content: `When Kamisato Ayaka's Normal or Charged Attacks deal <b class="text-genshin-cryo">Cryo DMG</b> to opponents, it has a <span class="text-desc">50%</span> chance of decreasing the CD of Kamisato Art: Hyouka by <span class="text-desc">0.3</span>s. This effect can occur once every <span class="text-desc">0.1</span>s.`,
+      content: `When Kamisato Ayaka's Normal or Charged Attacks deal <b class="text-genshin-cryo">Cryo DMG</b> to opponents, it has a <span class="text-desc">50%</span> chance of decreasing the CD of <b>Kamisato Art: Hyouka</b> by <span class="text-desc">0.3</span>s. This effect can occur once every <span class="text-desc">0.1</span>s.`,
+      image: 'UI_Talent_S_Ayaka_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Blizzard Blade Seki no To`,
-      content: `When casting Kamisato Art: Soumetsu, unleashes <span class="text-desc">2</span> smaller additional Frostflake Seki no To, each dealing <span class="text-desc">20%</span> of the original storm's DMG.`,
+      content: `When casting <b>Kamisato Art: Soumetsu</b>, unleashes <span class="text-desc">2</span> smaller additional <b>Frostflake Seki no To</b>, each dealing <span class="text-desc">20%</span> of the original storm's DMG.`,
+      image: 'UI_Talent_S_Ayaka_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Frostbloom Kamifubuki`,
-      content: `Increases the Level of Kamisato Art: Soumetsu by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Kamisato Art: Soumetsu</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ayaka_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Ebb and Flow`,
-      content: `Opponents damaged by Kamisato Art: Soumetsu's Frostflake Seki no To will have their DEF decreased by <span class="text-desc">30%</span> for <span class="text-desc">6</span>s.`,
+      content: `Opponents damaged by <b>Kamisato Art: Soumetsu</b>'s <b>Frostflake Seki no To</b> will have their DEF decreased by <span class="text-desc">30%</span> for <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Ayaka_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Blossom Cloud Irutsuki`,
-      content: `Increases the Level of Kamisato Art: Hyouka by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Kamisato Art: Hyouka</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ayaka_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Dance of Suigetsu`,
-      content: `Kamisato Ayaka gains Usurahi Butou every <span class="text-desc">10</span>s, increasing her Charged Attack DMG by <span class="text-desc">298%</span>. This buff will be cleared <span class="text-desc">0.5</span>s after Ayaka's Charged ATK hits an opponent, after which the timer for this ability will restart.`,
+      content: `Kamisato Ayaka gains <b class="text-genshin-cryo">Usurahi Butou</b> every <span class="text-desc">10</span>s, increasing her Charged Attack DMG by <span class="text-desc">298%</span>. This buff will be cleared <span class="text-desc">0.5</span>s after Ayaka's Charged ATK hits an opponent, after which the timer for this ability will restart.`,
+      image: 'UI_Talent_S_Ayaka_04',
     },
   }
 
@@ -147,13 +160,11 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       ...talents.c4,
       show: c >= 4,
       default: true,
-      debuff: true
+      debuff: true,
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'ayaka_c4')
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'ayaka_c4')]
 
   return {
     upgrade,
@@ -205,7 +216,7 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: calcScaling(0.5513, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
-          bonus: form.ayaka_c6 ? 2.98 : 0
+          bonus: form.ayaka_c6 ? 2.98 : 0,
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('base', normal)
@@ -234,10 +245,10 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.ayaka_a1) {
-        base.BASIC_DMG.push({value: 0.3, name: '', source: ``})
-        base.CHARGE_DMG.push({value: 0.3, name: '', source: ``})
+        base.BASIC_DMG.push({ value: 0.3, name: 'Ascension 1 Passive', source: `Self` })
+        base.CHARGE_DMG.push({ value: 0.3, name: 'Ascension 1 Passive', source: `Self` })
       }
-      if (form.ayaka_a4) base[Stats.CRYO_DMG].push({value: 0.18, name: '', source: ``})
+      if (form.ayaka_a4) base[Stats.CRYO_DMG].push({ value: 0.18, name: 'Ascension 4 Passive', source: `Self` })
 
       if (c >= 2)
         base.BURST_SCALING.push(
@@ -255,12 +266,12 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
           }
         )
 
-        if(form.ayaka_c4) base.DEF_REDUCTION.push({value: 0.3, name: '', source: ``})
+      if (form.ayaka_c4) base.DEF_REDUCTION.push({ value: 0.3, name: 'Constellation 4', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if(form.ayaka_c4) base.DEF_REDUCTION.push({value: 0.3, name: '', source: ``})
+      if (form.ayaka_c4) base.DEF_REDUCTION.push({ value: 0.3, name: 'Constellation 4', source: `Kamisato Ayaka` })
 
       return base
     },

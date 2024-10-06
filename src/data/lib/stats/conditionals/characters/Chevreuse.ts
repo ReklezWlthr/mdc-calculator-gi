@@ -35,6 +35,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_03',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -44,76 +45,81 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       <br />Hold to fire in a different fashion.
       <br />
       <br /><b>Hold</b>
-      <br />Enter Aiming Mode, locking a target in her sights to fire a precise interdiction shot. If Chevreuse has an Overcharged Ball, then she will fire the Overcharged Ball instead, dealing greater <b class="text-genshin-pyro">Pyro DMG</b> in a larger area.
-      <br />Chevreuse gains <span class="text-desc">1</span> Overcharged Ball every time a nearby character in the party triggers an Overloaded reaction, and can have up to <span class="text-desc">1</span> Overcharged Ball at a time.
+      <br />Enter Aiming Mode, locking a target in her sights to fire a precise interdiction shot. If Chevreuse has an <b class="text-genshin-pyro">Overcharged Ball</b>, then she will fire the <b class="text-genshin-pyro">Overcharged Ball</b> instead, dealing greater <b class="text-genshin-pyro">Pyro DMG</b> in a larger area.
+      <br />Chevreuse gains <span class="text-desc">1</span> <b class="text-genshin-pyro">Overcharged Ball</b> every time a nearby character in the party triggers an Overloaded reaction, and can have up to <span class="text-desc">1</span> <b class="text-genshin-pyro">Overcharged Ball</b> at a time.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-ousia">Ousia</b>
-      <br />Periodically, after Chevreuse's Short-Range Rapid Interdiction Fire hits, a Surging Blade will be called forth that deals <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-pyro">Pyro DMG</b>.
+      <br />Periodically, after Chevreuse's <b>Short-Range Rapid Interdiction Fire</b> hits, a <b class="text-genshin-ousia">Surging Blade</b> will be called forth that deals <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-pyro">Pyro DMG</b>.
       `,
+      image: 'Skill_S_Chevreuse_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Ring of Bursting Grenades`,
       content: `Chevreuse fires an explosive grenade at opponents with her musket, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>. After the projectile hits, it will split into many secondary explosive shells.
       <br />The secondary explosive shells will burst after a short interval, dealing <b class="text-genshin-pyro">Pyro DMG</b> to nearby opponents.`,
+      image: 'Skill_E_Chevreuse_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Vanguard's Coordinated Tactics`,
       content: `When all party members are <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters and there is at least one <b class="text-genshin-pyro">Pyro</b> and one <b class="text-genshin-electro">Electro</b> character each in the party:
-      <br />Chevreuse grants "Coordinated Tactics" to nearby party members: After a character triggers the Overloaded reaction, the <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro RES</b> of the opponent(s) affected by this Overloaded reaction will be decreased by <span class="text-desc">40%</span> for <span class="text-desc">6</span>s.
-      <br />The "Coordinated Tactics" effect will be removed when the Elemental Types of the characters in the party do not meet the basic requirements for the Passive Talent.`,
+      <br />Chevreuse grants <b class="text-genshin-pyro">Coordinated Tactics</b> to nearby party members: After a character triggers the Overloaded reaction, the <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro RES</b> of the opponent(s) affected by this Overloaded reaction will be decreased by <span class="text-desc">40%</span> for <span class="text-desc">6</span>s.
+      <br />The <b class="text-genshin-pyro">Coordinated Tactics</b> effect will be removed when the Elemental Types of the characters in the party do not meet the basic requirements for the Passive Talent.`,
+      image: 'UI_Talent_S_Chevreuse_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Vertical Force Coordination`,
-      content: `After Chevreuse fires an Overcharged Ball using Short-Range Rapid Interdiction Fire, nearby <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters in the party gain <span class="text-desc">1%</span> increased ATK for every <span class="text-desc">1,000</span> Max HP Chevreuse has for <span class="text-desc">30</span>s. ATK can be increased by up to <span class="text-desc">40%</span> in this way.`,
-      value: [
-        {
-          name: 'Current ATK Bonus',
-          value: { stat: Stats.HP, scaling: (hp) => toPercentage(_.min([(hp / 1000) * 0.01, 0.4])) },
-        },
-      ],
+      content: `After Chevreuse fires an <b class="text-genshin-pyro">Overcharged Ball</b> using <b>Short-Range Rapid Interdiction Fire</b>, nearby <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-electro">Electro</b> characters in the party gain <span class="text-desc">1%</span> increased ATK for every <span class="text-desc">1,000</span> Max HP Chevreuse has for <span class="text-desc">30</span>s. ATK can be increased by up to <span class="text-desc">40%</span> in this way.`,
+      image: 'UI_Talent_S_Chevreuse_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Double Time March`,
       content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_Explosion_Sprint',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Stable Front Line's Resolve`,
-      content: `When the active character with the "Coordinated Tactics" status (not including Chevreuse herself) triggers the Overloaded reaction, they will recover <span class="text-desc">6</span> Energy. This effect can be triggered once every <span class="text-desc">10</span>s.
-      <br />You must first unlock the Passive Talent "Vanguard's Coordinated Tactics."`,
+      content: `When the active character with the <b class="text-genshin-pyro">Coordinated Tactics</b> status (not including Chevreuse herself) triggers the Overloaded reaction, they will recover <span class="text-desc">6</span> Energy. This effect can be triggered once every <span class="text-desc">10</span>s.
+      <br />You must first unlock the Passive Talent <b>Vanguard's Coordinated Tactics</b>.`,
+      image: 'UI_Talent_S_Chevreuse_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Sniper Induced Explosion`,
-      content: `After Holding Short-Range Rapid Interdiction Fire and hitting a target, 2 chain explosions will be triggered near the location where said target is hit. Each explosion deals <b class="text-genshin-pyro">Pyro DMG</b> equal to <span class="text-desc">120%</span> of Chevreuse's ATK. This effect can be triggered up to once every <span class="text-desc">10</span>s, and DMG dealt this way is considered Elemental Skill DMG.`,
+      content: `After Holding <b>Short-Range Rapid Interdiction Fire</b> and hitting a target, <span class="text-desc">2</span> chain explosions will be triggered near the location where said target is hit. Each explosion deals <b class="text-genshin-pyro">Pyro DMG</b> equal to <span class="text-desc">120%</span> of Chevreuse's ATK. This effect can be triggered up to once every <span class="text-desc">10</span>s, and DMG dealt this way is considered Elemental Skill DMG.`,
+      image: 'UI_Talent_S_Chevreuse_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Practiced Field Stripping Technique`,
-      content: `Increases the Level of Short-Range Rapid Interdiction Fire by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Short-Range Rapid Interdiction Fire</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Chevreuse_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `The Secret to Rapid-Fire Multishots`,
-      content: `After using Ring of Bursting Grenades, the Hold mode of Short-Range Rapid Interdiction Fire will not go on cooldown when Chevreuse uses it. This effect is removed after Short-Range Rapid Interdiction Fire has been fired twice using Hold or after <span class="text-desc">6</span>s.`,
+      content: `After using <b>Ring of Bursting Grenades</b>, the Hold mode of <b>Short-Range Rapid Interdiction Fire</b> will not go on cooldown when Chevreuse uses it. This effect is removed after <b>Short-Range Rapid Interdiction Fire</b> has been fired twice using Hold or after <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Chevreuse_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Enhanced Incendiary Firepower`,
-      content: `Increases the Level of Ring of Bursting Grenades by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Ring of Bursting Grenades</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Chevreuse_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `In Pursuit of Ending Evil`,
-      content: `After 12s of the healing effect from Short-Range Rapid Interdiction Fire, all nearby party members recover HP equivalent to <span class="text-desc">10%</span> of Chevreuse's Max HP once.
-      After a party member is healed by Short-Range Rapid Interdiction Fire, they gain a <span class="text-desc">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and <b class="text-genshin-electro">Electro DMG Bonus</b> for <span class="text-desc">8</span>s. Max <span class="text-desc">3</span> stacks. Each stack's duration is counted independently.`,
+      content: `After <span class="text-desc">12</span>s of the healing effect from <b>Short-Range Rapid Interdiction Fire</b>, all nearby party members recover HP equivalent to <span class="text-desc">10%</span> of Chevreuse's Max HP once.
+      <br />After a party member is healed by <b>Short-Range Rapid Interdiction Fire</b>, they gain a <span class="text-desc">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and <b class="text-genshin-electro">Electro DMG Bonus</b> for <span class="text-desc">8</span>s. Max <span class="text-desc">3</span> stacks. Each stack's duration is counted independently.`,
+      image: 'UI_Talent_S_Chevreuse_04',
     },
   }
 
@@ -121,7 +127,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
     {
       type: 'toggle',
       id: 'chev_overload',
-      text: `A1 Overloaded Buff`,
+      text: `A1 Overloaded RES Shred`,
       ...talents.a1,
       show: a >= 1 && a1Active,
       default: true,
@@ -252,8 +258,8 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       ]
 
       if (form.chev_overload) {
-        base.PYRO_RES_PEN.push({value: 0.4, name: '', source: ``})
-        base.ELECTRO_RES_PEN.push({value: 0.4, name: '', source: ``})
+        base.PYRO_RES_PEN.push({ value: 0.4, name: 'Ascension 1 Passive', source: `Self` })
+        base.ELECTRO_RES_PEN.push({ value: 0.4, name: 'Ascension 1 Passive', source: `Self` })
       }
 
       if (c >= 2)
@@ -273,30 +279,43 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
         })
 
       if (form.chev_c6) {
-        base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
-        base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
+        base[Stats.PYRO_DMG].push({ value: 0.2, name: 'Constellation 6', source: `Self` }) * form.chev_c6
+        base[Stats.ELECTRO_DMG].push({ value: 0.2, name: 'Constellation 6', source: `Self` }) * form.chev_c6
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.chev_overload) {
-        base.PYRO_RES_PEN.push({value: 0.4, name: '', source: ``})
-        base.ELECTRO_RES_PEN.push({value: 0.4, name: '', source: ``})
+        base.PYRO_RES_PEN.push({ value: 0.4, name: 'Ascension 1 Passive', source: `Chevreuse` })
+        base.ELECTRO_RES_PEN.push({ value: 0.4, name: 'Ascension 1 Passive', source: `Chevreuse` })
       }
 
       if (form.chev_a4 && _.includes([Element.PYRO, Element.ELECTRO], form.element))
-        base[Stats.P_ATK] += _.min([(own.getHP() / 1000) * 0.01, 0.4]) //Only apply to Pyro & Electro
+        base[Stats.P_ATK].push({
+          value: _.min([(own.getHP() / 1000) * 0.01, 0.4]),
+          name: 'Ascension 4 Passive',
+          source: 'Chevreuse',
+          base: _.min([own.getHP() / 1000, 40]),
+          multiplier: 0.01,
+        }) //Only apply to Pyro & Electro
 
       if (form.chev_c6) {
-        base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
-        base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``}) * form.chev_c6
+        base[Stats.PYRO_DMG].push({ value: 0.2, name: 'Constellation 6', source: `Chevreuse` }) * form.chev_c6
+        base[Stats.ELECTRO_DMG].push({ value: 0.2, name: 'Constellation 6', source: `Chevreuse` }) * form.chev_c6
       }
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.chev_a4) base[Stats.P_ATK] += _.min([(base.getHP() / 1000) * 0.01, 0.4])
+      if (form.chev_a4)
+        base[Stats.P_ATK].push({
+          value: _.min([(base.getHP() / 1000) * 0.01, 0.4]),
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+          base: _.min([base.getHP() / 1000, 40]),
+          multiplier: 0.01,
+        })
       return base
     },
   }

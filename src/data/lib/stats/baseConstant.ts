@@ -62,7 +62,7 @@ export interface StatsArray {
   source: string
   value: number
   base?: string | number
-  multiplier?: number
+  multiplier?: string | number
   flat?: number | string
 }
 

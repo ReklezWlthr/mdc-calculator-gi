@@ -1,3 +1,4 @@
+import React from 'react'
 import { IScaling } from '@src/domain/conditional'
 import { Element, StatIcons, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
 import classNames from 'classnames'
@@ -69,7 +70,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     ) || 1
   const resMult = calculatorStore.getResMult(
     element,
-    (stats[`${element.toUpperCase()}_RES_PEN`] || 0) + (stats.ALL_TYPE_RES_PEN || 0)
+    (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) + (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0)
   )
   const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
   const enemyMod = isDamage ? (scaling.property === TalentProperty.STATIC ? 1 : defMult) * resMult : 1

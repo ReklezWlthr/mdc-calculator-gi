@@ -31,88 +31,91 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       <br />
-      <br /><b>Masque of the Red Death</b>
+      <br /><b class="text-genshin-pyro">Masque of the Red Death</b>
       <br />When Arlecchino has a <b class="text-genshin-bol">Bond of Life</b> equal to or greater than <span class="text-desc">30%</span> of her Max HP, she will enter the "Masque of the Red Death" state, where her Normal, Charged, and Plunging Attacks will be converted to deal <b class="text-genshin-pyro">Pyro DMG</b>. This cannot be overridden.
-      <br />When in the "Masque of the Red Death" state, Arlecchino's Normal Attacks will deal extra DMG to opponents on hit that scales off her ATK multiplied by a certain ratio of her current <b class="text-genshin-bol">Bond of Life</b> percentage. This will consume 7.5% of said current Bond of Life. Her <b class="text-genshin-bol">Bond of Life</b> can be consumed this way every 0.03s. When her <b class="text-genshin-bol">Bond of Life</b> is consumed in this manner, All Is Ash's CD will decrease by 0.8s.
+      <br />When in the <b class="text-genshin-pyro">Masque of the Red Death</b> state, Arlecchino's Normal Attacks will deal extra DMG to opponents on hit that scales off her ATK multiplied by a certain ratio of her current <b class="text-genshin-bol">Bond of Life</b> percentage. This will consume <span class="text-desc">7.5%</span> of said current <b class="text-genshin-bol">Bond of Life</b>. Her <b class="text-genshin-bol">Bond of Life</b> can be consumed this way every <span class="text-desc">0.03</span>s. When her <b class="text-genshin-bol">Bond of Life</b> is consumed in this manner, <b>All Is Ash</b>'s CD will decrease by <span class="text-desc">0.8</span>s.
       `,
+      image: 'Skill_A_03',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `All Is Ash`,
       content: `Summons forth Balemoon Bloodfire, dealing <b class="text-genshin-pyro">Pyro DMG</b> to multiple nearby opponents and performing a dash-cleave against one of them, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
-      <br />Opponents hit by the aforementioned attack will have a Blood-Debt Directive applied to them.
+      <br />Opponents hit by the aforementioned attack will have a <b class="text-genshin-pyro">Blood-Debt Directive</b> applied to them.
       <br />
-      <br /><b>Blood-Debt Directive</b>
+      <br /><b class="text-genshin-pyro">Blood-Debt Directive</b>
       <br />Lasts <span class="text-desc">30</span>s. Every <span class="text-desc">5</span>s, it will deal <span class="text-desc">1</span> instance of <b class="text-genshin-pyro">Pyro DMG</b> to the opponent. Max <span class="text-desc">2</span> instances. This DMG will be considered Elemental Skill DMG.
-      <br />When Arlecchino uses a Charged Attack or her Elemental Burst, Balemoon Rising, she will absorb and clear nearby Blood-Debt Directives. Each Directive absorbed grants her a <b class="text-genshin-bol">Bond of Life</b> worth <span class="text-desc">65%</span> of her Max HP.
-      <br />The maximum value of the <b class="text-genshin-bol">Bond of Life</b> she can be granted through Blood-Debt Directives within <span class="text-desc">35</span>s after using her Elemental Skill is <span class="text-desc">145%</span> of her Max HP. Using the Elemental Skill again during this duration will restart the count on duration and the limit on the value of <b class="text-genshin-bol">Bond of Life</b> she may gain from Blood-Debt Directives.`,
+      <br />When Arlecchino uses a Charged Attack or her Elemental Burst, <b>Balemoon Rising</b>, she will absorb and clear nearby <b class="text-genshin-pyro">Blood-Debt Directives</b>. Each <b class="text-genshin-pyro">Directive</b> absorbed grants her a <b class="text-genshin-bol">Bond of Life</b> worth <span class="text-desc">65%</span> of her Max HP.
+      <br />The maximum value of the <b class="text-genshin-bol">Bond of Life</b> she can be granted through <b class="text-genshin-pyro">Blood-Debt Directives</b> within <span class="text-desc">35</span>s after using her Elemental Skill is <span class="text-desc">145%</span> of her Max HP. Using the Elemental Skill again during this duration will restart the count on duration and the limit on the value of <b class="text-genshin-bol">Bond of Life</b> she may gain from <b class="text-genshin-pyro">Blood-Debt Directives</b>.`,
+      image: 'Skill_S_Arlecchino_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Balemoon Rising`,
-      content: `Arlecchino's great wing of Balemoon Bloodfire beats as she absorbs and clears Blood-Debt Directives around her. She deals <b class="text-genshin-pyro">AoE Pyro DMG</b> before clearing the CD of All Is Ash and healing herself. The healing is based on her <b class="text-genshin-bol">Bond of Life</b> value and ATK.`,
+      content: `Arlecchino's great wing of Balemoon Bloodfire beats as she absorbs and clears <b class="text-genshin-pyro">Blood-Debt Directives</b> around her. She deals <b class="text-genshin-pyro">AoE Pyro DMG</b> before clearing the CD of <b>All Is Ash</b> and healing herself. The healing is based on her <b class="text-genshin-bol">Bond of Life</b> value and ATK.`,
+      image: 'Skill_E_Arlecchino_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Agony Alone May Be Repaid`,
-      content: `Blood-Debt Directives have the following characteristics:
-      <br />Arlecchino will be granted a <b class="text-genshin-bol">Bond of Life</b> worth <span class="text-desc">130%</span> of her Max HP when an opponent to which she herself applied a Directive is defeated.
-      <br /><span class="text-desc">5</span>s after a Directive is applied, it will be upgraded to a Blood-Debt Due. When absorbed, it will instead grant Arlecchino a Bond of Life worth <span class="text-desc">130%</span>.
-      <br />A Bond of Life created in the aforementioned ways cannot exceed the original limit on the value of <b class="text-genshin-bol">Bond of Life</b> obtained through All Is Ash.`,
+      content: `<b class="text-genshin-pyro">Blood-Debt Directives</b> have the following characteristics:
+      <br />Arlecchino will be granted a <b class="text-genshin-bol">Bond of Life</b> worth <span class="text-desc">130%</span> of her Max HP when an opponent to which she herself applied a <b class="text-genshin-pyro">Directive</b> is defeated.
+      <br /><span class="text-desc">5</span>s after a <b class="text-genshin-pyro">Directive</b> is applied, it will be upgraded to a <b class="text-genshin-pyro">Blood-Debt Due</b>. When absorbed, it will instead grant Arlecchino a <b class="text-genshin-bol">Bond of Life</b> worth <span class="text-desc">130%</span>.
+      <br />A <b class="text-genshin-bol">Bond of Life</b> created in the aforementioned ways cannot exceed the original limit on the value of <b class="text-genshin-bol">Bond of Life</b> obtained through <b>All Is Ash</b>.`,
+      image: 'UI_Talent_S_Arlecchino_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Strength Alone Can Defend`,
       content: `Arlecchino gains <span class="text-desc">1%</span> All <b>Elemental and Physical RES</b> for every <span class="text-desc">100</span> ATK she has in excess of <span class="text-desc">1,000</span>. The maximum RES increase she can gain this way for each is <span class="text-desc">20%</span>.`,
-      value: [
-        {
-          name: 'RES Bonus',
-          value: {
-            stat: Stats.ATK,
-            scaling: (atk) => toPercentage(_.min([0.01 * ((atk - 1000) / 100), 0.2])),
-          },
-        },
-      ],
+      image: 'UI_Talent_S_Arlecchino_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `The Balemoon Alone May Know`,
-      content: `While in combat, Arlecchino gains a <span class="text-desc">40%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and can only be healed through Balemoon Rising.`,
+      content: `While in combat, Arlecchino gains a <span class="text-desc">40%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and can only be healed through <b>Balemoon Rising</b>.`,
+      image: 'UI_Talent_S_Arlecchino_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `"All Reprisals and Arrears, Mine to Bear..."`,
-      content: `Masque of the Red Death is further enhanced, the value of the increase is <span class="text-desc">100%</span>. Additionally, Arlecchino's interruption resistance is increased when she performs Normal or Charged Attacks while affected by the Masque of the Red Death.`,
+      content: `<b class="text-genshin-pyro">Masque of the Red Death</b> is further enhanced, the value of the increase is <span class="text-desc">100%</span>. Additionally, Arlecchino's interruption resistance is increased when she performs Normal or Charged Attacks while affected by the <b class="text-genshin-pyro">Masque of the Red Death</b>.`,
+      image: 'UI_Talent_S_Arlecchino_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `"All Rewards and Retribution, Mine to Bestow..."`,
-      content: `Blood-Debt Directives are now already Blood-Debt Due when first applied.
-      <br />When Arlecchino absorbs such a Due, she unleashes Balemoon Bloodfire in front of her, dealing <span class="text-desc">900%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b> and increasing her All <b>Elemental RES and Physical RES</b> by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s. This effect can trigger once every <span class="text-desc">10</span>s.
-      <br />You must first unlock the Passive Talent "Agony Alone May Be Repaid."`,
+      content: `<b class="text-genshin-pyro">Blood-Debt Directives</b> are now already <b class="text-genshin-pyro">Blood-Debt Due</b> when first applied.
+      <br />When Arlecchino absorbs such a <b class="text-genshin-pyro">Due</b>, she unleashes <b>Balemoon Bloodfire</b> in front of her, dealing <span class="text-desc">900%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b> and increasing her All <b>Elemental RES and Physical RES</b> by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s. This effect can trigger once every <span class="text-desc">10</span>s.
+      <br />You must first unlock the Passive Talent <b>Agony Alone May Be Repaid</b>.`,
+      image: 'UI_Talent_S_Arlecchino_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `"You Shall Become a New Member of Our Family..."`,
-      content: `Increases the Level of Normal Attack: Invitation to a Beheading by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Normal Attack: Invitation to a Beheading</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Arlecchino_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `"You Shall Love and Protect Each Other Henceforth..."`,
-      content: `When Arlecchino successfully absorbs a Blood-Debt Directive, Balemoon Rising's CD will decrease by <span class="text-desc">2</span>s and <span class="text-desc">15</span> Elemental Energy will be restored to her. This effect can occur once every <span class="text-desc">10</span>s.`,
+      content: `When Arlecchino successfully absorbs a <b class="text-genshin-pyro">Blood-Debt Directive</b>, <b>Balemoon Rising</b>'s CD will decrease by <span class="text-desc">2</span>s and <span class="text-desc">15</span> Elemental Energy will be restored to her. This effect can occur once every <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Arlecchino_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `"For Alone, We Are as Good as Dead..."`,
-      content: `Increases the Level of Balemoon Rising by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Balemoon Rising</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Arlecchino_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `"From This Day On, We Shall Delight in New Life Together."`,
-      content: `The DMG of Balemoon Rising is increased by Arlecchino's ATK multiplied by <span class="text-desc">700%</span> of Arlecchino's current <b class="text-genshin-bol">Bond of Life</b> percentage.
-      For <span class="text-desc">20</span>s after Arlecchino uses All Is Ash, both her Normal Attacks and Elemental Burst gain <span class="text-desc">10%</span> increased CRIT Rate and <span class="text-desc">70%</span> increased CRIT DMG. This effect can be triggered up to once every <span class="text-desc">15</span>s.`,
+      content: `The DMG of <b>Balemoon Rising</b> is increased by Arlecchino's ATK multiplied by <span class="text-desc">700%</span> of Arlecchino's current <b class="text-genshin-bol">Bond of Life</b> percentage.
+      For <span class="text-desc">20</span>s after Arlecchino uses <b>All Is Ash</b>, both her Normal Attacks and Elemental Burst gain <span class="text-desc">10%</span> increased CRIT Rate and <span class="text-desc">70%</span> increased CRIT DMG. This effect can be triggered up to once every <span class="text-desc">15</span>s.`,
+      image: 'UI_Talent_S_Arlecchino_04',
     },
   }
 
@@ -256,7 +259,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      base[Stats.PYRO_DMG].push({value: 0.4, name: '', source: ``})
+      base[Stats.PYRO_DMG].push({ value: 0.4, name: 'Utility Passive', source: `Self` })
 
       if (c >= 2)
         base.CHARGE_SCALING.push({
@@ -265,12 +268,12 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         })
-      if (form.c2DueConsume) base.ALL_TYPE_RES.push({value: 0.2, name: '', source: ``})
+      if (form.c2DueConsume) base.ALL_TYPE_RES.push({ value: 0.2, name: 'Constellation 2', source: `Self` })
       if (form.c6Crit) {
-        base.BASIC_CR.push({value: 0.1, name: '', source: ``})
-        base.BASIC_CD.push({value: 0.7, name: '', source: ``})
-        base.BURST_CR.push({value: 0.1, name: '', source: ``})
-        base.BURST_CD.push({value: 0.7, name: '', source: ``})
+        base.BASIC_CR.push({ value: 0.1, name: 'Constellation 6', source: `Self` })
+        base.BASIC_CD.push({ value: 0.7, name: 'Constellation 6', source: `Self` })
+        base.BURST_CR.push({ value: 0.1, name: 'Constellation 6', source: `Self` })
+        base.BURST_CD.push({ value: 0.7, name: 'Constellation 6', source: `Self` })
       }
 
       return base
@@ -279,7 +282,12 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (a >= 4) base.ALL_TYPE_RES = _.min([0.01 * ((base.getAtk() - 1000) / 100), 0.2])
+      if (a >= 4)
+        base.ALL_TYPE_RES.push({
+          value: _.min([0.01 * ((base.getAtk() - 1000) / 100), 0.2]),
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+        })
       return base
     },
   }

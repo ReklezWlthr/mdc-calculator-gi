@@ -30,74 +30,86 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Bestial Ascent`,
       content: `Pounces forward using the Wushou arts, leaping high into the air after coming into contact with a target or surface.
-      <br />After Gaming has used Bestial Ascent to rise into the air, he will use the especially powerful Plunging Attack: Charmed Cloudstrider when performing a Plunging Attack.
+      <br />After Gaming has used <b>Bestial Ascent</b> to rise into the air, he will use the especially powerful <b>Plunging Attack: Charmed Cloudstrider</b> when performing a Plunging Attack.
       <br />
       <br /><b>Plunging Attack: Charmed Cloudstrider</b>
-      <br />The DMG from Plunging Attacks caused by Bestial Ascent is converted to <b class="text-genshin-pyro">Pyro DMG</b> that cannot be overridden by other elemental infusions. Upon landing, Gaming will consume a fixed amount of HP. Gaming's HP cannot be reduced below <span class="text-desc">10%</span> by this method.
-      <br />Charmed Cloudstrider DMG is considered Plunging Attack DMG.
+      <br />The DMG from Plunging Attacks caused by <b>Bestial Ascent</b> is converted to <b class="text-genshin-pyro">Pyro DMG</b> that cannot be overridden by other elemental infusions. Upon landing, Gaming will consume a fixed amount of HP. Gaming's HP cannot be reduced below <span class="text-desc">10%</span> by this method.
+      <br /><b>Charmed Cloudstrider</b> DMG is considered Plunging Attack DMG.
       `,
+      image: 'Skill_S_Gaming_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Suanni's Gilded Dance`,
-      content: `Gaming enters Wushou Stance, briefly applying <b class="text-genshin-pyro">Pyro</b> to him, recovering a fixed amount of HP, and summons his companion, the Suanni Man Chai, to smash into his target, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
-      <br />After bashing its target, Man Chai will roll to a nearby location before moving towards Gaming. When it links up with Gaming, Man Chai will leave the field and reset the CD for Gaming's Elemental Skill, Bestial Ascent.
-      <br />While Wushou Stance is active, his resistance to interruption is increased, and when Gaming lands with Charmed Cloudstrider attack or completes the forward pounce attack from Bestial Ascent with over <span class="text-desc">50%</span> HP, he will summon Man Chai again.
-      <br />Each Gaming can only have 1 Man Chai on the field simultaneously.
+      content: `Gaming enters <b class="text-genshin-pyro">Wushou Stance</b>, briefly applying <b class="text-genshin-pyro">Pyro</b> to him, recovering a fixed amount of HP, and summons his companion, the Suanni Man Chai, to smash into his target, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
+      <br />After bashing its target, Man Chai will roll to a nearby location before moving towards Gaming. When it links up with Gaming, Man Chai will leave the field and reset the CD for Gaming's Elemental Skill, <b>Bestial Ascent</b>.
+      <br />While <b class="text-genshin-pyro">Wushou Stance</b> is active, his resistance to interruption is increased, and when Gaming lands with <b>Charmed Cloudstrider</b> attack or completes the forward pounce attack from <b>Bestial Ascent</b> with over <span class="text-desc">50%</span> HP, he will summon Man Chai again.
+      <br />Each Gaming can only have <span class="text-desc">1</span> Man Chai on the field simultaneously.
       <br />This effect will be canceled once Gaming leaves the field.`,
+      image: 'Skill_E_Gaming_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Dance of Amity`,
-      content: `After Bestial Ascent's Plunging Attack: Charmed Cloudstrider hits an opponent, Gaming will regain <span class="text-desc">1.5%</span> of his Max HP once every <span class="text-desc">0.2</span>s for <span class="text-desc">0.8</span>s.`,
+      content: `After <b>Bestial Ascent</b>'s <b>Plunging Attack: Charmed Cloudstrider</b> hits an opponent, Gaming will regain <span class="text-desc">1.5%</span> of his Max HP once every <span class="text-desc">0.2</span>s for <span class="text-desc">0.8</span>s.`,
+      image: 'UI_Talent_S_Gaming_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Air of Prosperity`,
-      content: `When Gaming has less than <span class="text-desc">50%</span> HP, he will receive a <span class="text-desc">20%</span> Incoming Healing Bonus. When Gaming has <span class="text-desc">50%</span> HP or more, Plunging Attack: Charmed Cloudstrider will deal <span class="text-desc">20%</span> more DMG.`,
+      content: `When Gaming has less than <span class="text-desc">50%</span> HP, he will receive a <span class="text-desc">20%</span> Incoming Healing Bonus. When Gaming has <span class="text-desc">50%</span> HP or more, <b>Plunging Attack: Charmed Cloudstrider</b> will deal <span class="text-desc">20%</span> more DMG.`,
+      image: 'UI_Talent_S_Gaming_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `The Striding Beast`,
       content: `During the day (6:00 - 18:00), your party members gain the Swift Stride effect: Movement SPD increased by <span class="text-desc">10%</span>.
       <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
+      image: 'UI_Talent_S_Dehya_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Bringer of Blessing`,
-      content: `When the Suanni Man Chai from Suanni's Gilded Dance meets back up with Gaming, it will heal <span class="text-desc">15%</span> of Gaming's HP.`,
+      content: `When the Suanni Man Chai from <b>Suanni's Gilded Dance</b> meets back up with Gaming, it will heal <span class="text-desc">15%</span> of Gaming's HP.`,
+      image: 'UI_Talent_S_Gaming_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Plum Blossoms Underfoot`,
       content: `When Gaming receives healing and this instance of healing overflows, his ATK will be increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Gaming_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Awakening Spirit`,
-      content: `Increases the Level of Bestial Ascent by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Bestial Ascent</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Gaming_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Soar Across Mountains`,
-      content: `When Bestial Ascent's Plunging Attack: Charmed Cloudstrider hits an opponent, it will restore <span class="text-desc">2</span> Energy to Gaming. This effect can be triggered once every <span class="text-desc">0.2</span>s.`,
+      content: `When <b>Bestial Ascent</b>'s <b>Plunging Attack: Charmed Cloudstrider</b> hits an opponent, it will restore <span class="text-desc">2</span> Energy to Gaming. This effect can be triggered once every <span class="text-desc">0.2</span>s.`,
+      image: 'UI_Talent_S_Gaming_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Evil-Daunting Roar`,
-      content: `Increases the Level of Suanni's Gilded Dance by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Suanni's Gilded Dance</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Gaming_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `To Tame All Beasts`,
-      content: `Bestial Ascent's Plunging Attack: Charmed Cloudstrider CRIT Rate increased by <span class="text-desc">20%</span> and CRIT DMG increased by <span class="text-desc">40%</span>, and its attack radius will be increased.`,
+      content: `<b>Bestial Ascent</b>'s <b>Plunging Attack: Charmed Cloudstrider</b> CRIT Rate increased by <span class="text-desc">20%</span> and CRIT DMG increased by <span class="text-desc">40%</span>, and its attack radius will be increased.`,
+      image: 'UI_Talent_S_Gaming_04',
     },
   }
 
@@ -134,7 +146,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.diluc_infusion) {
         base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``})
+        if (a >= 4) base[Stats.PYRO_DMG].push({ value: 0.2, name: '', source: `` })
       }
 
       base.BASIC_SCALING = [
@@ -215,7 +227,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
 
       base.SKILL_SCALING = [
         {
-          name: 'Plunging Attack: Charmed Cloudstrider DMG',
+          name: 'Charmed Cloudstrider DMG',
           value: [{ scaling: calcScaling(2.304, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.PA,
@@ -240,7 +252,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (!form.gaming_a4) base[Stats.I_HEALING].push({value: 0.2, name: '', source: ``})
+      if (!form.gaming_a4) base[Stats.I_HEALING].push({ value: 0.2, name: 'Ascension 4 Passive', source: `Self` })
       if (c >= 1)
         base.BURST_SCALING.push({
           name: `C1 Meetup Healing`,
@@ -248,7 +260,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })
-      if (form.gaming_c2) base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
+      if (form.gaming_c2) base[Stats.P_ATK].push({ value: 0.2, name: 'Constellation 2', source: `Self` })
 
       return base
     },

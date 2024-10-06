@@ -146,7 +146,7 @@ export const ScalingWrapper = observer(
     return (
       <div className="flex w-full">
         <div className="flex flex-col items-center justify-center w-1/5 px-2 py-5">
-          <TalentIcon talent={talent} element={element} />
+          <TalentIcon talent={talent} element={element} level={level} upgraded={upgraded} type={talent?.trace} />
           <p className="w-full mt-2 font-bold text-center">{talent?.title}</p>
           {level && (
             <p className="text-xs text-gray">

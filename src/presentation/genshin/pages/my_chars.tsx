@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
-import { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { findCharacter } from '@src/core/utils/finder'
 import { Characters } from '@src/data/db/characters'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
@@ -379,8 +379,8 @@ export const MyCharacters = observer(() => {
                         <p className="font-bold">Talents</p>
                         <TalentIcon
                           talent={charCond?.talents?.normal}
+                          type={charCond?.talents?.normal?.trace}
                           element={charData?.element}
-                          icon={`https://homdgcat.wiki/homdgcat-res/AvatarSkill${WeaponIcon[charData?.weapon]}`}
                           size="w-10 h-10"
                           tooltipSize="w-[520px]"
                           upgraded={charCond?.upgrade?.normal}
@@ -388,12 +388,8 @@ export const MyCharacters = observer(() => {
                         />
                         <TalentIcon
                           talent={charCond?.talents?.skill}
+                          type={charCond?.talents?.skill?.trace}
                           element={charData?.element}
-                          icon={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/Skill_${
-                            iconCodeName === 'PlayerGrass' ? 'E' : 'S'
-                          }_${iconCodeName}${iconCodeName === 'Qin' ? '_02' : '_01'}${
-                            iconCodeName === 'Diluc' ? '_01' : ''
-                          }.png`}
                           size="w-10 h-10"
                           tooltipSize="w-[570px]"
                           upgraded={charCond?.upgrade?.skill}
@@ -401,10 +397,8 @@ export const MyCharacters = observer(() => {
                         />
                         <TalentIcon
                           talent={charCond?.talents?.burst}
+                          type={charCond?.talents?.burst?.trace}
                           element={charData?.element}
-                          icon={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/Skill_${
-                            iconCodeName === 'PlayerGrass' ? 'S' : 'E'
-                          }_${iconCodeName}${_.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'}.png`}
                           size="w-10 h-10"
                           tooltipSize="w-[550px]"
                           upgraded={charCond?.upgrade?.burst}
@@ -427,81 +421,73 @@ export const MyCharacters = observer(() => {
               />
               <div className="flex flex-col text-sm gap-y-5">
                 <div className="flex items-center gap-3">
-                  <A1Icon
-                    codeName={iconCodeName}
-                    talents={charCond?.talents}
-                    ascension={charUpgrade?.ascension}
-                    element={charData.element}
+                  <TalentIcon
+                    talent={charCond?.talents?.a1}
+                    type={charCond?.talents?.a1?.trace}
+                    element={charData?.element}
+                    size="w-12 h-12"
+                    tooltipSize="w-[450px]"
                   />
-                  <p>{charCond?.talents?.a1?.title}</p>
+                  <div>
+                    <p className="text-xs text-gray">Asccension 1 Passive</p>
+                    <p className="font-bold">{charCond?.talents?.a1?.title}</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <A4Icon
-                    codeName={iconCodeName}
-                    talents={charCond?.talents}
-                    ascension={charUpgrade?.ascension}
-                    element={charData.element}
+                  <TalentIcon
+                    talent={charCond?.talents?.a4}
+                    type={charCond?.talents?.a4?.trace}
+                    element={charData?.element}
+                    size="w-12 h-12"
+                    tooltipSize="w-[450px]"
                   />
-                  <p>{charCond?.talents?.a4?.title}</p>
+                  <div>
+                    <p className="text-xs text-gray">Asccension 4 Passive</p>
+                    <p className="font-bold">{charCond?.talents?.a4?.title}</p>
+                  </div>
                 </div>
                 {charCond?.talents?.util && (
                   <div className="flex items-center gap-3">
-                    <Tooltip
-                      title={charCond?.talents?.util?.title}
-                      body={<TooltipBody talent={charCond?.talents?.util} unlocked />}
-                      style="w-[25vw]"
-                    >
-                      <img
-                        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/UI_Talent_${
-                          UtilTalentOverride[charData.codeName] || `S_${charData.codeName}_07`
-                        }.png`}
-                        className={classNames(
-                          'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                          charUpgrade
-                            ? ElementIconColor[charData?.element]
-                            : 'bg-primary-light ring-primary-lighter opacity-50'
-                        )}
-                      />
-                    </Tooltip>
-                    <p>Utility: {charCond?.talents?.util?.title}</p>
+                    <TalentIcon
+                      talent={charCond?.talents?.util}
+                      type={charCond?.talents?.util?.trace}
+                      element={charData?.element}
+                      size="w-12 h-12"
+                      tooltipSize="w-[450px]"
+                    />
+                    <div>
+                      <p className="text-xs text-gray">Utility Passive</p>
+                      <p className="font-bold">{charCond?.talents?.util?.title}</p>
+                    </div>
                   </div>
                 )}
                 {charCond?.talents?.sprint && (
                   <div className="flex items-center gap-3">
-                    <Tooltip
-                      title={charCond?.talents?.sprint?.title}
-                      body={<TooltipBody talent={charCond?.talents?.sprint} unlocked />}
-                      style="w-[25vw]"
-                    >
-                      <img
-                        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/Skill_S_${charData.codeName}_02.png`}
-                        className={classNames(
-                          'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                          charUpgrade
-                            ? ElementIconColor[charData?.element]
-                            : 'bg-primary-light ring-primary-lighter opacity-50'
-                        )}
-                      />
-                    </Tooltip>
-                    <p>{charCond?.talents?.sprint?.title}</p>
+                    <TalentIcon
+                      talent={charCond?.talents?.sprint}
+                      type={charCond?.talents?.sprint?.trace}
+                      element={charData?.element}
+                      size="w-12 h-12"
+                      tooltipSize="w-[450px]"
+                    />
+                    <div>
+                      <p className="text-xs text-gray">Alternate Sprint</p>
+                      <p className="font-bold">{charCond?.talents?.sprint?.title}</p>
+                    </div>
                   </div>
                 )}
                 {charCond?.talents?.bonus && (
                   <div className="flex items-center gap-3">
-                    <Tooltip
-                      title={charCond?.talents?.bonus?.title}
-                      body={<TooltipBody talent={charCond?.talents?.bonus} unlocked />}
-                      style="w-[25vw]"
-                    >
-                      <img
-                        src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${charCond?.talents?.bonus?.image}`}
-                        className={classNames(
-                          'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-                          ElementIconColor[charData?.element]
-                        )}
-                      />
-                    </Tooltip>
-                    <p>{charCond?.talents?.bonus?.title}</p>
+                    <TalentIcon
+                      talent={charCond?.talents?.bonus}
+                      element={charData?.element}
+                      size="w-12 h-12"
+                      tooltipSize="w-[450px]"
+                    />
+                    <div>
+                      <p className="text-xs text-gray">{charCond?.talents?.bonus?.trace}</p>
+                      <p className="font-bold">{charCond?.talents?.bonus?.title}</p>
+                    </div>
                   </div>
                 )}
               </div>

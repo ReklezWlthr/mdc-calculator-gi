@@ -30,68 +30,79 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Gathering the might of Hydro, Barbara plunges towards the ground from mid-air, damaging all opponents in her path. Deals <b class="text-genshin-hydro">AoE Hydro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Let the Show Begin♪`,
-      content: `Summons water droplets resembling musical notes that form a Melody Loop, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents and applying the <b class="text-genshin-hydro">Wet</b> status to them.
+      content: `Summons water droplets resembling musical notes that form a <b class="text-genshin-hydro">Melody Loop</b>, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents and applying the <b class="text-genshin-hydro">Wet</b> status to them.
       <br />
-      <br /><b>Melody Loop</b>
+      <br /><b class="text-genshin-hydro">Melody Loop</b>
       <br />- On hit, Barbara's Normal Attacks heal your own party members and nearby teammates for a certain amount of HP, which scales with Barbara's Max HP.
-      <br />- On hit, Barbara's Charged Attack generates 4 times the amount of healing.
+      <br />- On hit, Barbara's Charged Attack generates <span class="text-desc">4</span> times the amount of healing.
       <br />- Periodically regenerates your own active character's HP.
       <br />- Applies the <b class="text-genshin-hydro">Wet</b> status to the character and to opponents who come in contact with them.
       `,
+      image: 'Skill_S_Barbara_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Shining Miracle♪`,
       content: `Heals your own party members and nearby teammates for a large amount of HP that scales with Barbara's Max HP.`,
+      image: 'Skill_E_Barbara_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Glorious Season`,
-      content: `The Stamina Consumption of characters within Let the Show Begin♪'s Melody Loop is reduced by <span class="text-desc">12%</span>.`,
+      content: `The Stamina Consumption of characters within <b>Let the Show Begin♪</b>'s <b class="text-genshin-hydro">Melody Loop</b> is reduced by <span class="text-desc">12%</span>.`,
+      image: 'UI_Talent_S_Barbara_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Encore`,
-      content: `When your active character gains an Elemental Orb/Particle, the duration of the Melody Loop of Let the Show Begin♪ is extended by <span class="text-desc">1</span>s.
+      content: `When your active character gains an Elemental Orb/Particle, the duration of the <b class="text-genshin-hydro">Melody Loop</b> of <b>Let the Show Begin♪</b> is extended by <span class="text-desc">1</span>s.
       <br />The maximum extension is <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Barbara_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `With My Whole Heart♪`,
       content: `When Perfect Cooking is achieved on a dish with restorative effects, Barbara has a <span class="text-desc">12%</span> chance to obtain double the product.`,
+      image: 'UI_Talent_Cook_Heal',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Gleeful Songs`,
       content: `Barbara regenerates <span class="text-desc">1</span> Energy every <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Barbara_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Vitality Burst`,
-      content: `Decreases the CD of Let the Show Begin♪ by <span class="text-desc">15%</span>.
+      content: `Decreases the CD of <b>Let the Show Begin♪</b> by <span class="text-desc">15%</span>.
       <br />During the ability's duration, your active character gains a <span class="text-desc">15%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>.`,
+      image: 'UI_Talent_S_Barbara_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Star of Tomorrow`,
-      content: `Increases the Level of Shining Miracle♪ by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Shining Miracle♪</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Barbara_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Attentiveness Be My Power`,
       content: `Every opponent Barbara hits with her Charged Attack regenerates <span class="text-desc">1</span> Energy for her.
-      A maximum of <span class="text-desc">5</span> energy can be regenerated in this manner with any one Charged Attack.`,
+      <br />A maximum of <span class="text-desc">5</span> energy can be regenerated in this manner with any one Charged Attack.`,
+      image: 'UI_Talent_S_Barbara_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `The Purest Companionship`,
-      content: `Increases the Level of Let the Show Begin♪ by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Let the Show Begin♪</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Barbara_01',
     },
     c6: {
       trace: `Constellation 6`,
@@ -100,6 +111,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       <br />- Automatically revives the fallen character.
       <br />- Fully restores the revived character's HP to <span class="text-desc">100%</span>.
       <br />This effect can only occur once every <span class="text-desc">15</span> mins.`,
+      image: 'UI_Talent_S_Barbara_04',
     },
   }
 
@@ -107,21 +119,21 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'bar_burst',
-      text: `Burst Hydro DMG`,
+      text: `C2 Burst Hydro DMG`,
       ...talents.c2,
       show: c >= 2,
-      default: true,
+      default: false,
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'bar_burst')]
+  const teammateContent: IContent[] = []
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'bar_burst')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
 
@@ -199,12 +211,12 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.bar_burst) base[Stats.HYDRO_DMG].push({value: 0.15, name: '', source: ``})
+      if (form.bar_burst) base[Stats.HYDRO_DMG].push({ value: 0.15, name: 'Constellation 2', source: `Self` })
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.bar_burst) base[Stats.HYDRO_DMG].push({value: 0.15, name: '', source: ``})
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.bar_burst) base[Stats.HYDRO_DMG].push({ value: 0.15, name: 'Constellation 2', source: `Barbara` })
 
       return base
     },

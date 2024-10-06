@@ -29,78 +29,90 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Kamisato Art: Kyouka`,
-      content: `Kamisato Ayato shifts positions and enters the Takimeguri Kanka state.
+      content: `Kamisato Ayato shifts positions and enters the <b>Takimeguri Kanka</b> state.
       <br />After this shift, he will leave a watery illusion at his original location. After it is formed, the watery illusion will explode if opponents are nearby or after its duration ends, dealing <b class="text-genshin-hydro">AoE Hydro DMG</b>.
       <br />
       <br /><b>Takimeguri Kanka</b>
-      <br />In this state, Kamisato Ayato uses his Shunsuiken to engage in blindingly fast attacks, causing DMG from his Normal Attacks to be converted into <b class="text-genshin-hydro">AoE Hydro DMG</b>. This cannot be overridden.
+      <br />In this state, Kamisato Ayato uses his <b class="text-genshin-hydro">Shunsuiken</b> to engage in blindingly fast attacks, causing DMG from his Normal Attacks to be converted into <b class="text-genshin-hydro">AoE Hydro DMG</b>. This cannot be overridden.
       <br />It also has the following properties:
-      <br />- After a Shunsuiken attack hits an opponent, it will grant Ayato the Namisen effect, increasing the DMG dealt by Shunsuiken based on Ayato's current Max HP. The initial maximum number of Namisen stacks is <span class="text-desc">4</span>, and <span class="text-desc">1</span> stack can be gained through Shunsuiken every <span class="text-desc">0.1</span>s. This effect will be dispelled when Takimeguri Kanka ends.
+      <br />- After a <b class="text-genshin-hydro">Shunsuiken</b> attack hits an opponent, it will grant Ayato the <b class="text-genshin-hydro">Namisen</b> effect, increasing the DMG dealt by <b class="text-genshin-hydro">Shunsuiken</b> based on Ayato's current Max HP. The initial maximum number of <b class="text-genshin-hydro">Namisen</b> stacks is <span class="text-desc">4</span>, and <span class="text-desc">1</span> stack can be gained through <b class="text-genshin-hydro">Shunsuiken</b> every <span class="text-desc">0.1</span>s. This effect will be dispelled when <b>Takimeguri Kanka</b> ends.
       <br />- Kamisato Ayato's resistance to interruption is increased.
       <br />- Unable to use Charged or Plunging Attacks.
       <br />
-      <br />Takimeguri Kanka will be cleared when Ayato leaves the field. Using Kamisato Art: Kyouka again while in the Takimeguri Kanka state will reset and replace the pre-existing state.
+      <br /><b>Takimeguri Kanka</b> will be cleared when Ayato leaves the field. Using <b>Kamisato Art: Kyouka</b> again while in the <b>Takimeguri Kanka</b> state will reset and replace the pre-existing state.
       `,
+      image: 'Skill_S_Ayato_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Kamisato Art: Suiyuu`,
       content: `Unveils a garden of purity that silences the cacophony within.
-      <br />While this space exists, Bloomwater Blades will constantly rain down and attack opponents within its AoE, dealing <b class="text-genshin-hydro">Hydro DMG</b> and increasing the Normal Attack DMG of characters within.`,
+      <br />While this space exists, <b>Bloomwater Blades</b> will constantly rain down and attack opponents within its AoE, dealing <b class="text-genshin-hydro">Hydro DMG</b> and increasing the Normal Attack DMG of characters within.`,
+      image: 'Skill_E_Ayato_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Kamisato Art: Mine Wo Matoishi Kiyotaki	`,
-      content: `Kamisato Art: Kyouka has the following properties:
-      <br />- After it is used, Kamisato Ayato will gain <span class="text-desc">2</span> Namisen stacks.
-      <br />- When the water illusion explodes, Ayato will gain a Namisen effect equal to the maximum number of stacks possible.`,
+      content: `<b>Kamisato Art: Kyouka</b> has the following properties:
+      <br />- After it is used, Kamisato Ayato will gain <span class="text-desc">2</span> <b class="text-genshin-hydro">Namisen</b> stacks.
+      <br />- When the water illusion explodes, Ayato will gain a <b class="text-genshin-hydro">Namisen</b> effect equal to the maximum number of stacks possible.`,
+      image: 'UI_Talent_S_Ayato_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Kamisato Art: Michiyuku Hagetsu`,
       content: `If Kamisato Ayato is not on the field and his Energy is less than <span class="text-desc">40</span>, he will regenerate <span class="text-desc">2</span> Energy for himself every second.`,
+      image: 'UI_Talent_S_Ayato_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Kamisato Art: Daily Cooking`,
       content: `When Ayato cooks a dish perfectly, he has a <span class="text-desc">18%</span> chance to receive an additional "Suspicious" dish of the same type.`,
+      image: 'UI_Talent_S_Ayato_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Kyouka Fuushi`,
-      content: `Shunsuiken DMG is increased by <span class="text-desc">40%</span> against opponents with <span class="text-desc">50%</span> HP or less.`,
+      content: `<b class="text-genshin-hydro">Shunsuiken</b> DMG is increased by <span class="text-desc">40%</span> against opponents with <span class="text-desc">50%</span> HP or less.`,
+      image: 'UI_Talent_S_Ayato_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `World Source`,
-      content: `Namisen's maximum stack count is increased to <span class="text-desc">5</span>. When Kamisato Ayato has at least <span class="text-desc">3</span> Namisen stacks, his Max HP is increased by <span class="text-desc">50%</span>.`,
+      content: `<b class="text-genshin-hydro">Namisen</b>'s maximum stack count is increased to <span class="text-desc">5</span>. When Kamisato Ayato has at least <span class="text-desc">3</span> <b class="text-genshin-hydro">Namisen</b> stacks, his Max HP is increased by <span class="text-desc">50%</span>.`,
+      image: 'UI_Talent_S_Ayato_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `To Admire the Flowers`,
-      content: `Increases the Level of Kamisato Art: Kyouka by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Kamisato Art: Kyouka</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ayato_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Endless Flow`,
-      content: `After using Kamisato Art: Suiyuu, all nearby party members will have <span class="text-desc">15%</span> increased Normal Attack SPD for <span class="text-desc">15</span>s.`,
+      content: `After using <b>Kamisato Art: Suiyuu</b>, all nearby party members will have <span class="text-desc">15%</span> increased Normal Attack SPD for <span class="text-desc">15</span>s.`,
+      image: 'UI_Talent_S_Ayato_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Bansui Ichiro`,
-      content: `Increases the Level of Kamisato Art: Suiyuu by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Kamisato Art: Suiyuu</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ayato_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Boundless Origin`,
-      content: `After using Kamisato Art: Kyouka, Ayato's next Shunsuiken attack will create <span class="text-desc">2</span> extra Shunsuiken strikes when they hit opponents, each one dealing <span class="text-desc">450%</span> of Ayato's ATK as DMG.
-      <br />Both these Shunsuiken attacks will not be affected by Namisen.`,
+      content: `After using <b>Kamisato Art: Kyouka</b>, Ayato's next <b class="text-genshin-hydro">Shunsuiken</b> attack will create <span class="text-desc">2</span> extra <b class="text-genshin-hydro">Shunsuiken</b> strikes when they hit opponents, each one dealing <span class="text-desc">450%</span> of Ayato's ATK as DMG.
+      <br />Both these <b class="text-genshin-hydro">Shunsuiken</b> attacks will not be affected by <b class="text-genshin-hydro">Namisen</b>.`,
+      image: 'UI_Talent_S_Ayato_04',
     },
   }
 
@@ -129,7 +141,7 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
       text: `Burst Field NA DMG Bonus`,
       ...talents.burst,
       show: true,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
@@ -149,17 +161,16 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'ayato_burst'), findContentById(content, 'ayato_c4')]
+  const teammateContent: IContent[] = [findContentById(content, 'ayato_c4')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'ayato_burst')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 80
 
       const namisen = form.namisen
         ? [{ scaling: calcScaling(0.0056, skill, 'physical', '1'), multiplier: Stats.HP }]
@@ -220,15 +231,17 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
               property: TalentProperty.NA,
             },
           ]
-      base.CHARGE_SCALING = [
-        {
-          name: 'Charged Attack DMG',
-          value: [{ scaling: calcScaling(1.2953, normal, 'physical', '1'), multiplier: Stats.ATK }],
-          element: Element.PHYSICAL,
-          property: TalentProperty.CA,
-        },
-      ]
-      base.PLUNGE_SCALING = getPlungeScaling('base', normal)
+      base.CHARGE_SCALING = form.ayato_infusion
+        ? []
+        : [
+            {
+              name: 'Charged Attack DMG',
+              value: [{ scaling: calcScaling(1.2953, normal, 'physical', '1'), multiplier: Stats.ATK }],
+              element: Element.PHYSICAL,
+              property: TalentProperty.CA,
+            },
+          ]
+      base.PLUNGE_SCALING = form.ayato_infusion ? [] : getPlungeScaling('base', normal)
 
       base.SKILL_SCALING = [
         {
@@ -247,9 +260,10 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.ayato_burst) base.BASIC_DMG.push({value: 0.1, name: '', source: ``}) + _.min([burst + 0.01, 0.1])
-      if (form.namisen >= 3 && c >= 2) base[Stats.P_HP].push({value: 0.5, name: '', source: ``})
-      if (form.ayato_c4) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
+      if (form.ayato_burst)
+        base.BASIC_DMG.push({ value: 0.1 + _.min([burst + 0.01, 0.1]), name: 'Elemental Burst', source: `Self` })
+      if (form.namisen >= 3 && c >= 2) base[Stats.P_HP].push({ value: 0.5, name: 'Constellation 2', source: `Self` })
+      if (form.ayato_c4) base.ATK_SPD.push({ value: 0.15, name: 'Constellation 4', source: `Self` })
 
       if (form.ayato_infusion && c >= 6)
         base.BASIC_SCALING.push({
@@ -262,9 +276,14 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.ayato_burst) base.BASIC_DMG.push({value: 0.1, name: '', source: ``}) + _.min([burst + 0.01, 0.1])
-      if (form.ayato_c4) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.ayato_burst)
+        base.BASIC_DMG.push({
+          value: 0.1 + _.min([burst + 0.01, 0.1]),
+          name: 'Elemental Burst',
+          source: `Kamisato Ayato`,
+        })
+      if (form.ayato_c4) base.ATK_SPD.push({ value: 0.15, name: 'Constellation 4', source: `Kamisato Ayato` })
 
       return base
     },

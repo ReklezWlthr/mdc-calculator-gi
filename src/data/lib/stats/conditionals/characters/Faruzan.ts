@@ -30,81 +30,87 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Wind Realm of Nasamjnin`,
-      content: `Faruzan deploys a polyhedron that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to nearby opponents. She will also enter the Manifest Gale state.
-      <br />While in the Manifest Gale state, Faruzan's next fully charged shot will consume this state and will become a Hurricane Arrow that contains high-pressure currents. This arrow deals <b class="text-genshin-anemo">Anemo DMG</b> based on the DMG of a fully charged Aimed Shot from "Normal Attack: Parthian Shot."
+      content: `Faruzan deploys a polyhedron that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to nearby opponents. She will also enter the <b class="text-genshin-anemo">Manifest Gale</b> state.
+      <br />While in the <b class="text-genshin-anemo">Manifest Gale</b> state, Faruzan's next fully charged shot will consume this state and will become a <b>Hurricane Arrow</b> that contains high-pressure currents. This arrow deals <b class="text-genshin-anemo">Anemo DMG</b> based on the DMG of a fully charged Aimed Shot from <b>Normal Attack: Parthian Shot</b>.
       <br />
-      <br /><b>Pressurized Collapse</b>
-      <br />The Hurricane Arrow will apply a Pressurized Collapse effect to the opponent or character hit. This effect will be removed after a short delay, creating a vortex that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> and pulls nearby objects and opponents in. If the Hurricane Arrow does not hit any opponent or character, it will create a Pressurized Collapse effect at its point of impact.
+      <br /><b class="text-genshin-anemo">Pressurized Collapse</b>
+      <br />The <b>Hurricane Arrow</b> will apply a <b class="text-genshin-anemo">Pressurized Collapse</b> effect to the opponent or character hit. This effect will be removed after a short delay, creating a vortex that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> and pulls nearby objects and opponents in. If the <b>Hurricane Arrow</b> does not hit any opponent or character, it will create a <b class="text-genshin-anemo">Pressurized Collapse</b> effect at its point of impact.
       <br />The vortex DMG is considered Elemental Skill DMG.`,
+      image: 'Skill_S_Faruzan_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `The Wind's Secret Ways`,
-      content: `Faruzan deploys a Dazzling Polyhedron that unleashes a Whirlwind Pulse and deals <b class="text-genshin-anemo">AoE Anemo DMG</b>.
-      <br />While the Dazzling Polyhedron persists, it will continuously move along a triangular path. Once it reaches each corner of that triangular path, it will unleash 1 more Whirlwind Pulse.
+      content: `Faruzan deploys a Dazzling Polyhedron that unleashes a <b class="text-genshin-anemo">Whirlwind Pulse</b> and deals <b class="text-genshin-anemo">AoE Anemo DMG</b>.
+      <br />While the Dazzling Polyhedron persists, it will continuously move along a triangular path. Once it reaches each corner of that triangular path, it will unleash <span class="text-desc">1</span> more <b class="text-genshin-anemo">Whirlwind Pulse</b>.
       <br />
-      <br /><b>Whirlwind Pulse</b>
-      <br />- When the Whirlwind Pulse is unleashed, it will apply Perfidious Wind's Bale to nearby opponents, decreasing their <b class="text-genshin-anemo">Anemo RES</b>.
-      <br />- The Whirlwind Pulse will also apply Prayerful Wind's Benefit to all nearby party members when it is unleashed, granting them an <b class="text-genshin-anemo">Anemo DMG Bonus</b>.
+      <br /><b class="text-genshin-anemo">Whirlwind Pulse</b>
+      <br />- When the <b class="text-genshin-anemo">Whirlwind Pulse</b> is unleashed, it will apply <b class="text-genshin-anemo">Perfidious Wind's Bale</b> to nearby opponents, decreasing their <b class="text-genshin-anemo">Anemo RES</b>.
+      <br />- The <b class="text-genshin-anemo">Whirlwind Pulse</b> will also apply <b class="text-genshin-anemo">Prayerful Wind's Benefit</b> to all nearby party members when it is unleashed, granting them an <b class="text-genshin-anemo">Anemo DMG Bonus</b>.
       `,
+      image: 'Skill_E_Faruzan_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Impetuous Flow`,
-      content: `When Faruzan is in the Manifest Gale state created by Wind Realm of Nasamjnin, the amount of time taken to charge a shot is decreased by <span class="text-desc">60%</span>, and she can apply The Wind's Secret Ways' Perfidious Wind's Bale to opponents who are hit by the vortex created by Pressurized Collapse.`,
+      content: `When Faruzan is in the <b class="text-genshin-anemo">Manifest Gale</b> state created by <b>Wind Realm of Nasamjnin</b>, the amount of time taken to charge a shot is decreased by <span class="text-desc">60%</span>, and she can apply The <b>Wind's Secret Ways</b>' <b class="text-genshin-anemo">Perfidious Wind's Bale</b> to opponents who are hit by the vortex created by <b class="text-genshin-anemo">Pressurized Collapse</b>.`,
+      image: 'UI_Talent_S_Faruzan_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Lost Wisdom of the Seven Caverns`,
-      content: `When characters affected by The Wind's Secret Ways' Prayerful Wind's Gift deal <b class="text-genshin-anemo">Anemo DMG</b> using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on <span class="text-desc">32%</span> of Faruzan's Base ATK. <span class="text-desc">1</span> instance of Hurricane Guard can occur once every <span class="text-desc">0.8</span>s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.`,
-      value: [
-        {
-          name: 'Hurricane Guard DMG',
-          value: { stat: Stats.ATK, scaling: (atk) => _.round(atk * 0.32).toLocaleString() },
-        },
-      ],
+      content: `When characters affected by The <b>Wind's Secret Ways</b>' <b class="text-genshin-anemo">Prayerful Wind's Benefit</b> deal <b class="text-genshin-anemo">Anemo DMG</b> using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the <b class="text-genshin-anemo">Hurricane Guard</b> effect: This DMG will be increased based on <span class="text-desc">32%</span> of Faruzan's Base ATK. <span class="text-desc">1</span> instance of <b class="text-genshin-anemo">Hurricane Guard</b> can occur once every <span class="text-desc">0.8</span>s. This DMG Bonus will be cleared after <b class="text-genshin-anemo">Prayerful Wind's Benefit</b> expires or after the effect is triggered once.`,
+      image: 'UI_Talent_S_Faruzan_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Tomes Light the Path`,
-      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Inazuma Expedition for 20 hours.`,
+      content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Sumeru Expedition for <span class="text-desc">20</span> hours.`,
+      image: 'UI_Talent_S_Cyno_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Truth by Any Means`,
-      content: `Faruzan can fire off a maximum of 2 Hurricane Arrows using fully charged Aimed Shots while under the effect of a single Manifest Gale created by Wind Realm of Nasamjnin.`,
+      content: `Faruzan can fire off a maximum of <span class="text-desc">2</span> <b>Hurricane Arrows</b> using fully charged Aimed Shots while under the effect of a single <b class="text-genshin-anemo">Manifest Gale</b> created by <b>Wind Realm of Nasamjnin</b>.`,
+      image: 'UI_Talent_S_Faruzan_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Overzealous Intellect`,
-      content: `The duration of the Dazzling Polyhedron created by The Wind's Secret Ways is increased by <span class="text-desc">6</span>s.`,
+      content: `The duration of the Dazzling Polyhedron created by <b>The Wind's Secret Ways</b> is increased by <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Faruzan_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Spirit-Orchard Stroll`,
-      content: `Increases the Level of Wind Realm of Nasamjnin by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Wind Realm of Nasamjnin</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Faruzan_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Divine Comprehension`,
-      content: `The vortex created by Pressurized Collapses will restore Energy to Faruzan based on the number of opponents hit: If it hits 1 opponent, it will restore <span class="text-desc">2</span> Energy for Faruzan. Each additional opponent hit will restore <span class="text-desc">0.5</span> more Energy for Faruzan.
+      content: `The vortex created by <b class="text-genshin-anemo">Pressurized Collapses</b> will restore Energy to Faruzan based on the number of opponents hit: If it hits <span class="text-desc">1</span> opponent, it will restore <span class="text-desc">2</span> Energy for Faruzan. Each additional opponent hit will restore <span class="text-desc">0.5</span> more Energy for Faruzan.
       <br />A maximum of <span class="text-desc">4</span> Energy can be restored to her per vortex.`,
+      image: 'UI_Talent_S_Faruzan_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Wonderland of Rumination`,
-      content: `Increases the Level of The Wind's Secret Ways by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>The Wind's Secret Ways</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Faruzan_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `The Wondrous Path of Truth`,
-      content: `Characters affected by The Wind's Secret Ways' Prayerful Wind's Benefit have <span class="text-desc">40%</span> increased CRIT DMG when they deal <b class="text-genshin-anemo">Anemo DMG</b>. When the active character deals DMG while affected by Prayerful Wind's Benefit, they will apply Pressurized Collapse to the opponent damaged. This effect can be triggered once every <span class="text-desc">3</span>s. This CD is shared between all party members.`,
+      content: `Characters affected by <b>The Wind's Secret Ways</b>' <b class="text-genshin-anemo">Prayerful Wind's Benefit</b> have <span class="text-desc">40%</span> increased CRIT DMG when they deal <b class="text-genshin-anemo">Anemo DMG</b>. When the active character deals DMG while affected by <b class="text-genshin-anemo">Prayerful Wind's Benefit</b>, they will apply <b class="text-genshin-anemo">Pressurized Collapse</b> to the opponent damaged. This effect can be triggered once every <span class="text-desc">3</span>s. This CD is shared between all party members.`,
+      image: 'UI_Talent_S_Faruzan_04',
     },
   }
 
@@ -123,7 +129,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       text: `Hurricane Guard`,
       ...talents.a4,
       show: a >= 4,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
@@ -136,14 +142,17 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = content
+  const teammateContent: IContent[] = [
+    findContentById(content, 'faruzan_burst'),
+    findContentById(content, 'faruzan_burst_shred'),
+  ]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'hurricane_guard')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
@@ -217,24 +226,55 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.faruzan_burst) base[Stats.ANEMO_DMG] += calcScaling(0.18, burst, 'elemental', '1')
-      if (form.faruzan_burst_shred) base.ANEMO_RES_PEN.push({value: 0.3, name: '', source: ``})
+      if (form.faruzan_burst)
+        base[Stats.ANEMO_DMG].push({
+          value: calcScaling(0.18, burst, 'elemental', '1'),
+          name: `Prayerful Wind's Benefit`,
+          source: 'Self',
+        })
+      if (form.faruzan_burst_shred)
+        base.ANEMO_RES_PEN.push({ value: 0.3, name: `Perfidious Wind's Bale`, source: `Self` })
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      const hurricane = base.getAtk() * 0.32
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      const hurricane = own.BASE_ATK * 0.32
 
-      if (form.hurricane_guard) base.ANEMO_F_DMG += hurricane
+      if (form.faruzan_burst)
+        base[Stats.ANEMO_DMG].push({
+          value: calcScaling(0.18, burst, 'elemental', '1'),
+          name: `Prayerful Wind's Benefit`,
+          source: 'Faruzan',
+        })
+      if (form.faruzan_burst_shred)
+        base.ANEMO_RES_PEN.push({ value: 0.3, name: `Perfidious Wind's Bale`, source: `Faruzan` })
+      if (aForm.hurricane_guard)
+        base.ANEMO_F_DMG.push({
+          value: hurricane,
+          name: 'Hurricane Guard',
+          source: 'Faruzan',
+          base: own.BASE_ATK,
+          multiplier: 0.32,
+        })
 
-      if (form.faruzan_burst && c >= 6) base.ANEMO_CD.push({value: 0.4, name: '', source: ``})
+      if (form.faruzan_burst && c >= 6)
+        base.ANEMO_CD.push({ value: 0.4, name: `Prayerful Wind's Benefit`, source: `Faruzan` })
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      const hurricane = base.getAtk() * 0.32
+      const hurricane = base.BASE_ATK * 0.32
 
-      if (form.hurricane_guard) if (form.hurricane_guard) base.ANEMO_F_DMG += hurricane
-      if (form.faruzan_burst && c >= 6) base.ANEMO_CD.push({value: 0.4, name: '', source: ``})
+      if (form.hurricane_guard)
+        if (form.hurricane_guard)
+          base.ANEMO_F_DMG.push({
+            value: hurricane,
+            name: 'Hurricane Guard',
+            source: 'Self',
+            base: base.BASE_ATK,
+            multiplier: 0.32,
+          })
+      if (form.faruzan_burst && c >= 6)
+        base.ANEMO_CD.push({ value: 0.4, name: `Prayerful Wind's Benefit`, source: `Self` })
 
       return base
     },

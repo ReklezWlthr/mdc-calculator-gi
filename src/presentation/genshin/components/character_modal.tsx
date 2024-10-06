@@ -131,10 +131,10 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
               <div className="relative">
                 <img
                   src={`https://cdn.wanderer.moe/genshin-impact/elements/${item.element.toLowerCase()}.png`}
-                  className="absolute w-8 h-8 top-1 left-1"
+                  className="absolute w-7 h-7 top-1.5 left-1.5"
                 />
                 {owned && (
-                  <div className="absolute px-1.5 py-1 text-sm rounded-lg top-1 right-1 bg-primary font-bold">
+                  <div className="absolute px-1.5 py-1 text-xs rounded-lg top-1 right-1 bg-primary font-bold">
                     C{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
                   </div>
                 )}

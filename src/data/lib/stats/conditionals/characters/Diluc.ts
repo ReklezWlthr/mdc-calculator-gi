@@ -30,6 +30,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -39,6 +40,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       <br />This skill can be consecutively used <span class="text-desc">3</span> times.
       <br />Enters CD if not cast again within a short period.
       `,
+      image: 'Skill_S_Diluc_01_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -46,56 +48,66 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       content: `Releases intense flames to knock back nearby opponents, dealing <b class="text-genshin-pyro">Pyro DMG</b>.
       <br />The flames then converge into the weapon, summoning a Phoenix that flies forward and deals massive <b class="text-genshin-pyro">Pyro DMG</b> to all opponents in its path. The Phoenix explodes upon reaching its destination, causing a large amount of <b class="text-genshin-pyro">AoE Pyro DMG</b>.
       <br />The searing flames that run down his blade cause it to be infused with <b class="text-genshin-pyro">Pyro</b>.`,
+      image: 'Skill_E_Diluc_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Relentless`,
       content: `Diluc's Charged Attack Stamina Cost is decreased by <span class="text-desc">50%</span>, and its duration is increased by <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_Diluc_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Blessing of Phoenix`,
-      content: `The <b class="text-genshin-pyro">Pyro Infusion</b> provided by Dawn lasts for <span class="text-desc">4</span>s longer. Additionally, Diluc gains <span class="text-desc">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> during the duration of this effect.`,
+      content: `The <b class="text-genshin-pyro">Pyro Infusion</b> provided by <b>Dawn</b> lasts for <span class="text-desc">4</span>s longer. Additionally, Diluc gains <span class="text-desc">20%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> during the duration of this effect.`,
+      image: 'UI_Talent_S_Diluc_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: 'Traditional of the Dawn Knight',
       content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Claymore-type weapons.`,
+      image: 'UI_Talent_Forge_Claymore',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Conviction`,
       content: `Diluc deals <span class="text-desc">15%</span> more DMG to opponents whose HP is above <span class="text-desc">50%</span>.`,
+      image: 'UI_Talent_S_Diluc_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Searing Ember`,
       content: `When Diluc takes DMG, his ATK increases by <span class="text-desc">10%</span> and his ATK SPD increases by <span class="text-desc">5%</span>. Lasts for <span class="text-desc">10</span>s.
       This effect can stack up to <span class="text-desc">3</span> times and can only occur once every <span class="text-desc">1.5</span>s.`,
+      image: 'UI_Talent_S_Diluc_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Fire and Steel`,
-      content: `Increases the Level of Searing Onslaught by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Searing Onslaught</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Diluc_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Flowing Flame`,
-      content: `Casting Searing Onslaught in rhythm greatly increases damage dealt.
-      <br /><span class="text-desc">2</span>s after casting Searing Onslaught, casting the next Searing Onslaught in the combo deals <span class="text-desc">40%</span> additional DMG. This effect lasts for <span class="text-desc">2</span>s.`,
+      content: `Casting <b>Searing Onslaught</b> in rhythm greatly increases damage dealt.
+      <br /><span class="text-desc">2</span>s after casting <b>Searing Onslaught</b>, casting the next <b>Searing Onslaught</b> in the combo deals <span class="text-desc">40%</span> additional DMG. This effect lasts for <span class="text-desc">2</span>s.`,
+      image: 'UI_Talent_S_Diluc_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Phoenix, Harbinger of Dawn`,
-      content: `Increases the Level of Dawn by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Dawn</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Diluc_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Flaming Sword, Nemesis of the Dark`,
-      content: `After casting Searing Onslaught, the next <span class="text-desc">2</span> Normal Attacks within the next <span class="text-desc">6</span>s will have their DMG and ATK SPD increased by <span class="text-desc">30%</span>.
-      <br />Additionally, Searing Onslaught will not interrupt the Normal Attack combo.`,
+      content: `After casting <b>Searing Onslaught</b>, the next <span class="text-desc">2</span> Normal Attacks within the next <span class="text-desc">6</span>s will have their DMG and ATK SPD increased by <span class="text-desc">30%</span>.
+      <br />Additionally, <b>Searing Onslaught</b> will not interrupt the Normal Attack combo.`,
+      image: 'UI_Talent_S_Diluc_04',
     },
   }
 
@@ -158,7 +170,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.diluc_infusion) {
         base.infuse(Element.PYRO)
-        if (a >= 4) base[Stats.PYRO_DMG].push({value: 0.2, name: '', source: ``})
+        if (a >= 4) base[Stats.PYRO_DMG].push({ value: 0.2, name: '', source: `` })
       }
 
       base.BASIC_SCALING = [
@@ -246,15 +258,15 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.diluc_c1) base[Stats.ALL_DMG].push({value: 0.15, name: '', source: ``})
+      if (form.diluc_c1) base[Stats.ALL_DMG].push({ value: 0.15, name: 'Constellation 1', source: `Self` })
       if (form.diluc_c2) {
-        base[Stats.P_ATK].push({value: 0.1, name: '', source: ``}) * form.diluc_c2
-        base.ATK_SPD.push({value: 0.05, name: '', source: ``}) * form.diluc_c2
+        base[Stats.P_ATK].push({ value: 0.1 * form.diluc_c2, name: 'Constellation 2', source: `Self` })
+        base.ATK_SPD.push({ value: 0.05 * form.diluc_c2, name: 'Constellation 2', source: `Self` })
       }
 
       if (form.diluc_c6) {
-        base.ATK_SPD.push({value: 0.3, name: '', source: ``})
-        base.BASIC_DMG.push({value: 0.3, name: '', source: ``})
+        base.ATK_SPD.push({ value: 0.3, name: 'Constellation 6', source: `Self` })
+        base.BASIC_DMG.push({ value: 0.3, name: 'Constellation 6', source: `Self` })
       }
 
       return base

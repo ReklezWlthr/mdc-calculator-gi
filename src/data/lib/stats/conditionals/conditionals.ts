@@ -34,6 +34,7 @@ import Heizou from './characters/Heizou'
 import Hutao from './characters/Hutao'
 import Itto from './characters/Itto'
 import Jean from './characters/Jean'
+import Kachina from './characters/Kachina'
 import Kaeya from './characters/Kaeya'
 import Kaveh from './characters/Kaveh'
 import Kazuha from './characters/Kazuha'
@@ -173,6 +174,7 @@ export default [
   { id: '10000095', conditionals: Sigewinne },
   { id: '10000097', conditionals: Sethos },
   { id: '10000098', conditionals: Clorinde },
+  { id: '10000100', conditionals: Kachina },
   { id: '10000101', conditionals: Kinich },
   { id: '10000102', conditionals: Mualani },
   // Travelers

@@ -26,22 +26,24 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Charged Attack</b>
       <br />Performs a more precise Aimed Shot with increased DMG.
       <br />While aiming, an icy aura will accumulate on the arrowhead before the arrow is fired. Has different effects based on how long the energy has been charged:
-      <br />Charge Level 1: Fires off an icy arrow that deals <b class="text-genshin-cryo">Cryo DMG</b>.
-      <br />Charge Level 2: Fires off a Frostflake Arrow that deals <b class="text-genshin-cryo">Cryo DMG</b>. The Frostflake Arrow blooms after hitting its target, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
+      <br /><b>Charge Level 1</b>: Fires off an icy arrow that deals <b class="text-genshin-cryo">Cryo DMG</b>.
+      <br /><b>Charge Level 2</b>: Fires off a <b class="text-genshin-cryo">Frostflake Arrow</b> that deals <b class="text-genshin-cryo">Cryo DMG</b>. The <b class="text-genshin-cryo">Frostflake Arrow</b> blooms after hitting its target, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       <br />
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Trail of the Qilin`,
-      content: `Leaving a single Ice Lotus behind, Ganyu dashes backward, shunning all impurity and dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
+      content: `Leaving a single <b class="text-genshin-cryo">Ice Lotus</b> behind, Ganyu dashes backward, shunning all impurity and dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
       <br />
-      <br /><b>Ice Lotus</b>
+      <br /><b class="text-genshin-cryo">Ice Lotus</b>
       <br />- Continuously taunts surrounding opponents, attracting them to attack it.
       <br />- Endurance scales based on Ganyu's Max HP.
       <br />- Blooms profusely when destroyed or once its duration ends, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.`,
+      image: 'Skill_S_Ganyu_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -49,56 +51,66 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
       content: `Coalesces atmospheric frost and snow to summon a Sacred Cryo Pearl that exorcises evil.
       <br />During its ability duration, the Sacred Cryo Pearl will continuously rain down shards of ice, striking opponents within an AoE and dealing <b class="text-genshin-cryo">Cryo DMG</b>.
       `,
+      image: 'Skill_E_Ganyu_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Undivided Heart`,
-      content: `After firing a Frostflake Arrow, the CRIT Rate of subsequent Frostflake Arrows and their resulting bloom effects is increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
+      content: `After firing a <b class="text-genshin-cryo">Frostflake Arrow</b>, the CRIT Rate of subsequent <b class="text-genshin-cryo">Frostflake Arrows</b> and their resulting bloom effects is increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Ganyu_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Harmony between Heaven and Earth`,
-      content: `Celestial Shower grants a <span class="text-desc">20%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b> to active members in the AoE.`,
+      content: `<b>Celestial Shower</b> grants a <span class="text-desc">20%</span> <b class="text-genshin-cryo">Cryo DMG Bonus</b> to active members in the AoE.`,
+      image: 'UI_Talent_S_Ganyu_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: 'Preserved for the Hunt',
       content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Bow-type weapons.`,
+      image: 'UI_Talent_Forge_Bow',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Dew-Drinker`,
-      content: `Taking DMG from a Charge Level 2 Frostflake Arrow or Frostflake Arrow Bloom decreases opponents' <b class="text-genshin-cryo">Cryo RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.
-      <br />A hit regenerates <span class="text-desc">2</span> Energy for Ganyu. This effect can only occur once per Charge Level 2 Frostflake Arrow, regardless if Frostflake Arrow itself or its Bloom hit the target.`,
+      content: `Taking DMG from a <b>Charge Level</b> <span class="text-desc">2</span> <b class="text-genshin-cryo">Frostflake Arrow</b> or <b class="text-genshin-cryo">Frostflake Arrow Bloom</b> decreases opponents' <b class="text-genshin-cryo">Cryo RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.
+      <br />A hit regenerates <span class="text-desc">2</span> Energy for Ganyu. This effect can only occur once per <b>Charge Level</b> <span class="text-desc">2</span> <b class="text-genshin-cryo">Frostflake Arrow</b>, regardless if <b class="text-genshin-cryo">Frostflake Arrow</b> itself or its <b class="text-genshin-cryo">Bloom</b> hit the target.`,
+      image: 'UI_Talent_S_Ganyu_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `The Auspicious`,
-      content: `Trail of the Qilin gains <span class="text-desc">1</span> additional charge.`,
+      content: `<b>Trail of the Qilin</b> gains <span class="text-desc">1</span> additional charge.`,
+      image: 'UI_Talent_S_Ganyu_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Cloud-Strider`,
-      content: `Increases the Level of Celestial Shower by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Celestial Shower</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ganyu_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Westward Sojourn`,
-      content: `Opponents standing within the AoE of Celestial Shower take increased DMG. This effect strengthens over time.
-      <br />Increased DMG taken begins at <span class="text-desc">5%</span> and increases by <span class="text-desc">5%</span> every <span class="text-desc">3</span>s, up to a maximum of 25%.
+      content: `Opponents standing within the AoE of <b>Celestial Shower</b> take increased DMG. This effect strengthens over time.
+      <br />Increased DMG taken begins at <span class="text-desc">5%</span> and increases by <span class="text-desc">5%</span> every <span class="text-desc">3</span>s, up to a maximum of <span class="text-desc">25%</span>.
       <br />The effect lingers for <span class="text-desc">3</span>s after the opponent leaves the AoE.`,
+      image: 'UI_Talent_S_Ganyu_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `The Merciful`,
-      content: `Increases the Level of Trail of the Qilin by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Trail of the Qilin</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Ganyu_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `The Clement`,
-      content: `Using Trail of the Qilin causes the next Frostflake Arrow shot within <span class="text-desc">30</span>s to not require charging.`,
+      content: `Using <b>Trail of the Qilin</b> causes the next <b class="text-genshin-cryo">Frostflake Arrow</b> shot within <span class="text-desc">30</span>s to not require charging.`,
+      image: 'UI_Talent_S_Ganyu_04',
     },
   }
 
@@ -106,7 +118,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'ganyu_a1',
-      text: `Enhanced Frostflake Arrow`,
+      text: `A1 Enhanced Frostflake Arrow`,
       ...talents.a1,
       show: a >= 1,
       default: true,
@@ -141,14 +153,14 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'ganyu_a4')]
+  const teammateContent: IContent[] = [findContentById(content, 'ganyu_c1'), findContentById(content, 'ganyu_c4')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'ganyu_a4')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
@@ -238,15 +250,18 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.ganyu_a4) base[Stats.CRYO_DMG].push({value: 0.2, name: '', source: ``})
-      if (form.ganyu_c1) base.CRYO_RES_PEN.push({value: 0.15, name: '', source: ``})
-      if (form.ganyu_c4) base.VULNERABILITY.push({value: 0.5, name: '', source: ``}) * form.ganyu_a4
+      if (form.ganyu_a4) base[Stats.CRYO_DMG].push({ value: 0.2, name: 'Ascension 4 Passive', source: `Self` })
+      if (form.ganyu_c1) base.CRYO_RES_PEN.push({ value: 0.15, name: 'Constellation 1', source: `Self` })
+      if (form.ganyu_c4)
+        base.VULNERABILITY.push({ value: 0.5 * form.ganyu_a4, name: 'Constellation 4', source: `Self` })
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.ganyu_c1) base.CRYO_RES_PEN.push({value: 0.15, name: '', source: ``})
-      if (form.ganyu_c4) base.VULNERABILITY.push({value: 0.5, name: '', source: ``}) * form.ganyu_a4
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.ganyu_a4) base[Stats.CRYO_DMG].push({ value: 0.2, name: 'Ascension 4 Passive', source: `Ganyu` })
+      if (form.ganyu_c1) base.CRYO_RES_PEN.push({ value: 0.15, name: 'Constellation 1', source: `Ganyu` })
+      if (form.ganyu_c4)
+        base.VULNERABILITY.push({ value: 0.5 * form.ganyu_a4, name: 'Constellation 4', source: `Ganyu` })
 
       return base
     },

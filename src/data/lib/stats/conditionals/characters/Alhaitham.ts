@@ -30,40 +30,44 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Universality: An Elaboration on Form`,
-      content: `Rushes forward, dealing <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents when the rush ends, causing a Chisel-Light Mirror to form.
+      content: `Rushes forward, dealing <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents when the rush ends, causing a <b class="text-genshin-dendro">Chisel-Light Mirror</b> to form.
       <br />Holding this skill will cause it to behave differently.
       <br />
       <br /><b>Hold</b>
       <br />Enters Aiming Mode to adjust the direction of Alhaitham's rush attack.
       <br />
-      <br /><b>Chisel-Light Mirror</b>
-      <br />When this skill is unleashed, Alhaitham will generate <span class="text-desc">1</span> Chisel-Light Mirror. If there are no Mirrors at this time, he will generate <span class="text-desc">1</span> additional Mirror. Chisel-Light Mirrors will have the following properties:
-      <br />- When he possesses Chisel-Light Mirrors, Alhaitham's Normal, Charged, and Plunging Attacks will be converted to <b class="text-genshin-dendro">Dendro DMG</b>. This cannot be overridden.
-      <br />- When attacks of the aforementioned kinds hit opponents, the Chisel-Light Mirrors will unleash a Projection Attack that deals <b class="text-genshin-dendro">AoE Dendro DMG</b> based on the number of Mirrors on the field.
-      <br />- A total of <span class="text-desc">3</span> Chisel-Light Mirrors can exist at once.
-      <br />- The Chisel-Light Mirrors will disappear one after the other over time, and will all disappear when Alhaitham leaves the field.
+      <br /><b class="text-genshin-dendro">Chisel-Light Mirror</b>
+      <br />When this skill is unleashed, Alhaitham will generate <span class="text-desc">1</span> <b class="text-genshin-dendro">Chisel-Light Mirror</b>. If there are no <b class="text-genshin-dendro">Mirrors</b> at this time, he will generate <span class="text-desc">1</span> additional <b class="text-genshin-dendro">Mirror</b>. <b class="text-genshin-dendro">Chisel-Light Mirrors</b> will have the following properties:
+      <br />- When he possesses <b class="text-genshin-dendro">Chisel-Light Mirrors</b>, Alhaitham's Normal, Charged, and Plunging Attacks will be converted to <b class="text-genshin-dendro">Dendro DMG</b>. This cannot be overridden.
+      <br />- When attacks of the aforementioned kinds hit opponents, the <b class="text-genshin-dendro">Chisel-Light Mirrors</b> will unleash a <b>Projection Attack</b> that deals <b class="text-genshin-dendro">AoE Dendro DMG</b> based on the number of <b class="text-genshin-dendro">Mirrors</b> on the field.
+      <br />- A total of <span class="text-desc">3</span> <b class="text-genshin-dendro">Chisel-Light Mirrors</b> can exist at once.
+      <br />- The <b class="text-genshin-dendro">Chisel-Light Mirrors</b> will disappear one after the other over time, and will all disappear when Alhaitham leaves the field.
       `,
+      image: 'Skill_S_Alhatham_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Particular Field: Fetters of Phenomena`,
-      content: `Creates a Particular Binding Field and deals multiple instances of <b class="text-genshin-dendro">AoE Dendro DMG</b>.
-      <br />If Chisel-Light Mirrors exist when this ability is unleashed, all such Mirrors will be consumed and increase the number of DMG instances dealt.
-      <br /><span class="text-desc">2</span>s after this ability is unleashed, if <span class="text-desc">0/1/2/3</span> Mirrors were consumed, Alhaitham will generate <span class="text-desc">3/2/1/0</span> new Mirrors in turn.`,
+      content: `Creates a <b>Particular Binding Field</b> and deals multiple instances of <b class="text-genshin-dendro">AoE Dendro DMG</b>.
+      <br />If <b class="text-genshin-dendro">Chisel-Light Mirrors</b> exist when this ability is unleashed, all such <b class="text-genshin-dendro">Mirrors</b> will be consumed and increase the number of DMG instances dealt.
+      <br /><span class="text-desc">2</span>s after this ability is unleashed, if <span class="text-desc">0/1/2/3</span> <b class="text-genshin-dendro">Mirrors</b> were consumed, Alhaitham will generate <span class="text-desc">3/2/1/0</span> new <b class="text-genshin-dendro">Mirrors</b> in turn.`,
+      image: 'Skill_E_Alhatham_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Four-Causal Correction`,
-      content: `When Alhaitham's Charged or Plunging Attacks hit opponents, they will generate <span class="text-desc">1/3</span> Chisel-Light Mirror. This effect can be triggered once every <span class="text-desc">12</span>s.`,
+      content: `When Alhaitham's Charged or Plunging Attacks hit opponents, they will generate <span class="text-desc">1/3</span> <b class="text-genshin-dendro">Chisel-Light Mirror</b>. This effect can be triggered once every <span class="text-desc">12</span>s.`,
+      image: 'UI_Talent_S_Alhatham_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Mysteries Laid Bare`,
-      content: `Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by Projection Attacks and Particular Field: Fetters of Phenomena by <span class="text-desc">0.1%</span>.
+      content: `Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by <b>Projection Attacks</b> and <b>Particular Field: Fetters of Phenomena</b> by <span class="text-desc">0.1%</span>.
       <br />The maximum DMG increase this way for both these abilities is <span class="text-desc">100%</span>.`,
       value: [
         {
@@ -71,51 +75,59 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           value: { stat: Stats.EM, scaling: (em) => toPercentage(_.min([em * 0.001, 1])) },
         },
       ],
+      image: 'UI_Talent_S_Alhatham_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: 'Law of Reductive Overdetermination',
       content: `When Alhaitham crafts Weapon Ascension Materials, he has a <span class="text-desc">10%</span> chance to receive double the product.`,
+      image: 'UI_Talent_S_Alhatham_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Intuition`,
-      content: `When a Projection Attack hits an opponent, Universality: An Elaboration on Form's CD is decreased by <span class="text-desc">1.2</span>s. This effect can be triggered once every <span class="text-desc">1</span>s.`,
+      content: `When a <b>Projection Attack</b> hits an opponent, <b>Universality: An Elaboration on Form</b>'s CD is decreased by <span class="text-desc">1.2</span>s. This effect can be triggered once every <span class="text-desc">1</span>s.`,
+      image: 'UI_Talent_S_Alhatham_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Debate`,
-      content: `When Alhaitham generates a Chisel-Light Mirror, his Elemental Mastery will be increased by <span class="text-desc">50</span> for <span class="text-desc">8</span> seconds, max <span class="text-desc">4</span> stacks. Each stack's duration is counted independently. This effect can be triggered even when the maximum number of Chisel-Light Mirrors has been reached.`,
+      content: `When Alhaitham generates a <b class="text-genshin-dendro">Chisel-Light Mirror</b>, his Elemental Mastery will be increased by <span class="text-desc">50</span> for <span class="text-desc">8</span> seconds, max <span class="text-desc">4</span> stacks. Each stack's duration is counted independently. This effect can be triggered even when the maximum number of <b class="text-genshin-dendro">Chisel-Light Mirrors</b> has been reached.`,
+      image: 'UI_Talent_S_Alhatham_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Negation`,
-      content: `Increases the Level of Universality: An Elaboration on Form by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Universality: An Elaboration on Form</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Alhatham_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Elucidation`,
-      content: `When Particular Field: Fetters of Phenomena is unleashed, the following effects will become active based on the number of Chisel-Light Mirrors consumed and created this time around:
-      <br />- Each Mirror consumed will increase the Elemental Mastery of all other nearby party members by <span class="text-desc">30</span> for <span class="text-desc">15</span>s.
-      <br />- Each Mirror generated will grant Alhaitham a <span class="text-desc">10%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b> for <span class="text-desc">15</span>s.
+      content: `When <b>Particular Field: Fetters of Phenomena</b> is unleashed, the following effects will become active based on the number of <b class="text-genshin-dendro">Chisel-Light Mirrors</b> consumed and created this time around:
+      <br />- Each <b class="text-genshin-dendro">Mirror</b> consumed will increase the Elemental Mastery of all other nearby party members by <span class="text-desc">30</span> for <span class="text-desc">15</span>s.
+      <br />- Each <b class="text-genshin-dendro">Mirror</b> generated will grant Alhaitham a <span class="text-desc">10%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b> for <span class="text-desc">15</span>s.
       <br />
       <br />The pre-existing duration of the aforementioned effects will be cleared if you use Particular Field: Fetters of Phenomena again while they are in effect.
       `,
+      image: 'UI_Talent_S_Alhatham_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Sagacity`,
-      content: `Increases the Level of Particular Field: Fetters of Phenomena by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Particular Field: Fetters of Phenomena</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Alhatham_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Structuration`,
       content: `Alhaitham gains the following effects:
-      <br />- <span class="text-desc">2</span> seconds after Particular Field: Fetters of Phenomena is unleashed, he will generate <span class="text-desc">3</span> Chisel-Light Mirrors regardless of the number of mirrors consumed.
-      <br />- If Alhaitham generates Chisel-Light Mirrors when their numbers have already maxed out, his CRIT Rate and CRIT DMG will increase by <span class="text-desc">10%</span> and <span class="text-desc">70%</span> respectively for <span class="text-desc">6</span>s. If this effect is triggered again during its initial duration, the duration remaining will be increased by 6s.
+      <br />- <span class="text-desc">2</span> seconds after <b>Particular Field: Fetters of Phenomena</b> is unleashed, he will generate <span class="text-desc">3</span> <b class="text-genshin-dendro">Chisel-Light Mirrors</b> regardless of the number of <b class="text-genshin-dendro">Mirrors</b> consumed.
+      <br />- If Alhaitham generates <b class="text-genshin-dendro">Chisel-Light Mirrors</b> when their numbers have already maxed out, his CRIT Rate and CRIT DMG will increase by <span class="text-desc">10%</span> and <span class="text-desc">70%</span> respectively for <span class="text-desc">6</span>s. If this effect is triggered again during its initial duration, the duration remaining will be increased by <span class="text-desc">6</span>s.
       `,
+      image: 'UI_Talent_S_Alhatham_04',
     },
   }
 
@@ -233,12 +245,12 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.al_c2Em > 0) base[Stats.EM].push({value: 50 , name: '', source: ``})* form.al_c2Em
-      if (form.al_c4Em > 0) base[Stats.EM].push({value: 30 , name: '', source: ``})* form.al_c4Em
-      if (form.al_c4Dmg > 0) base[Stats.DENDRO_DMG].push({value: 0.1, name: '', source: ``}) * form.al_c4Dmg
+      if (form.al_c2Em > 0) base[Stats.EM].push({ value: 50, name: '', source: `` }) * form.al_c2Em
+      if (form.al_c4Em > 0) base[Stats.EM].push({ value: 30, name: '', source: `` }) * form.al_c4Em
+      if (form.al_c4Dmg > 0) base[Stats.DENDRO_DMG].push({ value: 0.1, name: '', source: `` }) * form.al_c4Dmg
       if (form.c6_crit) {
-        base[Stats.CRIT_RATE].push({value: 0.1, name: '', source: ``})
-        base[Stats.CRIT_DMG].push({value: 0.7, name: '', source: ``})
+        base[Stats.CRIT_RATE].push({ value: 0.1, name: '', source: `` })
+        base[Stats.CRIT_DMG].push({ value: 0.7, name: '', source: `` })
       }
 
       return base
@@ -253,7 +265,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           { scaling: calcScaling(0.672, skill, 'elemental', '1'), multiplier: Stats.ATK },
           { scaling: calcScaling(1.344, skill, 'elemental', '1'), multiplier: Stats.EM },
         ],
-        bonus: a >= 4 ? _.min([base[Stats.EM] * 0.001, 1]) : 0,
+        bonus: a >= 4 ? _.min([base.getValue(Stats.EM) * 0.001, 1]) : 0,
         element: Element.DENDRO,
         property: TalentProperty.SKILL,
       })
@@ -267,7 +279,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           ],
           element: Element.DENDRO,
           property: TalentProperty.BURST,
-          bonus: a >= 4 ? _.min([base[Stats.EM] * 0.001, 1]) : 0,
+          bonus: a >= 4 ? _.min([base.getValue(Stats.EM) * 0.001, 1]) : 0,
         },
       ]
 

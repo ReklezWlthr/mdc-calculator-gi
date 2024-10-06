@@ -30,6 +30,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -41,68 +42,79 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b>Hold (Short)</b>
       <br />Charges up, resulting in different effects when unleashed based on the Charge Level.
-      <br />- Level 1: Strikes twice, dealing <b class="text-genshin-pyro">Pyro DMG</b> and launching opponents.
-      <br />- Level 2: Unleashes 3 consecutive attacks that deal impressive <b class="text-genshin-pyro">Pyro DMG</b>, but the last attack triggers an explosion that launches both Bennett and the enemy.
+      <br />- <b>Level 1</b>: Strikes twice, dealing <b class="text-genshin-pyro">Pyro DMG</b> and launching opponents.
+      <br />- <b>Level 2</b>: Unleashes 3 consecutive attacks that deal impressive <b class="text-genshin-pyro">Pyro DMG</b>, but the last attack triggers an explosion that launches both Bennett and the enemy.
       <br />Bennett takes no damage from being launched.
       `,
+      image: 'Skill_S_Bennett_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Fantastic Voyage`,
-      content: `Bennett performs a jumping attack that deals Pyro DMG, creating an Inspiration Field.
+      content: `Bennett performs a jumping attack that deals <b class="text-genshin-pyro">Pyro DMG</b>, creating an <b class="text-genshin-pyro">Inspiration Field</b>.
       <br />
-      <br /><b>Inspiration Field</b>
+      <br /><b class="text-genshin-pyro">Inspiration Field</b>
       <br />- If the health of a character within the AoE is equal to or falls below <span class="text-desc">70%</span>, their health will continuously regenerate. The amount of HP restored scales off Bennett's Max HP.
       <br />- If the health of a character within the AoE is higher than <span class="text-desc">70%</span>, they gain an ATK Bonus that is based on Bennett's Base ATK.
       <br />- Imbues characters within the AoE with <b class="text-genshin-pyro">Pyro</b>.`,
+      image: 'Skill_E_Bennett_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Rekindle`,
-      content: `Decreases Passion Overload's CD by <span class="text-desc">20%</span>.`,
+      content: `Decreases <b>Passion Overload</b>'s CD by <span class="text-desc">20%</span>.`,
+      image: 'UI_Talent_S_Bennett_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Fearnaught`,
-      content: `When inside Fantastic Voyage's circle, Passion Overload's CD is decreased by <span class="text-desc">50%</span> and Bennett cannot be launched by this skill's explosion.`,
+      content: `When inside <b>Fantastic Voyage</b>'s circle, <b>Passion Overload</b>'s CD is decreased by <span class="text-desc">50%</span> and Bennett cannot be launched by this skill's explosion.`,
+      image: 'UI_Talent_S_Bennett_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `It Should Be Safe...`,
       content: `When dispatched on an expedition in Mondstadt, time consumed is reduced by <span class="text-desc">25%</span>.`,
+      image: 'UI_Talent_Expedition_Mengde',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Grand Expectation`,
-      content: `Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional <span class="text-desc">20%</span> of Bennett's Base ATK.`,
+      content: `<b>Fantastic Voyage</b>'s ATK increase no longer has an HP restriction, and gains an additional <span class="text-desc">20%</span> of Bennett's Base ATK.`,
+      image: 'UI_Talent_S_Bennett_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Impasse Conqueror`,
       content: `When Bennett's HP falls below <span class="text-desc">70%</span>, his Energy Recharge is increased by <span class="text-desc">30%</span>.`,
+      image: 'UI_Talent_S_Bennett_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Unstoppable Fervor`,
-      content: `Increases the Level of Passion Overload by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Passion Overload</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Bennett_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Unexpected Odyssey`,
-      content: `Using a Normal Attack as the second attack of Passion Overload's Charge Level 1 will perform a follow-up attack.
+      content: `Using a Normal Attack as the second attack of <b>Passion Overload</b>'s Charge Level <span class="text-desc">1</span> will perform a follow-up attack.
       This additional attack does <span class="text-desc">135%</span> of the second attack's DMG.`,
+      image: 'UI_Talent_S_Bennett_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `True Explorer`,
-      content: `Increases the Level of Fantastic Voyage by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Fantastic Voyage</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Bennett_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Fire Ventures With Me`,
-      content: `Sword, Claymore, or Polearm-wielding characters inside Fantastic Voyage's radius gain a <span class="text-desc">15%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and their weapons are infused with <b class="text-genshin-pyro">Pyro</b>.`,
+      content: `Sword, Claymore, or Polearm-wielding characters inside <b>Fantastic Voyage</b>'s radius gain a <span class="text-desc">15%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> and their weapons are infused with <b class="text-genshin-pyro">Pyro</b>.`,
+      image: 'UI_Talent_S_Bennett_04',
     },
   }
 
@@ -110,10 +122,10 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'benny_atk_share',
-      text: `Within Inspiration Field`,
+      text: `Inspiration Field`,
       ...talents.burst,
       show: true,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
@@ -125,14 +137,14 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'benny_atk_share')]
+  const teammateContent: IContent[] = []
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'benny_atk_share')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
 
@@ -240,16 +252,17 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       const multiplier = calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)
       if (form.benny_atk_share)
         base[Stats.ATK].push({
-          name: 'Ultimate',
+          name: 'Inspiration Field',
           source: 'Self',
           value: base.BASE_ATK * multiplier,
           base: base.BASE_ATK,
           multiplier,
         })
-      if (a >= 1) base.SKILL_CD_RED.push({ value: 0.2, name: '', source: `` })
-      if (a >= 4 && form.benny_atk_share) base.SKILL_CD_RED.push({ value: 0.5, name: '', source: `` })
+      if (a >= 1) base.SKILL_CD_RED.push({ value: 0.2, name: 'Ascension 1 Passive', source: `Self` })
+      if (a >= 4 && form.benny_atk_share)
+        base.SKILL_CD_RED.push({ value: 0.5, name: 'Inspiration Field', source: `Self` })
 
-      if (form.benny_c2) base[Stats.ER].push({ value: 0.3, name: '', source: `` })
+      if (form.benny_c2) base[Stats.ER].push({ value: 0.3, name: 'Constellation 2', source: `Self` })
 
       if (c >= 4)
         base.SKILL_SCALING.push({
@@ -260,25 +273,25 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
         })
 
       if (c >= 6 && form.benny_atk_share) {
-        base[Stats.PYRO_DMG].push({ value: 0.15, name: '', source: `` })
+        base[Stats.PYRO_DMG].push({ value: 0.15, name: 'Inspiration Field', source: `Self` })
         base.INFUSION = Element.PYRO
       }
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
       const canInfuse = !_.includes([WeaponType.BOW, WeaponType.CATALYST], form.weapon)
       const multiplier = calcScaling(0.56, burst, 'elemental', '1') + (c >= 1 ? 0.2 : 0)
-      if (form.benny_atk_share)
+      if (aForm.benny_atk_share)
         base[Stats.ATK].push({
-          name: 'Elemental Burst',
-          source: 'Self',
+          name: 'Inspiration Field',
+          source: 'Bennett',
           value: own.BASE_ATK * multiplier,
           base: own.BASE_ATK,
           multiplier,
         })
-      if (c >= 6 && form.benny_atk_share) {
-        base[Stats.PYRO_DMG].push({ value: 0.15, name: '', source: `` })
+      if (c >= 6 && aForm.benny_atk_share) {
+        base[Stats.PYRO_DMG].push({ value: 0.15, name: 'Inspiration Field', source: `Bennett` })
         if (canInfuse) base.infuse(Element.PYRO)
       }
 
