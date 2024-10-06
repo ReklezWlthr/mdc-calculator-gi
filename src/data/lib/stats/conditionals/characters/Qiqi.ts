@@ -29,73 +29,85 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Adeptus Art: Herald of Frost`,
-      content: `Using the Icevein Talisman, Qiqi brings forth the Herald of Frost, dealing <b class="text-genshin-cryo">Cryo DMG</b> to surrounding opponents.
+      content: `Using the Icevein Talisman, Qiqi brings forth the <b class="text-genshin-cryo">Herald of Frost</b>, dealing <b class="text-genshin-cryo">Cryo DMG</b> to surrounding opponents.
       <br />
-      <br /><b>Herald of Frost</b>
+      <br /><b class="text-genshin-cryo">Herald of Frost</b>
       <br />- On hit, Qiqi's Normal and Charged Attacks regenerate HP for your own party members and nearby teammates. Healing scales based on Qiqi's ATK.
       <br />- Periodically regenerates your active character's HP.
       <br />- Follows the character around, dealing <b class="text-genshin-cryo">Cryo DMG</b> to opponents in their path.
       `,
+      image: 'Skill_S_Qiqi_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Adeptus Art: Preserver of Fortune`,
-      content: `Qiqi releases the adeptus power sealed within her body, marking nearby opponents with a Fortune-Preserving Talisman that deals <b class="text-genshin-cryo">Cryo DMG</b>.
+      content: `Qiqi releases the adeptus power sealed within her body, marking nearby opponents with a <b class="text-genshin-cryo">Fortune-Preserving Talisman</b> that deals <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />
-      <br /><b>Fortune-Preserving Talisman</b>
-      <br />When opponents affected by this Talisman take DMG, the character that dealt this DMG regenerates HP.`,
+      <br /><b class="text-genshin-cryo">Fortune-Preserving Talisman</b>
+      <br />When opponents affected by this <b class="text-genshin-cryo">Talisman</b> take DMG, the character that dealt this DMG regenerates HP.`,
+      image: 'Skill_E_Qiqi_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Life-Prolonging Methods`,
-      content: `When a character under the effects of Adeptus Art: Herald of Frost triggers an Elemental Reaction, their Incoming Healing Bonus is increased by <span class="text-desc">20%</span> for <span class="text-desc">8</span>s.`,
+      content: `When a character under the effects of <b>Adeptus Art: Herald of Frost</b> triggers an Elemental Reaction, their Incoming Healing Bonus is increased by <span class="text-desc">20%</span> for <span class="text-desc">8</span>s.`,
+      image: 'UI_Talent_S_Qiqi_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `A Glimpse Into Arcanum	`,
-      content: `When Qiqi hits opponents with her Normal and Charged Attacks, she has a <span class="text-desc">50%</span> chance to apply a Fortune-Preserving Talisman to them for <span class="text-desc">6</span>s. This effect can only occur once every <span class="text-desc">30</span>s.`,
+      content: `When Qiqi hits opponents with her Normal and Charged Attacks, she has a <span class="text-desc">50%</span> chance to apply a <b class="text-genshin-cryo">Fortune-Preserving Talisman</b> to them for <span class="text-desc">6</span>s. This effect can only occur once every <span class="text-desc">30</span>s.`,
+      image: 'UI_Talent_S_Qiqi_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Former Life Memories`,
       content: `Displays the location of nearby resources unique to Liyue on the mini-map.`,
+      image: 'UI_Talent_Collect_Local_Liyue',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Ascetics of Frost`,
-      content: `When the Herald of Frost hits an opponent marked by a Fortune-Preserving Talisman, Qiqi regenerates <span class="text-desc">2</span> Energy.`,
+      content: `When the <b class="text-genshin-cryo">Herald of Frost</b> hits an opponent marked by a <b class="text-genshin-cryo">Fortune-Preserving Talisman</b>, Qiqi regenerates <span class="text-desc">2</span> Energy.`,
+      image: 'UI_Talent_S_Qiqi_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Frozen to the Bone`,
       content: `Qiqi's Normal and Charge Attack DMG against opponents affected by <b class="text-genshin-cryo">Cryo</b> is increased by <span class="text-desc">15%</span>.`,
+      image: 'UI_Talent_S_Qiqi_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Ascendant Praise`,
-      content: `Increases the Level of Adeptus Art: Preserver of Fortune by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Adeptus Art: Preserver of Fortune</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Qiqi_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Divine Suppression`,
-      content: `Targets marked by the Fortune-Preserving Talisman have their ATK decreased by <span class="text-desc">20%</span>.`,
+      content: `Targets marked by the <b class="text-genshin-cryo">Fortune-Preserving Talisman</b> have their ATK decreased by <span class="text-desc">20%</span>.`,
+      image: 'UI_Talent_S_Qiqi_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Crimson Lotus Bloom`,
-      content: `Increases the Level of Adeptus Art: Herald of Frost by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Adeptus Art: Herald of Frost</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Qiqi_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Rite of Resurrection`,
-      content: `Using Adeptus Art: Preserver of Fortune revives all fallen party members nearby and regenerates <span class="text-desc">50%</span> of their HP.
+      content: `Using <b>Adeptus Art: Preserver of Fortune</b> revives all fallen party members nearby and regenerates <span class="text-desc">50%</span> of their HP.
       <br />This effect can only occur once every <span class="text-desc">15</span> mins.`,
+      image: 'UI_Talent_S_Qiqi_04',
     },
   }
 
@@ -127,17 +139,16 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'qiqi_a1'), findContentById(content, 'qiqi_c4')]
+  const teammateContent: IContent[] = [findContentById(content, 'qiqi_c4')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'qiqi_a1')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 80
 
       base.BASIC_SCALING = [
         {
@@ -189,7 +200,7 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.SKILL,
         },
         {
-          name: 'Healing On-Hit',
+          name: 'Team Healing On-Hit',
           value: [{ scaling: calcScaling(0.1056, skill, 'physical', '1'), multiplier: Stats.ATK }],
           flat: calcScaling(67.4, skill, 'special', 'flat'),
           element: TalentProperty.HEAL,
@@ -225,19 +236,19 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.qiqi_a1) base[Stats.I_HEALING].push({value: 0.2, name: '', source: ``})
+      if (form.qiqi_a1) base[Stats.I_HEALING].push({ value: 0.2, name: 'Ascension 1 Passive', source: `Self` })
 
       if (form.qiqi_c2) {
-        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
-        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.BASIC_DMG.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
+        base.CHARGE_DMG.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
       }
-      if (form.qiqi_c4) base.ATK_REDUCTION.push({value: 0.2, name: '', source: ``})
+      if (form.qiqi_c4) base.ATK_REDUCTION.push({ value: 0.2, name: 'Constellation 4', source: `Self` })
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.qiqi_c4) base.ATK_REDUCTION.push({value: 0.2, name: '', source: ``})
-      if (form.qiqi_a1) base[Stats.I_HEALING].push({value: 0.2, name: '', source: ``})
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (form.qiqi_c4) base.ATK_REDUCTION.push({ value: 0.2, name: 'Constellation 4', source: `Qiqi` })
+      if (aForm.qiqi_a1) base[Stats.I_HEALING].push({ value: 0.2, name: 'Ascension 1 Passive', source: `Qiqi` })
 
       return base
     },

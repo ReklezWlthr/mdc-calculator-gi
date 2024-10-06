@@ -3,6 +3,7 @@ import { IContent } from '@src/domain/conditional'
 import { Element } from '@src/domain/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
+import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
@@ -96,7 +97,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                     </div>
                   )}
                   {content.type === 'element' && (
-                    <div className="flex items-center justify-center col-span-3">
+                    <div className="flex items-center justify-center col-span-4">
                       <SelectInput
                         value={calculatorStore.form[content.index]?.[content.id]}
                         options={
@@ -109,6 +110,26 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                         }
                         onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
                       />
+                    </div>
+                  )}
+                  {content.type === 'multiple' && (
+                    <div className="flex items-center justify-center col-span-4">
+                      <div className="w-full">
+                        <TagSelectInput
+                          values={calculatorStore.form[content.index]?.[content.id]}
+                          options={
+                            content.options || [
+                              { name: Element.PYRO, value: Element.PYRO },
+                              { name: Element.HYDRO, value: Element.HYDRO },
+                              { name: Element.CRYO, value: Element.CRYO },
+                              { name: Element.ELECTRO, value: Element.ELECTRO },
+                            ]
+                          }
+                          onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
+                          placeholder="None"
+                          renderAsText
+                        />
+                      </div>
                     </div>
                   )}
                 </div>

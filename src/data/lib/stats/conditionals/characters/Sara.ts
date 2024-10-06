@@ -26,78 +26,90 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Charged Attack</b>
       <br />Perform a more precise Aimed Shot with increased DMG.
       <br />While aiming, crackling lightning will accumulate on the arrowhead. An arrow fully charged with the storm's might will deal <b class="text-genshin-electro">Electro DMG</b>.
-      <br />When in the Crowfeather Cover state, a fully-charged arrow will leave a Crowfeather behind after it hits.
+      <br />When in the <b class="text-violet-400">Crowfeather Cover</b> state, a fully-charged arrow will leave a <b class="text-genshin-electro">Crowfeather</b> behind after it hits.
       <br />
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Tengu Stormcall`,
       content: `Retreats rapidly with the speed of a tengu, summoning the protection of the Crowfeather.
-      <br />Gains Crowfeather Cover for <span class="text-desc">18</span>s, and when Kujou Sara fires a fully-charged Aimed Shot, Crowfeather Cover will be consumed, and will leave a Crowfeather at the target location.
-      <br />Crowfeathers will trigger Tengu Juurai: Ambush after a short time, dealing <b class="text-genshin-electro">Electro DMG</b> and granting the active character within its AoE an ATK Bonus based on Kujou Sara's Base ATK.
+      <br />Gains <b class="text-violet-400">Crowfeather Cover</b> for <span class="text-desc">18</span>s, and when Kujou Sara fires a fully-charged Aimed Shot, <b class="text-violet-400">Crowfeather Cover</b> will be consumed, and will leave a <b class="text-genshin-electro">Crowfeather</b> at the target location.
+      <br /><b class="text-genshin-electro">Crowfeathers</b> will trigger <b>Tengu Juurai: Ambush</b> after a short time, dealing <b class="text-genshin-electro">Electro DMG</b> and granting the active character within its AoE an ATK Bonus based on Kujou Sara's Base ATK.
       <br />
-      <br />The ATK Bonuses from different Tengu Juurai will not stack, and their effects and duration will be determined by the last Tengu Juurai to take effect.`,
+      <br />The ATK Bonuses from different <b>Tengu Juurai</b> will not stack, and their effects and duration will be determined by the last <b>Tengu Juurai</b> to take effect.`,
+      image: 'Skill_S_Sara_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Subjugation: Koukou Sendou`,
-      content: `Casts down Tengu Juurai: Titanbreaker, dealing <b class="text-genshin-electro">AoE Electro DMG</b>. Afterwards, Tengu Juurai: Titanbreaker spreads out into 4 consecutive bouts of Tengu Juurai: Stormcluster, dealing <b class="text-genshin-electro">AoE Electro DMG</b>.
-      <br />Tengu Juurai: Titanbreaker and Tengu Juurai: Stormcluster can provide the active character within their AoE with the same ATK Bonus as given by the Elemental Skill, Tengu Stormcall.
+      content: `Casts down <b>Tengu Juurai: Titanbreaker</b>, dealing <b class="text-genshin-electro">AoE Electro DMG</b>. Afterwards, <b>Tengu Juurai: Titanbreaker</b> spreads out into 4 consecutive bouts of <b>Tengu Juurai: Stormcluster</b>, dealing <b class="text-genshin-electro">AoE Electro DMG</b>.
+      <br /><b>Tengu Juurai: Titanbreaker</b> and <b>Tengu Juurai: Stormcluster</b> can provide the active character within their AoE with the same ATK Bonus as given by the Elemental Skill, <b>Tengu Stormcall</b>.
       <br />
-      <br />The ATK Bonus provided by various kinds of Tengu Juurai will not stack, and their effects and duration will be determined by the last Tengu Juurai to take effect.
+      <br />The ATK Bonus provided by various kinds of <b>Tengu Juurai</b> will not stack, and their effects and duration will be determined by the last <b>Tengu Juurai</b> to take effect.
       `,
+      image: 'Skill_E_Sara_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Immovable Will`,
-      content: `While in the Crowfeather Cover state provided by Tengu Stormcall, Aimed Shot charge times are decreased by <span class="text-desc">60%</span>.`,
+      content: `While in the <b class="text-violet-400">Crowfeather Cover</b> state provided by <b>Tengu Stormcall</b>, Aimed Shot charge times are decreased by <span class="text-desc">60%</span>.`,
+      image: 'UI_Talent_S_Sara_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Decorum`,
-      content: `When Tengu Juurai: Ambush hits opponents, Kujou Sara will restore <span class="text-desc">1.2</span> Energy to all party members for every <span class="text-desc">100%</span> Energy Recharge she has. This effect can be triggered once every <span class="text-desc">3</span>s.`,
+      content: `When <b>Tengu Juurai: Ambush</b> hits opponents, Kujou Sara will restore <span class="text-desc">1.2</span> Energy to all party members for every <span class="text-desc">100%</span> Energy Recharge she has. This effect can be triggered once every <span class="text-desc">3</span>s.`,
       value: [{ name: 'Energy Restoration', value: { stat: Stats.ER, scaling: (er) => 1.2 * _.floor(er) } }],
+      image: 'UI_Talent_S_Sara_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Land Survey`,
       content: `When dispatched on an expedition in Inazuma, time consumed is reduced by <span class="text-desc">25%</span>.`,
+      image: 'UI_Talent_S_Sara_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Crow's Eye`,
-      content: `When Tengu Juurai grant characters ATK Bonuses or hits opponents, the CD of Tengu Stormcall is decreased by <span class="text-desc">1</span>s.
+      content: `When <b>Tengu Juurai</b> grant characters ATK Bonuses or hits opponents, the CD of <b>Tengu Stormcall</b> is decreased by <span class="text-desc">1</span>s.
       <br />This effect can be triggered once every <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_Sara_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Dark Wings`,
-      content: `Unleashing Tengu Stormcall will leave a weaker Crowfeather at Kujou Sara's original position that will deal <span class="text-desc">30%</span> of its original DMG.`,
+      content: `Unleashing <b>Tengu Stormcall</b> will leave a weaker <b class="text-genshin-electro">Crowfeather</b> at Kujou Sara's original position that will deal <span class="text-desc">30%</span> of its original DMG.`,
+      image: 'UI_Talent_S_Sara_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `The War Within`,
-      content: `Increases the Level of Subjugation: Koukou Sendou by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Subjugation: Koukou Sendou</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Sara_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Conclusive Proof`,
-      content: `The number of Tengu Juurai: Stormcluster released by Subjugation: Koukou Sendou is increased to <span class="text-desc">6</span>.`,
+      content: `The number of <b>Tengu Juurai: Stormcluster</b> released by <b>Subjugation: Koukou Sendou</b> is increased to <span class="text-desc">6</span>.`,
+      image: 'UI_Talent_S_Sara_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Spellsinger`,
-      content: `Increases the Level of Tengu Stormcall by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Tengu Stormcall</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Sara_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Sin of Pride`,
-      content: `The <b class="text-genshin-electro">Electro DMG</b> of characters who have had their ATK increased by Tengu Juurai has its Crit DMG increased by <span class="text-desc">60%</span>.`,
+      content: `The <b class="text-genshin-electro">Electro DMG</b> of characters who have had their ATK increased by <b>Tengu Juurai</b> has its Crit DMG increased by <span class="text-desc">60%</span>.`,
+      image: 'UI_Talent_S_Sara_04',
     },
   }
 
@@ -105,21 +117,21 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'toggle',
       id: 'sara_atk',
-      text: `Sara ATK Buff`,
+      text: `Tengu Juurai ATK Buff`,
       ...talents.skill,
       show: true,
-      default: true,
+      default: false,
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'sara_atk')]
+  const teammateContent: IContent[] = []
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'sara_atk')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
@@ -204,16 +216,28 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
         })
 
       if (form.sara_atk) {
-        base[Stats.ATK] += calcScaling(0.43, skill, 'elemental', '1') * base.BASE_ATK
-        if (c >= 6) base.ELECTRO_CD.push({value: 0.6, name: '', source: ``})
+        base[Stats.ATK].push({
+          value: calcScaling(0.43, skill, 'elemental', '1') * base.BASE_ATK,
+          name: 'Tengu Juurai',
+          source: 'Self',
+          base: base.BASE_ATK,
+          multiplier: calcScaling(0.43, skill, 'elemental', '1'),
+        })
+        if (c >= 6) base.ELECTRO_CD.push({ value: 0.6, name: 'Constellation 6', source: `Self` })
       }
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.sara_atk) {
-        base[Stats.ATK] += calcScaling(0.43, skill, 'elemental', '1') * own.BASE_ATK
-        if (c >= 6) base.ELECTRO_CD.push({value: 0.6, name: '', source: ``})
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.sara_atk) {
+        base[Stats.ATK].push({
+          value: calcScaling(0.43, skill, 'elemental', '1') * own.BASE_ATK,
+          name: 'Tengu Juurai',
+          source: 'Kujou Sara',
+          base: own.BASE_ATK,
+          multiplier: calcScaling(0.43, skill, 'elemental', '1'),
+        })
+        if (c >= 6) base.ELECTRO_CD.push({ value: 0.6, name: 'Constellation 6', source: `Kujou Sara` })
       }
 
       return base

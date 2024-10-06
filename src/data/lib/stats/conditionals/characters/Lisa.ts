@@ -30,6 +30,7 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Gathering the might of Electro, Lisa plunges towards the ground from mid-air, damaging all opponents in her path. Deals <b class="text-genshin-electro">AoE Electro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -38,69 +39,80 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b>Press</b>
       <br />Releases a homing Lightning Orb.
-      <br />On hit, it deals <b class="text-genshin-electro">Electro DMG</b> and applies a stack of the Conductive status (max <span class="text-desc">3</span> stacks) to opponents in a small AoE.
+      <br />On hit, it deals <b class="text-genshin-electro">Electro DMG</b> and applies a stack of the <b class="text-genshin-electro">Conductive</b> status (max <span class="text-desc">3</span> stacks) to opponents in a small AoE.
       <br />
       <br /><b>Hold</b>
       <br />After an extended casting time, calls down lightning from the heavens, dealing massive <b class="text-genshin-electro">Electro DMG</b> to all nearby opponents.
-      <br />Deals great amounts of extra damage to opponents based on the number of Conductive stacks applied to them, and clears their Conductive status.
+      <br />Deals great amounts of extra damage to opponents based on the number of <b class="text-genshin-electro">Conductive</b> stacks applied to them, and clears their <b class="text-genshin-electro">Conductive</b> status.
       `,
+      image: 'Skill_S_Lisa_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Lightning Rose`,
       content: `Summons a Lightning Rose that unleashes powerful lightning bolts, launching surrounding opponents and dealing <b class="text-genshin-electro">Electro DMG</b>.
       <br />The Lightning Rose will continuously emit lightning to knock back opponents and deal <b class="text-genshin-electro">Electro DMG</b> throughout the ability's duration.`,
+      image: 'Skill_E_Lisa_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Induced Aftershock`,
-      content: `Hits by Charged Attacks apply Violet Arc's Conductive status to opponents.`,
+      content: `Hits by Charged Attacks apply <b>Violet Arc</b>'s <b class="text-genshin-electro">Conductive</b> status to opponents.`,
+      image: 'UI_Talent_S_Lisa_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Static Electricity Field`,
-      content: `Opponents hit by Lightning Rose have their DEF decreased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
+      content: `Opponents hit by <b>Lightning Rose</b> have their DEF decreased by <span class="text-desc">15%</span> for <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Lisa_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `General Pharmaceutics`,
       content: `When Lisa crafts a potion, she has a <span class="text-desc">20%</span> chance to refund a portion of the crafting materials used.`,
+      image: 'UI_Talent_Combine_Potion',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Infinite Circuit`,
-      content: `Lisa regenerates <span class="text-desc">2</span> Energy for every opponent hit while holding Violet Arc.
+      content: `Lisa regenerates <span class="text-desc">2</span> Energy for every opponent hit while holding <b>Violet Arc</b>.
       <br />A maximum of <span class="text-desc">10</span> Energy can be regenerated in this manner at any one time.`,
+      image: 'UI_Talent_S_Lisa_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Electromagnetic Field`,
-      content: `Holding Violet Arc has the following effects:
+      content: `Holding <b>Violet Arc</b> has the following effects:
       <br />- Increases DEF by <span class="text-desc">25%</span>.
       <br />- Increases Lisa's resistance to interruption.`,
+      image: 'UI_Talent_S_Lisa_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Resonant Thunder`,
-      content: `Increases the Level of Lightning Rose by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Lightning Rose</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Lisa_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Plasma Eruption`,
-      content: `Lightning Rose now unleashes 1-3 lightning bolts when it attacks.`,
+      content: `<b>Lightning Rose</b> now unleashes <span class="text-desc">1-3</span> lightning bolts when it attacks.`,
+      image: 'UI_Talent_S_Lisa_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Electrocute`,
-      content: `Increases the Level of Violet Arc by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Violet Arc</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Lisa_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Pulsating Witch`,
-      content: `When Lisa takes the field, she applies 3<span class="text-desc">3</span> stacks of Violet Arc's Conductive status onto nearby opponents.
+      content: `When Lisa takes the field, she applies <span class="text-desc">3</span> stacks of <b>Violet Arc</b>'s <b class="text-genshin-electro">Conductive</b> status onto nearby opponents.
       <br />This effect can only occur once every <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Lisa_04',
     },
   }
 
@@ -212,13 +224,13 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.lisa_a4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
-      if (form.lisa_c2) base[Stats.DEF].push({value: 0.25, name: '', source: ``})
+      if (form.lisa_a4) base.DEF_REDUCTION.push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
+      if (form.lisa_c2) base[Stats.DEF].push({ value: 0.25, name: 'Constellation 2', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.lisa_a4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
+      if (form.lisa_a4) base.DEF_REDUCTION.push({ value: 0.15, name: 'Ascension 4 Passive', source: `Lisa` })
 
       return base
     },

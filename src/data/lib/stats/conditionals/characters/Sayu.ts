@@ -30,111 +30,107 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Yoohoo Art: Fuuin Dash`,
       content: `The special technique of the Yoohoo Ninja Arts!
-      <br />Sayu curls up into a rolling Fuufuu Windwheel and smashes into opponents at high speed, dealing <b class="text-genshin-anemo">Anemo DMG</b>. When the duration ends, she unleashes a Fuufuu Whirlwind Kick, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.
+      <br />Sayu curls up into a rolling <b>Fuufuu Windwheel</b> and smashes into opponents at high speed, dealing <b class="text-genshin-anemo">Anemo DMG</b>. When the duration ends, she unleashes a <b>Fuufuu Whirlwind Kick</b>, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.
       <br />
       <br /><b>Press</b>
-      <br />Enters the Fuufuu Windwheel state, rolling forward a short distance before using the Fuufuu Whirlwind Kick.
+      <br />Enters the <b>Fuufuu Windwheel</b> state, rolling forward a short distance before using the <b>Fuufuu Whirlwind Kick</b>.
       <br />
       <br /><b>Hold</b>
-      <br />Rolls about continuously in the Fuufuu Windwheel state, increasing Sayu's resistance to interruption while within that state.
-      <br />During this time, Sayu can control the direction of her roll, and can use the skill again to end her Windwheel state early and unleash a stronger version of the Fuufuu Whirlwind Kick.
+      <br />Rolls about continuously in the <b>Fuufuu Windwheel</b> state, increasing Sayu's resistance to interruption while within that state.
+      <br />During this time, Sayu can control the direction of her roll, and can use the skill again to end her <b>Windwheel</b> state early and unleash a stronger version of the <b>Fuufuu Whirlwind Kick</b>.
       <br />The Hold version of this skill can trigger Elemental Absorption.
       <br />
       <br />This skill has a maximum duration of <span class="text-desc">10</span>s and enters CD once its effects end.
-      <br />The longer Sayu remains in her Windwheel state, the longer the CD.
+      <br />The longer Sayu remains in her <b>Windwheel</b> state, the longer the CD.
       <br />
       <br /><b>Elemental Absorption</b>
-      <br />If Sayu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> while in her Windwheel state, she will deal additional elemental DMG of that type.
+      <br />If Sayu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> while in her <b>Windwheel</b> state, she will deal additional elemental DMG of that type.
       <br />Elemental Absorption may only occur once per use of this skill.
       `,
+      image: 'Skill_S_Sayu_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Yoohoo Art: Mujina Flurry`,
       content: `The other super special technique of the Yoohoo Ninja Arts! It summons a pair of helping hands for Sayu.
-      <br />Deals <b class="text-genshin-anemo">Anemo DMG</b> to nearby opponents and heals all nearby party members. The amount of HP restored is based on Sayu's ATK. This skill then summons a Muji-Muji Daruma.
+      <br />Deals <b class="text-genshin-anemo">Anemo DMG</b> to nearby opponents and heals all nearby party members. The amount of HP restored is based on Sayu's ATK. This skill then summons a <b class="text-genshin-anemo">Muji-Muji Daruma</b>.
       <br />
-      <br /><b>Muji-Muji Daruma</b>
-      <br />At specific intervals, the Daruma will take one of several actions based on the situation around it:
+      <br /><b class="text-genshin-anemo">Muji-Muji Daruma</b>
+      <br />At specific intervals, the <b class="text-genshin-anemo">Daruma</b> will take one of several actions based on the situation around it:
       <br />- If the HP of nearby characters is above <span class="text-desc">70%</span>, it will attack a nearby opponent, dealing <b class="text-genshin-anemo">Anemo DMG</b>.
-      <br />- If there are active characters with <span class="text-desc">70%</span> or less HP nearby, it will heal the active character with the lowest percentage HP left. If there are no opponents nearby, it will heal active characters nearby even if they have 70% HP or more.`,
+      <br />- If there are active characters with <span class="text-desc">70%</span> or less HP nearby, it will heal the active character with the lowest percentage HP left. If there are no opponents nearby, it will heal active characters nearby even if they have <span class="text-desc">70%</span> HP or more.`,
+      image: 'Skill_E_Sayu_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Someone More Capable`,
-      content: `When Sayu triggers a Swirl reaction while active, she heals all your characters and nearby allies for 300 HP. She will also heal an additional 1.2 HP for every point of Elemental Mastery she has.
-      <br />This effect can be triggered once every 2s.`,
-      value: [
-        {
-          name: 'Additional Healing',
-          value: { stat: Stats.EM, scaling: (em) => (300 + em * 1.2).toFixed(1).toLocaleString() },
-        },
-      ],
+      content: `When Sayu triggers a Swirl reaction while active, she heals all your characters and nearby allies for <span class="text-desc">300</span> HP. She will also heal an additional <span class="text-desc">1.2</span> HP for every point of Elemental Mastery she has.
+      <br />This effect can be triggered once every <span class="text-desc">2</span>s.`,
+      image: 'UI_Talent_S_Sayu_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `No Work Today!`,
-      content: `The Muji-Muji Daruma created by Yoohoo Art: Mujina Flurry gains the following effects:
+      content: `The <b class="text-genshin-anemo">Muji-Muji Daruma</b> created by <b>Yoohoo Art: Mujina Flurry</b> gains the following effects:
       <br />- When healing a character, it will also heal characters near that healed character for <span class="text-desc">20%</span> the amount of HP.
       <br />- Increases the AoE of its attack against opponents.`,
+      image: 'UI_Talent_S_Sayu_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Yoohoo Art: Silencer's Secret`,
-      content: `When Yaoyao is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.
+      content: `When Sayu is in the party, your characters will not startle Crystalflies and certain other animals when getting near them.
       <br />Check the "Other" sub-category of the "Living Beings / Wildlife" section in the Archive for creatures this skill works on.`,
+      image: 'UI_Talent_S_Sayu_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Multi-Task no Jutsu`,
-      content: `The Muji-Muji Daruma created by Yoohoo Art: Mujina Flurry will ignore HP limits and can simultaneously attack nearby opponents and heal characters.`,
+      content: `The <b class="text-genshin-anemo">Muji-Muji Daruma</b> created by <b>Yoohoo Art: Mujina Flurry</b> will ignore HP limits and can simultaneously attack nearby opponents and heal characters.`,
+      image: 'UI_Talent_S_Sayu_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Egress Prep`,
       content: `Yoohoo Art: Fuuin Dash gains the following effects:
-      <br />- DMG of Fuufuu Whirlwind Kick in <b>Press</b> Mode increased by <span class="text-desc">3.3%</span>.
-      <br />- Every <span class="text-desc">0.5</span>s in the Fuufuu Windwheel state will increase the DMG of this Fuufuu Whirlwind Kick by <span class="text-desc">3.3%</span>. The maximum DMG increase possible through this method is <span class="text-desc">66%</span>.`,
+      <br />- DMG of <b>Fuufuu Whirlwind Kick</b> in Press Mode increased by <span class="text-desc">3.3%</span>.
+      <br />- Every <span class="text-desc">0.5</span>s in the <b>Fuufuu Windwheel</b> state will increase the DMG of this <b>Fuufuu Whirlwind Kick</b> by <span class="text-desc">3.3%</span>. The maximum DMG increase possible through this method is <span class="text-desc">66%</span>.`,
+      image: 'UI_Talent_S_Sayu_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Eh, the Bunshin Can Handle It`,
-      content: `Increases the Level of Yoohoo Art: Mujina Flurry by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Yoohoo Art: Mujina Flurry</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Sayu_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Skiving: New and Improved`,
       content: `Sayu recovers <span class="text-desc">1.2</span> Energy when she triggers a Swirl reaction.
       <br />This effect occurs once every <span class="text-desc">2</span>s.`,
+      image: 'UI_Talent_S_Sayu_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Speed Comes First`,
-      content: `Increases the Level of Yoohoo Art: Fuuin Dash by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Yoohoo Art: Fuuin Dash</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Sayu_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Sleep O'Clock`,
-      content: `The Muji-Muji Daruma created by Sayu's Yoohoo Art: Mujina Flurry will now also benefit from her Elemental Mastery. Each point of Sayu's Elemental Mastery will produce the following effects:
-      <br />- Increases the damage dealt by the Muji-Muji Daruma's attacks by <span class="text-desc">0.2</span> ATK. A maximum DMG increase of <span class="text-desc">400%</span> ATK can be gained via this method.
-      <br />- Increases the HP restored by the Muji-Muji Daruma by <span class="text-desc">3</span>. A maximum of <span class="text-desc">6,000</span> additional HP can be restored in this manner.`,
-      value: [
-        {
-          name: 'Additional ATK Scaling',
-          value: { stat: Stats.EM, scaling: (em) => toPercentage(_.min([0.002 * em, 4])) },
-        },
-        {
-          name: 'Additional Healing',
-          value: { stat: Stats.EM, scaling: (em) => _.min([3 * em, 6000]) },
-        },
-      ],
+      content: `The <b class="text-genshin-anemo">Muji-Muji Daruma</b> created by Sayu's <b>Yoohoo Art: Mujina Flurry</b> will now also benefit from her Elemental Mastery. Each point of Sayu's Elemental Mastery will produce the following effects:
+      <br />- Increases the damage dealt by the <b class="text-genshin-anemo">Muji-Muji Daruma</b>'s attacks by <span class="text-desc">0.2%</span> ATK. A maximum DMG increase of <span class="text-desc">400%</span> ATK can be gained via this method.
+      <br />- Increases the HP restored by the <b class="text-genshin-anemo">Muji-Muji Daruma</b> by <span class="text-desc">3</span>. A maximum of <span class="text-desc">6,000</span> additional HP can be restored in this manner.`,
+      image: 'UI_Talent_S_Sayu_04',
     },
   }
 
@@ -150,7 +146,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     {
       type: 'number',
       id: 'sayu_c2',
-      text: `Stack per 0.5s in Skill`,
+      text: `C2 Stacks [1 per 0.5s]`,
       ...talents.c2,
       show: c >= 2,
       default: 20,
@@ -266,7 +262,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.razor_c4) base.DEF_REDUCTION.push({value: 0.15, name: '', source: ``})
+      if (form.razor_c4) base.DEF_REDUCTION.push({ value: 0.15, name: '', source: `` })
 
       return base
     },
@@ -276,7 +272,8 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           name: `Muji-Muji Daruma DMG`,
           value: [
             {
-              scaling: calcScaling(0.52, burst, 'elemental', '1') + (c >= 6 ? _.min([base[Stats.EM] * 0.002, 4]) : 0),
+              scaling:
+                calcScaling(0.52, burst, 'elemental', '1') + (c >= 6 ? _.min([base.getValue(Stats.EM) * 0.002, 4]) : 0),
               multiplier: Stats.ATK,
             },
           ],
@@ -286,7 +283,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         {
           name: `Muji-Muji Daruma Healing`,
           value: [{ scaling: calcScaling(0.799, burst, 'elemental', '1'), multiplier: Stats.ATK }],
-          flat: calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base[Stats.EM] * 3, 6000]) : 0),
+          flat: calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base.getValue(Stats.EM) * 3, 6000]) : 0),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         }
@@ -305,7 +302,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         base.BURST_SCALING.push({
           name: `A4 Shared Healing`,
           value: [{ scaling: calcScaling(0.799, burst, 'elemental', '1') * 0.2, multiplier: Stats.ATK }],
-          flat: (calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base[Stats.EM] * 3, 6000]) : 0)) * 0.2,
+          flat: (calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base.getValue(Stats.EM) * 3, 6000]) : 0)) * 0.2,
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })

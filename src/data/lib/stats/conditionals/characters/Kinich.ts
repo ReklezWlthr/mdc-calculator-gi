@@ -76,7 +76,7 @@ const Kinich = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     bonus: {
       trace: `Night Realm's Gift`,
-      title: `Night Realm's Gift: Repaid in Full`,
+      title: `Repaid in Full`,
       content: `When Kinich is in the air following <b>Canopy Hunter: Riding High</b>'s mid-air swing, he can consume <span class="text-desc">10</span> <b class="text-genshin-pyro">Phlogiston</b> points to perform another mid-air swing.
       <br />While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, he can use <b>Nightsoul Transmission: Kinich</b>. When the current active character is sprinting, in movement states that result from specific Talents, or in the air, when you switch to Kinich: Kinich will perform one of the following actions depending on the conditions met:
       <br />- When facing a Coilgrass Sigil that can be interacted with: He will fire a grappling hook towards it to move;

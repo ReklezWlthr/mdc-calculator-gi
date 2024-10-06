@@ -30,83 +30,95 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_03',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Starfrost Swirl`,
-      content: `Mika uses his crossbow to attack, granting all nearby characters in your party Soulwind. When characters in the Soulwind state are on the field, their ATK SPD will be increased.
+      content: `Mika uses his crossbow to attack, granting all nearby characters in your party <b class="text-genshin-cryo">Soulwind</b>. When characters in the <b class="text-genshin-cryo">Soulwind</b> state are on the field, their ATK SPD will be increased.
       <br />Will take effect in different ways if Pressed or Held.
       <br />
       <br /><b>Press</b>
-      <br />Fires a Flowfrost Arrow that can pierce through opponents, dealing <b class="text-genshin-cryo">Cryo DMG</b> to enemies it comes into contact with.
+      <br />Fires a <b>Flowfrost Arrow</b> that can pierce through opponents, dealing <b class="text-genshin-cryo">Cryo DMG</b> to enemies it comes into contact with.
       <br />
       <br /><b>Hold</b>
-      <br />Goes into Aiming Mode, locking on to an opponent and firing a Rimestar Flare at them, dealing <b class="text-genshin-cryo">Cryo DMG</b>. When the Rimestar Flare hits, it will rise before exploding, launching Rimestar Shards into a maximum of <span class="text-desc">3</span> other opponents, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
+      <br />Goes into Aiming Mode, locking on to an opponent and firing a <b>Rimestar Flare</b> at them, dealing <b class="text-genshin-cryo">Cryo DMG</b>. When the <b>Rimestar Flare</b> hits, it will rise before exploding, launching <b>Rimestar Shards</b> into a maximum of <span class="text-desc">3</span> other opponents, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
       `,
+      image: 'Skill_S_Mika_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Skyfeather Song`,
-      content: `Derives the ability to spur his teammates on from the recited prayers of the knightly order, regenerating HP for all nearby party members. This healing is based on Mika's Max HP and will grant them the Eagleplume state.
+      content: `Derives the ability to spur his teammates on from the recited prayers of the knightly order, regenerating HP for all nearby party members. This healing is based on Mika's Max HP and will grant them the <b class="text-blue">Eagleplume</b> state.
       <br />
-      <br /><b>Eagleplume</b>
-      <br />When the Normal Attacks of active characters affected by Eagleplume hit an opponent, Mika will help them regenerate HP based on his Max HP.
+      <br /><b class="text-blue">Eagleplume</b>
+      <br />When the Normal Attacks of active characters affected by <b class="text-blue">Eagleplume</b> hit an opponent, Mika will help them regenerate HP based on his Max HP.
       <br />Characters affected by this state can only regenerate HP in this way once per short interval of time.
       `,
+      image: 'Skill_E_Mika_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Suppressive Barrage`,
-      content: `Per the following circumstances, the Soulwind state caused by Starfrost Swirl will grant characters the Detector effect, increasing their <b>Physical DMG</b> by <span class="text-desc">10%</span> when they are on the field.
-      <br />- If the Flowfrost Arrow hits more than one opponent, each additional opponent hit will generate <span class="text-desc">1</span> Detector stack.
-      <br />- When a Rimestar Shard hits an opponent, it will generate <span class="text-desc">1</span> Detector stack. Each Rimestar Shard can trigger the effect <span class="text-desc">1</span> time.
-      <br />The Soulwind state can have a maximum of <span class="text-desc">3</span> Detector stacks, and if Starfrost Swirl is cast again during this duration, the pre-existing Soulwind state and all its Detector stacks will be cleared.`,
+      content: `Per the following circumstances, the <b class="text-genshin-cryo">Soulwind</b> state caused by <b>Starfrost Swirl</b> will grant characters the <b class="text-genshin-cryo">Detector</b> effect, increasing their <b>Physical DMG</b> by <span class="text-desc">10%</span> when they are on the field.
+      <br />- If the <b>Flowfrost Arrow</b> hits more than one opponent, each additional opponent hit will generate <span class="text-desc">1</span> <b class="text-genshin-cryo">Detector</b> stack.
+      <br />- When a <b>Rimestar Shard</b> hits an opponent, it will generate <span class="text-desc">1</span> <b class="text-genshin-cryo">Detector</b> stack. Each <b>Rimestar Shard</b> can trigger the effect <span class="text-desc">1</span> time.
+      <br />The <b class="text-genshin-cryo">Soulwind</b> state can have a maximum of <span class="text-desc">3</span> <b class="text-genshin-cryo">Detector</b> stacks, and if <b>Starfrost Swirl</b> is cast again during this duration, the pre-existing <b class="text-genshin-cryo">Soulwind</b> state and all its <b class="text-genshin-cryo">Detector</b> stacks will be cleared.`,
+      image: 'UI_Talent_S_Mika_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Topographical Mapping`,
-      content: `When an active character affected by both Skyfeather Song's Eagleplume and Starfrost Swirl's Soulwind at once scores a CRIT Hit with their attacks, Soulwind will grant them <span class="text-desc">1</span> stack of Detector from Suppressive Barrage. During a single instance of Soulwind, <span class="text-desc">1</span> Detector stack can be gained in this manner.
-      <br />Additionally, the maximum number of stacks that can be gained through Soulwind alone is increased by <span class="text-desc">1</span>.
-      <br />Requires Suppressive Barrage to be unlocked first.`,
+      content: `When an active character affected by both <b>Skyfeather Song</b>'s <b class="text-blue">Eagleplume</b> and <b>Starfrost Swirl</b>'s <b class="text-genshin-cryo">Soulwind</b> at once scores a CRIT Hit with their attacks, <b class="text-genshin-cryo">Soulwind</b> will grant them <span class="text-desc">1</span> stack of <b class="text-genshin-cryo">Detector</b> from <b>Suppressive Barrage</b>. During a single instance of <b class="text-genshin-cryo">Soulwind</b>, <span class="text-desc">1</span> <b class="text-genshin-cryo">Detector</b> stack can be gained in this manner.
+      <br />Additionally, the maximum number of stacks that can be gained through <b class="text-genshin-cryo">Soulwind</b> alone is increased by <span class="text-desc">1</span>.
+      <br />Requires <b>Suppressive Barrage</b> to be unlocked first.`,
+      image: 'UI_Talent_S_Mika_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Demarcation`,
       content: `Displays the location of nearby resources unique to Mondstadt on the mini-map.`,
+      image: 'UI_Talent_Collect_Local_Mengde',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Factor Confluence`,
-      content: `The Soulwind state of Starfrost Swirl can decrease the healing interval between instances caused by Skyfeather Song's Eagleplume state. This decrease percentage is equal to the ATK SPD increase provided by Soulwind.`,
+      content: `The <b class="text-genshin-cryo">Soulwind</b> state of <b>Starfrost Swirl</b> can decrease the healing interval between instances caused by <b>Skyfeather Song</b>'s <b class="text-blue">Eagleplume</b> state. This decrease percentage is equal to the ATK SPD increase provided by <b class="text-genshin-cryo">Soulwind</b>.`,
+      image: 'UI_Talent_S_Mika_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Companion's Ingress`,
-      content: `When Starfrost Swirl's Flowfrost Arrow first hits an opponent, or its Rimestar Flare hits an opponent, <span class="text-desc">1</span> Detector stack from Passive Talent "Suppressive Barrage" will be generated.
-      <br />You must have unlocked the Passive Talent "Suppressive Barrage" first.`,
+      content: `When <b>Starfrost Swirl</b>'s <b>Flowfrost Arrow</b> first hits an opponent, or its <b>Rimestar Flare</b> hits an opponent, <span class="text-desc">1</span> <b class="text-genshin-cryo">Detector</b> stack from Passive Talent <b>Suppressive Barrage</b> will be generated.
+      <br />You must have unlocked the Passive Talent <b>Suppressive Barrage</b> first.`,
+      image: 'UI_Talent_S_Mika_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Reconnaissance Experience`,
-      content: `Increases the Level of Skyfeather Song by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Skyfeather Song</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Mika_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Sunfrost Encomium`,
-      content: `When Mika's own Skyfeather Song's Eagleplume state heals party members, this will restore <span class="text-desc">3</span> Energy to Mika. This form of Energy restoration can occur <span class="text-desc">5</span> times during the Eagleplume state created by <span class="text-desc">1</span> use of Skyfeather Song.`,
+      content: `When Mika's own <b>Skyfeather Song</b>'s <b class="text-blue">Eagleplume</b> state heals party members, this will restore <span class="text-desc">3</span> Energy to Mika. This form of Energy restoration can occur <span class="text-desc">5</span> times during the <b class="text-blue">Eagleplume</b> state created by <span class="text-desc">1</span> use of <b>Skyfeather Song</b>.`,
+      image: 'UI_Talent_S_Mika_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Signal Arrow`,
-      content: `Increases the Level of Starfrost Swirl by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Starfrost Swirl</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Mika_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Companion's Counsel`,
-      content: `The maximum number of Detector stacks that Starfrost Swirl's Soulwind can gain is increased by <span class="text-desc">1</span>. You need to have unlocked the Passive Talent "Suppressive Barrage" first.
-      <br />Additionally, active characters affected by Soulwind will deal <span class="text-desc">60%</span> more <b>Physical</b> CRIT DMG.`,
+      content: `The maximum number of <b class="text-genshin-cryo">Detector</b> stacks that <b>Starfrost Swirl</b>'s <b class="text-genshin-cryo">Soulwind</b> can gain is increased by <span class="text-desc">1</span>. You need to have unlocked the Passive Talent <b>Suppressive Barrage</b> first.
+      <br />Additionally, active characters affected by <b class="text-genshin-cryo">Soulwind</b> will deal <span class="text-desc">60%</span> more <b>Physical</b> CRIT DMG.`,
+      image: 'UI_Talent_S_Mika_04',
     },
   }
 
@@ -224,19 +236,19 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       ]
 
       if (form.soulwind) {
-        base.ATK_SPD.push({value: 0.12, name: '', source: ``}) + skill / 100
-        if (c >= 6) base.PHYSICAL_CD.push({value: 0.6, name: '', source: ``})
+        base.ATK_SPD.push({ value: 0.12 + skill / 100, name: 'Soulwind', source: `Self` })
+        if (c >= 6) base.PHYSICAL_CD.push({ value: 0.6, name: 'Soulwind [C6]', source: `Self` })
       }
-      if (form.detector) base[Stats.PHYSICAL_DMG].push({value: 0.1, name: '', source: ``}) * form.detector
+      if (form.detector) base[Stats.PHYSICAL_DMG].push({ value: 0.1, name: 'Detector', source: `Self` }) * form.detector
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.soulwind) {
-        base.ATK_SPD.push({value: 0.12, name: '', source: ``}) + skill / 100
-        if (c >= 6) base.PHYSICAL_CD.push({value: 0.6, name: '', source: ``})
+        base.ATK_SPD.push({ value: 0.12 + skill / 100, name: 'Soulwind', source: `Mika` })
+        if (c >= 6) base.PHYSICAL_CD.push({ value: 0.6, name: 'Soulwind [C6]', source: `Mika` })
       }
-      if (form.detector) base[Stats.PHYSICAL_DMG].push({value: 0.1, name: '', source: ``}) * form.detector
+      if (form.detector) base[Stats.PHYSICAL_DMG].push({ value: 0.1, name: 'Detector', source: `Mika` }) * form.detector
 
       return base
     },

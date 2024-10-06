@@ -30,92 +30,98 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Gathering the might of Hydro, Kokomi plunges towards the ground from mid-air, damaging all opponents in her path. Deals <b class="text-genshin-hydro">AoE Hydro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Kurage's Oath`,
-      content: `Summons a "Bake-Kurage" created from water that can heal her allies.
+      content: `Summons a <b class="text-genshin-hydro">Bake-Kurage</b> created from water that can heal her allies.
       <br />Using this skill will apply the <b class="text-genshin-hydro">Wet</b> status to Sangonomiya Kokomi.
       <br />
-      <br /><b>Bake-Kurage</b>
+      <br /><b class="text-genshin-hydro">Bake-Kurage</b>
       <br />Deals <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents and heal nearby active characters at fixed intervals. This healing is based on Kokomi's Max HP.
       `,
+      image: 'Skill_S_Kokomi_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Nereid's Ascension`,
-      content: `Summons the might of Watatsumi, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents, before robing Kokomi in a Ceremonial Garment made from the flowing waters of Sangonomiya.
+      content: `Summons the might of Watatsumi, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents, before robing Kokomi in a <b class="text-genshin-hydro">Ceremonial Garment</b> made from the flowing waters of Sangonomiya.
       <br />
-      <br /><b>Ceremonial Garment</b>
-      <br />- Sangonomiya Kokomi's Normal Attack, Charged Attack and Bake-Kurage DMG are increased based on her Max HP.
+      <br /><b class="text-genshin-hydro">Ceremonial Garment</b>
+      <br />- Sangonomiya Kokomi's Normal Attack, Charged Attack and <b class="text-genshin-hydro">Bake-Kurage</b> DMG are increased based on her Max HP.
       <br />- When her Normal and Charged Attacks hit opponents, Kokomi will restore HP for all nearby party members, and the amount restored is based on her Max HP.
       <br />- Increases Sangonomiya Kokomi's resistance to interruption and allows her to walk on the water's surface.
       <br />
       <br />These effects will be cleared once Sangonomiya Kokomi leaves the field.`,
+      image: 'Skill_E_Kokomi_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Tamakushi Casket`,
-      content: `If Sangonomiya Kokomi's own Bake-Kurage are on the field when she uses Nereid's Ascension, the Bake-Kurage's duration will be refreshed.`,
+      content: `If Sangonomiya Kokomi's own <b class="text-genshin-hydro">Bake-Kurage</b> are on the field when she uses <b>Nereid's Ascension</b>, the <b class="text-genshin-hydro">Bake-Kurage</b>'s duration will be refreshed.`,
+      image: 'UI_Talent_S_Kokomi_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Song of Pearls`,
-      content: `While donning the Ceremonial Garment created by Nereid's Ascension, the Normal and Charged Attack DMG Bonus Sangonomiya Kokomi gains based on her Max HP will receive a further increase based on <span class="text-desc">15%</span> of her Healing Bonus.`,
-      value: [
-        {
-          name: 'Bonus HP Scaling',
-          value: { stat: Stats.HEAL, scaling: (heal) => toPercentage(heal * 0.15) },
-        },
-      ],
+      content: `While donning the <b class="text-genshin-hydro">Ceremonial Garment</b> created by <b>Nereid's Ascension</b>, the Normal and Charged Attack DMG Bonus Sangonomiya Kokomi gains based on her Max HP will receive a further increase based on <span class="text-desc">15%</span> of her Healing Bonus.`,
+      image: 'UI_Talent_S_Kokomi_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Princess of Watatsumi`,
       content: `Decreases swimming Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_Explosion_Swim',
     },
     bonus: {
       trace: `Bonus Ability`,
       title: `Flawless Strategy`,
       content: `Sangonomiya Kokomi has a <span class="text-desc">25%</span> Healing Bonus, but a <span class="text-desc">100%</span> decrease in CRIT Rate.`,
-      image: `UI_Talent_S_Kokomi_07.png`,
+      image: `UI_Talent_S_Kokomi_07`,
     },
     c1: {
       trace: `Constellation 1`,
       title: `At Water's Edge`,
-      content: `While donning the Ceremonial Garment created by Nereid's Ascension, the final Normal Attack in Sangonomiya Kokomi's combo will unleash a swimming fish to deal <span class="text-desc">30%</span> of her Max HP as <b class="text-genshin-hydro">Hydro DMG</b>.
+      content: `While donning the <b class="text-genshin-hydro">Ceremonial Garment</b> created by <b>Nereid's Ascension</b>, the final Normal Attack in Sangonomiya Kokomi's combo will unleash a swimming fish to deal <span class="text-desc">30%</span> of her Max HP as <b class="text-genshin-hydro">Hydro DMG</b>.
       <br />This DMG is not considered Normal Attack DMG.`,
+      image: 'UI_Talent_S_Kokomi_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `The Clouds Like Waves Rippling`,
-      content: `Sangonomiya Kokomi gains the following Healing Bonuses with regard to characters with 50% or less HP via the following methods:
+      content: `Sangonomiya Kokomi gains the following Healing Bonuses with regard to characters with <span class="text-desc">50%</span> or less HP via the following methods:
       <br />- Kurage's Oath Bake-Kurage: <span class="text-desc">4.5%</span> of Kokomi's Max HP.
       <br />- Nereid's Ascension Normal and Charged Attacks: <span class="text-desc">0.6%</span> of Kokomi's Max HP.`,
+      image: 'UI_Talent_S_Kokomi_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `The Moon, A Ship O'er the Seas`,
-      content: `Increases the Level of Nereid's Ascension by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Nereid's Ascension</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Kokomi_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `The Moon Overlooks the Waters`,
-      content: `While donning the Ceremonial Garment created by Nereid's Ascension, Sangonomiya Kokomi's Normal Attack SPD is increased by <span class="text-desc">10%</span>, and Normal Attacks that hit opponents will restore <span class="text-desc">0.8</span> Energy for her.
+      content: `While donning the <b class="text-genshin-hydro">Ceremonial Garment</b> created by <b>Nereid's Ascension</b>, Sangonomiya Kokomi's Normal Attack SPD is increased by <span class="text-desc">10%</span>, and Normal Attacks that hit opponents will restore <span class="text-desc">0.8</span> Energy for her.
       <br />This effect can occur once every <span class="text-desc">0.2</span>s.`,
+      image: 'UI_Talent_S_Kokomi_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `All Streams Flow to the Sea`,
-      content: `Increases the Level of Kurage's Oath by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Kurage's Oath</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Kokomi_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Sango Isshin`,
-      content: `While donning the Ceremonial Garment created by Nereid's Ascension, Sangonomiya Kokomi gains a <span class="text-desc">40%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b> for <span class="text-desc">4</span>s when her Normal and Charged Attacks heal, or would heal, any party member with <span class="text-desc">80%</span> or more HP.`,
+      content: `While donning the <b class="text-genshin-hydro">Ceremonial Garment</b> created by <b>Nereid's Ascension</b>, Sangonomiya Kokomi gains a <span class="text-desc">40%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b> for <span class="text-desc">4</span>s when her Normal and Charged Attacks heal, or would heal, any party member with <span class="text-desc">80%</span> or more HP.`,
+      image: 'UI_Talent_S_Kokomi_04',
     },
   }
 
@@ -205,8 +211,8 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.kokomi_c2 && c >= 4) base.ATK_SPD.push({value: 0.1, name: '', source: ``})
-      if (form.kokomi_c6) base[Stats.HYDRO_DMG].push({value: 0.4, name: '', source: ``})
+      if (form.kokomi_burst && c >= 4) base.ATK_SPD.push({ value: 0.1, name: 'Constellation 4', source: `Self` })
+      if (form.kokomi_c6) base[Stats.HYDRO_DMG].push({ value: 0.4, name: 'Constellation 6', source: `Self` })
 
       return base
     },
@@ -217,7 +223,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       const burstScaling = form.kokomi_burst
         ? [
             {
-              scaling: calcScaling(0.0484, burst, 'elemental', '1') + (a >= 4 ? 0.15 * base[Stats.HEAL] : 0),
+              scaling: calcScaling(0.0484, burst, 'elemental', '1') + (a >= 4 ? 0.15 * base.getValue(Stats.HEAL) : 0),
               multiplier: Stats.HP,
             },
           ]
@@ -245,7 +251,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       const burstChargeScaling = form.kokomi_burst
         ? [
             {
-              scaling: calcScaling(0.0678, burst, 'elemental', '1') + (a >= 4 ? 0.15 * base[Stats.HEAL] : 0),
+              scaling: calcScaling(0.0678, burst, 'elemental', '1') + (a >= 4 ? 0.15 * base.getValue(Stats.HEAL) : 0),
               multiplier: Stats.HP,
             },
           ]
@@ -262,7 +268,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.kokomi_burst)
+      if (form.kokomi_burst && c >= 1)
         base.BASIC_SCALING.push({
           name: 'C1 Additional Fish Attack',
           value: [{ scaling: 0.3, multiplier: Stats.HP }],

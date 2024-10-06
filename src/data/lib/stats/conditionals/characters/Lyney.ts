@@ -32,43 +32,47 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Charged Attack</b>
       <br />Performs a more precise Aimed Shot with increased DMG.
       <br />While aiming, flames will run across the arrowhead before being fired. Different effects will occur based on the time spent charging.
-      <br />- Charge Level 1: Fires off a Pyro-infused arrow, dealing <b class="text-genshin-pyro">Pyro DMG</b>.
-      <br />- Charge Level 2: Fires off a Prop Arrow that deals <b class="text-genshin-pyro">Pyro DMG</b>, and upon hit, it will summon a Grin-Malkin Hat.
-      <br />When firing the Prop Arrow, and when Lyney has more than <span class="text-desc">60%</span> HP, he will consume a portion of his HP to obtain <span class="text-desc">1</span> Prop Surplus stack. Max <span class="text-desc">5</span> stacks. The effect will be removed after the character spends <span class="text-desc">30</span>s out of combat.
+      <br />- <b>Charge Level 1</b>: Fires off a Pyro-infused arrow, dealing <b class="text-genshin-pyro">Pyro DMG</b>.
+      <br />- <b>Charge Level 2</b>: Fires off a <b>Prop Arrow</b> that deals <b class="text-genshin-pyro">Pyro DMG</b>, and upon hit, it will summon a <b class="text-red">Grin-Malkin Hat</b>.
+      <br />When firing the <b>Prop Arrow</b>, and when Lyney has more than <span class="text-desc">60%</span> HP, he will consume a portion of his HP to obtain <span class="text-desc">1</span> <b class="text-genshin-pyro">Prop Surplus</b> stack. Max <span class="text-desc">5</span> stacks. The effect will be removed after the character spends <span class="text-desc">30</span>s out of combat.
       <br />The lowest Lyney can drop to through this method is <span class="text-desc">60%</span> of his Max HP.
       <br />
-      <br /><b>Grin-Malkin Hat</b>
-      <br />- Can taunt nearby opponents and attract their attacks. Each opponent can only be taunted by the Hat once every <span class="text-desc">5</span>s.
-      <br />- The Hat will inherit a percentage of Lyney's Max HP.
-      <br />- If destroyed, or if its duration expires, it will fire off a Pyrotechnic Strike at <span class="text-desc">1</span> nearby opponent, dealing <b class="text-genshin-pyro">Pyro DMG</b>.
-      <br />Only <span class="text-desc">1</span> Hat can exist at any given time.
+      <br /><b class="text-red">Grin-Malkin Hat</b>
+      <br />- Can taunt nearby opponents and attract their attacks. Each opponent can only be taunted by the <b class="text-red">Hat</b> once every <span class="text-desc">5</span>s.
+      <br />- The <b class="text-red">Hat</b> will inherit a percentage of Lyney's Max HP.
+      <br />- If destroyed, or if its duration expires, it will fire off a <b>Pyrotechnic Strike</b> at <span class="text-desc">1</span> nearby opponent, dealing <b class="text-genshin-pyro">Pyro DMG</b>.
+      <br />Only <span class="text-desc">1</span> <b class="text-red">Hat</b> can exist at any given time.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-pneuma">Pneuma</b>
-      <br />At certain intervals, the Prop Arrow will cause a Spiritbreath Thorn to descend upon its hit location, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-pyro">Pyro DMG</b>.
+      <br />At certain intervals, the <b>Prop Arrow</b> will cause a <b class="text-genshin-pneuma">Spiritbreath Thorn</b> to descend upon its hit location, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-pyro">Pyro DMG</b>.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Bewildering Lights`,
       content: `Lyney does a flourish with his hat, unleashing a firework surprise!
-      <br />When used, he will clear all current Prop Surplus stacks and deal <b class="text-genshin-pyro">AoE Pyro DMG</b> to opponents in front of him. DMG will be increased according to the stacks cleared, and this will also regenerate Lyney's HP based on his Max HP.
+      <br />When used, he will clear all current <b class="text-genshin-pyro">Prop Surplus</b> stacks and deal <b class="text-genshin-pyro">AoE Pyro DMG</b> to opponents in front of him. DMG will be increased according to the stacks cleared, and this will also regenerate Lyney's HP based on his Max HP.
       <br />
-      <br />When a Grin-Malkin Hat created by Lyney is on the field, the fireworks will cause it to explode, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> equal to that of a Pyrotechnic Strike.
-      <br />The DMG dealt through the Grin-Malkin Hat in this way is considered Charged Attack DMG.`,
+      <br />When a <b class="text-red">Grin-Malkin Hat</b> created by Lyney is on the field, the fireworks will cause it to explode, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> equal to that of a <b>Pyrotechnic Strike</b>.
+      <br />The DMG dealt through the <b class="text-red">Grin-Malkin Hat</b> in this way is considered Charged Attack DMG.`,
+      image: 'Skill_S_Liney_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Wondrous Trick: Miracle Parade`,
-      content: `Unleashing his magic, Lyney turns himself into a Grin-Malkin Cat that can move around quickly. (Not to be mistaken for the Grin-Malkin Hat. They're two different props!)
-      <br />When the Grin-Malkin Cat gets close to opponents, it will send flames falling down on them, dealing at most <span class="text-desc">1</span> instance of <b class="text-genshin-pyro">Pyro DMG</b> to each opponent. When the duration ends, he will dismiss the Grin-Malkin Cat and ignite fireworks that deal <b class="text-genshin-pyro">AoE Pyro DMG</b>, summon <span class="text-desc">1</span> Grin-Malkin Hat, and grant himself <span class="text-desc">1</span> Prop Surplus stack.
+      content: `Unleashing his magic, Lyney turns himself into a <b>Grin-Malkin Cat</b> that can move around quickly. (Not to be mistaken for the <b class="text-red">Grin-Malkin Hat</b>. They're two different props!)
+      <br />When the <b>Grin-Malkin Cat</b> gets close to opponents, it will send flames falling down on them, dealing at most <span class="text-desc">1</span> instance of <b class="text-genshin-pyro">Pyro DMG</b> to each opponent. When the duration ends, he will dismiss the <b>Grin-Malkin Cat</b> and ignite fireworks that deal <b class="text-genshin-pyro">AoE Pyro DMG</b>, summon <span class="text-desc">1</span> <b class="text-red">Grin-Malkin Hat</b>, and grant himself <span class="text-desc">1</span> <b class="text-genshin-pyro>Prop Surplus</b> stack.
       <br />
-      <br />Grin-Malkin Cat can be actively canceled.
+      <br /><b>Grin-Malkin Cat</b> can be actively canceled.
       `,
+      image: 'Skill_E_Liney_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Perilous Performance`,
-      content: `If Lyney consumes HP when firing off a Prop Arrow, the Grin-Malkin hat summoned by the arrow will, upon hitting an opponent, restore <span class="text-desc">3</span> Energy to Lyney and increase DMG dealt by <span class="text-desc">80%</span> of his ATK.`,
+      content: `If Lyney consumes HP when firing off a <b>Prop Arrow</b>, the <b class="text-red">Grin-Malkin Hat</b> summoned by the arrow will, upon hitting an opponent, restore <span class="text-desc">3</span> Energy to Lyney and increase DMG dealt by <span class="text-desc">80%</span> of his ATK.`,
+      image: 'UI_Talent_S_Liney_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
@@ -77,44 +81,52 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- Increases the DMG dealt by <span class="text-desc">60%</span>.
       <br />- Each <b class="text-genshin-pyro">Pyro</b> party member other than Lyney will cause the DMG dealt to increase by an additional <span class="text-desc">20%</span>.
       <br />Lyney can deal up to <span class="text-desc">100%</span> increased DMG to opponents affected by <b class="text-genshin-pyro">Pyro</b> in this way.`,
+      image: 'UI_Talent_S_Liney_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Trivial Observations`,
       content: `Displays the location of nearby resources unique to Fontaine on the mini-map.`,
+      image: 'UI_Talent_S_Liney_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Whimsical Wonders`,
-      content: `Lyney can have <span class="text-desc">2</span> Grin-Malkin Hats present at once.
-      <br />Additionally, Prop Arrows will summon <span class="text-desc">2</span> Grin-Malkin Hats and grant Lyney <span class="text-desc">1</span> extra stack of Prop Surplus. This effect can occur once every <span class="text-desc">15</span>s.`,
+      content: `Lyney can have <span class="text-desc">2</span> <b class="text-red">Grin-Malkin Hats</b> present at once.
+      <br />Additionally, <b>Prop Arrows</b> will summon <span class="text-desc">2</span> <b class="text-red">Grin-Malkin Hats</b> and grant Lyney <span class="text-desc">1</span> extra stack of <b class="text-genshin-pyro">Prop Surplus</b>. This effect can occur once every <span class="text-desc">15</span>s.`,
+      image: 'UI_Talent_S_Liney_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Loquacious Cajoling`,
-      content: `When Lyney is on the field, he will gain a stack of Crisp Focus every <span class="text-desc">2</span>s. This will increase his CRIT DMG by <span class="text-desc">20%</span>. Max <span class="text-desc">3</span> stacks. This effect will be canceled when Lyney leaves the field.`,
+      content: `When Lyney is on the field, he will gain a stack of <b class="text-desc">Crisp Focus</b> every <span class="text-desc">2</span>s. This will increase his CRIT DMG by <span class="text-desc">20%</span>. Max <span class="text-desc">3</span> stacks. This effect will be canceled when Lyney leaves the field.`,
+      image: 'UI_Talent_S_Liney_03',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Prestidigitation`,
-      content: `Increases the Level of Normal Attack: Card Force Translocation by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Normal Attack: Card Force Translocation</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Liney_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Well-Versed, Well-Rehearsed`,
       content: `After an opponent is hit by Lyney's <b class="text-genshin-pyro">Pyro</b> Charged Attack, this opponent's <b class="text-genshin-pyro">Pyro RES</b> will be decreased by <span class="text-desc">20%</span> for <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Liney_02',
     },
     c5: {
       trace: `Constellation 5`,
       title: `To Pierce Enigmas`,
-      content: `Increases the Level of Wondrous Trick: Miracle Parade by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Wondrous Trick: Miracle Parade</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Liney_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Guarded Smile`,
-      content: `When Lyney fires a Prop Arrow, he will fire a Pyrotechnic Strike: Reprised that will deal <span class="text-desc">80%</span> of a Pyrotechnic Strike's DMG. This DMG is considered Charged Attack DMG.`,
+      content: `When Lyney fires a <b>Prop Arrow</b>, he will fire a <b>Pyrotechnic Strike: Reprised</b> that will deal <span class="text-desc">80%</span> of a <b>Pyrotechnic Strike</b>'s DMG. This DMG is considered Charged Attack DMG.`,
+      image: 'UI_Talent_S_Liney_04',
     },
   }
 
@@ -132,7 +144,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     {
       type: 'toggle',
       id: 'lyney_a1',
-      text: `A1 Grin-Malkin Hat Buff`,
+      text: `A1 Enhanced Grin-Malkin Hat`,
       ...talents.a1,
       show: a >= 1,
       default: true,
@@ -166,7 +178,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'lyney_c4')]
 
   return {
     upgrade,
@@ -275,9 +287,14 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.lyney_a4) base[Stats.ALL_DMG] += _.min([0.6 + pyroCount * 0.2, 1])
-      if (form.lyney_c2) base[Stats.CRIT_DMG].push({value: 0.2, name: '', source: ``}) * form.lyney_c2
-      if (form.lyney_c4) base.PYRO_RES_PEN.push({value: 0.2, name: '', source: ``})
+      if (form.lyney_a4)
+        base[Stats.ALL_DMG].push({
+          value: _.min([0.6 + (pyroCount - 1) * 0.2, 1]),
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+        })
+      if (form.lyney_c2) base[Stats.CRIT_DMG].push({ value: 0.2 * form.lyney_c2, name: 'Crisp Focus', source: `Self` })
+      if (form.lyney_c4) base.PYRO_RES_PEN.push({ value: 0.2, name: 'Constellation 4', source: `Self` })
 
       if (c >= 6)
         base.CHARGE_SCALING.push({
@@ -290,6 +307,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.lyney_c4) base.PYRO_RES_PEN.push({ value: 0.2, name: 'Constellation 4', source: `Lyney` })
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {

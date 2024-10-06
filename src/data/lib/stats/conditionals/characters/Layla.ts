@@ -6,7 +6,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Layla = (c: number, a: number, t: ITalentLevel) => {
+const Layla = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -29,78 +29,90 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Nights of Formal Focus`,
-      content: `Puts forth a shield known as the Curtain of Slumber, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
-      <br />The Curtain of Slumber's DMG Absorption is based on Layla's Max HP and absorbs <b class="text-genshin-cryo">Cryo DMG</b> with 250% effectiveness. When the shield is deployed, Layla will have <b class="text-genshin-cryo">Cryo</b> applied to her briefly.
+      content: `Puts forth a shield known as the <b class="text-blue">Curtain of Slumber</b>, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
+      <br />The <b class="text-blue">Curtain of Slumber</b>'s DMG Absorption is based on Layla's Max HP and absorbs <b class="text-genshin-cryo">Cryo DMG</b> with 250% effectiveness. When the shield is deployed, Layla will have <b class="text-genshin-cryo">Cryo</b> applied to her briefly.
       <br />
-      <br /><b>Night Stars and Shooting Stars</b>
-      <br />While the Curtain of Slumber is active, it will create <span class="text-desc">1</span> Night Star that will be attached to it every <span class="text-desc">1.5</span>s. When a character protected by this shield uses an Elemental Skill, <span class="text-desc">2</span> Night Stars will be created. Night Stars can be created once every <span class="text-desc">0.3</span>s in this way. A maximum of <span class="text-desc">4</span> Night Stars can be accumulated at any one time.
-      <br />Once the Curtain of Slumber has accumulated <span class="text-desc">4</span> Night Stars and there are opponents nearby, these Night Stars will transform into homing Shooting Stars that will be fired off in sequence, dealing <b class="text-genshin-cryo">Cryo DMG</b> to any opponents hit.
-      <br />If the Curtain of Slumber's duration ends or it is destroyed, the Night Stars will disappear. If they are already being fired off as Shooting Stars, these Shooting Stars will last until this wave of shots ends.
+      <br /><b class="text-genshin-cryo">Night Stars</b> and <b class="text-desc">Shooting Stars</b>
+      <br />While the <b class="text-blue">Curtain of Slumber</b> is active, it will create <span class="text-desc">1</span> <b class="text-genshin-cryo">Night Star</b> that will be attached to it every <span class="text-desc">1.5</span>s. When a character protected by this shield uses an Elemental Skill, <span class="text-desc">2</span> <b class="text-genshin-cryo">Night Stars</b> will be created. <b class="text-genshin-cryo">Night Stars</b> can be created once every <span class="text-desc">0.3</span>s in this way. A maximum of <span class="text-desc">4</span> <b class="text-genshin-cryo">Night Stars</b> can be accumulated at any one time.
+      <br />Once the <b class="text-blue">Curtain of Slumber</b> has accumulated <span class="text-desc">4</span> <b class="text-genshin-cryo">Night Stars</b> and there are opponents nearby, these <b class="text-genshin-cryo">Night Stars</b> will transform into homing <b class="text-desc">Shooting Stars</b> that will be fired off in sequence, dealing <b class="text-genshin-cryo">Cryo DMG</b> to any opponents hit.
+      <br />If the <b class="text-blue">Curtain of Slumber</b>'s duration ends or it is destroyed, the <b class="text-genshin-cryo">Night Stars</b> will disappear. If they are already being fired off as <b class="text-desc">Shooting Stars</b>, these <b class="text-desc">Shooting Stars</b> will last until this wave of shots ends.
       <br />
-      <br />New Night Stars cannot be created until the previous wave of Shooting Stars has been fired completely.
+      <br />New <b class="text-genshin-cryo">Night Stars</b> cannot be created until the previous wave of <b class="text-desc">Shooting Stars</b> has been fired completely.
       `,
+      image: 'Skill_S_Layla_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Dream of the Star-Stream Shaker	`,
-      content: `Unleashes a Celestial Dreamsphere that constantly fires Starlight Slugs at opponents within its AoE, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
-      <br />When a Starlight Slug hits, it will generate <span class="text-desc">1</span> Night Star for nearby Curtains of Slumber. Each Curtain of Slumber can gain <span class="text-desc">1</span> Night Star this way every <span class="text-desc">0.5</span>s.`,
+      content: `Unleashes a Celestial Dreamsphere that constantly fires <b>Starlight Slugs</b> at opponents within its AoE, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
+      <br />When a <b>Starlight Slug</b> hits, it will generate <span class="text-desc">1</span> <b class="text-genshin-cryo">Night Star</b> for nearby <b class="text-blue">Curtains of Slumber</b>. Each <b class="text-blue">Curtain of Slumber</b> can gain <span class="text-desc">1</span> <b class="text-genshin-cryo">Night Star</b> this way every <span class="text-desc">0.5</span>s.`,
+      image: 'Skill_E_Layla_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Like Nascent Light`,
-      content: `While the Curtain of Slumber is active, the Deep Sleep effect will activate each time the Curtain gains <span class="text-desc">1</span> Night Star:
-      <br />- The Shield Strength of a character under the effect of the Curtain of Slumber increases by <span class="text-desc">6%</span>.
-      <br />- This effect can have a maximum of <span class="text-desc">4</span> stacks and persists until the Curtain of Slumber disappears.`,
+      content: `While the <b class="text-blue">Curtain of Slumber</b> is active, the <b>Deep Sleep</b> effect will activate each time the <b class="text-blue">Curtain</b> gains <span class="text-desc">1</span> <b class="text-genshin-cryo">Night Star</b>:
+      <br />- The Shield Strength of a character under the effect of the <b class="text-blue">Curtain of Slumber</b> increases by <span class="text-desc">6%</span>.
+      <br />- This effect can have a maximum of <span class="text-desc">4</span> stacks and persists until the <b class="text-blue">Curtain of Slumber</b> disappears.`,
+      image: 'UI_Talent_S_Layla_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Sweet Slumber Undisturbed`,
-      content: `The DMG dealt by the Shooting Stars fired by Nights of Formal Focus is increased by <span class="text-desc">1.5%</span> of Layla's Max HP.`,
+      content: `The DMG dealt by the <b class="text-desc">Shooting Stars</b> fired by <b>Nights of Formal Focus</b> is increased by <span class="text-desc">1.5%</span> of Layla's Max HP.`,
+      image: 'UI_Talent_S_Layla_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Shadowy Dream-Signs`,
       content: `When Layla crafts Character Talent Materials, she has a <span class="text-desc">10%</span> chance to receive double the product.`,
+      image: 'UI_Talent_Eula_Combine',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Fortress of Fantasy`,
-      content: `The Shield Absorption of the Curtain of Slumber generated by Nights of Formal Focus is increased by <span class="text-desc">20%</span>.
-      <br />Additionally, when unleashing Nights of Formal Focus, she will generate a shield for any nearby party members who are not being protected by a Curtain of Slumber. This shield will have <span class="text-desc">35%</span> of the absorption of a Curtain of Slumber, will last for <span class="text-desc">12</span>s, and will absorb <b class="text-genshin-cryo">Cryo DMG</b> with <span class="text-desc">250%</span> effectiveness.`,
+      content: `The Shield Absorption of the <b class="text-blue">Curtain of Slumber</b> generated by <b>Nights of Formal Focus</b> is increased by <span class="text-desc">20%</span>.
+      <br />Additionally, when unleashing <b>Nights of Formal Focus</b>, she will generate a shield for any nearby party members who are not being protected by a <b class="text-blue">Curtain of Slumber</b>. This shield will have <span class="text-desc">35%</span> of the absorption of a <b class="text-blue">Curtain of Slumber</b>, will last for <span class="text-desc">12</span>s, and will absorb <b class="text-genshin-cryo">Cryo DMG</b> with <span class="text-desc">250%</span> effectiveness.`,
+      image: 'UI_Talent_S_Layla_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Light's Remit`,
-      content: `When Shooting Stars from Nights of Formal Focus strike opponents, they will each restore <span class="text-desc">1</span> Energy to Layla. Each Shooting Star can restore Energy to her in this manner once.`,
+      content: `When <b class="text-desc">Shooting Stars</b> from <b>Nights of Formal Focus</b> strike opponents, they will each restore <span class="text-desc">1</span> Energy to Layla. Each <b class="text-desc">Shooting Star</b> can restore Energy to her in this manner once.`,
+      image: 'UI_Talent_S_Layla_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Secrets of the Night`,
-      content: `Increases the Level of Nights of Formal Focus by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Nights of Formal Focus</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Layla_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Starry Illumination`,
-      content: `When Nights of Formal Focus starts to fire off Shooting Stars, it will grant all nearby party members the Dawn Star effect, causing their Normal and Charged Attack DMG to increase based on <span class="text-desc">5%</span> of Layla's Max HP.
-      <br />Dawn Star can last up to <span class="text-desc">3</span>s and will be removed <span class="text-desc">0.05</span>s after dealing Normal or Charged Attack DMG.`,
+      content: `When <b>Nights of Formal Focus</b> starts to fire off <b class="text-desc">Shooting Stars</b>, it will grant all nearby party members the <b class="text-genshin-cryo">Dawn Star</b> effect, causing their Normal and Charged Attack DMG to increase based on <span class="text-desc">5%</span> of Layla's Max HP.
+      <br /><b class="text-genshin-cryo">Dawn Star</b> can last up to <span class="text-desc">3</span>s and will be removed <span class="text-desc">0.05</span>s after dealing Normal or Charged Attack DMG.`,
+      image: 'UI_Talent_S_Layla_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Stream of Consciousness`,
-      content: `Increases the Level of Dream of the Star-Stream Shaker by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Dream of the Star-Stream Shaker</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Layla_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Radiant Soulfire`,
-      content: `Shooting Stars from Nights of Formal Focus deal <span class="text-desc">40%</span> increased DMG, and Starlight Slugs from Dream of the Star-Stream Shaker deal <span class="text-desc">40%</span> increased DMG.
-      <br />Additionally, the interval between the creation of Night Stars via Nights of Formal Focus is decreased by <span class="text-desc">20%</span>.`,
+      content: `<b class="text-desc">Shooting Stars</b> from <b>Nights of Formal Focus</b> deal <span class="text-desc">40%</span> increased DMG, and <b>Starlight Slugs</b> from <b>Dream of the Star-Stream Shaker</b> deal <span class="text-desc">40%</span> increased DMG.
+      <br />Additionally, the interval between the creation of <b class="text-genshin-cryo">Night Stars</b> via <b>Nights of Formal Focus</b>> is decreased by <span class="text-desc">20%</span>.`,
+      image: 'UI_Talent_S_Layla_04',
     },
   }
 
@@ -108,7 +120,7 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
     {
       type: 'number',
       id: 'layla_a1',
-      text: `A1 Night Star Shield Strength`,
+      text: `Deep Sleep Stacks`,
       ...talents.a1,
       show: a >= 1,
       default: 4,
@@ -132,7 +144,7 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'layla_a1')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 60
@@ -207,7 +219,7 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.layla_a1) base[Stats.SHIELD].push({value: 0.06, name: '', source: ``}) * form.layla_a1
+      if (form.layla_a1) base[Stats.SHIELD].push({ value: 0.06 * form.layla_a1, name: 'Deep Sleep', source: `Self` })
       if (c >= 2)
         base.SKILL_SCALING.push({
           name: 'Allied Curtain of Slumber Shield',
@@ -217,34 +229,36 @@ const Layla = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SHIELD,
           bonus: 0.2,
         })
-      if (form.kuki_c6) base[Stats.EM].push({value: 125, name: '', source: ``})
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.layla_c4) {
-        base.BASIC_SCALING = _.map(base.BASIC_SCALING, (item) => ({
-          ...item,
-          value: [...item.value, { scaling: 0.05, multiplier: Stats.HP, override: own.getHP() }],
-        }))
-        base.CHARGE_SCALING = _.map(base.CHARGE_SCALING, (item) => ({
-          ...item,
-          value: [...item.value, { scaling: 0.05, multiplier: Stats.HP, override: own.getHP() }],
-        }))
-      }
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (aForm.layla_a1) base[Stats.SHIELD].push({ value: 0.06 * form.layla_a1, name: 'Deep Sleep', source: `Layla` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (form.layla_c4) {
-        base.BASIC_SCALING = _.map(base.BASIC_SCALING, (item) => ({
-          ...item,
-          value: [...item.value, { scaling: 0.05, multiplier: Stats.HP }],
-        }))
-        base.CHARGE_SCALING = _.map(base.CHARGE_SCALING, (item) => ({
-          ...item,
-          value: [...item.value, { scaling: 0.05, multiplier: Stats.HP }],
-        }))
+        base.CALLBACK.push(function (x, a) {
+          const index = _.findIndex(team, (item) => item.cId === '10000074')
+          _.forEach(a, (member, i) => {
+            member.BASIC_F_DMG.push({
+              value: a[index].getHP() * 0.05,
+              name: 'Dawn Star',
+              source: i === index ? 'Self' : 'Layla',
+              base: a[index].getHP(),
+              multiplier: toPercentage(0.05),
+            })
+            member.CHARGE_F_DMG.push({
+              value: a[index].getHP() * 0.05,
+              name: 'Dawn Star',
+              source: i === index ? 'Self' : 'Layla',
+              base: a[index].getHP(),
+              multiplier: toPercentage(0.05),
+            })
+          })
+          return x
+        })
       }
 
       return base

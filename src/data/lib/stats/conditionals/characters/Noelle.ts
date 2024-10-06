@@ -16,11 +16,6 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const teamData = _.map(team, (item) => findCharacter(item.cId)?.element)
-  const elementCount = _.filter(teamData, (item) =>
-    _.includes([Element.PYRO, Element.HYDRO, Element.ELECTRO, Element.CRYO], item)
-  ).length
-
   const talents: ITalent = {
     normal: {
       trace: `Normal Attack`,
@@ -35,6 +30,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -46,6 +42,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br />The amount of HP healed when regeneration is triggered scales based on Noelle's DEF.
       `,
+      image: 'Skill_S_Noel_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -55,15 +52,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- Larger attack AoE.
       <br />- Converts attack DMG to <b class="text-genshin-geo">Geo DMG</b> that cannot be overridden by any other elemental infusion.
       <br />- Increased ATK that scales based on her DEF.`,
-      // value: [
-      //   {
-      //     name: 'Current ATK Bonus',
-      //     value: {
-      //       stat: Stats.DEF,
-      //       scaling: (def) => _.round(calcScaling(0.4, burst, 'elemental', '1') * def).toLocaleString(),
-      //     },
-      //   },
-      // ],
+      image: 'Skill_E_Noel_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
@@ -72,50 +61,59 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Creates a shield for your active character that lasts for <span class="text-desc">20</span>s and absorbs DMG equal to <span class="text-desc">400%</span> of Noelle's DEF.
       <br />The shield has a <span class="text-desc">150%</span> DMG Absorption effectiveness against all <b>Elemental and Physical DMG</b>.
       <br />This effect can only occur once every <span class="text-desc">60</span>s.`,
+      image: 'UI_Talent_S_Noel_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Nice and Clean`,
-      content: `Every <span class="text-desc">4</span> Normal or Charged Attack hits will decrease the CD of Breastplate by <span class="text-desc">1</span>s.
+      content: `Every <span class="text-desc">4</span> Normal or Charged Attack hits will decrease the CD of <b>Breastplate</b> by <span class="text-desc">1</span>s.
       <br />Hitting multiple opponents with a single attack is only counted as <span class="text-desc">1</span> hit.`,
+      image: 'UI_Talent_S_Noel_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Maid's Knighthood`,
       content: `When a Perfect Cooking is achieved on a DEF-boosting dish, Noelle has a <span class="text-desc">12%</span> chance to obtain double the product.`,
+      image: 'UI_Talent_Cook_Defense',
     },
     c1: {
       trace: `Constellation 1`,
       title: `I Got Your Back`,
-      content: `While Sweeping Time and Breastplate are both in effect, the chance of Breastplate's healing effects activating is increased to <span class="text-desc">100%</span>.`,
+      content: `While <b>Sweeping Time</b> and Breastplate are both in effect, the chance of <b>Breastplate</b>'s healing effects activating is increased to <span class="text-desc">100%</span>.`,
+      image: 'UI_Talent_S_Noel_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Combat Maid`,
       content: `Decreases the Stamina Consumption of Noelle's Charged Attacks by <span class="text-desc">20%</span> and increases her Charged Attack DMG by <span class="text-desc">15%</span>.`,
+      image: 'UI_Talent_S_Noel_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Invulnerable Maid`,
-      content: `Increases the Level of Breastplate by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Breastplate</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Noel_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `To Be Cleaned`,
-      content: `When Breastplate's duration expires or it is destroyed by DMG, it will deal <span class="text-desc">400%</span> of Noelle's ATK of <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents.`,
+      content: `When <b>Breastplate</b>'s duration expires or it is destroyed by DMG, it will deal <span class="text-desc">400%</span> of Noelle's ATK of <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents.`,
+      image: 'UI_Talent_S_Noel_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Favonius Sweeper Master`,
-      content: `Increases the Level of Sweeping Time by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Sweeping Time</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Noel_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Must Be Spotless`,
-      content: `Sweeping Time increases Noelle's ATK by an additional <span class="text-desc">50%</span> of her DEF.
-      <br />Additionally, every opponent defeated during the skill's duration adds 1s to the duration, up to <span class="text-desc">10</span>s.`,
+      content: `<b>Sweeping Time</b> increases Noelle's ATK by an additional <span class="text-desc">50%</span> of her DEF.
+      <br />Additionally, every opponent defeated during the skill's duration adds <span class="text-desc">1</span>s to the duration, up to <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Noel_04',
     },
   }
 
@@ -140,14 +138,6 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 80
-
-      if (form.navia_infusion) {
-        base.infuse(Element.GEO, true)
-        base.BASIC_DMG.push({value: 0.4, name: '', source: ``})
-        base.CHARGE_DMG.push({value: 0.4, name: '', source: ``})
-        base.PLUNGE_DMG.push({value: 0.4, name: '', source: ``})
-      }
 
       base.BASIC_SCALING = [
         {
@@ -236,7 +226,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
         })
-      if (c >= 2) base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
+      if (c >= 2) base.CHARGE_DMG.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
       if (c >= 4)
         base.SKILL_SCALING.push({
           name: 'Breastplate Expire DMG',
@@ -248,13 +238,19 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.navia_c4) base.GEO_RES_PEN.push({value: 0.2, name: '', source: ``})
-
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      const b = base.getDef()
+      const m = calcScaling(0.4, burst, 'elemental', '1') + (c >= 6 ? 0.5 : 0)
       if (form.noelle_burst)
-        base[Stats.ATK] += base.getDef() * (calcScaling(0.4, burst, 'elemental', '1') + (c >= 6 ? 0.5 : 0))
+        base[Stats.ATK].push({
+          value: b * m,
+          name: 'Sweeping Time',
+          source: 'Self',
+          base: b,
+          multiplier: m,
+        })
 
       return base
     },

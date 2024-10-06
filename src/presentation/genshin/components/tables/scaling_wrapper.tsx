@@ -58,7 +58,7 @@ export const TalentIcon = observer(
       return (
         <div
           className={classNames(
-            'p-[5%] rounded-full bg-opacity-35 ring-2 ring-offset-2 ring-offset-primary-darker bg-primary-light ring-primary-lighter opacity-50',
+            'rounded-full bg-opacity-35 ring-2 ring-offset-2 ring-offset-primary-darker bg-primary-light ring-primary-lighter opacity-50',
             size || 'w-12 h-12'
           )}
         />
@@ -76,7 +76,7 @@ export const TalentIcon = observer(
         >
           <img
             src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${talent?.image}.png`}
-            className="w-full h-full scale-90"
+            className="w-full h-full scale-[80%]"
           />
           <div className="hidden">?</div>
         </div>

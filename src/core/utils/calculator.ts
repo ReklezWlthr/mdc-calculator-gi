@@ -176,15 +176,6 @@ export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifact
         })
       })
     }
-    if (value >= 4) {
-      _.forEach(bonuses, (item) => {
-        conditionals[item.stat]?.push({
-          name: '2-Piece',
-          source: artifact?.name,
-          value: item.value,
-        })
-      })
-    }
   })
 
   return conditionals
@@ -243,32 +234,32 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
       value:
         2 *
         (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
-      name: 'Reaction',
-      source: 'Forward Melt',
+      name: 'Forward Melt',
+      source: 'Reaction',
     })
   if (form.melt_reverse)
     conditionals.CRYO_MULT.push({
       value:
         1.5 *
         (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
-      name: 'Reaction',
-      source: 'Reverse Melt',
+      name: 'Reverse Melt',
+      source: 'Reaction',
     })
   if (form.vape_forward)
     conditionals.HYDRO_MULT.push({
       value:
         2 *
         (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
-      name: 'Reaction',
-      source: 'Forward Vape',
+      name: 'Forward Vape',
+      source: 'Reaction',
     })
   if (form.vape_reverse)
     conditionals.PYRO_MULT.push({
       value:
         1.5 *
         (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
-      name: 'Reaction',
-      source: 'Reverse Vape',
+      name: 'Reverse Vape',
+      source: 'Reaction',
     })
   if (form.spread)
     conditionals.DENDRO_F_DMG.push({
@@ -276,8 +267,8 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
         1.25 *
         base *
         (1 + conditionals?.getValue(StatsObjectKeys.SPREAD_DMG) + calcAdditive(conditionals?.getValue(Stats.EM) || 0)),
-      name: 'Reaction',
-      source: 'Spread',
+      name: 'Spread',
+      source: 'Reaction',
     })
   if (form.aggravate)
     conditionals.ELECTRO_F_DMG.push({
@@ -287,8 +278,8 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
         (1 +
           conditionals?.getValue(StatsObjectKeys.AGGRAVATE_DMG) +
           calcAdditive(conditionals?.getValue(Stats.EM) || 0)),
-      name: 'Reaction',
-      source: 'Aggravate',
+      name: 'Aggravate',
+      source: 'Reaction',
     })
 
   return conditionals

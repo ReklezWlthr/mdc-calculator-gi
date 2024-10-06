@@ -25,87 +25,99 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
       <br />With light flourishes, Neuvillette commands the tides to unleash a maximum of 3 attacks, dealing <b class="text-genshin-hydro">Hydro DMG</b>.
       <br />
       <br /><b>Charged Attack Empowerment: Legal Evaluation</b>
-      <br />While charging up, Neuvillette will gather the power of water, forming it into a Seal of Arbitration. In this state, Neuvillette can move and change facing, and also absorb any Sourcewater Droplets in a certain AoE.
-      <br />Every Droplet he absorbs will increase the formation speed of the Seal, and will heal Neuvillette.
-      <br />When the charging is stopped, if the Symbol has yet to be formed, then a Charged Attack will be unleashed. If it has been formed, then a Charged Attack: Equitable Judgment will be unleashed.
+      <br />While charging up, Neuvillette will gather the power of water, forming it into a Seal of Arbitration. In this state, Neuvillette can move and change facing, and also absorb any <b class="text-blue">Sourcewater Droplets</b> in a certain AoE.
+      <br />Every <b class="text-blue">Droplet</b> he absorbs will increase the formation speed of the Seal, and will heal Neuvillette.
+      <br />When the charging is stopped, if the Symbol has yet to be formed, then a Charged Attack will be unleashed. If it has been formed, then a <b>Charged Attack: Equitable Judgment</b> will be unleashed.
       <br />
       <br /><b>Charged Attack</b>
       <br />Consumes a fixed amount of Stamina to attack opponents with a rupturing blast of water, dealing <b class="text-genshin-hydro">AoE Hydro DMG</b>.
       <br />
       <br /><b>Charged Attack: Equitable Judgment</b>
       <br />Unleashes surging torrents, dealing continuous <b class="text-genshin-hydro">AoE Hydro DMG</b> to all opponents in a straight-line area in front of him.
-      <br />Equitable Judgment will not consume any Stamina and lasts <span class="text-desc">3</span>s.
+      <br /><b>Equitable Judgment</b> will not consume any Stamina and lasts <span class="text-desc">3</span>s.
       <br />If Neuvillette's HP is above <span class="text-desc">50%</span>, he will continuously lose HP while using this attack.
       <br />
       <br /><b>Plunging Attack</b>
       <br />Gathering the might of Hydro, Neuvillette plunges towards the ground from mid-air, damaging all opponents in his path. Deals <b class="text-genshin-hydro">AoE Hydro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `O Tears, I Shall Repay`,
-      content: `Summons a Raging Waterfall that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> to opponents in front of Neuvillette based on his Max HP. After hitting an opponent, this skill will generate <span class="text-desc">3</span> Sourcewater Droplets near that opponent.
+      content: `Summons a Raging Waterfall that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> to opponents in front of Neuvillette based on his Max HP. After hitting an opponent, this skill will generate <span class="text-desc">3</span> <b class="text-blue">Sourcewater Droplets</b> near that opponent.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-pneuma">Pneuma</b>
-      <br />At certain intervals, when the Raging Waterfall descends, a Spiritbreath Thorn will descend that will pierce opponents, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-hydro">Hydro DMG</b>.
+      <br />At certain intervals, when the Raging Waterfall descends, a <b class="text-genshin-pneuma">Spiritbreath Thorn</b> will descend that will pierce opponents, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-hydro">Hydro DMG</b>.
       `,
+      image: 'Skill_S_Neuvillette_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `O Tides, I Have Returned`,
-      content: `Unleashes waves that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Neuvillette's Max HP. After a short interval, <span class="text-desc">2</span> waterfalls will descend and deal <b class="text-genshin-hydro">Hydro DMG</b> in a somewhat smaller AoE, and will generate <span class="text-desc">6</span> Sourcewater Droplets within an area in front.`,
+      content: `Unleashes waves that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Neuvillette's Max HP. After a short interval, <span class="text-desc">2</span> waterfalls will descend and deal <b class="text-genshin-hydro">Hydro DMG</b> in a somewhat smaller AoE, and will generate <span class="text-desc">6</span> <b class="text-blue">Sourcewater Droplets</b> within an area in front.`,
+      image: 'Skill_E_Neuvillette_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Heir to the Ancient Sea's Authority`,
-      content: `When a party member triggers a Vaporize, Frozen, Electro-Charged, Bloom, Hydro Swirl, or a Hydro Crystallize reaction on opponents, <span class="text-desc">1</span> stack of Past Draconic Glories will be granted to Neuvillette for <span class="text-desc">30</span>s. Max <span class="text-desc">3</span> stacks. Past Draconic Glories causes Charged Attack: Equitable Judgment to deal <span class="text-desc">110%/125%/160%</span> of its original DMG.
-      <br />The stacks of Past Draconic Glories created by each kind of Elemental Reaction exist independently.`,
+      content: `When a party member triggers a Vaporize, Frozen, Electro-Charged, Bloom, Hydro Swirl, or a Hydro Crystallize reaction on opponents, <span class="text-desc">1</span> stack of <b class="text-genshin-hydro">Past Draconic Glories</b> will be granted to Neuvillette for <span class="text-desc">30</span>s. Max <span class="text-desc">3</span> stacks. <b class="text-genshin-hydro">Past Draconic Glories</b> causes <b>Charged Attack: Equitable Judgment</b> to deal <span class="text-desc">110%/125%/160%</span> of its original DMG.
+      <br />The stacks of <b class="text-genshin-hydro">Past Draconic Glories</b> created by each kind of Elemental Reaction exist independently.`,
+      image: 'UI_Talent_S_Neuvillette_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Discipline of the Supreme Arbitration`,
       content: `For each <span class="text-desc">1%</span> of Neuvillette's current HP greater than <span class="text-desc">30%</span> of Max HP, he will gain <span class="text-desc">0.6%</span> <b class="text-genshin-hydro">Hydro DMG Bonus</b>. A maximum bonus of <span class="text-desc">30%</span> can be obtained this way.`,
+      image: 'UI_Talent_S_Neuvillette_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Gather Like the Tide`,
       content: `Increases underwater Sprint SPD for your own party members by <span class="text-desc">15%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_S_Neuvillette_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Venerable Institution`,
-      content: `When Neuvillette takes the field, he will obtain <span class="text-desc">1</span> stack of Past Draconic Glories from the Passive Talent "Heir to the Ancient Sea's Authority." You must first unlock the Passive Talent "Heir to the Ancient Sea's Authority."
-      <br />Additionally, his interruption resistance will be increased while using the Charged Attack Empowerment: Legal Evaluation and the Charged Attack: Equitable Judgment.`,
+      content: `When Neuvillette takes the field, he will obtain <span class="text-desc">1</span> stack of <b class="text-genshin-hydro">Past Draconic Glories</b> from the Passive Talent <b>Heir to the Ancient Sea's Authority</b>. You must first unlock the Passive Talent <b>Heir to the Ancient Sea's Authority</b>.
+      <br />Additionally, his interruption resistance will be increased while using the <b>Charged Attack Empowerment: Legal Evaluation</b> and the <b>Charged Attack: Equitable Judgment</b>.`,
+      image: 'UI_Talent_S_Neuvillette_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Juridical Exhortation`,
-      content: `The Passive Talent "Heir to the Ancient Sea's Authority" will be enhanced: Each stack of Past Draconic Glories will increase the CRIT DMG of Charged Attack: Equitable Judgment by <span class="text-desc">14%</span>. The maximum increase that can be achieved this way is <span class="text-desc">42%</span>.
-      <br />You must first unlock the Passive Talent "Heir to the Ancient Sea's Authority."`,
+      content: `The Passive Talent <b>Heir to the Ancient Sea's Authority</b> will be enhanced: Each stack of <b class="text-genshin-hydro">Past Draconic Glories</b> will increase the CRIT DMG of <b>Charged Attack: Equitable Judgment</b> by <span class="text-desc">14%</span>. The maximum increase that can be achieved this way is <span class="text-desc">42%</span>.
+      <br />You must first unlock the Passive Talent <b>Heir to the Ancient Sea's Authority</b>.`,
+      image: 'UI_Talent_S_Neuvillette_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Ancient Postulation`,
-      content: `Increases the Level of Normal Attack: As Water Seeks Equilibrium by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Normal Attack: As Water Seeks Equilibrium</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Neuvillette_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Crown of Commiseration`,
-      content: `When Neuvillette is on the field and is healed, <span class="text-desc">1</span> Sourcewater Droplet will be generated. This effect can occur once every <span class="text-desc">4</span>s.`,
+      content: `When Neuvillette is on the field and is healed, <span class="text-desc">1</span> <b class="text-blue">Sourcewater Droplet</b> will be generated. This effect can occur once every <span class="text-desc">4</span>s.`,
+      image: 'UI_Talent_S_Neuvillette_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Axiomatic Judgment`,
-      content: `Increases the Level of O Tides, I Have Returned by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>O Tides, I Have Returned</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Neuvillette_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Wrathful Recompense`,
-      content: `When using Charged Attack: Equitable Judgment, Neuvillette can absorb nearby Sourcewater Droplets in an AoE. Each absorbed Droplet will increase the duration of Charged Attack: Equitable Judgment by <span class="text-desc">1</span>s.
-      <br />Additionally, when Equitable Judgment hits opponents, it will fire off <span class="text-desc">2</span> additional currents every <span class="text-desc">2</span>s, each of which will deal <span class="text-desc">10%</span> of Neuvillette's Max HP as <b class="text-genshin-hydro">Hydro DMG</b>. DMG dealt this way will count as DMG dealt by Equitable Judgment.`,
+      content: `When using <b>Charged Attack: Equitable Judgment</b>, Neuvillette can absorb nearby <b class="text-blue">Sourcewater Droplets</b> in an AoE. Each absorbed <b class="text-blue">Droplet</b> will increase the duration of <b>Charged Attack: Equitable Judgment</b> by <span class="text-desc">1</span>s.
+      <br />Additionally, when <b>Equitable Judgment</b> hits opponents, it will fire off <span class="text-desc">2</span> additional currents every <span class="text-desc">2</span>s, each of which will deal <span class="text-desc">10%</span> of Neuvillette's Max HP as <b class="text-genshin-hydro">Hydro DMG</b>. DMG dealt this way will count as DMG dealt by <b>Equitable Judgment</b>.`,
+      image: 'UI_Talent_S_Neuvillette_04',
     },
   }
 
@@ -224,7 +236,14 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.neuv_a4) base[Stats.HYDRO_DMG] += _.min([_.max([form.neuv_a4 - 30, 0]) * 0.006, 0.3])
+      if (form.neuv_a4)
+        base[Stats.HYDRO_DMG].push({
+          value: _.min([_.max([form.neuv_a4 - 30, 0]) * 0.006, 0.3]),
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+          base: toPercentage(_.min([_.max([form.neuv_a4 - 30, 0]), 50]) / 100),
+          multiplier: toPercentage(0.006),
+        })
 
       if (c >= 6)
         base.CHARGE_SCALING.push({

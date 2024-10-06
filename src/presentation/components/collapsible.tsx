@@ -17,7 +17,7 @@ export const Collapsible = observer(
     children,
     childRight,
   }: {
-    label: string
+    label: React.ReactNode
     children: React.ReactNode | React.ReactNode[]
     childRight?: React.ReactNode
   }) => {
@@ -26,7 +26,7 @@ export const Collapsible = observer(
     return (
       <div className="space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
         <div className="flex items-center p-3 cursor-pointer gap-x-3" onClick={() => setOpen(!open)}>
-          <p className="text-base font-bold text-white">{label}</p>
+          <div className="text-base font-bold text-white">{label}</div>
           {childRight}
         </div>
         <div

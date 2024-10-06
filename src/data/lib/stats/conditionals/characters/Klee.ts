@@ -30,6 +30,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Gathering the power of Pyro, Klee plunges towards the ground from mid-air, damaging all opponents in her path. Deals <b class="text-genshin-pyro">AoE Pyro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -42,59 +43,70 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br />Starts with <span class="text-desc">2</span> charges.
       `,
+      image: 'Skill_S_Klee_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Sparks 'n' Splash`,
-      content: `Klee's Blazing Delight! For the duration of this ability, continuously summons Sparks 'n' Splash to attack nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
+      content: `Klee's Blazing Delight! For the duration of this ability, continuously summons <b>Sparks 'n' Splash</b> to attack nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
+      image: 'Skill_E_Klee_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Pounding Surprise`,
-      content: `When Jumpy Dumpty and Normal Attacks deal DMG, Klee has a <span class="text-desc">50%</span> chance to obtain an Explosive Spark. This Explosive Spark is consumed by the next Charged Attack, which costs no Stamina and deals <span class="text-desc">50%</span> increased DMG.`,
+      content: `When <b>Jumpy Dumpty</b> and Normal Attacks deal DMG, Klee has a <span class="text-desc">50%</span> chance to obtain an <b class="text-genshin-pyro">Explosive Spark</b>. This <b class="text-genshin-pyro">Explosive Spark</b> is consumed by the next Charged Attack, which costs no Stamina and deals <span class="text-desc">50%</span> increased DMG.`,
+      image: 'UI_Talent_S_Klee_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Sparkling Burst`,
       content: `When Klee's Charged Attack results in a CRIT Hit, all party members gain <span class="text-desc">2</span> Elemental Energy.`,
+      image: 'UI_Talent_S_Klee_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `All Of My Treasures!`,
       content: `Displays the location of nearby resources unique to Mondstadt on the mini-map.`,
+      image: 'UI_Talent_Collect_Local_Mengde',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Chained Reactions`,
-      content: `Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to <span class="text-desc">120%</span> of Sparks 'n' Splash's DMG.`,
+      content: `Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to <span class="text-desc">120%</span> of <b>Sparks 'n' Splash</b>'s DMG.`,
+      image: 'UI_Talent_S_Klee_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Explosive Frags`,
-      content: `Being hit by Jumpy Dumpty's mines decreases opponents' DEF by <span class="text-desc">23%</span> for <span class="text-desc">10</span>s.`,
+      content: `Being hit by <b>Jumpy Dumpty</b>'s mines decreases opponents' DEF by <span class="text-desc">23%</span> for <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Klee_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Exquisite Compound`,
-      content: `Increases the Level of Jumpy Dumpty by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Jumpy Dumpty</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Klee_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Sparkly Explosion`,
-      content: `If Klee leaves the field during the duration of Sparks 'n' Splash, her departure triggers an explosion that deals <span class="text-desc">555%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
+      content: `If Klee leaves the field during the duration of <b>Sparks 'n' Splash</b>, her departure triggers an explosion that deals <span class="text-desc">555%</span> of her ATK as <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
+      image: 'UI_Talent_S_Klee_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Nova Burst`,
-      content: `Increases the Level of Sparks 'n' Splash by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Sparks 'n' Splash</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Klee_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Blazing Delight`,
-      content: `While under the effects of Sparks 'n' Splash, Klee will regenerate <span class="text-desc">3</span> Energy for all members of the party (excluding Klee) every <span class="text-desc">3</span>s.
-      <br />When Sparks 'n' Splash is used, all party members will gain a <span class="text-desc">10%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> for <span class="text-desc">25</span>s.`,
+      content: `While under the effects of <b>Sparks 'n' Splash</b>, Klee will regenerate <span class="text-desc">3</span> Energy for all members of the party (excluding Klee) every <span class="text-desc">3</span>s.
+      <br />When <b>Sparks 'n' Splash</b> is used, all party members will gain a <span class="text-desc">10%</span> <b class="text-genshin-pyro">Pyro DMG Bonus</b> for <span class="text-desc">25</span>s.`,
+      image: 'UI_Talent_S_Klee_04',
     },
   }
 
@@ -204,14 +216,14 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.ADD,
         })
 
-      if (form.klee_c2) base.DEF_REDUCTION.push({value: 0.23, name: '', source: ``})
-      if (form.klee_c6) base[Stats.PYRO_DMG].push({value: 0.1, name: '', source: ``})
+      if (form.klee_c2) base.DEF_REDUCTION.push({ value: 0.23, name: 'Constellation 2', source: `Self` })
+      if (form.klee_c6) base[Stats.PYRO_DMG].push({ value: 0.1, name: 'Constellation 6', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.klee_c6) base[Stats.PYRO_DMG].push({value: 0.1, name: '', source: ``})
-      if (form.klee_c2) base.DEF_REDUCTION.push({value: 0.23, name: '', source: ``})
+      if (form.klee_c6) base[Stats.PYRO_DMG].push({ value: 0.1, name: 'Constellation 2', source: `Klee` })
+      if (form.klee_c2) base.DEF_REDUCTION.push({ value: 0.23, name: 'Constellation 6', source: `Klee` })
 
       return base
     },

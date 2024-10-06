@@ -30,6 +30,7 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_03',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -37,6 +38,7 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
       content: `Rosaria swiftly shifts her position to appear behind her opponent, then stabs and slashes them with her polearm, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />This ability cannot be used to travel behind opponents of a larger build.
       `,
+      image: 'Skill_S_Rosaria_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -44,56 +46,66 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
       content: `Rosaria's unique take on this prayer ritual: First, she swings her weapon to slash surrounding opponents; then, she summons a frigid Ice Lance that strikes the ground. Both actions deal <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />While active, the Ice Lance periodically releases a blast of cold air, dealing <b class="text-genshin-cryo">Cryo DMG</b> to surrounding opponents.
       `,
+      image: 'Skill_E_Rosaria_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Regina Probationum`,
-      content: `When Rosaria strikes an opponent from behind using Ravaging Confession, Rosaria's CRIT Rate increases by <span class="text-desc">12%</span> for <span class="text-desc">5</span>s.`,
+      content: `When Rosaria strikes an opponent from behind using <b>Ravaging Confession</b>, Rosaria's CRIT Rate increases by <span class="text-desc">12%</span> for <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Rosaria_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Shadow Samaritan`,
-      content: `Casting Rites of Termination increases CRIT Rate of all nearby party members (except Rosaria herself) by <span class="text-desc">15%</span> of Rosaria's CRIT Rate for <span class="text-desc">10</span>s.
+      content: `Casting <b>Rites of Termination</b> increases CRIT Rate of all nearby party members (except Rosaria herself) by <span class="text-desc">15%</span> of Rosaria's CRIT Rate for <span class="text-desc">10</span>s.
       <br />CRIT Rate Bonus gained this way cannot exceed <span class="text-desc">15%</span>.`,
+      image: 'UI_Talent_S_Rosaria_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Night Walk`,
       content: `At night (18:00 - 6:00), your party members gain the Swift Stride effect: Movement SPD increased by <span class="text-desc">10%</span>.
       <br />This effect does not take effect in Domains, Trounce Domains and the Spiral Abyss. Swift Stride does not stack.`,
+      image: 'UI_Talent_Rosaria_NightRunner',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Unholy Revelation`,
       content: `When Rosaria deals a CRIT Hit, her ATK SPD increases by <span class="text-desc">10%</span> and her Normal Attack DMG increases by <span class="text-desc">10%</span> for <span class="text-desc">4</span>s.`,
+      image: 'UI_Talent_S_Rosaria_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Land Without Promise`,
-      content: `The duration of the Ice Lance created by Rites of Termination is increased by <span class="text-desc">4</span>s.`,
+      content: `The duration of the Ice Lance created by <b>Rites of Termination</b> is increased by <span class="text-desc">4</span>s.`,
+      image: 'UI_Talent_S_Rosaria_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `The Wages of Sin`,
-      content: `Increases the Level of Ravaging Confession by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Ravaging Confession</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Rosaria_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Painful Grace`,
-      content: `Ravaging Confession's CRIT Hits regenerate <span class="text-desc">5</span> Energy for Rosaria.
-      <br />Can only be triggered once each time Ravaging Confession is cast.`,
+      content: `<b>Ravaging Confession</b>'s CRIT Hits regenerate <span class="text-desc">5</span> Energy for Rosaria.
+      <br />Can only be triggered once each time <b>Ravaging Confession</b> is cast.`,
+      image: 'UI_Talent_S_Rosaria_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Last Rites`,
-      content: `Increases the Level of Rites of Termination by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Rites of Termination</b>> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Rosaria_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Divine Retribution`,
-      content: `Rites of Termination's attack decreases opponents' <b>Physical RES</b> by <span class="text-desc">20%</span> for <span class="text-desc">10</span>s.`,
+      content: `<b>Rites of Termination</b>'s attack decreases opponents' <b>Physical RES</b> by <span class="text-desc">20%</span> for <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Rosaria_04',
     },
   }
 
@@ -229,18 +241,25 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.a1_crit) base[Stats.CRIT_RATE].push({value: 0.12, name: '', source: ``})
+      if (form.a1_crit) base[Stats.CRIT_RATE].push({ value: 0.12, name: 'Ascension 1 Passive', source: `Self` })
       if (form.c1_crit) {
-        base.ATK_SPD.push({value: 0.1, name: '', source: ``})
-        base.BASIC_DMG.push({value: 0.1, name: '', source: ``})
+        base.ATK_SPD.push({ value: 0.1, name: 'Constellation 1', source: `Self` })
+        base.BASIC_DMG.push({ value: 0.1, name: 'Constellation 1', source: `Self` })
       }
-      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN.push({value: 0.2, name: '', source: ``})
+      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN.push({ value: 0.2, name: 'Constellation 6', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.a4_crit) base[Stats.CRIT_RATE] += _.min([own[Stats.CRIT_RATE] * 0.15, 0.15])
-      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN.push({value: 0.2, name: '', source: ``})
+      if (form.a4_crit)
+        base[Stats.CRIT_RATE].push({
+          value: _.min([own.getValue(Stats.CRIT_RATE) * 0.15, 0.15]),
+          name: 'Ascension 4 Passive',
+          source: 'Rosaria',
+          base: toPercentage(_.min([own.getValue(Stats.CRIT_RATE), 1])),
+          multiplier: 0.15,
+        })
+      if (form.c6_phys_shred) base.PHYSICAL_RES_PEN.push({ value: 0.2, name: 'Constellation 6', source: `Rosaria` })
 
       return base
     },

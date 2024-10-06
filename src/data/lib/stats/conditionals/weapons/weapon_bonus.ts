@@ -464,7 +464,7 @@ const WeaponBonus: {
   {
     id: '11515',
     scaling: (base, r) => {
-      base[Stats.CRIT_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.CRIT_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Absolution` })
       return base
     },
   },

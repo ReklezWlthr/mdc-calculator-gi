@@ -30,6 +30,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -41,63 +42,74 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       <br />Direction can be adjusted.
       <br />Character is immobile during skill duration.
       `,
+      image: 'Skill_S_Qin_02',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Dandelion Breeze`,
-      content: `Calling upon the wind's protection, Jean creates a swirling Dandelion Field, launching surrounding opponents and dealing <b class="text-genshin-anemo">Anemo DMG</b>.
+      content: `Calling upon the wind's protection, Jean creates a swirling <b class="text-genshin-anemo">Dandelion Field</b>, launching surrounding opponents and dealing <b class="text-genshin-anemo">Anemo DMG</b>.
       <br />At the same time, she instantly regenerates a large amount of HP for all party members. The amount of HP restored scales off Jean's ATK.
       <br />
-      <br /><b>Dandelion Field</b>
+      <br /><b class="text-genshin-anemo">Dandelion Field</b>
       <br />- Continuously regenerates HP of characters within the AoE and continuously imbues them with <b class="text-genshin-anemo">Anemo</b>.
-      <br />- Deals <b class="text-genshin-anemo">Anemo DMG</b> to opponents entering or exiting the Dandelion Field.`,
+      <br />- Deals <b class="text-genshin-anemo">Anemo DMG</b> to opponents entering or exiting the <b class="text-genshin-anemo">Dandelion Field</b>.`,
+      image: 'Skill_E_Qin_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Wind Companion`,
       content: `On hit, Jean's Normal Attacks have a <span class="text-desc">50%</span> chance to regenerate HP equal to <span class="text-desc">15%</span> of Jean's ATK for all party members.`,
+      image: 'UI_Talent_S_Qin_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Let the Wind Lead`,
-      content: `Using Dandelion Breeze will regenerate <span class="text-desc">20%</span> of its Energy.`,
+      content: `Using <b>Dandelion Breeze</b> will regenerate <span class="text-desc">20%</span> of its Energy.`,
+      image: 'UI_Talent_S_Qin_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Guiding Breeze`,
       content: `When Perfect Cooking is achieved on a dish with restorative effects, there is a <span class="text-desc">12%</span> chance to obtain double the product.`,
+      image: 'UI_Talent_Cook_Heal',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Spiraling Tempest`,
-      content: `Increases the pulling speed of Gale Blade after holding for more than <span class="text-desc">1</span>s, and increases the DMG dealt by <span class="text-desc">40%</span>.`,
+      content: `Increases the pulling speed of <b>Gale Blade</b> after holding for more than <span class="text-desc">1</span>s, and increases the DMG dealt by <span class="text-desc">40%</span>.`,
+      image: 'UI_Talent_S_Qin_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `People's Aegis`,
       content: `When Jean picks up an Elemental Orb/Particle, all party members have their Movement SPD and ATK SPD increased by <span class="text-desc">15%</span> for <span class="text-desc">15</span>s.`,
+      image: 'UI_Talent_S_Qin_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `When the West Wind Arises`,
-      content: `Increases the Level of Dandelion Breeze by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Dandelion Breeze</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Qin_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Lands of Dandelion`,
-      content: `Within the Field created by Dandelion Breeze, all opponents have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">40%</span>.`,
+      content: `Within the Field created by <b>Dandelion Breeze</b>, all opponents have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">40%</span>.`,
+      image: 'UI_Talent_S_Qin_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Outbursting Gust`,
-      content: `Increases the Level of Gale Blade by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Gale Blade</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Qin_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Lion's Fang, Fair Protector of Mondstadt`,
-      content: `Incoming DMG is decreased by <span class="text-desc">35%</span> within the Field created by Dandelion Breeze. Upon leaving the Dandelion Field, this effect lasts for <span class="text-desc">3</span> attacks or <span class="text-desc">10</span>s.`,
+      content: `Incoming DMG is decreased by <span class="text-desc">35%</span> within the <b class="text-genshin-anemo">Field</b> created by <b>Dandelion Breeze</b>. Upon leaving the <b class="text-genshin-anemo">Dandelion Field</b>, this effect lasts for <span class="text-desc">3</span> attacks or <span class="text-desc">10</span>s.`,
+      image: 'UI_Talent_S_Qin_04',
     },
   }
 
@@ -241,16 +253,16 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.HEAL,
         })
 
-      if (form.jean_c2) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
-      if (form.jean_c4) base.ANEMO_RES_PEN.push({value: 0.4, name: '', source: ``})
-      if (form.jean_c6) base.DMG_REDUCTION.push({value: 0.35, name: '', source: ``})
+      if (form.jean_c2) base.ATK_SPD.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
+      if (form.jean_c4) base.ANEMO_RES_PEN.push({ value: 0.4, name: 'Constellation 4', source: `Self` })
+      if (form.jean_c6) base.DMG_REDUCTION.push({ value: 0.35, name: ' Constellation 6', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.jean_c2) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
-      if (form.jean_c4) base.ANEMO_RES_PEN.push({value: 0.4, name: '', source: ``})
-      if (form.jean_c6) base.DMG_REDUCTION.push({value: 0.35, name: '', source: ``})
+      if (form.jean_c2) base.ATK_SPD.push({ value: 0.15, name: 'Constellation 2', source: `Jean` })
+      if (form.jean_c4) base.ANEMO_RES_PEN.push({ value: 0.4, name: 'Constellation 4', source: `Jean` })
+      if (form.jean_c6) base.DMG_REDUCTION.push({ value: 0.35, name: 'Constellation 6', source: `Jean` })
 
       return base
     },

@@ -1119,6 +1119,7 @@ export const Characters = [
       ascHp: 4126.249,
       ascDef: 252.3339,
       ascStat: Stats.ER,
+      energy: 90
     },
     rarity: 5,
     region: 'Inazuma',

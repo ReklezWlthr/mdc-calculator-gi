@@ -30,12 +30,14 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Artistic Ingenuity`,
       content: `Uses Mehrak's mapping ability for offensive purposes, initiating a radial scan that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>. It will also scan all <b class="text-genshin-dendro">Dendro Cores</b> in its AoE and cause them to immediately burst.
       `,
+      image: 'Skill_S_Kaveh_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -45,54 +47,64 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       <br />- All <b class="text-genshin-dendro">Dendro Cores</b> created by all your own party members through Bloom reactions will deal additional DMG when they burst.
       <br />- Increases Kaveh's resistance to interruption
       <br />These effects will be canceled once Kaveh leaves the field.`,
+      image: 'Skill_E_Kaveh_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `An Architect's Undertaking`,
       content: `When DMG dealt by a <b class="text-genshin-dendro">Dendro Core</b> (including DMG from Burgeon and Hyperbloom) hits Kaveh, Kaveh will regain HP equal to <span class="text-desc">300%</span> of his Elemental Mastery. This effect can be triggered once every <span class="text-desc">0.5</span>s.`,
+      image: 'UI_Talent_S_Kaveh_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `A Craftsman's Curious Conceptions`,
-      content: `During Painted Dome, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by <span class="text-desc">25</span>. This effect can be triggered once every <span class="text-desc">0.1</span>s. Max <span class="text-desc">4</span> stacks.
-      <br />This effect will be canceled when Painted Dome's effects end.`,
+      content: `During <b>Painted Dome</b>, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by <span class="text-desc">25</span>. This effect can be triggered once every <span class="text-desc">0.1</span>s. Max <span class="text-desc">4</span> stacks.
+      <br />This effect will be canceled when <b>Painted Dome</b>'s effects end.`,
+      image: 'UI_Talent_S_Kaveh_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: 'The Art of Budgeting',
       content: `When Kaveh crafts Landscape, Building, and Courtyard-type Furnishings, he has a <span class="text-desc">100%</span> chance to refund a portion of the materials used.`,
+      image: 'UI_Talent_S_Kaveh_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Sublime Salutations`,
-      content: `Within 3s after using Artistic Ingenuity, Kaveh's <b class="text-genshin-dendro">Dendro RES</b> and Incoming Healing Bonus will be increased by <span class="text-desc">50%</span> and <span class="text-desc">25%</span> respectively.`,
+      content: `Within <span class="text-desc">3</span>s after using <b>Artistic Ingenuity</b>, Kaveh's <b class="text-genshin-dendro">Dendro RES</b> and Incoming Healing Bonus will be increased by <span class="text-desc">50%</span> and <span class="text-desc">25%</span> respectively.`,
+      image: 'UI_Talent_S_Kaveh_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Grace of Royal Roads`,
-      content: `Kaveh's Normal Attack SPD increases by <span class="text-desc">15%</span> during Painted Dome.`,
+      content: `Kaveh's Normal Attack SPD increases by <span class="text-desc">15%</span> during <b>Painted Dome</b>.`,
+      image: 'UI_Talent_S_Kaveh_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Profferings of Dur Untash`,
-      content: `Increases the Level of Painted Dome by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Painted Dome</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Kaveh_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Feast of Apadana`,
       content: `<b class="text-genshin-dendro">Dendro Cores</b> created from Bloom reactions Kaveh triggers will deal <span class="text-desc">60%</span> more DMG when they burst.`,
+      image: 'UI_Talent_S_Kaveh_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Treasures of Bonkhanak`,
-      content: `Increases the Level of Artistic Ingenuity by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Artistic Ingenuity</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Kaveh_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Pairidaeza's Dreams`,
-      content: `When Kaveh's Normal, Charged, or Plunging Attacks hit opponents during Painted Dome, they will unleash Pairidaeza's Light upon the opponent's position, dealing <span class="text-desc">61.8%</span> of Kaveh's ATK as <b class="text-genshin-dendro">AoE Dendro DMG</b> and causing all <b class="text-genshin-dendro">Dendro Cores</b> within that AoE to burst. This effect can be triggered once every <span class="text-desc">3</span>s.`,
+      content: `When Kaveh's Normal, Charged, or Plunging Attacks hit opponents during <b>Painted Dome</b>, they will unleash <b class="text-genshin-dendro">Pairidaeza's Light</b> upon the opponent's position, dealing <span class="text-desc">61.8%</span> of Kaveh's ATK as <b class="text-genshin-dendro">AoE Dendro DMG</b> and causing all <b class="text-genshin-dendro">Dendro Cores</b> within that AoE to burst. This effect can be triggered once every <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_Kaveh_04',
     },
   }
 
@@ -133,7 +145,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'kaveh_burst')]
 
   return {
     upgrade,
@@ -143,7 +155,6 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 80
 
       base.BASIC_SCALING = [
         {
@@ -207,11 +218,23 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       if (form.kaveh_burst) {
         base.infuse(Element.DENDRO, true)
         const bloomDmg = calcScaling(0.2749, burst, 'elemental', '1')
-        base.BLOOM_DMG += bloomDmg
-        base.HYPERBLOOM_DMG += bloomDmg
-        base.BURGEON_DMG += bloomDmg
+        base.BLOOM_DMG.push({
+          value: bloomDmg,
+          name: 'Painted Dome',
+          source: 'Self',
+        })
+        base.HYPERBLOOM_DMG.push({
+          value: bloomDmg,
+          name: 'Painted Dome',
+          source: 'Self',
+        })
+        base.BURGEON_DMG.push({
+          value: bloomDmg,
+          name: 'Painted Dome',
+          source: 'Self',
+        })
 
-        if (c >= 2) base.ATK_SPD.push({value: 0.15, name: '', source: ``})
+        if (c >= 2) base.ATK_SPD.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
       }
       if (a >= 1)
         base.SKILL_SCALING.push({
@@ -220,16 +243,16 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })
-      if (form.kaveh_a4) base[Stats.EM].push({value: 25 , name: '', source: ``})* form.kaveh_a4
+      if (form.kaveh_a4) base[Stats.EM].push({ value: 25 * form.kaveh_a4, name: 'Ascension 4 Passive', source: `Self` })
 
       if (form.kaveh_c1) {
-        base.DENDRO_RES.push({value: 0.5, name: '', source: ``})
-        base[Stats.I_HEALING].push({value: 0.25, name: '', source: ``})
+        base.DENDRO_RES.push({ value: 0.5, name: 'Constellation 1', source: `Self` })
+        base[Stats.I_HEALING].push({ value: 0.25, name: 'Constellation 1', source: `Self` })
       }
       if (form.kaveh_c4) {
-        base.BLOOM_DMG.push({value: 0.6, name: '', source: ``})
-        base.HYPERBLOOM_DMG.push({value: 0.6, name: '', source: ``})
-        base.BURGEON_DMG.push({value: 0.6, name: '', source: ``})
+        base.BLOOM_DMG.push({ value: 0.6, name: 'Constellation 4', source: `Self` })
+        base.HYPERBLOOM_DMG.push({ value: 0.6, name: 'Constellation 4', source: `Self` })
+        base.BURGEON_DMG.push({ value: 0.6, name: 'Constellation 4', source: `Self` })
       }
       if (c >= 6) {
         const kavehC6 = {
@@ -246,6 +269,26 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.kaveh_burst) {
+        base.infuse(Element.DENDRO, true)
+        const bloomDmg = calcScaling(0.2749, burst, 'elemental', '1')
+        base.BLOOM_DMG.push({
+          value: bloomDmg,
+          name: 'Painted Dome',
+          source: 'Kaveh',
+        })
+        base.HYPERBLOOM_DMG.push({
+          value: bloomDmg,
+          name: 'Painted Dome',
+          source: 'Kaveh',
+        })
+        base.BURGEON_DMG.push({
+          value: bloomDmg,
+          name: 'Painted Dome',
+          source: 'Kaveh',
+        })
+      }
+
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {

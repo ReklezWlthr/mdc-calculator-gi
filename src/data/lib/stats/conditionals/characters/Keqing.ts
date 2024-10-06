@@ -29,22 +29,24 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Stellar Restoration`,
-      content: `Hurls a Lightning Stiletto that annihilates her opponents like the swift thunder.
-      <br />When the Stiletto hits its target, it deals <b class="text-genshin-electro">Electro DMG</b> to opponents in a small AoE, and places a Stiletto Mark on the spot hit.
+      content: `Hurls a <b class="text-genshin-electro">Lightning Stiletto</b> that annihilates her opponents like the swift thunder.
+      <br />When the <b class="text-genshin-electro">Stiletto</b> hits its target, it deals <b class="text-genshin-electro">Electro DMG</b> to opponents in a small AoE, and places a <b class="text-genshin-electro">Stiletto Mark</b> on the spot hit.
       <br />
       <br /><b>Hold</b>
-      <br />Hold to adjust the direction in which the Stiletto shall be thrown.
-      <br />Stilettos thrown by the Hold attack mode can be suspended in mid-air, allowing Keqing to jump to them when using Stellar Restoration a second time.
+      <br />Hold to adjust the direction in which the <b class="text-genshin-electro">Stiletto</b> shall be thrown.
+      <br /><b class="text-genshin-electro">Stilettos</b> thrown by the Hold attack mode can be suspended in mid-air, allowing Keqing to jump to them when using <b>Stellar Restoration</b> a second time.
       <br />
-      <br /><b>Lightning Stiletto</b>
-      <br />If Keqing uses Stellar Restoration again or uses a Charged Attack while its duration lasts, it will clear the Stiletto Mark and produce different effects:
-      <br />- If she uses Stellar Restoration again, she will blink to the location of the Mark and unleash one slashing attack that deals <b class="text-genshin-electro">AoE Electro DMG</b>. When blinking to a Stiletto that was thrown from a Holding attack, Keqing can leap across obstructing terrain.
-      <br />- If Keqing uses a Charged Attack, she will ignite a series of thundering cuts at the Mark's location, dealing <b class="text-genshin-electro">AoE Electro DMG</b>.
+      <br /><b class="text-genshin-electro">Lightning Stiletto</b>
+      <br />If Keqing uses <b>Stellar Restoration</b> again or uses a Charged Attack while its duration lasts, it will clear the <b class="text-genshin-electro">Stiletto Mark</b> and produce different effects:
+      <br />- If she uses <b>Stellar Restoration</b> again, she will blink to the location of the <b class="text-genshin-electro">Mark</b> and unleash one slashing attack that deals <b class="text-genshin-electro">AoE Electro DMG</b>. When blinking to a <b class="text-genshin-electro">Stiletto</b> that was thrown from a Holding attack, Keqing can leap across obstructing terrain.
+      <br />- If Keqing uses a Charged Attack, she will ignite a series of thundering cuts at the <b class="text-genshin-electro">Mark</b>'s location, dealing <b class="text-genshin-electro">AoE Electro DMG</b>.
       `,
+      image: 'Skill_S_Keqing_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -52,55 +54,65 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
       content: `Keqing unleashes the power of lightning, dealing <b class="text-genshin-electro">Electro DMG</b> in an AOE.
       <br />She then blends into the shadow of her blade, striking a series of thunderclap-blows to nearby opponents simultaneously that deal multiple instances of <b class="text-genshin-electro">Electro DMG</b>.
       <br />The final attack deals massive <b class="text-genshin-electro">AoE Electro DMG</b>.`,
+      image: 'Skill_E_Keqing_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Thundering Penance`,
-      content: `After recasting Stellar Restoration while a Lightning Stiletto is present, Keqing's weapon gains an <b class="text-genshin-electro">Electro Infusion</b> for <span class="text-desc">5</span>s.`,
+      content: `After recasting <b>Stellar Restoration</b> while a <b class="text-genshin-electro">Lightning Stiletto</b> is present, Keqing's weapon gains an <b class="text-genshin-electro">Electro Infusion</b> for <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Keqing_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Aristocratic Dignity`,
-      content: `When casting Starward Sword, Keqing's CRIT Rate is increased by <span class="text-desc">15%</span>, and her Energy Recharge is increased by <span class="text-desc">15%</span>. This effect lasts for <span class="text-desc">8</span>s.`,
+      content: `When casting <b>Starward Sword</b>, Keqing's CRIT Rate is increased by <span class="text-desc">15%</span>, and her Energy Recharge is increased by <span class="text-desc">15%</span>. This effect lasts for <span class="text-desc">8</span>s.`,
+      image: 'UI_Talent_S_Keqing_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Land's Overseer`,
       content: `When dispatched on an expedition in Liyue, time consumed is reduced by <span class="text-desc">25%</span>.`,
+      image: 'UI_Talent_Expedition_Liyue',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Thundering Might`,
-      content: `Recasting Stellar Restoration while a Lightning Stiletto is present causes Keqing to deal <span class="text-desc">50%</span> of her ATK as <b class="text-genshin-electro">AoE Electro DMG</b> at the start point and terminus of her Blink.`,
+      content: `Recasting <b>Stellar Restoration</b> while a <b class="text-genshin-electro">Lightning Stiletto</b> is present causes Keqing to deal <span class="text-desc">50%</span> of her ATK as <b class="text-genshin-electro">AoE Electro DMG</b> at the start point and terminus of her Blink.`,
+      image: 'UI_Talent_S_Keqing_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Keen Extraction`,
       content: `When Keqing's Normal and Charged Attacks hit opponents affected by <b class="text-genshin-electro">Electro</b>, they have a <span class="text-desc">50%</span> chance of producing an Elemental Particle.
       <br />This effect can only occur once every <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Keqing_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Foreseen Reformation`,
-      content: `Increases the Level of Starward Sword by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Starward Sword</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Keqing_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Attunement`,
-      content: `For 10s after Keqing triggers an <b class="text-genshin-electro">Electro</b>-related Elemental Reaction, her ATK is increased by <span class="text-desc">25%</span>.`,
+      content: `For <span class="text-desc">10</span>s after Keqing triggers an <b class="text-genshin-electro">Electro</b>-related Elemental Reaction, her ATK is increased by <span class="text-desc">25%</span>.`,
+      image: 'UI_Talent_S_Keqing_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Beckoning Stars`,
-      content: `Increases the Level of Stellar Restoration by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Stellar Restoration</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Keqing_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Tenacious Star`,
-      content: `When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a <span class="text-desc">6%</span> <b class="text-genshin-electro">Electro DMG Bonus</b> for 8s.
+      content: `When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a <span class="text-desc">6%</span> <b class="text-genshin-electro">Electro DMG Bonus</b> for <span class="text-desc">8</span>s.
       <br />Effects triggered by Normal Attacks, Charged Attacks, Elemental Skills and Elemental Bursts are considered independent entities.`,
+      image: 'UI_Talent_S_Keqing_04',
     },
   }
 
@@ -250,8 +262,8 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.keq_infusion) base.infuse(Element.ELECTRO)
       if (form.keq_a4) {
-        base[Stats.CRIT_RATE].push({value: 0.15, name: '', source: ``})
-        base[Stats.ER].push({value: 0.15, name: '', source: ``})
+        base[Stats.CRIT_RATE].push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
+        base[Stats.ER].push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
       }
       if (c >= 1)
         base.SKILL_SCALING.push({
@@ -260,8 +272,9 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.SKILL,
         })
-      if (form.keq_c4) base[Stats.P_ATK].push({value: 0.25, name: '', source: ``})
-      if (form.keq_c6) base[Stats.ELECTRO_DMG].push({value: 0.06, name: '', source: ``}) * form.keq_c6
+      if (form.keq_c4) base[Stats.P_ATK].push({ value: 0.25, name: 'Constellation 4', source: `Self` })
+      if (form.keq_c6)
+        base[Stats.ELECTRO_DMG].push({ value: 0.06, name: 'Constellation 6', source: `Self` }) * form.keq_c6
 
       return base
     },

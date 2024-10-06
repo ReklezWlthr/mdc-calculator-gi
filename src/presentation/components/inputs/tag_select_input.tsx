@@ -3,6 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { Badge } from './badge'
+import { CheckboxInput } from './checkbox'
 
 type TagSelectInputProps = {
   label?: string
@@ -102,12 +103,7 @@ export const TagSelectInput = ({
                     onToggleSelection(item.value)
                 }}
               >
-                <input
-                  className="border rounded cursor-pointer border-dark-4 focus:ring-0 text-primary"
-                  checked={isSelected(item.value)}
-                  type="checkbox"
-                  name="none"
-                />
+                <CheckboxInput checked={isSelected(item.value)} onClick={() => {}} />
                 {item.img && <img src={item.img} className="object-cover w-5 h-5" />}
                 <span className="block truncate">{item.name}</span>
               </div>

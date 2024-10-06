@@ -27,17 +27,18 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       <br />Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
       <br />
       <br /><b>Plunging Attack</b>
-      <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact. If this Plunging Attack is triggered by Chihayaburu, it will be converted to Plunging Attack: Midare Ranzan.
+      <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact. If this Plunging Attack is triggered by <b>Chihayaburu</b>, it will be converted to <b>Plunging Attack: Midare Ranzan</b>.
       <br />
       <br /><b>Plunging Attack: Midare Ranzan</b>
-      <br />When a Plunging Attack is performed using the effects of the Elemental Skill Chihayaburu, Plunging Attack DMG is converted to <b class="text-genshin-anemo">Anemo DMG</b> and will create a small wind tunnel via a secret blade technique that pulls in nearby objects and opponents.
+      <br />When a Plunging Attack is performed using the effects of the Elemental Skill <b>Chihayaburu</b>, Plunging Attack DMG is converted to <b class="text-genshin-anemo">Anemo DMG</b> and will create a small wind tunnel via a secret blade technique that pulls in nearby objects and opponents.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Chihayaburu`,
       content: `Unleashes a secret technique as fierce as the rushing wind that pulls objects and opponents towards Kazuha's current position before launching opponents within the AoE, dealing <b class="text-genshin-anemo">Anemo DMG</b> and lifting Kazuha into the air on a rushing gust of wind.
-      <br />Within <span class="text-desc">10</span>s of remaining airborne after casting Chihayaburu, Kazuha can unleash a powerful Plunging Attack known as Midare Ranzan.
+      <br />Within <span class="text-desc">10</span>s of remaining airborne after casting <b>Chihayaburu</b>, Kazuha can unleash a powerful Plunging Attack known as <b>Midare Ranzan</b>.
       <br />
       <br /><b>Press</b>
       <br />Can be used in mid-air.
@@ -46,75 +47,86 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       <br />Charges up before unleashing greater <b class="text-genshin-anemo">Anemo DMG</b> over a larger AoE than <b>Press</b> Mode.
       <br />
       <br /><b>Plunging Attack: Midare Ranzan</b>
-      <br />When a Plunging Attack is performed using the effects of the Elemental Skill Chihayaburu, Plunging Attack DMG is converted to <b class="text-genshin-anemo">Anemo DMG</b>. On landing, Kazuha creates a small wind tunnel via a secret blade technique that pulls in nearby objects and opponents.
-      <br />Midare Ranzan's DMG is considered Plunging Attack DMG.
+      <br />When a Plunging Attack is performed using the effects of the Elemental Skill <b>Chihayaburu</b>, Plunging Attack DMG is converted to <b class="text-genshin-anemo">Anemo DMG</b>. On landing, Kazuha creates a small wind tunnel via a secret blade technique that pulls in nearby objects and opponents.
+      <br /><b>Midare Ranzan</b>'s DMG is considered Plunging Attack DMG.
       `,
+      image: 'Skill_S_Kazuha_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Kazuha Slash`,
       content: `The signature technique of Kazuha's self-styled bladework — a single slash that strikes with the force of the first winds of autumn, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.
-      <br />The blade's passage will leave behind a field named "Autumn Whirlwind" that periodically deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to opponents within its range.
+      <br />The blade's passage will leave behind a field named <b>Autumn Whirlwind</b> that periodically deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to opponents within its range.
       <br />
       <br /><b>Elemental Absorption</b>
-      <br />If Autumn Whirlwind comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, it will deal additional elemental DMG of that type.
+      <br />If <b>Autumn Whirlwind</b> comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, it will deal additional elemental DMG of that type.
       <br />Elemental Absorption may only occur once per use.`,
+      image: 'Skill_E_Kazuha_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Soumon Swordsmanship`,
-      content: `If Chihayaburu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when cast, Chihayaburu will absorb that element and if Plunging Attack: Midare Ranzan is used before the effect expires, it will deal an additional <span class="text-desc">200%</span> ATK of the absorbed elemental type as DMG. This will be considered Plunging Attack DMG.
-      <br />Elemental Absorption may only occur once per use of Chihayaburu.`,
+      content: `If <b>Chihayaburu</b> comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when cast, <b>Chihayaburu</b> will absorb that element and if <b>Plunging Attack: Midare Ranzan</b> is used before the effect expires, it will deal an additional <span class="text-desc">200%</span> ATK of the absorbed elemental type as DMG. This will be considered Plunging Attack DMG.
+      <br />Elemental Absorption may only occur once per use of <b>Chihayaburu</b>.`,
+      image: 'UI_Talent_S_Kazuha_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Poetics of Fuubutsu`,
-      content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-desc">0.04%</span> Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for 8s. Bonuses for different elements obtained through this method can co-exist.`,
+      content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-desc">0.04%</span> Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for <span class="text-desc">8</span>s. Bonuses for different elements obtained through this method can co-exist.`,
+      image: 'UI_Talent_S_Kazuha_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Cloud Strider`,
       content: `Decreases sprinting Stamina consumption for your own party members by <span class="text-desc">20%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_Explosion_Sprint',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Scarlet Hills`,
-      content: `Decreases Chihayaburu's CD by <span class="text-desc">10%</span>.
-      <br />Using Kazuha Slash resets the CD of Chihayaburu.`,
+      content: `Decreases <b>Chihayaburu</b>'s CD by <span class="text-desc">10%</span>.
+      <br />Using <b>Kazuha Slash</b> resets the CD of <b>Chihayaburu</b>.`,
+      image: 'UI_Talent_S_Kazuha_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Yamaarashi Tailwind`,
-      content: `The Autumn Whirlwind field created by Kazuha Slash has the following effects:
+      content: `The <b>Autumn Whirlwind</b> field created by <b>Kazuha Slash</b> has the following effects:
       <br />- Increases Kaedehara Kazuha's own Elemental Mastery by <span class="text-desc">200</span> for its duration.
       <br />- Increases the Elemental Mastery of characters within the field by <span class="text-desc">200</span>.
       <br />
       <br />The Elemental Mastery-increasing effects of this Constellation do not stack.`,
+      image: 'UI_Talent_S_Kazuha_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Maple Monogatari`,
-      content: `Increases the Level of Chihayaburu by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Chihayaburu</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Kazuha_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Oozora Genpou`,
       content: `When Kaedehara Kazuha's Energy is lower than <span class="text-desc">45</span>, he obtains the following effects:
-      <br /><b>Pressing</b> or <b>Holding</b> Chihayaburu regenerates <span class="text-desc">3</span> or <span class="text-desc">4</span> Energy for Kaedehara Kazuha, respectively.
+      <br /><Pressing or Holding <b>Chihayaburu</b> regenerates <span class="text-desc">3</span> or <span class="text-desc">4</span> Energy for Kaedehara Kazuha, respectively.
       <br />When gliding, Kaedehara Kazuha regenerates <span class="text-desc">2</span> Energy per second.`,
+      image: 'UI_Talent_S_Kazuha_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Wisdom of Bansei`,
-      content: `Increases the Level of Kazuha Slash by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Kazuha Slash</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Kazuha_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Crimson Momiji`,
-      content: `After using Chihayaburu or Kazuha Slash, Kaedehara Kazuha gains an <b class="text-genshin-anemo">Anemo Infusion</b> for 5s. Additionally, each point of Elemental Mastery will increase the DMG dealt by Kaedehara Kazuha's Normal, Charged, and Plunging Attacks by <span class="text-desc">0.2%</span>.`,
+      content: `After using <b>Chihayaburu</b> or <b>Kazuha Slash</b>, Kaedehara Kazuha gains an <b class="text-genshin-anemo">Anemo Infusion</b> for 5s. Additionally, each point of Elemental Mastery will increase the DMG dealt by Kaedehara Kazuha's Normal, Charged, and Plunging Attacks by <span class="text-desc">0.2%</span>.`,
+      image: 'UI_Talent_S_Kazuha_04',
     },
   }
 
@@ -144,12 +156,12 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       default: Element.PYRO,
     },
     {
-      type: 'element',
+      type: 'multiple',
       id: 'a4_swirl',
       text: `A4 Swirl Buff`,
       ...talents.a4,
       show: a >= 4,
-      default: Element.PYRO,
+      default: [],
     },
     {
       type: 'toggle',
@@ -280,23 +292,39 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.PA,
         })
 
-      if (form.kazu_c2) base[Stats.EM].push({value: 200, name: '', source: ``})
+      if (form.kazu_c2) base[Stats.EM].push({ value: 200, name: 'Constellation 2', source: `Self` })
       if (form.kazu_c6_infusion) base.infuse(Element.ANEMO)
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
-      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`].push({value: 0.0004, name: '', source: ``}) * own[Stats.EM]
-      if (aForm.kazu_c2) base[Stats.EM].push({value: 200, name: '', source: ``})
+      if (_.size(form.a4_swirl)) {
+        _.forEach(form.a4_swirl, (item) =>
+          base[`${item} DMG%`].push({
+            value: 0.0004 * own.getValue(Stats.EM),
+            name: 'Ascension 4 Passive',
+            source: `Kaedehara Kazuha`,
+          })
+        )
+      }
+      if (aForm.kazu_c2) base[Stats.EM].push({ value: 200, name: 'Constellation 2', source: `Kaedehara Kazuha` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.a4_swirl) base[`${form.a4_swirl} DMG%`].push({value: 0.0004, name: '', source: ``}) * base[Stats.EM]
+      if (_.size(form.a4_swirl)) {
+        _.forEach(form.a4_swirl, (item) =>
+          base[`${item} DMG%`].push({
+            value: 0.0004 * base.getValue(Stats.EM),
+            name: 'Ascension 4 Passive',
+            source: `Self`,
+          })
+        )
+      }
       if (c >= 6) {
-        base.BASIC_DMG.push({value: 0.002, name: '', source: ``}) * base[Stats.EM]
-        base.CHARGE_DMG.push({value: 0.002, name: '', source: ``}) * base[Stats.EM]
-        base.PLUNGE_DMG.push({value: 0.002, name: '', source: ``}) * base[Stats.EM]
+        base.BASIC_DMG.push({ value: 0.002 * base.getValue(Stats.EM), name: 'Constellation 6', source: `Self` })
+        base.CHARGE_DMG.push({ value: 0.002 * base.getValue(Stats.EM), name: 'Constellation 6', source: `Self` })
+        base.PLUNGE_DMG.push({ value: 0.002 * base.getValue(Stats.EM), name: 'Constellation 6', source: `Self` })
       }
 
       return base

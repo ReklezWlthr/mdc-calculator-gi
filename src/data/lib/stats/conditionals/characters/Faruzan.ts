@@ -254,7 +254,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
           name: 'Hurricane Guard',
           source: 'Faruzan',
           base: own.BASE_ATK,
-          multiplier: 0.32,
+          multiplier: toPercentage(0.32),
         })
 
       if (form.faruzan_burst && c >= 6)
@@ -271,7 +271,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
             name: 'Hurricane Guard',
             source: 'Self',
             base: base.BASE_ATK,
-            multiplier: 0.32,
+            multiplier: toPercentage(0.32),
           })
       if (form.faruzan_burst && c >= 6)
         base.ANEMO_CD.push({ value: 0.4, name: `Prayerful Wind's Benefit`, source: `Self` })

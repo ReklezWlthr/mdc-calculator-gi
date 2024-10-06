@@ -480,6 +480,7 @@ export const MyCharacters = observer(() => {
                   <div className="flex items-center gap-3">
                     <TalentIcon
                       talent={charCond?.talents?.bonus}
+                      type={charCond?.talents?.bonus?.trace}
                       element={charData?.element}
                       size="w-12 h-12"
                       tooltipSize="w-[450px]"

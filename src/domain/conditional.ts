@@ -25,13 +25,13 @@ export interface IWeaponContent {
 }
 
 export interface IContent {
-  type?: 'toggle' | 'number' | 'element'
+  type?: 'toggle' | 'number' | 'element' | 'multiple'
   id: string
   text: string
   title: string
   content: string
   show: boolean
-  default?: number | boolean | Element
+  default?: number | boolean | Element | []
   max?: number
   min?: number
   debuff?: boolean

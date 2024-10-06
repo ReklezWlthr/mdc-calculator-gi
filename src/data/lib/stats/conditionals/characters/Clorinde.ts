@@ -341,14 +341,14 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           name: 'Ascension 1 Passive',
           source: 'Self',
           base: base.getAtk(),
-          multiplier: form.clorinde_a1 * flatStack,
+          multiplier: toPercentage(form.clorinde_a1 * flatStack),
         })
         base.BURST_F_DMG.push({
           value: _.min([maxFlat, form.clorinde_a1 * flatStack * base.getAtk()]),
           name: 'Ascension 1 Passive',
           source: 'Self',
           base: base.getAtk(),
-          multiplier: form.clorinde_a1 * flatStack,
+          multiplier: toPercentage(form.clorinde_a1 * flatStack),
         })
       }
 

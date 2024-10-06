@@ -78,7 +78,7 @@ const Kachina = (c: number, a: number, t: ITalentLevel) => {
     },
     bonus: {
       trace: `Night Realm's Gift`,
-      title: `Night Realm's Gift: Heart of Unity`,
+      title: `Heart of Unity`,
       content: `After her <b class="text-genshin-geo">Nightsoul</b> points are depleted, Kachina will switch to consuming <b class="text-genshin-pyro">Phlogiston</b> to maintain her <b class="text-genshin-geo">Nightsoul's Blessing</b>.
       <br />While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, she can use <b>Nightsoul Transmission: Kachina</b>. When the active character is currently sprinting, climbing, in a movement mode caused by certain Talents, or at a certain height in the air, the following will trigger when switching to Kachina: Kachina will enter the <b class="text-genshin-geo">Nightsoul's Blessing</b> state and ride Turbo Twirly when taking the field while gaining <span class="text-desc">30</span> <b class="text-genshin-geo">Nightsoul</b> points. <b>Nightsoul Transmission</b> can be triggered once every <span class="text-desc">10</span>s by your own team.
       <br />

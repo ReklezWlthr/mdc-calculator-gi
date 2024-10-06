@@ -210,7 +210,48 @@ export const StatsModal = observer(
             </div>
           </div>
         </Collapsible>
-        <Collapsible label="RES PEN">
+        <Collapsible label="Reaction DMG">
+          <div className="grid grid-cols-2 gap-10">
+            <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="Vaporize DMG Bonus" array={stats.VAPE_DMG} />
+              <AttributeBlock stats={stats} stat="Melt DMG Bonus" array={stats.MELT_DMG} />
+              <AttributeBlock stats={stats} stat="Electro-Charged DMG Bonus" array={stats.TASER_DMG} />
+              <AttributeBlock stats={stats} stat="Overloaded DMG Bonus" array={stats.OVERLOAD_DMG} />
+              <AttributeBlock stats={stats} stat="Superconduct DMG Bonus" array={stats.SUPERCONDUCT_DMG} />
+              <AttributeBlock stats={stats} stat="Swirl DMG Bonus" array={stats.SWIRL_DMG} />
+              <AttributeBlock stats={stats} stat="Hydro Swirl DMG Bonus" array={stats.HYDRO_SWIRL_DMG} />
+            </div>
+            <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="Bloom DMG Bonus" array={stats.BLOOM_DMG} />
+              <AttributeBlock stats={stats} stat="Hyperbloom DMG Bonus" array={stats.HYPERBLOOM_DMG} />
+              <AttributeBlock stats={stats} stat="Burgeon DMG Bonus" array={stats.BURGEON_DMG} />
+              <AttributeBlock stats={stats} stat="Burning DMG Bonus" array={stats.BURNING_DMG} />
+              <AttributeBlock stats={stats} stat="Spread DMG Bonus" array={stats.SPREAD_DMG} />
+              <AttributeBlock stats={stats} stat="Aggravate DMG Bonus" array={stats.AGGRAVATE_DMG} />
+              <AttributeBlock stats={stats} stat="Shatter DMG Bonus" array={stats.SHATTER_DMG} />
+            </div>
+          </div>
+        </Collapsible>
+        <Collapsible
+          label={
+            <div className="flex items-center gap-2">
+              <p>RES PEN & Reduction</p>
+              <Tooltip
+                title="Regarding RES Reduction"
+                body={
+                  <p className="font-normal">
+                    This calculator treats RES Reduction on the target enemy as RES PEN to all party members due to both
+                    stats sharing the same multiplier.
+                  </p>
+                }
+                position="right"
+                style="w-[350px]"
+              >
+                <i className="text-normal fa-regular fa-question-circle text-gray" />
+              </Tooltip>
+            </div>
+          }
+        >
           <div className="grid grid-cols-2 gap-10">
             <div className="space-y-2">
               <AttributeBlock stats={stats} stat="All-Type RES PEN" array={stats.ALL_TYPE_RES_PEN} />
@@ -218,6 +259,8 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Pyro RES PEN" array={stats.PYRO_RES_PEN} />
               <AttributeBlock stats={stats} stat="Hydro RES PEN" array={stats.HYDRO_RES_PEN} />
               <AttributeBlock stats={stats} stat="Cryo RES PEN" array={stats.CRYO_RES_PEN} />
+            </div>
+            <div className="space-y-2">
               <AttributeBlock stats={stats} stat="Electro RES PEN" array={stats.ELECTRO_RES_PEN} />
               <AttributeBlock stats={stats} stat="Anemo RES PEN" array={stats.ANEMO_RES_PEN} />
               <AttributeBlock stats={stats} stat="Geo RES PEN" array={stats.GEO_RES_PEN} />
@@ -252,6 +295,27 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Anemo CRIT DMG" array={stats.ANEMO_CD} />
               <AttributeBlock stats={stats} stat="Geo CRIT DMG" array={stats.GEO_CD} />
               <AttributeBlock stats={stats} stat="Dendro CRIT DMG" array={stats.DENDRO_CD} />
+            </div>
+          </div>
+        </Collapsible>
+        <Collapsible label="Flat DMG Bonus">
+          <div className="grid grid-cols-2 gap-10">
+            <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="Normal Attack Flat Bonus" array={stats.BASIC_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Charged Attack Flat Bonus" array={stats.CHARGE_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Plunging Attack Flat Bonus" array={stats.PLUNGE_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Elemental Skill Flat Bonus" array={stats.SKILL_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Elemental Burst Flat Bonus" array={stats.BURST_F_DMG} flat />
+            </div>
+            <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="Physical Flat Bonus" array={stats.PHYSICAL_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Pyro Flat Bonus" array={stats.PYRO_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Hydro Flat Bonus" array={stats.HYDRO_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Cryo Flat Bonus" array={stats.CRYO_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Electro Flat Bonus" array={stats.ELECTRO_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Anemo Flat Bonus" array={stats.ANEMO_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Geo Flat Bonus" array={stats.GEO_F_DMG} flat />
+              <AttributeBlock stats={stats} stat="Dendro Flat Bonus" array={stats.DENDRO_F_DMG} flat />
             </div>
           </div>
         </Collapsible>

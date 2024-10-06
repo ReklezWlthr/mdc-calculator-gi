@@ -29,84 +29,86 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Sanctifying Ring`,
-      content: `Creates a Grass Ring of Sanctification at the cost of part of her HP, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.
+      content: `Creates a <b>Grass Ring of Sanctification</b> at the cost of part of her HP, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.
       <br />
       <br /><b>Grass Ring of Sanctification</b>
       <br />Follows your current active character around. Deals <b class="text-genshin-electro">Electro DMG</b> to nearby opponents every <span class="text-desc">1.5</span>s and restores HP for the active character(s) within the ring's AoE based on Kuki Shinobu's Max HP.
       <br />
       <br />The HP consumption from using this skill can only bring her to <span class="text-desc">20%</span> HP.
       `,
+      image: 'Skill_S_Shinobu_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Gyoei Narukami Kariyama Rite`,
       content: `Stabs an evil-excoriating blade into the ground, creating a field that cleanses the area of all that is foul, dealing continuous <b class="text-genshin-electro">Electro DMG</b> to opponents within its AoE based on Shinobu's Max HP.
       <br />If Shinobu's HP is less than or equal to <span class="text-desc">50%</span> when this skill is used, the field will last longer.`,
+      image: 'Skill_E_Shinobu_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Breaking Free`,
       content: `When Shinobu's HP is not higher than <span class="text-desc">50%</span>, her Healing Bonus is increased by <span class="text-desc">15%</span>.`,
+      image: 'UI_Talent_S_Shinobu_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Heart's Repose`,
-      content: `Sanctifying Ring's abilities will be boosted based on Shinobu's Elemental Mastery:
+      content: `<b>Sanctifying Ring</b>'s abilities will be boosted based on Shinobu's Elemental Mastery:
       <br />- Healing amount will be increased by <span class="text-desc">75%</span> of Elemental Mastery.
       <br />- DMG dealt is increased by <span class="text-desc">25%</span> of Elemental Mastery.`,
-      value: [
-        {
-          name: 'Bonus Healing',
-          value: { stat: Stats.EM, scaling: (em) => _.round(em * 0.75).toLocaleString() },
-        },
-        {
-          name: 'DMG Bonus',
-          value: { stat: Stats.EM, scaling: (em) => _.round(em * 0.25).toLocaleString() },
-        },
-      ],
+      image: 'UI_Talent_S_Shinobu_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Protracted Prayers`,
       content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on an Inazuma Expedition for 20 hours.`,
+      image: 'UI_Talent_S_Shinobu_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `To Cloister Compassion`,
-      content: `Gyoei Narukami Kariyama Rite's AoE is increased by <span class="text-desc">50%</span>.`,
+      content: `<b>Gyoei Narukami Kariyama Rite</b>'s AoE is increased by <span class="text-desc">50%</span>.`,
+      image: 'UI_Talent_S_Shinobu_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `To Forsake Fortune`,
-      content: `Grass Ring of Sanctification's duration is increased by <span class="text-desc">3</span>s.`,
+      content: `<b>Grass Ring of Sanctification</b>'s duration is increased by <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_Shinobu_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `To Sequester Sorrow`,
-      content: `Increases the Level of Sanctifying Ring by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Sanctifying Ring</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Shinobu_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `To Sever Sealing`,
-      content: `When the Normal, Charged, or Plunging Attacks of the character affected by Shinobu's Grass Ring of Sanctification hit opponents, a Thundergrass Mark will land on the opponent's position and deal <b class="text-genshin-electro">AoE Electro DMG</b> based on <span class="text-desc">9.7%</span> of Shinobu's Max HP.
+      content: `When the Normal, Charged, or Plunging Attacks of the character affected by Shinobu's <b>Grass Ring of Sanctification</b> hit opponents, a <b class="text-genshin-electro">Thundergrass Mark</b> will land on the opponent's position and deal <b class="text-genshin-electro">AoE Electro DMG</b> based on <span class="text-desc">9.7%</span> of Shinobu's Max HP.
       <br />This effect can occur once every <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Shinobu_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `To Cease Courtesies`,
-      content: `Increases the Level of Gyoei Narukami Kariyama Rite by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Gyoei Narukami Kariyama Rite</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Shinobu_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `To Ward Weakness`,
       content: `When Kuki Shinobu takes lethal DMG, this instance of DMG will not take her down. This effect will automatically trigger when her HP reaches <span class="text-desc">1</span> and will trigger once every <span class="text-desc">60</span>s.
       <br />When Shinobu's HP drops below <span class="text-desc">25%</span>, she will gain <span class="text-desc">150</span> Elemental Mastery for <span class="text-desc">15</span>s. This effect will trigger once every <span class="text-desc">60</span>s.`,
+      image: 'UI_Talent_S_Shinobu_04',
     },
   }
 
@@ -215,19 +217,21 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
         },
         {
           name: 'Total DMG',
-          value: [{ scaling: calcScaling(0.2523, burst, 'elemental', '1'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.036, burst, 'elemental', '1'), multiplier: Stats.HP }],
           element: Element.ELECTRO,
           property: TalentProperty.BURST,
+          multiplier: 7,
         },
         {
           name: 'Low HP Total DMG',
-          value: [{ scaling: calcScaling(0.4326, burst, 'elemental', '1'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.036, burst, 'elemental', '1'), multiplier: Stats.HP }],
           element: Element.ELECTRO,
           property: TalentProperty.BURST,
+          multiplier: 12,
         },
       ]
 
-      if (form.kuki_low) base[Stats.HEAL].push({value: 0.15, name: '', source: ``})
+      if (form.kuki_low) base[Stats.HEAL].push({ value: 0.15, name: 'Ascension 1 Passive', source: `Self` })
       if (c >= 4)
         base.SKILL_SCALING.push({
           name: 'Thundergrass Mark DMG',
@@ -235,7 +239,7 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
           element: Element.ELECTRO,
           property: TalentProperty.ADD,
         })
-      if (form.kuki_c6) base[Stats.EM].push({value: 125, name: '', source: ``})
+      if (form.kuki_c6) base[Stats.EM].push({ value: 125, name: 'Constellation 6', source: `Self` })
 
       return base
     },
