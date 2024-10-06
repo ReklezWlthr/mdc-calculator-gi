@@ -1374,28 +1374,6 @@ export const WeaponConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'toggle',
-    text: `Team ATK/EM Bonus`,
-    show: true,
-    default: true,
-    id: '14511',
-    scaling: (base, form, r, { team, element }) => {
-      if (form['14511']) {
-        const elements = _.map(team, (item) => findCharacter(item.cId)?.element)
-        const same = _.filter(elements, (item) => item === element).length - 1
-        const diff = _.filter(elements, (item) => item !== element).length
-
-        base[Stats.EM].push({ value: calcRefinement(32, 8, r), name: 'Passive', source: `` }) * same
-        base[Stats[`${element.toUpperCase()}_DMG`]].push({
-          value: calcRefinement(0.1, 0.04, r),
-          name: 'Passive',
-          source: ``,
-        }) * diff
-      }
-      return base
-    },
-  },
-  {
     type: 'number',
     text: `Normal ATK DMG Stacks`,
     show: true,
@@ -1777,7 +1755,7 @@ export const WeaponConditionals: IWeaponContent[] = [
       if (form['15511'])
         base.CALLBACK.push((base: StatsObject) => {
           base.CHARGE_F_DMG.push({
-            value: calcRefinement(1.6, 0.4, r) * base.getValue(Stats.EM),
+            value: calcRefinement(1.6, 0.4, r) * base.getEM(),
             name: 'Tireless Hunt',
             source: `Hunter's Path`,
           })
@@ -2075,18 +2053,6 @@ export const WeaponConditionals: IWeaponContent[] = [
 export const WeaponAllyConditionals: IWeaponContent[] = [
   {
     type: 'toggle',
-    text: `A Thousand Floating Dreams EM Share`,
-    show: true,
-    default: true,
-    id: '14511_a',
-    scaling: (base, form, r, { owner }) => {
-      if (form['14511_a_' + owner])
-        base[Stats.EM].push({ value: calcRefinement(40, 2, r), name: 'Passive', source: `` })
-      return base
-    },
-  },
-  {
-    type: 'toggle',
     text: `Electro Reaction Bonus`,
     show: true,
     default: false,
@@ -2149,7 +2115,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
       if (form['11418_2_' + owner])
         base.CALLBACK.push((base: StatsObject) => {
           base[Stats.ER].push({
-            value: own.getValue(Stats.EM) * calcRefinement(0.00036, 0.00009, r) * 0.3,
+            value: own.getEM() * calcRefinement(0.00036, 0.00009, r) * 0.3,
             name: 'Passive',
             source: `Xiphos' Moonglow`,
           })
@@ -2183,7 +2149,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
       if (form['12415_a'])
         base.CALLBACK.push((base: StatsObject) => {
           base[Stats.ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` }) *
-            own.getValue(Stats.EM) *
+            own.getEM() *
             0.3
           return base
         })
@@ -2212,7 +2178,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
       if (form['14416_a_' + owner])
         base.CALLBACK.push((base: StatsObject) => {
           base[Stats.ATK].push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `` }) *
-            own.getValue(Stats.EM) *
+            own.getEM() *
             0.3
           return base
         })

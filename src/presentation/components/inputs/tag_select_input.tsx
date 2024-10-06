@@ -20,6 +20,7 @@ type TagSelectInputProps = {
   classLabel?: string
   renderAsText?: boolean
   maxSelection?: number
+  small?: boolean
 }
 
 export const TagSelectInput = ({
@@ -33,6 +34,7 @@ export const TagSelectInput = ({
   classLabel = '',
   renderAsText = false,
   maxSelection,
+  small,
 }: TagSelectInputProps) => {
   //---------------------
   // HANDLER
@@ -75,14 +77,21 @@ export const TagSelectInput = ({
         {label && <p className={classNames('mb-1', { 'bodyM text-dark-0': !classLabel }, classLabel)}>{label}</p>}
         <Popover.Button
           className={classNames(
-            'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full min-h-[30px]',
+            'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg transition-all duration-300 w-full',
             { 'cursor-not-allowed bg-primary-bg border-primary text-primary-light': disabled },
             { 'cursor-pointer hover:border-primary-lighter bg-primary-darker border-primary-light': !disabled },
             { 'text-gray': _.size(values) },
             { 'text-primary-light': !_.size(values) }
           )}
         >
-          <div className="flex flex-wrap gap-x-2 gap-y-1">{_.size(values) ? tagRender() : placeholder}</div>
+          <div
+            className={classNames(
+              'w-full truncate text-start flex flex-wrap gap-x-2 gap-y-1',
+              small ? 'text-xs' : 'text-sm'
+            )}
+          >
+            {_.size(values) ? tagRender() : placeholder}
+          </div>
         </Popover.Button>
         <Transition
           enter="transition duration-150 ease-out origin-top"
@@ -93,7 +102,12 @@ export const TagSelectInput = ({
           leaveTo="transform scale-y-0 opacity-0"
           className="relative z-[1000]"
         >
-          <Popover.Panel className="absolute z-50 w-full mt-1 overflow-auto text-sm text-white rounded-md bg-primary-darker max-h-60 dropdownScrollbar">
+          <Popover.Panel
+            className={classNames(
+              'absolute z-50 w-full mt-1 overflow-auto text-white rounded-md bg-primary-darker max-h-60 dropdownScrollbar ring-1 ring-primary-lighter ring-inset ring-opacity-20',
+              small ? 'text-xs' : 'text-sm'
+            )}
+          >
             {_.map(options, (item) => (
               <div
                 key={item.value}
@@ -103,7 +117,7 @@ export const TagSelectInput = ({
                     onToggleSelection(item.value)
                 }}
               >
-                <CheckboxInput checked={isSelected(item.value)} onClick={() => {}} />
+                <CheckboxInput checked={isSelected(item.value)} onClick={() => {}} small={small} />
                 {item.img && <img src={item.img} className="object-cover w-5 h-5" />}
                 <span className="block truncate">{item.name}</span>
               </div>

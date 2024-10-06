@@ -1,6 +1,6 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
-import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
+import { baseStatsObject, getPlungeScaling, StatsObject, StatsObjectKeys } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { toPercentage } from '@src/core/utils/converter'
@@ -287,22 +287,22 @@ const Nahida = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     ) => {
       const index = _.findIndex(team, (item) => item.cId === '10000073')
       _.last(allBase).CALLBACK.push((x, a) => {
-        const em = _.min([_.max(_.map(a, (item) => item.getValue(Stats.EM))) * 0.25, 250])
+        const em = _.min([_.max(_.map(a, (item) => item.getEM(true))) * 0.25, 250])
         _.forEach(a, (member, i) => {
           if (allForm[i]?.nahida_em_share)
-            member[Stats.EM].push({
+            member[StatsObjectKeys.X_EM].push({
               value: em,
               name: 'Ascension 1 Passive',
               source: i === index ? 'Self' : 'Nahida',
-              base: _.min([_.max(_.map(a, (item) => item.getValue(Stats.EM))), 1000]),
+              base: _.min([_.max(_.map(a, (item) => item.getEM())), 1000]),
               multiplier: toPercentage(0.25),
             })
         })
         return x
       })
 
-      const a4Dmg = _.min([0.001 * _.max([base.getValue(Stats.EM) - 200, 0]), 0.8])
-      const a4Cr = _.min([0.0003 * _.max([base.getValue(Stats.EM) - 200, 0]), 0.24])
+      const a4Dmg = _.min([0.001 * _.max([base.getEM() - 200, 0]), 0.8])
+      const a4Cr = _.min([0.0003 * _.max([base.getEM() - 200, 0]), 0.24])
       base.SKILL_SCALING.push({
         name: 'Tri-Karma Purification',
         value: [

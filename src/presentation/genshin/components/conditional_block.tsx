@@ -9,7 +9,7 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { Dispatch, SetStateAction, useState } from 'react'
+import React, { useState } from 'react'
 
 interface IContentIndex extends IContent {
   index: number
@@ -109,6 +109,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                           ]
                         }
                         onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
+                        small
                       />
                     </div>
                   )}
@@ -128,6 +129,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                           onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
                           placeholder="None"
                           renderAsText
+                          small
                         />
                       </div>
                     </div>

@@ -273,7 +273,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           value: [
             {
               scaling:
-                calcScaling(0.52, burst, 'elemental', '1') + (c >= 6 ? _.min([base.getValue(Stats.EM) * 0.002, 4]) : 0),
+                calcScaling(0.52, burst, 'elemental', '1') + (c >= 6 ? _.min([base.getEM() * 0.002, 4]) : 0),
               multiplier: Stats.ATK,
             },
           ],
@@ -283,7 +283,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         {
           name: `Muji-Muji Daruma Healing`,
           value: [{ scaling: calcScaling(0.799, burst, 'elemental', '1'), multiplier: Stats.ATK }],
-          flat: calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base.getValue(Stats.EM) * 3, 6000]) : 0),
+          flat: calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base.getEM() * 3, 6000]) : 0),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         }
@@ -302,7 +302,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         base.BURST_SCALING.push({
           name: `A4 Shared Healing`,
           value: [{ scaling: calcScaling(0.799, burst, 'elemental', '1') * 0.2, multiplier: Stats.ATK }],
-          flat: (calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base.getValue(Stats.EM) * 3, 6000]) : 0)) * 0.2,
+          flat: (calcScaling(500, burst, 'special', 'flat') + (c >= 6 ? _.min([base.getEM() * 3, 6000]) : 0)) * 0.2,
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })

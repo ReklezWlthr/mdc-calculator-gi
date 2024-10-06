@@ -30,86 +30,98 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Calling upon the power of Anemo, the Wanderer plunges towards the ground from mid-air, damaging all opponents in his path. Deals <b class="text-genshin-anemo">AoE Anemo DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Hanega: Song of the Wind`,
-      content: `Concentrates the power of the winds to break free from the shackles of the earth, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b> before leaping into the air and entering the Windfavored state.
+      content: `Concentrates the power of the winds to break free from the shackles of the earth, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b> before leaping into the air and entering the <b class="text-teal-200">Windfavored</b> state.
       <br />
-      <br /><b>Windfavored</b>
-      <br />The Wanderer cannot perform Plunging Attacks in this state. When he uses Normal and Charged Attacks, they will be converted into Kuugo: Fushoudan and Kuugo: Toufukai respectively; the DMG they deal and their AoE will be increased, and their DMG will be considered Normal and Charged Attack DMG respectively. Kuugo: Toufukai will not consume Stamina.
+      <br /><b class="text-teal-200">Windfavored</b>
+      <br />The Wanderer cannot perform Plunging Attacks in this state. When he uses Normal and Charged Attacks, they will be converted into <b>Kuugo: Fushoudan</b> and <b>Kuugo: Toufukai</b> respectively; the DMG they deal and their AoE will be increased, and their DMG will be considered Normal and Charged Attack DMG respectively. <b>Kuugo: Toufukai</b> will not consume Stamina.
       <br />The Wanderer will hover persistently during this time. While this state is active, the Wanderer's movements gain the following properties:
-      <br />- Persistently consumes Kuugoryoku Points to maintain this hovering state.
-      <br />- When sprinting, additional Kuugoryoku Points will be consumed for the Wanderer to accelerate mid-air. Holding sprint will cause persistent Kuugoryoku Point consumption to maintain speed. This effect will replace his default sprint.
-      <br />- Jumping expends extra Kuugoryoku Points to increase hovering height. Holding jump will cause persistent Kuugoryoku Point consumption to keep increasing hovering height.
+      <br />- Persistently consumes <b class="text-genshin-anemo">Kuugoryoku Points</b> to maintain this hovering state.
+      <br />- When sprinting, additional <b class="text-genshin-anemo">Kuugoryoku Points</b> will be consumed for the Wanderer to accelerate mid-air. Holding sprint will cause persistent <b class="text-genshin-anemo">Kuugoryoku Point</b> consumption to maintain speed. This effect will replace his default sprint.
+      <br />- Jumping expends extra <b class="text-genshin-anemo">Kuugoryoku Points</b> to increase hovering height. Holding jump will cause persistent <b class="text-genshin-anemo">Kuugoryoku Point</b> consumption to keep increasing hovering height.
       <br />
-      <br />Running out of Kuugoryoku Points will end the Windfavored state.
-      <br />A second cast during the duration of Windfavored will also end it.
+      <br />Running out of <b class="text-genshin-anemo">Kuugoryoku Points</b> will end the <b class="text-teal-200">Windfavored</b> state.
+      <br />A second cast during the duration of <b class="text-teal-200">Windfavored</b> will also end it.
       `,
+      image: 'Skill_S_Wanderer_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Kyougen: Five Ceremonial Plays`,
-      content: `Compresses the atmosphere into a singular vacuum that grinds all troubles away, dealing multiple instances of <b class="text-genshin-anemo">AoE Anemo DMG</b>. If the character is in the Windfavored state due to the skill "Hanega: Song of the Wind," Windfavored state will end after casting.`,
+      content: `Compresses the atmosphere into a singular vacuum that grinds all troubles away, dealing multiple instances of <b class="text-genshin-anemo">AoE Anemo DMG</b>. If the character is in the <b class="text-teal-200">Windfavored</b> state due to the skill <b>Hanega: Song of the Wind</b>, <b class="text-teal-200">Windfavored</b> state will end after casting.`,
+      image: 'Skill_E_Wanderer_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Jade-Claimed Flower`,
-      content: `If Hanega: Song of the Wind comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when it is unleashed, this instance of the Windfavored state will obtain buffs according to the contacted element(s):
-      <br /><b class="text-genshin-hydro">Hydro</b>: Kuugoryoku Point cap increases by <span class="text-desc">20</span>.
+      content: `If <b>Hanega: Song of the Wind</b> comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> when it is unleashed, this instance of the <b class="text-teal-200">Windfavored</b> state will obtain buffs according to the contacted element(s):
+      <br /><b class="text-genshin-hydro">Hydro</b>: <b class="text-genshin-anemo">Kuugoryoku Point</b> cap increases by <span class="text-desc">20</span>.
       <br /><b class="text-genshin-pyro">Pyro</b>: ATK increases by <span class="text-desc">30%</span>.
       <br /><b class="text-genshin-cryo">Cryo</b>: CRIT Rate increases by <span class="text-desc">20%</span>.
       <br /><b class="text-genshin-electro">Electro</b>: When Normal and Charged Attacks hit an opponent, <span class="text-desc">0.8</span> Energy will be restored. Energy can be restored this way every <span class="text-desc">0.2</span>s.
       <br />
       <br />You can have up to <span class="text-desc">2</span> different kinds of these buffs simultaneously.`,
+      image: 'UI_Talent_S_Wanderer_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Gales of Reverie`,
-      content: `When the Wanderer hits opponents with Kuugo: Fushoudan or Kuugo: Toufukai in his Windfavored state, he has a <span class="text-desc">16%</span> chance to obtain the Descent effect: The next time the Wanderer accelerates in mid-air while in this instance of the Windfavored state, this effect will be removed, this acceleration instance will not consume any Kuugoryoku Points, and he will fire off <span class="text-desc">4</span> wind arrows that deal <span class="text-desc">35%</span> of his ATK as <b class="text-genshin-anemo">Anemo DMG</b> each.
-      <br />For each Kuugo: Fushoudan and Kuugo: Toufukai that does not produce this effect, the next attack of those types will have a <span class="text-desc">12%</span> increased chance of producing it. The calculation of the effect production is done once every <span class="text-desc">0.1</span>s.`,
+      content: `When the Wanderer hits opponents with <b>Kuugo: Fushoudan</b> or <b>Kuugo: Toufukai</b> in his <b class="text-teal-200">Windfavored</b> state, he has a <span class="text-desc">16%</span> chance to obtain the <b>Descent</b> effect: The next time the Wanderer accelerates in mid-air while in this instance of the <b class="text-teal-200">Windfavored</b> state, this effect will be removed, this acceleration instance will not consume any <b class="text-genshin-anemo">Kuugoryoku Points</b>, and he will fire off <span class="text-desc">4</span> wind arrows that deal <span class="text-desc">35%</span> of his ATK as <b class="text-genshin-anemo">Anemo DMG</b> each.
+      <br />For each <b>Kuugo: Fushoudan</b> and <b>Kuugo: Toufukai</b> that does not produce this effect, the next attack of those types will have a <span class="text-desc">12%</span> increased chance of producing it. The calculation of the effect production is done once every <span class="text-desc">0.1</span>s.`,
+      image: 'UI_Talent_S_Wanderer_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Strum the Swirling Winds`,
       content: `Mora expended when ascending Bows and Catalysts is decreased by <span class="text-desc">50%</span>.`,
+      image: 'UI_Talent_S_Wanderer_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Shoban: Ostentatious Plumage`,
-      content: `When in the Windfavored state, the Attack SPD of the Wanderer's Kuugo: Fushoudan and Kuugo: Toufukai is increased by <span class="text-desc">10%</span>.
-      <br />Additionally, the wind arrows fired by the Passive Talent "Gales of Reverie" will deal an additional <span class="text-desc">25%</span> of his ATK as DMG. You must unlock the Passive Talent "Gales of Reverie" first.`,
+      content: `When in the <b class="text-teal-200">Windfavored</b> state, the Attack SPD of the Wanderer's <b>Kuugo: Fushoudan</b> and <b>Kuugo: Toufukai</b> is increased by <span class="text-desc">10%</span>.
+      <br />Additionally, the wind arrows fired by the Passive Talent <b>Gales of Reverie</b> will deal an additional <span class="text-desc">25%</span> of his ATK as DMG. You must unlock the Passive Talent <b>Gales of Reverie</b> first.`,
+      image: 'UI_Talent_S_Wanderer_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Niban: Isle Amidst White Waves`,
-      content: `When in the Windfavored state, Kyougen: Five Ceremonial Plays will see its DMG increased by <span class="text-desc">4%</span> per point of difference between the max amount of Kuugoryoku Points contrasted with Kuugoryoku's present capacity when using this skill.
-      Through this method, you can increase Kyougen: Five Ceremonial Plays's DMG by a maximum of <span class="text-desc">200%</span>.`,
+      content: `When in the <b class="text-teal-200">Windfavored</b> state, <b>Kyougen: Five Ceremonial Plays</b> will see its DMG increased by <span class="text-desc">4%</span> per point of difference between the max amount of <b class="text-genshin-anemo">Kuugoryoku Points</b> contrasted with <b class="text-genshin-anemo">Kuugoryoku</b>'s present capacity when using this skill.
+      <br />Through this method, you can increase <b>Kyougen: Five Ceremonial Plays</b>'s DMG by a maximum of <span class="text-desc">200%</span>.`,
+      image: 'UI_Talent_S_Wanderer_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Sanban: Moonflower Kusemai`,
-      content: `Increases the Level of Kyougen: Five Ceremonial Plays by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Kyougen: Five Ceremonial Plays</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Wanderer_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Yonban: Set Adrift into Spring`,
-      content: `When casting Hanega: Song of the Wind, should the Passive Talent "Jade-Claimed Flower" be triggered, the character will gain buffs in correspondence to the contacted Elemental Type(s), and also obtain a random untriggered buff. A maximum of <span class="text-desc">3</span> such corresponding elemental buffs can exist simultaneously.
-      You must unlock the Passive Talent "Jade-Claimed Flower" first.`,
+      content: `When casting <b>Hanega: Song of the Wind</b>, should the Passive Talent <b>Jade-Claimed Flower</b> be triggered, the character will gain buffs in correspondence to the contacted Elemental Type(s), and also obtain a random untriggered buff. A maximum of <span class="text-desc">3</span> such corresponding elemental buffs can exist simultaneously.
+      You must unlock the Passive Talent <b>Jade-Claimed Flower</b> first.`,
+      image: 'UI_Talent_S_Wanderer_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Matsuban: Ancient Illuminator From Abroad`,
-      content: `Increases the Level of Hanega: Song of the Wind by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Hanega: Song of the Wind</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Wanderer_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Shugen: The Curtains' Melancholic Sway`,
-      content: `When the Wanderer actively hits an opponent with Kuugo: Fushoudan while in the Windfavored state, the following effects will occur:
-      <br />Deals an additional instance of Kuugo: Fushoudan at the position hit, dealing <span class="text-desc">40%</span> of the attack's original DMG. This DMG will be considered Normal Attack DMG.
-      <br />When the Wanderer falls below <span class="text-desc">40</span> Kuugoryoku Points, restores <span class="text-desc">4</span> Points to him. Kuugoryoku Points can be restored in this manner once every <span class="text-desc">0.2</span>s. This restoration can occur up to <span class="text-desc">5</span> times within one Windfavored duration.`,
+      content: `When the Wanderer actively hits an opponent with <b>Kuugo: Fushoudan</b> while in the <b class="text-teal-200">Windfavored</b> state, the following effects will occur:
+      <br />Deals an additional instance of <b>Kuugo: Fushoudan</b> at the position hit, dealing <span class="text-desc">40%</span> of the attack's original DMG. This DMG will be considered Normal Attack DMG.
+      <br />When the Wanderer falls below <span class="text-desc">40</span> <b class="text-genshin-anemo">Kuugoryoku Points</b>, restores <span class="text-desc">4</span> Points to him. <b class="text-genshin-anemo">Kuugoryoku Points</b> can be restored in this manner once every <span class="text-desc">0.2</span>s. This restoration can occur up to <span class="text-desc">5</span> times within one <b class="text-teal-200">Windfavored</b> duration.`,
+      image: 'UI_Talent_S_Wanderer_04',
     },
   }
 
@@ -213,8 +225,8 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.BURST,
         },
       ]
-      if (form.windfavored_pyro) base[Stats.P_ATK].push({value: 0.3, name: '', source: ``})
-      if (form.windfavored_cryo) base[Stats.CRIT_RATE].push({value: 0.2, name: '', source: ``})
+      if (form.windfavored_pyro) base[Stats.P_ATK].push({ value: 0.3, name: 'Windfavored [Pyro]', source: `Self` })
+      if (form.windfavored_cryo) base[Stats.CRIT_RATE].push({ value: 0.2, name: 'Windfavored [Cryo]', source: `Self` })
 
       if (a >= 4)
         base.SKILL_SCALING.push({
@@ -223,8 +235,9 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           element: Element.ANEMO,
           property: TalentProperty.ADD,
         })
-      if (c >= 1 && form.windfavored) base.ATK_SPD.push({value: 0.1, name: '', source: ``})
-      if (form.wanderer_c2) base.BURST_DMG += _.min([form.wanderer_c2 * 0.04, 2])
+      if (c >= 1 && form.windfavored) base.ATK_SPD.push({ value: 0.1, name: 'Constellation 1', source: `Self` })
+      if (form.wanderer_c2)
+        base.BURST_DMG.push({ value: _.min([form.wanderer_c2 * 0.04, 2]), name: 'Constellation 2', source: 'Self' })
 
       if (c >= 6)
         base.BASIC_SCALING.push({

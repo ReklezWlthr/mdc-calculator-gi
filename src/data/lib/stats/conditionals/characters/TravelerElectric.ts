@@ -30,18 +30,20 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Lightning Blade`,
-      content: `Unleashes three swift thunder shadows that deal <b class="text-genshin-electro">Electro DMG</b> to opponents and leave an Abundance Amulet behind after hitting an opponent.
-      <br /><span class="text-desc">2</span> Abundance Amulets can be created initially. Using this skill will reset any Abundance Amulets that were generated.
+      content: `Unleashes three swift thunder shadows that deal <b class="text-genshin-electro">Electro DMG</b> to opponents and leave an <b class="text-violet-300">Abundance Amulet</b> behind after hitting an opponent.
+      <br /><span class="text-desc">2</span> <b class="text-violet-300">Abundance Amulets</b> can be created initially. Using this skill will reset any <b class="text-violet-300">Abundance Amulets</b> that were generated.
       <br />
-      <br /><b>Abundance Amulets</b>
-      <br />When a character is near an Abundance Amulet, they will absorb it and obtain the following effects:
+      <br /><b class="text-violet-300">Abundance Amulets</b>
+      <br />When a character is near an <b class="text-violet-300">Abundance Amulets</b>, they will absorb it and obtain the following effects:
       <br />- Restores Elemental Energy
-      <br />- Increases Energy Recharge during the Abundance Amulet's duration.
+      <br />- Increases Energy Recharge during the <b class="text-violet-300">Abundance Amulets</b>'s duration.
       `,
+      image: 'Skill_S_PlayerElectric_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -49,52 +51,61 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
       content: `You call upon the protection of lightning, knocking nearby opponents back and dealing <b class="text-genshin-electro">Electro DMG</b> to them.
       <br />
       <br /><b>Lightning Shroud</b>
-      <br />When your active character's Normal or Charged Attacks hit opponents, they will call Falling Thunder forth, dealing <b class="text-genshin-electro">Electro DMG</b>.
-      <br />When Falling Thunder hits opponents, it will regenerate Energy for that character.
-      <br />One instance of Falling Thunder can be generated every <span class="text-desc">0.5</span>s.`,
+      <br />When your active character's Normal or Charged Attacks hit opponents, they will call <b>Falling Thunder</b> forth, dealing <b class="text-genshin-electro">Electro DMG</b>.
+      <br />When <b>Falling Thunder</b> hits opponents, it will regenerate Energy for that character.
+      <br />One instance of <b>Falling Thunder</b> can be generated every <span class="text-desc">0.5</span>s.`,
+      image: 'Skill_E_PlayerElectric_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Thunderflash`,
-      content: `When another nearby character in the party obtains an Abundance Amulet created by Lightning Blade, Lightning Blade's CD is decreased by <span class="text-desc">1.5</span>s.`,
+      content: `When another nearby character in the party obtains an <b class="text-violet-300">Abundance Amulet</b> created by <b>Lightning Blade</b>, <b>Lightning Blade</b>'s CD is decreased by <span class="text-desc">1.5</span>s.`,
+      image: 'UI_Talent_S_PlayerElectric_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Resounding Roar`,
-      content: `Increases the Energy Recharge effect granted by Lightning Blade's Abundance Amulet by <span class="text-desc">10%</span> of the Traveler's Energy Recharge.`,
+      content: `Increases the Energy Recharge effect granted by <b>Lightning Blade</b>'s <b class="text-violet-300">Abundance Amulet</b> by <span class="text-desc">10%</span> of the Traveler's Energy Recharge.`,
+      image: 'UI_Talent_S_PlayerElectric_06',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Spring Thunder of Fertility`,
-      content: `The number of Abundance Amulets that can be generated using Lightning Blade is increased to <span class="text-desc">3</span>.`,
+      content: `The number of <b class="text-violet-300">Abundance Amulets</b> that can be generated using <b>Lightning Blade</b> is increased to <span class="text-desc">3</span>.`,
+      image: 'UI_Talent_S_PlayerElectric_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Violet Vehemence`,
-      content: `When Falling Thunder created by Bellowing Thunder hits an opponent, it will decrease their <b class="text-genshin-electro">Electro RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">8</span>s.
+      content: `When <b>Falling Thunder</b> created by <b>Bellowing Thunder</b> hits an opponent, it will decrease their <b class="text-genshin-electro">Electro RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">8</span>s.
       `,
+      image: 'UI_Talent_S_PlayerElectric_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Distant Crackling`,
-      content: `Increases the Level of Bellowing Thunder by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Bellowing Thunder</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_PlayerElectric_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Fickle Cloudstrike`,
-      content: `When a character obtains Abundance Amulets generated by Lightning Blade, if this character's Energy is less than <span class="text-desc">35%</span>, the Energy restored by the Abundance Amulets is increased by <span class="text-desc">100%</span>.`,
+      content: `When a character obtains <b class="text-violet-300">Abundance Amulets</b> generated by <b>Lightning Blade</b>, if this character's Energy is less than <span class="text-desc">35%</span>, the Energy restored by the <b class="text-violet-300">Abundance Amulets</b> is increased by <span class="text-desc">100%</span>.`,
+      image: 'UI_Talent_S_PlayerElectric_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Clamor in the Wilds`,
-      content: `Increases the Level of Lightning Blade by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Lightning Blade</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_PlayerElectric_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `World-Shaker`,
-      content: `Every <span class="text-desc">2</span> Falling Thunder attacks triggered by Bellowing Thunder will significantly increase the DMG dealt by the next Falling Thunder, dealing <span class="text-desc">200%</span> of its original DMG, and will restore an additional <span class="text-desc">1</span> Energy to the current character.`,
+      content: `Every <span class="text-desc">2</span> <b>Falling Thunder</b> attacks triggered by <b>Bellowing Thunder</b> will significantly increase the DMG dealt by the next <b>Falling Thunder</b>, dealing <span class="text-desc">200%</span> of its original DMG, and will restore an additional <span class="text-desc">1</span> Energy to the current character.`,
+      image: 'UI_Talent_S_PlayerElectric_04',
     },
   }
 
@@ -199,8 +210,7 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.dmc_a6) base[Stats.DENDRO_DMG].push({value: 0.12, name: '', source: ``})
-      if (form.emc_c2) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.emc_c2) base.ELECTRO_RES_PEN.push({ value: 0.15, name: 'Constellation 2', source: `Self` })
 
       if (c >= 6)
         base.BURST_SCALING.push({
@@ -213,13 +223,15 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.amulet) base[Stats.ER].push({value: 0.2, name: '', source: ``}) + (a >= 4 ? own[Stats.ER] * 0.1 : 0)
-      if (form.emc_c2) base.ELECTRO_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.amulet)
+        base[Stats.ER].push({ value: 0.2, name: '', source: `` }) + (a >= 4 ? own.getValue(Stats.ER) * 0.1 : 0)
+      if (form.emc_c2) base.ELECTRO_RES_PEN.push({ value: 0.15, name: 'Constellation 2', source: `Traveler` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.amulet) base[Stats.ER].push({value: 0.2, name: '', source: ``}) + (a >= 4 ? base[Stats.ER] * 0.1 : 0)
+      if (form.amulet)
+        base[Stats.ER].push({ value: 0.2, name: '', source: `` }) + (a >= 4 ? base.getValue(Stats.ER) * 0.1 : 0)
 
       return base
     },

@@ -233,7 +233,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
     conditionals.PYRO_MULT.push({
       value:
         2 *
-        (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
+        (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Forward Melt',
       source: 'Reaction',
     })
@@ -241,7 +241,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
     conditionals.CRYO_MULT.push({
       value:
         1.5 *
-        (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
+        (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Reverse Melt',
       source: 'Reaction',
     })
@@ -249,7 +249,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
     conditionals.HYDRO_MULT.push({
       value:
         2 *
-        (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
+        (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Forward Vape',
       source: 'Reaction',
     })
@@ -257,7 +257,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
     conditionals.PYRO_MULT.push({
       value:
         1.5 *
-        (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getValue(Stats.EM) || 0)),
+        (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Reverse Vape',
       source: 'Reaction',
     })
@@ -266,7 +266,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
       value:
         1.25 *
         base *
-        (1 + conditionals?.getValue(StatsObjectKeys.SPREAD_DMG) + calcAdditive(conditionals?.getValue(Stats.EM) || 0)),
+        (1 + conditionals?.getValue(StatsObjectKeys.SPREAD_DMG) + calcAdditive(conditionals?.getEM() || 0)),
       name: 'Spread',
       source: 'Reaction',
     })
@@ -277,7 +277,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
         base *
         (1 +
           conditionals?.getValue(StatsObjectKeys.AGGRAVATE_DMG) +
-          calcAdditive(conditionals?.getValue(Stats.EM) || 0)),
+          calcAdditive(conditionals?.getEM() || 0)),
       name: 'Aggravate',
       source: 'Reaction',
     })

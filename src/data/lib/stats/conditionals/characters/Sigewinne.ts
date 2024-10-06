@@ -304,7 +304,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
             item.SKILL_F_DMG.push({
               value: _.min([buffStack * (_.max([0, allBase[index].getHP() - 30000]) / 1000), maxBuff]),
               name: 'Convalescence',
-              source: index === i ? 'Self' : 'Sigewinne',
+              source: 'Sigewinne',
               base: (_.max([0, allBase[index].getHP() - 30000]) / 1000).toFixed(2),
               multiplier: buffStack,
             })

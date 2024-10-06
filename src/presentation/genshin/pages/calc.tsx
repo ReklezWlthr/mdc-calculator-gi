@@ -189,7 +189,7 @@ export const Calculator = observer(({}: {}) => {
                   </div>
                   <div className="flex justify-center py-1 rounded-b-lg bg-primary-darker">
                     <CrystallizeTooltip
-                      em={mainComputed?.getValue(Stats.EM)}
+                      em={mainComputed?.getEM()}
                       level={char?.level}
                       shieldStrength={mainComputed?.getValue(Stats.SHIELD)}
                     />

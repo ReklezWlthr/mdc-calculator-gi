@@ -265,7 +265,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           { scaling: calcScaling(0.672, skill, 'elemental', '1'), multiplier: Stats.ATK },
           { scaling: calcScaling(1.344, skill, 'elemental', '1'), multiplier: Stats.EM },
         ],
-        bonus: a >= 4 ? _.min([base.getValue(Stats.EM) * 0.001, 1]) : 0,
+        bonus: a >= 4 ? _.min([base.getEM() * 0.001, 1]) : 0,
         element: Element.DENDRO,
         property: TalentProperty.SKILL,
       })
@@ -279,7 +279,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           ],
           element: Element.DENDRO,
           property: TalentProperty.BURST,
-          bonus: a >= 4 ? _.min([base.getValue(Stats.EM) * 0.001, 1]) : 0,
+          bonus: a >= 4 ? _.min([base.getEM() * 0.001, 1]) : 0,
         },
       ]
 

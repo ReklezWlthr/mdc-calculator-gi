@@ -179,7 +179,12 @@ export const StatsModal = observer(
               />
             </div>
             <div className="space-y-2">
-              <AttributeBlock stats={stats} stat="Elemental Mastery" array={stats[Stats.EM]} flat />
+              <AttributeBlock
+                stats={stats}
+                stat="Elemental Mastery"
+                array={mergeBuffs([...stats[Stats.EM], ...stats[StatsObjectKeys.X_EM]])}
+                flat
+              />
               <AttributeBlock stats={stats} stat="CRIT Rate" array={stats[Stats.CRIT_RATE]} />
               <AttributeBlock stats={stats} stat="CRIT DMG" array={stats[Stats.CRIT_DMG]} />
               <AttributeBlock stats={stats} stat="Healing Bonus" array={stats[Stats.HEAL]} />

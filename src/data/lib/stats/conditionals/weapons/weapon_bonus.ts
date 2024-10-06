@@ -269,7 +269,7 @@ const WeaponBonus: {
     id: '13511',
     scaling: (base, r) => {
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK].push({ value: calcRefinement(0.52, 0.13, r), name: '', source: `` }) * base.getValue(Stats.EM)
+        base[Stats.ATK].push({ value: calcRefinement(0.52, 0.13, r), name: '', source: `` }) * base.getEM()
         return base
       })
       return base
@@ -938,6 +938,39 @@ const WeaponBonus: {
         value: calcRefinement(0.16, 0.04, r),
         name: 'Passive',
         source: `Fruitful Hook`,
+      })
+      return base
+    },
+  },
+  {
+    id: '14511',
+    scaling: (base, r, team) => {
+      base.CALLBACK.push(function (x, a) {
+        _.forEach(a, (member) => {
+          if (member.NAME === base.NAME) {
+            const elements = _.map(team, (item) => findCharacter(item.cId)?.element)
+            const same = _.filter(elements, (item) => item === base.ELEMENT).length - 1
+            const diff = _.filter(elements, (item) => !!item && item !== base.ELEMENT).length
+
+            member[Stats.EM].push({
+              value: calcRefinement(32, 8, r) * same,
+              name: 'Passive',
+              source: `A Thousand Floating Dreams`,
+            })
+            member[Stats[`${base.ELEMENT.toUpperCase()}_DMG`]].push({
+              value: calcRefinement(0.1, 0.04, r) * diff,
+              name: 'Passive',
+              source: `A Thousand Floating Dreams`,
+            })
+          } else {
+            member[Stats.EM].push({
+              value: calcRefinement(40, 2, r),
+              name: 'A Thousand Floating Dreams',
+              source: base.NAME,
+            })
+          }
+        })
+        return x
       })
       return base
     },

@@ -30,85 +30,97 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_03',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Blazing Blessing`,
-      content: `Thoma vaults forward with his polearm and delivers a flame-filled flying kick that deals <b class="text-genshin-pyro">AoE Pyro DMG</b>, while also summoning a defensive Blazing Barrier. At the moment of casting, Thoma's Elemental Skill applies <b class="text-genshin-pyro">Pyro</b> to himself.
-      <br />The DMG Absorption of the Blazing Barrier scales off Thoma's Max HP.
-      <br />The Blazing Barrier has the following traits:
+      content: `Thoma vaults forward with his polearm and delivers a flame-filled flying kick that deals <b class="text-genshin-pyro">AoE Pyro DMG</b>, while also summoning a defensive <b class="text-red">Blazing Barrier</b>. At the moment of casting, Thoma's Elemental Skill applies <b class="text-genshin-pyro">Pyro</b> to himself.
+      <br />The DMG Absorption of the <b class="text-red">Blazing Barrier</b> scales off Thoma's Max HP.
+      <br />The <b class="text-red">Blazing Barrier</b> has the following traits:
       <br />- Absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-desc">250%</span> more effectively.
-      <br />- When a new Blazing Barrier is obtained, the remaining DMG Absorption of an existing Blazing Barrier will stack and its duration will be refreshed.
+      <br />- When a new <b class="text-red">Blazing Barrier</b> is obtained, the remaining DMG Absorption of an existing <b class="text-red">Blazing Barrier</b> will stack and its duration will be refreshed.
       <br />
-      <br />The maximum DMG Absorprtion of the Blazing Barrier will not exceed a certain percentage of Thoma's Max HP.
+      <br />The maximum DMG Absorprtion of the <b class="text-red">Blazing Barrier</b> will not exceed a certain percentage of Thoma's Max HP.
       `,
+      image: 'Skill_S_Tohma_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Crimson Ooyoroi`,
-      content: `Thoma spins his polearm, slicing at his foes with roaring flames that deal <b class="text-genshin-pyro">AoE Pyro DMG</b> and weave themselves into a Scorching Ooyoroi.
+      content: `Thoma spins his polearm, slicing at his foes with roaring flames that deal <b class="text-genshin-pyro">AoE Pyro DMG</b> and weave themselves into a <b class="text-genshin-bol">Scorching Ooyoroi</b>.
       <br />
-      <br /><b>Scorching Ooyoroi</b>
-      <br />While Scorching Ooyoroi is in effect, the active character's Normal Attacks will trigger Fiery Collapse, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> and summoning a Blazing Barrier.
-      <br />Fiery Collapse can be triggered once every <span class="text-desc">1</span>s.
+      <br /><b class="text-genshin-bol">Scorching Ooyoroi</b>
+      <br />While <b class="text-genshin-bol">Scorching Ooyoroi</b> is in effect, the active character's Normal Attacks will trigger <b>Fiery Collapse</b>, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> and summoning a <b class="text-red">Blazing Barrier</b>.
+      <br /><b>Fiery Collapse</b> can be triggered once every <span class="text-desc">1</span>s.
       <br />
-      <br />Except for the amount of DMG they can absorb, the Blazing Barriers created in this way are identical to those created by Thoma's Elemental Skill, Blazing Blessing:
+      <br />Except for the amount of DMG they can absorb, the <b class="text-red">Blazing Barriers</b> created in this way are identical to those created by Thoma's Elemental Skill, <b>Blazing Blessing</b>:
       <br />- Absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-desc">250%</span> more effectively.
-      <br />- When a new Blazing Barrier is obtained, the remaining DMG Absorption of an existing Blazing Barrier will stack and its duration will be refreshed.
+      <br />- When a new <b class="text-red">Blazing Barrier</b> is obtained, the remaining DMG Absorption of an existing <b class="text-red">Blazing Barrier</b> will stack and its duration will be refreshed.
       <br />
-      <br />The maximum DMG Absorption of the Blazing Barrier will not exceed a certain percentage of Thoma's Max HP.
+      <br />The maximum DMG Absorption of the <b class="text-red">Blazing Barrier</b> will not exceed a certain percentage of Thoma's Max HP.
       <br />
-      <br />If Thoma falls, the effects of Scorching Ooyoroi will be cleared.
+      <br />If Thoma falls, the effects of <b class="text-genshin-bol">Scorching Ooyoroi</b> will be cleared.
       `,
+      image: 'Skill_E_Tohma_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Imbricated Armor`,
-      content: `When your current active character obtains or refreshes a Blazing Barrier, this character's Shield Strength will increase by <span class="text-desc">5%</span> for <span class="text-desc">6</span>s.
+      content: `When your current active character obtains or refreshes a <b class="text-red">Blazing Barrier</b>, this character's Shield Strength will increase by <span class="text-desc">5%</span> for <span class="text-desc">6</span>s.
       <br />This effect can be triggered once every <span class="text-desc">0.3</span> seconds. Max <span class="text-desc">5</span> stacks.`,
+      image: 'UI_Talent_S_Tohma_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Flaming Assault`,
-      content: `DMG dealt by Crimson Ooyoroi's Fiery Collapse is increased by <span class="text-desc">2.2%</span> of Thoma's Max HP.`,
+      content: `DMG dealt by <b>Crimson Ooyoroi</b>'s <b>Fiery Collapse</b> is increased by <span class="text-desc">2.2%</span> of Thoma's Max HP.`,
+      image: 'UI_Talent_S_Tohma_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Snap and Swing`,
       content: `When you fish successfully in Inazuma, Thoma's help grants a <span class="text-desc">20%</span> chance of scoring a double catch.`,
+      image: 'UI_Talent_S_Tohma_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `A Comrade's Duty`,
-      content: `When a character protected by Thoma's own Blazing Barrier (Thoma excluded) is attacked, Thoma's own Blazing Blessing CD is decreased by <span class="text-desc">3</span>s, while his own Crimson Ooyoroi's CD is decreased by <span class="text-desc">3</span>s.
+      content: `When a character protected by Thoma's own Blazing Barrier (Thoma excluded) is attacked, Thoma's own <b>Blazing Blessing</b> CD is decreased by <span class="text-desc">3</span>s, while his own <b>Crimson Ooyoroi</b>'s CD is decreased by <span class="text-desc">3</span>s.
       <br />This effect can be triggered once every <span class="text-desc">20</span>s.`,
+      image: 'UI_Talent_S_Tohma_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `A Subordinate's Skills`,
-      content: `Crimson Ooyoroi's duration is increased by <span class="text-desc">3</span>s.`,
+      content: `<b>Crimson Ooyoroi</b>'s duration is increased by <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_Tohma_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Fortified Resolve`,
-      content: `Increases the Level of Blazing Blessing by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Blazing Blessing</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Tohma_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Long-Term Planning`,
-      content: `After using Crimson Ooyoroi, <span class="text-desc">15</span> Energy will be restored to Thoma.`,
+      content: `After using <b>Crimson Ooyoroi</b>, <span class="text-desc">15</span> Energy will be restored to Thoma.`,
+      image: 'UI_Talent_S_Tohma_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Raging Wildfire`,
-      content: `Increases the Level of Crimson Ooyoroi by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Crimson Ooyoroi</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Tohma_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Burning Heart`,
-      content: `When a Blazing Barrier is obtained or refreshed, the DMG dealt by all party members' Normal, Charged, and Plunging Attacks is increased by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.`,
+      content: `When a <b class="text-red">Blazing Barrier</b> is obtained or refreshed, the DMG dealt by all party members' Normal, Charged, and Plunging Attacks is increased by <span class="text-desc">15%</span> for <span class="text-desc">6</span>s.`,
+      image: 'UI_Talent_S_Tohma_04',
     },
   }
 
@@ -224,21 +236,23 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.a1_shield) base[Stats.SHIELD].push({value: 0.05, name: '', source: ``}) * form.a1_shield
+      if (form.a1_shield)
+        base[Stats.SHIELD].push({ value: 0.05, name: 'Ascension 1 Passive', source: `Self` }) * form.a1_shield
       if (form.thoma_c6) {
-        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
-        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
-        base.PLUNGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.BASIC_DMG.push({ value: 0.15, name: 'Constellation 6', source: `Self` })
+        base.CHARGE_DMG.push({ value: 0.15, name: 'Constellation 6', source: `Self` })
+        base.PLUNGE_DMG.push({ value: 0.15, name: 'Constellation 6', source: `Self` })
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.a1_shield) base[Stats.SHIELD].push({value: 0.05, name: '', source: ``}) * form.a1_shield
+      if (form.a1_shield)
+        base[Stats.SHIELD].push({ value: 0.05, name: 'Ascension 1 Passive', source: `Thoma` }) * form.a1_shield
       if (form.thoma_c6) {
-        base.BASIC_DMG.push({value: 0.15, name: '', source: ``})
-        base.CHARGE_DMG.push({value: 0.15, name: '', source: ``})
-        base.PLUNGE_DMG.push({value: 0.15, name: '', source: ``})
+        base.BASIC_DMG.push({ value: 0.15, name: 'Constellation 6', source: `Thoma` })
+        base.CHARGE_DMG.push({ value: 0.15, name: 'Constellation 6', source: `Thoma` })
+        base.PLUNGE_DMG.push({ value: 0.15, name: 'Constellation 6', source: `Thoma` })
       }
 
       return base

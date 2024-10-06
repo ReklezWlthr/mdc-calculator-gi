@@ -6,7 +6,7 @@ import _ from 'lodash'
 import { calcTransformative } from '@src/core/utils/data_format'
 
 const Transformative = (level: number, element: Element, stat: StatsObject, swirl: Element, nilou?: boolean) => {
-  const emBonus = calcTransformative(stat?.getValue(Stats.EM) || 0)
+  const emBonus = calcTransformative(stat?.getEM() || 0)
   const base = BaseReactionDmg[level - 1]
 
   return [

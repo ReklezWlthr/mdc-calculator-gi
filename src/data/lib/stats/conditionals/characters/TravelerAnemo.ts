@@ -30,6 +30,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -44,6 +45,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       <br />If the vortex comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, it will deal additional <b>Elemental DMG</b> of that type.
       <br />Elemental Absorption may only occur once per use.
       `,
+      image: 'Skill_S_PlayerWind_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -53,49 +55,58 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Elemental Absorption</b>
       <br />If the tornado comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, it will deal additional <b>Elemental DMG</b> of that type.
       <br />Elemental Absorption may only occur once per use.`,
+      image: 'Skill_E_PlayerWind_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Slitting Wind`,
       content: `The last hit of a Normal Attack combo unleashes a wind blade, dealing <span class="text-desc">60%</span> of ATK as <b class="text-genshin-anemo">Anemo DMG</b> to all opponents in its path.`,
+      image: 'UI_Talent_S_PlayerWind_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Second Wind`,
-      content: `Palm Vortex kills regenerate <span class="text-desc">2%</span> HP for <span class="text-desc">5</span>s. This effect can only occur once every <span class="text-desc">5</span>s.`,
+      content: `<b>Palm Vortex</b> kills regenerate <span class="text-desc">2%</span> HP for <span class="text-desc">5</span>s. This effect can only occur once every <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_PlayerWind_06',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Raging Vortex`,
-      content: `Palm Vortex pulls in opponents and objects within a <span class="text-desc">5</span>m radius.`,
+      content: `<b>Palm Vortex</b> pulls in opponents and objects within a <span class="text-desc">5</span>m radius.`,
+      image: 'UI_Talent_S_PlayerWind_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Uprising Whirlwind`,
       content: `Increases Energy Recharge by <span class="text-desc">16%</span>.`,
+      image: 'UI_Talent_S_PlayerWind_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Sweeping Gust`,
-      content: `Increases the Level of Gust Surge by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Gust Surge</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_PlayerWind_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Cherishing Breezes`,
-      content: `Reduces DMG taken while casting Palm Vortex by 10%.`,
+      content: `Reduces DMG taken while casting <b>Palm Vortex</b> by <span class="text-desc">10%</span>.`,
+      image: 'UI_Talent_S_PlayerWind_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Viridian Transience`,
-      content: `Increases the Level of Palm Vortex by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Palm Vortex</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_PlayerWind_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Intertwined Winds`,
-      content: `Targets who take DMG from Gust Surge have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">20%</span>.
+      content: `Targets who take DMG from <b>Gust Surge</b> have their <b class="text-genshin-anemo">Anemo RES</b> decreased by <span class="text-desc">20%</span>.
       <br />If an Elemental Absorption occurred, then their <b>RES</b> towards the corresponding Element is also decreased by <span class="text-desc">20%</span>.`,
+      image: 'UI_Talent_S_PlayerWind_04',
     },
   }
 
@@ -272,18 +283,28 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
         })
-      if (form.amc_c4) base.DMG_REDUCTION.push({value: 0.1, name: '', source: ``})
+      if (form.amc_c4) base.DMG_REDUCTION.push({ value: 0.1, name: 'Constellation 4', source: `Self` })
       if (form.amc_c6) {
-        base.ANEMO_RES_PEN.push({value: 0.2, name: '', source: ``})
-        if (form.amc_burst_absorb) base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`].push({value: 0.2, name: '', source: ``})
+        base.ANEMO_RES_PEN.push({ value: 0.2, name: 'Constellation 6', source: `Self` })
+        if (form.amc_burst_absorb)
+          base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`].push({
+            value: 0.2,
+            name: 'Constellation 6',
+            source: `Self`,
+          })
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.amc_c6) {
-        base.ANEMO_RES_PEN.push({value: 0.2, name: '', source: ``})
-        if (form.amc_burst_absorb) base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`].push({value: 0.2, name: '', source: ``})
+        base.ANEMO_RES_PEN.push({ value: 0.2, name: 'Constellation 6', source: `Traveler` })
+        if (form.amc_burst_absorb)
+          base[`${form.amc_burst_absorb.toUpperCase()}_RES_PEN`].push({
+            value: 0.2,
+            name: 'Constellation 6',
+            source: `Traveler`,
+          })
       }
 
       return base

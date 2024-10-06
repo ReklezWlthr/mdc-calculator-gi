@@ -95,6 +95,8 @@ export const baseStatsObject = {
   [Stats.I_HEALING]: [] as StatsArray[],
   [Stats.SHIELD]: [] as StatsArray[],
 
+  X_EM: [] as StatsArray[],
+
   // DMG Bonuses
   [Stats.ANEMO_DMG]: [] as StatsArray[],
   [Stats.PYRO_DMG]: [] as StatsArray[],
@@ -244,6 +246,9 @@ export const baseStatsObject = {
   },
   getDef: function () {
     return this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value')) + _.sumBy(this[Stats.DEF], 'value')
+  },
+  getEM: function (exclude?: boolean) {
+    return _.sumBy(this[Stats.EM], 'value') + (exclude ? 0 : this.getValue('X_EM'))
   },
   getValue: function (key: string, exclude?: StatsArray[]) {
     return (

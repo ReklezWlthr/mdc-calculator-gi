@@ -122,14 +122,6 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const content: IContent[] = [
     {
-      type: 'toggle',
-      id: 'mualani_ns',
-      text: `Nightsoul's Blessing`,
-      ...talents.skill,
-      show: true,
-      default: true,
-    },
-    {
       type: 'number',
       id: 'wave_momentum',
       text: `Wave Momentum Stacks`,

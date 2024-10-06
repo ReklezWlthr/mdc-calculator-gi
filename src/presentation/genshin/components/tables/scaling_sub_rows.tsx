@@ -79,7 +79,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     [Stats.ATK]: stats.getAtk(),
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: stats.getHP(),
-    [Stats.EM]: stats.getValue(Stats.EM),
+    [Stats.EM]: stats.getEM(),
   }
 
   const bonusDMG =

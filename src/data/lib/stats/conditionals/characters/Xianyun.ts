@@ -30,99 +30,99 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Gathers the power of Anemo and plunges towards the ground from mid-air, damaging all opponents in her path. Deals <b class="text-genshin-anemo">AoE Anemo DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `White Clouds at Dawn`,
-      content: `Xianyun enters the Cloud Transmogrification state, in which she will not take Fall DMG, and uses Skyladder once.
-      <br />In this state, her Plunging Attack will be converted into Driftcloud Wave instead, which deals <b class="text-genshin-anemo">AoE Anemo DMG</b> and ends the Cloud Transmogrification state. This DMG is considered Plunging Attack DMG.
-      <br />Each use of Skyladder while in this state increases the DMG and AoE of the next Driftcloud Wave used.
+      content: `Xianyun enters the <b class="text-genshin-anemo">Cloud Transmogrification</b> state, in which she will not take Fall DMG, and uses <b>Skyladder</b> once.
+      <br />In this state, her Plunging Attack will be converted into <b>Driftcloud Wave</b> instead, which deals <b class="text-genshin-anemo">AoE Anemo DMG</b> and ends the <b class="text-genshin-anemo">Cloud Transmogrification</b> state. This DMG is considered Plunging Attack DMG.
+      <br />Each use of <b>Skyladder</b> while in this state increases the DMG and AoE of the next <b>Driftcloud Wave</b> used.
       <br />
       <br /><b>Skyladder</b>
       <br />Can be used while in mid-air. Xianyun leaps forward, dealing <b class="text-genshin-anemo">Anemo DMG</b> to targets along her path.
-      <br />During each Cloud Transmogrification state Xianyun enters, Skyladder may be used up to <span class="text-desc">3</span> times and only <span class="text-desc">1</span> instance of Skyladder DMG can be dealt to any one opponent.
-      <br />If Skyladder is not used again in a short period, the Cloud Transmogrification state will be canceled.
+      <br />During each <b class="text-genshin-anemo">Cloud Transmogrification</b> state Xianyun enters, <b>Skyladder</b> may be used up to <span class="text-desc">3</span> times and only <span class="text-desc">1</span> instance of <b>Skyladder</b> DMG can be dealt to any one opponent.
+      <br />If <b>Skyladder</b> is not used again in a short period, the <b class="text-genshin-anemo">Cloud Transmogrification</b> state will be canceled.
       <br />
-      <br />If Xianyun does not use Driftcloud Wave while in this state, the next CD of White Clouds at Dawn will be decreased by 3s.
+      <br />If Xianyun does not use <b>Driftcloud Wave</b> while in this state, the next CD of <b>White Clouds at Dawn</b> will be decreased by <span class="text-desc">3</span>s.
       `,
+      image: 'Skill_S_Liuyun_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Stars Gather at Dusk`,
-      content: `Brings forth a sacred breeze that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> and heals all nearby characters based on Xianyun's ATK. It will also summon the "Starwicker" mechanism.
+      content: `Brings forth a sacred breeze that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> and heals all nearby characters based on Xianyun's ATK. It will also summon the <b>Starwicker</b> mechanism.
       <br />
       <br /><b>Starwicker</b>
       <br />Continuously follows the active character and periodically heals all nearby party members based on Xianyun's ATK.
-      <br />Starts with <span class="text-desc">8</span> stacks of Adeptal Assistance. While Adeptal Assistance is active, nearby active characters in the party will have their jump height increased.
-      <br />When the active character completes a Plunging Attack, Starwicker will consume 1 stack of Adeptal Assistance and deal <b class="text-genshin-anemo">AoE Anemo DMG</b>.
-      <br />Only <span class="text-desc">1</span> Starwicker can exist simultaneously.
+      <br />Starts with <span class="text-desc">8</span> stacks of <b class="text-genshin-anemo">Adeptal Assistance</b>. While <b class="text-genshin-anemo">Adeptal Assistance</b> is active, nearby active characters in the party will have their jump height increased.
+      <br />When the active character completes a Plunging Attack, <b>Starwicker</b> will consume <span class="text-desc">1</span> stack of <b class="text-genshin-anemo">Adeptal Assistance</b> and deal <b class="text-genshin-anemo">AoE Anemo DMG</b>.
+      <br />Only <span class="text-desc">1</span> <b>Starwicker</b> can exist simultaneously.
       `,
+      image: 'Skill_E_Liuyun_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Galefeather Pursuit`,
-      content: `Each opponent hit by Driftcloud Waves from White Clouds at Dawn will grant all nearby party members <span class="text-desc">1</span> stack of Storm Pinion for <span class="text-desc">20</span>s. Max <span class="text-desc">4</span> stacks. These will cause the characters' Plunging Attack CRIT Rate to increase by <span class="text-desc">4%/6%/8%/10%</span> respectively.
-      <br />Each Storm Pinion created by hitting an opponent has an independent duration.`,
+      content: `Each opponent hit by <b>Driftcloud Waves</b> from <b>White Clouds at Dawn</b> will grant all nearby party members <span class="text-desc">1</span> stack of <b class="text-genshin-anemo">Storm Pinion</b> for <span class="text-desc">20</span>s. Max <span class="text-desc">4</span> stacks. These will cause the characters' Plunging Attack CRIT Rate to increase by <span class="text-desc">4%/6%/8%/10%</span> respectively.
+      <br />Each <b class="text-genshin-anemo">Storm Pinion</b> created by hitting an opponent has an independent duration.`,
+      image: 'UI_Talent_S_Liuyun_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Consider, the Adeptus in Her Realm`,
-      content: `When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">200%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">9,000</span>.
+      content: `When the <b>Starwicker</b> created by <b>Stars Gather at Dusk</b> has <b class="text-genshin-anemo">Adeptal Assistance</b> stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">200%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">9,000</span>.
       <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-desc">0.4</span>s.`,
-      value: [
-        {
-          name: 'Base Bonus Plung DMG',
-          value: { stat: Stats.ATK, scaling: (atk) => _.round(_.min([2 * atk, 9000])).toLocaleString() },
-        },
-      ],
+      image: 'UI_Talent_S_Liuyun_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Crane Form`,
       content: `Increases gliding SPD for your own party members by <span class="text-desc">15%</span>.
       <br />Not stackable with Passive Talents that provide the exact same effects.`,
+      image: 'UI_Talent_S_Liuyun_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Purifying Wind`,
-      content: `White Clouds at Dawn gains <span class="text-desc">1</span> additional charge.`,
+      content: `<b>White Clouds at Dawn</b> gains <span class="text-desc">1</span> additional charge.`,
+      image: 'UI_Talent_S_Liuyun_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Aloof From the World`,
-      content: `After using a Skyladder from White Clouds at Dawn, Xianyun's ATK will be increased by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s.
-      <br />Additionally, the effects of the Passive Talent "Consider, the Adeptus in Her Realm" will be enhanced: When the Starwicker created by Stars Gather at Dusk has Adeptal Assistance stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">400%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">18,000</span>.
+      content: `After using a <b>Skyladder</b> from <b>White Clouds at Dawn</b>, Xianyun's ATK will be increased by <span class="text-desc">20%</span> for <span class="text-desc">15</span>s.
+      <br />Additionally, the effects of the Passive Talent <b>Consider, the Adeptus in Her Realm</b> will be enhanced: When the <b>Starwicker</b> created by <b>Stars Gather at Dusk</b> has <b class="text-genshin-anemo">Adeptal Assistance</b> stacks, nearby active characters' Plunging Attack shockwave DMG will be increased by <span class="text-desc">400%</span> of Xianyun's ATK. The maximum DMG increase that can be achieved this way is <span class="text-desc">18,000</span>.
       <br />Each Plunging Attack shockwave DMG instance can only apply this increased DMG effect to a single opponent. Each character can trigger this effect once every <span class="text-desc">0.4</span>s.
-      <br />You must first unlock the Passive Talent "Consider, the Adeptus in Her Realm."`,
-      value: [
-        {
-          name: 'Enhanced Bonus Plung DMG',
-          value: { stat: Stats.ATK, scaling: (atk) => _.round(_.min([4 * atk, 18000])).toLocaleString() },
-        },
-      ],
+      <br />You must first unlock the Passive Talent <b>Consider, the Adeptus in Her Realm</b>.`,
+      image: 'UI_Talent_S_Liuyun_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Creations of Star and Moon`,
-      content: `Increases the Level of Stars Gather at Dusk by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Stars Gather at Dusk</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Liuyun_02',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Mystery Millet Gourmet`,
-      content: `After using Skyladder <span class="text-desc">1/2/3</span> times during one White Clouds at Dawn Cloud Transmogrification state, when a Driftcloud Wave unleashed during that instance hits an opponent, it will heal all nearby party members for <span class="text-desc">50%/80%/150%</span> of Xianyun's ATK. This effect can be triggered once every <span class="text-desc">5</span>s.`,
+      content: `After using <b>Skyladder</b> <span class="text-desc">1/2/3</span> times during one <b>White Clouds at Dawn</b> <b class="text-genshin-anemo">Cloud Transmogrification</b> state, when a <b>Driftcloud Wave</b> unleashed during that instance hits an opponent, it will heal all nearby party members for <span class="text-desc">50%/80%/150%</span> of Xianyun's ATK. This effect can be triggered once every <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Liuyun_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Astride Rose-Colored Clouds`,
-      content: `Increases the Level of White Clouds at Dawn by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>White Clouds at Dawn</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Liuyun_01',
     },
     c6: {
       trace: `Constellation 6`,
       title: `They Call Her Cloud Retainer`,
-      content: `After Xianyun uses <span class="text-desc">1/2/3</span> Skyladders within one Cloud Transmogrification caused by White Clouds at Dawn, the CRIT DMG of a Driftcloud Wave created in this instance of Cloud Transmogrification will be increased by <span class="text-desc">15%/35%/70%</span>%.
-      <br />Within <span class="text-desc">16</span>s after Xianyun has used Stars Gather at Dusk, White Clouds at Dawn will not enter CD. This effect will be canceled once she has used White Clouds at Dawn <span class="text-desc">8</span> times.`,
+      content: `After Xianyun uses <span class="text-desc">1/2/3</span> <b>Skyladders</b> within one <b class="text-genshin-anemo">Cloud Transmogrification</b> caused by <b>White Clouds at Dawn</b>, the CRIT DMG of a <b>Driftcloud Wave</b> created in this instance of <b class="text-genshin-anemo">Cloud Transmogrification</b> will be increased by <span class="text-desc">15%/35%/70%</span>.
+      <br />Within <span class="text-desc">16</span>s after Xianyun has used <b>Stars Gather at Dusk</b>, <b>White Clouds at Dawn</b> will not enter CD. This effect will be canceled once she has used <b>White Clouds at Dawn</b> <span class="text-desc">8</span> times.`,
+      image: 'UI_Talent_S_Liuyun_04',
     },
   }
 
@@ -261,8 +261,9 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.HEAL,
         },
       ]
-      if (form.storm_pinion) base[Stats.CRIT_RATE] += form.storm_pinion * 0.2 + 0.2
-      if (c >= 2 && form.skyladder) base[Stats.P_ATK].push({value: 0.2, name: '', source: ``})
+      if (form.storm_pinion)
+        base[Stats.CRIT_RATE].push({ value: form.storm_pinion * 0.2 + 0.2, name: 'Storm Pinion', source: 'Self' })
+      if (c >= 2 && form.skyladder) base[Stats.P_ATK].push({ value: 0.2, name: 'Constellation 2', source: `Self` })
 
       if (c >= 6 && form.skyladder)
         base.PLUNGE_SCALING.push({
@@ -280,12 +281,23 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.xianyun_a4) base.PLUNGE_F_DMG += _.min([2 * own.getAtk(), 9000]) * (c >= 2 ? 2 : 1)
-
       return base
     },
-    postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.xianyun_a4) base.PLUNGE_F_DMG += _.min([2 * base.getAtk(), 9000]) * (c >= 2 ? 2 : 1)
+    postCompute: (base: StatsObject, form: Record<string, any>, allBase: StatsObject[]) => {
+      if (form.xianyun_a4)
+        _.last(allBase).CALLBACK.push(function (x, a) {
+          const index = _.findIndex(team, (item) => item.cId === '10000093')
+          _.forEach(a, (item, i) => {
+            item.PLUNGE_F_DMG.push({
+              value: _.min([2 * a[index].getAtk(), 9000]) * (c >= 2 ? 2 : 1),
+              name: 'Ascension 4 Passive',
+              source: item === i ? 'Self' : 'Xianyun',
+              base: _.min([a[index].getAtk(), 4500]),
+              multiplier: 2 * (c >= 2 ? 2 : 1),
+            })
+          })
+          return x
+        })
       return base
     },
   }

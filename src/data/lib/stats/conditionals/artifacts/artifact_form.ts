@@ -384,12 +384,34 @@ export const ArtifactForm = () => {
     },
     {
       type: 'toggle',
-      text: `Martial Artist`,
-      title: `Martial Artist`,
-      content: `After using Elemental Skill, increases Normal Attack and Charged Attack DMG by <span class="text-desc">25%</span> for <span class="text-desc">8</span>s.`,
+      text: `Nightsoul Point Consumed`,
+      title: `Nightsoul Point Consumed`,
+      content: `After the equipping character consumes <span class="text-desc">1</span> <b>Nightsoul</b> point while on the field, CRIT Rate increases by <span class="text-desc">40%</span> for <span class="text-desc">6</span>s. This effect can trigger once every second.`,
       show: true,
       default: true,
-      id: '1774579403',
+      id: '1774579403_2',
+    },
+    {
+      type: 'multiple',
+      text: `Cinder City Reaction Bonus`,
+      title: `Cinder City Reaction Bonus`,
+      content: `After the equipping character triggers a reaction related to their <b>Elemental Type</b>, all nearby party members gain a <span class="text-desc">12%</span> <b>Elemental DMG Bonus</b> for the <b>Elemental Types</b> involved in the elemental reaction for <span class="text-desc">15</span>s.`,
+      show: true,
+      default: [],
+      options: _.map(
+        _.filter(Element, (item) => item !== Element.PHYSICAL),
+        (item) => ({ name: item, value: item })
+      ),
+      id: '2949388203',
+    },
+    {
+      type: 'toggle',
+      text: `Nightsoul's Blessing`,
+      title: `Nightsoul's Blessing`,
+      content: `If the equipping character is in the <b>Nightsoul's Blessing</b> state when triggering this effect, all nearby party members gain an additional <span class="text-desc">28%</span> <b>Elemental DMG Bonus</b> for the <b>Elemental Types</b> involved in the elemental reaction for <span class="text-desc">20</span>s.`,
+      show: true,
+      default: true,
+      id: '2949388203_2',
     },
   ]
 
@@ -403,7 +425,21 @@ export const ArtifactForm = () => {
     findContentById(content, '1675079283'),
     findContentById(content, '2803305851'),
     findContentById(content, '3890292467'),
+    findContentById(content, '2949388203'),
+    findContentById(content, '2949388203_2'),
   ]
 
-  return { content, teamContent }
+  const halfContent: IContent[] = [
+    {
+      type: 'toggle',
+      text: `Nightsoul's Blessing`,
+      title: `Nightsoul's Blessing`,
+      content: `While the equipping character is in <b>Nightsoul's Blessing</b> and is on the field, their DMG dealt is increased by <span class="text-desc">15%</span>.`,
+      show: true,
+      default: true,
+      id: '1774579403',
+    },
+  ]
+
+  return { content, teamContent, halfContent }
 }

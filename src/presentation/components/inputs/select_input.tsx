@@ -15,9 +15,19 @@ type SelectInputProps = {
   }[]
   style?: string
   icon?: string
+  small?: boolean
 }
 
-export const SelectInput = ({ disabled, value, placeholder, onChange, options, style, icon }: SelectInputProps) => {
+export const SelectInput = ({
+  disabled,
+  value,
+  placeholder,
+  onChange,
+  options,
+  style,
+  icon,
+  small,
+}: SelectInputProps) => {
   //---------------------
   // HANDLER
   //---------------------
@@ -35,19 +45,21 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
       >
         <Listbox.Button
           className={classNames(
-            'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full min-h-[30px]',
+            'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg transition-all duration-300 w-full',
             { 'cursor-not-allowed bg-primary-bg border-primary text-primary-light': disabled },
             { 'cursor-pointer hover:border-primary-lighter bg-primary-darker border-primary-light': !disabled },
             { 'text-gray': value },
             { 'text-primary-light': !value }
           )}
         >
-          <div className="flex items-center">
+          <div className="flex items-center w-full">
             {value && valueFinder(value)?.img && (
               <img src={valueFinder(value)?.img} className="object-cover w-6 h-6 mr-3 rounded-full" />
             )}
             <div>{value && <i className={icon} />}</div>
-            <div className="text-sm truncate">{value ? valueFinder(value)?.name : placeholder}</div>
+            <div className={classNames('w-full truncate text-start', small ? 'text-xs' : 'text-sm')}>
+              {value ? valueFinder(value)?.name : placeholder}
+            </div>
           </div>
         </Listbox.Button>
         <Transition
@@ -59,7 +71,12 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
           leaveTo="transform scale-y-0 opacity-0"
           className="relative z-[1000]"
         >
-          <Listbox.Options className="absolute z-50 w-full mt-1 overflow-auto text-sm text-white rounded-md bg-primary-darker max-h-60 dropdownScrollbar">
+          <Listbox.Options
+            className={classNames(
+              'absolute z-50 w-full mt-1 overflow-auto text-white rounded-md bg-primary-darker max-h-60 dropdownScrollbar ring-1 ring-primary-lighter ring-inset ring-opacity-20',
+              small ? 'text-xs' : 'text-sm'
+            )}
+          >
             {_.map(options, (item, i) => (
               <Listbox.Option
                 key={`${item.value}_${i}`}

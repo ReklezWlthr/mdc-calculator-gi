@@ -11,8 +11,8 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
   swirl,
   stat
 ) => {
-  const amp = calcAmplifying(stat?.getValue(Stats.EM) || 0)
-  const add = calcAdditive(stat?.getValue(Stats.EM) || 0)
+  const amp = calcAmplifying(stat?.getEM() || 0)
+  const add = calcAdditive(stat?.getEM() || 0)
   const base = BaseReactionDmg[level - 1]
 
   return [

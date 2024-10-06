@@ -26,80 +26,86 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Charged Attack</b>
       <br />Performs a more precise Aimed Shot with increased DMG.
       <br />While aiming, the power of Dendro will accumulate on the arrowhead before the arrow is fired. Has different effects based on how long the energy has been charged:
-      <br />- Charge Level 1: Fires off an arrow carrying the power of flora that deals <b class="text-genshin-dendro">Dendro DMG</b>.
-      <br />- Charge Level 2: Fires off a Wreath Arrow that deals <b class="text-genshin-dendro">Dendro DMG</b>. Upon hit, the Wreath Arrow will create <span class="text-desc">4</span> Clusterbloom Arrows that will track nearby opponents automatically and deal <b class="text-genshin-dendro">Dendro DMG</b>.
+      <br />- <b>Charge Level 1</b>: Fires off an arrow carrying the power of flora that deals <b class="text-genshin-dendro">Dendro DMG</b>.
+      <br />- <b>Charge Level 2</b>: Fires off a <b class="text-lime-600">Wreath Arrow</b> that deals <b class="text-genshin-dendro">Dendro DMG</b>. Upon hit, the <b class="text-lime-600">Wreath Arrow</b> will create <span class="text-desc">4</span> <b class="text-green-500">Clusterbloom Arrows</b> that will track nearby opponents automatically and deal <b class="text-genshin-dendro">Dendro DMG</b>.
       <br />
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_02',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Vijnana-Phala Mine`,
       content: `Tighnari throws a Vijnana Stormheart ahead that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>, creating a Vijnana-Khanda Field that creates mysterious illusions that taunt opponents and draw their fire.
-      <br />Additionally, Tighnari gains the Vijnana Suffusion effect, which will decrease the Wreath Arrow's charging time by <span class="text-desc">2.4</span>s. This effect will dissipate once the skill duration ends or after Tighnari has fired <span class="text-desc">3</span> Wreath Arrows.`,
+      <br />Additionally, Tighnari gains the <b>Vijnana Suffusion</b> effect, which will decrease the <b class="text-lime-600">Wreath Arrow</b>'s charging time by <span class="text-desc">2.4</span>s. This effect will dissipate once the skill duration ends or after Tighnari has fired <span class="text-desc">3</span> <b class="text-lime-600">Wreath Arrows</b>.`,
+      image: 'Skill_S_Tighnari_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Fashioner's Tanglevine Shaft`,
-      content: `Combines the power of all seeds to fire <span class="text-desc">6</span> Tanglevine Shafts that can track opponents and deal <b class="text-genshin-dendro">Dendro DMG</b>.
-      <br />After they hit, the Tanglevine Shafts will create a secondary wave of Tanglevine Shafts that can also track nearby opponents and deal <b class="text-genshin-dendro">Dendro DMG</b> on hit.
+      content: `Combines the power of all seeds to fire <span class="text-desc">6</span> <b>Tanglevine Shafts</b> that can track opponents and deal <b class="text-genshin-dendro">Dendro DMG</b>.
+      <br />After they hit, the <b>Tanglevine Shafts</b> will create a secondary wave of <b>Tanglevine Shafts</b> that can also track nearby opponents and deal <b class="text-genshin-dendro">Dendro DMG</b> on hit.
       `,
+      image: 'Skill_E_Tighnari_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Keen Sight`,
-      content: `After Tighnari fires a Wreath Arrow, his Elemental Mastery is increased by <span class="text-desc">50</span> for <span class="text-desc">4</span>s.`,
+      content: `After Tighnari fires a <b class="text-lime-600">Wreath Arrow</b>, his Elemental Mastery is increased by <span class="text-desc">50</span> for <span class="text-desc">4</span>s.`,
+      image: 'UI_Talent_S_Tighnari_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Scholarly Blade`,
-      content: `For every point of Elemental Mastery Tighnari possesses, his Charged Attack and Fashioner's Tanglevine Shaft DMG are increased by <span class="text-desc">0.06%</span>.
+      content: `For every point of Elemental Mastery Tighnari possesses, his Charged Attack and <b>Fashioner's Tanglevine Shaft</b> DMG are increased by <span class="text-desc">0.06%</span>.
       <br />The maximum DMG Bonus obtainable this way is <span class="text-desc">60%</span>.`,
-      value: [
-        {
-          name: 'Current Bonus DMG',
-          value: { stat: Stats.EM, scaling: (em) => toPercentage(_.min([0.0006 * em, 0.6])) },
-        },
-      ],
+      image: 'UI_Talent_S_Tighnari_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Encyclopedic Knowledge`,
       content: `Displays the location of nearby resources unique to Sumeru on the mini-map.`,
+      image: 'UI_Talent_S_Tighnari_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Beginnings Determined at the Roots`,
       content: `Tighnari's Charged Attack CRIT Rate is increased by <span class="text-desc">15%</span>.`,
+      image: 'UI_Talent_S_Tighnari_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Origins Known From the Stem`,
-      content: `When there are opponents within the Vijnana-Khanda Field created by Vijnana-Phala Mine, Tighnari gains <span class="text-desc">20%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b>.
+      content: `When there are opponents within the Vijnana-Khanda Field created by <b>Vijnana-Phala Mine</b>, Tighnari gains <span class="text-desc">20%</span> <b class="text-genshin-dendro">Dendro DMG Bonus</b>.
       <br />The effect will last up to <span class="text-desc">6</span>s if the field's duration ends or if it no longer has opponents within it.`,
+      image: 'UI_Talent_S_Tighnari_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Fortunes Read Amongst the Branches`,
-      content: `Increases the Level of Fashioner's Tanglevine Shaft by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Fashioner's Tanglevine Shaft</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Tighnari_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Withering Glimpsed in the Leaves`,
-      content: `When Fashioner's Tanglevine Shaft is unleashed, all nearby party members gain <span class="text-desc">60</span> Elemental Mastery for <span class="text-desc">8</span>s. If the Fashioner's Tanglevine Shaft triggers a Burning, Bloom, Quicken, or Spread reaction, their Elemental Mastery will be further increased by <span class="text-desc">60</span>. This latter case will also refresh the buff state's duration.`,
+      content: `When <b>Fashioner's Tanglevine Shaft</b> is unleashed, all nearby party members gain <span class="text-desc">60</span> Elemental Mastery for <span class="text-desc">8</span>s. If the <b>Fashioner's Tanglevine Shaft</b> triggers a Burning, Bloom, Quicken, or Spread reaction, their Elemental Mastery will be further increased by <span class="text-desc">60</span>. This latter case will also refresh the buff state's duration.`,
+      image: 'UI_Talent_S_Tighnari_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Comprehension Amidst the Flowers`,
-      content: `Increases the Level of Vijnana-Phala Mine by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Vijnana-Phala Mine</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Tighnari_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Karma Adjudged From the Leaden Fruit`,
-      content: `Wreath Arrow's charging time is decreased by <span class="text-desc">0.9</span>s, and will produce <span class="text-desc">1</span> additional Clusterbloom Arrow upon hit. This arrow deals <span class="text-desc">150%</span> of Tighnari's ATK as DMG.`,
+      content: `<b class="text-lime-600">Wreath Arrow</b>'s charging time is decreased by <span class="text-desc">0.9</span>s, and will produce <span class="text-desc">1</span> additional <b class="text-green-500">Clusterbloom Arrow</b> upon hit. This arrow deals <span class="text-desc">150%</span> of Tighnari's ATK as DMG.`,
+      image: 'UI_Talent_S_Tighnari_04',
     },
   }
 
@@ -221,10 +227,10 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.tigh_a1) base[Stats.EM].push({value: 50, name: '', source: ``})
-      if (c >= 1) base.CHARGE_CR.push({value: 0.15, name: '', source: ``})
-      if (form.tigh_c2) base[Stats.DENDRO_DMG].push({value: 0.2, name: '', source: ``})
-      if (form.tigh_c4) base[Stats.EM].push({value: 60 , name: '', source: ``})* form.tigh_c4
+      if (form.tigh_a1) base[Stats.EM].push({ value: 50, name: 'Ascension 1 Passive', source: `Self` })
+      if (c >= 1) base.CHARGE_CR.push({ value: 0.15, name: 'Constellation 1', source: `Self` })
+      if (form.tigh_c2) base[Stats.DENDRO_DMG].push({ value: 0.2, name: 'Constellation 2', source: `Self` })
+      if (form.tigh_c4) base[Stats.EM].push({ value: 60 * form.tigh_c4, name: 'Constellation 4', source: `Self` })
 
       if (c >= 6)
         base.CHARGE_SCALING.push({
@@ -237,15 +243,27 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.tigh_c4) base[Stats.EM].push({value: 60 , name: '', source: ``})* form.tigh_c4
+      if (form.tigh_c4) base[Stats.EM].push({ value: 60 * form.tigh_c4, name: 'Constellation 4', source: `Tighnari` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (a >= 4) {
-        const a4Bonus = _.min([0.0006 * base[Stats.EM], 0.6])
-        base.CHARGE_DMG += a4Bonus
-        base.BURST_DMG += a4Bonus
+        const a4Bonus = _.min([0.0006 * base.getEM(), 0.6])
+        base.CHARGE_DMG.push({
+          value: a4Bonus,
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+          base: _.min([base.getEM(), 1000]),
+          multiplier: toPercentage(0.0006, 2),
+        })
+        base.BURST_DMG.push({
+          value: a4Bonus,
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+          base: _.min([base.getEM(), 1000]),
+          multiplier: toPercentage(0.0006, 2),
+        })
       }
 
       return base

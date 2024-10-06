@@ -301,7 +301,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       if (_.size(form.a4_swirl)) {
         _.forEach(form.a4_swirl, (item) =>
           base[`${item} DMG%`].push({
-            value: 0.0004 * own.getValue(Stats.EM),
+            value: 0.0004 * own.getEM(),
             name: 'Ascension 4 Passive',
             source: `Kaedehara Kazuha`,
           })
@@ -315,16 +315,16 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       if (_.size(form.a4_swirl)) {
         _.forEach(form.a4_swirl, (item) =>
           base[`${item} DMG%`].push({
-            value: 0.0004 * base.getValue(Stats.EM),
+            value: 0.0004 * base.getEM(),
             name: 'Ascension 4 Passive',
             source: `Self`,
           })
         )
       }
       if (c >= 6) {
-        base.BASIC_DMG.push({ value: 0.002 * base.getValue(Stats.EM), name: 'Constellation 6', source: `Self` })
-        base.CHARGE_DMG.push({ value: 0.002 * base.getValue(Stats.EM), name: 'Constellation 6', source: `Self` })
-        base.PLUNGE_DMG.push({ value: 0.002 * base.getValue(Stats.EM), name: 'Constellation 6', source: `Self` })
+        base.BASIC_DMG.push({ value: 0.002 * base.getEM(), name: 'Constellation 6', source: `Self` })
+        base.CHARGE_DMG.push({ value: 0.002 * base.getEM(), name: 'Constellation 6', source: `Self` })
+        base.PLUNGE_DMG.push({ value: 0.002 * base.getEM(), name: 'Constellation 6', source: `Self` })
       }
 
       return base

@@ -80,6 +80,7 @@ import Wriothesley from './characters/Wriothesley'
 import Xiangling from './characters/Xiangling'
 import Xianyun from './characters/Xianyun'
 import Xiao from './characters/Xiao'
+import Xilonen from './characters/Xilonen'
 import Xingqiu from './characters/Xingqiu'
 import Xinyan from './characters/Xinyan'
 import Yae from './characters/Yae'
@@ -177,6 +178,7 @@ export default [
   { id: '10000100', conditionals: Kachina },
   { id: '10000101', conditionals: Kinich },
   { id: '10000102', conditionals: Mualani },
+  { id: '10000103', conditionals: Xilonen },
   // Travelers
   { id: '10000005-504', conditionals: TravelerWind },
   { id: '10000005-506', conditionals: TravelerRock },

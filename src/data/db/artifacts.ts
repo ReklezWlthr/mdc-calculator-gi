@@ -274,7 +274,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
       `ATK +18%.`,
-      `After using an Elemental Burst. this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character's HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.`,
+      `After using an Elemental Burst, this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character's HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.`,
     ],
   },
   {
@@ -456,7 +456,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [],
     desc: [
       `When a nearby party member triggers a <b>Nightsoul Burst</b>, the equipping character regenerates <span class="text-desc">6</span> Elemental Energy.`,
-      `After the equipping character triggers a reaction related to their Elemental Type, all nearby party members gain a <span class="text-desc">12%</span> Elemental DMG Bonus for the Elemental Types involved in the elemental reaction for <span class="text-desc">15</span>s. If the equipping character is in the <b>Nightsoul's Blessing</b> state when triggering this effect, all nearby party members gain an additional <span class="text-desc">28%</span> Elemental DMG Bonus for the Elemental Types involved in the elemental reaction for <span class="text-desc">20</span>s. The equipping character can trigger this effect while off-field, and the DMG bonus from Artifact Sets with the same name do not stack.`,
+      `After the equipping character triggers a reaction related to their <b>Elemental Type</b>, all nearby party members gain a <span class="text-desc">12%</span> <b>Elemental DMG Bonus</b> for the <b>Elemental Types</b> involved in the elemental reaction for <span class="text-desc">15</span>s. If the equipping character is in the <b>Nightsoul's Blessing</b> state when triggering this effect, all nearby party members gain an additional <span class="text-desc">28%</span> <b>Elemental DMG Bonus</b> for the <b>Elemental Types</b> involved in the elemental reaction for <span class="text-desc">20</span>s. The equipping character can trigger this effect while off-field, and the DMG bonus from Artifact Sets with the same name do not stack.`,
     ],
   },
   {
