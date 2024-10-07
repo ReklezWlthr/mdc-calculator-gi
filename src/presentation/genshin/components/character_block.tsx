@@ -61,7 +61,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
           {characterData && (
             <>
               <img
-                src={`https://api.hakush.in/gi/UI/UI_AvatarIcon_${codeName}.webp`}
+                src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
                 className="object-cover aspect-square object-[0_20%]"
               />
               <div className="flex gap-0.5 absolute bottom-1 left-1">

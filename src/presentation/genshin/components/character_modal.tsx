@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { Characters } from '@src/data/db/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { Element, WeaponIcon, WeaponType } from '@src/domain/constant'
+import { Element, ITeamChar, WeaponIcon, WeaponType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
@@ -17,9 +17,10 @@ const { publicRuntimeConfig } = getConfig()
 
 interface CharacterModalProps {
   index: number
+  setChar?: (index: number, value: Partial<ITeamChar>) => void
 }
 
-export const CharacterModal = observer(({ index }: CharacterModalProps) => {
+export const CharacterModal = observer(({ index, setChar }: CharacterModalProps) => {
   const { teamStore, modalStore, buildStore, charStore, settingStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
@@ -29,6 +30,8 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
   })
 
   const selectedWeaponData = findWeapon(teamStore.characters[index]?.equipments?.weapon?.wId)
+
+  const charSetter = setChar || teamStore.setMemberInfo
 
   const filteredChar = useMemo(
     () =>
@@ -116,7 +119,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                 const char = _.find(charStore.characters, (char) => char.cId === item.id)
                 if (item.weapon !== selectedWeaponData?.type && teamStore.characters[index]?.equipments?.weapon)
                   teamStore.setWeapon(index, DefaultWeapon)
-                teamStore.setMemberInfo(index, {
+                charSetter(index, {
                   cId: item.id,
                   ascension: char?.ascension || 0,
                   level: char?.level || 1,

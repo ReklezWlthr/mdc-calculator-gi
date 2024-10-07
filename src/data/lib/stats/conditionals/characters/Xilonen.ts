@@ -1,6 +1,6 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
-import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
+import { baseStatsObject, getPlungeScaling, StatsObject, StatsObjectKeys } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
@@ -17,7 +17,12 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const elements = _.uniq(_.map(team, (item) => findCharacter(item.cId)?.element || Element.GEO))
+  const elements = _.uniq(
+    _.filter(
+      _.map(team, (item) => findCharacter(item.cId)?.element),
+      (item) => _.includes([Element.PYRO, Element.CRYO, Element.ELECTRO, Element.HYDRO], item)
+    )
+  )
 
   const talents: ITalent = {
     normal: {
@@ -61,7 +66,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     burst: {
       trace: `Elemental Burst`,
-      title: `Bane of All Evil`,
+      title: `Ocelotlicue Point!`,
       content: `Activates the Phlogiston Stereo DJ Controller (Portable) at full power, dealing Nightsoul-aligned <b class="text-genshin-geo">AoE Geo DMG</b> based on Xilonen's DEF.
       <br />
       <br />Additionally, she will trigger the following effects based on her different <b class="text-desc">Source Samples</b>:
@@ -164,8 +169,17 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     {
       type: 'toggle',
+      id: 'xilonen_geo_sample',
+      text: `Geo Source Sample Active`,
+      ...talents.skill,
+      show: true,
+      default: true,
+      debuff: true,
+    },
+    {
+      type: 'toggle',
       id: 'xilonen_sample',
-      text: `Source Sample RES Shred`,
+      text: `Ally Source Sample Active`,
       ...talents.skill,
       show: true,
       default: true,
@@ -206,6 +220,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   ]
 
   const teammateContent: IContent[] = [
+    findContentById(content, 'xilonen_geo_sample'),
     findContentById(content, 'xilonen_sample'),
     findContentById(content, 'xilonen_c4'),
   ]
@@ -330,6 +345,19 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
+      if (form.xilonen_geo_sample) {
+        base[StatsObjectKeys.GEO_RES_PEN].push({
+          value: 0.06 + 0.03 * skill,
+          name: 'Source Sample',
+          source: 'Self',
+        })
+        if (c >= 2)
+          base[Stats.ALL_DMG].push({
+            value: 0.5,
+            name: 'Source Sample [C2]',
+            source: 'Self',
+          })
+      }
       if (form.xilonen_sample) {
         _.forEach(elements, (e) => {
           base[`${e.toUpperCase()}_RES_PEN`].push({
@@ -339,13 +367,6 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           })
           if (c >= 2)
             switch (e) {
-              case Element.GEO:
-                base[Stats.ALL_DMG].push({
-                  value: 0.5,
-                  name: 'Source Sample [C2]',
-                  source: 'Self',
-                })
-                break
               case Element.PYRO:
                 base[Stats.P_ATK].push({
                   value: 0.45,
@@ -393,22 +414,28 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.xilonen_geo_sample) {
+        base[StatsObjectKeys.GEO_RES_PEN].push({
+          value: 0.06 + 0.03 * skill,
+          name: 'Source Sample',
+          source: 'Self',
+        })
+        if (c >= 2)
+          base[Stats.ALL_DMG].push({
+            value: 0.5,
+            name: 'Source Sample [C2]',
+            source: 'Self',
+          })
+      }
       if (form.xilonen_sample) {
         _.forEach(elements, (e) => {
           base[`${e.toUpperCase()}_RES_PEN`].push({
             value: 0.06 + 0.03 * skill,
             name: 'Source Sample',
-            source: 'Xilonen',
+            source: 'Self',
           })
           if (c >= 2)
             switch (e) {
-              case Element.GEO:
-                base[Stats.ALL_DMG].push({
-                  value: 0.5,
-                  name: 'Source Sample [C2]',
-                  source: 'Self',
-                })
-                break
               case Element.PYRO:
                 base[Stats.P_ATK].push({
                   value: 0.45,

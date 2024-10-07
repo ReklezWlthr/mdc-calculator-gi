@@ -88,14 +88,14 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
     },
     c2: {
       trace: `Constellation 2`,
-      title: `Punishment for the Frauds`,
+      title: `Shackles for the Arrogant`,
       content: `When using <b>Darkgold Wolfbite</b>, each <b class="text-blue">Prosecution Edict</b> stack from the Passive Talent <b>There Shall Be a Reckoning for Sin</b> will increase said ability's DMG dealt by <span class="text-desc">40%</span>.
       <br />You must first unlock the Passive Talent <b>There Shall Be a Reckoning for Sin</b>.`,
       image: 'UI_Talent_S_Wriothesley_02',
     },
     c3: {
       trace: `Constellation 3`,
-      title: `Sanban: Moonflower Kusemai`,
+      title: `Punishment for the Frauds`,
       content: `Increases the Level of <b>Normal Attack: Forceful Fists of Frost</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
       image: 'UI_Talent_U_Wriothesley_01',

@@ -108,7 +108,7 @@ export const CharDetail = observer(() => {
                 className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
               />
             </div>
-            <p className="px-3 py-2 text-3xl font-semibold break-words bg-opacity-75 rounded-lg text-end bg-primary-bg">
+            <p className="px-3 py-2 text-3xl font-semibold text-center break-words bg-opacity-75 rounded-lg bg-primary-bg">
               {data.name}
             </p>
             <div className="ml-3 w-fit">
@@ -180,7 +180,7 @@ export const CharDetail = observer(() => {
               <p className="font-bold">Account Data</p>
               <p className="text-[10px] font-normal text-gray">Will be used as Default Data</p>
             </div>
-            {/* <PrimaryButton title="Edit" onClick={onOpenEditModal} /> */}
+            <PrimaryButton title="Edit" onClick={() => {}} />
           </div>
           <div className="px-5 py-3 rounded-lg bg-primary-darker bg-opacity-80">
             {charUpgrade ? (

@@ -1,12 +1,4 @@
-import {
-  Element,
-  IArtifactEquip,
-  IBuild,
-  ITeamChar,
-  IWeapon,
-  IWeaponEquip,
-  WeaponType,
-} from '@src/domain/constant'
+import { Element, IArtifactEquip, IBuild, ITeamChar, IWeapon, IWeaponEquip, WeaponType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -75,13 +67,23 @@ export class Team {
 
   setMemberInfo = (index: number, info: Partial<ITeamChar>) => {
     if (index < 0 || index > 4) return
+    const dupeIndex = _.findIndex(this.characters, ['cId', info?.cId])
+    const dupe = this.characters[dupeIndex]
+    const oldData = _.cloneDeep(this.characters[index]) || null
     if (info?.equipments?.artifacts)
       _.forEach(info.equipments.artifacts, (aId) =>
         _.forEach(this.characters, (character, cI) => {
-          if (cI !== index) character.equipments.artifacts = _.without(character.equipments.artifacts, aId)
+          const i = _.findIndex(character.equipments.artifacts, (item) => item === aId)
+          if (i >= 0 && cI !== index) character.equipments.artifacts[i] = null
         })
       )
-    this.characters[index] = { ...this.characters[index], ...info }
+    if (dupeIndex >= 0 && dupeIndex !== index) {
+      this.characters[index] = dupe
+      this.characters[dupeIndex] = oldData
+    } else {
+      this.characters[index] = { ...this.characters[index], ...info }
+    }
+    this.characters = [...this.characters]
   }
 
   equipBuild = (index: number, build: IBuild) => {
@@ -114,7 +116,8 @@ export class Team {
       if (i === index) {
         character.equipments.artifacts[type - 1] = aId
       } else {
-        character.equipments.artifacts = _.without(character.equipments.artifacts, aId)
+        const i = _.findIndex(character.equipments.artifacts, (item) => item === aId)
+        if (i >= 0) character.equipments.artifacts[i] = null
       }
     })
     this.characters[index] = { ...this.characters[index] }

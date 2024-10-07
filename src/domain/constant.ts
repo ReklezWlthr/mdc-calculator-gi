@@ -10,6 +10,20 @@ export enum GenshinPage {
   CHAR = 'char',
 }
 
+export enum Tags {
+  ON_FIELD = 'On-Field DPS',
+  OFF_FIELD = 'Off-Field DPS',
+  REACTION = 'Reaction',
+  APP = 'Applicator',
+  BURST = 'Burst Reliance',
+  AMP = 'Amplify',
+  HEAL = 'Heal',
+  SHIELD = 'Shield',
+  CONTROL = 'Control',
+  BATTERY = 'Battery',
+  EXPLORATION = 'Exploration',
+}
+
 export interface ICharacterStats {
   baseAtk: number
   baseHp: number

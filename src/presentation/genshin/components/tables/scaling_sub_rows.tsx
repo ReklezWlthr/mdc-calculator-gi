@@ -235,7 +235,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
         }
         style="w-[400px]"
       >
-        <p className="col-span-1 text-center text-gray">{_.round(dmg)}</p>
+        <p className="col-span-1 text-center text-gray">{_.round(dmg).toLocaleString()}</p>
       </Tooltip>
       {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.STATIC], scaling.property) ? (
         <p className="col-span-1 text-center text-gray">-</p>
@@ -264,7 +264,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
           }
           style="w-[400px]"
         >
-          <p className="col-span-1 text-center text-gray">{_.round(dmg * (1 + totalCd))}</p>
+          <p className="col-span-1 text-center text-gray">{_.round(dmg * (1 + totalCd)).toLocaleString()}</p>
         </Tooltip>
       )}
       {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.STATIC], scaling.property) ? (
@@ -292,7 +292,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
           style="w-[400px]"
         >
           <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-            {_.round(dmg * (1 + totalCd * totalCr))}
+            {_.round(dmg * (1 + totalCd * totalCr)).toLocaleString()}
           </p>
         </Tooltip>
       )}

@@ -357,7 +357,7 @@ const WeaponBonus: {
   {
     id: '12426',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `"Ultimate Overlord's Mega Magic Sword"` })
       return base
     },
   },

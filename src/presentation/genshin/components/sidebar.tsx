@@ -48,7 +48,7 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: GenshinPage; o
         <p className="p-2 font-bold text-white">Account</p>
         <Pill name="My Characters" page={GenshinPage.CHAR} icon="fa-solid fa-user-group" />
         <Pill name="My Builds" page={GenshinPage.BUILD} icon="fa-solid fa-screwdriver-wrench" />
-        <Pill name="Relic Inventory" page={GenshinPage.INVENTORY} icon="fa-solid fa-briefcase" />
+        <Pill name="Artifact Inventory" page={GenshinPage.INVENTORY} icon="fa-solid fa-briefcase" />
       </div>
       <div className="flex items-end justify-between px-3">
         <div className="space-y-3 text-sm">

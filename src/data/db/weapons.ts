@@ -27,7 +27,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Vigorous',
-      detail: `When HP is above 90%, increases CRIT Rate by {{0}}%.`,
+      detail: `When HP is above <span class="text-desc">90%</span>, increases CRIT Rate by {{0}}%.`,
       properties: [{ base: 14, growth: 3.5 }],
     },
   },
@@ -57,7 +57,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Overloaded',
-      detail: `Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, or Electro-infused Swirl reaction, ATK is increased by {{0}}% for 12s.`,
+      detail: `Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, or Electro-infused Swirl reaction, ATK is increased by {{0}}% for <span class="text-desc">12</span>s.`,
       properties: [{ base: 20, growth: 5 }],
     },
   },
@@ -72,7 +72,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Gash',
-      detail: `On hit, has 50% chance to deal {{0}}% ATK DMG to a single enemy. Can only occur once every {{1}}.`,
+      detail: `On hit, has <span class="text-desc">50%</span> chance to deal {{0}}% ATK DMG to a single enemy. Can only occur once every {{1}}.`,
       properties: [
         { base: 240, growth: 40 },
         { base: 15, growth: -1 },
@@ -90,7 +90,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Determination',
-      detail: `Using an Elemental Burst grants a {{0}}% increase in ATK and Movement SPD for 15s.`,
+      detail: `Using an Elemental Burst grants a {{0}}% increase in ATK and Movement SPD for <span class="text-desc">15</span>s.`,
       properties: [{ base: 12, growth: 3 }],
     },
   },
@@ -105,7 +105,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Windfall',
-      detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
+      detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate <span class="text-desc">6</span> Energy for the character. Can only occur once every {{1}}s.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 12, growth: -1.5 },
@@ -123,7 +123,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Chord',
-      detail: `Normal or Charged Attacks grant a Harmonic on hits. Gaining 5 Harmonics triggers the power of music and deals {{0}}% ATK DMG to surrounding enemies. Harmonics last up to 30s, and a maximum of 1 can be gained every 0.5s.`,
+      detail: `Normal or Charged Attacks grant a <b>Harmonic</b> on hits. Gaining <span class="text-desc">5</span> <b>Harmonics</b> triggers the power of music and deals {{0}}% ATK DMG to surrounding enemies. <b>Harmonics</b> last up to <span class="text-desc">30</span>s, and a maximum of <span class="text-desc">1</span> can be gained every <span class="text-desc">0.5</span>s.`,
       properties: [{ base: 100, growth: 25 }],
     },
   },
@@ -156,7 +156,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Focus',
-      detail: `Upon dealing damage to an opponent, increases CRIT Rate by {{0}}%. Max 5 stacks. A CRIT hit removes all existing stacks.`,
+      detail: `Upon dealing damage to an opponent, increases CRIT Rate by {{0}}%. Max <span class="text-desc">5</span> stacks. A CRIT hit removes all existing stacks.`,
       properties: [{ base: 8, growth: 2 }],
     },
   },
@@ -186,7 +186,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Smashed Stone',
-      detail: `On hit, Normal or Charged Attacks increase ATK and DEF by {{0}}% for 6s. Max 4 stacks. This effect can only occur once every 0.3s.`,
+      detail: `On hit, Normal or Charged Attacks increase ATK and DEF by {{0}}% for <span class="text-desc">6</span>s. Max <span class="text-desc">4</span> stacks. This effect can only occur once every <span class="text-desc">0.3</span>s.`,
       properties: [{ base: 4, growth: 1 }],
     },
   },
@@ -201,7 +201,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Infusion Stinger',
-      detail: `Dealing <b>Elemental DMG</b> increases all DMG by {{0}}% for 6s. Max 2 stacks. Can only occur once every 1s.`,
+      detail: `Dealing <b>Elemental DMG</b> increases all DMG by {{0}}% for <span class="text-desc">6</span>s. Max <span class="text-desc">2</span> stacks. Can only occur once every <span class="text-desc">1</span>s.`,
       properties: [{ base: 6, growth: 1.5 }],
     },
   },
@@ -216,7 +216,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Press the Advantage',
-      detail: `After defeating an opponent, ATK is increased by {{0}}% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.`,
+      detail: `After defeating an opponent, ATK is increased by {{0}}% for <span class="text-desc">30</span>s. This effect has a maximum of <span class="text-desc">3</span> stacks, and the duration of each stack is independent of the others.`,
       properties: [{ base: 12, growth: 3 }],
     },
   },
@@ -250,7 +250,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Itinerant Hero',
-      detail: `Increases DMG dealt by the character equipping this weapon by {{0}}%. Taking DMG disables this effect for 5s.`,
+      detail: `Increases DMG dealt by the character equipping this weapon by {{0}}%. Taking DMG disables this effect for <span class="text-desc">5</span>s.`,
       properties: [{ base: 12, growth: 4 }],
     },
   },
@@ -283,7 +283,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Iwakura Succession',
-      detail: `After casting an Elemental Skill, gain 1 Succession Seed. This effect can be triggered once every 5s. The Succession Seed lasts for 30s. Up to 3 Succession Seeds may exist simultaneously. After using an Elemental Burst, all Succession Seeds are consumed and after 2s, the character regenerates {{0}} Energy for each seed consumed.`,
+      detail: `After casting an Elemental Skill, gain <span class="text-desc">1</span> <b>Succession Seed</b>. This effect can be triggered once every <span class="text-desc">5</span>s. The <b>Succession Seed</b> lasts for <span class="text-desc">30</span>s. Up to <span class="text-desc">3</span> <b>Succession Seeds</b> may exist simultaneously. After using an Elemental Burst, all <b>Succession Seeds</b> are consumed and after <span class="text-desc">2</span>2s, the character regenerates {{0}} Energy for each <b>Seed</b> consumed.`,
       properties: [{ base: 6, growth: 1.5 }],
     },
   },
@@ -298,7 +298,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Spotless Heart',
-      detail: `Elemental Skill DMG is increased by {{0}}% of DEF. The effect will be triggered no more than once every 1.5s and will be cleared 0.1s after the Elemental Skill deals DMG.`,
+      detail: `Elemental Skill DMG is increased by {{0}}% of DEF. The effect will be triggered no more than once every <span class="text-desc">1.5</span>s and will be cleared <span class="text-desc">0.1</span>s after the Elemental Skill deals DMG.`,
       properties: [{ base: 40, growth: 10 }],
     },
   },
@@ -313,7 +313,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Isshin Art Clarity',
-      detail: `When a Normal, Charged, or Plunging Attack hits an opponent, it will whip up a Hewing Gale, dealing AoE DMG equal to 180% of ATK and increasing ATK by 15% for 8s. This effect can be triggered once every 8s.`,
+      detail: `When a Normal, Charged, or Plunging Attack hits an opponent, it will whip up a <b>Hewing Gale</b>, dealing AoE DMG equal to <span class="text-desc">180%</span> of ATK and increasing ATK by <span class="text-desc">15%</span> for <span class="text-desc">8</span>s. This effect can be triggered once every <span class="text-desc">8</span>s.`,
       properties: [],
     },
   },
@@ -328,7 +328,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Forest Sanctuary',
-      detail: `After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {{0}} Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack.`,
+      detail: `After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a <b>Leaf of Consciousness</b> will be created around the character for a maximum of <span class="text-desc">10</span>s. When picked up, the <b>Leaf</b> will grant the character {{0}} Elemental Mastery for <span class="text-desc">12</span>s. Only <span class="text-desc">1</span> <b>Leaf</b> can be generated this way every <span class="text-desc">20</span>s. This effect can still be triggered if the character is not on the field. The <b>Leaf of Consciousness</b>' effect cannot stack.`,
       properties: [{ base: 60, growth: 15 }],
     },
   },
@@ -343,7 +343,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: "Jinni's Whisper",
-      detail: `The following effect will trigger every 10s: The equipping character will gain {{0}}% Energy Recharge for each point of Elemental Mastery they possess for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.`,
+      detail: `The following effect will trigger every <span class="text-desc">10</span>s: The equipping character will gain {{0}}% Energy Recharge for each point of Elemental Mastery they possess for <span class="text-desc">12</span>s, with nearby party members gaining <span class="text-desc">30%</span> of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.`,
       properties: [{ base: 0.036, growth: 0.009 }],
     },
   },
@@ -358,7 +358,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Kaidan: Rainfall Earthbinder',
-      detail: `After an attack hits opponents, it will inflict an instance of Cursed Parasol upon one of them for 10s. This effect can be triggered once every 15s. If this opponent is defeated during Cursed Parasol's duration, Cursed Parasol's CD will be refreshed immediately. The character wielding this weapon will deal {{0}}% more DMG to the opponent affected by Cursed Parasol.`,
+      detail: `After an attack hits opponents, it will inflict an instance of <b>Cursed Parasol</b> upon one of them for <span class="text-desc">10</span>s. This effect can be triggered once every <span class="text-desc">15</span>s. If this opponent is defeated during <b>Cursed Parasol</b>'s duration, <b>Cursed Parasol</b>'s CD will be refreshed immediately. The character wielding this weapon will deal {{0}}% more DMG to the opponent affected by <b>Cursed Parasol</b>.`,
       properties: [{ base: 16, growth: 4 }],
     },
   },
@@ -373,7 +373,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Northwind Wolf',
-      detail: `DMG dealt by Elemental Skill and Elemental Burst is increased by {{0}}%. When an Elemental Skill hits an opponent, its CRIT Rate will be increased by {{1}}%. When an Elemental Burst hits an opponent, its CRIT Rate will be increased by {{1}}%. Both of these effects last 10s separately, have 4 max stacks, and can be triggered once every 0.1s.`,
+      detail: `DMG dealt by Elemental Skill and Elemental Burst is increased by {{0}}%. When an Elemental Skill hits an opponent, its CRIT Rate will be increased by {{1}}%. When an Elemental Burst hits an opponent, its CRIT Rate will be increased by {{1}}%. Both of these effects last <span class="text-desc">10</span>s separately, have <span class="text-desc">4</span> max stacks, and can be triggered once every <span class="text-desc">0.1</span>s.`,
       properties: [
         { base: 16, growth: 4 },
         { base: 2, growth: 0.5 },
@@ -391,7 +391,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'An End Sublime',
-      detail: `When using an Elemental Skill, ATK will be increased by {{0}}% for 15s, and a <b class="text-genshin-bol">Bond of Life</b> worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the <b class="text-genshin-bol">Bond of Life</b> is cleared, a maximum of {{1}} ATK will be gained based on {{2}}% of the total amount of the Life Bond cleared, lasting for 15s.`,
+      detail: `When using an Elemental Skill, ATK will be increased by {{0}}% for <span class="text-desc">15</span>s, and a <b class="text-genshin-bol">Bond of Life</b> worth <span class="text-desc">25%</span> of Max HP will be granted. This effect can be triggered once every <span class="text-desc">10</span>s. When the <b class="text-genshin-bol">Bond of Life</b> is cleared, a maximum of {{1}} ATK will be gained based on {{2}}% of the total amount of the <b class="text-genshin-bol">Bond of Life</b> cleared, lasting for <span class="text-desc">15</span>s.`,
       properties: [
         { base: 12, growth: 3 },
         { base: 150, growth: 37.5 },

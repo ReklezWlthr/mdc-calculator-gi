@@ -10,7 +10,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     add: (base, weapon) => {
       if (_.includes([WeaponType.CLAYMORE, WeaponType.SWORD, WeaponType.POLEARM], weapon))
-        base.BASIC_DMG.push({ value: 0.35, name: '', source: `` })
+        base.BASIC_DMG.push({ value: 0.35, name: '4-Piece', source: `Gladiator's Finale` })
       return base
     },
     desc: [
@@ -26,7 +26,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.EM, value: 80 }],
     add: (base, weapon) => {
       if (_.includes([WeaponType.CATALYST, WeaponType.BOW], weapon))
-        base.CHARGE_DMG.push({ value: 0.35, name: '', source: `` })
+        base.CHARGE_DMG.push({ value: 0.35, name: '4-Piece', source: `Wanderer's Troupe` })
       return base
     },
     desc: [
@@ -41,7 +41,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [],
     half: (base) => {
-      base.BURST_DMG.push({ value: 0.6, name: '', source: `` })
+      base.BURST_DMG.push({ value: 0.6, name: '2-Piece', source: `Noblesse Oblige` })
       return base
     },
     desc: [
@@ -78,7 +78,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ANEMO_DMG, value: 0.15 }],
     add: (base) => {
-      base.SWIRL_DMG.push({ value: 0.6, name: '', source: `` })
+      base.SWIRL_DMG.push({ value: 0.6, name: '4-Piece', source: `Viridescent Venerer` })
       return base
     },
     desc: [
@@ -126,11 +126,11 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ELECTRO_DMG, value: 0.15 }],
     add: (base) => {
-      base.OVERLOAD_DMG.push({ value: 0.4, name: '', source: `` })
-      base.TASER_DMG.push({ value: 0.4, name: '', source: `` })
-      base.SUPERCONDUCT_DMG.push({ value: 0.4, name: '', source: `` })
-      base.HYPERBLOOM_DMG.push({ value: 0.4, name: '', source: `` })
-      base.AGGRAVATE_DMG.push({ value: 0.2, name: '', source: `` })
+      base.OVERLOAD_DMG.push({ value: 0.4, name: '4-Piece', source: `Thundering Fury` })
+      base.TASER_DMG.push({ value: 0.4, name: '4-Piece', source: `Thundering Fury` })
+      base.SUPERCONDUCT_DMG.push({ value: 0.4, name: '4-Piece', source: `Thundering Fury` })
+      base.HYPERBLOOM_DMG.push({ value: 0.4, name: '4-Piece', source: `Thundering Fury` })
+      base.AGGRAVATE_DMG.push({ value: 0.2, name: '4-Piece', source: `Thundering Fury` })
       return base
     },
     desc: [
@@ -156,11 +156,11 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.PYRO_DMG, value: 0.15 }],
     add: (base) => {
-      base.OVERLOAD_DMG.push({ value: 0.4, name: '', source: `` })
-      base.BURNING_DMG.push({ value: 0.4, name: '', source: `` })
-      base.BURGEON_DMG.push({ value: 0.4, name: '', source: `` })
-      base.VAPE_DMG.push({ value: 0.15, name: '', source: `` })
-      base.MELT_DMG.push({ value: 0.15, name: '', source: `` })
+      base.OVERLOAD_DMG.push({ value: 0.4, name: '4-Piece', source: `Crimson Witch of Flames` })
+      base.BURNING_DMG.push({ value: 0.4, name: '4-Piece', source: `Crimson Witch of Flames` })
+      base.BURGEON_DMG.push({ value: 0.4, name: '4-Piece', source: `Crimson Witch of Flames` })
+      base.VAPE_DMG.push({ value: 0.15, name: '4-Piece', source: `Crimson Witch of Flames` })
+      base.MELT_DMG.push({ value: 0.15, name: '4-Piece', source: `Crimson Witch of Flames` })
       return base
     },
     desc: [
@@ -331,9 +331,9 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.EM, value: 80 }],
     add: (base) => {
-      base.BLOOM_DMG.push({ value: 0.4, name: '', source: `` })
-      base.HYPERBLOOM_DMG.push({ value: 0.4, name: '', source: `` })
-      base.BURGEON_DMG.push({ value: 0.4, name: '', source: `` })
+      base.BLOOM_DMG.push({ value: 0.4, name: '4-Piece', source: `Flower of Paradise Lost` })
+      base.HYPERBLOOM_DMG.push({ value: 0.4, name: '4-Piece', source: `Flower of Paradise Lost` })
+      base.BURGEON_DMG.push({ value: 0.4, name: '4-Piece', source: `Flower of Paradise Lost` })
       return base
     },
     desc: [
@@ -359,8 +359,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_HP, value: 0.2 }],
     add: (base) => {
-      base.SKILL_DMG.push({ value: 0.1, name: '', source: `` })
-      base.BURST_DMG.push({ value: 0.1, name: '', source: `` })
+      base.SKILL_DMG.push({ value: 0.1, name: '4-Piece', source: `Vourukasha's Glow` })
+      base.BURST_DMG.push({ value: 0.1, name: '4-Piece', source: `Vourukasha's Glow` })
       return base
     },
     desc: [
@@ -375,8 +375,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [],
     half: (base) => {
-      base.BASIC_DMG.push({ value: 0.15, name: '', source: `` })
-      base.CHARGE_DMG.push({ value: 0.15, name: '', source: `` })
+      base.BASIC_DMG.push({ value: 0.15, name: '4-Piece', source: `Marechaussee Hunter` })
+      base.CHARGE_DMG.push({ value: 0.15, name: '4-Piece', source: `Marechaussee Hunter` })
       return base
     },
     desc: [
@@ -391,11 +391,11 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [],
     half: (base) => {
-      base.SKILL_DMG.push({ value: 0.2, name: '', source: `` })
+      base.SKILL_DMG.push({ value: 0.2, name: '2-Piece', source: `Golden Troupe` })
       return base
     },
     add: (base) => {
-      base.SKILL_DMG.push({ value: 0.25, name: '', source: `` })
+      base.SKILL_DMG.push({ value: 0.25, name: '4-Piece', source: `Golden Troupe` })
       return base
     },
     desc: [
@@ -477,10 +477,13 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [3, 4],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     add: (base) => {
-      base.CHARGE_CR.push({ value: 0.3, name: '', source: `` })
+      base.CHARGE_CR.push({ value: 0.3, name: '4-Piece', source: `Resolution of Sojourner` })
       return base
     },
-    desc: [`ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`, `Increases Charged Attack CRIT Rate by 30%.`],
+    desc: [
+      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
+      `Increases Charged Attack CRIT Rate by 30%.`,
+    ],
   },
   {
     id: '1383639611',
@@ -540,7 +543,10 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_10002',
     rarity: [3, 4],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
-    desc: [`ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`, `Increases DMG by 30% against opponents with more than <span class="text-desc">50%</span> HP.`],
+    desc: [
+      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
+      `Increases DMG by 30% against opponents with more than <span class="text-desc">50%</span> HP.`,
+    ],
   },
   {
     id: '2890909531',

@@ -165,9 +165,9 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
       if (form.navia_infusion) {
         base.infuse(Element.GEO, true)
-        base.BASIC_DMG.push({ value: 0.4, name: '', source: `` })
-        base.CHARGE_DMG.push({ value: 0.4, name: '', source: `` })
-        base.PLUNGE_DMG.push({ value: 0.4, name: '', source: `` })
+        base.BASIC_DMG.push({ value: 0.4, name: 'Ascension 1 Passive', source: `Self` })
+        base.CHARGE_DMG.push({ value: 0.4, name: 'Ascension 1 Passive', source: `Self` })
+        base.PLUNGE_DMG.push({ value: 0.4, name: 'Ascension 1 Passive', source: `Self` })
       }
 
       base.BASIC_SCALING = [
