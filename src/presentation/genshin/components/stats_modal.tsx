@@ -38,7 +38,8 @@ export const AttributeBlock = ({ stat, array, stats, flat }: NormalBlockProps) =
           (item) =>
             !!item.value && (
               <BulletPoint key={item.source + item.name}>
-                {item.source} / {item.name} <span className="text-desc">{format(item.value)}</span>
+                {item.source} / {item.name}{' '}
+                <span className={item.value < 0 ? 'text-red' : 'text-desc'}>{format(item.value)}</span>
                 {!!item.base && !!item.multiplier && (
                   <>
                     {' '}
@@ -88,7 +89,7 @@ export const StatsModal = observer(
             return (
               !!item.value && (
                 <BulletPoint key={item.source + item.name}>
-                  {item.source} / {item.name} <span className="text-desc">{c}</span> ={' '}
+                  {item.source} / {item.name} <span className={item.value < 0 ? 'text-red' : 'text-desc'}>{c}</span> ={' '}
                   {_.round(cBase + lBase, round).toLocaleString()} {`\u{00d7}`}{' '}
                   <span className="text-blue">{toPercentage(item.value)}</span>
                 </BulletPoint>
@@ -198,13 +199,41 @@ export const StatsModal = observer(
             <div className="space-y-2">
               <AttributeBlock stats={stats} stat="All-Type DMG Bonus" array={stats[Stats.ALL_DMG]} />
               <AttributeBlock stats={stats} stat="Physical DMG Bonus" array={stats[Stats.PHYSICAL_DMG]} />
-              <AttributeBlock stats={stats} stat="Pyro DMG Bonus" array={stats[Stats.PYRO_DMG]} />
-              <AttributeBlock stats={stats} stat="Hydro DMG Bonus" array={stats[Stats.HYDRO_DMG]} />
-              <AttributeBlock stats={stats} stat="Cryo DMG Bonus" array={stats[Stats.CRYO_DMG]} />
-              <AttributeBlock stats={stats} stat="Electro DMG Bonus" array={stats[Stats.ELECTRO_DMG]} />
-              <AttributeBlock stats={stats} stat="Anemo DMG Bonus" array={stats[Stats.ANEMO_DMG]} />
-              <AttributeBlock stats={stats} stat="Geo DMG Bonus" array={stats[Stats.GEO_DMG]} />
-              <AttributeBlock stats={stats} stat="Dendro DMG Bonus" array={stats[Stats.DENDRO_DMG]} />
+              <AttributeBlock
+                stats={stats}
+                stat="Pyro DMG Bonus"
+                array={[...stats[Stats.PYRO_DMG], ...stats[Stats.ELEMENTAL_DMG]]}
+              />
+              <AttributeBlock
+                stats={stats}
+                stat="Hydro DMG Bonus"
+                array={[...stats[Stats.HYDRO_DMG], ...stats[Stats.ELEMENTAL_DMG]]}
+              />
+              <AttributeBlock
+                stats={stats}
+                stat="Cryo DMG Bonus"
+                array={[...stats[Stats.CRYO_DMG], ...stats[Stats.ELEMENTAL_DMG]]}
+              />
+              <AttributeBlock
+                stats={stats}
+                stat="Electro DMG Bonus"
+                array={[...stats[Stats.ELECTRO_DMG], ...stats[Stats.ELEMENTAL_DMG]]}
+              />
+              <AttributeBlock
+                stats={stats}
+                stat="Anemo DMG Bonus"
+                array={[...stats[Stats.ANEMO_DMG], ...stats[Stats.ELEMENTAL_DMG]]}
+              />
+              <AttributeBlock
+                stats={stats}
+                stat="Geo DMG Bonus"
+                array={[...stats[Stats.GEO_DMG], ...stats[Stats.ELEMENTAL_DMG]]}
+              />
+              <AttributeBlock
+                stats={stats}
+                stat="Dendro DMG Bonus"
+                array={[...stats[Stats.DENDRO_DMG], ...stats[Stats.ELEMENTAL_DMG]]}
+              />
             </div>
             <div className="space-y-2">
               <AttributeBlock stats={stats} stat="Normal Attack Bonus" array={stats.BASIC_DMG} />

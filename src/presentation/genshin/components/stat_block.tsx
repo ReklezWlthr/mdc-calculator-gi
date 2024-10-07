@@ -63,13 +63,34 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <DataRow title="CD Reduction" value={toPercentage(stat?.getValue(StatsObjectKeys.CD_RED))} />
       <DataRow title="ATK SPD" value={toPercentage(_.min([stat?.getValue(StatsObjectKeys.ATK_SPD), 1.6]))} />
       <DataRow title="Physical DMG%" value={toPercentage(stat?.getValue(Stats.PHYSICAL_DMG))} />
-      <DataRow title="Pyro DMG%" value={toPercentage(stat?.getValue(Stats.PYRO_DMG))} />
-      <DataRow title="Hydro DMG%" value={toPercentage(stat?.getValue(Stats.HYDRO_DMG))} />
-      <DataRow title="Cryo DMG%" value={toPercentage(stat?.getValue(Stats.CRYO_DMG))} />
-      <DataRow title="Electro DMG%" value={toPercentage(stat?.getValue(Stats.ELECTRO_DMG))} />
-      <DataRow title="Anemo DMG%" value={toPercentage(stat?.getValue(Stats.ANEMO_DMG))} />
-      <DataRow title="Geo DMG%" value={toPercentage(stat?.getValue(Stats.GEO_DMG))} />
-      <DataRow title="Dendro DMG%" value={toPercentage(stat?.getValue(Stats.DENDRO_DMG))} />
+      <DataRow
+        title="Pyro DMG%"
+        value={toPercentage(stat?.getValue(Stats.PYRO_DMG) + stat?.getValue(Stats.ELEMENTAL_DMG))}
+      />
+      <DataRow
+        title="Hydro DMG%"
+        value={toPercentage(stat?.getValue(Stats.HYDRO_DMG) + stat?.getValue(Stats.ELEMENTAL_DMG))}
+      />
+      <DataRow
+        title="Cryo DMG%"
+        value={toPercentage(stat?.getValue(Stats.CRYO_DMG) + stat?.getValue(Stats.ELEMENTAL_DMG))}
+      />
+      <DataRow
+        title="Electro DMG%"
+        value={toPercentage(stat?.getValue(Stats.ELECTRO_DMG) + stat?.getValue(Stats.ELEMENTAL_DMG))}
+      />
+      <DataRow
+        title="Anemo DMG%"
+        value={toPercentage(stat?.getValue(Stats.ANEMO_DMG) + stat?.getValue(Stats.ELEMENTAL_DMG))}
+      />
+      <DataRow
+        title="Geo DMG%"
+        value={toPercentage(stat?.getValue(Stats.GEO_DMG) + stat?.getValue(Stats.ELEMENTAL_DMG))}
+      />
+      <DataRow
+        title="Dendro DMG%"
+        value={toPercentage(stat?.getValue(Stats.DENDRO_DMG) + stat?.getValue(Stats.ELEMENTAL_DMG))}
+      />
       <DataRow title="DMG%" value={toPercentage(stat?.getValue(Stats.ALL_DMG))} />
       <DataRow title="Shield Strength" value={toPercentage(stat?.getValue(Stats.SHIELD))} />
       <DataRow title="DMG Mitigation" value={toPercentage(stat?.getValue(StatsObjectKeys.DMG_REDUCTION))} />

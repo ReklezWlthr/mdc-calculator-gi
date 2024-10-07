@@ -1,6 +1,7 @@
 import { ArtifactSets } from '@src/data/db/artifacts'
 import { Characters as GIChar } from '@src/data/db/characters'
 import { Weapons } from '@src/data/db/weapons'
+import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import _ from 'lodash'
 
 export const findWeapon = (wId: string) => _.find(Weapons, (item) => item.id === wId)
@@ -12,3 +13,6 @@ export const findArtifactSet = (id: string) => _.find(ArtifactSets, (item) => it
 export const findContentById = (content: any[], id: string) => _.find(content, ['id', id])
 
 export const isSubsetOf = (a: any[], b: any[]) => _.every(a, (item) => _.includes(b, item))
+
+export const checkBuffExist = (array: StatsArray[], predicate: Partial<StatsArray>) =>
+  _.size(_.filter(array, (item) => _.every(predicate, (value, key) => item[key] === value))) >= 1

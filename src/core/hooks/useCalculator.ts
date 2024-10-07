@@ -66,10 +66,7 @@ export const useCalculator = ({
 
   const mainComputed = computedStats?.[selected]
 
-  const baseStats = useMemo(
-    () => getTeamOutOfCombat(team, artifactStore.artifacts),
-    [team, artifactStore.artifacts]
-  )
+  const baseStats = useMemo(() => getTeamOutOfCombat(team, artifactStore.artifacts), [team, artifactStore.artifacts])
 
   // Conditional objects include talent descriptions, conditional contents and a calculator
   const conditionals = useMemo(
@@ -144,12 +141,7 @@ export const useCalculator = ({
             item?.content,
             item?.teammateContent,
             allyContents(index),
-            Reactions(
-              team[index].level,
-              findCharacter(team[index].cId)?.element,
-              Element.PYRO,
-              computedStats[index]
-            ),
+            Reactions(team[index].level, findCharacter(team[index].cId)?.element, Element.PYRO, computedStats[index]),
             artifactConditionals[index]?.content,
             artifactConditionals[index]?.teamContent,
             ...weaponSelectable(index),
@@ -234,8 +226,9 @@ export const useCalculator = ({
       // Apply self self buff then loop for team-wide buff that is in each character's own form
       _.forEach(forms, (form, i) => {
         _.forEach(
-          _.filter(i === index ? weaponConditionals[i] : weaponTeamConditionals[i], (c) =>
-            _.includes(_.keys(form), c.id)
+          _.filter(
+            i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
+            (c) => _.includes(_.keys(form), c.id)
           ),
           (c) => {
             x = c.scaling(x, form, team[i]?.equipments?.weapon?.refinement, {
@@ -266,16 +259,12 @@ export const useCalculator = ({
     })
     const postCompute = _.map(
       conditionals,
-      (base, index) =>
-        base?.postCompute(postWeapon[index], forms[index], postWeapon, forms) ||
-        postWeapon[index]
+      (base, index) => base?.postCompute(postWeapon[index], forms[index], postWeapon, forms) || postWeapon[index]
     )
     const postArtifactCallback = _.map(postCompute, (base, index) => {
       let x = base
       const set = getSetCount(
-        _.map(team[index]?.equipments?.artifacts, (item) =>
-          _.find(artifactStore.artifacts, (a) => a.id === item)
-        )
+        _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item))
       )
       _.forEach(set, (value, key) => {
         if (value >= 2) {
@@ -289,15 +278,11 @@ export const useCalculator = ({
       })
       return x
     })
-    // No need to loop; each reaction buff only apply to the character
-    const postReaction = _.map(postArtifactCallback, (base, index) =>
-      calculateReaction(base, forms[index], team[index]?.level)
-    )
     // Cleanup callbacks for buffs that should be applied last
-    const final = _.map(postReaction, (base, index) => {
+    const postReaction = _.map(postArtifactCallback, (base, index) => {
       let x = base
       _.forEach(base.CALLBACK, (cb) => {
-        x = cb(x, postReaction)
+        x = cb(x, postArtifactCallback)
       })
       // EoSF Buff is placed here because some effects increase ER
       if (emblem[index])
@@ -308,6 +293,10 @@ export const useCalculator = ({
         })
       return x
     })
+    // No need to loop; each reaction buff only apply to the character
+    const final = _.map(postArtifactCallback, (base, index) =>
+      calculateReaction(base, forms[index], team[index]?.level)
+    )
     if (!doNotSaveStats) {
       calculatorStore.setValue('computedStats', final)
     }
@@ -350,13 +339,7 @@ export const useCalculator = ({
   // Content of transformative reaction dmg
   const nilou = _.some(forms, (item) => item?.bountiful_core)
   const transformative = _.filter(
-    Transformative(
-      char.level,
-      charData?.element,
-      computedStats[selected],
-      forms[selected]?.swirl,
-      nilou
-    ),
+    Transformative(char.level, charData?.element, computedStats[selected], forms[selected]?.swirl, nilou),
     'show'
   )
 

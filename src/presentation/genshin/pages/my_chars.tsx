@@ -7,25 +7,10 @@ import { findCharacter } from '@src/core/utils/finder'
 import { Characters } from '@src/data/db/characters'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
-import { ConsCircle, ElementIconColor, TooltipBody } from '../components/cons_circle'
-import conditionals, { UtilTalentOverride } from '@src/data/lib/stats/conditionals/conditionals'
-import { A1Icon, A4Icon } from '../components/ascension_icons'
-import { Tooltip } from '@src/presentation/components/tooltip'
-import { findBaseLevel, findMaxLevel, getBaseStat } from '@src/core/utils/data_format'
+import conditionals from '@src/data/lib/stats/conditionals/conditionals'
+import { getBaseStat } from '@src/core/utils/data_format'
 import { AscensionGrowth } from '@src/domain/scaling'
-import {
-  AscensionOptions,
-  ConstellationOptions,
-  Element,
-  Stats,
-  TravelerIconName,
-  WeaponIcon,
-  WeaponType,
-} from '@src/domain/constant'
-import { toPercentage } from '@src/core/utils/converter'
-import { TalentIcon } from '../components/tables/scaling_wrapper'
-import { SelectInput } from '@src/presentation/components/inputs/select_input'
-import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { Element, TravelerIconName, WeaponIcon, WeaponType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { CharDetail } from '../components/char_detail'
 

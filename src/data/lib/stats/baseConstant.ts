@@ -107,6 +107,7 @@ export const baseStatsObject = {
   [Stats.DENDRO_DMG]: [] as StatsArray[],
   [Stats.PHYSICAL_DMG]: [] as StatsArray[],
   [Stats.ALL_DMG]: [] as StatsArray[],
+  [Stats.ELEMENTAL_DMG]: [] as StatsArray[],
 
   PHYSICAL_CD: [] as StatsArray[],
   PYRO_CD: [] as StatsArray[],

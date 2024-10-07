@@ -16,9 +16,9 @@ export interface IScaling {
 }
 
 export interface IWeaponContent {
-  type?: 'toggle' | 'number' | 'element'
+  type?: 'toggle' | 'number' | 'element' | 'multiple'
   id: string
-  default?: number | boolean | Element
+  default?: number | boolean | Element | []
   max?: number
   min?: number
   debuff?: boolean
@@ -39,11 +39,11 @@ export interface IContent {
 }
 
 export interface IWeaponContent {
-  type?: 'toggle' | 'number' | 'element'
+  type?: 'toggle' | 'number' | 'element' | 'multiple'
   id: string
   text: string
   show: boolean
-  default?: number | boolean | Element
+  default?: number | boolean | Element | []
   max?: number
   min?: number
   debuff?: boolean

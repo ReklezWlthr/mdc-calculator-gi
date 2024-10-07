@@ -84,7 +84,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
             onClick={() => {
               teamStore.setWeapon(index, { wId: item.id })
-              if (item.id === '2057') teamStore.setWeapon(index, { refinement: 1 })
+              if (item.id === '11416') teamStore.setWeapon(index, { refinement: 1 })
               modalStore.closeModal()
             }}
             key={item.name}

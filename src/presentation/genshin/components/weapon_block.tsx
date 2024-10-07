@@ -128,7 +128,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
             options={RefinementOptions}
             value={refinement?.toString()}
             style="w-fit"
-            disabled={!canEdit || !weaponData || weaponData?.id === '2057'}
+            disabled={!canEdit || !weaponData || weaponData?.id === '11416'}
           />
         </div>
         <div className="flex gap-2">
@@ -137,7 +137,8 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
               src={`https://homdgcat.wiki/homdgcat-res/Weapon/${
                 weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD]
               }${ascension >= 2 ? '_Awaken' : ''}.png`}
-              className="w-full pt-1 border rounded-lg bg-primary-darker border-primary-border aspect-square"
+              className="w-full pt-1 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
+              onClick={onOpenModal}
             />
             <RarityGauge rarity={rarity} />
           </div>

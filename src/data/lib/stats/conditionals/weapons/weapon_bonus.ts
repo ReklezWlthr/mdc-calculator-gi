@@ -3,6 +3,7 @@ import { calcRefinement } from '../../../../../core/utils/data_format'
 import { Element, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import _ from 'lodash'
 import { findCharacter } from '@src/core/utils/finder'
+import { toPercentage } from '@src/core/utils/converter'
 
 const WeaponBonus: {
   id: string
@@ -11,22 +12,22 @@ const WeaponBonus: {
   {
     id: '15502',
     scaling: (base, r) => {
-      base.BASIC_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
-      base.CHARGE_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base.BASIC_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Amos' Bow` })
+      base.CHARGE_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Amos' Bow` })
       return base
     },
   },
   {
     id: '15508',
     scaling: (base, r) => {
-      base[Stats.P_HP].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base[Stats.P_HP].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Aqua Simulacra` })
       return base
     },
   },
   {
     id: '11501',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Aquila Favonia` })
       base.CALLBACK.push((base: StatsObject) => {
         base.SKILL_SCALING.push(
           {
@@ -50,23 +51,29 @@ const WeaponBonus: {
   {
     id: '13507',
     scaling: (base, r) => {
-      base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base[Stats.ALL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Calamity Queller` })
       return base
     },
   },
   {
     id: '15503',
     scaling: (base, r) => {
-      base[Stats.EM].push({ value: calcRefinement(60, 15, r), name: '', source: `` })
+      base[Stats.EM].push({ value: calcRefinement(60, 15, r), name: 'Passive', source: `Elegy for the End` })
       return base
     },
   },
   {
     id: '14506',
     scaling: (base, r) => {
-      base[Stats.HEAL].push({ value: calcRefinement(0.1, 0.025, r), name: '', source: `` })
+      base[Stats.HEAL].push({ value: calcRefinement(0.1, 0.025, r), name: 'Passive', source: `Everlasting Moonglow` })
       base.CALLBACK.push((base: StatsObject) => {
-        base.BASIC_F_DMG.push({ value: calcRefinement(0.01, 0.005, r), name: '', source: `` }) * base.getHP()
+        base.BASIC_F_DMG.push({
+          value: calcRefinement(0.01, 0.005, r) * base.getHP(),
+          name: 'Passive',
+          source: `Everlasting Moonglow`,
+          base: base.getHP(),
+          multiplier: toPercentage(calcRefinement(0.01, 0.005, r)),
+        })
         return base
       })
       return base
@@ -75,66 +82,84 @@ const WeaponBonus: {
   {
     id: '11503',
     scaling: (base, r) => {
-      base[Stats.ALL_DMG].push({ value: calcRefinement(0.1, 0.025, r), name: '', source: `` })
+      base[Stats.ALL_DMG].push({ value: calcRefinement(0.1, 0.025, r), name: 'Passive', source: `Freedom-Sworn` })
       return base
     },
   },
   {
     id: '11510',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base[Stats.ELEMENTAL_DMG].push({
+        value: calcRefinement(0.12, 0.03, r),
+        name: 'Passive',
+        source: `Haran Geppaku Futsu`,
+      })
       return base
     },
   },
   {
     id: '15511',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Hunter's Path` })
       return base
     },
   },
   {
     id: '11511',
     scaling: (base, r) => {
-      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Key of Khaj-Nisut` })
       return base
     },
   },
   {
     id: '11512',
     scaling: (base, r) => {
-      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.04, 0.01, r), name: '', source: `` })
+      base[Stats.CRIT_RATE].push({
+        value: calcRefinement(0.04, 0.01, r),
+        name: 'Passive',
+        source: `Light of Foliar Incision`,
+      })
       return base
     },
   },
   {
     id: '14504',
     scaling: (base, r) => {
-      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Memory of Dust` })
       return base
     },
   },
   {
     id: '11509',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base[Stats.ELEMENTAL_DMG].push({
+        value: calcRefinement(0.12, 0.03, r),
+        name: 'Passive',
+        source: `Mistsplitter Reforged`,
+      })
       return base
     },
   },
   {
     id: '15507',
     scaling: (base, r) => {
-      base.SKILL_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
-      base.BURST_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Polar Star` })
+      base.BURST_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Polar Star` })
       return base
     },
   },
   {
     id: '11505',
     scaling: (base, r) => {
-      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Primordial Jade Cutter` })
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK].push({ value: calcRefinement(0.012, 0.003, r), name: '', source: `` }) * base.getHP()
+        base[Stats.ATK].push({
+          value: calcRefinement(0.012, 0.003, r) * base.getHP(),
+          name: 'Passive',
+          source: `Primordial Jade Cutter`,
+          base: base.getHP(),
+          multiplier: toPercentage(calcRefinement(0.012, 0.003, r)),
+        })
         return base
       })
       return base
@@ -143,10 +168,22 @@ const WeaponBonus: {
   {
     id: '12510',
     scaling: (base, r) => {
-      base[Stats.P_DEF].push({ value: calcRefinement(0.27, 0.08, r), name: '', source: `` })
+      base[Stats.P_DEF].push({ value: calcRefinement(0.27, 0.08, r), name: 'Passive', source: `Redhorn Stonethresher` })
       base.CALLBACK.push((base: StatsObject) => {
-        base.BASIC_F_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` }) * base.getDef()
-        base.CHARGE_F_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` }) * base.getDef()
+        base.BASIC_F_DMG.push({
+          value: calcRefinement(0.4, 0.1, r) * base.getDef(),
+          name: 'Passive',
+          source: `Redhorn Stonethresher`,
+          base: base.getDef(),
+          multiplier: toPercentage(calcRefinement(0.4, 0.1, r)),
+        })
+        base.CHARGE_F_DMG.push({
+          value: calcRefinement(0.4, 0.1, r) * base.getDef(),
+          name: 'Passive',
+          source: `Redhorn Stonethresher`,
+          base: base.getDef(),
+          multiplier: toPercentage(calcRefinement(0.4, 0.1, r)),
+        })
         return base
       })
       return base
@@ -155,7 +192,7 @@ const WeaponBonus: {
   {
     id: '14501',
     scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Skyward Atlas` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Wandering Clouds DMG`,
@@ -171,7 +208,7 @@ const WeaponBonus: {
   {
     id: '11502',
     scaling: (base, r) => {
-      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.04, 0.01, r), name: '', source: `` })
+      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.04, 0.01, r), name: 'Passive', source: `Skyward Blade` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Skypiercing Might DMG`,
@@ -187,7 +224,7 @@ const WeaponBonus: {
   {
     id: '15501',
     scaling: (base, r) => {
-      base[Stats.CRIT_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.CRIT_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Skyward Harp` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Echoing Ballad DMG`,
@@ -203,7 +240,7 @@ const WeaponBonus: {
   {
     id: '12501',
     scaling: (base, r) => {
-      base[Stats.ALL_DMG].push({ value: calcRefinement(0.08, 0.02, r), name: '', source: `` })
+      base[Stats.ALL_DMG].push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `Skyward Pride` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Vacuum Blade DMG`,
@@ -219,8 +256,8 @@ const WeaponBonus: {
   {
     id: '13502',
     scaling: (base, r) => {
-      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.08, 0.02, r), name: '', source: `` })
-      base.ATK_SPD.push({ value: 0.12, name: '', source: `` })
+      base[Stats.CRIT_RATE].push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `Skyward Spine` })
+      base.ATK_SPD.push({ value: 0.12, name: 'Passive', source: `Skyward Spine` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BASIC_SCALING.push({
           name: `Vacuum Blade DMG`,
@@ -236,29 +273,37 @@ const WeaponBonus: {
   {
     id: '12503',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Song of Broken Pines` })
       return base
     },
   },
   {
     id: '13501',
     scaling: (base, r) => {
-      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.P_HP].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Staff of Homa` })
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK].push({ value: calcRefinement(0.008, 0.002, r), name: '', source: `` }) * base.getHP()
+        base[Stats.ATK].push({
+          value: calcRefinement(0.008, 0.002, r) * base.getHP(),
+          name: 'Passive',
+          source: `Staff of Homa`,
+          base: base.getHP(),
+          multiplier: calcRefinement(0.008, 0.002, r),
+        })
         return base
       })
       return base
     },
   },
   {
-    id: '13508',
+    id: '13509',
     scaling: (base, r) => {
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK].push({
-          value: _.min([calcRefinement(0.28, 0.07, r) * (base.getValue(Stats.ER) - 1), calcRefinement(0.8, 0.1, r)]),
-          name: '',
-          source: ``,
+        const mult = calcRefinement(0.28, 0.07, r)
+        const cap = calcRefinement(0.8, 0.1, r)
+        base[Stats.P_ATK].push({
+          value: _.min([mult * (base.getValue(Stats.ER) - 1), cap]),
+          name: 'Passive',
+          source: `Engulfing Lightning`,
         })
         return base
       })
@@ -269,7 +314,13 @@ const WeaponBonus: {
     id: '13511',
     scaling: (base, r) => {
       base.CALLBACK.push((base: StatsObject) => {
-        base[Stats.ATK].push({ value: calcRefinement(0.52, 0.13, r), name: '', source: `` }) * base.getEM()
+        base[Stats.ATK].push({
+          value: calcRefinement(0.52, 0.13, r) * base.getEM(),
+          name: 'Passive',
+          source: `Staff of the Scarlet Sands`,
+          base: base.getEM(),
+          multiplier: toPercentage(calcRefinement(0.52, 0.13, r)),
+        })
         return base
       })
       return base
@@ -278,132 +329,156 @@ const WeaponBonus: {
   {
     id: '11504',
     scaling: (base, r) => {
-      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Summit Shaper` })
       return base
     },
   },
   {
     id: '15512',
-    scaling: (base, r) => {
-      base.CHARGE_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+    scaling: (base, r, team) => {
+      base.CHARGE_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `The First Great Magic` })
+      const count =
+        _.filter(
+          _.map(team, (item) => findCharacter(item.cId)?.element),
+          (item) => item === base.ELEMENT
+        ).length - 1
+      if (count === 1)
+        base[Stats.P_ATK].push({
+          value: calcRefinement(0.16, 0.04, r),
+          name: 'Gimmick',
+          source: `The First Great Magic`,
+        })
+      if (count === 2)
+        base[Stats.P_ATK].push({
+          value: calcRefinement(0.32, 0.08, r),
+          name: 'Gimmick',
+          source: `The First Great Magic`,
+        })
+      if (count === 3)
+        base[Stats.P_ATK].push({
+          value: calcRefinement(0.48, 0.12, r),
+          name: 'Gimmick',
+          source: `The First Great Magic`,
+        })
       return base
     },
   },
   {
     id: '12504',
     scaling: (base, r) => {
-      base[Stats.SHIELD].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
-      return base
-    },
-  },
-  {
-    id: '11509',
-    scaling: (base, r) => {
-      base[Stats.ELEMENTAL_DMG].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.SHIELD].push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `The Unforged` })
       return base
     },
   },
   {
     id: '15509',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Thundering Pulse` })
       return base
     },
   },
   {
     id: '14514',
     scaling: (base, r) => {
-      base[Stats.P_HP].push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base[Stats.P_HP].push({
+        value: calcRefinement(0.16, 0.04, r),
+        name: 'Passive',
+        source: `Tome of the Eternal Flow`,
+      })
       return base
     },
   },
   {
     id: '14512',
     scaling: (base, r) => {
-      base.ATK_SPD.push({ value: calcRefinement(0.1, 0.025, r), name: '', source: `` })
+      base.ATK_SPD.push({ value: calcRefinement(0.1, 0.025, r), name: 'Passive', source: `Tulaytullah's Remembrance` })
       return base
     },
   },
   {
     id: '11514',
     scaling: (base, r) => {
-      base[Stats.P_DEF].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
-      base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
-      base.SKILL_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
+      base[Stats.P_DEF].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Uraku Misugiri` })
+      base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Uraku Misugiri` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `Uraku Misugiri` })
       return base
     },
   },
   {
     id: '12512',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Verdict` })
       return base
     },
   },
   {
     id: '13504',
     scaling: (base, r) => {
-      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.SHIELD].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Vortex Vanquisher` })
       return base
     },
   },
   {
     id: '12502',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base[Stats.P_ATK].push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Wolf's Gravestone` })
       return base
     },
   },
   {
     id: '12426',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `"Ultimate Overlord's Mega Magic Sword"` })
+      base[Stats.P_ATK].push({
+        value: calcRefinement(0.12, 0.03, r),
+        name: 'Passive',
+        source: `"Ultimate Overlord's Mega Magic Sword"`,
+      })
       return base
     },
   },
   {
     id: '13301',
     scaling: (base, r) => {
-      base.BASIC_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
+      base.BASIC_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `White Tassel` })
       return base
     },
   },
   {
     id: '11424',
     scaling: (base, r) => {
-      base.SKILL_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
-      base.BURST_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Wolf-Fang` })
+      base.BURST_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Wolf-Fang` })
       return base
     },
   },
   {
     id: '15402',
     scaling: (base, r) => {
-      base.SKILL_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
-      base.BURST_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: '', source: `` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `The Stringless` })
+      base.BURST_DMG.push({ value: calcRefinement(0.24, 0.06, r), name: 'Passive', source: `The Stringless` })
       return base
     },
   },
   {
     id: '11409',
     scaling: (base, r) => {
-      base.BASIC_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
-      base.CHARGE_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: '', source: `` })
+      base.BASIC_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `The Black Sword` })
+      base.CHARGE_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `The Black Sword` })
       return base
     },
   },
   {
     id: '15405',
     scaling: (base, r) => {
-      base.BASIC_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` })
-      base.CHARGE_DMG.push({ value: -0.1, name: '', source: `` })
+      base.BASIC_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: 'Passive', source: `Rust` })
+      base.CHARGE_DMG.push({ value: -0.1, name: 'Passive', source: `Rust` })
       return base
     },
   },
   {
     id: '12412',
     scaling: (base, r) => {
-      base.BURST_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: '', source: `` })
+      base.BURST_DMG.push({ value: calcRefinement(0.12, 0.03, r), name: 'Passive', source: `Luxurious Sea-Lord` })
       base.CALLBACK.push((base: StatsObject) => {
         base.BURST_SCALING.push({
           name: `Tuna DMG`,
@@ -417,47 +492,98 @@ const WeaponBonus: {
     },
   },
   {
+    id: '12416',
+    scaling: (base, r, team) => {
+      const totalEnergy = _.sumBy(team, (item) => findCharacter(item.cId)?.stat?.energy || 0)
+      base.BURST_DMG.push({
+        value: _.min([calcRefinement(0.0012, 0.0003, r) * totalEnergy, calcRefinement(0.4, 0.02, r)]),
+        name: 'Passive',
+        source: `Akuoumaru`,
+        base: _.min([totalEnergy, 4 / 0.012]),
+        multiplier: toPercentage(calcRefinement(0.0012, 0.0003, r), 2),
+      })
+      return base
+    },
+  },
+  {
+    id: '13416',
+    scaling: (base, r, team) => {
+      const totalEnergy = _.sumBy(team, (item) => findCharacter(item.cId)?.stat?.energy || 0)
+      base.BURST_DMG.push({
+        value: _.min([calcRefinement(0.0012, 0.0003, r) * totalEnergy, calcRefinement(0.4, 0.02, r)]),
+        name: 'Passive',
+        source: `Wavebreaker's Fin`,
+        base: _.min([totalEnergy, 4 / 0.012]),
+        multiplier: toPercentage(calcRefinement(0.0012, 0.0003, r), 2),
+      })
+      return base
+    },
+  },
+  {
+    id: '15416',
+    scaling: (base, r, team) => {
+      const totalEnergy = _.sumBy(team, (item) => findCharacter(item.cId)?.stat?.energy || 0)
+      base.BURST_DMG.push({
+        value: _.min([calcRefinement(0.0012, 0.0003, r) * totalEnergy, calcRefinement(0.4, 0.02, r)]),
+        name: 'Passive',
+        source: `Mouun's Moon`,
+        base: _.min([totalEnergy, 4 / 0.012]),
+        multiplier: toPercentage(calcRefinement(0.0012, 0.0003, r), 2),
+      })
+      return base
+    },
+  },
+  {
     id: '13414',
     scaling: (base, r) => {
-      base.SKILL_DMG.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.06, 0.015, r), name: 'Passive', source: `Kitain Cross Spear` })
       return base
     },
   },
   {
     id: '12414',
     scaling: (base, r) => {
-      base.SKILL_DMG.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.06, 0.015, r), name: 'Passive', source: `Katsuragikiri Nagamasa` })
       return base
     },
   },
   {
     id: '15414',
     scaling: (base, r) => {
-      base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
-      base.CHARGE_DMG.push({ value: -calcRefinement(0.16, 0.04, r), name: '', source: `` })
+      base.BASIC_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Hamayumi` })
+      base.CHARGE_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Hamayumi` })
       return base
     },
   },
   {
     id: '11426',
     scaling: (base, r) => {
-      base.SKILL_CR.push({ value: calcRefinement(0.08, 0.02, r), name: '', source: `` })
+      base.SKILL_CR.push({ value: calcRefinement(0.08, 0.02, r), name: 'Passive', source: `Fleuve Cendre Ferryman` })
       return base
     },
   },
   {
     id: '11413',
     scaling: (base, r) => {
-      base.SKILL_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: '', source: `` })
-      base.SKILL_CR.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
+      base.SKILL_DMG.push({ value: calcRefinement(0.16, 0.04, r), name: 'Passive', source: `Festering Desire` })
+      base.SKILL_CR.push({ value: calcRefinement(0.06, 0.015, r), name: 'Passive', source: `Festering Desire` })
       return base
     },
   },
   {
     id: '13415',
     scaling: (base, r) => {
-      base.BURST_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: '', source: `` })
-      base.BURST_CR.push({ value: calcRefinement(0.06, 0.015, r), name: '', source: `` })
+      base.BURST_DMG.push({ value: calcRefinement(0.4, 0.1, r), name: 'Passive', source: `"The Catch"` })
+      base.BURST_CR.push({ value: calcRefinement(0.06, 0.015, r), name: 'Passive', source: `"The Catch"` })
+      return base
+    },
+  },
+  {
+    id: '13419',
+    scaling: (base, r, team) => {
+      const count = _.uniq(_.map(team, (item) => findCharacter(item.cId)?.element)).length
+      if (count >= 3)
+        base[Stats.EM].push({ value: calcRefinement(120, 20, r), name: 'Passive', source: `Ballad of the Fjords` })
       return base
     },
   },

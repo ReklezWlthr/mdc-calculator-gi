@@ -1,8 +1,6 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
-import { ReverseConsList } from '@src/data/lib/stats/conditionals/conditionals'
 import { ITalent, ITalentDisplay } from '@src/domain/conditional'
 import { Element, Stats, TravelerIconName } from '@src/domain/constant'
-import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'

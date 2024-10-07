@@ -11,6 +11,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import { WeaponTooltip } from './weapon_block'
 import { findCharacter } from '@src/core/utils/finder'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 
 interface IContentIndex extends IContent {
   index: number
@@ -70,7 +71,7 @@ export const WeaponConditionalBlock = observer(
                         position="left"
                       >
                         <p className="w-full text-xs text-center text-white truncate">
-                          {content.owner && `${findCharacter(teamStore.characters[content.owner]?.cId)?.name}: `}
+                          {content.owner >= 0 && `${findCharacter(teamStore.characters[content.owner]?.cId)?.name}'s `}
                           {content.text}
                         </p>
                       </WeaponTooltip>
@@ -112,6 +113,26 @@ export const WeaponConditionalBlock = observer(
                             ]
                           }
                           onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
+                          small
+                        />
+                      </div>
+                    )}
+                    {content.type === 'multiple' && (
+                      <div className="flex items-center justify-center col-span-4">
+                        <TagSelectInput
+                          values={calculatorStore.form[content.index]?.[content.id]}
+                          options={
+                            content.options || [
+                              { name: Element.PYRO, value: Element.PYRO },
+                              { name: Element.HYDRO, value: Element.HYDRO },
+                              { name: Element.CRYO, value: Element.CRYO },
+                              { name: Element.ELECTRO, value: Element.ELECTRO },
+                            ]
+                          }
+                          onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
+                          placeholder="None"
+                          renderAsText
+                          small
                         />
                       </div>
                     )}

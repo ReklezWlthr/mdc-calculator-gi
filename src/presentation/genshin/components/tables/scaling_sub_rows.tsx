@@ -53,6 +53,8 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const talentFlat = stats.getValue(`${TalentStatMap[scaling.property]}_F_DMG`) || 0
   const talentCr = stats.getValue(`${TalentStatMap[scaling.property]}_CR`) || 0
   const talentCd = stats.getValue(`${TalentStatMap[scaling.property]}_CD`) || 0
+  const elementDmg =
+    stats.getValue(`${element} DMG%`) + (element !== Element.PHYSICAL ? stats.getValue(Stats.ELEMENTAL_DMG) : 0)
   const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
   const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0 // Faruzan & Shenhe
   const elementNa =
@@ -89,7 +91,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       : TalentProperty.HEAL === scaling.property
       ? stats.getValue(Stats.HEAL)
       : stats.getValue(Stats.ALL_DMG) +
-        stats.getValue(`${element} DMG%`) +
+        elementDmg +
         elementNa +
         talentDmg +
         stats.getValue(StatsObjectKeys.VULNERABILITY)) // Vulnerability effectively stacks with DMG Bonuses
@@ -171,9 +173,9 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 Talent-Exclusive Bonus: <span className="text-desc">{toPercentage(scaling.bonus)}</span>
               </p>
             )}
-            {!!stats.getValue(`${element} DMG%`) && (
+            {!!elementDmg && (
               <p className="text-xs">
-                {element} Bonus: <span className="text-desc">{toPercentage(stats.getValue(`${element} DMG%`))}</span>
+                {element} Bonus: <span className="text-desc">{toPercentage(elementDmg)}</span>
               </p>
             )}
             {!!(talentDmg || elementNa) && (
