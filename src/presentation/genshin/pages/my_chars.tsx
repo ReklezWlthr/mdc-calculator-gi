@@ -193,8 +193,8 @@ export const MyCharacters = observer(() => {
                         C{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
                       </div>
                     )}
-                    <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
-                      <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
+                    <div className="absolute bg-primary-darker px-1 rounded-full right-1 bottom-0.5">
+                      <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} textSize='text-[10px]' />
                     </div>
                     <img
                       src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
