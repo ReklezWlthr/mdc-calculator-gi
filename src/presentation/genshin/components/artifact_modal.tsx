@@ -27,7 +27,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
       setId: null,
       quality: 5,
       level: 20,
-      main: _.head(MainStat[type]),
+      main: _.head<Stats>(MainStat[type]),
       type,
       subList: Array(4).fill({ stat: null, value: null }),
     },
@@ -154,10 +154,10 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           render={({ field }) => (
             <SelectInput
               value={field.value.toString()}
-              options={_.map(Array(3).fill(3), (item, index) => ({
+              options={_.map(Array(4).fill(2), (item, index) => ({
                 name: <RarityGauge rarity={item + index} />,
                 value: (item + index).toString(),
-              }))}
+              })).reverse()}
               style="w-[70px]"
               onChange={(value) => {
                 const quality = _.parseInt(value)

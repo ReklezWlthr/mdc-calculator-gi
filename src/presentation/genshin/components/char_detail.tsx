@@ -81,7 +81,7 @@ export const CharDetail = observer(() => {
   // )
 
   return (
-    <div className="w-full h-full p-2 pr-5 text-white customScrollbar" id="detail_container">
+    <div className="w-full h-full py-2 pr-5 ml-2 text-white customScrollbar" id="detail_container">
       <div className="flex">
         <div className="relative w-2/3 aspect-square">
           <div
@@ -97,6 +97,8 @@ export const CharDetail = observer(() => {
             className={loading ? 'hidden' : 'block h-full object-cover overflow-visible -z-10 relative object-[35%]'}
             onLoad={() => setLoading(false)}
           />
+          <div className="absolute top-0 left-0 w-full h-full from-primary-bg bg-gradient-to-r via-10% via-transparent" />
+          <div className="absolute top-0 left-0 w-[150%] h-full from-primary-bg bg-gradient-to-t via-20% via-transparent overflow-visible" />
           <div className="absolute left-0 flex flex-col space-y-1 bottom-10">
             <div className="flex gap-4">
               <img
@@ -229,12 +231,8 @@ export const CharDetail = observer(() => {
       <p className="flex justify-center gap-2 mt-5 mb-1 text-2xl font-bold">
         <span className="text-desc">✦</span> Talents <span className="text-desc">✦</span>
       </p>
-      <div className="grid gap-6">
+      <div className="grid gap-6 ml-2">
         {_.map(_.omit(talent, 'a1', 'a4', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6'), (item) => {
-          const baseType = item?.trace
-            ?.replaceAll('Enhanced', '')
-            .replaceAll(/\[\d\]$/g, '')
-            .trim()
           return (
             item && (
               <div className="flex gap-x-3" key={item.trace}>
@@ -298,21 +296,19 @@ export const CharDetail = observer(() => {
         <p className="flex justify-center gap-2 mb-1 text-2xl font-bold">
           <span className="text-desc">✦</span> Constellations <span className="text-desc">✦</span>
         </p>
-        <div className="space-y-5">
+        <div className="flex flex-col gap-5">
           {_.map([talent.c1, talent.c2, talent.c3, talent.c4, talent.c5, talent.c6], (item, i) => (
             <div className="flex gap-x-3" key={item.trace}>
-              <div>
-                <div className="flex gap-3">
-                  <TalentIcon element={data.element} talent={item} size="w-10 h-10" hideTip />
-                  <div>
-                    <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
-                    <p className="font-semibold">{item.title}</p>
-                  </div>
+              <div className="flex gap-3">
+                <TalentIcon element={data.element} talent={item} size="w-10 h-10" hideTip />
+                <div>
+                  <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
+                  <p className="font-semibold">{item.title}</p>
+                  <p
+                    className="pt-1.5 text-[13px] font-normal text-gray"
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  />
                 </div>
-                <p
-                  className="pt-1.5 text-[13px] font-normal text-gray"
-                  dangerouslySetInnerHTML={{ __html: item.content }}
-                />
               </div>
             </div>
           ))}

@@ -25,7 +25,8 @@
   }
 
   .customScrollbar {
-    overflow: overlay;
+    overflow-y: scroll;
+    overflow-x: visible;
   }
 
   .customScrollbar::-webkit-scrollbar {

@@ -78,11 +78,12 @@ export interface IArtifact {
   id: string
   name: string
   icon: string
-  rarity: (3 | 4 | 5)[]
+  rarity: (2 | 3 | 4 | 5)[]
   bonus: { stat: Stats; value: number }[]
   half?: (conditionals: StatsObject) => StatsObject
   add?: (conditionals: StatsObject, weapon: WeaponType, team: ITeamChar[]) => StatsObject
   desc: string[]
+  set?: string[]
 }
 
 export interface IArtifactEquip {
@@ -235,7 +236,7 @@ export const AscensionOptions = [
   { name: 'A4', value: '4' },
   { name: 'A5', value: '5' },
   { name: 'A6', value: '6' },
-]
+].reverse()
 
 export const ConstellationOptions = [
   { name: 'C0', value: '0' },

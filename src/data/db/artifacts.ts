@@ -17,6 +17,13 @@ export const ArtifactSets: IArtifact[] = [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
       `If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.`,
     ],
+    set: [
+      `Gladiator's Intoxication`,
+      `Gladiator's Destiny`,
+      `Gladiator's Triumphus`,
+      `Gladiator's Nostalgia`,
+      `Gladiator's Longing`,
+    ],
   },
   {
     id: '147298547',
@@ -33,6 +40,13 @@ export const ArtifactSets: IArtifact[] = [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
       `Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow.`,
     ],
+    set: [
+      `Wanderer's String-Kettle`,
+      `Bard's Arrow Feather`,
+      `Conductor's Top Hat`,
+      `Troupe's Dawnlight`,
+      `Concert's Final Hour`,
+    ],
   },
   {
     id: '1751039235',
@@ -48,6 +62,7 @@ export const ArtifactSets: IArtifact[] = [
       `Elemental Burst DMG <span class="text-desc">+<span class="text-desc">20%</span></span>`,
       `Using an Elemental Burst increases all party members' ATK by <span class="text-desc">20%</span> for <span class="text-desc">12</span>s. This effect cannot stack.`,
     ],
+    set: [`Royal Silver Urn`, `Royal Plume`, `Royal Masque`, `Royal Flora`, `Royal Pocket Watch`],
   },
   {
     id: '1541919827',
@@ -59,6 +74,13 @@ export const ArtifactSets: IArtifact[] = [
       `<b>Physical DMG Bonus</b> +<span class="text-desc">25%</span>`,
       `After defeating an opponent, increases Charged Attack DMG by <span class="text-desc">50%</span>, and reduces its Stamina cost to 0 for <span class="text-desc">10</span>s. Also triggers with wild animals such as boars, squirrels and frogs.`,
     ],
+    set: [
+      `Bloodstained Chevalier's Goblet`,
+      `Bloodstained Black Plume`,
+      `Bloodstained Iron Mask`,
+      `Bloodstained Flower of Iron`,
+      `Bloodstained Final Hour`,
+    ],
   },
   {
     id: '83115355',
@@ -69,6 +91,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `Character Healing Effectiveness <span class="text-desc">+15%</span>`,
       `Using an Elemental Skill or Burst increases healing received by all party members by <span class="text-desc">20%</span> for <span class="text-desc">10</span>s.`,
+    ],
+    set: [
+      `Maiden's Fleeting Leisure`,
+      `Maiden's Heart-Stricken Infatuation`,
+      `Maiden's Fading Beauty`,
+      `Maiden's Distant Love`,
+      `Maiden's Passing Youth`,
     ],
   },
   {
@@ -85,6 +114,13 @@ export const ArtifactSets: IArtifact[] = [
       `<b class="text-genshin-anemo">Anemo DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for <span class="text-desc">10</span>s.`,
     ],
+    set: [
+      `Viridescent Venerer's Vessel`,
+      `Viridescent Arrow Feather`,
+      `Viridescent Venerer's Diadem`,
+      `In Remembrance of Viridescent Fields`,
+      `Viridescent Venerer's Determination`,
+    ],
   },
   {
     id: '2040573235',
@@ -95,6 +131,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `<b class="text-genshin-geo">Geo DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% <b>DMG Bonus</b> for that particular element for <span class="text-desc">10</span>s. Only one form of <b>Elemental DMG Bonus</b> can be gained in this manner at any one time.`,
+    ],
+    set: [
+      `Goblet of Chiseled Crag`,
+      `Feather of Jagged Peaks`,
+      `Mask of Solitude Basalt`,
+      `Flower of Creviced Cliff`,
+      `Sundial of Enduring Jade`,
     ],
   },
   {
@@ -107,6 +150,13 @@ export const ArtifactSets: IArtifact[] = [
       `Increases Shield Strength by 35%.`,
       `While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.`,
     ],
+    set: [
+      `Summer Night's Waterballoon`,
+      `Summer Night's Finale`,
+      `Summer Night's Mask`,
+      `Summer Night's Bloom`,
+      `Summer Night's Moment`,
+    ],
   },
   {
     id: '1873342283',
@@ -117,6 +167,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `<b class="text-genshin-electro">Electro RES</b> increased by 40%.`,
       `Increases DMG against opponents affected by <b class="text-genshin-electro">Electro</b> by 35%.`,
+    ],
+    set: [
+      `Thundersoother's Goblet`,
+      `Thundersoother's Plume`,
+      `Thundersoother's Diadem`,
+      `Thundersoother's Heart`,
+      `Hour of Soothing Thunder`,
     ],
   },
   {
@@ -137,6 +194,13 @@ export const ArtifactSets: IArtifact[] = [
       `<b class="text-genshin-electro">Electro DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by <span class="text-desc">20%</span>. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by <span class="text-desc">1</span>s. Can only occur once every 0.<span class="text-desc">8</span>s.`,
     ],
+    set: [
+      `Omen of Thunderstorm`,
+      `Survivor of Catastrophe`,
+      `Thunder Summoner's Crown`,
+      `Thunderbird's Mercy`,
+      `Hourglass of Thunder`,
+    ],
   },
   {
     id: '1632377563',
@@ -147,6 +211,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `<b class="text-genshin-pyro">Pyro RES</b> increased by 40%.`,
       `Increases DMG against opponents affected by <b class="text-genshin-pyro">Pyro</b> by 35%.`,
+    ],
+    set: [
+      `Lavawalker's Epiphany`,
+      `Lavawalker's Salvation`,
+      `Lavawalker's Wisdom`,
+      `Lavawalker's Resolution`,
+      `Lavawalker's Torment`,
     ],
   },
   {
@@ -167,6 +238,13 @@ export const ArtifactSets: IArtifact[] = [
       `<b class="text-genshin-pyro">Pyro DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by <span class="text-desc">50%</span> of its starting value for <span class="text-desc">10</span>s. Max 3 stacks.`,
     ],
+    set: [
+      `Witch's Heart Flames`,
+      `Witch's Ever-Burning Plume`,
+      `Witch's Scorching Hat`,
+      `Witch's Flower of Blaze`,
+      `Witch's End Time`,
+    ],
   },
   {
     id: '933076627',
@@ -177,6 +255,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `<b class="text-genshin-cryo">Cryo DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `When a character attacks an opponent affected by <b class="text-genshin-cryo">Cryo</b>, their CRIT Rate is increased by <span class="text-desc">20%</span>. If the opponent is <b class="text-genshin-cryo">Frozen</b>, CRIT Rate is increased by an additional <span class="text-desc">20%</span>.`,
+    ],
+    set: [
+      `Frost-Weaved Dignity`,
+      `Icebreaker's Resolve`,
+      `Broken Rime's Echo`,
+      `Snowswept Memory`,
+      `Frozen Homeland's Demise`,
     ],
   },
   {
@@ -189,6 +274,13 @@ export const ArtifactSets: IArtifact[] = [
       `<b class="text-genshin-hydro">Hydro DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `After using an Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for <span class="text-desc">15</span>s.`,
     ],
+    set: [
+      `Goblet of Thundering Deep`,
+      `Gust of Nostalgia`,
+      `Wine-Stained Tricorne`,
+      `Gilded Corsage`,
+      `Copper Compass`,
+    ],
   },
   {
     id: '1337666507',
@@ -199,6 +291,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `HP <span class="text-desc">+<span class="text-desc">20%</span></span>`,
       `When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by <span class="text-desc">20%</span> and their Shield Strength is increased by 30% for <span class="text-desc">3</span>s. This effect can be triggered once every 0.<span class="text-desc">5</span>s. This effect can still be triggered even when the character who is using this artifact set is not on the field.`,
+    ],
+    set: [
+      `Noble's Pledging Vessel`,
+      `Ceremonial War-Plume`,
+      `General's Ancient Helm`,
+      `Flower of Accolades`,
+      `Orichalceous Time-Dial`,
     ],
   },
   {
@@ -211,6 +310,7 @@ export const ArtifactSets: IArtifact[] = [
       `<b>Physical DMG Bonus</b> +<span class="text-desc">25%</span>`,
       `When an Elemental Skill hits an opponent, ATK is increased by 9% for <span class="text-desc">7</span>s. This effect stacks up to 2 times and can be triggered once every 0.<span class="text-desc">3</span>s. Once 2 stacks are reached, the 2-set effect is increased by 100%.`,
     ],
+    set: [`Surpassing Cup`, `Wise Doctor's Pinion`, `Mocking Mask`, `Stainless Bloom`, `Moment of Cessation`],
   },
   {
     id: '4144069251',
@@ -222,6 +322,7 @@ export const ArtifactSets: IArtifact[] = [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
       `When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by <span class="text-desc">50%</span> for <span class="text-desc">10</span>s. This effect will not trigger again during that duration.`,
     ],
+    set: [`Hopeful Heart`, `Shaft of Remembrance`, `Capricious Visage`, `Entangling Bloom`, `Morning Dew's Moment`],
   },
   {
     id: '2276480763',
@@ -233,6 +334,7 @@ export const ArtifactSets: IArtifact[] = [
       `Energy Recharge <span class="text-desc">+<span class="text-desc">20%</span></span>`,
       `Increases Elemental Burst DMG by <span class="text-desc">25%</span> of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.`,
     ],
+    set: [`Scarlet Vessel`, `Sundered Feather`, `Ornate Kabuto`, `Magnificent Tsuba`, `Storm Cage`],
   },
   {
     id: '2546254811',
@@ -248,6 +350,7 @@ export const ArtifactSets: IArtifact[] = [
     <br />Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus.
     <br />When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.`,
     ],
+    set: [`Calabash of Awakening`, `Plume of Luxury`, `Skeletal Hat`, `Bloom Times`, `Song of Life`],
   },
   {
     id: '1756609915',
@@ -265,6 +368,7 @@ export const ArtifactSets: IArtifact[] = [
       <br />There can be no more than one Sea-Dyed Foam active at any given time.
       <br />This effect can still be triggered even when the character who is using this artifact set is not on the field.`,
     ],
+    set: [`Pearl Cage`, `Deep Palace's Plume`, `Crown of Watatsumi`, `Sea-Dyed Blossom`, `Cowry of Parting`],
   },
   {
     id: '1558036915',
@@ -276,6 +380,7 @@ export const ArtifactSets: IArtifact[] = [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
       `After using an Elemental Burst, this character will gain the Nascent Light effect, increasing their ATK by 8% for <span class="text-desc">16</span>s. When the character's HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.<span class="text-desc">8</span>s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.`,
     ],
+    set: [`Moment of the Pact`, `Feather of Nascent Light`, `Thundering Poise`, `Flowering Life`, `Solar Relic`],
   },
   {
     id: '3626268211',
@@ -290,6 +395,7 @@ export const ArtifactSets: IArtifact[] = [
       <br />If a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by <span class="text-desc">20%</span>.
       <br />This trigger can occur once every 0.<span class="text-desc">2</span>s.`,
     ],
+    set: [`Chalice of the Font`, `Jade Leaf`, `Flowing Rings`, `Soulscent Bloom`, `Symbol of Felicitation`],
   },
   {
     id: '1675079283',
@@ -301,6 +407,7 @@ export const ArtifactSets: IArtifact[] = [
       `<b class="text-genshin-dendro">Dendro DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `After Elemental Skills or Bursts hit opponents, the targets' <b class="text-genshin-dendro">Dendro RES</b> will be decreased by 30% for <span class="text-desc">8</span>s. This effect can be triggered even if the equipping character is not on the field.`,
     ],
+    set: [`Lamp of the Lost`, `Scholar of Vines`, `Laurel Coronet`, `Labyrinth Wayfarer`, `A Time of Insight`],
   },
   {
     id: '4145306051',
@@ -312,6 +419,13 @@ export const ArtifactSets: IArtifact[] = [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
       `Within <span class="text-desc">8</span>s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every <span class="text-desc">8</span>s. The character who equips this can still trigger its effects when not on the field.`,
     ],
+    set: [
+      `Honeyed Final Feast`,
+      `Feather of Judgment`,
+      `Shadow of the Sand King`,
+      `Dreaming Steelbloom`,
+      `The Sunken Years`,
+    ],
   },
   {
     id: '2538235187',
@@ -322,6 +436,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `<b class="text-genshin-anemo">Anemo DMG Bonus</b> <span class="text-desc">+15%</span>.`,
       `When Charged Attacks hit opponents, the equipping character's Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for <span class="text-desc">15</span>s.`,
+    ],
+    set: [
+      `Defender of the Enchanting Dream`,
+      `End of the Golden Realm`,
+      `Legacy of the Desert High-Born`,
+      `The First Days of the City of Kings`,
+      `Timepiece of the Lost Path`,
     ],
   },
   {
@@ -340,6 +461,13 @@ export const ArtifactSets: IArtifact[] = [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
       `The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another <span class="text-desc">25%</span> bonus to the effect mentioned prior. Each stack of this lasts <span class="text-desc">10</span>s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.`,
     ],
+    set: [
+      `Secret-Keeper's Magic Bottle`,
+      `Wilting Feast`,
+      `Amethyst Crown`,
+      `Ay-Khanoum's Myriad`,
+      `A Moment Congealed`,
+    ],
   },
   {
     id: '1925210475',
@@ -350,6 +478,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `<b class="text-genshin-hydro">Hydro DMG Bonus</b> <span class="text-desc">+15%</span>`,
       `After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will triggered, lasting <span class="text-desc">8</span>s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/<span class="text-desc">25%</span>, and <b class="text-genshin-hydro">Hydro DMG</b> will be increased by 4%/9%/15%. Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.`,
+    ],
+    set: [
+      `Heroes' Tea Party`,
+      `Wicked Mage's Plumule`,
+      `Fell Dragon's Monocle`,
+      `Odyssean Flower`,
+      `Nymph's Constancy`,
     ],
   },
   {
@@ -367,6 +502,13 @@ export const ArtifactSets: IArtifact[] = [
       `HP <span class="text-desc">+<span class="text-desc">20%</span></span>`,
       `Elemental Skill and Elemental Burst DMG will be increased by 10%. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for <span class="text-desc">5</span>s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.`,
     ],
+    set: [
+      `Feast of Boundless Joy`,
+      `Vibrant Pinion`,
+      `Heart of Khvarena's Brilliance`,
+      `Stamen of Khvarena's Origin`,
+      `Ancient Abscission`,
+    ],
   },
   {
     id: '1249831867',
@@ -383,6 +525,7 @@ export const ArtifactSets: IArtifact[] = [
       `Normal and Charged Attack DMG <span class="text-desc">+15%</span>.`,
       `When current HP increases or decreases, CRIT Rate will be increased by 12% for <span class="text-desc">5</span>s. Max 3 stacks.`,
     ],
+    set: [`Forgotten Vessel`, `Masterpiece's Overture`, `Veteran's Visage`, `Hunter's Brooch`, `Moment of Judgment`],
   },
   {
     id: '3410220315',
@@ -403,6 +546,13 @@ export const ArtifactSets: IArtifact[] = [
       `Increases Elemental Skill DMG by <span class="text-desc">25%</span>.
       <br />Additionally, when not on the field, Elemental Skill DMG will be further increased by <span class="text-desc">25%</span>. This effect will be cleared <span class="text-desc">2</span>s after taking the field.`,
     ],
+    set: [
+      `Golden Night's Bustle`,
+      `Golden Bird's Shedding`,
+      `Golden Troupe's Reward`,
+      `Golden Song's Variation`,
+      `Golden Era's Prelude`,
+    ],
   },
   {
     id: '2803305851',
@@ -413,6 +563,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `Healing Bonus <span class="text-desc">+15%</span>`,
       `When the equipping character heals a party member, the Yearning effect will be created for <span class="text-desc">6</span>s, which records the total amount of healing provided (including overflow healing). When the duration expires, the Yearning effect will be transformed into the "Waves of Days Past" effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by 8% of the total healing amount recorded by the Yearning effect. The "Waves of Days Past" effect is removed after it has taken effect 5 times or after <span class="text-desc">10</span>s. A single instance of the Yearning effect can record up to 15,000 healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect.`,
+    ],
+    set: [
+      `Promised Dream of Days Past`,
+      `Recollection of Days Past`,
+      `Poetry of Days Past`,
+      `Forgotten Oath of Days Past`,
+      `Echoing Sound From Days Past`,
     ],
   },
   {
@@ -425,6 +582,13 @@ export const ArtifactSets: IArtifact[] = [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
       `After using an Elemental Skill, gain a <span class="text-desc">20%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for <span class="text-desc">10</span>s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 1<span class="text-desc">50%</span>, and this additional increase disappears <span class="text-desc">1</span>s after that shield is lost.`,
     ],
+    set: [
+      `Magnanimous Ink Bottle`,
+      `Honest Quill`,
+      `Compassionate Ladies' Hat`,
+      `Selfless Floral Accessory`,
+      `Faithful Hourglass`,
+    ],
   },
   {
     id: '1492570003',
@@ -435,6 +599,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
       `When the value of a <b class="text-genshin-bol">Bond of Life</b> increases or decreases, this character deals <span class="text-desc">18%</span> increased DMG for <span class="text-desc">6</span>s. Max 3 stacks.`,
+    ],
+    set: [
+      `Ichor Shower Rhapsody`,
+      `Ancient Sea's Nocturnal Musing`,
+      `Whimsical Dance of the Withered`,
+      `Harmonious Symphony Prelude`,
+      `The Grand Jape of the Turning of Fate`,
     ],
   },
   {
@@ -447,6 +618,13 @@ export const ArtifactSets: IArtifact[] = [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
       `After leaving combat for <span class="text-desc">3</span>s, DMG dealt increased by <span class="text-desc">50%</span>. In combat, if no Burning opponents are nearby for more than <span class="text-desc">6</span>s, this DMG Bonus will decrease by 10% per second until it reaches 0%. When a Burning opponent exists, it will increase by 10% instead until it reaches <span class="text-desc">50%</span>. This effect still triggers if the equipping character is off-field.`,
     ],
+    set: [
+      `The Wine-Flask Over Which the Plan Was Hatched`,
+      `Faded Emerald Tail`,
+      `Crownless Crown`,
+      `Dark Fruit of Bright Flowers`,
+      `Moment of Attainment`,
+    ],
   },
   {
     id: '2949388203',
@@ -458,6 +636,13 @@ export const ArtifactSets: IArtifact[] = [
       `When a nearby party member triggers a <b>Nightsoul Burst</b>, the equipping character regenerates <span class="text-desc">6</span> Elemental Energy.`,
       `After the equipping character triggers a reaction related to their <b>Elemental Type</b>, all nearby party members gain a <span class="text-desc">12%</span> <b>Elemental DMG Bonus</b> for the <b>Elemental Types</b> involved in the elemental reaction for <span class="text-desc">15</span>s. If the equipping character is in the <b>Nightsoul's Blessing</b> state when triggering this effect, all nearby party members gain an additional <span class="text-desc">28%</span> <b>Elemental DMG Bonus</b> for the <b>Elemental Types</b> involved in the elemental reaction for <span class="text-desc">20</span>s. The equipping character can trigger this effect while off-field, and the DMG bonus from Artifact Sets with the same name do not stack.`,
     ],
+    set: [
+      `Wandering Scholar's Claw Cup`,
+      `Mountain Ranger's Marker`,
+      `Demon-Warrior's Feather Mask`,
+      `Beast Tamer's Talisman`,
+      `Mystic's Gold Dial`,
+    ],
   },
   {
     id: '1774579403',
@@ -468,6 +653,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `While the equipping character is in <b>Nightsoul's Blessing</b> and is on the field, their DMG dealt is increased by <span class="text-desc">15%</span>.`,
       `After the equipping character consumes <span class="text-desc">1</span> <b>Nightsoul</b> point while on the field, CRIT Rate increases by <span class="text-desc">40%</span> for <span class="text-desc">6</span>s. This effect can trigger once every second.`,
+    ],
+    set: [
+      `Pre-Banquet of the Contenders`,
+      `Root of the Spirit-Marrow`,
+      `Crown of the Saints`,
+      `Reckoning of the Xenogenic`,
+      `Myths of the Night Realm`,
     ],
   },
   {
@@ -484,6 +676,13 @@ export const ArtifactSets: IArtifact[] = [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
       `Increases Charged Attack CRIT Rate by 30%.`,
     ],
+    set: [
+      `Goblet of the Sojourner`,
+      `Feather of Homecoming`,
+      `Crown of Parting`,
+      `Heart of Comradeship`,
+      `Sundial of the Sojourner`,
+    ],
   },
   {
     id: '1383639611',
@@ -495,6 +694,13 @@ export const ArtifactSets: IArtifact[] = [
       `<b>All Elemental RES</b> increased by <span class="text-desc">20%</span>.`,
       `Incoming Elemental DMG increases corresponding <b>Elemental RES</b> by 30% for <span class="text-desc">10</span>s. Can only occur once every <span class="text-desc">10</span>s.`,
     ],
+    set: [
+      `Tiny Miracle's Goblet`,
+      `Tiny Miracle's Feather`,
+      `Tiny Miracle's Earrings`,
+      `Tiny Miracle's Flower`,
+      `Tiny Miracle's Hourglass`,
+    ],
   },
   {
     id: '855894507',
@@ -503,6 +709,13 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [3, 4],
     bonus: [{ stat: Stats.CRIT_RATE, value: 0.12 }],
     desc: [`CRIT Rate +12%`, `When HP is below 70%, CRIT Rate increases by an additional 24%.`],
+    set: [
+      `Berserker's Bone Goblet`,
+      `Berserker's Indigo Feather`,
+      `Berserker's Battle Mask`,
+      `Berserker's Rose`,
+      `Berserker's Timepiece`,
+    ],
   },
   {
     id: '3890292467',
@@ -513,6 +726,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
       `Upon triggering an Elemental Reaction, increases all party members' Elemental Mastery by 120 for <span class="text-desc">8</span>s.`,
+    ],
+    set: [
+      `Instructor's Tea Cup`,
+      `Instructor's Feather Accessory`,
+      `Instructor's Cap`,
+      `Instructor's Brooch`,
+      `Instructor's Pocket Watch`,
     ],
   },
   {
@@ -525,6 +745,7 @@ export const ArtifactSets: IArtifact[] = [
       `Energy Recharge <span class="text-desc">+<span class="text-desc">20%</span></span>`,
       `Using an Elemental Burst regenerates 2 Energy for all party members (excluding the wearer) every <span class="text-desc">2</span>s for <span class="text-desc">6</span>s. This effect cannot stack.`,
     ],
+    set: [`Exile's Goblet`, `Exile's Feather`, `Exile's Circlet`, `Exile's Flower`, `Exile's Pocket Watch`],
   },
   {
     id: '4082302819',
@@ -536,6 +757,7 @@ export const ArtifactSets: IArtifact[] = [
       `DEF +30%`,
       `For each different element present in your own party, the wearer's <b>Elemental RES</b> to that corresponding element is increased by 30%.`,
     ],
+    set: [`Guardian's Vessel`, `Guardian's Sigil`, `Guardian's Band`, `Guardian's Flower`, `Guardian's Clock`],
   },
   {
     id: '3535784755',
@@ -546,6 +768,13 @@ export const ArtifactSets: IArtifact[] = [
     desc: [
       `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
       `Increases DMG by 30% against opponents with more than <span class="text-desc">50%</span> HP.`,
+    ],
+    set: [
+      `Outset of the Brave`,
+      `Prospect of the Brave`,
+      `Crown of the Brave`,
+      `Medal of the Brave`,
+      `Fortitude of the Brave`,
     ],
   },
   {
@@ -558,6 +787,13 @@ export const ArtifactSets: IArtifact[] = [
       `Normal and Charged Attack DMG <span class="text-desc">+15%</span>`,
       `After using Elemental Skill, increases Normal Attack and Charged Attack DMG by <span class="text-desc">25%</span> for <span class="text-desc">8</span>s.`,
     ],
+    set: [
+      `Martial Artist's Wine Cup`,
+      `Martial Artist's Feather Accessory`,
+      `Martial Artist's Bandana`,
+      `Martial Artist's Red Flower`,
+      `Martial Artist's Water Hourglass`,
+    ],
   },
   {
     id: '1186209435',
@@ -569,6 +805,13 @@ export const ArtifactSets: IArtifact[] = [
       `Increases Elemental Skill DMG by <span class="text-desc">20%</span>.`,
       `Defeating an opponent has a 100% chance to remove Elemental Skill CD. Can only occur once every <span class="text-desc">15</span>s.`,
     ],
+    set: [
+      `Gambler's Dice Cup`,
+      `Gambler's Feather Accessory`,
+      `Gambler's Earrings`,
+      `Gambler's Brooch`,
+      `Gambler's Pocket Watch`,
+    ],
   },
   {
     id: '3618167299',
@@ -577,8 +820,63 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [3, 4],
     bonus: [{ stat: Stats.ER, value: 0.2 }],
     desc: [
-      `Energy Recharge <span class="text-desc">+<span class="text-desc">20%</span></span>`,
+      `Energy Recharge <span class="text-desc">+20%</span>`,
       `Gaining Elemental Particles or Orbs gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every <span class="text-desc">3</span>s.`,
+    ],
+    set: [`Scholar's Ink Cup`, `Scholar's Quill Pen`, `Scholar's Lens`, `Scholar's Bookmark`, `Scholar's Clock`],
+  },
+  {
+    id: '3782508715',
+    name: 'Traveling Doctor',
+    icon: 'UI_RelicIcon_10013',
+    rarity: [2, 3],
+    bonus: [{ stat: Stats.I_HEALING, value: 0.2 }],
+    desc: [
+      `Increases incoming healing by <span class="text-desc">20%</span>.`,
+      `Using Elemental Burst restores <span class="text-desc">20%</span> HP.`,
+    ],
+    set: [
+      `Traveling Doctor's Medicine Pot`,
+      `Traveling Doctor's Owl Feather`,
+      `Traveling Doctor's Handkerchief`,
+      `Traveling Doctor's Silver Lotus`,
+      `Traveling Doctor's Pocket Watch`,
+    ],
+  },
+  {
+    id: '1103732675',
+    name: 'Lucky Dog',
+    icon: 'UI_RelicIcon_10011',
+    rarity: [2, 3],
+    bonus: [{ stat: Stats.DEF, value: 100 }],
+    desc: [
+      `DEF increased by <span class="text-desc">100</span>.`,
+      `Picking up Mora restores <span class="text-desc">300</span> HP.`,
+    ],
+    set: [
+      `Lucky Dog's Goblet`,
+      `Lucky Dog's Eagle Feather`,
+      `Lucky Dog's Silver Circlet`,
+      `Lucky Dog's Clover`,
+      `Lucky Dog's Hourglass`,
+    ],
+  },
+  {
+    id: '2191797987',
+    name: 'Adventurer',
+    icon: 'UI_RelicIcon_10010',
+    rarity: [2, 3],
+    bonus: [{ stat: Stats.DEF, value: 100 }],
+    desc: [
+      `Max HP increased by <span class="text-desc">1,000</span>.`,
+      `Opening a chest regenerates <span class="text-desc">30%</span> Max HP over <span class="text-desc">5</span>s.`,
+    ],
+    set: [
+      `Adventurer's Golden Goblet`,
+      `Adventurer's Tail Feather`,
+      `Adventurer's Bandana`,
+      `Adventurer's Flower`,
+      `Adventurer's Pocket Watch`,
     ],
   },
 ]

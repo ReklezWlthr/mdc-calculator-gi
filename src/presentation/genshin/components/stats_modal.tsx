@@ -25,6 +25,23 @@ interface ExtraBlockProps {
   round?: number
 }
 
+const mergeBuffs = (arr: StatsArray[]) =>
+  _.reduce(
+    arr,
+    (acc, curr) => {
+      const exist = _.find(acc, (item) => item.name === curr.name && item.source === curr.source)
+      if (exist) {
+        exist.value += curr.value
+        exist.base = curr.base
+        exist.multiplier = (exist.multiplier || 0) + curr.multiplier || 0
+      } else {
+        acc.push(curr)
+      }
+      return _.cloneDeep(acc)
+    },
+    []
+  )
+
 export const AttributeBlock = ({ stat, array, stats, flat }: NormalBlockProps) => {
   const format = (v: number) => (flat ? _.round(v).toLocaleString() : toPercentage(v))
   return (
@@ -34,7 +51,7 @@ export const AttributeBlock = ({ stat, array, stats, flat }: NormalBlockProps) =
       </p>
       <div className="space-y-1 text-xs">
         {_.map(
-          array,
+          mergeBuffs(array),
           (item) =>
             !!item.value && (
               <BulletPoint key={item.source + item.name}>
@@ -84,7 +101,7 @@ export const StatsModal = observer(
               Weapon Base {stats} <span className="text-desc">{_.round(lBase, round).toLocaleString()}</span>
             </BulletPoint>
           )}
-          {_.map(pArray, (item) => {
+          {_.map(mergeBuffs(pArray), (item) => {
             const c = _.round((cBase + lBase) * item.value, round).toLocaleString()
             return (
               !!item.value && (
@@ -97,7 +114,7 @@ export const StatsModal = observer(
             )
           })}
           {_.map(
-            fArray,
+            mergeBuffs(fArray),
             (item) =>
               !!item.value && (
                 <BulletPoint key={item.source + item.name}>
@@ -130,23 +147,6 @@ export const StatsModal = observer(
 
     // const defMult =
     //   1 - stats.getDef() / (stats.getDef() + 200 + 10 * +(compare ? setupStore.level : calculatorStore.level))
-
-    const mergeBuffs = (arr: StatsArray[]) =>
-      _.reduce(
-        arr,
-        (acc, curr) => {
-          const exist = _.find(acc, (item) => item.name === curr.name && item.source === curr.source)
-          if (exist) {
-            exist.value += curr.value
-            exist.base = curr.base
-            exist.multiplier = (exist.multiplier || 0) + curr.multiplier || 0
-          } else {
-            acc.push(curr)
-          }
-          return _.cloneDeep(acc)
-        },
-        []
-      )
 
     return (
       <div className="w-[65vw] bg-primary-dark rounded-lg p-3 space-y-2">
@@ -183,7 +183,7 @@ export const StatsModal = observer(
               <AttributeBlock
                 stats={stats}
                 stat="Elemental Mastery"
-                array={mergeBuffs([...stats[Stats.EM], ...stats[StatsObjectKeys.X_EM]])}
+                array={[...stats[Stats.EM], ...stats[StatsObjectKeys.X_EM]]}
                 flat
               />
               <AttributeBlock stats={stats} stat="CRIT Rate" array={stats[Stats.CRIT_RATE]} />

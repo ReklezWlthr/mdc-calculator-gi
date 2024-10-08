@@ -108,8 +108,8 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
   }, [modalStore, index])
 
   return (
-    <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[300px]">
-      <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Weapon</div>
+    <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[250px]">
+      <div className="flex justify-center px-5 py-1 text-sm rounded-t-lg bg-primary-light">Weapon</div>
       <div className="flex flex-col p-3 gap-y-3">
         <div className="flex items-center gap-2">
           <PillInput
@@ -132,7 +132,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
           />
         </div>
         <div className="flex gap-2">
-          <div className="flex flex-col justify-between w-1/2 gap-1">
+          <div className="relative flex flex-col justify-between w-1/2 gap-1">
             <img
               src={`https://homdgcat.wiki/homdgcat-res/Weapon/${
                 weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD]
@@ -140,7 +140,9 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
               className="w-full pt-1 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
               onClick={onOpenModal}
             />
-            <RarityGauge rarity={rarity} />
+            <div className="absolute px-1 rounded-md bottom-1 right-1 bg-primary-bg">
+              <RarityGauge rarity={rarity} />
+            </div>
           </div>
           <div className="w-1/2 space-y-3">
             <div className="space-y-1">
@@ -156,7 +158,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
                   onChange={(value) =>
                     teamStore.setWeapon(index, {
                       ascension: parseInt(value) || 0,
-                      level: findBaseLevel(parseInt(value) || 0),
+                      level: findMaxLevel(parseInt(value) || 0),
                     })
                   }
                   options={AscensionOptions}
@@ -176,7 +178,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
             )}
           </div>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           <div className="flex items-center gap-2 text-xs">
             <div className="flex items-center gap-1.5 shrink-0">
               <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[Stats.ATK]}`} />

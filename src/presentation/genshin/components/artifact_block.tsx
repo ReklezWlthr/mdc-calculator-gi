@@ -2,7 +2,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { ArtifactPiece, IArtifactEquip, Stats } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { ArtifactModal } from './artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { getMainStat, getRolls } from '@src/core/utils/data_format'
@@ -25,16 +25,33 @@ interface ArtifactBlockProps {
   override?: IArtifactEquip[]
 }
 
-const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => void; title: string }) => {
+const MenuButton = ({
+  icon,
+  onClick,
+  title,
+  duration,
+}: {
+  icon: string
+  onClick: () => void
+  title: string
+  duration: string
+}) => {
   return (
-    <i
+    <div
       className={classNames(
-        'flex items-center justify-center w-11 h-11 p-2 text-xl rounded-full opacity-0 translate-x-full group-hover:translate-x-0 cursor-pointer bg-primary-light hover:bg-primary group-hover:opacity-100',
-        icon
+        'flex items-center gap-1.5 translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100',
+        duration
       )}
-      onClick={onClick}
-      title={title}
-    />
+    >
+      <p className="text-xs">{title}</p>
+      <i
+        className={classNames(
+          'flex items-center justify-center w-10 h-10 p-2 text-lg rounded-full bg-primary-light hover:bg-primary cursor-pointer duration-200',
+          icon
+        )}
+        onClick={onClick}
+      />
+    </div>
   )
 }
 
@@ -48,7 +65,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
   const mainStat = getMainStat(artifact?.main, artifact?.quality, artifact?.level)
 
   const subListWithRolls = useMemo(() => {
-    const rolls = _.map(artifact?.subList, (item) => getRolls(item.stat, item.value))
+    const rolls = _.map(artifact?.subList, (item) => _.sum(_.map(getRolls(item.stat, item.value))))
     const sum = _.sum(rolls)
     if (sum > 9) {
       const max = _.max(rolls)
@@ -119,32 +136,20 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
   return (
     <div
       className={classNames(
-        'flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[300px] group',
+        'flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[250px] group ring-inset ring-1 ring-primary-light relative',
         {
           'hover:scale-[97%]': canEdit,
         }
       )}
     >
-      <div className="h-10 overflow-hidden rounded-t-lg bg-primary-light shrink-0">
-        <div
-          className={classNames('px-5 py-2 space-y-5 duration-200', {
-            'group-hover:-translate-y-1/2': canEdit && props.aId,
-          })}
-        >
-          <div className="flex items-center justify-center gap-1">
-            <img src={`${publicRuntimeConfig.BASE_PATH}/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
-            <p>{pieceName}</p>
-          </div>
-          <div className="flex items-center justify-center gap-1">
-            <p>Artifact Menu</p>
-          </div>
-        </div>
+      <div className="absolute top-0 right-0 flex items-center justify-center h-8 pointer-events-none w-9 rounded-se-lg rounded-es-lg bg-primary-light">
+        <img src={`${publicRuntimeConfig.BASE_PATH}/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
       </div>
       {props.aId ? (
         <div className="relative w-full">
-          <div className="p-3 space-y-3">
+          <div className="px-3 py-4 space-y-3">
             <div className="flex gap-4">
-              <div className="relative w-16 h-16 shrink-0">
+              <div className="relative w-14 h-14 shrink-0">
                 <img src={`https://enka.network/ui/${setData?.icon}_${artifact?.type}.png`} className="w-full h-full" />
                 <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                   +{artifact?.level}
@@ -152,7 +157,13 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 {charData?.codeName && props.showWearer && (
                   <div className="absolute flex items-center justify-center p-1 text-xs bg-opacity-75 rounded-full -top-1 w-7 h-7 -right-3 bg-primary-light">
                     <img
-                      src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_Side_${codeName}.png`}
+                      src={codeName ? `https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png` : ''}
+                      onError={(e) =>
+                        (e.target as HTMLElement).setAttribute(
+                          'src',
+                          codeName ? `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_Side_${codeName}.png` : ''
+                        )
+                      }
                       className="absolute scale-125 bottom-1.5"
                     />
                   </div>
@@ -160,7 +171,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
               </div>
               <div className="flex flex-col items-center w-full gap-1">
                 <RarityGauge rarity={artifact?.quality} textSize="text-sm" />
-                <p className="text-xs text-center">{setData?.name}</p>
+                <p className="text-xs text-center">{setData?.set?.[artifact?.type - 1]}</p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-xs">
@@ -184,7 +195,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                   : toPercentage(mainStat)}
               </p>
             </div>
-            <p className="flex items-center justify-center text-xs text-primary-lighter">✦✦✦✦✦</p>
+            <div className="border-t-2 border-dashed border-primary-light !my-4 opacity-40" />
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
@@ -202,45 +213,49 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             ))}
           </div>
           {canEdit && (
-            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[260px] from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker duration-200 overflow-hidden">
+            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-px left-px w-[calc(100%-2px)] h-[248px] rounded-lg from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
               <MenuButton
-                icon="fa-solid fa-pen-to-square duration-[200ms]"
+                icon="fa-solid fa-pen-to-square"
+                duration="duration-[200ms]"
                 onClick={onOpenEditModal}
-                title="Edit Artifact"
+                title="Edit"
               />
               {props.index >= 0 && (
                 <>
                   <MenuButton
-                    icon="fa-solid fa-repeat duration-[250ms]"
+                    icon="fa-solid fa-repeat"
+                    duration="duration-[250ms]"
                     onClick={onOpenSwapModal}
-                    title="Swap Artifact"
+                    title="Swap"
                   />
                   <MenuButton
-                    icon="fa-solid fa-arrow-right-from-bracket rotate-90 duration-[300ms]"
+                    icon="fa-solid fa-arrow-right-from-bracket rotate-90"
+                    duration="duration-[300ms]"
                     onClick={onOpenConfirmModal}
-                    title="Unequip Artifact"
+                    title="Unequip"
                   />
                 </>
               )}
               <MenuButton
-                icon={classNames('fa-solid fa-trash', props.index >= 0 ? 'duration-[350ms]' : 'duration-[250ms]')}
+                icon="fa-solid fa-trash"
+                duration={props.index >= 0 ? 'duration-[350ms]' : 'duration-[250ms]'}
                 onClick={onOpenDeleteModal}
-                title="Delete Artifact"
+                title="Delete"
               />
             </div>
           )}
         </div>
       ) : canEdit ? (
-        <div className="flex flex-col items-center justify-center w-full h-full">
+        <div className="flex flex-col items-center justify-center w-full h-full p-px">
           <div
-            className="flex items-center justify-center w-full h-full transition-colors duration-200 cursor-pointer hover:bg-primary-darker"
+            className="flex items-center justify-center w-full h-full transition-colors duration-200 rounded-t-lg cursor-pointer hover:bg-primary-darker"
             onClick={onOpenEditModal}
           >
             Add New Artifact
           </div>
           <div className="w-full h-0 border-t-2 border-primary-border" />
           <div
-            className="flex items-center justify-center w-full h-full transition-colors duration-200 cursor-pointer hover:bg-primary-darker"
+            className="flex items-center justify-center w-full h-full transition-colors duration-200 rounded-t-lg cursor-pointer hover:bg-primary-darker"
             onClick={onOpenSwapModal}
           >
             Equip an Artifact

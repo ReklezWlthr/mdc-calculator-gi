@@ -1929,7 +1929,7 @@ export const Characters = [
     rarity: 5,
     region: 'Natlan',
     constellation: 'Vampyrum Spectrum',
-    weapon: WeaponType.SWORD,
+    weapon: WeaponType.BOW,
     element: Element.ELECTRO,
     codeName: 'Ororon',
     tags: [],

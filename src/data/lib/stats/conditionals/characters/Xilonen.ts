@@ -39,7 +39,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b>Nightsoul's Blessing: Blade Roller</b>
       <br />When in the <b class="text-genshin-geo">Nightsoul's Blessing</b> state, Xilonen will enter the <b class="text-genshin-geo">Blade Roller</b> mode. While in this mode, Xilonen's Normal Attacks will allow her to perform up to 4 kicks using her roller blades, and she will be unable to use Charged Attacks.
-      <br />When she uses Normal and Plunging Attacks in this mode, they will switch to being based on her DEF, and she will deal Nightsoul-aligned <b class="text-genshin-geo">Geo DMG</b> that cannot be overridden.
+      <br />When her Normal and Plunging Attacks are used in this mode, they will switch to being based on her DEF, and Xilonen will deal Nightsoul-aligned <b class="text-genshin-geo">Geo DMG</b> that cannot be overridden.
       `,
       image: 'Skill_A_01',
     },
@@ -51,7 +51,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b class="text-desc">Source Samples</b>
       <br />Xilonen has <span class="text-desc">3</span> <b class="text-desc">Samplers</b> with her that can generate different <b>Soundscapes</b> based on her other party members' <b>Elemental Types</b>, decreasing nearby opponents' corresponding <b>Elemental RES</b> while active.
-      <br />The initial recorded <b class="text-desc">Source Sample</b> within each <b class="text-desc">Sampler</b> will be <b class="text-genshin-geo">Geo</b>, and for each party member who is <b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, <span class="text-desc">1</span> <b class="text-genshin-geo">Geo</b> <b class="text-desc">Sampler</b> will change to that corresponding Element.
+      <br />The initial recorded <b class="text-desc">Source Sample</b> within each <b class="text-desc">Sampler</b> will be <b class="text-genshin-geo">Geo</b>, and for each party member who is <b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, <span class="text-desc">1</span> <b class="text-genshin-geo">Geo</b> <b class="text-desc">Sample</b> will change to that corresponding Element.
       <br />While Xilonen is in the <b class="text-genshin-geo">Nightsoul's Blessing</b> state, the <b class="text-genshin-geo">Geo</b> <b class="text-desc">Source Sample</b> she carries will always be active. After unlocking her Passive Talent, <b>Netotiliztli's Echoes</b>, Xilonen can trigger said Passive Talent's effects to regenerate <b class="text-genshin-geo">Nightsoul</b> points for herself. When her <b class="text-genshin-geo">Nightsoul</b> points hit the maximum, she will consume all her <b class="text-genshin-geo">Nightsoul</b> points and activate the <span class="text-desc">3</span> <b class="text-desc">Source Samples</b> she has on hand for <span class="text-desc">15</span>s.
       <br />When the <b class="text-desc">Source Samples</b> are active, nearby opponents' corresponding <b>Elemental RES</b> will decrease. <b class="text-desc">Source Sample</b> effects of the same <b>Elemental Type</b> cannot stack. Xilonen can trigger these effects even when off-field.
       <br />
@@ -115,8 +115,8 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c2: {
       trace: `Constellation 2`,
       title: `Chiucue Mix`,
-      content: `Xilonen's <b class="text-genshin-geo">Geo</b> <b class="text-desc">Source Sample</b> will always remain active. Additionally, when her <b class="text-desc">Source Samples</b> activate, all nearby party members will gain effects corresponding to the active <b class="text-desc">Source Sample</b> that matches their <b>Elemental Type</b>:
-      <br />- <b class="text-genshin-geo">Geo</b>: DMG <span class="text-desc">+50%</span>.
+      content: `Xilonen's <b class="text-genshin-geo">Geo</b> <b class="text-desc">Source Samples</b> will always remain active. Additionally, when her <b class="text-desc">Source Samples</b> activate, all nearby party members will gain effects corresponding to the active <b class="text-desc">Source Sample</b> that matches their <b>Elemental Type</b>:
+      <br />- <b class="text-genshin-geo">Geo</b>: DMG dealt <span class="text-desc">+50%</span>.
       <br />- <b class="text-genshin-pyro">Pyro</b>: ATK <span class="text-desc">+45%</span>.
       <br />- <b class="text-genshin-hydro">Hydro</b>: Max HP <span class="text-desc">+45%</span>.
       <br />- <b class="text-genshin-cryo">Cryo</b>: CRIT DMG <span class="text-desc">+60%</span>.

@@ -111,7 +111,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                   const max = _.max([1, (parseInt(value) - 1) * 2])
                   teamStore.setMemberInfo(props.index, {
                     ascension: parseInt(value) || 0,
-                    level: findBaseLevel(parseInt(value) || 0),
+                    level: findMaxLevel(parseInt(value) || 0),
                   })
                   _.forEach(teamStore.characters[props.index]?.talents, (item, key: 'normal' | 'skill' | 'burst') => {
                     if (item > max) teamStore.setTalentLevel(props.index, key, max)
