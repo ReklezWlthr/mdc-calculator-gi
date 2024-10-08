@@ -16,3 +16,10 @@ export const isSubsetOf = (a: any[], b: any[]) => _.every(a, (item) => _.include
 
 export const checkBuffExist = (array: StatsArray[], predicate: Partial<StatsArray>) =>
   _.size(_.filter(array, (item) => _.every(predicate, (value, key) => item[key] === value))) >= 1
+
+export const compareWeight = (a: string, b: string) => {
+  const aWeight = a ? Number(a.replaceAll('P', '').replaceAll('N', '-')) : 0
+  const bWeight = b ? Number(b.replaceAll('P', '').replaceAll('N', '-')) : 0
+
+  return aWeight - bWeight
+}

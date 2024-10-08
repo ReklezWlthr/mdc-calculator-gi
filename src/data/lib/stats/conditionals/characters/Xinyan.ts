@@ -30,76 +30,88 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_04',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Sweeping Fervor`,
       content: `Xinyan brandishes her instrument, dealing <b class="text-genshin-pyro">Pyro DMG</b> on nearby opponents, forming a shield made out of her audience's passion.
       <br />The shield's DMG Absorption scales based on Xinyan's DEF and on the number of opponents hit.
-      <br />- Hitting <span class="text-desc">0 - 1</span> opponents grants Shield Level 1: <b>Ad Lib</b>.
-      <br />- Hitting <span class="text-desc">2</span> opponents grants Shield Level 2: <b>Lead-In</b>.
-      <br />- Hitting <span class="text-desc">3</span> or more opponents grants Shield Level 3: <b>Rave</b>, which will also deal intermittent <b class="text-genshin-pyro">Pyro DMG</b> to nearby opponents.
+      <br />- Hitting <span class="text-desc">0 - 1</span> opponents grants <b>Shield Level</b> <span class="text-desc">1</span>: <b>Ad Lib</b>.
+      <br />- Hitting <span class="text-desc">2</span> opponents grants <b>Shield Level</b> <span class="text-desc">2</span>: <b>Lead-In</b>.
+      <br />- Hitting <span class="text-desc">3</span> or more opponents grants <b>Shield Level</b> <span class="text-desc">3</span>: <b>Rave</b>, which will also deal intermittent <b class="text-genshin-pyro">Pyro DMG</b> to nearby opponents.
       <br />
       <br />The shield has the following special properties:
       <br />- When unleashed, it infuses Xinyan with <b class="text-genshin-pyro">Pyro</b>.
       <br />- It has <span class="text-desc">250%</span> DMG Absorption effectiveness against <b class="text-genshin-pyro">Pyro DMG</b>.
       `,
+      image: 'Skill_S_Xinyan_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Riff Revolution`,
       content: `Strumming rapidly, Xinyan launches nearby opponents and deals <b>Physical DMG</b> to them, hyping up the crowd.
       <br />The sheer intensity of the atmosphere will cause explosions that deal <b class="text-genshin-pyro">Pyro DMG</b> to nearby opponents.`,
+      image: 'Skill_E_Xinyan_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `"The Show Goes On, Even Without An Audience..."`,
-      content: `Decreases the number of opponents Sweeping Fervor must hit to trigger each level of shielding.
-      <br />- Shield Level 2: <b>Lead-In</b> requirement reduced to <span class="text-desc">1</span> opponent hit.
-      <br />- Shield Level 3: <b>Rave</b> requirement reduced to <span class="text-desc">2</span> opponents hit or more.`,
+      content: `Decreases the number of opponents <b>Sweeping Fervor</b> must hit to trigger each level of shielding.
+      <br />- <b>Shield Level</b> <span class="text-desc">2</span>: <b>Lead-In</b> requirement reduced to <span class="text-desc">1</span> opponent hit.
+      <br />- <b>Shield Level</b> <span class="text-desc">3</span>: <b>Rave</b> requirement reduced to <span class="text-desc">2</span> opponents hit or more.`,
+      image: 'UI_Talent_S_Xinyan_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `"...Now That's Rock 'N' Roll!"`,
-      content: `Characters shielded by Sweeping Fervor deal <span class="text-desc">15%</span> increased <b>Physical DMG</b>.`,
+      content: `Characters shielded by <b>Sweeping Fervor</b> deal <span class="text-desc">15%</span> increased <b>Physical DMG</b>.`,
+      image: 'UI_Talent_S_Xinyan_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `A Rad Recipe`,
       content: `When a Perfect Cooking is achieved on a DEF-boosting dish, Xinyan has a <span class="text-desc">12%</span> chance to obtain double the product.`,
+      image: 'UI_Talent_Cook_Defense',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Fatal Acceleration`,
       content: `Upon scoring a CRIT Hit, increases ATK SPD of Xinyan's Normal and Charged Attacks by <span class="text-desc">12%</span> for <span class="text-desc">5</span>s.
       <br />Can only occur once every <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Xinyan_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Impromptu Opening`,
-      content: `Riff Revolution's <b>Physical DMG</b> has its CRIT Rate increased by <span class="text-desc">100%</span>, and will form a shield at Shield Level 3: <b>Rave</b> when cast.`,
+      content: `<b>Riff Revolution</b>'s <b>Physical DMG</b> has its CRIT Rate increased by <span class="text-desc">100%</span>, and will form a shield at <b>Shield Level</b> <span class="text-desc">3</span>: <b>Rave</b> when cast.`,
+      image: 'UI_Talent_S_Xinyan_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Double-Stop`,
-      content: `Increases the Level of Sweeping Fervor by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Sweeping Fervor</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Xinyan_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Wildfire Rhythm`,
-      content: `Sweeping Fervor's swing DMG decreases opponent's <b>Physical RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">12</span>s.`,
+      content: `<b>Sweeping Fervor</b>'s swing DMG decreases opponent's <b>Physical RES</b> by <span class="text-desc">15%</span> for <span class="text-desc">12</span>s.`,
+      image: 'UI_Talent_S_Xinyan_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Screamin' for an Encore`,
-      content: `Increases the Level of Riff Revolution by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Riff Revolution</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Xinyan_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Rockin' in a Flaming World`,
       content: `Decreases the Stamina Consumption of Xinyan's Charged Attacks by <span class="text-desc">30%</span>. Additionally, Xinyan's Charged Attacks gain an ATK Bonus equal to <span class="text-desc">50%</span> of her DEF.`,
+      image: 'UI_Talent_S_Xinyan_04',
     },
   }
 
@@ -131,14 +143,14 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'xinyan_a4'), findContentById(content, 'xinyan_c4')]
+  const teammateContent: IContent[] = [findContentById(content, 'xinyan_c4')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [],
+    allyContent: [findContentById(content, 'xinyan_a4')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
       base.MAX_ENERGY = 80
@@ -237,18 +249,18 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.xinyan_a4) base[Stats.PHYSICAL_DMG].push({value: 0.15, name: '', source: ``})
+      if (form.xinyan_a4) base[Stats.PHYSICAL_DMG].push({ value: 0.15, name: 'Ascension 4 Passive', source: `Self` })
       if (form.xinyan_c1) {
-        base.ATK_SPD.push({value: 0.12, name: '', source: ``})
-        base.CHARGE_ATK_SPD.push({value: 0.12, name: '', source: ``})
+        base.ATK_SPD.push({ value: 0.12, name: 'Constellation 1', source: `Self` })
+        base.CHARGE_ATK_SPD.push({ value: 0.12, name: 'Constellation 1', source: `Self` })
       }
-      if (form.xinyan_c4) base.PHYSICAL_RES_PEN.push({value: 0.15, name: '', source: ``})
+      if (form.xinyan_c4) base.PHYSICAL_RES_PEN.push({ value: 0.15, name: 'Constellation 4', source: `Self` })
 
       return base
     },
-    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.xinyan_c4) base.PHYSICAL_RES_PEN.push({value: 0.15, name: '', source: ``})
-      if (form.xinyan_a4) base[Stats.PHYSICAL_DMG].push({value: 0.15, name: '', source: ``})
+    preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
+      if (form.xinyan_c4) base.PHYSICAL_RES_PEN.push({ value: 0.15, name: 'Constellation 4', source: `Xinyan` })
+      if (aForm.xinyan_a4) base[Stats.PHYSICAL_DMG].push({ value: 0.15, name: 'Ascension 4 Passive', source: `Xinyan` })
 
       return base
     },

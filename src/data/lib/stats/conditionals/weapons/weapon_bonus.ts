@@ -1071,7 +1071,7 @@ const WeaponBonus: {
   {
     id: '14511',
     scaling: (base, r, team) => {
-      base.CALLBACK.push(function (x, a) {
+      base.CALLBACK.push(function N100(x, a) {
         _.forEach(a, (member) => {
           if (member.NAME === base.NAME) {
             const elements = _.map(team, (item) => findCharacter(item.cId)?.element)

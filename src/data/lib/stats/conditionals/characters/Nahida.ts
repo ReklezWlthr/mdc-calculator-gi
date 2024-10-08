@@ -286,19 +286,19 @@ const Nahida = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       allForm: Record<string, any>[]
     ) => {
       const index = _.findIndex(team, (item) => item.cId === '10000073')
-      _.last(allBase).CALLBACK.push((x, a) => {
-        const em = _.min([_.max(_.map(a, (item) => item.getEM(true))) * 0.25, 250])
-        _.forEach(a, (member, i) => {
-          if (allForm[i]?.nahida_em_share)
-            member[StatsObjectKeys.X_EM].push({
+      _.forEach(allBase, (member, i) => {
+        if (allForm[i]?.nahida_em_share)
+          member.CALLBACK.push(function N99(x, a) {
+            const em = _.min([_.max(_.map(a, (item) => item.getEM(true))) * 0.25, 250])
+            x[StatsObjectKeys.X_EM].push({
               value: em,
-              name: 'Ascension 1 Passive',
+              name: `Ascension 1 Passive [${_.maxBy(a, (item) => item.getEM(true))?.NAME}]`,
               source: i === index ? 'Self' : 'Nahida',
               base: _.min([_.max(_.map(a, (item) => item.getEM())), 1000]),
               multiplier: toPercentage(0.25),
             })
-        })
-        return x
+            return x
+          })
       })
 
       const a4Dmg = _.min([0.001 * _.max([base.getEM() - 200, 0]), 0.8])

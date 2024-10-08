@@ -1,12 +1,12 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
-import _ from 'lodash'
+import _, { multiply } from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const Kazuha = (c: number, a: number, t: ITalentLevel) => {
+const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -312,19 +312,47 @@ const Kazuha = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
+      const index = _.findIndex(team, (item) => item.cId === '10000047')
+
       if (_.size(form.a4_swirl)) {
         _.forEach(form.a4_swirl, (item) =>
-          base[`${item} DMG%`].push({
-            value: 0.0004 * base.getEM(),
-            name: 'Ascension 4 Passive',
-            source: `Self`,
+          base.CALLBACK.push(function (x, a) {
+            x[`${item} DMG%`].push({
+              value: 0.0004 * a[index].getEM(),
+              name: 'Ascension 4 Passive',
+              source: `Self`,
+              base: a[index].getEM(),
+              multiplier: toPercentage(0.0004, 2),
+            })
+            return x
           })
         )
       }
       if (c >= 6) {
-        base.BASIC_DMG.push({ value: 0.002 * base.getEM(), name: 'Constellation 6', source: `Self` })
-        base.CHARGE_DMG.push({ value: 0.002 * base.getEM(), name: 'Constellation 6', source: `Self` })
-        base.PLUNGE_DMG.push({ value: 0.002 * base.getEM(), name: 'Constellation 6', source: `Self` })
+        base.CALLBACK.push(function (x, a) {
+          x.BASIC_DMG.push({
+            value: 0.002 * a[index].getEM(),
+            name: 'Constellation 6',
+            source: `Self`,
+            base: a[index].getEM(),
+            multiplier: toPercentage(0.002),
+          })
+          x.CHARGE_DMG.push({
+            value: 0.002 * a[index].getEM(),
+            name: 'Constellation 6',
+            source: `Self`,
+            base: a[index].getEM(),
+            multiplier: toPercentage(0.002),
+          })
+          x.PLUNGE_DMG.push({
+            value: 0.002 * a[index].getEM(),
+            name: 'Constellation 6',
+            source: `Self`,
+            base: a[index].getEM(),
+            multiplier: toPercentage(0.002),
+          })
+          return x
+        })
       }
 
       return base

@@ -267,9 +267,10 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       if (c >= 4)
         base.SKILL_SCALING.push({
           name: 'C4 Follow-Up DMG',
-          value: [{ scaling: calcScaling(0.92, skill, 'elemental', '1') * 1.35, multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.92, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
+          multiplier: 1.35,
         })
 
       if (c >= 6 && form.benny_atk_share) {

@@ -47,7 +47,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     stats.INFUSION &&
     scaling.element === Element.PHYSICAL
       ? stats.INFUSION
-      : scaling.element
+      : scaling.element || ''
 
   const talentDmg = stats.getValue(`${TalentStatMap[scaling.property]}_DMG`) || 0
   const talentFlat = stats.getValue(`${TalentStatMap[scaling.property]}_F_DMG`) || 0

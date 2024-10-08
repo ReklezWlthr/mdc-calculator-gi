@@ -406,8 +406,8 @@ export const ArtifactForm = () => {
     },
     {
       type: 'toggle',
-      text: `Nightsoul's Blessing`,
-      title: `Nightsoul's Blessing`,
+      text: `Cinder City's Nightsoul Bonus`,
+      title: `Cinder City's Nightsoul Bonus`,
       content: `If the equipping character is in the <b>Nightsoul's Blessing</b> state when triggering this effect, all nearby party members gain an additional <span class="text-desc">28%</span> <b>Elemental DMG Bonus</b> for the <b>Elemental Types</b> involved in the elemental reaction for <span class="text-desc">20</span>s.`,
       show: true,
       default: true,

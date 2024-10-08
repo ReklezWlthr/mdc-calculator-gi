@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { findCharacter } from '../utils/finder'
+import { compareWeight, findCharacter } from '../utils/finder'
 import { useEffect, useMemo, useState } from 'react'
 import { calculateReaction, getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
@@ -281,7 +281,8 @@ export const useCalculator = ({
     // Cleanup callbacks for buffs that should be applied last
     const postReaction = _.map(postArtifactCallback, (base, index) => {
       let x = base
-      _.forEach(base.CALLBACK, (cb) => {
+      const cbs = base.CALLBACK.sort((a, b) => compareWeight(a.name, b.name))
+      _.forEach(cbs, (cb) => {
         x = cb(x, postArtifactCallback)
       })
       // EoSF Buff is placed here because some effects increase ER
@@ -294,9 +295,7 @@ export const useCalculator = ({
       return x
     })
     // No need to loop; each reaction buff only apply to the character
-    const final = _.map(postArtifactCallback, (base, index) =>
-      calculateReaction(base, forms[index], team[index]?.level)
-    )
+    const final = _.map(postReaction, (base, index) => calculateReaction(base, forms[index], team[index]?.level))
     if (!doNotSaveStats) {
       calculatorStore.setValue('computedStats', final)
     }

@@ -187,13 +187,11 @@ export const TeamSetup = observer(() => {
     value: (index + 1).toString(),
   })).reverse()
 
-  const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
-
   return (
     <div className="w-full overflow-y-auto">
       <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
         <div className="w-1/3">
-          <div className="flex justify-center w-full gap-4 pt-1 pb-3">
+          <div className="flex items-center justify-center w-full gap-4 pt-1 pb-3">
             {_.map(teamStore?.characters, (item, index) => {
               const x = findCharacter(item.cId)?.codeName
               const y = x === 'Player' ? settingStore.settings.travelerGender : x
@@ -206,6 +204,25 @@ export const TeamSetup = observer(() => {
                 />
               )
             })}
+            <Tooltip
+              title="Regarding Character Placement"
+              body={
+                <>
+                  <p>
+                    Some team-wide buffs that scale with another stat (notably Nahida's A1 and Sucrose's A4) will be
+                    applied from <span className="text-desc">left to right</span> in the character setup.
+                  </p>
+                  <p>
+                    This means placing Nahida before Sucrose here will make her A1 buff <b className="text-red">NOT</b>{' '}
+                    taking the EM gained from Sucrose's A4 into account. Please be wary of this.
+                  </p>
+                </>
+              }
+              position="right"
+              style="w-[350px]"
+            >
+              <i className="text-xl fa-regular fa-question-circle" />
+            </Tooltip>
           </div>
           <CharacterBlock index={selected} />
           {charData ? (

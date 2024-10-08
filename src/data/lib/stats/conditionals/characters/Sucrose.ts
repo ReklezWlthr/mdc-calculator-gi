@@ -227,21 +227,22 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>, allBase: StatsObject[]) => {
-      if (form.sucrose_a4)
-        _.last(allBase).CALLBACK.push(function (x, a) {
-          const index = _.findIndex(team, (item) => item.cId === '10000043')
-          _.forEach(a, (item, i) => {
-            if (i !== index)
-              item[StatsObjectKeys.X_EM].push({
-                value: a[index].getEM(true) * 0.2,
+      if (form.sucrose_a4) {
+        const index = _.findIndex(team, (item) => item.cId === '10000043')
+        _.forEach(allBase, (item, i) => {
+          if (i !== index)
+            item.CALLBACK.push(function N99(x, a) {
+              x[StatsObjectKeys.X_EM].push({
+                value: allBase[index].getEM(true) * 0.2,
                 name: 'Ascension 4 Passive',
                 source: 'Sucrose',
                 base: a[index].getEM(true),
                 multiplier: toPercentage(0.2),
               })
-          })
-          return x
+              return x
+            })
         })
+      }
       return base
     },
   }

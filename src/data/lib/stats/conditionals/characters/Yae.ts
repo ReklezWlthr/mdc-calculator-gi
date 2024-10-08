@@ -30,81 +30,87 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges towards the ground from mid-air, damaging all opponents in her path with thunderous might. Deals <b class="text-genshin-electro">AoE Electro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Yakan Evocation: Sesshou Sakura`,
       content: `To Yae, such dull tasks as can be accomplished by driving spirits out need not be done personally.
-      <br />Moves swiftly, leaving a Sesshou Sakura behind.
+      <br />Moves swiftly, leaving a <b class="text-genshin-electro">Sesshou Sakura</b> behind.
       <br />
-      <br /><b>Sesshou Sakura</b>
+      <br /><b class="text-genshin-electro">Sesshou Sakura</b>
       <br />Has the following properties:
       <br />- Periodically strikes one nearby opponent with lightning, dealing <b class="text-genshin-electro">Electro DMG</b>.
-      <br />- When there are other Sesshou Sakura nearby, their level will increase, boosting the DMG dealt by these lightning strikes.
+      <br />- When there are other <b class="text-genshin-electro">Sesshou Sakura</b> nearby, their level will increase, boosting the DMG dealt by these lightning strikes.
       <br />
       <br />This skill has three charges.
-      <br />A maximum of <span class="text-desc">3</span> Sesshou Sakura can exist simultaneously. The initial level of each Sesshou Sakura is <span class="text-desc">1</span>, and the initial highest level each sakura can reach is <span class="text-desc">3</span>. If a new Sesshou Sakura is created too close to an existing one, the existing one will be destroyed.
+      <br />A maximum of <span class="text-desc">3</span> <b class="text-genshin-electro">Sesshou Sakura</b> can exist simultaneously. The initial level of each <b class="text-genshin-electro">Sesshou Sakura</b> is <span class="text-desc">1</span>, and the initial highest level each <b class="text-genshin-electro">Sakura</b> can reach is <span class="text-desc">3</span>. If a new <b class="text-genshin-electro">Sesshou Sakura</b> is created too close to an existing one, the existing one will be destroyed.
       `,
+      image: 'Skill_S_Yae_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Great Secret Art: Tenko Kenshin`,
       content: `Legends of "kitsunetsuki," or the manifestations of a kitsune's might, are common in Inazuma's folktales. One that particularly captures the imagination is that of the Sky Kitsune, said to cause lightning to fall down upon the foes of the Grand Narukami Shrine. Summons a lightning strike, dealing <b class="text-genshin-electro">Electro DMG</b>.
-      <br />When she uses this skill, Yae Miko will unseal nearby Sesshou Sakura, destroying their outer forms and transforming them into Tenko Thunderbolts that descend from the skies, dealing <b class="text-genshin-electro">Electro DMG</b>. Each Sesshou Sakura destroyed in this way will create one Tenko Thunderbolt.
+      <br />When she uses this skill, Yae Miko will unseal nearby <b class="text-genshin-electro">Sesshou Sakura</b>, destroying their outer forms and transforming them into <b>Tenko Thunderbolts</b> that descend from the skies, dealing <b class="text-genshin-electro">Electro DMG</b>. Each <b class="text-genshin-electro">Sesshou Sakura</b> destroyed in this way will create one <b>Tenko Thunderbolt</b>.
       `,
+      image: 'Skill_E_Yae_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `The Shrine's Sacred Shade`,
-      content: `When casting Great Secret Art: Tenko Kenshin, each Sesshou Sakura destroyed resets the cooldown for <span class="text-desc">1</span> charge of Yakan Evocation: Sesshou Sakura.`,
+      content: `When casting <b>Great Secret Art: Tenko Kenshin</b>, each <b class="text-genshin-electro">Sesshou Sakura</b> destroyed resets the cooldown for <span class="text-desc">1</span> charge of <b>Yakan Evocation: Sesshou Sakura</b>.`,
+      image: 'UI_Talent_S_Yae_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Enlightened Blessing`,
-      content: `Every point of Elemental Mastery Yae Miko possesses will increase Sesshou Sakura DMG by <span class="text-desc">0.15%</span>.`,
-      value: [
-        {
-          name: 'Current Bonus DMG',
-          value: { stat: Stats.EM, scaling: (em) => toPercentage(em * 0.0015) },
-        },
-      ],
+      content: `Every point of Elemental Mastery Yae Miko possesses will increase <b class="text-genshin-electro">Sesshou Sakura</b> DMG by <span class="text-desc">0.15%</span>.`,
+      image: 'UI_Talent_S_Yae_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Meditations of a Yako`,
       content: `Has a <span class="text-desc">25%</span> chance to get <span class="text-desc">1</span> regional Character Talent Material (base material excluded) when crafting. The rarity is that of the base material.`,
+      image: 'UI_Talent_S_Yae_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Yakan Offering`,
-      content: `Each time Great Secret Art: Tenko Kenshin activates a Tenko Thunderbolt, Yae Miko will restore <span class="text-desc">8</span> Elemental Energy for herself.`,
+      content: `Each time <b>Great Secret Art: Tenko Kenshin</b> activates a <b>Tenko Thunderbolt</b>, Yae Miko will restore <span class="text-desc">8</span> Elemental Energy for herself.`,
+      image: 'UI_Talent_S_Yae_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Fox's Mooncall`,
-      content: `Sesshou Sakura start at Level 2 when created, their max level is increased to 4, and their attack range is increased by <span class="text-desc">60%</span>.`,
+      content: `<b class="text-genshin-electro">Sesshou Sakura</b> start at Level <span class="text-desc">2</span> when created, their max level is increased to <span class="text-desc">4</span>, and their attack range is increased by <span class="text-desc">60%</span>.`,
+      image: 'UI_Talent_S_Yae_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `The Seven Glamours`,
-      content: `Increases the Level of Yakan Evocation: Sesshou Sakura by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Yakan Evocation: Sesshou Sakura</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Yae_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Sakura Channeling`,
-      content: `When Sesshou Sakura lightning hits opponents, the <b class="text-genshin-electro">Electro DMG Bonus</b> of all nearby party members is increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
+      content: `When <b class="text-genshin-electro">Sesshou Sakura</b> lightning hits opponents, the <b class="text-genshin-electro">Electro DMG Bonus</b> of all nearby party members is increased by <span class="text-desc">20%</span> for <span class="text-desc">5</span>s.`,
+      image: 'UI_Talent_S_Yae_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Mischievous Teasing`,
-      content: `Increases the Level of Great Secret Art: Tenko Kenshin by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Great Secret Art: Tenko Kenshin</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Yae_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Forbidden Art: Daisesshou`,
-      content: `The Sesshou Sakura's attacks will ignore <span class="text-desc">60%</span> of the opponent's DEF.`,
+      content: `The <b class="text-genshin-electro">Sesshou Sakura</b>'s attacks will ignore <span class="text-desc">60%</span> of the opponent's DEF.`,
+      image: 'UI_Talent_S_Yae_04',
     },
   }
 
@@ -182,13 +188,6 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.SKILL,
           defPen: c >= 6 ? 0.6 : 0,
         },
-        {
-          name: 'Sesshou Sakura DMG: Level 4',
-          value: [{ scaling: calcScaling(1.185, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.ELECTRO,
-          property: TalentProperty.SKILL,
-          defPen: c >= 6 ? 0.6 : 0,
-        },
       ]
       base.BURST_SCALING = [
         {
@@ -205,17 +204,36 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.yae_c4) base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``})
+      if (c >= 2)
+        base.SKILL_SCALING.push({
+          name: 'Sesshou Sakura DMG: Level 4',
+          value: [{ scaling: calcScaling(1.185, skill, 'elemental', '1'), multiplier: Stats.ATK }],
+          element: Element.ELECTRO,
+          property: TalentProperty.SKILL,
+          defPen: c >= 6 ? 0.6 : 0,
+        })
+      if (form.yae_c4) base[Stats.ELECTRO_DMG].push({ value: 0.2, name: 'Constellation 4', source: `Self` })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.yae_c4) base[Stats.ELECTRO_DMG].push({value: 0.2, name: '', source: ``})
+      if (form.yae_c4) base[Stats.ELECTRO_DMG].push({ value: 0.2, name: 'Constellation 4', source: `Yae Miko` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (a >= 4) base.SKILL_DMG += base[Stats.EM] * 0.0015
+      if (a >= 4)
+        base.CALLBACK.push(function P99(x) {
+          x.SKILL_DMG.push({
+            value: x.getEM() * 0.0015,
+            name: 'Ascension 4 Passive',
+            source: 'Self',
+            base: x.getEM(),
+            multiplier: toPercentage(0.0015, 2),
+          })
+
+          return x
+        })
 
       return base
     },

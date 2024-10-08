@@ -108,7 +108,7 @@ export const Tooltip = observer(
             style
           )}
         >
-          <p className="text-sm font-bold text-white">{title}</p>
+          <div className="text-sm font-bold text-white">{title}</div>
           <div className="h-0 border-t border-primary-lighter" />
           {body}
         </Transition>
