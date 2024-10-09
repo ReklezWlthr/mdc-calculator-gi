@@ -272,7 +272,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       )}
       {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.STATIC], scaling.property) ? (
         <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-          {_.round(dmg)}
+          {_.round(dmg).toLocaleString()}
         </p>
       ) : (
         <Tooltip
