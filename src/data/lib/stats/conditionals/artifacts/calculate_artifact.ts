@@ -3,7 +3,7 @@ import { StatsObject } from '../../baseConstant'
 import { getSetCount } from '@src/core/utils/data_format'
 import _ from 'lodash'
 import { ArtifactForm } from './artifact_form'
-import { findCharacter } from '@src/core/utils/finder'
+import { checkBuffExist, findCharacter } from '@src/core/utils/finder'
 
 export const getArtifactConditionals = (artifacts: IArtifactEquip[]) => {
   const setBonus = getSetCount(artifacts)
@@ -95,7 +95,10 @@ export const calculateArtifact = (base: StatsObject, form: Record<string, any>, 
   }
   if (form['3626268211'])
     base.BASIC_F_DMG.push({ value: 0.7 * base.getAtk(), name: 'Valley Rite', source: `Echoes of an Offering` })
-  if (form['1675079283']) base.DENDRO_RES_PEN.push({ value: 0.3, name: '4-Piece', source: `Deepwood Memories` })
+  if (form['1675079283']) {
+    if (!checkBuffExist(base.DENDRO_RES_PEN, { source: 'Deepwood Memories' }))
+      base.DENDRO_RES_PEN.push({ value: 0.3, name: '4-Piece', source: `Deepwood Memories` })
+  }
   if (form['4145306051']) {
     const teamElement = _.map(team, (item) => findCharacter(item.cId)?.element)
     const wearer = teamElement[index]
@@ -208,7 +211,10 @@ export const calculateTeamArtifact = (base: StatsObject, form: Record<string, an
       flat: parseFloat(form['2546254811']) * 0.9,
     })
   }
-  if (form['1675079283']) base.DENDRO_RES_PEN.push({ value: 0.3, name: '4-Piece', source: `Deepwood Memories` })
+  if (form['1675079283']) {
+    if (!checkBuffExist(base.DENDRO_RES_PEN, { source: 'Deepwood Memories' }))
+      base.DENDRO_RES_PEN.push({ value: 0.3, name: '4-Piece', source: `Deepwood Memories` })
+  }
   if (form['2803305851']) {
     base.BASIC_F_DMG.push({ value: form['2803305851'] * 0.08, name: '4-Piece', source: `Song of Days Past` })
     base.CHARGE_F_DMG.push({ value: form['2803305851'] * 0.08, name: '4-Piece', source: `Song of Days Past` })
