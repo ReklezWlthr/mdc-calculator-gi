@@ -221,6 +221,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
                 value: [{ scaling: 0.015, multiplier: Stats.HP }],
                 element: TalentProperty.HEAL,
                 property: TalentProperty.HEAL,
+                self: true,
               },
             ]
           : []
@@ -249,6 +250,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: 0.3, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         },
       ]
 
@@ -259,6 +261,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: 0.15, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
       if (form.gaming_c2) base[Stats.P_ATK].push({ value: 0.2, name: 'Constellation 2', source: `Self` })
 

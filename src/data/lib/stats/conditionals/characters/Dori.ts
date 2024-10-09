@@ -126,7 +126,7 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
       text: `Current HP < 50%`,
       ...talents.c4,
       show: c >= 4,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
@@ -134,7 +134,7 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
       text: `Current Energy < 50%`,
       ...talents.c4,
       show: c >= 4,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',

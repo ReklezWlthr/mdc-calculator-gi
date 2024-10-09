@@ -234,6 +234,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
             value: [{ scaling: 0.2, multiplier: Stats.HP }],
             element: TalentProperty.HEAL,
             property: TalentProperty.HEAL,
+            self: true,
           }
         )
 

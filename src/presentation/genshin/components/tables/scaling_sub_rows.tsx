@@ -84,12 +84,13 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     [Stats.EM]: stats.getEM(),
   }
 
+  const healing = stats.getValue(Stats.HEAL) + (scaling.self ? stats.getValue(Stats.I_HEALING) : 0)
   const bonusDMG =
     (scaling.bonus || 0) +
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
-      ? stats.getValue(Stats.HEAL)
+      ? healing
       : stats.getValue(Stats.ALL_DMG) +
         elementDmg +
         elementNa +
@@ -211,7 +212,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 </p>
               </>
             )}
-            {scaling.property === TalentProperty.HEAL && (
+            {scaling.property === TalentProperty.HEAL && !scaling.self && (
               <div className="space-y-1 text-xs">
                 <b>✦ Teammate Incoming Healing ✦</b>
                 {_.map(

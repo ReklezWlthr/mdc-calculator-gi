@@ -281,12 +281,14 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: calcScaling(0.0626, burst, 'elemental', '2'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         },
         {
           name: 'Low HP Skill HP Regeneration',
           value: [{ scaling: calcScaling(0.0835, burst, 'elemental', '2'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         },
       ]
 

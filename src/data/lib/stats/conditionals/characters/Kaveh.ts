@@ -242,6 +242,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: 3, multiplier: Stats.EM }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
       if (form.kaveh_a4) base[Stats.EM].push({ value: 25 * form.kaveh_a4, name: 'Ascension 4 Passive', source: `Self` })
 

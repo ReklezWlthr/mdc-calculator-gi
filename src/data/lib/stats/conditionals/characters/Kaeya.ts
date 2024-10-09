@@ -202,6 +202,7 @@ const Kaeya = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: 0.15, multiplier: Stats.ATK }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
 
       if (form.kae_c1) {

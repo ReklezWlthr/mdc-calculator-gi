@@ -13,6 +13,7 @@ export interface IScaling {
   cr?: number //Bonus crit rate for each component
   cd?: number //Bonus crit dmg for each component
   defPen?: number //Only used by Yae
+  self?: boolean //Define if self-heal
 }
 
 export interface IWeaponContent {

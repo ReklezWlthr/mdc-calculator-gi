@@ -41,6 +41,7 @@ const WeaponBonus: {
             value: [{ scaling: calcRefinement(2, 0.3, r), multiplier: Stats.ATK }],
             element: TalentProperty.HEAL,
             property: TalentProperty.HEAL,
+            self: true,
           }
         )
         return base
@@ -897,6 +898,7 @@ const WeaponBonus: {
           value: [{ scaling: calcRefinement(0.01, 0.0025, r), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
         return base
       })
@@ -912,6 +914,7 @@ const WeaponBonus: {
           value: [{ scaling: calcRefinement(0.08, 0.02, r), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
         return base
       })
@@ -927,6 +930,7 @@ const WeaponBonus: {
           value: [{ scaling: calcRefinement(0.01, 0.0025, r), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
         return base
       })
@@ -942,6 +946,7 @@ const WeaponBonus: {
           value: [{ scaling: calcRefinement(0.08, 0.02, r), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
         return base
       })

@@ -282,6 +282,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: 0.02, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
       if (form.amc_c4) base.DMG_REDUCTION.push({ value: 0.1, name: 'Constellation 4', source: `Self` })
       if (form.amc_c6) {

@@ -219,6 +219,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: 0.07, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
       if (c >= 4)
         base.SKILL_SCALING.push(
@@ -233,6 +234,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
             value: [{ scaling: 0.1, multiplier: Stats.HP }],
             element: TalentProperty.HEAL,
             property: TalentProperty.HEAL,
+            self: true,
           }
         )
 

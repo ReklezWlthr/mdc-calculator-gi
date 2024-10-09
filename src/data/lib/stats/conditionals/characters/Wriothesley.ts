@@ -251,6 +251,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
           value: [{ scaling: c >= 4 ? 0.5 : 0.3, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
       if (form.edict) {
         base[Stats.P_ATK].push({ value: form.edict * 0.05, name: 'Constellation 2', source: 'Self' })

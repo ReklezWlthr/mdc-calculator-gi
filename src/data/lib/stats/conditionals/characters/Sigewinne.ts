@@ -258,6 +258,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: 0.5, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         },
         {
           name: 'Surging Blade DMG',

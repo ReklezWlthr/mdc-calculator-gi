@@ -256,6 +256,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
           ],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         },
       ]
 

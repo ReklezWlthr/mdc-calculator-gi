@@ -38,7 +38,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
     skill: {
       trace: `Elemental Skill`,
       title: `Hunter's Vigil`,
-      content: `Preparing her pistolet, she enters the <b class="text-genshin-electro">Night Vigil</b> state, using steel and shot together. In this state, Clorinde's Normal Attacks will be transformed into <b>Swift Hunt</b> pistolet attacks, and the DMG dealt is converted into <b class="text-genshin-electro">Electro DMG</b> that cannot be overridden by infusions, and she will be unable to use Charged Attacks. Using her Elemental Skill will transform it into <b>Impale the Night</b>: Perform a lunging attack, dealing <b class="text-genshin-electro">Electro DMG</b>. The DMG done through the aforementioned method is considered Normal Attack DMG.
+      content: `Preparing her pistolet, she enters the <b class="text-violet-400">Night Vigil</b> state, using steel and shot together. In this state, Clorinde's Normal Attacks will be transformed into <b>Swift Hunt</b> pistolet attacks, and the DMG dealt is converted into <b class="text-genshin-electro">Electro DMG</b> that cannot be overridden by infusions, and she will be unable to use Charged Attacks. Using her Elemental Skill will transform it into <b>Impale the Night</b>: Perform a lunging attack, dealing <b class="text-genshin-electro">Electro DMG</b>. The DMG done through the aforementioned method is considered Normal Attack DMG.
       <br />
       <br /><b>Swift Hunt</b>
       <br />- When her <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her max HP: Performs a pistolet shot.
@@ -50,9 +50,9 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       <br />- When the <b class="text-genshin-bol">Bond of Life</b> value is less than <span class="text-desc">100%</span> of her max HP, Clorinde is healed based on the <b class="text-genshin-bol">Bond of Life</b> value, and the AoE of the lunging attack and the DMG dealt is increased;
       <br />- When the value of the <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her max HP, use <b>Impale the Night: Pact</b>. The healing multiplier is increased, and the AoE and DMG dealt by the lunge is increased even further.
       <br />
-      <br />In addition, when Clorinde is in the <b class="text-genshin-electro">Night Vigil</b> state, healing effects other than <b>Impale the Night</b> will not take effect and will instead be converted into a <b class="text-genshin-bol">Bond of Life</b> that is a percentage of the healing that would have been received.
+      <br />In addition, when Clorinde is in the <b class="text-violet-400">Night Vigil</b> state, healing effects other than <b>Impale the Night</b> will not take effect and will instead be converted into a <b class="text-genshin-bol">Bond of Life</b> that is a percentage of the healing that would have been received.
       <br />
-      <br />Clorinde will exit the <b class="text-genshin-electro">Night Vigil</b> state when she leaves the field.
+      <br />Clorinde will exit the <b class="text-violet-400">Night Vigil</b> state when she leaves the field.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-ousia">Ousia</b>
       <br />Periodically, when Clorinde's <b>Swift Hunt</b> shots strike opponents, she will summon a <b class="text-genshin-ousia">Surging Blade</b> at the position hit that deals <b class="text-genshin-ousia">Ousia</b>-aligned <b class="text-genshin-electro">Electro DMG</b>.
@@ -75,7 +75,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       trace: `Ascension 4 Passive`,
       title: `Lawful Remuneration`,
       content: `If Clorinde's <b class="text-genshin-bol">Bond of Life</b> is equal to or greater than <span class="text-desc">100%</span> of her Max HP, her CRIT Rate will increase by <span class="text-desc">10%</span> for <span class="text-desc">15</span>s whenever her <b class="text-genshin-bol">Bond of Life</b> value increases or decreases. Max <span class="text-desc">2</span> stacks. Each stack is counted independently.
-      <br />Additionally, <b>Hunter's Vigil</b>'s <b class="text-genshin-electro">Night Vigil</b> state is buffed: While it is active, the percent of healing converted to <b class="text-genshin-bol">Bond of Life</b> increases to <span class="text-desc">100%</span>.`,
+      <br />Additionally, <b>Hunter's Vigil</b>'s <b class="text-violet-400">Night Vigil</b> state is buffed: While it is active, the percent of healing converted to <b class="text-genshin-bol">Bond of Life</b> increases to <span class="text-desc">100%</span>.`,
       image: 'UI_Talent_S_Clorinde_06',
     },
     util: {
@@ -87,7 +87,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
     c1: {
       trace: `Constellation 1`,
       title: `"From This Day, I Pass the Candle's Shadow-Veil"`,
-      content: `While <b>Hunter's Vigil</b>'s <b class="text-genshin-electro">Night Vigil</b> state is active, when <b class="text-genshin-electro">Electro DMG</b> from Clorinde's Normal Attacks hit opponents, they will trigger <span class="text-desc">2</span> coordinated attacks from a <b class="text-genshin-electro">Nightvigil Shade</b> summoned near the hit opponent, each dealing <span class="text-desc">30%</span> of Clorinde's ATK as <b class="text-genshin-electro">Electro DMG</b>.
+      content: `While <b>Hunter's Vigil</b>'s <b class="text-violet-400">Night Vigil</b> state is active, when <b class="text-genshin-electro">Electro DMG</b> from Clorinde's Normal Attacks hit opponents, they will trigger <span class="text-desc">2</span> coordinated attacks from a <b class="text-genshin-electro">Nightvigil Shade</b> summoned near the hit opponent, each dealing <span class="text-desc">30%</span> of Clorinde's ATK as <b class="text-genshin-electro">Electro DMG</b>.
       <br />This effect can occur once every <span class="text-desc">1.2</span>s. DMG dealt this way is considered Normal Attack DMG.`,
       image: 'UI_Talent_S_Clorinde_01',
     },
@@ -122,12 +122,12 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       trace: `Constellation 6`,
       title: `"And So Shall I Never Despair"`,
       content: `For <span class="text-desc">12</span>s after <b>Hunter's Vigil</b> is used, Clorinde's CRIT Rate will be increased by <span class="text-desc">10%</span>, and her CRIT DMG by <span class="text-desc">70%</span>.
-      <br />Additionally, while <b class="text-genshin-electro">Night Vigil</b> is active, a <b class="text-genshin-electro">Glimbright Shade</b> will appear under specific circumstances, executing an attack that deals <span class="text-desc">200%</span> of Clorinde's ATK as <b class="text-genshin-electro">Electro DMG</b>. DMG dealt this way is considered Normal Attack DMG.
+      <br />Additionally, while <b class="text-violet-400">Night Vigil</b> is active, a <b class="text-genshin-electro">Glimbright Shade</b> will appear under specific circumstances, executing an attack that deals <span class="text-desc">200%</span> of Clorinde's ATK as <b class="text-genshin-electro">Electro DMG</b>. DMG dealt this way is considered Normal Attack DMG.
       <br />The <b class="text-genshin-electro">Glimbright Shade</b> will appear under the following circumstances:
       <br />- When Clorinde is about to be hit by an attack.
       <br />- When Clorinde uses <b>Impale the Night: Pact</b>.
-      <br /><span class="text-desc">1</span> <b class="text-genshin-electro">Glimbright Shade</b> can be summoned in the aforementioned ways every <span class="text-desc">1</span>s. <span class="text-desc">6</span> <b class="text-genshin-electro">Shades</b> can be summoned per single <b class="text-genshin-electro">Night Vigil</b> duration.
-      <br />In addition, while <b class="text-genshin-electro">Night Vigil</b> is active, the DMG Clorinde receives is decreased by <span class="text-desc">80%</span> and her interruption resistance is increased. This effect will disappear after the <b class="text-genshin-electro">Night Vigil</b> state ends or <span class="text-desc">1</span>s after she summons <span class="text-desc">6</span> <b class="text-genshin-electro">Glimbright Shades</b>.`,
+      <br /><span class="text-desc">1</span> <b class="text-genshin-electro">Glimbright Shade</b> can be summoned in the aforementioned ways every <span class="text-desc">1</span>s. <span class="text-desc">6</span> <b class="text-genshin-electro">Shades</b> can be summoned per single <b class="text-violet-400">Night Vigil</b> duration.
+      <br />In addition, while <b class="text-violet-400">Night Vigil</b> is active, the DMG Clorinde receives is decreased by <span class="text-desc">80%</span> and her interruption resistance is increased. This effect will disappear after the <b class="text-violet-400">Night Vigil</b> state ends or <span class="text-desc">1</span>s after she summons <span class="text-desc">6</span> <b class="text-genshin-electro">Glimbright Shades</b>.`,
       image: 'UI_Talent_S_Clorinde_04',
     },
   }
@@ -207,7 +207,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
               name: 'Swift Hunt DMG',
               value: [
                 {
-                  scaling: calcScaling(form.clorinde_bol >= 100 ? 0.2676 : 0.3879, skill, 'elemental', '1'),
+                  scaling: calcScaling(form.clorinde_bol >= 100 ? 0.2676 : 0.3879, skill, 'physical', '1'),
                   multiplier: Stats.ATK,
                 },
               ],
@@ -266,7 +266,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
               scaling: calcScaling(
                 form.clorinde_bol >= 100 ? 0.2511 : form.clorinde_bol > 0 ? 0.4396 : 0.3297,
                 skill,
-                'elemental',
+                'physical',
                 '1'
               ),
               multiplier: Stats.ATK,
@@ -299,6 +299,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           ],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
+          self: true,
         })
 
       if (form.clorinde_a4)

@@ -189,7 +189,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
           name: 'Mine DMG [x8]',
           value: [{ scaling: calcScaling(0.328, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
-          property: TalentProperty.HEAL,
+          property: TalentProperty.SKILL,
         },
       ]
       base.BURST_SCALING = [
