@@ -2437,9 +2437,9 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     show: true,
     default: false,
     id: '14302',
-    scaling: (base, form, r) => {
+    scaling: (base, form, r, { owner }) => {
       const e = checkBuffExist(base[Stats.P_ATK], { source: 'Thrilling Tales of Dragon Slayers' })
-      if (form['14302'] && !e) {
+      if (form['14302_' + owner] && !e) {
         base[Stats.P_ATK].push({
           value: calcRefinement(0.24, 0.06, r),
           name: 'Passive',
