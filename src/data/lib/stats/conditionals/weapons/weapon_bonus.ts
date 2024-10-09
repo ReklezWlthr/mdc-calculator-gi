@@ -1101,6 +1101,37 @@ const WeaponBonus: {
       return base
     },
   },
+  {
+    id: '15514',
+    scaling: (base, r, team) => {
+      const count = _.filter(team, (item) => findCharacter(item.cId)?.element !== base.ELEMENT).length
+      if (count === 1) {
+        base.CHARGE_DMG.push({
+          value: calcRefinement(0.2, 0.05, r),
+          name: 'Passive',
+          source: `Astral Vulture's Crimson Plumage`,
+        })
+        base.BURST_DMG.push({
+          value: calcRefinement(0.1, 0.025, r),
+          name: 'Passive',
+          source: `Astral Vulture's Crimson Plumage`,
+        })
+      }
+      if (count >= 2) {
+        base.CHARGE_DMG.push({
+          value: calcRefinement(0.48, 0.12, r),
+          name: 'Passive',
+          source: `Astral Vulture's Crimson Plumage`,
+        })
+        base.BURST_DMG.push({
+          value: calcRefinement(0.24, 0.06, r),
+          name: 'Passive',
+          source: `Astral Vulture's Crimson Plumage`,
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export default WeaponBonus

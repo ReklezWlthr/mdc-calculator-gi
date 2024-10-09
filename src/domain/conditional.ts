@@ -36,6 +36,7 @@ export interface IContent {
   min?: number
   debuff?: boolean
   options?: { name: string; value: string }[]
+  sync?: boolean
 }
 
 export interface IWeaponContent {

@@ -11,6 +11,7 @@ import Beidou from './characters/Beidou'
 import Bennett from './characters/Bennett'
 import Candace from './characters/Candace'
 import Charlotte from './characters/Charlotte'
+import Chasca from './characters/Chasca'
 import Chevreuse from './characters/Chevreuse'
 import Childe from './characters/Childe'
 import Chiori from './characters/Chiori'
@@ -58,6 +59,7 @@ import Neuvillette from './characters/Neuvillette'
 import Nilou from './characters/Nilou'
 import Ningguang from './characters/Ningguang'
 import Noelle from './characters/Noelle'
+import Ororon from './characters/Ororon'
 import Qiqi from './characters/Qiqi'
 import Raiden from './characters/Raiden'
 import Razor from './characters/Razor'
@@ -181,6 +183,8 @@ export default [
   { id: '10000101', conditionals: Kinich },
   { id: '10000102', conditionals: Mualani },
   { id: '10000103', conditionals: Xilonen },
+  { id: '10000104', conditionals: Chasca },
+  { id: '10000105', conditionals: Ororon },
   // Travelers
   { id: '10000005-504', conditionals: TravelerWind },
   { id: '10000005-506', conditionals: TravelerRock },

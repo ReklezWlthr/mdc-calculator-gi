@@ -2342,6 +2342,92 @@ export const WeaponConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `On-Skill HP Bonus`,
+    show: true,
+    default: true,
+    id: '14430',
+    scaling: (base, form, r, { team }) => {
+      if (form['14430']) {
+        const count = _.min([_.filter(team, (item) => findCharacter(item.cId)?.element === Element.HYDRO).length, 2])
+        base[Stats.P_HP].push({
+          value: calcRefinement(0.2, 0.05, r) + count * calcRefinement(0.12, 0.03, r),
+          name: 'Passive',
+          source: `Waveriding Whirl`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Aimed Shot Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 6,
+    id: '15430',
+    scaling: (base, form, r) => {
+      if (form['15430']) {
+        base.CHARGE_DMG.push({
+          value: calcRefinement(0.06, 0.015, r) + form['15430'],
+          name: 'Passive',
+          source: `Flower-Wreathed Feathers`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Shielded NA/CA Bonus`,
+    show: true,
+    default: true,
+    id: '11432',
+    scaling: (base, form, r) => {
+      if (form['11432']) {
+        base.BASIC_DMG.push({
+          value: calcRefinement(0.2, 0.05, r),
+          name: 'Passive',
+          source: `The Calamity of the Blighted Springs`,
+        })
+        base.CHARGE_DMG.push({
+          value: calcRefinement(0.2, 0.05, r),
+          name: 'Passive',
+          source: `The Calamity of the Blighted Springs`,
+        })
+        base.BASIC_CR.push({
+          value: calcRefinement(0.08, 0.02, r),
+          name: 'Passive',
+          source: `The Calamity of the Blighted Springs`,
+        })
+        base.CHARGE_CR.push({
+          value: calcRefinement(0.08, 0.02, r),
+          name: 'Passive',
+          source: `The Calamity of the Blighted Springs`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Swirl ATK Bonus`,
+    show: true,
+    default: true,
+    id: '15514',
+    scaling: (base, form, r) => {
+      if (form['15514']) {
+        base[Stats.P_ATK].push({
+          value: calcRefinement(0.24, 0.06, r),
+          name: 'Passive',
+          source: `Astral Vulture's Crimson Plumage`,
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const WeaponAllyConditionals: IWeaponContent[] = [

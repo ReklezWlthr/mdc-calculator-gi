@@ -124,6 +124,7 @@ export const Calculator = observer(({}: {}) => {
                     <ScalingSubRows key={item.name} scaling={item} />
                   ))}
                 </ScalingWrapper>
+                <div className="h-2" />
               </div>
               <div className="grid grid-cols-3 gap-x-3">
                 <div className="flex flex-col col-span-2 text-sm rounded-lg bg-primary-darker h-fit">

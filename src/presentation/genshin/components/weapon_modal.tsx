@@ -10,6 +10,7 @@ import { StatIcons, Stats } from '@src/domain/constant'
 import classNames from 'classnames'
 import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
+import { Tooltip } from '@src/presentation/components/tooltip'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -80,33 +81,40 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
       </div>
       <div className="grid w-full grid-cols-11 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredWeapon, (item) => (
-          <div
-            className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
-            onClick={() => {
-              teamStore.setWeapon(index, { wId: item.id })
-              if (item.id === '11416') teamStore.setWeapon(index, { refinement: 1 })
-              modalStore.closeModal()
-            }}
-            key={item.name}
-          >
-            <div className="relative">
-              <img
-                src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
-                className="absolute w-6 h-6 p-1 rounded-full top-2 left-2 bg-primary"
-                title={item.ascStat}
-              />
-              <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
-                <RarityGauge rarity={item.rarity} />
+          <Tooltip title={item.name} body={<div></div>}>
+            <div
+              className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
+              onClick={() => {
+                teamStore.setWeapon(index, { wId: item.id })
+                if (item.id === '11416') teamStore.setWeapon(index, { refinement: 1 })
+                modalStore.closeModal()
+              }}
+              key={item.name}
+            >
+              <div className="relative">
+                <img
+                  src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
+                  className="absolute w-6 h-6 p-1 rounded-full top-2 left-2 bg-primary"
+                  title={item.ascStat}
+                />
+                {item.beta && (
+                  <div className="absolute right-0 px-1.5 text-xs py-0.5 font-bold rounded-l-md bottom-6 bg-rose-600">
+                    Beta
+                  </div>
+                )}
+                <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
+                  <RarityGauge rarity={item.rarity} />
+                </div>
+                <img
+                  src={`https://homdgcat.wiki/homdgcat-res/Weapon/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
+                  className="object-contain rounded-t-lg bg-primary-darker aspect-square"
+                />
               </div>
-              <img
-                src={`https://homdgcat.wiki/homdgcat-res/Weapon/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
-                className="object-contain rounded-t-lg bg-primary-darker aspect-square"
-              />
+              <div className="w-full h-10 px-2 py-1">
+                <p className="text-center line-clamp-2">{item.name}</p>
+              </div>
             </div>
-            <div className="w-full h-10 px-2 py-1">
-              <p className="text-center line-clamp-2">{item.name}</p>
-            </div>
-          </div>
+          </Tooltip>
         ))}
       </div>
     </div>
