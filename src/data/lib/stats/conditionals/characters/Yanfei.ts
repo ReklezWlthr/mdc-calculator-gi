@@ -23,84 +23,96 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `Seal of Approval`,
       content: `<b>Normal Attack</b>
       <br />Shoots fireballs that deal up to three counts of <b class="text-genshin-pyro">Pyro DMG</b>.
-      <br />When Yanfei's Normal Attacks hit enemies, they will grant her a single Scarlet Seal. Yanfei may possess a maximum of <span class="text-desc">3</span> Scarlet Seals, and each time this effect is triggered, the duration of currently possessed Scarlet Seals will refresh.
-      <br />Each Scarlet Seal will decrease Yanfei's Stamina consumption and will disappear when she leaves the field.
+      <br />When Yanfei's Normal Attacks hit enemies, they will grant her a single <b class="text-red">Scarlet Seal</b>. Yanfei may possess a maximum of <span class="text-desc">3</span> <b class="text-red">Scarlet Seals</b>, and each time this effect is triggered, the duration of currently possessed <b class="text-red">Scarlet Seals</b> will refresh.
+      <br />Each <b class="text-red">Scarlet Seal</b> will decrease Yanfei's Stamina consumption and will disappear when she leaves the field.
       <br />
       <br /><b>Charged Attack</b>
-      <br />Consumes Stamina and all Scarlet Seals before dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> to the opponents after a short casting time.
-      <br />This Charged Attack's AoE and DMG will increase according to the amount of Scarlet Seals consumed.
+      <br />Consumes Stamina and all <b class="text-red">Scarlet Seals</b> before dealing <b class="text-genshin-pyro">AoE Pyro DMG</b> to the opponents after a short casting time.
+      <br />This Charged Attack's AoE and DMG will increase according to the amount of <b class="text-red">Scarlet Seals</b> consumed.
       <br />
       <br /><b>Plunging Attack</b>
       <br />Gathering the power of Pyro, Yanfei plunges towards the ground from mid-air, damaging all opponents in her path. Deals <b class="text-genshin-pyro">AoE Pyro DMG</b> upon impact with the ground.
       `,
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       trace: `Elemental Skill`,
       title: `Signed Edict`,
       content: `Summons blistering flames that deal <b class="text-genshin-pyro">AoE Pyro DMG</b>.
-      <br />Opponents hit by the flames will grant Yanfei the maximum number of Scarlet Seals.
+      <br />Opponents hit by the flames will grant Yanfei the maximum number of <b class="text-red">Scarlet Seals</b>.
       `,
+      image: 'Skill_S_Feiyan_01',
     },
     burst: {
       trace: `Elemental Burst`,
       title: `Done Deal`,
-      content: `Triggers a spray of intense flames that rush at nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>, granting Yanfei the maximum number of Scarlet Seals, and applying Brilliance to her.
+      content: `Triggers a spray of intense flames that rush at nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>, granting Yanfei the maximum number of <b class="text-red">Scarlet Seals</b>, and applying <b class="text-desc">Brilliance</b> to her.
       <br />
-      <br /><b>Brilliance</b>
+      <br /><b class="text-desc">Brilliance</b>
       <br />Has the following effects:
-      <br />- Grants Yanfei a Scarlet Seal at fixed intervals.
+      <br />- Grants Yanfei a <b class="text-red">Scarlet Seal</b> at fixed intervals.
       <br />- Increases the DMG dealt by her Charged Attacks.
-      <br />The effects of Brilliance will end if Yanfei leaves the field or falls in battle.
+      <br />The effects of <b class="text-desc">Brilliance</b> will end if Yanfei leaves the field or falls in battle.
       `,
+      image: 'Skill_E_Feiyan_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Proviso`,
-      content: `When Yanfei consumes Scarlet Seals by using a Charged Attack, each Scarlet Seal will increase Yanfei's <b class="text-genshin-pyro">Pyro DMG Bonus</b> by <span class="text-desc">5%</span>. This effect lasts for <span class="text-desc">6</span>s. When a Charged Attack is used again during the effect's duration, it will dispel the previous effect.`,
+      content: `When Yanfei consumes <b class="text-red">Scarlet Seals</b> by using a Charged Attack, each <b class="text-red">Scarlet Seal</b> will increase Yanfei's <b class="text-genshin-pyro">Pyro DMG Bonus</b> by <span class="text-desc">5%</span>. This effect lasts for <span class="text-desc">6</span>s. When a Charged Attack is used again during the effect's duration, it will dispel the previous effect.`,
+      image: 'UI_Talent_S_Feiyan_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Blazing Eye`,
       content: `When Yanfei's Charged Attack deals a CRIT Hit to opponents, she will deal an additional instance of <b class="text-genshin-pyro">AoE Pyro DMG</b> equal to <span class="text-desc">80%</span> of her ATK. This DMG counts as Charged Attack DMG.`,
+      image: 'UI_Talent_S_Feiyan_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Encyclopedic Expertise`,
       content: `Displays the location of nearby resources unique to Liyue on the mini-map.`,
+      image: 'UI_Talent_Collect_Local_Liyue',
     },
     c1: {
       trace: `Constellation 1`,
       title: `The Law Knows No Kindness`,
-      content: `When Yanfei uses her Charged Attack, each existing Scarlet Seal additionally reduces the stamina cost of this Charged Attack by <span class="text-desc">10%</span> and increases resistance against interruption during its release.`,
+      content: `When Yanfei uses her Charged Attack, each existing <b class="text-red">Scarlet Seal</b> additionally reduces the stamina cost of this Charged Attack by <span class="text-desc">10%</span> and increases resistance against interruption during its release.`,
+      image: 'UI_Talent_S_Feiyan_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Right of Final Interpretation`,
       content: `Increases Yanfei's Charged Attack CRIT Rate by <span class="text-desc">20%</span> against enemies below <span class="text-desc">50%</span> HP.`,
+      image: 'UI_Talent_S_Feiyan_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Samadhi Fire-Forged`,
-      content: `Increases the Level of Signed Edict by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Signed Edict</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Feiyan_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Supreme Amnesty`,
-      content: `When Done Deal is used:
+      content: `When <b>Done Deal</b> is used:
       <br />Creates a shield that absorbs up to <span class="text-desc">45%</span> of Yanfei's Max HP for <span class="text-desc">15</span>s.
       <br />This shield absorbs <b class="text-genshin-pyro">Pyro DMG</b> <span class="text-desc">250%</span> more effectively.`,
+      image: 'UI_Talent_S_Feiyan_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Abiding Affidavit`,
-      content: `Increases the Level of Done Deal by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Done Deal</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Feiyan_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Extra Clause`,
-      content: `Increases the maximum number of Scarlet Seals by <span class="text-desc">1</span>.`,
+      content: `Increases the maximum number of <b class="text-red">Scarlet Seals</b> by <span class="text-desc">1</span>.`,
+      image: 'UI_Talent_S_Feiyan_04',
     },
   }
 
@@ -118,7 +130,7 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     {
       type: 'toggle',
       id: 'yanfei_burst',
-      text: `Done Deal`,
+      text: `Brilliance`,
       ...talents.burst,
       show: true,
       default: true,
@@ -206,8 +218,10 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.yanfei_burst) base.CHARGE_DMG += calcScaling(0.334, burst, 'elemental', '2')
-      if (form.seal_stack && a >= 1) base[Stats.PYRO_DMG].push({value: 0.05, name: '', source: ``}) * form.seal_stack
+      if (form.yanfei_burst)
+        base.CHARGE_DMG.push({ value: calcScaling(0.334, burst, 'elemental', '2'), name: 'Brilliance', source: 'Self' })
+      if (form.seal_stack && a >= 1)
+        base[Stats.PYRO_DMG].push({ value: 0.05 * form.seal_stack, name: 'Ascension 1 Passive', source: `Self` })
 
       if (a >= 4)
         base.CHARGE_SCALING.push({

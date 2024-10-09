@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { Characters } from '@src/data/db/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { Element, ITeamChar, WeaponIcon, WeaponType } from '@src/domain/constant'
+import { Element, ITeamChar, Tags, WeaponIcon, WeaponType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
@@ -10,8 +10,11 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { useMemo } from 'react'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { DefaultBuild } from '@src/data/stores/build_store'
-import { findWeapon } from '@src/core/utils/finder'
+import { findWeapon, isSubsetOf } from '@src/core/utils/finder'
 import getConfig from 'next/config'
+import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
+import { Tooltip } from '@src/presentation/components/tooltip'
+import { BulletPoint } from '@src/presentation/components/collapsible'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -26,7 +29,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
     searchWord: '',
     element: [],
     weapon: [],
-    hasBuild: false,
+    tags: [],
   })
 
   const selectedWeaponData = findWeapon(teamStore.characters[index]?.equipments?.weapon?.wId)
@@ -42,9 +45,9 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
           const nameMatch = item.name.match(regex)
           const elmMatch = _.size(params.element) ? _.includes(params.element, item.element) : true
           const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, item.weapon) : true
-          const buildMatch = params.hasBuild ? _.find(buildStore.builds, ['cId', item.id]) : true
+          const tagsMatch = _.size(params.tags) ? isSubsetOf(params.tags, item.tags) : true
 
-          return nameMatch && elmMatch && weaponMatch && !!buildMatch
+          return nameMatch && elmMatch && weaponMatch && !!tagsMatch
         }
       ),
     [params]
@@ -98,14 +101,68 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
           <FilterIcon type="weapon" value={WeaponType.BOW} />
           <FilterIcon type="weapon" value={WeaponType.CATALYST} />
         </div>
-        <img
-          src={`${publicRuntimeConfig.BASE_PATH}/icons/artifact_icon.png`}
-          className={classNames('w-8 h-8 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
-            'bg-primary-lighter': params.hasBuild,
-          })}
-          onClick={() => setParams({ hasBuild: !params.hasBuild })}
-          title="Has Default Build"
-        />
+        <div className="flex items-center gap-2">
+          <TagSelectInput
+            options={_.map(Tags, (item) => ({ name: item, value: item }))}
+            onChange={(v) => setParams({ tags: v })}
+            placeholder="Select Tags (Match All)"
+            small
+            style="w-[150px]"
+            values={params.tags}
+            onlyShowCount
+          />
+          <Tooltip
+            title="Character Tags"
+            body={
+              <div className="font-normal">
+                <BulletPoint>
+                  <b>On-Field DPS</b>: Excels at dealing damage by weaving a series of attacks together. Usually remains
+                  on the field for most of the rotation.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Off-Field DPS</b>: Excels at passively dealing damage through various means even after they left
+                  the field. Does not take as much field time as On-Field DPS's.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Applicator</b>: Also known as <b>Enabler</b>. Possesses abilities that help them reliably and
+                  constantly apply and maintain an Elemental Aura on enemies even while constantly consumed by
+                  Reactions.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Burst Reliant</b>: Heavily relies on their Elemental Burst as an integral part of their
+                  kit/rotation. Not having it ready will greatly hinder their performance. Usually requires a lot of
+                  Energy Recharge or a Battery.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Amplify</b>: Excels at amplifying the damage of their teammates both through enhancing them,
+                  weakening enemies or enabling some playstyles.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Heal</b>: Possesses abilities that recovers health for their allies.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Shield</b>: Possesses abilities that provide lasting shields for their allies, protecting them from
+                  damage and interruptions.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Control</b>: Excels at keeping enemies locked in place or preventing them from acting.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Battery</b>: Excels at recharging Energy for their team either by directly providing Energy or
+                  generating a good amount of Elemental Particles.
+                </BulletPoint>
+                <BulletPoint>
+                  <b>Exploration</b>: Possesses abilities that aid players in traversing different kinds of terrain or
+                  interacting with Overworld mechanics.
+                </BulletPoint>
+              </div>
+            }
+            position="left"
+            style="w-[500px]"
+          >
+            <i className="text-base fa-regular fa-question-circle" />
+          </Tooltip>
+        </div>
       </div>
       <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredChar, (item) => {

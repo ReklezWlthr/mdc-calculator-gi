@@ -664,7 +664,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Whitemoon Bristle',
-      detail: `CRIT Rate is increased by {{0}}%. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by {{1}}% of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s.`,
+      detail: `CRIT Rate is increased by {{0}}%. After Normal Attacks deal Elemental DMG, the <b>Foliar Incision</b> effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by {{1}}% of Elemental Mastery. This effect will disappear after <span class="text-desc">28</span> DMG instances or <span class="text-desc">12</span>s. You can obtain <b>Foliar Incision</b> once every <span class="text-desc">12</span>s.`,
       properties: [
         { base: 4, growth: 1 },
         { base: 120, growth: 30 },

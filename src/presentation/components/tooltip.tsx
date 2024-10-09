@@ -44,7 +44,7 @@ export const Tooltip = observer(
           if (height >= window.innerHeight * 0.75) {
             ref.style.width = width * 1.5 + 'px'
             width = width * 1.5
-            height = height * 0.85
+            height = (ref?.getBoundingClientRect()?.height || height) * 1.1
           }
 
           // Define tooltip's position

@@ -30,6 +30,7 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_03',
     },
     skill: {
       trace: `Elemental Skill`,
@@ -37,24 +38,25 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       content: `Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
       <br />
       <br /><b>Press</b>
-      <br />Commands the power of earth to create a Stone Stele.
+      <br />Commands the power of earth to create a <b class="text-genshin-geo">Stone Stele</b>.
       <br />
       <br /><b>Hold</b>
       <br />Causes nearby Geo energy to explode, causing the following effects:
-      <br />- If their maximum number hasn't been reached, creates a Stone Stele.
+      <br />- If their maximum number hasn't been reached, creates a <b class="text-genshin-geo">Stone Stele</b>.
       <br />- Creates a shield of jade. The shield's DMG Absorption scales based on Zhongli's Max HP.
       <br />- Deals <b class="text-genshin-geo">AoE Geo DMG</b>.
       <br />- If there are nearby targets with the <b class="text-genshin-geo">Geo element</b>, it will drain a large amount of <b class="text-genshin-geo">Geo element</b> from a maximum of <span class="text-desc">2</span> such targets. This effect does not cause DMG.
       <br />
-      <br /><b>Stone Stele</b>
+      <br /><b class="text-genshin-geo">Stone Stele</b>
       <br />When created, deals <b class="text-genshin-geo">AoE Geo DMG</b>.
       <br />Additionally, it will intermittently resonate with other nearby <b class="text-genshin-geo">Geo construct</b>, dealing <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents.
-      <br />The Stone Stele is considered a <b class="text-genshin-geo">Geo construct</b> that can both be climbed and used to block attacks.
-      <br />Only one Stele created by Zhongli himself may initially exist at any one time.
+      <br />The <b class="text-genshin-geo">Stone Stele</b> is considered a <b class="text-genshin-geo">Geo construct</b> that can both be climbed and used to block attacks.
+      <br />Only one <b class="text-genshin-geo">Stele</b> created by Zhongli himself may initially exist at any one time.
       <br />
       <br /><b>Jade Shield</b>
       <br />Possesses <span class="text-desc">150%</span> DMG Absorption against all Elemental and Physical DMG.
-      <br />Characters protected by the Jade Shield will decrease the <b>Elemental RES</b> and <b>Physical RES</b> of opponents in a small AoE by <span class="text-desc">20%</span>. This effect cannot be stacked.`,
+      <br />Characters protected by the <b>Jade Shield</b> will decrease the <b>Elemental RES</b> and <b>Physical RES</b> of opponents in a small AoE by <span class="text-desc">20%</span>. This effect cannot be stacked.`,
+      image: 'Skill_S_Zhongli_01',
     },
     burst: {
       trace: `Elemental Burst`,
@@ -63,59 +65,69 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b class="text-genshin-geo">Petrification</b>
       <br />Opponents affected by the <b class="text-genshin-geo">Petrification</b> status cannot move.`,
+      image: 'Skill_E_Zhongli_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Resonant Waves`,
-      content: `When the Jade Shield takes DMG, it will Fortify:
-      <br />- Fortified characters have <span class="text-desc">5%</span> increased Shield Strength.
-      <br />Can stack up to <span class="text-desc">5</span> times, and lasts until the Jade Shield disappears.`,
+      content: `When the <b>Jade Shield</b> takes DMG, it will <b>Fortify</b>:
+      <br />- <b>Fortified</b> characters have <span class="text-desc">5%</span> increased Shield Strength.
+      <br />Can stack up to <span class="text-desc">5</span> times, and lasts until the <b>Jade Shield</b> disappears.`,
+      image: 'UI_Talent_S_Zhongli_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Dominance of Earth`,
       content: `Zhongli deals bonus DMG based on his Max HP:
       <br />Normal Attack, Charged Attack, and Plunging Attack DMG is increased by <span class="text-desc">1.39%</span> of Max HP.
-      <br />Dominus Lapidis' Stone Stele, resonance, and hold DMG is increased by <span class="text-desc">1.9%</span> of Max HP.
-      <br />Planet Befall's DMG is increased by <span class="text-desc">33%</span> of Max HP.`,
+      <br /><b>Dominus Lapidis</b>' <b class="text-genshin-geo">Stone Stele</b>, resonance, and hold DMG is increased by <span class="text-desc">1.9%</span> of Max HP.
+      <br /><b>Planet Befall</b>'s DMG is increased by <span class="text-desc">33%</span> of Max HP.`,
+      image: 'UI_Talent_S_Zhongli_06',
     },
     util: {
       trace: `Utiliy Passive`,
       title: `Arcanum of Crystal`,
       content: `Refunds <span class="text-desc">15%</span> of the ore used when crafting Polearm-type weapons.`,
+      image: 'UI_Talent_Forge_Pole',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Rock, the Backbone of Earth`,
-      content: `Increases the maximum number of Stone Steles created by Dominus Lapidis that may exist simultaneously to <span class="text-desc">2</span>.`,
+      content: `Increases the maximum number of <b class="text-genshin-geo">Stone Steles</b> created by <b>Dominus Lapidis</b> that may exist simultaneously to <span class="text-desc">2</span>.`,
+      image: 'UI_Talent_S_Zhongli_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Stone, the Cradle of Jade`,
-      content: `Planet Befall grants nearby characters on the field a Jade Shield when it descends.`,
+      content: `<b>Planet Befall</b> grants nearby characters on the field a <b>Jade Shield</b> when it descends.`,
+      image: 'UI_Talent_S_Zhongli_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Jade, Shimmering through Darkness`,
-      content: `Increases the Level of Dominus Lapidis by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Dominus Lapidis</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Zhongli_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Topaz, Unbreakable and Fearless`,
-      content: `Increases Planet Befall's AoE by <span class="text-desc">20%</span> and increases the duration of Planet Befall's Petrification effect by <span class="text-desc">2</span>s.`,
+      content: `Increases <b>Planet Befall</b>'s AoE by <span class="text-desc">20%</span> and increases the duration of <b>Planet Befall</b>'s <b class="text-genshin-geo">Petrification</b> effect by <span class="text-desc">2</span>s.`,
+      image: 'UI_Talent_S_Zhongli_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Lazuli, Herald of the Order`,
-      content: `Increases the Level of Planet Befall by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Planet Befall</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_Zhongli_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Chrysos, Bounty of Dominator`,
-      content: `When the Jade Shield takes DMG, <span class="text-desc">40%</span> of that incoming DMG is converted to HP for the current character.
-      <br />A single instance of regeneration cannot exceed 8% of that character's Max HP.`,
+      content: `When the <b>Jade Shield</b> takes DMG, <span class="text-desc">40%</span> of that incoming DMG is converted to HP for the current character.
+      <br />A single instance of regeneration cannot exceed <span class="text-desc">8%</span> of that character's Max HP.`,
+      image: 'UI_Talent_S_Zhongli_04',
     },
   }
 
@@ -132,7 +144,7 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     {
       type: 'number',
       id: 'zhongli_a1',
-      text: `A1 Shield Strength`,
+      text: `Fortify Stacks`,
       ...talents.c4,
       show: c >= 4,
       default: 5,
@@ -240,14 +252,16 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
 
-      if (form.zhongli_res) base.ALL_TYPE_RES_PEN.push({value: 0.2, name: '', source: ``})
-      if (form.zhongli_a1) base[Stats.SHIELD] += form.zhongli_a1 * 0.05
+      if (form.zhongli_res) base.ALL_TYPE_RES_PEN.push({ value: 0.2, name: 'Jade Shield', source: `Self` })
+      if (form.zhongli_a1)
+        base[Stats.SHIELD].push({ value: form.zhongli_a1 * 0.05, name: 'Ascension 1 Passive', source: 'Self' })
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.zhongli_res) base.ALL_TYPE_RES_PEN.push({value: 0.2, name: '', source: ``})
-      if (form.zhongli_a1) base[Stats.SHIELD] += form.zhongli_a1 * 0.05
+      if (form.zhongli_res) base.ALL_TYPE_RES_PEN.push({ value: 0.2, name: 'Jade Shield', source: `Zhongli` })
+      if (form.zhongli_a1)
+        base[Stats.SHIELD].push({ value: form.zhongli_a1 * 0.05, name: 'Ascension 1 Passive', source: 'Zhongli' })
 
       return base
     },

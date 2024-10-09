@@ -1,4 +1,10 @@
-import { findBaseLevel, findMaxLevel, getWeaponBase, getWeaponBonus } from '@src/core/utils/data_format'
+import {
+  findBaseLevel,
+  findMaxLevel,
+  formatWeaponString,
+  getWeaponBase,
+  getWeaponBonus,
+} from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
 import {
   AscensionOptions,
@@ -36,21 +42,7 @@ export const WeaponTooltip = ({
 }) => {
   const data = findWeapon(wId)
   const properties = data?.desc?.properties
-  const formattedString = _.reduce(
-    Array.from(data?.desc?.detail?.matchAll(/{{\d+}}\%?/g) || []),
-    (acc, curr) => {
-      const index = curr?.[0]?.match(/\d+/)?.[0]
-      const isPercentage = !!curr?.[0]?.match(/\%$/)
-      return _.replace(
-        acc,
-        curr[0],
-        `<span class="text-desc">${properties?.[index]?.base + properties?.[index]?.growth * (refinement - 1)}${
-          isPercentage ? '%' : ''
-        }</span>`
-      )
-    },
-    data?.desc?.detail
-  )
+  const formattedString = formatWeaponString(data?.desc?.detail, properties, refinement)
 
   return (
     <Tooltip
@@ -140,7 +132,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
               className="w-full pt-1 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
               onClick={onOpenModal}
             />
-            <div className="absolute px-1 rounded-md bottom-1 right-1 bg-primary-bg">
+            <div className="absolute px-1 rounded-md pointer-events-none bottom-1 right-1 bg-primary-bg">
               <RarityGauge rarity={rarity} />
             </div>
           </div>

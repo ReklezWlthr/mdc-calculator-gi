@@ -13,9 +13,8 @@ export enum GenshinPage {
 export enum Tags {
   ON_FIELD = 'On-Field DPS',
   OFF_FIELD = 'Off-Field DPS',
-  REACTION = 'Reaction',
   APP = 'Applicator',
-  BURST = 'Burst Reliance',
+  BURST = 'Burst Reliant',
   AMP = 'Amplify',
   HEAL = 'Heal',
   SHIELD = 'Shield',

@@ -68,7 +68,7 @@ export const CharDetail = observer(() => {
   }
 
   // const id = formatIdIcon(selected, settingStore.settings?.travelerGender)
-  const baseLevel = params.asc === 7 ? 80 : findBaseLevel(params.asc)
+  const baseLevel = params.asc === 7 ? 90 : findBaseLevel(params.asc)
   const asc = _.min([params.asc, 6])
   const ascStat = _.max([0, asc - 2]) * AscensionGrowth[data?.stat?.ascStat]?.[data?.rarity - 4]
 
@@ -83,7 +83,7 @@ export const CharDetail = observer(() => {
   return (
     <div className="w-full h-full py-2 pr-5 ml-2 text-white customScrollbar" id="detail_container">
       <div className="flex">
-        <div className="relative w-2/3 aspect-square">
+        <div className="relative w-2/3 pointer-events-none aspect-square">
           <div
             className={classNames(
               'items-center justify-center w-full h-full aspect-square shrink-0',
@@ -94,11 +94,15 @@ export const CharDetail = observer(() => {
           </div>
           <img
             src={`https://homdgcat.wiki/homdgcat-res/Gacha/UI_Gacha_AvatarImg_${fCodeName}.png`}
-            className={loading ? 'hidden' : 'block h-full object-cover overflow-visible -z-10 relative object-[35%]'}
+            className={
+              loading
+                ? 'hidden'
+                : 'block h-full object-cover overflow-visible -z-20 relative object-[35%] pointer-events-none'
+            }
             onLoad={() => setLoading(false)}
           />
           <div className="absolute top-0 left-0 w-full h-full from-primary-bg bg-gradient-to-r via-10% via-transparent" />
-          <div className="absolute top-0 left-0 w-[150%] h-full from-primary-bg bg-gradient-to-t via-20% via-transparent overflow-visible" />
+          <div className="absolute top-0 left-0 w-[150%] h-full from-primary-bg bg-gradient-to-t via-30% via-transparent overflow-visible -z-10" />
           <div className="absolute left-0 flex flex-col space-y-1 bottom-10">
             <div className="flex gap-4">
               <img
@@ -126,7 +130,7 @@ export const CharDetail = observer(() => {
               className="w-full h-2 slider bg-gradient-to-r from-primary-lighter to-gray shrink-0"
               step={1}
               min="0"
-              max="6"
+              max="7"
               value={params.asc}
               onChange={(e) => {
                 const value = Number(e.target.value)
@@ -134,10 +138,10 @@ export const CharDetail = observer(() => {
               }}
             />
             <div className="flex justify-between pl-2 text-xs text-gray">
-              {_.map(Array(6), (_item, index) => (
+              {_.map(Array(7), (_item, index) => (
                 <p key={index}>{findBaseLevel(index)}</p>
               ))}
-              <p>80</p>
+              <p>90</p>
             </div>
           </div>
           <div className="relative grid grid-cols-2 gap-2 px-5 py-3 text-xs rounded-lg bg-opacity-80 bg-primary-dark">
@@ -153,19 +157,19 @@ export const CharDetail = observer(() => {
             <b>Base HP</b>
             <p className="text-center">
               {_.round(
-                getBaseStat(data?.stat?.baseHp, baseLevel, data?.stat?.ascHp, charUpgrade?.ascension, data?.rarity)
+                getBaseStat(data?.stat?.baseHp, baseLevel, data?.stat?.ascHp, asc, data?.rarity)
               ).toLocaleString()}
             </p>
             <b>Base ATK</b>
             <p className="text-center">
               {_.round(
-                getBaseStat(data?.stat?.baseAtk, baseLevel, data?.stat?.ascAtk, charUpgrade?.ascension, data?.rarity)
+                getBaseStat(data?.stat?.baseAtk, baseLevel, data?.stat?.ascAtk, asc, data?.rarity)
               ).toLocaleString()}
             </p>
             <b>Base DEF</b>
             <p className="text-center">
               {_.round(
-                getBaseStat(data?.stat?.baseDef, baseLevel, data?.stat?.ascDef, charUpgrade?.ascension, data?.rarity)
+                getBaseStat(data?.stat?.baseDef, baseLevel, data?.stat?.ascDef, asc, data?.rarity)
               ).toLocaleString()}
             </p>
             <b>Max Energy</b>

@@ -1,8 +1,7 @@
-import { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import classNames from 'classnames'
 import { StatBlock } from '../components/stat_block'
 import { WeaponBlock } from '../components/weapon_block'
 import { ArtifactBlock } from '../components/artifact_block'
@@ -20,7 +19,6 @@ import { Resonance } from '@src/data/db/characters'
 import { CharacterSelect } from '../components/character_select'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
-import { TravelerIconName, WeaponIcon } from '@src/domain/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
@@ -209,7 +207,7 @@ export const TeamSetup = observer(() => {
               body={
                 <>
                   <p>
-                    Some team-wide buffs that scale with another stat (notably Nahida's A1 and Sucrose's A4) will be
+                    Some team-wide buffs that scale with a specific stat (notably Nahida's A1 and Sucrose's A4) will be
                     applied from <span className="text-desc">left to right</span> in the character setup.
                   </p>
                   <p>

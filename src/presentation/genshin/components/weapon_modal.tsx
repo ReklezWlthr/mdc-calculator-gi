@@ -11,6 +11,8 @@ import classNames from 'classnames'
 import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
 import { Tooltip } from '@src/presentation/components/tooltip'
+import { formatWeaponString, getWeaponBase, getWeaponBonus } from '@src/core/utils/data_format'
+import { toPercentage } from '@src/core/utils/converter'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -80,42 +82,88 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
         </div>
       </div>
       <div className="grid w-full grid-cols-11 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
-        {_.map(filteredWeapon, (item) => (
-          <Tooltip title={item.name} body={<div></div>}>
-            <div
-              className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
-              onClick={() => {
-                teamStore.setWeapon(index, { wId: item.id })
-                if (item.id === '11416') teamStore.setWeapon(index, { refinement: 1 })
-                modalStore.closeModal()
-              }}
-              key={item.name}
-            >
-              <div className="relative">
-                <img
-                  src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
-                  className="absolute w-6 h-6 p-1 rounded-full top-2 left-2 bg-primary"
-                  title={item.ascStat}
-                />
-                {item.beta && (
-                  <div className="absolute right-0 px-1.5 text-xs py-0.5 font-bold rounded-l-md bottom-6 bg-rose-600">
-                    Beta
+        {_.map(filteredWeapon, (item) => {
+          const minAtk = getWeaponBase(item?.tier, 1, 1, item?.rarity)
+          const maxAtk = getWeaponBase(item?.tier, 90, 6, item?.rarity)
+          const minStat =
+            item?.ascStat === Stats.EM ? _.round(item.baseStat).toLocaleString() : toPercentage(item.baseStat || 0)
+          const maxStat =
+            item?.ascStat === Stats.EM
+              ? _.round(getWeaponBonus(item.baseStat, 90)).toLocaleString()
+              : toPercentage(getWeaponBonus(item.baseStat, 90) || 0)
+
+          return (
+            <Tooltip
+              title={
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-normal text-primary-lighter">{item.type}</p>
+                    <p>{item.name}</p>
                   </div>
-                )}
-                <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
-                  <RarityGauge rarity={item.rarity} />
+                  <div className="w-fit">
+                    <RarityGauge rarity={item.rarity} />
+                  </div>
                 </div>
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/Weapon/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
-                  className="object-contain rounded-t-lg bg-primary-darker aspect-square"
-                />
+              }
+              body={
+                <div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <p>
+                      <b>Base ATK</b>: <span className="text-blue">{_.round(minAtk)}</span>{' '}
+                      <span className="text-desc">({_.round(maxAtk)})</span>
+                    </p>
+                    <p className="col-span-2">
+                      <b>{item.ascStat}</b>: <span className="text-blue">{minStat}</span>{' '}
+                      <span className="text-desc">({maxStat})</span>
+                    </p>
+                  </div>
+                  <div className="my-1 border-t border-primary-light" />
+                  <b>{item.desc.name}</b>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: formatWeaponString(item?.desc?.detail, item?.desc?.properties, 1),
+                    }}
+                    className='font-normal'
+                  />
+                </div>
+              }
+              style="w-[500px]"
+            >
+              <div
+                className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
+                onClick={() => {
+                  teamStore.setWeapon(index, { wId: item.id })
+                  if (item.id === '11416') teamStore.setWeapon(index, { refinement: 1 })
+                  modalStore.closeModal()
+                }}
+                key={item.name}
+              >
+                <div className="relative">
+                  <img
+                    src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
+                    className="absolute w-6 h-6 p-1 rounded-full top-2 left-2 bg-primary"
+                    title={item.ascStat}
+                  />
+                  {item.beta && (
+                    <div className="absolute right-0 px-1.5 text-xs py-0.5 font-bold rounded-l-md bottom-6 bg-rose-600">
+                      Beta
+                    </div>
+                  )}
+                  <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
+                    <RarityGauge rarity={item.rarity} />
+                  </div>
+                  <img
+                    src={`https://homdgcat.wiki/homdgcat-res/Weapon/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
+                    className="object-contain rounded-t-lg bg-primary-darker aspect-square"
+                  />
+                </div>
+                <div className="w-full h-10 px-2 py-1">
+                  <p className="text-center line-clamp-2">{item.name}</p>
+                </div>
               </div>
-              <div className="w-full h-10 px-2 py-1">
-                <p className="text-center line-clamp-2">{item.name}</p>
-              </div>
-            </div>
-          </Tooltip>
-        ))}
+            </Tooltip>
+          )
+        })}
       </div>
     </div>
   )

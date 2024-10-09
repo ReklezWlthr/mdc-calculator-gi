@@ -19,6 +19,7 @@ type TagSelectInputProps = {
   style?: string
   classLabel?: string
   renderAsText?: boolean
+  onlyShowCount?: boolean
   maxSelection?: number
   small?: boolean
 }
@@ -32,7 +33,8 @@ export const TagSelectInput = ({
   style,
   label,
   classLabel = '',
-  renderAsText = false,
+  renderAsText,
+  onlyShowCount,
   maxSelection,
   small,
 }: TagSelectInputProps) => {
@@ -42,7 +44,9 @@ export const TagSelectInput = ({
   const isSelected = (v: string) => _.includes(values, v)
 
   const tagRender = () => {
-    if (renderAsText) {
+    if (onlyShowCount) {
+      return `${_.size(values)} Selected`
+    } else if (renderAsText) {
       return _.join(values, ', ')
     } else {
       return _.map(values, (item) => (

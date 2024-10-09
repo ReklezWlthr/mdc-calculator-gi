@@ -159,3 +159,27 @@ export const calcAdditive = (em: number) => {
 export const calcTransformative = (em: number) => {
   return 16 * (em / (em + 2000))
 }
+
+export const formatWeaponString = (
+  detail: string,
+  properties: {
+    base: number
+    growth: number
+  }[],
+  r: number
+) =>
+  _.reduce(
+    Array.from(detail?.matchAll(/{{\d+}}\%?/g) || []),
+    (acc, curr) => {
+      const index = curr?.[0]?.match(/\d+/)?.[0]
+      const isPercentage = !!curr?.[0]?.match(/\%$/)
+      return _.replace(
+        acc,
+        curr[0],
+        `<span class="text-desc">${properties[index].base + properties[index].growth * (r - 1)}${
+          isPercentage ? '%' : ''
+        }</span>`
+      )
+    },
+    detail
+  )
