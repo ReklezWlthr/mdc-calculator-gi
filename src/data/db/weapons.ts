@@ -3009,7 +3009,7 @@ export const Weapons = [
     type: WeaponType.BOW,
     desc: {
       name: 'Flower-Wreathed Feathers',
-      detail: `Gliding Stamina consumption decreased by <span class="text-desc">15</span>%. While aiming with a Bow, character's Charged Attack DMG will be increased by {{0}}% every <span class="text-desc">0.5</span>s. Max <span class="text-desc">6</span> stacks. This effect will be removed <span class="text-desc">10</span>s after exiting Aiming Mode.`,
+      detail: `Gliding Stamina consumption decreased by <span class="text-desc">15%</span>. While aiming with a Bow, character's Charged Attack DMG will be increased by {{0}}% every <span class="text-desc">0.5</span>s. Max <span class="text-desc">6</span> stacks. This effect will be removed <span class="text-desc">10</span>s after exiting Aiming Mode.`,
       properties: [{ base: 6, growth: 1.5 }],
     },
     beta: true,
