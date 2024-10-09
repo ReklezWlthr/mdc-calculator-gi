@@ -212,12 +212,16 @@ export const TeamSetup = observer(() => {
                   </p>
                   <p>
                     This means placing Nahida before Sucrose here will make her A1 buff <b className="text-red">NOT</b>{' '}
-                    taking the EM gained from Sucrose's A4 into account. Please be wary of this.
+                    taking the EM gained from Sucrose's A4 into account.
+                  </p>
+                  <p>
+                    Although this kind of interactions are quite rare in real scenarios and team-building, please be
+                    wary of it.
                   </p>
                 </>
               }
               position="right"
-              style="w-[350px]"
+              style="w-[400px]"
             >
               <i className="text-xl fa-regular fa-question-circle" />
             </Tooltip>
