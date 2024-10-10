@@ -1,5 +1,6 @@
 import { ArtifactSets } from '@src/data/db/artifacts'
 import { Characters as GIChar } from '@src/data/db/characters'
+import { EnemyGroups } from '@src/data/db/enemies'
 import { Weapons } from '@src/data/db/weapons'
 import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import _ from 'lodash'
@@ -9,6 +10,8 @@ export const findWeapon = (wId: string) => _.find(Weapons, (item) => item.id ===
 export const findCharacter = (cId: string) => _.find(GIChar, (item) => item.id === cId)
 
 export const findArtifactSet = (id: string) => _.find(ArtifactSets, (item) => item.id === id)
+
+export const findEnemy = (name: string) => _.find(EnemyGroups, (item) => item.name === name)
 
 export const findContentById = (content: any[], id: string) => _.find(content, ['id', id])
 

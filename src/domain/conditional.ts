@@ -16,6 +16,14 @@ export interface IScaling {
   self?: boolean //Define if self-heal
 }
 
+export interface IEnemyGroup {
+  name: string
+  options: { name: string; value: string }[]
+  res: (element: Element, stun: boolean, shield: boolean) => number[]
+  stun?: string
+  shield?: string
+}
+
 export interface IWeaponContent {
   type?: 'toggle' | 'number' | 'element' | 'multiple'
   id: string

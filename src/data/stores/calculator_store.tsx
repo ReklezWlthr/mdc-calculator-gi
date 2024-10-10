@@ -12,6 +12,8 @@ export interface CalculatorStoreType {
   selected: number
   res: Record<Element, number>
   level: number
+  stun: boolean
+  shielded: boolean
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
@@ -24,6 +26,10 @@ export interface CalculatorStoreType {
 
 export class CalculatorStore {
   form: Record<string, any>[]
+  enemy: string
+  variant: string
+  stun: boolean
+  shielded: boolean
   computedStats: StatsObject[]
   res: Record<Element, number>
   level: number
@@ -32,6 +38,10 @@ export class CalculatorStore {
 
   constructor() {
     this.form = Array(4)
+    this.enemy = ''
+    this.variant = ''
+    this.stun = false
+    this.shielded = false
     this.computedStats = Array(4)
     this.selected = 0
     this.level = 1

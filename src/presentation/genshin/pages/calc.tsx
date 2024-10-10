@@ -33,7 +33,7 @@ export const Calculator = observer(({}: {}) => {
 
   const { main, mainComputed, contents, transformative, finalStats } = useCalculator({})
 
-  const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
+  const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal stats={mainComputed} />), [mainComputed])
 
   const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
 

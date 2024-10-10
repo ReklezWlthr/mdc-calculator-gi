@@ -54,7 +54,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Deal Nightsoul-aligned <b class="text-genshin-anemo">Anemo DMG</b> to opponents in front. This DMG is considered Normal Attack DMG.
       <br /><b>Hold</b>
       <br />Enter Aiming Mode, loading bullets into the cylinder's chambers, and choosing a certain number of opponents within a certain range, before firing up to <span class="text-desc">6</span> <b class="text-indigo-300">Shadowhunt Shells</b> at the selected opponents based on the amount of time the attack was charged. After Holding for a certain amount of time, Chasca will finish loading the magazine, and directly fire <b class="text-indigo-300">Shadowhunt Shells</b> at the selected opponents.
-
+      <br />
       <br /><b class="text-indigo-300">Shadowhunt Shells</b>
       <br />- Deal Nightsoul-aligned <b class="text-genshin-anemo">Anemo DMG</b>, which is considered Charged Attack DMG.
       <br />- The <span class="text-desc">4th</span>, <span class="text-desc">5th</span>, and <span class="text-desc">6th</span> <b class="text-indigo-300">Shells</b> will undergo <b>Elemental Conversion</b> based on the <b>Elemental Types</b> of the other characters in the party: For each <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> character in the party, one <b class="text-indigo-300">Shadowhunt Shell</b> will be converted into a <b class="text-indigo-300">Shining Shadowhunt Shells</b> of the corresponding <b>Elemental Type</b>, dealing Nightsoul-aligned DMG corresponding to that <b>Elemental Type</b>. This DMG is considered Charged Attack DMG.
