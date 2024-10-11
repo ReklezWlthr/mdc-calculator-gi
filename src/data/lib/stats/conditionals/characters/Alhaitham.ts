@@ -19,6 +19,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Abductive Reasoning`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Universality: An Elaboration on Form`,
       content: `Rushes forward, dealing <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents when the rush ends, causing a <b class="text-genshin-dendro">Chisel-Light Mirror</b> to form.
@@ -51,6 +53,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Alhatham_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Particular Field: Fetters of Phenomena`,
       content: `Creates a <b>Particular Binding Field</b> and deals multiple instances of <b class="text-genshin-dendro">AoE Dendro DMG</b>.
@@ -133,12 +136,14 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
 
   const content: IContent[] = [
     {
-      type: 'toggle',
+      type: 'number',
       id: 'al_infusion',
-      text: `Mirror Infusion`,
+      text: `Chisel-Light Mirrors`,
       ...talents.skill,
       show: true,
-      default: true,
+      default: 3,
+      min: 0,
+      max: 3,
     },
     {
       type: 'number',
@@ -180,7 +185,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'yaoyaoC1')]
+  const teammateContent: IContent[] = [findContentById(content, 'al_c4Em')]
 
   return {
     upgrade,
@@ -206,10 +211,11 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.3418, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',
@@ -226,10 +232,11 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.CHARGE_SCALING = [
         {
-          name: 'Charged Attack [x2]',
+          name: 'Charged Attack',
           value: [{ scaling: calcScaling(0.5525, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
+          hit: 2,
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('base', normal)
@@ -245,22 +252,25 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.al_c2Em > 0) base[Stats.EM].push({ value: 50, name: '', source: `` }) * form.al_c2Em
-      if (form.al_c4Em > 0) base[Stats.EM].push({ value: 30, name: '', source: `` }) * form.al_c4Em
-      if (form.al_c4Dmg > 0) base[Stats.DENDRO_DMG].push({ value: 0.1, name: '', source: `` }) * form.al_c4Dmg
+      if (form.al_c2Em > 0) base[Stats.EM].push({ value: 50 * form.al_c2Em, name: 'Constellation 2', source: `Self` })
+      if (form.al_c4Em > 0) base[Stats.EM].push({ value: 30 * form.al_c4Em, name: 'Constellation 4', source: `Self` })
+      if (form.al_c4Dmg > 0)
+        base[Stats.DENDRO_DMG].push({ value: 0.1 * form.al_c4Dmg, name: 'Constellation 4', source: `Self` })
       if (form.c6_crit) {
-        base[Stats.CRIT_RATE].push({ value: 0.1, name: '', source: `` })
-        base[Stats.CRIT_DMG].push({ value: 0.7, name: '', source: `` })
+        base[Stats.CRIT_RATE].push({ value: 0.1, name: 'Constellation 6', source: `Self` })
+        base[Stats.CRIT_DMG].push({ value: 0.7, name: 'Constellation 6', source: `Self` })
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.al_c4Em > 0)
+        base[Stats.EM].push({ value: 30 * form.al_c4Em, name: 'Constellation 4', source: `Alhaitham` })
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       base.SKILL_SCALING.push({
-        name: 'DMG Per Mirror Projection',
+        name: 'Mirror Projection DMG',
         value: [
           { scaling: calcScaling(0.672, skill, 'elemental', '1'), multiplier: Stats.ATK },
           { scaling: calcScaling(1.344, skill, 'elemental', '1'), multiplier: Stats.EM },
@@ -268,11 +278,12 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
         bonus: a >= 4 ? _.min([base.getEM() * 0.001, 1]) : 0,
         element: Element.DENDRO,
         property: TalentProperty.SKILL,
+        hit: form.al_infusion,
       })
 
       base.BURST_SCALING = [
         {
-          name: 'Single-Instance DMG',
+          name: 'Skill DMG',
           value: [
             { scaling: calcScaling(1.216, burst, 'elemental', '1'), multiplier: Stats.ATK },
             { scaling: calcScaling(0.9728, burst, 'elemental', '1'), multiplier: Stats.EM },
@@ -280,6 +291,7 @@ const Alhaitham = (c: number, a: number, t: ITalentLevel) => {
           element: Element.DENDRO,
           property: TalentProperty.BURST,
           bonus: a >= 4 ? _.min([base.getEM() * 0.001, 1]) : 0,
+          hit: 4 + form.al_infusion * 2,
         },
       ]
 

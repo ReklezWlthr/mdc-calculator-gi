@@ -19,6 +19,7 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Dough-Fu`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Guoba Attack`,
       content: `Summons Guoba, who will continuously breathe fire at opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
@@ -40,6 +42,7 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Xiangling_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Pyronado`,
       content: `Displaying her mastery over both fire and polearms, Xiangling sends a Pyronado whirling around her. The Pyronado will move with your character for the ability's duration, dealing <b class="text-genshin-pyro">Pyro DMG</b> to all opponents in its path.
@@ -159,16 +162,18 @@ const Xiangling = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.2606, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
-          name: '4-Hit [x4]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.141, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 4,
         },
         {
           name: '5-Hit',

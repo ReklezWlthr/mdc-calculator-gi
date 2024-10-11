@@ -3,11 +3,17 @@ import { GenshinPage } from '@src/domain/constant'
 import classNames from 'classnames'
 import { useCallback } from 'react'
 import Link from 'next/link'
-import { SettingModal } from './setting_modal'
-import { HelpModal } from './help_modal'
-import { IntroModal } from './intro_modal'
+import { SettingModal } from './modals/setting_modal'
+import { HelpModal } from './modals/help_modal'
+import { IntroModal } from './modals/intro_modal'
 
-export const Sidebar = ({ currentPage, onChange }: { currentPage: GenshinPage; onChange: (page: GenshinPage) => void }) => {
+export const Sidebar = ({
+  currentPage,
+  onChange,
+}: {
+  currentPage: GenshinPage
+  onChange: (page: GenshinPage) => void
+}) => {
   const { modalStore } = useStore()
 
   const Pill = ({ name, page, icon }: { name: string; page: GenshinPage; icon: string }) => {
@@ -43,7 +49,7 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: GenshinPage; o
         <Pill name="Team Setup" page={GenshinPage.TEAM} icon="fa-solid fa-user" />
         <Pill name="Damage Calculator" page={GenshinPage.DMG} icon="fa-solid fa-chart-simple" />
         {/* <Pill name="Turn Cycle" page={HsrPage.CYCLE} /> */}
-        {/* <Pill name="Compare" page={GenshinPage.COMPARE} icon="fa-solid fa-arrow-right-arrow-left" /> */}
+        <Pill name="Compare" page={GenshinPage.COMPARE} icon="fa-solid fa-arrow-right-arrow-left" />
         <Pill name="Import / Export" page={GenshinPage.IMPORT} icon="fa-solid fa-file-import" />
         <p className="p-2 font-bold text-white">Account</p>
         <Pill name="My Characters" page={GenshinPage.CHAR} icon="fa-solid fa-user-group" />

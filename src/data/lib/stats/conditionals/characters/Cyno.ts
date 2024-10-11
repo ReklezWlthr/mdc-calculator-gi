@@ -19,6 +19,7 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Invoker's Spear`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Secret Rite: Chasmic Soulfarer`,
       content: `Performs a swift thrust, dealing <b class="text-genshin-electro">Electro DMG</b> to opponents along the path.
@@ -42,6 +44,7 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Cyno_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Sacred Rite: Wolf's Swiftness`,
       content: `Calls upon a divine spirit to indwell him, morphing into the <b class="text-genshin-electro">Pactsworn Pathclearer</b>.
@@ -183,10 +186,11 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
               property: TalentProperty.NA,
             },
             {
-              name: '4-Hit [x2]',
+              name: '4-Hit',
               value: [{ scaling: calcScaling(0.5169, burst, 'physical', '1'), multiplier: Stats.ATK }, ...a4Na],
               element: Element.ELECTRO,
               property: TalentProperty.NA,
+              hit: 2,
             },
             {
               name: '5-Hit',
@@ -209,10 +213,11 @@ const Cyno = (c: number, a: number, t: ITalentLevel) => {
               property: TalentProperty.NA,
             },
             {
-              name: '3-Hit [x2]',
+              name: '3-Hit',
               value: [{ scaling: calcScaling(0.2931, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 2,
             },
             {
               name: '4-Hit',

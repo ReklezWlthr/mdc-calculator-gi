@@ -23,6 +23,9 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { SaveBuildModal } from '../components/modals/save_build_modal'
+import { SaveTeamModal } from '../components/modals/save_team_modal'
+import { TeamModal } from '../components/modals/team_modal'
 
 export const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
   const setDetail = _.find(ArtifactSets, ['id', set])
@@ -80,56 +83,6 @@ const ResonanceToolTip = observer(({ count, element }: { count: number; element:
   )
 })
 
-const SaveBuildModal = observer(({ index }: { index: number }) => {
-  const [name, setName] = useState('')
-  const [isDefault, setDefault] = useState(true)
-
-  const { modalStore, teamStore, buildStore, toastStore } = useStore()
-
-  const onSaveBuild = useCallback(() => {
-    const id = crypto.randomUUID()
-    const character = teamStore.characters[index]
-
-    if (name) {
-      const pass = buildStore.saveBuild({
-        id,
-        name,
-        cId: character?.cId,
-        isDefault: false,
-        ...character?.equipments,
-      })
-      if (pass) {
-        isDefault && buildStore.setDefault(id)
-        modalStore.closeModal()
-        toastStore.openNotification({
-          title: 'Build Saved Successfully',
-          icon: 'fa-solid fa-circle-check',
-          color: 'green',
-        })
-      }
-    }
-  }, [index, name])
-
-  return (
-    <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
-      <div className="space-y-1">
-        <p className="font-semibold">
-          Build Name <span className="text-red">*</span>
-        </p>
-        <TextInput onChange={setName} value={name} />
-      </div>
-      <div className="flex items-center justify-end gap-x-2">
-        <p className="text-xs text-gray">Set Build as Default</p>
-        <CheckboxInput checked={isDefault} onClick={(v) => setDefault(v)} />
-      </div>
-      <div className="flex justify-end gap-2">
-        <GhostButton title="Cancel" onClick={() => modalStore.closeModal()} />
-        <PrimaryButton title="Confirm" onClick={onSaveBuild} />
-      </div>
-    </div>
-  )
-})
-
 export const TeamSetup = observer(() => {
   const { teamStore, modalStore, artifactStore, settingStore } = useStore()
   const selected = teamStore.selected
@@ -156,6 +109,14 @@ export const TeamSetup = observer(() => {
 
   const onOpenBuildModal = useCallback(() => {
     modalStore.openModal(<BuildModal index={selected} />)
+  }, [selected])
+
+  const onOpenTeamModal = useCallback(() => {
+    modalStore.openModal(<SaveTeamModal />)
+  }, [])
+
+  const onOpenSetupModal = useCallback(() => {
+    modalStore.openModal(<TeamModal onSelect={(team) => teamStore.setValue('characters', team.char)} hideCurrent />)
   }, [selected])
 
   const onOpenConfirmModal = useCallback(() => {
@@ -189,42 +150,47 @@ export const TeamSetup = observer(() => {
     <div className="w-full overflow-y-auto">
       <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
         <div className="w-1/3">
-          <div className="flex items-center justify-center w-full gap-4 pt-1 pb-3">
-            {_.map(teamStore?.characters, (item, index) => {
-              const x = findCharacter(item.cId)?.codeName
-              const y = x === 'Player' ? settingStore.settings.travelerGender : x
-              return (
+          <div className="flex items-center justify-between w-full gap-4 pt-1 pb-3">
+            <div className="flex items-center justify-center w-full gap-4">
+              {_.map(teamStore?.characters, (item, index) => (
                 <CharacterSelect
                   key={`char_select_${index}`}
                   onClick={() => teamStore.setValue('selected', index)}
                   isSelected={index === selected}
-                  codeName={y}
+                  codeName={findCharacter(item.cId)?.codeName}
                 />
-              )
-            })}
-            <Tooltip
-              title="Regarding Character Placement"
-              body={
-                <>
-                  <p>
-                    Some team-wide buffs that scale with a specific stat (notably Nahida's A1 and Sucrose's A4) will be
-                    applied from <span className="text-desc">left to right</span> in the character setup.
-                  </p>
-                  <p>
-                    This means placing Nahida before Sucrose here will make her A1 buff <b className="text-red">NOT</b>{' '}
-                    taking the EM gained from Sucrose's A4 into account.
-                  </p>
-                  <p>
-                    Although this kind of interactions are quite rare in real scenarios and team-building, please be
-                    wary of it.
-                  </p>
-                </>
-              }
-              position="right"
-              style="w-[400px]"
-            >
-              <i className="text-xl fa-regular fa-question-circle" />
-            </Tooltip>
+              ))}
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <Tooltip
+                title="Regarding Character Placement"
+                body={
+                  <>
+                    <p>
+                      Some team-wide buffs that scale with a specific stat (notably Nahida's A1 and Sucrose's A4) will
+                      be applied from <span className="text-desc">left to right</span> in the character setup.
+                    </p>
+                    <p>
+                      This means placing Nahida before Sucrose here will make her A1 buff{' '}
+                      <b className="text-red">NOT</b> taking the EM gained from Sucrose's A4 into account.
+                    </p>
+                    <p>
+                      Although this kind of interactions are quite rare in real scenarios and team-building, please be
+                      wary of it.
+                    </p>
+                  </>
+                }
+                position="right"
+                style="w-[400px]"
+              >
+                <i className="text-xl fa-regular fa-question-circle" />
+              </Tooltip>
+              <PrimaryButton
+                onClick={onOpenSetupModal}
+                icon="fa-solid fa-user-group text-sm"
+                style="!rounded-full w-[42px]"
+              />
+            </div>
           </div>
           <CharacterBlock index={selected} />
           {charData ? (
@@ -269,7 +235,7 @@ export const TeamSetup = observer(() => {
           ) : (
             <div className="h-5" />
           )}
-          <StatBlock index={selected} stat={stats} />
+          <StatBlock stat={stats} />
         </div>
         <div className="w-1/5 space-y-5">
           <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
@@ -298,10 +264,11 @@ export const TeamSetup = observer(() => {
         <div className="w-1/5 space-y-5">
           <ArtifactBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
           <ArtifactBlock index={selected} piece={3} aId={teamStore.characters[selected]?.equipments?.artifacts?.[2]} />
-          <div className="flex gap-x-2">
+          <div className="grid grid-cols-2 gap-2">
             <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
-            <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
             <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
+            <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
+            <PrimaryButton title="Save Team" onClick={onOpenTeamModal} />
           </div>
         </div>
       </div>

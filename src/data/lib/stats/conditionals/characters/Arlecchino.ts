@@ -19,6 +19,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Invitation to a Beheading	`,
       content: `<b>Normal Attack</b>
@@ -38,6 +39,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `All Is Ash`,
       content: `Summons forth Balemoon Bloodfire, dealing <b class="text-genshin-pyro">Pyro DMG</b> to multiple nearby opponents and performing a dash-cleave against one of them, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
@@ -50,6 +52,7 @@ const Arlecchino = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Arlecchino_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Balemoon Rising`,
       content: `Arlecchino's great wing of Balemoon Bloodfire beats as she absorbs and clears <b class="text-genshin-pyro">Blood-Debt Directives</b> around her. She deals <b class="text-genshin-pyro">AoE Pyro DMG</b> before clearing the CD of <b>All Is Ash</b> and healing herself. The healing is based on her <b class="text-genshin-bol">Bond of Life</b> value and ATK.`,

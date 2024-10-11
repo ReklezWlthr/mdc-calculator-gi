@@ -19,6 +19,7 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Foreign Rockblade`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Starfell Sword`,
       content: `You disgorge a meteorite from the depths of the earth, dealing <b class="text-genshin-geo">AoE Geo DMG</b>.
@@ -42,6 +44,7 @@ const TravelerRock = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Wake of Earth`,
       content: `Energizing the Geo deep underground, you set off expanding shockwaves.

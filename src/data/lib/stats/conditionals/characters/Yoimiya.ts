@@ -18,6 +18,7 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Firework Flare-Up`,
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Niwabi Fire-Dance	`,
       content: `Yoimiya waves a sparkler and causes a ring of saltpeter to surround her.
@@ -47,6 +49,7 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Yoimiya_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Ryuukin Saxifrage`,
       content: `Yoimiya leaps into the air along with her original creation, the "Ryuukin Saxifrage," and fires forth blazing rockets bursting with surprises that deal <b class="text-genshin-pyro">AoE Pyro DMG</b> and mark one of the hit opponents with <b class="text-desc">Aurous Blaze</b>.
@@ -183,11 +186,12 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       const element = form.niwabi ? Element.PYRO : Element.PHYSICAL
       base.BASIC_SCALING = [
         {
-          name: '1-Hit [x2]',
+          name: '1-Hit',
           value: [{ scaling: calcScaling(0.356, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: element,
           property: TalentProperty.NA,
           multiplier: niwabi,
+          hit: 2,
         },
         {
           name: '2-Hit',
@@ -204,11 +208,12 @@ const Yoimiya = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           multiplier: niwabi,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.464, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: element,
           property: TalentProperty.NA,
           multiplier: niwabi,
+          hit: 2,
         },
         {
           name: '5-Hit',

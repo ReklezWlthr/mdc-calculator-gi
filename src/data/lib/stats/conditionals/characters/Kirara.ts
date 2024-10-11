@@ -18,6 +18,7 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Boxcutter`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Meow-teor Kick`,
       content: `<b>Press</b>
@@ -51,6 +53,7 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Momoka_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Secret Art: Surprise Dispatch`,
       content: `Smash opponents with a Special Delivery Package used for punishing parcel thieves, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b>. After the Special Delivery Package explodes, it will split up into many <b>Cat Grass Cardamoms</b> that will explode either upon contact with opponents or after a period of time, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b>.`,

@@ -3,7 +3,7 @@ import { ArtifactPiece, IArtifactEquip, MainStatOptions, Stats } from '@src/doma
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import React, { useCallback, useMemo } from 'react'
-import { ArtifactModal } from './artifact_modal'
+import { ArtifactModal } from './modals/artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { getMainStat, getRolls } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
@@ -11,7 +11,7 @@ import { StatIcons } from '../../../domain/constant'
 import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
 import classNames from 'classnames'
 import { CommonModal } from '@src/presentation/components/common_modal'
-import { ArtifactListModal } from './artifact_list_modal'
+import { ArtifactListModal } from './modals/artifact_list_modal'
 import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()

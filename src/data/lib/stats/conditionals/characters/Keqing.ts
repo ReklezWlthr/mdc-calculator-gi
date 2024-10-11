@@ -18,6 +18,7 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Yunlai Swordsmanship`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Stellar Restoration`,
       content: `Hurls a <b class="text-genshin-electro">Lightning Stiletto</b> that annihilates her opponents like the swift thunder.
@@ -49,6 +51,7 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Keqing_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Starward Sword`,
       content: `Keqing unleashes the power of lightning, dealing <b class="text-genshin-electro">Electro DMG</b> in an AOE.
@@ -233,10 +236,11 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         },
         {
-          name: 'Thunderclap Slash DMG [x2]',
+          name: 'Thunderclap Slash DMG',
           value: [{ scaling: calcScaling(0.84, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.SKILL,
+          hit: 2,
         },
       ]
       base.BURST_SCALING = [
@@ -247,10 +251,11 @@ const Keqing = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.BURST,
         },
         {
-          name: 'Consecutive Slash DMG [x8]',
+          name: 'Consecutive Slash DMG',
           value: [{ scaling: calcScaling(0.24, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.BURST,
+          hit: 8,
         },
         {
           name: 'Last Attack DMG',

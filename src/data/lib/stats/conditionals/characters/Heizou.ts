@@ -19,6 +19,7 @@ const Heizou = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Fudou Style Martial Arts`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Heizou = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Heartstopper Strike	`,
       content: `<b>Press</b>
@@ -47,6 +49,7 @@ const Heizou = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Heizo_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Windmuster Kick`,
       content: `Leaps into the air and uses the Fudou Style Vacuum Slugger and kicks his opponent. The Vacuum Slugger will explode upon hit and create an <b>Arresting Windtunnel</b> that pulls in nearby objects and opponents, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.

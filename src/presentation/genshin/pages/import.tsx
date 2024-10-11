@@ -8,8 +8,8 @@ import { CommonModal } from '@src/presentation/components/common_modal'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useEffect, useState } from 'react'
-import { IArtifactEquip, ITeamChar, TravelerIconName, WeaponIcon } from '@src/domain/constant'
+import React, { useCallback, useEffect, useState } from 'react'
+import { TravelerIconName, WeaponIcon } from '@src/domain/constant'
 import { findCharacter } from '@src/core/utils/finder'
 import { CharacterSelect } from '../components/character_select'
 import { CharacterBlock } from '../components/character_block'
@@ -22,7 +22,7 @@ import { ArtifactBlock } from '../components/artifact_block'
 import { WeaponBlock } from '../components/weapon_block'
 import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
-import { ImportModal } from '../components/import_modal'
+import { ImportModal } from '../components/modals/import_modal'
 import dayjs from 'dayjs'
 
 export const ImportExport = observer(() => {
@@ -225,18 +225,14 @@ export const ImportExport = observer(() => {
           <>
             <div className="flex items-center justify-between px-3">
               <div className="flex justify-center w-full gap-4">
-                {_.map(importStore.characters, (item, index) => {
-                  const x = findCharacter(item.cId)?.codeName
-                  const y = x === 'Player' ? settingStore.settings.travelerGender : x
-                  return (
-                    <CharacterSelect
-                      key={`char_select_${index}`}
-                      onClick={() => setSelected(index)}
-                      isSelected={index === selected}
-                      codeName={y}
-                    />
-                  )
-                })}
+                {_.map(importStore.characters, (item, index) => (
+                  <CharacterSelect
+                    key={`char_select_${index}`}
+                    onClick={() => setSelected(index)}
+                    isSelected={index === selected}
+                    codeName={findCharacter(item.cId)?.codeName}
+                  />
+                ))}
               </div>
               <PrimaryButton title="Import Character" onClick={onOpenImportModal} style="shrink-0" />
             </div>

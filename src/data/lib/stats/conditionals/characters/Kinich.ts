@@ -18,6 +18,7 @@ const Kinich = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Nightsun Style`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Kinich = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Canopy Hunter: Riding High`,
       content: `Kinich uses his big-game hunting skills to either move swiftly or attack his opponent.
@@ -50,6 +52,7 @@ const Kinich = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Kinich_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Hail to the Almighty Dragonlord`,
       content: `Unleashes the power of the Almighty Dragonlord, K'uhul Ajaw (on a limited, conditional, restricted, contractual, partial, temporary basis), dealing Nightsoul-aligned <b class="text-genshin-dendro">AoE Dendro DMG</b>. Ajaw will unleash his Dragon Breath at intervals, dealing Nightsoul-aligned <b class="text-genshin-dendro">AoE Dendro DMG</b>.
@@ -201,20 +204,22 @@ const Kinich = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
       base.CHARGE_SCALING = [
         {
-          name: 'Charged Attack DMG [x3]',
+          name: 'Charged Attack DMG',
           value: [{ scaling: calcScaling(0.484, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
+          hit: 3,
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('claymore', normal)
 
       base.SKILL_SCALING = [
         {
-          name: 'Loop Shot DMG [x2]',
+          name: 'Loop Shot DMG',
           value: [{ scaling: calcScaling(0.573, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
+          hit: 2,
         },
         {
           name: 'Scalespiker Cannon DMG',

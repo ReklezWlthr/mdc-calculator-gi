@@ -19,6 +19,7 @@ const Kachina = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Cragbiter`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Kachina = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Go, Go Turbo Twirly!  `,
       content: `Fight alongside the turbo trusty <b>Turbo Twirly</b>!
@@ -52,6 +54,7 @@ const Kachina = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Kachina_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Time to Get Serious!`,
       content: `Striking the ground, Kachina deals <b class="text-genshin-geo">AoE Geo DMG</b> based on her DEF and creates a <b>Turbo Drill Field</b>.

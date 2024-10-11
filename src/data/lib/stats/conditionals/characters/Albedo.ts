@@ -21,6 +21,7 @@ const Albedo = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: 'Favonius Bladework - Weiss',
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Albedo = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: 'Abiogenesis: Solar Isotoma',
       content: `Albedo creates a <b class="text-genshin-geo">Solar Isotoma</b> using alchemy, which deals <b class="text-genshin-geo">AoE Geo DMG</b> on appearance.
@@ -50,6 +52,7 @@ const Albedo = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Albedo_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: 'Rite of Progeniture: Tectonic Tide',
       content: `Under Albedo's command, Geo crystals surge and burst forth, dealing <b class="text-genshin-geo">AoE Geo DMG</b> in front of him.
@@ -250,13 +253,14 @@ const Albedo = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.BURST,
         },
         {
-          name: 'Fatal Blossom DMG [x7]',
+          name: 'Fatal Blossom DMG',
           value: [
             { scaling: calcScaling(0.72, burst, 'elemental', '1'), multiplier: Stats.DEF },
             ...fatalReckoningScaling,
           ],
           element: Element.GEO,
           property: TalentProperty.BURST,
+          hit: 7,
         },
       ]
 

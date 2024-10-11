@@ -18,6 +18,7 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Kamisato Art: Marobashi`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Kamisato Art: Kyouka`,
       content: `Kamisato Ayato shifts positions and enters the <b>Takimeguri Kanka</b> state.
@@ -49,6 +51,7 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Ayato_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Kamisato Art: Suiyuu`,
       content: `Unveils a garden of purity that silences the cacophony within.
@@ -219,10 +222,11 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
               property: TalentProperty.NA,
             },
             {
-              name: '4-Hit [x2]',
+              name: '4-Hit',
               value: [{ scaling: calcScaling(0.2945, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 2,
             },
             {
               name: '5-Hit',
@@ -267,11 +271,12 @@ const Ayato = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.ayato_infusion && c >= 6)
         base.BASIC_SCALING.push({
-          name: 'C6 Extra Shunsuiken [x2]',
+          name: 'C6 Extra Shunsuiken',
           value: [{ scaling: 4.5, multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,
           bonus: form.ayato_c1 ? 0.4 : 0,
+          hit: 2,
         })
 
       return base

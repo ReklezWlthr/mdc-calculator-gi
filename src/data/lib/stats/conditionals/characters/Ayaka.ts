@@ -18,6 +18,7 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Kamisato Art: Kabuki`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Kamisato Art: Hyouka`,
       content: `Summons blooming ice to launch nearby opponents, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
@@ -39,6 +41,7 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Ayaka_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Kamisato Art: Soumetsu`,
       content: `Summons forth a snowstorm with flawless poise, unleashing a <b>Frostflake Seki no To</b> that moves forward continuously.
@@ -198,10 +201,11 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '4-Hit [x3]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.2265, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 3,
         },
         {
           name: '5-Hit',
@@ -212,11 +216,12 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.CHARGE_SCALING = [
         {
-          name: 'Charged Attack DMG [x3]',
+          name: 'Charged Attack DMG',
           value: [{ scaling: calcScaling(0.5513, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
           bonus: form.ayaka_c6 ? 2.98 : 0,
+          hit: 3,
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('base', normal)

@@ -19,6 +19,7 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Rain of Stone`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Dominus Lapidis`,
       content: `Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
@@ -59,6 +61,7 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Zhongli_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Planet Befall`,
       content: `Brings a falling meteor down to earth, dealing massive <b class="text-genshin-geo">Geo DMG</b> to opponents caught in its AoE and applying the <b class="text-genshin-geo">Petrification</b> status to them.
@@ -195,10 +198,11 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '5-Hit [x4]',
+          name: '5-Hit',
           value: [{ scaling: calcScaling(0.1075, normal, 'physical', '1_alt'), multiplier: Stats.ATK }, ...a4Scaling_a],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 4,
         },
         {
           name: '6-Hit',

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { ArtifactBlock } from './artifact_block'
+import { ArtifactBlock } from '../artifact_block'
 import classNames from 'classnames'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'

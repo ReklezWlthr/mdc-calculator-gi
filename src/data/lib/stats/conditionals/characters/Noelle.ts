@@ -18,6 +18,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Favonius Bladework - Maid`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Breastplate`,
       content: `Summons protective stone armor, dealing <b class="text-genshin-geo">Geo DMG</b> to surrounding opponents and creating a shield. The shield's DMG Absorption scales based on Noelle's DEF.
@@ -45,6 +47,7 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Noel_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Sweeping Time`,
       content: `Gathering the strength of stone around her weapon, Noelle strikes the opponents surrounding her within a large AoE, dealing <b class="text-genshin-geo">Geo DMG</b>.
@@ -153,10 +156,11 @@ const Noelle = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x3]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.8626, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 3,
         },
         {
           name: '4-Hit',

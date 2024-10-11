@@ -14,6 +14,7 @@ export interface CalculatorStoreType {
   level: number
   stun: boolean
   shielded: boolean
+  mode: string
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
@@ -30,11 +31,12 @@ export class CalculatorStore {
   variant: string
   stun: boolean
   shielded: boolean
+  mode: string
   computedStats: StatsObject[]
   res: Record<Element, number>
   level: number
   selected: number
-  custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
 
   constructor() {
     this.form = Array(4)
@@ -43,6 +45,7 @@ export class CalculatorStore {
     this.stun = false
     this.shielded = false
     this.computedStats = Array(4)
+    this.mode = 'total'
     this.selected = 0
     this.level = 1
     this.res = {
@@ -79,11 +82,18 @@ export class CalculatorStore {
     this.form = _.cloneDeep(this.form)
   }
 
-  setCustomValue = (index: number, innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+  setCustomValue = (
+    innerIndex: number,
+    key: StatsObjectKeysT,
+    value: any,
+    toggled: boolean,
+    debuff: boolean = false
+  ) => {
+    const index = this.selected
     if (innerIndex < 0) {
-      this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff }]
+      this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff, toggled }]
     } else {
-      this.custom[index].splice(innerIndex, 1, { name: key, value, debuff })
+      this.custom[index].splice(innerIndex, 1, { name: key, value, debuff, toggled })
     }
     this.custom = _.cloneDeep(this.custom)
   }

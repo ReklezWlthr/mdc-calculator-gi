@@ -18,6 +18,7 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Divine Marksmanship`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Skyward Sonnet`,
       content: `O wind upon which all hymns and songs fly, bear these earth-walkers up into the sky!
@@ -48,6 +50,7 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Venti_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Wind's Grand Ode`,
       content: `Fires off an arrow made of countless coalesced winds, creating a huge Stormeye that sucks in opponents and deals continuous <b class="text-genshin-anemo">Anemo DMG</b>.
@@ -176,10 +179,11 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
 
       base.BASIC_SCALING = [
         {
-          name: '1-Hit [x2]',
+          name: '1-Hit',
           value: [{ scaling: calcScaling(0.2038, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '2-Hit',
@@ -194,10 +198,11 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.2606, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '5-Hit',
@@ -260,13 +265,13 @@ const Venti = (c: number, a: number, t: ITalentLevel) => {
       if (c >= 1)
         base.CHARGE_SCALING.push(
           {
-            name: 'C1 Additional Physical Arrows [x2]',
+            name: 'C1 Additional Physical Arrows',
             value: [{ scaling: calcScaling(0.4386, normal, 'physical', '1') * 0.33, multiplier: Stats.ATK }],
             element: Element.PHYSICAL,
             property: TalentProperty.CA,
           },
           {
-            name: 'C1 Additional Anemo Arrows [x2]',
+            name: 'C1 Additional Anemo Arrows',
             value: [{ scaling: calcScaling(1.24, normal, 'elemental', '1_alt') * 0.33, multiplier: Stats.ATK }],
             element: Element.ANEMO,
             property: TalentProperty.CA,

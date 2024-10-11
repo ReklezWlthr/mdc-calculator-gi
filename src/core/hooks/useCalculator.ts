@@ -20,7 +20,7 @@ import { getSetCount } from '../utils/data_format'
 import Transformative from '@src/data/lib/stats/conditionals/transformative'
 import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
 import { Resonance } from '@src/data/db/characters'
-import { isFlat } from '@src/presentation/genshin/components/custom_modal'
+import { isFlat } from '@src/presentation/genshin/components/modals/custom_modal'
 import { StatsObject, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 import { ArtifactSets } from '@src/data/db/artifacts'
 
@@ -36,8 +36,6 @@ interface CalculatorOptions {
   }[][]
   doNotSaveStats?: boolean
   indexOverride?: number
-  talentOverride?: ITeamChar
-  weaknessOverride?: Element[]
   initFormFunction?: (f: Record<string, any>[]) => void
 }
 
@@ -47,24 +45,19 @@ export const useCalculator = ({
   formOverride,
   customOverride,
   indexOverride,
-  talentOverride,
-  weaknessOverride,
   doNotSaveStats,
   initFormFunction,
 }: CalculatorOptions) => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
-  const { selected, computedStats } = calculatorStore
 
+  const selected = indexOverride ?? calculatorStore?.selected
   const forms = formOverride || calculatorStore.form
   const team = teamOverride || teamStore.characters
   const custom = customOverride || calculatorStore.custom
 
-  const char = team[selected]
-  const charData = findCharacter(char.cId)
-
   const [finalStats, setFinalStats] = useState<StatsObject[]>(null)
 
-  const mainComputed = computedStats?.[selected]
+  const mainComputed = finalStats?.[selected]
 
   const baseStats = useMemo(() => getTeamOutOfCombat(team, artifactStore.artifacts), [team, artifactStore.artifacts])
 
@@ -134,14 +127,14 @@ export const useCalculator = ({
   })
 
   useEffect(() => {
-    calculatorStore.initForm(
-      _.map(conditionals, (item, index) =>
+    if (enabled) {
+      const f = _.map(conditionals, (item, index) =>
         _.reduce(
           _.concat(
             item?.content,
             item?.teammateContent,
             allyContents(index),
-            Reactions(team[index].level, findCharacter(team[index].cId)?.element, Element.PYRO, computedStats[index]),
+            Reactions(team[index].level, findCharacter(team[index].cId)?.element, Element.PYRO, finalStats?.[index]),
             artifactConditionals[index]?.content,
             artifactConditionals[index]?.teamContent,
             ...weaponSelectable(index),
@@ -154,7 +147,9 @@ export const useCalculator = ({
           {}
         )
       )
-    )
+      if (initFormFunction) initFormFunction(f)
+      else calculatorStore.initForm(f)
+    }
   }, [team])
 
   // =================
@@ -203,7 +198,8 @@ export const useCalculator = ({
     const postCustom = _.map(postResonance, (base, index) => {
       let x = base
       _.forEach(custom[index], (v) => {
-        x[v.name as any] += v.value / (isFlat(v.name) ? 1 : 100)
+        if (v.toggled)
+          x[v.name as any].push({ value: v.value / (isFlat(v.name) ? 1 : 100), name: 'Manual', source: 'Custom' })
       })
       return x
     })
@@ -312,33 +308,43 @@ export const useCalculator = ({
   // Mapped reaction contents
   const reactions = _.flatMap(
     _.map(team, (item, index) =>
-      Reactions(item.level, findCharacter(item.cId)?.element, forms[index]?.swirl, computedStats[index])
+      Reactions(item.level, findCharacter(item.cId)?.element, forms[index]?.swirl, finalStats?.[index])
     ),
     (item, index) => _.map(item, (inner) => ({ ...inner, index }))
   )
   // Mapped conditional contents that the selected character can toggle (Self + all team buffs from allies)
   // Soon might have to implement single target buff
-  const mapped = _.flatMap(
-    _.map(conditionals, (item, index) =>
-      index === selected
-        ? _.concat(item?.content, artifactConditionals[index]?.content, resonanceConditionals)
-        : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent)
-    ),
-    (item, index) => _.map(item, (inner) => ({ ...inner, index }))
-  )
+  const customMapped = (selected: number) =>
+    _.flatMap(
+      _.map(conditionals, (item, index) =>
+        index === selected ? _.concat(item?.content, resonanceConditionals) : item?.teammateContent
+      ),
+      (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+    )
+  const mapped = customMapped(selected)
   const allyMapped = _.map(allyContents(selected), (item) => ({ ...item, index: selected }))
   // Index is embedded into each conditional for the block to call back to
   // Because each of the form with represent ALL the buffs that each character has (including team buffs); not the value that we can change in their page
   // This helps separate buffs trigger of each character and prevent buff stacking
   // Update: This is with the exception of single target buffs that will be put in allies' form instead of the giver so that the buff will not activate all at once
   const mainContent = _.filter(mapped, ['index', selected])
-  const teamContent = [..._.filter(mapped, (item, index) => selected !== item.index), ...allyMapped]
+  const teamContent = [..._.filter(mapped, (item) => selected !== item.index), ...allyMapped]
   const mainReaction = _.filter(reactions, ['index', selected])
+  const artifactContents = (selected: number) =>
+    _.uniqBy(
+      _.flatMap(
+        _.map(conditionals, (_i, index) =>
+          index === selected ? artifactConditionals[index]?.content : artifactConditionals[index]?.teamContent
+        ),
+        (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+      ),
+      (item) => item.id
+    )
 
   // Content of transformative reaction dmg
   const nilou = _.some(forms, (item) => item?.bountiful_core)
   const transformative = _.filter(
-    Transformative(char.level, charData?.element, computedStats[selected], forms[selected]?.swirl, nilou),
+    Transformative(finalStats?.[selected]?.ELEMENT, finalStats?.[selected], forms[selected]?.swirl, nilou),
     'show'
   )
 
@@ -346,7 +352,18 @@ export const useCalculator = ({
     main,
     mainComputed,
     finalStats,
-    contents: { main: mainContent, team: teamContent, reaction: mainReaction, weapon: weaponSelectable },
+    contents: {
+      main: mainContent,
+      team: teamContent,
+      reaction: mainReaction,
+      weapon: weaponSelectable,
+      artifact: artifactContents,
+      customMain: (selected: number) => _.filter(customMapped(selected), ['index', selected]),
+      customTeam: (selected: number) => [
+        ..._.filter(customMapped(selected), (item) => selected !== item.index),
+        ..._.map(allyContents(selected), (item) => ({ ...item, index: selected })),
+      ],
+    },
     transformative,
   }
 }

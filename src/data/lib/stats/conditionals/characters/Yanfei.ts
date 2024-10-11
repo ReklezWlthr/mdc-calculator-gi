@@ -19,6 +19,7 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Seal of Approval`,
       content: `<b>Normal Attack</b>
@@ -36,6 +37,7 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Signed Edict`,
       content: `Summons blistering flames that deal <b class="text-genshin-pyro">AoE Pyro DMG</b>.
@@ -44,6 +46,7 @@ const Yanfei = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Feiyan_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Done Deal`,
       content: `Triggers a spray of intense flames that rush at nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>, granting Yanfei the maximum number of <b class="text-red">Scarlet Seals</b>, and applying <b class="text-desc">Brilliance</b> to her.

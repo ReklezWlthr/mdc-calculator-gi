@@ -19,6 +19,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Gleaming Spear - Guardian Stance`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Sacred Rite: Heron's Sanctum`,
       content: `Candace's fighting style is capable of warding off an entire tide of foes.
@@ -47,6 +49,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Candace_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Sacred Rite: Wagtail's Tide`,
       content: `Raising her weapon on high, Candace calls upon a divine blessing that deals <b class="text-genshin-hydro">AoE Hydro DMG</b> based on her Max HP and continuously confers the <b class="text-genshin-hydro">Prayer of the Crimson Crown</b> on your active character.

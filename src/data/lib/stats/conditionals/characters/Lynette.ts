@@ -21,6 +21,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Rapid Ritesword`,
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Enigmatic Feint`,
       content: `Flicks her mantle and executes an <b>Enigma Thrust</b>, dealing <b class="text-genshin-anemo">Anemo DMG</b>.
@@ -56,6 +58,7 @@ const Lynette = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Linette_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Magic Trick: Astonishing Shift`,
       content: `Lynette raises her mantle high, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>, using skillful sleight of hand to make a giant <b class="text-genshin-anemo">Bogglecat Box</b> appear!

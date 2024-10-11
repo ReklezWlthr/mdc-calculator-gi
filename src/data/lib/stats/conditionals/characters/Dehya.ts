@@ -18,6 +18,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Sandstorm Assault`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Molten Inferno`,
       content: `This art of Dehya's own invention changes its method of use depending on the combat situation.
@@ -57,6 +59,7 @@ const Dehya = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Dehya_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Leonine Bite`,
       content: `Unleashing her burning anger and casting her inconvenient blade aside, Dehya enters the <b class="text-genshin-pyro">Blazing Lioness</b> state and increases her resistance to interruption.

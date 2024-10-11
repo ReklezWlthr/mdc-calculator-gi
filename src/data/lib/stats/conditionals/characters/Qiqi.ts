@@ -18,6 +18,7 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Ancient Sword Art`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Adeptus Art: Herald of Frost`,
       content: `Using the Icevein Talisman, Qiqi brings forth the <b class="text-genshin-cryo">Herald of Frost</b>, dealing <b class="text-genshin-cryo">Cryo DMG</b> to surrounding opponents.
@@ -44,6 +46,7 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Qiqi_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Adeptus Art: Preserver of Fortune`,
       content: `Qiqi releases the adeptus power sealed within her body, marking nearby opponents with a <b class="text-genshin-cryo">Fortune-Preserving Talisman</b> that deals <b class="text-genshin-cryo">Cryo DMG</b>.
@@ -164,16 +167,18 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.2417, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.2468, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '5-Hit',
@@ -184,10 +189,11 @@ const Qiqi = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
       base.CHARGE_SCALING = [
         {
-          name: 'Charged Attack DMG [x2]',
+          name: 'Charged Attack DMG',
           value: [{ scaling: calcScaling(0.6433, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
+          hit: 2,
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('base', normal)

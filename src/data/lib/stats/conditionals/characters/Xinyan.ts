@@ -18,6 +18,7 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Dance on Fire`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Sweeping Fervor`,
       content: `Xinyan brandishes her instrument, dealing <b class="text-genshin-pyro">Pyro DMG</b> on nearby opponents, forming a shield made out of her audience's passion.
@@ -48,6 +50,7 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Xinyan_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Riff Revolution`,
       content: `Strumming rapidly, Xinyan launches nearby opponents and deals <b>Physical DMG</b> to them, hyping up the crowd.
@@ -169,10 +172,11 @@ const Xinyan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.9546, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',

@@ -18,6 +18,7 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Supplicant's Bowmanship`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Floral Brush`,
       content: `Throws out a Floral Ring that deals <span class="text-desc">1</span> instance of <b class="text-genshin-dendro">Dendro DMG</b> to targets it comes into contact with.
@@ -41,6 +43,7 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Collei_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Trump-Card Kitty`,
       content: `Trusty Cuilein-Anbar comes to save the day!
@@ -189,7 +192,7 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
 
       base.SKILL_SCALING = [
         {
-          name: 'Skill DMG [x2]',
+          name: 'Skill DMG',
           value: [{ scaling: calcScaling(1.512, skill, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
@@ -203,10 +206,11 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.BURST,
         },
         {
-          name: `Leap DMG [x12]`,
+          name: `Leap DMG`,
           value: [{ scaling: calcScaling(0.4325, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.BURST,
+          hit: 12,
         },
       ]
 

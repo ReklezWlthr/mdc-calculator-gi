@@ -21,6 +21,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Targeted Treatment`,
       content: `<b>Normal Attack</b>
@@ -36,6 +37,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Rebound Hydrotherapy`,
       content: `Blows a <b>Bolstering Bubblebalm</b> that can stimulate blood flow and help patients drift off to sleep using a bubblegun specially made in the Fortress of Meropide.
@@ -57,6 +59,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Sigewinne_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Super Saturated Syringing`,
       content: `Takes out a special Fortress of Meropide-made syringe and assault the area in front with waves of kindness and medicine, dealing <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Sigewinne's max HP.

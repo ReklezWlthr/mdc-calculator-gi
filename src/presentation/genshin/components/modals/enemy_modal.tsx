@@ -3,7 +3,6 @@ import { Element } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import _ from 'lodash'
 import classNames from 'classnames'
-import { BaseElementColor } from './tables/scaling_sub_rows'
 import { toPercentage } from '@src/core/utils/converter'
 import { observer } from 'mobx-react-lite'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
@@ -12,8 +11,10 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { EnemyGroups } from '@src/data/db/enemies'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { findEnemy } from '@src/core/utils/finder'
+import { BaseElementColor } from '@src/core/utils/damageStringConstruct'
+import React from 'react'
 
-export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; compare?: boolean }) => {
+export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
   const { calculatorStore, teamStore } = useStore()
   const store = compare ? calculatorStore : calculatorStore
   const { res, level, computedStats, selected, enemy } = store

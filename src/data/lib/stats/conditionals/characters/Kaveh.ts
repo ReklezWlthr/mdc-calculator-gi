@@ -18,6 +18,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Schematic Setup`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Artistic Ingenuity`,
       content: `Uses Mehrak's mapping ability for offensive purposes, initiating a radial scan that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>. It will also scan all <b class="text-genshin-dendro">Dendro Cores</b> in its AoE and cause them to immediately burst.
@@ -40,6 +42,7 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Kaveh_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Painted Dome`,
       content: `Completely unleashes Mehrak's energy and creates a cubic scanned space, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b> to all opponents within it, causing all <b class="text-genshin-dendro">Dendro Cores</b> in its AoE to immediately burst, and granting Kaveh the following enhanced combat abilities for a specific duration:

@@ -19,6 +19,7 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Spear of the Church`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Ravaging Confession`,
       content: `Rosaria swiftly shifts her position to appear behind her opponent, then stabs and slashes them with her polearm, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
@@ -41,6 +43,7 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Rosaria_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Rites of Termination`,
       content: `Rosaria's unique take on this prayer ritual: First, she swings her weapon to slash surrounding opponents; then, she summons a frigid Ice Lance that strikes the ground. Both actions deal <b class="text-genshin-cryo">Cryo DMG</b>.
@@ -172,10 +175,11 @@ const Rosaria = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.3182, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',

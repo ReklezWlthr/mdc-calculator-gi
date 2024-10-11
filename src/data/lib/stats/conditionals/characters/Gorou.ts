@@ -22,6 +22,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Ripping Fang Fletching`,
       content: `<b>Normal Attack</b>
@@ -36,6 +37,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Inuzaka All-Round Defense`,
       content: `Deals <b class="text-genshin-geo">AoE Geo DMG</b> and sets up a <b class="text-genshin-geo">General's War Banner</b>.
@@ -54,6 +56,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
       image: 'Skill_S_Gorou_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Juuga: Forward Unto Victory`,
       content: `Displaying his valor as a general, Gorou deals <b class="text-genshin-geo">AoE Geo DMG</b> and creates a field known as <b class="text-genshin-geo">General's Glory</b> to embolden his comrades.

@@ -14,6 +14,8 @@ export interface IScaling {
   cd?: number //Bonus crit dmg for each component
   defPen?: number //Only used by Yae
   self?: boolean //Define if self-heal
+  sum?: number
+  hit?: number
 }
 
 export interface IEnemyGroup {
@@ -35,6 +37,8 @@ export interface IWeaponContent {
 
 export interface IContent {
   type?: 'toggle' | 'number' | 'element' | 'multiple'
+  trace?: string
+  level?: number
   id: string
   text: string
   title: string

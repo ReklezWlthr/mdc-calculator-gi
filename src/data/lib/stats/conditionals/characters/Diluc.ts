@@ -18,6 +18,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Tempered Sword`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Searing Onslaught`,
       content: `Performs a forward slash that deals <b class="text-genshin-pyro">Pyro DMG</b>.
@@ -43,6 +45,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Diluc_01_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Dawn`,
       content: `Releases intense flames to knock back nearby opponents, dealing <b class="text-genshin-pyro">Pyro DMG</b>.

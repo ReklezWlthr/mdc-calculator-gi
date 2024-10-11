@@ -19,6 +19,7 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Yuuban Meigen`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Hanega: Song of the Wind`,
       content: `Concentrates the power of the winds to break free from the shackles of the earth, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b> before leaping into the air and entering the <b class="text-teal-200">Windfavored</b> state.
@@ -50,6 +52,7 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Wanderer_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Kyougen: Five Ceremonial Plays`,
       content: `Compresses the atmosphere into a singular vacuum that grinds all troubles away, dealing multiple instances of <b class="text-genshin-anemo">AoE Anemo DMG</b>. If the character is in the <b class="text-teal-200">Windfavored</b> state due to the skill <b>Hanega: Song of the Wind</b>, <b class="text-teal-200">Windfavored</b> state will end after casting.`,
@@ -191,11 +194,12 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           multiplier: windNormal,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.4764, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.NA,
           multiplier: windNormal,
+          hit: 2,
         },
       ]
       base.CHARGE_SCALING = [
@@ -219,10 +223,11 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       ]
       base.BURST_SCALING = [
         {
-          name: `Skill DMG [x5]`,
+          name: `Skill DMG`,
           value: [{ scaling: calcScaling(1.472, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.BURST,
+          hit: 5,
         },
       ]
       if (form.windfavored_pyro) base[Stats.P_ATK].push({ value: 0.3, name: 'Windfavored [Pyro]', source: `Self` })
@@ -230,7 +235,7 @@ const Wanderer = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
       if (a >= 4)
         base.SKILL_SCALING.push({
-          name: 'Wind Arrow DMG [x4]',
+          name: 'Wind Arrow DMG',
           value: [{ scaling: 0.35 + (c >= 1 ? 0.25 : 0), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.ADD,

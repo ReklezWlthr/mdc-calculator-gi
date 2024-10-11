@@ -19,6 +19,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Secret Spear of Wangsheng`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Guide to Afterlife`,
       content: `Only an unwavering flame can cleanse the impurities of this world.
@@ -53,6 +55,7 @@ const Hutao = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Hutao_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Spirit Soother`,
       content: `Commands a blazing spirit to attack, dealing <b class="text-genshin-pyro">Pyro DMG</b> in a large AoE.

@@ -21,6 +21,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Card Force Translocation`,
       content: `<b>Normal Attack</b>
@@ -49,6 +50,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Bewildering Lights`,
       content: `Lyney does a flourish with his hat, unleashing a firework surprise!
@@ -59,6 +61,7 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Liney_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Wondrous Trick: Miracle Parade`,
       content: `Unleashing his magic, Lyney turns himself into a <b>Grin-Malkin Cat</b> that can move around quickly. (Not to be mistaken for the <b class="text-red">Grin-Malkin Hat</b>. They're two different props!)
@@ -204,10 +207,11 @@ const Lyney = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.2726, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',

@@ -1,25 +1,29 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
-import { useState } from 'react'
-import { StatsObjectKeys } from '../../../data/lib/stats/baseConstant'
+import React, { useState } from 'react'
+import { StatsObjectKeys } from '../../../../data/lib/stats/baseConstant'
 import { Element, Stats } from '@src/domain/constant'
 import _ from 'lodash'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { CustomSetterT } from '@src/data/stores/setup_store'
 
-export const isFlat = (key: string) => _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], key) || _.includes(key, '_F_')
+export const isFlat = (key: string) =>
+  _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], key) || _.includes(key, '_F_')
 
-export const CustomModal = observer(({ index }: { index: number }) => {
+export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: CustomSetterT }) => {
   const { calculatorStore, modalStore } = useStore()
 
   const [selectedTab, setSelectedTab] = useState('stats')
   const [selectedElement, setSelectedElement] = useState(Element.PYRO)
   const [selectedTalent, setSelectedTalent] = useState('BASIC')
 
+  const set = setCustomValue || calculatorStore.setCustomValue
+
   const [key, setKey] = useState(StatsObjectKeys[Stats.ALL_DMG])
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState('0')
 
   const options = {
     stats: [
@@ -101,25 +105,19 @@ export const CustomModal = observer(({ index }: { index: number }) => {
   )
 
   const onAddMod = () => {
+    const v = parseFloat(value)
     if (selectedTab === 'stats') {
-      calculatorStore.setCustomValue(index, -1, StatsObjectKeys[key], value)
+      set(-1, StatsObjectKeys[key], v, true)
     }
     if (selectedTab === 'element') {
-      if (key === 'percentage')
-        calculatorStore.setCustomValue(index, -1, StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
-      if (key === 'flat')
-        calculatorStore.setCustomValue(
-          index,
-          -1,
-          StatsObjectKeys[`${selectedElement.toUpperCase()}_F_DMG`] as any,
-          value
-        )
+      if (key === 'percentage') set(-1, StatsObjectKeys[`${selectedElement} DMG%`] as any, v, true)
+      if (key === 'flat') set(-1, StatsObjectKeys[`${selectedElement.toUpperCase()}_F_DMG`] as any, v, true)
     }
     if (selectedTab === 'talent') {
-      calculatorStore.setCustomValue(index, -1, StatsObjectKeys[selectedTalent + key] as any, value)
+      set(-1, StatsObjectKeys[selectedTalent + key] as any, v, true)
     }
     if (_.includes(['reaction', 'debuff'], selectedTab)) {
-      calculatorStore.setCustomValue(index, -1, key as any, value, selectedTab === 'debuff')
+      set(-1, key as any, v, true, selectedTab === 'debuff')
     }
     modalStore.closeModal()
   }
@@ -172,7 +170,7 @@ export const CustomModal = observer(({ index }: { index: number }) => {
         <TextInput
           type="number"
           value={value?.toString()}
-          onChange={(v) => setValue(parseFloat(v))}
+          onChange={(v) => setValue(v)}
           style="col-start-3 !w-1/2 mx-auto"
         />
       </div>

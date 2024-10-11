@@ -19,6 +19,7 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Shadow-Hunting Spear (Custom)`,
       content: `<b>Normal Attack</b>
@@ -34,6 +35,7 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Fragrance Extraction`,
       content: `Creates a <b class="text-genshin-dendro">Lumidouce Case</b> that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>.
@@ -49,6 +51,7 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Emilie_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Aromatic Explication`,
       content: `Guiding the fragrances collected within the <b class="text-genshin-dendro">Case</b>, Emilie converts them into pure Dendro energy, creating a Level <span class="text-desc">3</span> <b class="text-genshin-dendro">Lumidouce Case</b> and stowing existing <b class="text-genshin-dendro">Cases</b> away.
@@ -151,10 +154,11 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
 
       base.BASIC_SCALING = [
         {
-          name: '1-Hit [x2]',
+          name: '1-Hit',
           value: [{ scaling: calcScaling(0.48561, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: form.emilie_c6 ? Element.DENDRO : Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '2-Hit',
@@ -169,10 +173,11 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.75103, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: form.emilie_c6 ? Element.DENDRO : Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
       ]
       base.CHARGE_SCALING = [
@@ -198,10 +203,11 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.SKILL,
         },
         {
-          name: 'Level 2 Lumidouce Case Attack DMG [x2]',
+          name: 'Level 2 Lumidouce Case Attack DMG',
           value: [{ scaling: calcScaling(0.84, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.SKILL,
+          hit: 2,
         },
         {
           name: 'Spiritbreath Thorn DMG',

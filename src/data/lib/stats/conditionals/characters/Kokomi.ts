@@ -19,6 +19,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `The Shape of Water`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Kurage's Oath`,
       content: `Summons a <b class="text-genshin-hydro">Bake-Kurage</b> created from water that can heal her allies.
@@ -44,6 +46,7 @@ const Kokomi = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Kokomi_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Nereid's Ascension`,
       content: `Summons the might of Watatsumi, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents, before robing Kokomi in a <b class="text-genshin-hydro">Ceremonial Garment</b> made from the flowing waters of Sangonomiya.

@@ -18,6 +18,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Shuumatsuban Ninja Blade`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Yoohoo Art: Fuuin Dash`,
       content: `The special technique of the Yoohoo Ninja Arts!
@@ -56,6 +58,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Sayu_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Yoohoo Art: Mujina Flurry`,
       content: `The other super special technique of the Yoohoo Ninja Arts! It summons a pair of helping hands for Sayu.
@@ -181,10 +184,11 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.434, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',

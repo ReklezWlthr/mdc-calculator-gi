@@ -19,6 +19,7 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Foreign Thundershock`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Lightning Blade`,
       content: `Unleashes three swift thunder shadows that deal <b class="text-genshin-electro">Electro DMG</b> to opponents and leave an <b class="text-violet-300">Abundance Amulet</b> behind after hitting an opponent.
@@ -46,6 +48,7 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_PlayerElectric_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Bellowing Thunder	`,
       content: `You call upon the protection of lightning, knocking nearby opponents back and dealing <b class="text-genshin-electro">Electro DMG</b> to them.

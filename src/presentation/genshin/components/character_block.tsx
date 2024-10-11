@@ -1,6 +1,6 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import React, { useCallback, useMemo } from 'react'
-import { CharacterModal } from './character_modal'
+import { CharacterModal } from './modals/character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { AscensionOptions, ConstellationOptions, ITeamChar, WeaponIcon } from '@src/domain/constant'

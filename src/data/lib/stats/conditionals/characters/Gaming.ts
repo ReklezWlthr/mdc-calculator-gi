@@ -18,6 +18,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Stellar Rend`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Bestial Ascent`,
       content: `Pounces forward using the Wushou arts, leaping high into the air after coming into contact with a target or surface.
@@ -45,6 +47,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Gaming_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Suanni's Gilded Dance`,
       content: `Gaming enters <b class="text-genshin-pyro">Wushou Stance</b>, briefly applying <b class="text-genshin-pyro">Pyro</b> to him, recovering a fixed amount of HP, and summons his companion, the Suanni Man Chai, to smash into his target, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
@@ -157,7 +160,7 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '2-Hit [1]',
+          name: '2-Hit',
           value: [{ scaling: calcScaling(0.7904, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
@@ -217,11 +220,12 @@ const Gaming = (c: number, a: number, t: ITalentLevel) => {
         a >= 1
           ? [
               {
-                name: 'Healing On Hit [x4]',
+                name: 'Healing On Hit',
                 value: [{ scaling: 0.015, multiplier: Stats.HP }],
                 element: TalentProperty.HEAL,
                 property: TalentProperty.HEAL,
                 self: true,
+                hit: 4,
               },
             ]
           : []

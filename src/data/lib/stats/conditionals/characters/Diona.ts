@@ -18,6 +18,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Kätzlein Style`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Icy Paws`,
       content: `Fires an <b>Icy Paw</b> that deals <b class="text-genshin-cryo">Cryo DMG</b> to opponents and forms a shield on hit.
@@ -49,6 +51,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Diona_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Signature Mix`,
       content: `Tosses out a special cold brew that deals <b class="text-genshin-cryo">AoE Cryo DMG</b> and creates a <b class="text-genshin-cryo">Drunken Mist</b> in an AoE.

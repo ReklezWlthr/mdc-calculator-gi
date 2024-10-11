@@ -19,6 +19,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Whisper of Water`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Let the Show Begin♪`,
       content: `Summons water droplets resembling musical notes that form a <b class="text-genshin-hydro">Melody Loop</b>, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents and applying the <b class="text-genshin-hydro">Wet</b> status to them.
@@ -46,6 +48,7 @@ const Barbara = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Barbara_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Shining Miracle♪`,
       content: `Heals your own party members and nearby teammates for a large amount of HP that scales with Barbara's Max HP.`,

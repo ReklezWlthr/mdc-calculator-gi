@@ -18,6 +18,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Garyuu Bladework`,
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Chihayaburu`,
       content: `Unleashes a secret technique as fierce as the rushing wind that pulls objects and opponents towards Kazuha's current position before launching opponents within the AoE, dealing <b class="text-genshin-anemo">Anemo DMG</b> and lifting Kazuha into the air on a rushing gust of wind.
@@ -53,6 +55,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Kazuha_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Kazuha Slash`,
       content: `The signature technique of Kazuha's self-styled bladework — a single slash that strikes with the force of the first winds of autumn, dealing <b class="text-genshin-anemo">AoE Anemo DMG</b>.
@@ -227,10 +230,11 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '5-Hit [x3]',
+          name: '5-Hit',
           value: [{ scaling: calcScaling(0.2537, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 3,
         },
       ]
       base.CHARGE_SCALING = [

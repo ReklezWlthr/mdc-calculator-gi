@@ -18,6 +18,7 @@ const Layla = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Sword of the Radiant Path`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Layla = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Nights of Formal Focus`,
       content: `Puts forth a shield known as the <b class="text-blue">Curtain of Slumber</b>, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
@@ -47,6 +49,7 @@ const Layla = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Layla_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Dream of the Star-Stream Shaker	`,
       content: `Unleashes a Celestial Dreamsphere that constantly fires <b>Starlight Slugs</b> at opponents within its AoE, dealing <b class="text-genshin-cryo">Cryo DMG</b>.

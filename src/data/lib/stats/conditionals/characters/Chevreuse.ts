@@ -24,6 +24,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Line Bayonet Thrust EX`,
       content: `<b>Normal Attack</b>
@@ -38,6 +39,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Short-Range Rapid Interdiction Fire`,
       content: `Chevreuse quickly shoulders her musket and fires at her opponent(s), dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.
@@ -54,6 +56,7 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       image: 'Skill_S_Chevreuse_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Ring of Bursting Grenades`,
       content: `Chevreuse fires an explosive grenade at opponents with her musket, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>. After the projectile hits, it will split into many secondary explosive shells.
@@ -264,10 +267,11 @@ const Chevreuse = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
 
       if (c >= 2)
         base.SKILL_SCALING.push({
-          name: 'C2 Chain Explosion [x2]',
+          name: 'C2 Chain Explosion',
           value: [{ scaling: 1.2, multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
+          hit: 2,
         })
 
       if (c >= 6)

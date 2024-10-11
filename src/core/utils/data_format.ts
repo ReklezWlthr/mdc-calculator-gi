@@ -10,8 +10,6 @@ import {
 } from '@src/domain/scaling'
 import _ from 'lodash'
 import { findCharacter } from './finder'
-import { ITalentDisplay } from '@src/domain/conditional'
-import { toPercentage } from './converter'
 
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0
@@ -190,3 +188,12 @@ export const formatWeaponString = (
     },
     detail
   )
+
+export const swapElement = (array: any[], index1: number, index2: number) => {
+  ;[array[index1], array[index2]] = [array[index2], array[index1]]
+  return array
+}
+
+export const padArray = (array: any[], length: number, fill: any) => {
+  return length > array.length ? array.concat(Array(length - array.length).fill(fill)) : array
+}

@@ -18,6 +18,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Liutian Archery`,
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Trail of the Qilin`,
       content: `Leaving a single <b class="text-genshin-cryo">Ice Lotus</b> behind, Ganyu dashes backward, shunning all impurity and dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
@@ -46,6 +48,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Ganyu_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Celestial Shower`,
       content: `Coalesces atmospheric frost and snow to summon a Sacred Cryo Pearl that exorcises evil.
@@ -235,7 +238,7 @@ const Ganyu = (c: number, a: number, t: ITalentLevel) => {
 
       base.SKILL_SCALING = [
         {
-          name: 'Skill DMG [x2]',
+          name: 'Skill DMG',
           value: [{ scaling: calcScaling(1.32, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.SKILL,

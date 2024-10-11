@@ -18,6 +18,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Steel Fang`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Claw and Thunder`,
       content: `Hunts his prey using the techniques taught to him by his master and his lupical.
@@ -49,6 +51,7 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Razor_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Lightning Fang`,
       content: `Summons the Wolf Within, which deals <b class="text-genshin-electro">Electro DMG</b> to all nearby opponents. This clears all of Razor's <b class="text-genshin-electro">Electro Sigils</b>, which will be converted into Elemental Energy for him.
@@ -212,10 +215,11 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x3]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(1.0331, normal, 'physical', '2'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 3,
         },
         {
           name: '4-Hit',
@@ -282,11 +286,12 @@ const Razor = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
             multiplier: calcScaling(0.24, burst, 'elemental', '1'),
           },
           {
-            name: '3-Hit [x3] Soul Companion',
+            name: '3-Hit Soul Companion',
             value: [{ scaling: calcScaling(1.0331, normal, 'physical', '2'), multiplier: Stats.ATK }],
             element: Element.ELECTRO,
             property: TalentProperty.ADD,
             multiplier: calcScaling(0.24, burst, 'elemental', '1'),
+            hit: 3,
           },
           {
             name: '4-Hit Soul Companion',

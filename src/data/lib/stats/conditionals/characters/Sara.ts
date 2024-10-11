@@ -18,6 +18,7 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Tengu Bowmanship`,
       content: `<b>Normal Attack</b>
@@ -34,6 +35,7 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Tengu Stormcall`,
       content: `Retreats rapidly with the speed of a tengu, summoning the protection of the Crowfeather.
@@ -44,6 +46,7 @@ const Sara = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Sara_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Subjugation: Koukou Sendou`,
       content: `Casts down <b>Tengu Juurai: Titanbreaker</b>, dealing <b class="text-genshin-electro">AoE Electro DMG</b>. Afterwards, <b>Tengu Juurai: Titanbreaker</b> spreads out into 4 consecutive bouts of <b>Tengu Juurai: Stormcluster</b>, dealing <b class="text-genshin-electro">AoE Electro DMG</b>.

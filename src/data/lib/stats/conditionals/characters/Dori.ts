@@ -18,6 +18,7 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Marvelous Sword-Dance (Modified)`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Spirit-Warding Lamp: Troubleshooter Cannon`,
       content: `Directs a Spirit-Warding Lamp to fire off a <b>Troubleshooter Shot</b> at opponents, dealing <b class="text-genshin-electro">Electro DMG</b>.
@@ -41,6 +43,7 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Dori_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Alcazarzaray's Exactitude`,
       content: `Summons forth the <b class="text-genshin-electro">Jinni</b> within the lamp to give the client various kinds of aid.

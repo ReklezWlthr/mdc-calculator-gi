@@ -19,6 +19,7 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Cooling Treatment`,
       content: `<b>Normal Attack</b>
@@ -31,6 +32,7 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Surfshark Wavebreaker`,
       content: `Combining her mastery of speed and the waves and water, Mualani can surf anytime, anywhere.
@@ -46,6 +48,7 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Mualani_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Boomsharka-laka`,
       content: `Fires a Super Shark Missile that can track opponents, dealing Nightsoul-aligned <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Mualani's Max HP.`,

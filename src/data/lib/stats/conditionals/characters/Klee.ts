@@ -19,6 +19,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Kaboom!`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Jumpy Dumpty`,
       content: `Jumpy Dumpty is tons of boom-bang-fun!
@@ -46,6 +48,7 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Klee_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Sparks 'n' Splash`,
       content: `Klee's Blazing Delight! For the duration of this ability, continuously summons <b>Sparks 'n' Splash</b> to attack nearby opponents, dealing <b class="text-genshin-pyro">AoE Pyro DMG</b>.`,
@@ -180,13 +183,13 @@ const Klee = (c: number, a: number, t: ITalentLevel) => {
       base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal, Element.PYRO)
       base.SKILL_SCALING = [
         {
-          name: 'Jumpy Dumpty DMG [x3]',
+          name: 'Jumpy Dumpty DMG',
           value: [{ scaling: calcScaling(0.952, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,
         },
         {
-          name: 'Mine DMG [x8]',
+          name: 'Mine DMG',
           value: [{ scaling: calcScaling(0.328, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.SKILL,

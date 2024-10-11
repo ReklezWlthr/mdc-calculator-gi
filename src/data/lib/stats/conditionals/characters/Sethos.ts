@@ -18,6 +18,7 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Royal Reed Archery`,
       content: `<b>Normal Attack</b>
@@ -35,12 +36,14 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Ancient Rite: The Thundering Sands`,
       content: `Gathers the might of thunder, dealing <b class="text-genshin-electro">AoE Electro DMG</b> and quickly retreating. If this attack triggers Electro-Charged, Superconduct, Overloaded, Quicken, Aggravate, or Electro Swirl reactions, Sethos recovers a certain amount of Elemental Energy.`,
       image: 'Skill_S_Sethos_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Secret Rite: Twilight Shadowpiercer`,
       content: `Perform a secret rite, entering the <b class="text-genshin-electro">Twilight Meditation</b> state, during which Sethos's Normal Attacks will be converted into enemy-piercing <b class="text-indigo-400">Dusk Bolts</b>: Deal <b class="text-genshin-electro">Electro DMG</b> to opponents in its path, with DMG increased based on Sethos's Elemental Mastery.

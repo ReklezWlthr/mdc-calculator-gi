@@ -19,6 +19,7 @@ const TravelerGrass = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Foreign Fieldcleaver`,
       content: `<b>Normal Attack</b>
@@ -32,12 +33,14 @@ const TravelerGrass = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Razorgrass Blade`,
       content: `With a flourish of your blade, you unleash a spray of razor-sharp leaves that go before you and deal <b class="text-genshin-dendro">Dendro DMG</b>.
       `,
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Surgent Manifestation`,
       content: `Calling upon the might of the flora all around you, you create a Lea Lotus Lamp.

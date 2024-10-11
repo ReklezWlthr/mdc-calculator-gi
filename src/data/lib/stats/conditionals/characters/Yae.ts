@@ -19,6 +19,7 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Spiritfox Sin-Eater`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Yakan Evocation: Sesshou Sakura`,
       content: `To Yae, such dull tasks as can be accomplished by driving spirits out need not be done personally.
@@ -49,6 +51,7 @@ const Yae = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Yae_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Great Secret Art: Tenko Kenshin`,
       content: `Legends of "kitsunetsuki," or the manifestations of a kitsune's might, are common in Inazuma's folktales. One that particularly captures the imagination is that of the Sky Kitsune, said to cause lightning to fall down upon the foes of the Grand Narukami Shrine. Summons a lightning strike, dealing <b class="text-genshin-electro">Electro DMG</b>.

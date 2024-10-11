@@ -8,6 +8,7 @@ export enum GenshinPage {
   BUILD = 'build',
   INVENTORY = 'inventory',
   CHAR = 'char',
+  COMPARE = 'compare',
 }
 
 export enum Tags {
@@ -71,6 +72,7 @@ export interface IBuild {
   isDefault: boolean
   weapon: IWeaponEquip
   artifacts: string[]
+  note?: string
 }
 
 export interface IArtifact {

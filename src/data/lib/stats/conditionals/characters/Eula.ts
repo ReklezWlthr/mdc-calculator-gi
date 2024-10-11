@@ -18,6 +18,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Favonius Bladework - Edel`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Icetide Vortex`,
       content: `Sharp frost, swift blade.
@@ -52,6 +54,7 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Eula_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Glacial Illumination`,
       content: `Brandishes her greatsword, dealing <b class="text-genshin-cryo">Cryo DMG</b> to nearby opponents and creating a <b class="text-genshin-cryo">Lightfall Sword</b> that follows her around for a duration of up to <span class="text-desc">7</span>s.
@@ -187,16 +190,17 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '2-Hit [1]',
+          name: '2-Hit',
           value: [{ scaling: calcScaling(0.9355, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.568, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',
@@ -205,10 +209,11 @@ const Eula = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '5-Hit [x2]',
+          name: '5-Hit',
           value: [{ scaling: calcScaling(0.7183, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
       ]
       base.CHARGE_SCALING = [

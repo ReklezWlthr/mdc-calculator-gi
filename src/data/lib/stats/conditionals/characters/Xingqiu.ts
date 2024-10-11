@@ -19,6 +19,7 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Guhua Style`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Guhua Sword: Fatal Rainscreen`,
       content: `Xingqiu performs twin strikes with his sword, dealing <b class="text-genshin-hydro">Hydro DMG</b>. At the same time, this ability creates the maximum number of <b class="text-blue">Rain Swords</b>, which will orbit your active character.
@@ -49,6 +51,7 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Xingqiu_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Guhua Sword: Raincutter`,
       content: `Initiate <b>Rainbow Bladework</b> and fight using an illusory sword rain, while creating the maximum number of <b class="text-blue">Rain Swords</b>.
@@ -170,10 +173,11 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.2855, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',
@@ -182,10 +186,11 @@ const Xingqiu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '5-Hit [x2]',
+          name: '5-Hit',
           value: [{ scaling: calcScaling(0.3586, normal, 'physical', '1_alt'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
       ]
       base.CHARGE_SCALING = [

@@ -22,6 +22,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Oath of Hunting Shadows`,
       content: `<b>Normal Attack</b>
@@ -36,6 +37,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Hunter's Vigil`,
       content: `Preparing her pistolet, she enters the <b class="text-violet-400">Night Vigil</b> state, using steel and shot together. In this state, Clorinde's Normal Attacks will be transformed into <b>Swift Hunt</b> pistolet attacks, and the DMG dealt is converted into <b class="text-genshin-electro">Electro DMG</b> that cannot be overridden by infusions, and she will be unable to use Charged Attacks. Using her Elemental Skill will transform it into <b>Impale the Night</b>: Perform a lunging attack, dealing <b class="text-genshin-electro">Electro DMG</b>. The DMG done through the aforementioned method is considered Normal Attack DMG.
@@ -60,6 +62,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Clorinde_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Last Lightfall`,
       content: `Grants herself a <b class="text-genshin-bol">Bond of Life</b> based upon her own max HP before swiftly evading and striking with saber and sidearm as one, dealing <b class="text-genshin-electro">AoE Electro DMG</b>.`,
@@ -229,16 +232,18 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
               property: TalentProperty.NA,
             },
             {
-              name: '3-Hit [x2]',
+              name: '3-Hit',
               value: [{ scaling: calcScaling(0.3419, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 2,
             },
             {
-              name: '4-Hit [x3]',
+              name: '4-Hit',
               value: [{ scaling: calcScaling(0.2313, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 3,
             },
             {
               name: '5-Hit',
@@ -260,7 +265,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       base.PLUNGE_SCALING = getPlungeScaling('base', normal)
       base.SKILL_SCALING = [
         {
-          name: form.clorinde_bol >= 100 ? 'Impale the Night: Pact DMG [x3]' : 'Impale the Night DMG',
+          name: form.clorinde_bol >= 100 ? 'Impale the Night: Pact DMG' : 'Impale the Night DMG',
           value: [
             {
               scaling: calcScaling(
@@ -274,6 +279,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
           ],
           element: Element.ELECTRO,
           property: TalentProperty.NA,
+          hit: form.clorinde_bol >= 100 ? 3 : 1,
         },
         {
           name: 'Surging Blade DMG',
@@ -284,10 +290,11 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.BURST_SCALING = [
         {
-          name: 'Skill DMG [x5]',
+          name: 'Skill DMG',
           value: [{ scaling: calcScaling(1.2688, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.BURST,
+          hit: 5,
         },
       ]
 
@@ -306,10 +313,11 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
         base[Stats.CRIT_RATE].push({ value: form.clorinde_a4 * 0.1, name: 'Ascension 4 Passive', source: 'Self' })
       if (c >= 1 && form.clorinde_skill)
         base.BASIC_SCALING.push({
-          name: 'Nightvigil Shade DMG [x2]',
+          name: 'Nightvigil Shade DMG',
           value: [{ scaling: 0.3, multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.NA,
+          hit: 2,
         })
       if (c >= 4 && form.clorinde_bol)
         base.BURST_DMG.push({

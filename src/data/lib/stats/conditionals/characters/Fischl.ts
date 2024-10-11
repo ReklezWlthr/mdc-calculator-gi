@@ -18,6 +18,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Bolts of Downfall`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Nightrider`,
       content: `Summons Oz. The night raven forged of darkness and lightning descends upon the land, dealing <b class="text-genshin-electro">Electro DMG</b> in a small AoE.
@@ -43,6 +45,7 @@ const Fischl = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Fischl_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Midnight Phantasmagoria`,
       content: `Summons Oz to spread his twin wings of twilight and defend Fischl.

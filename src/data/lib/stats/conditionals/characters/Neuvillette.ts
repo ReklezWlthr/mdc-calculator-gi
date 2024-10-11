@@ -19,6 +19,7 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `As Water Seeks Equilibrium`,
       content: `<b>Normal Attack</b>
@@ -43,6 +44,7 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `O Tears, I Shall Repay`,
       content: `Summons a Raging Waterfall that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> to opponents in front of Neuvillette based on his Max HP. After hitting an opponent, this skill will generate <span class="text-desc">3</span> <b class="text-blue">Sourcewater Droplets</b> near that opponent.
@@ -53,6 +55,7 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Neuvillette_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `O Tides, I Have Returned`,
       content: `Unleashes waves that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Neuvillette's Max HP. After a short interval, <span class="text-desc">2</span> waterfalls will descend and deal <b class="text-genshin-hydro">Hydro DMG</b> in a somewhat smaller AoE, and will generate <span class="text-desc">6</span> <b class="text-blue">Sourcewater Droplets</b> within an area in front.`,
@@ -229,10 +232,11 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.BURST,
         },
         {
-          name: `Waterfall DMG [x2]`,
+          name: `Waterfall DMG`,
           value: [{ scaling: calcScaling(0.0911, burst, 'elemental', '1'), multiplier: Stats.HP }],
           element: Element.HYDRO,
           property: TalentProperty.BURST,
+          hit: 2,
         },
       ]
 
@@ -247,12 +251,13 @@ const Neuvillette = (c: number, a: number, t: ITalentLevel) => {
 
       if (c >= 6)
         base.CHARGE_SCALING.push({
-          name: 'C6 Additional Currents [x2]',
+          name: 'C6 Additional Currents',
           value: [{ scaling: 0.1, multiplier: Stats.HP }],
           element: Element.HYDRO,
           property: TalentProperty.CA,
           multiplier: a1Bonus,
           cd: c >= 2 ? form.neuv_a1 * 0.14 : 0,
+          hit: 2,
         })
 
       return base

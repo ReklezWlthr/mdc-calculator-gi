@@ -18,6 +18,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Flowing Eddies`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Pressurized Floe`,
       content: `Performs an upward thrust that deals <b class="text-genshin-cryo">Cryo DMG</b> and causes Freminet to enter <b class="text-genshin-cryo">Pers Timer</b> for <span class="text-desc">10</span>s.
@@ -54,6 +56,7 @@ const Freminet = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Freminet_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Shadowhunter's Ambush`,
       content: `Unleashes a wave of untouchable cold, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>, resetting the CD of the Elemental Skill <b>Pressurized Floe</b>, and causing Freminet to enter the <b class="text-genshin-cryo">Subnautical Hunter</b> mode for <span class="text-desc">10</span>s.

@@ -4,23 +4,26 @@ import { Stats, TravelerIconName, WeaponIcon } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import React, { useCallback, useState } from 'react'
-import { ElementColor, ScalingSubRows } from '../components/tables/scaling_sub_rows'
+import { ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
 import { CharacterSelect } from '../components/character_select'
 import { ConsCircle } from '../components/cons_circle'
-import { ConditionalBlock } from '../components/conditional_block'
+import { ConditionalBlock } from '../components/conditionals/conditional_block'
 import classNames from 'classnames'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { AscensionIcons } from '../components/ascension_icons'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { EnemyModal } from '../components/enemy_modal'
+import { EnemyModal } from '../components/modals/enemy_modal'
 import { ReactionTooltip } from '../components/tables/reaction_tooltip'
-import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
+import { WeaponConditionalBlock } from '../components/conditionals/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
 import { CrystallizeTooltip } from '../components/tables/crystallize_tooltip'
-import { CustomConditionalBlock } from '../components/custom_conditional_block'
-import { StatsModal } from '../components/stats_modal'
+import { CustomConditionalBlock } from '../components/conditionals/custom_conditional_block'
+import { StatsModal } from '../components/modals/stats_modal'
+import { ElementColor } from '@src/core/utils/damageStringConstruct'
+import { BaseReactionDmg } from '@src/domain/scaling'
+import { SelectInput } from '@src/presentation/components/inputs/select_input'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -33,7 +36,7 @@ export const Calculator = observer(({}: {}) => {
 
   const { main, mainComputed, contents, transformative, finalStats } = useCalculator({})
 
-  const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal stats={mainComputed} />), [mainComputed])
+  const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [mainComputed])
 
   const iconCodeName = charData?.codeName === 'Player' ? TravelerIconName[charData.element] : charData?.codeName
 
@@ -48,27 +51,38 @@ export const Calculator = observer(({}: {}) => {
         <div className="col-span-2">
           <div className="flex items-center">
             <div className="flex justify-center w-full gap-4 pt-1 pb-3">
-              {_.map(teamStore?.characters, (item, index) => {
-                const x = findCharacter(item.cId)?.codeName
-                const y = x === 'Player' ? settingStore.settings.travelerGender : x
-                return (
-                  <CharacterSelect
-                    key={`char_select_${index}`}
-                    onClick={() => calculatorStore.setValue('selected', index)}
-                    isSelected={index === selected}
-                    codeName={y}
-                  />
-                )
-              })}
+              {_.map(teamStore?.characters, (item, index) => (
+                <CharacterSelect
+                  key={`char_select_${index}`}
+                  onClick={() => calculatorStore.setValue('selected', index)}
+                  isSelected={index === selected}
+                  codeName={findCharacter(item.cId)?.codeName}
+                />
+              ))}
             </div>
             <PrimaryButton onClick={onOpenEnemyModal} title="Enemy Setting" style="whitespace-nowrap" />
           </div>
           {teamStore?.characters[selected]?.cId ? (
             <>
               <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
-                <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
-                  Damage Calculation
-                </p>
+                <div className="flex items-center justify-between px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
+                  <div className="w-full" />
+                  <p className="shrink-0">Damage Calculation</p>
+                  <div className="flex items-center justify-end w-full gap-1">
+                    <p className="text-sm font-semibold">Mode:</p>
+                    <SelectInput
+                      small
+                      options={[
+                        { name: 'Single-Hit', value: 'single' },
+                        { name: 'Total DMG', value: 'total' },
+                      ]}
+                      onChange={(v) => calculatorStore.setValue('mode', v)}
+                      value={calculatorStore.mode}
+                      style="w-fit"
+                      placeholder="Select Mode"
+                    />
+                  </div>
+                </div>
                 <div className="flex justify-end w-full mb-1.5 bg-primary-dark">
                   <div className="grid w-4/5 grid-cols-8 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
                     <p className="col-span-2">Property</p>
@@ -161,13 +175,13 @@ export const Calculator = observer(({}: {}) => {
                   </div>
                   <div className="py-1 rounded-b-lg bg-primary-darker">
                     {_.map(transformative, (item) => {
-                      const base = item.base * item.mult * (1 + item.emBonus + item.dmg)
+                      const base = BaseReactionDmg[char.level - 1] * item.mult * (1 + item.emBonus + item.dmg)
                       return (
                         <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
                           <p className="col-span-3 font-bold">{item.name}</p>
                           <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
                           <div className="col-span-2 text-start">
-                            <ReactionTooltip {...item} />
+                            <ReactionTooltip {...item} base={BaseReactionDmg[char.level - 1]} />
                           </div>
                           <p
                             className={classNames('col-span-2', {
@@ -175,7 +189,7 @@ export const Calculator = observer(({}: {}) => {
                             })}
                           >
                             {item.amp > 1 || item.add || item.cd
-                              ? _.round((base + item.add) * (1 + item.cd) * item.amp)
+                              ? _.round((base + item.add) * (1 + item.cd) * item.amp).toLocaleString()
                               : '-'}
                           </p>
                         </div>
@@ -232,7 +246,8 @@ export const Calculator = observer(({}: {}) => {
               />
               <ConditionalBlock title="Self Conditionals" contents={_.filter(contents.main, 'show')} />
               <ConditionalBlock title="Team Conditionals" contents={_.filter(contents.team, 'show')} />
-              <WeaponConditionalBlock contents={contents.weapon(selected)} index={selected} />
+              <WeaponConditionalBlock contents={contents.weapon(selected)} />
+              <ConditionalBlock title="Artifact Modifiers" contents={contents.artifact(selected)} />
               <CustomConditionalBlock index={selected} />
             </>
           )}
@@ -244,8 +259,8 @@ export const Calculator = observer(({}: {}) => {
                 </p>
                 <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
               </div>
-              <StatBlock index={selected} stat={computedStats[selected]} />
-              <div className="w-[252px]">
+              <StatBlock stat={computedStats[selected]} />
+              <div className="w-[252px] mt-2">
                 <AscensionIcons
                   talents={main?.talents}
                   codeName={iconCodeName}

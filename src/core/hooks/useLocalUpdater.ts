@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 export const useLocalUpdater = (game: string) => {
   const router = useRouter()
-  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore } = useStore()
+  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore, setupStore } = useStore()
   const [data, setData] = useState(null)
   const [hydrated, setHydrated] = useState(false)
 
@@ -14,10 +14,11 @@ export const useLocalUpdater = (game: string) => {
 
   const updateData = (data: string) => {
     const json = JSON.parse(data)
-    teamStore.hydrateCharacters(json?.team)
-    artifactStore.hydrateArtifacts(json?.artifacts)
-    buildStore.hydrateBuilds(json?.builds)
-    charStore.hydrateCharacters(json?.characters)
+    json?.team && teamStore.hydrateCharacters(json?.team)
+    json?.artifacts && artifactStore.hydrateArtifacts(json?.artifacts)
+    json?.builds && buildStore.hydrateBuilds(json?.builds)
+    json?.characters && charStore.hydrateCharacters(json?.characters)
+    json?.setup && setupStore.hydrateTeams(json?.setup)
     setData(data)
   }
 
@@ -25,6 +26,7 @@ export const useLocalUpdater = (game: string) => {
     const json = JSON.parse(data)
     settingStore.setSettingValue(json)
     calculatorStore.setValue('level', json?.defaultEnemyLevel || 1)
+    setupStore.setValue('level', json?.defaultEnemyLevel || 1)
   }
 
   useEffect(() => {
@@ -32,6 +34,10 @@ export const useLocalUpdater = (game: string) => {
     //   return 'Your changes may not be saved. You can turn on Auto Save in Settings'
     // }
   }, [])
+
+  // useEffect(() => {
+  //   calculatorStore.setValue('team', _.cloneDeep(teamStore?.characters))
+  // }, [...teamStore.characters])
 
   useEffect(() => {
     if (hydrated && settingStore.settings.storeData) {
@@ -42,6 +48,7 @@ export const useLocalUpdater = (game: string) => {
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
           characters: charStore.characters,
+          setup: setupStore.team,
         })
       )
     }
@@ -51,6 +58,7 @@ export const useLocalUpdater = (game: string) => {
     buildStore.builds,
     charStore.characters,
     settingStore.settings.storeData,
+    setupStore.team,
   ])
 
   useEffect(() => {

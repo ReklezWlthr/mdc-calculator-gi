@@ -26,3 +26,14 @@ export const compareWeight = (a: string, b: string) => {
 
   return aWeight - bWeight
 }
+
+export const findValidName = (names: string[], name: string, count: number = 0) => {
+  if (_.some(names, (n) => (count > 0 ? n === `${name} (${count})` : n === name))) {
+    return findValidName(names, name, count + 1)
+  } else {
+    return count > 0 ? `${name} (${count})` : name
+  }
+}
+
+export const checkInclusiveKey = (form: Record<string, any>, id: string) =>
+  _.some(form, (value, key) => !!value && _.startsWith(key, id))

@@ -18,6 +18,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Weaving Blade`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Gale Blade`,
       content: `Focusing the might of the formless wind around her blade, Jean releases a miniature storm, launching opponents in the direction she aims at, dealing massive <b class="text-genshin-anemo">Anemo DMG</b>.
@@ -45,6 +47,7 @@ const Jean = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Qin_02',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Dandelion Breeze`,
       content: `Calling upon the wind's protection, Jean creates a swirling <b class="text-genshin-anemo">Dandelion Field</b>, launching surrounding opponents and dealing <b class="text-genshin-anemo">Anemo DMG</b>.

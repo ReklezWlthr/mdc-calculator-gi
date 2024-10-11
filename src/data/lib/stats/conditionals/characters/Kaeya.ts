@@ -18,6 +18,7 @@ const Kaeya = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Ceremonial Bladework`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Kaeya = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Frostgnaw`,
       content: `Unleashes a frigid blast, dealing <b class="text-genshin-cryo">Cryo DMG</b> to opponents in front of Kaeya.
@@ -39,6 +41,7 @@ const Kaeya = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Kaeya_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Glacial Waltz`,
       content: `Coalescing the frost in the air, Kaeya summons <span class="text-desc">3</span> icicles that revolve around him.

@@ -18,6 +18,7 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Cutting Torrent`,
       content: `<b>Normal Attack</b>
@@ -39,6 +40,7 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Foul Legacy: Raging Tide`,
       content: `Unleashes a set of weaponry made of pure water, dealing <b class="text-genshin-hydro">Hydro DMG</b> to surrounding opponents and entering <b>Melee Stance</b>.
@@ -59,6 +61,7 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Tartaglia_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Havoc: Obliteration`,
       content: `Performs different attacks based on what stance Tartaglia is in when casting.
@@ -310,10 +313,11 @@ const Childe = (c: number, a: number, t: ITalentLevel) => {
 
       base.CHARGE_SCALING.push(
         {
-          name: 'Riptide Flash [x3]',
+          name: 'Riptide Flash',
           value: [{ scaling: calcScaling(0.124, normal, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.HYDRO,
           property: TalentProperty.NA,
+          hit: 3,
         },
         {
           name: 'Riptide Burst',

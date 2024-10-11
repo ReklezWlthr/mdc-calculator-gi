@@ -18,6 +18,7 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Rapid Fire`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Frozen Wilds`,
       content: `Aloy throws a <b>Freeze Bomb</b> in the targeted direction that explodes on impact, dealing <b class="text-genshin-cryo">Cryo DMG</b>. After it explodes, the <b>Freeze Bomb</b> will split up into many <b><b>Chillwater Bomblet</b>s</b> that explode on contact with opponents or after a short delay, dealing <b class="text-genshin-cryo">Cryo DMG</b>.
@@ -48,6 +50,7 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Aloy_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Prophecies of Dawn`,
       content: `Aloy throws a Power Cell filled with Cryo in the targeted direction, then detonates it with an arrow, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.

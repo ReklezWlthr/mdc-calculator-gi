@@ -19,6 +19,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Forceful Fists of Frost`,
       content: `<b>Normal Attack</b>
@@ -34,6 +35,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Icefang Rush`,
       content: `Adjusting his breathing, rhythm, and pace, Wriothesley sprints forward a short distance, entering the <b class="text-genshin-cryo">Chilling Penalty</b> state and unleashing more powerful attacks than before.
@@ -46,6 +48,7 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
       image: 'Skill_S_Wriothesley_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Darkgold Wolfbite`,
       content: `Activating his boxing gloves, Wriothesley strikes out with an icy straight, then uses Icicle Impact to cause multiple instances of <b class="text-genshin-cryo">AoE Cryo DMG</b> in a frontal area.
@@ -204,11 +207,12 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
           multiplier: windNormal,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.379, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.NA,
           multiplier: windNormal,
+          hit: 2,
         },
         {
           name: '5-Hit',
@@ -232,10 +236,11 @@ const Wriothesley = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) =
       base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal, Element.CRYO)
       base.BURST_SCALING = [
         {
-          name: 'Skill DMG [x5]',
+          name: 'Skill DMG',
           value: [{ scaling: calcScaling(1.272, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.BURST,
+          hit: 5,
         },
         {
           name: 'Surging Blade DMG',

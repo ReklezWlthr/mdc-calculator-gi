@@ -19,6 +19,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Foreign Stream`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Aquacrest Saber`,
       content: `Unleashes a torrent that can cleanse the world.
@@ -49,6 +51,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
       `,
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Rising Waters`,
       content: `Unleashes a slow-moving floating bubble that deals continuous <b class="text-genshin-hydro">Hydro DMG</b> to nearby opponents.`,

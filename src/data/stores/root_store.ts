@@ -5,6 +5,7 @@ import { ImportStore } from './import_store'
 import { InventoryStoreType, Inventory } from './inventory_store'
 import { Modal, ModalStoreType } from './modal_store'
 import { SettingStore } from './setting_store'
+import { SetupStore, SetupStoreType } from './setup_store'
 import { Team, TeamStoreType } from './team_store'
 import { Toast, ToastStoreType } from './toast_store'
 // import { User, UserType } from './user_store'
@@ -19,6 +20,7 @@ interface RootStoreType {
   settingStore: SettingStore
   importStore: ImportStore
   toastStore: ToastStoreType
+  setupStore: SetupStoreType
   // userStore: UserType
 }
 
@@ -32,6 +34,7 @@ export class RootStore {
   settingStore: SettingStore
   importStore: ImportStore
   toastStore: ToastStoreType
+  setupStore: SetupStoreType
   // userStore: UserType
 
   constructor() {
@@ -44,6 +47,7 @@ export class RootStore {
     this.settingStore = new SettingStore()
     this.importStore = new ImportStore()
     this.toastStore = new Toast()
+    this.setupStore = new SetupStore()
     // this.userStore = new User()
   }
 
@@ -58,6 +62,7 @@ export class RootStore {
     this.settingStore.hydrate(data.settingStore)
     this.importStore.hydrate(data.importStore)
     this.toastStore.hydrate(data.toastStore)
+    this.setupStore.hydrate(data.setupStore)
     // this.userStore.hydrate(data.userStore)
   }
 }

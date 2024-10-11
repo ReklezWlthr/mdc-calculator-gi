@@ -18,6 +18,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Parthian Shot`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Wind Realm of Nasamjnin`,
       content: `Faruzan deploys a polyhedron that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to nearby opponents. She will also enter the <b class="text-genshin-anemo">Manifest Gale</b> state.
@@ -44,6 +46,7 @@ const Faruzan = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Faruzan_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `The Wind's Secret Ways`,
       content: `Faruzan deploys a Dazzling Polyhedron that unleashes a <b class="text-genshin-anemo">Whirlwind Pulse</b> and deals <b class="text-genshin-anemo">AoE Anemo DMG</b>.

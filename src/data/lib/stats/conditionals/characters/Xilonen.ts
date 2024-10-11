@@ -26,6 +26,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Ehecatl's Roar`,
       content: `<b>Normal Attack</b>
@@ -44,6 +45,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Yohual's Scratch`,
       content: `Let the rhythms of passion resound throughout the land! Xilonen switches to high-speed combat blading gear and rushes forward a certain distance before dealing Nightsoul-aligned <b class="text-genshin-geo">Geo DMG</b> based on her DEF.
@@ -65,6 +67,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Xilonen_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Ocelotlicue Point!`,
       content: `Activates the Phlogiston Stereo DJ Controller (Portable) at full power, dealing Nightsoul-aligned <b class="text-genshin-geo">AoE Geo DMG</b> based on Xilonen's DEF.
@@ -270,10 +273,11 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
               property: TalentProperty.NA,
             },
             {
-              name: '2-Hit [x2]',
+              name: '2-Hit',
               value: [{ scaling: calcScaling(0.27374, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 2,
             },
             {
               name: '3-Hit',

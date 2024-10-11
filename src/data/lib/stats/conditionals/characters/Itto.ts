@@ -21,6 +21,7 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Fight Club Legend`,
       content: `<b>Normal Attack</b>
@@ -40,6 +41,7 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Masatsu Zetsugi: Akaushi Burst!`,
       content: `Hurls Ushi, the young akaushi bull and auxiliary member of the Arataki Gang, dealing <b class="text-genshin-geo">Geo DMG</b> to opponents on hit.
@@ -59,6 +61,7 @@ const Itto = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Itto_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Royal Descent: Behold, Itto the Evil!`,
       content: `Time to show 'em the might of the Arataki Gang! For a time, Itto lets out his inner <b class="text-genshin-geo">Raging Oni King</b>, wielding his Oni King's Kanabou in battle.

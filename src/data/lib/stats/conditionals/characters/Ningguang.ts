@@ -19,6 +19,7 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Sparkling Scatter`,
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Jade Screen`,
       content: `Ningguang creates a <b class="text-genshin-geo">Jade Screen</b> out of gold, obsidian and her great opulence, dealing <b class="text-genshin-geo">AoE Geo DMG</b>.
@@ -48,6 +50,7 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Ningguang_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Starshatter`,
       content: `Gathering a great number of gems, Ningguang scatters them all at once, sending homing projectiles at her opponents that deal massive <b class="text-genshin-geo">Geo DMG</b>.
@@ -145,10 +148,11 @@ const Ningguang = (c: number, a: number, t: ITalentLevel) => {
 
       base.BASIC_SCALING = [
         {
-          name: 'Normal Attack DMG [x3]',
+          name: 'Normal Attack DMG',
           value: [{ scaling: calcScaling(0.28, normal, 'elemental', '1_alt'), multiplier: Stats.ATK }],
           element: Element.GEO,
           property: TalentProperty.NA,
+          hit: 3,
         },
       ]
       base.CHARGE_SCALING = [

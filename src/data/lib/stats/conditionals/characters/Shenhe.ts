@@ -19,6 +19,7 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Dawnstar Piercer`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Spring Spirit Summoning`,
       content: `The frosted dew, silvery and dense, shall exorcise all demons.
@@ -54,6 +56,7 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Shenhe_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Divine Maiden's Deliverance`,
       content: `Unleashes the power of the Talisman Spirit, allowing it to roam free in this plane, dealing <b class="text-genshin-cryo">AoE Cryo DMG</b>.
@@ -222,10 +225,11 @@ const Shenhe = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.2632, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '5-Hit',

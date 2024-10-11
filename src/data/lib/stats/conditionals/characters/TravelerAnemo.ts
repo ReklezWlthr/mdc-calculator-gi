@@ -19,6 +19,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Foreign Ironwind`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Palm Vortex`,
       content: `Grasping the wind's might, you form a vortex of vacuum in your palm, causing continuous <b class="text-genshin-anemo">Anemo DMG</b> to opponents in front of you.
@@ -48,6 +50,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_PlayerWind_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Gust Surge`,
       content: `Guiding the path of the wind currents, you summon a forward-moving tornado that pulls objects and opponents towards itself, dealing continuous <b class="text-genshin-anemo">Anemo DMG</b>.

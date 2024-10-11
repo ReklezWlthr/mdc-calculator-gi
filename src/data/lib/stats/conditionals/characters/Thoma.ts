@@ -19,6 +19,7 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Swiftshatter Spear`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Blazing Blessing`,
       content: `Thoma vaults forward with his polearm and delivers a flame-filled flying kick that deals <b class="text-genshin-pyro">AoE Pyro DMG</b>, while also summoning a defensive <b class="text-red">Blazing Barrier</b>. At the moment of casting, Thoma's Elemental Skill applies <b class="text-genshin-pyro">Pyro</b> to himself.
@@ -46,6 +48,7 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Tohma_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Crimson Ooyoroi`,
       content: `Thoma spins his polearm, slicing at his foes with roaring flames that deal <b class="text-genshin-pyro">AoE Pyro DMG</b> and weave themselves into a <b class="text-genshin-bol">Scorching Ooyoroi</b>.
@@ -170,10 +173,11 @@ const Thoma = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.2679, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',

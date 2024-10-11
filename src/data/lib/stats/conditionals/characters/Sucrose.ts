@@ -19,6 +19,7 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Wind Spirit Creation`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Astable Anemohypostasis Creation - 6308`,
       content: `Creates a small Wind Spirit that pulls opponents and objects towards its location, launches opponents within its AoE, and deals <b class="text-genshin-anemo">Anemo DMG</b>.
@@ -40,6 +42,7 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Sucrose_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Forbidden Creation - Isomer 75 / Type II`,
       content: `Sucrose hurls an unstable concoction that creates a Large Wind Spirit.

@@ -22,6 +22,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: "Soloist's Solicitation",
       content: `<b>Normal Attack</b>
@@ -41,6 +42,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: 'Salon Solitaire',
       content: `Invites the guests of the <b>Salon Solitaire</b> to come forth and aid in Furina's performance. Will summon either the <b>Salon Members</b> or the <b>Singer of Many Waters</b> based on Furina's current <b>Arkhe</b> alignment.
@@ -60,6 +62,7 @@ const Furina = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Furina_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: 'Let the People Rejoice',
       content: `Rouses the impulse to revel, creating a stage of foam that will deal <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Furina's Max HP and cause nearby party members to enter the <b class="text-genshin-hydro">Universal Revelry</b> state: During this time, when nearby party members' HP increases or decreases, <span class="text-desc">1</span> <b class="text-genshin-hydro">Fanfare</b> point will be granted to Furina for each percentage point of their Max HP by which their HP changes.

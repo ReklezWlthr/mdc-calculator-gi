@@ -23,6 +23,7 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Blunt Refusal`,
       content: `<b>Normal Attack</b>
@@ -38,6 +39,7 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Ceremonial Crystalshot`,
       content: `When a character in the party obtains an Elemental Shard created from the Crystallize reaction, Navia will gain <span class="text-desc">1</span> <b class="text-genshin-geo">Crystal Shrapnel</b> stack. Navia can have up to <span class="text-desc">6</span> stacks of <b class="text-genshin-geo">Crystal Shrapnel</b> at once. Each time <b class="text-genshin-geo">Crystal Shrapnel</b> gain is triggered, the duration of the <b class="text-genshin-geo">Crystal Shrapnel</b> stacks you already have will be reset.
@@ -56,6 +58,7 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Navia_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `As the Sunlit Sky's Singing Salute`,
       content: `On the orders of the President of the Spina di Rosula, call for a magnificent Rosula Dorata Salute. Unleashes a massive cannon bombardment on opponents in front of her, dealing <b class="text-genshin-geo">AoE Geo DMG</b> and providing <b>Cannon Fire Support</b> for a duration afterward, periodically dealing <b class="text-genshin-geo">Geo DMG</b> to nearby opponents.
@@ -184,10 +187,11 @@ const Navia = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x3]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.3489, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 3,
         },
         {
           name: '4-Hit',

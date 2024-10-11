@@ -18,6 +18,7 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Weaving Blade`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Fluttering Hasode`,
       content: `Dashes nimbly forward with silken steps. Once this dash ends, Chiori will summon the automaton doll <b class="text-genshin-geo">Tamoto</b> beside her and sweep her blade upward, dealing <b class="text-genshin-geo">AoE Geo DMG</b> to nearby opponents based on her ATK and DEF.
@@ -47,6 +49,7 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Chiori_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Hiyoku: Twin Blades`,
       content: `Twin blades leave their sheaths as Chiori slices with the clean cuts of a master tailor, dealing <b class="text-genshin-geo">AoE Geo DMG</b> based on her ATK and DEF.`,
@@ -176,10 +179,11 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.3042, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',
@@ -190,10 +194,11 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.CHARGE_SCALING = [
         {
-          name: 'Charged Attack DMG [x2]',
+          name: 'Charged Attack DMG',
           value: [{ scaling: calcScaling(0.5431, normal, 'physical', '1'), multiplier: Stats.ATK }, ...c6Scaling],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
+          hit: 2,
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('base', normal)

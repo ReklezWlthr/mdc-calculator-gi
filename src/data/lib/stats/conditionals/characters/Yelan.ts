@@ -21,6 +21,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Stealthy Bowshot`,
       content: `<b>Normal Attack</b>
@@ -39,6 +40,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Lingering Lifeline`,
       content: `Fires off a <b>Lifeline</b> that allows her to move rapidly, entangling and marking opponents along its path.
@@ -55,6 +57,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Yelan_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Depth-Clarion Dice`,
       content: `Deals <b class="text-genshin-hydro">AoE Hydro DMG</b> and creates an <b class="text-blue">Exquisite Throw</b>, which aids her in battle.
@@ -166,10 +169,11 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
       base.BASIC_SCALING = [
         {
-          name: '1-Hit [x2]',
+          name: '1-Hit',
           value: [{ scaling: calcScaling(0.4068, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '2-Hit',
@@ -184,10 +188,11 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.NA,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.3251, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
       ]
       base.CHARGE_SCALING = [
@@ -228,10 +233,11 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.BURST,
         },
         {
-          name: `Exquisite Throw DMG [x3]`,
+          name: `Exquisite Throw DMG`,
           value: [{ scaling: calcScaling(0.0487, burst, 'elemental', '1'), multiplier: Stats.HP }],
           element: Element.HYDRO,
           property: TalentProperty.BURST,
+          hit: 3,
         },
       ]
 

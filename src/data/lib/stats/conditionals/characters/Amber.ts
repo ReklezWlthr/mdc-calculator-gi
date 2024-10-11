@@ -18,6 +18,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Sharpshooter`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Explosive Puppet`,
       content: `The ever-reliable <b>Baron Bunny</b> takes the stage.
@@ -48,6 +50,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Ambor_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Fiery Rain`,
       content: `Fires off a shower of arrows, dealing continuous <b class="text-genshin-pyro">AoE Pyro DMG</b>.
@@ -147,7 +150,7 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
 
       base.BASIC_SCALING = [
         {
-          name: '1-Hit [x2]',
+          name: '1-Hit',
           value: [{ scaling: calcScaling(0.3612, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
@@ -203,18 +206,12 @@ const Amber = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.BURST_SCALING = [
         {
-          name: `Fiery Rain DMG Per Wave`,
+          name: `Fiery Rain DMG`,
           value: [{ scaling: calcScaling(0.2802, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.PYRO,
           property: TalentProperty.BURST,
           cr: a >= 1 ? 0.1 : 0,
-        },
-        {
-          name: `Total Fiery Rain DMG`,
-          value: [{ scaling: calcScaling(5.0544, burst, 'elemental', '1'), multiplier: Stats.ATK }],
-          element: Element.PYRO,
-          property: TalentProperty.BURST,
-          cr: a >= 1 ? 0.1 : 0,
+          hit: 18,
         },
       ]
 

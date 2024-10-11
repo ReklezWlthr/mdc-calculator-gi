@@ -19,6 +19,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Oceanborne`,
       content: `<b>Normal Attack</b>
@@ -34,6 +35,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Tidecaller`,
       content: `Nothing to worry about. Should anyone raise a hand against her or her men, she will avenge it ten-fold with sword and thunder.
@@ -51,6 +53,7 @@ const Beidou = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Beidou_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Stormbreaker`,
       content: `Recalling her slaying of the great beast Haishan, Beidou calls upon that monstrous strength and the lightning to create a <b class="text-genshin-electro">Thunderbeast's Targe</b> around herself, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.

@@ -19,6 +19,7 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Ripple of Fate`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Mirror Reflection of Doom`,
       content: `Creates an illusory <b>Phantom of Fate</b> from coalesced waterspouts.
@@ -51,6 +53,7 @@ const Mona = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Mona_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Stellaris Phantasm`,
       content: `Mona summons the sparkling waves and creates a reflection of the starry sky, applying the <b class="text-genshin-hydro">Illusory Bubble</b> status to opponents in a large AoE.

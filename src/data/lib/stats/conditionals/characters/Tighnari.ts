@@ -18,6 +18,7 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Khanda Barrier-Buster`,
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Vijnana-Phala Mine`,
       content: `Tighnari throws a Vijnana Stormheart ahead that deals <b class="text-genshin-dendro">AoE Dendro DMG</b>, creating a Vijnana-Khanda Field that creates mysterious illusions that taunt opponents and draw their fire.
@@ -42,6 +44,7 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Tighnari_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Fashioner's Tanglevine Shaft`,
       content: `Combines the power of all seeds to fire <span class="text-desc">6</span> <b>Tanglevine Shafts</b> that can track opponents and deal <b class="text-genshin-dendro">Dendro DMG</b>.
@@ -164,10 +167,11 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.2645, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',
@@ -214,16 +218,18 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.BURST_SCALING = [
         {
-          name: `Tanglevine Shaft DMG [x6]`,
+          name: `Tanglevine Shaft DMG`,
           value: [{ scaling: calcScaling(0.5562, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.BURST,
+          hit: 6,
         },
         {
-          name: `Secondary Tanglevine Shaft DMG [x6]`,
+          name: `Secondary Tanglevine Shaft DMG`,
           value: [{ scaling: calcScaling(0.6798, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.BURST,
+          hit: 6,
         },
       ]
 

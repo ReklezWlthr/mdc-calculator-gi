@@ -23,6 +23,7 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Cool-Color Capture`,
       content: `<b>Normal Attack</b>
@@ -40,6 +41,7 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Framing: Freezing Point Composition`,
       content: `Using the keen instincts of an ace reporter, Charlotte uses her photography skills to produce different effects based on whether the ability is Tapped or Held.
@@ -55,6 +57,7 @@ const Charlotte = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]
       image: 'Skill_S_Charlotte_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Still Photo: Comprehensive Confirmation`,
       content: `Condensing ice to create The Steambird's signature, Charlotte creates a <b>Newsflash Field</b> that will deal <b class="text-genshin-cryo">AoE Cryo DMG</b> and restores HP for all nearby party members based on Charlotte's ATK.

@@ -24,6 +24,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Phantom Feather Flurry`,
       content: `<b>Normal Attack</b>
@@ -39,6 +40,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Spirit Reins, Shadow Hunt`,
       content: `Chasca and the will residing in her weapon resonate, dealing Nightsoul-aligned <b class="text-genshin-anemo">AoE Anemo DMG</b>.
@@ -62,6 +64,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Chasca_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Soul Reaper's Fatal Round`,
       content: `Chasca concentrates her will, firing a single <b>Galesplitting Soulreaper Shell</b> that deals Nightsoul-aligned <b class="text-genshin-anemo">AoE Anemo DMG</b>. Afterward, the <b>Galesplitting Soulreaper</b> Shell will split into <span class="text-desc">6</span> <b class="text-violet-300">Soulreaper Shells</b>, which attack nearby opponents.
@@ -201,10 +204,11 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
               property: TalentProperty.NA,
             },
             {
-              name: '3-Hit [x2]',
+              name: '3-Hit',
               value: [{ scaling: calcScaling(0.29697, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 2,
             },
             {
               name: '4-Hit',

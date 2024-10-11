@@ -19,6 +19,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Spear of Favonius - Arrow's Passage`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Starfrost Swirl`,
       content: `Mika uses his crossbow to attack, granting all nearby characters in your party <b class="text-genshin-cryo">Soulwind</b>. When characters in the <b class="text-genshin-cryo">Soulwind</b> state are on the field, their ATK SPD will be increased.
@@ -47,6 +49,7 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Mika_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Skyfeather Song`,
       content: `Derives the ability to spur his teammates on from the recited prayers of the knightly order, regenerating HP for all nearby party members. This healing is based on Mika's Max HP and will grant them the <b class="text-blue">Eagleplume</b> state.
@@ -176,10 +179,11 @@ const Mika = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.2761, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '5-Hit',

@@ -23,6 +23,7 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Dance of Samser`,
       content: `<b>Normal Attack</b>
@@ -37,6 +38,7 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Dance of Haftkarsvar`,
       content: `Enters the Pirouette state, dealing <b class="text-genshin-hydro">Hydro DMG</b> to nearby opponents based on Nilou's Max HP.
@@ -51,6 +53,7 @@ const Nilou = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Nilou_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Dance of Abzendegi: Distant Dreams, Listening Spring`,
       content: `Begins the dance of faraway dreams and springs that hear, causing a Lotus of Distant Waters to bloom, dealing <b class="text-genshin-hydro">AoE Hydro DMG</b> based on Nilou's Max HP and applying the <b>Lingering Aeon</b> effect to all opponents hit.

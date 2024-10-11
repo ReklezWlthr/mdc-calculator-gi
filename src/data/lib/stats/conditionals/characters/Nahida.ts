@@ -42,6 +42,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: 'Akara',
       content: `<b>Normal Attack</b>
@@ -56,6 +57,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: 'All Schemes to Know',
       content: `Sends forth karmic bonds of wood and tree from her side, dealing <b class="text-genshin-dendro">AoE Dendro DMG</b> and marking up to <span class="text-desc">8</span> opponents hit with the <b class="text-genshin-dendro">Seed of Skandha</b>.
@@ -75,6 +77,7 @@ const Nahida = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Nahida_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: 'Illusory Heart',
       content: `Manifests the Court of Dreams and expands the <b>Shrine of Maya</b>.

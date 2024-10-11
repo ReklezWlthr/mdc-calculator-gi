@@ -24,6 +24,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `-`,
       content: `<b>Normal Attack</b>
@@ -40,6 +41,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_02',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `-`,
       content: `Tosses a <b>Graffiti Bomb</b> that will ricochet between nearby opponents, attacking them. Deals <b class="text-genshin-electro">Electro DMG</b>.
@@ -47,6 +49,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Olorun_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `-`,
       content: `Ororon summons a <b class="text-genshin-electro">Psionic Eye</b> that deals <b class="text-genshin-electro">AoE Electro DMG</b>.

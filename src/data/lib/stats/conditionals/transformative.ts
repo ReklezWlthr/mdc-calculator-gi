@@ -5,16 +5,14 @@ import { BaseReactionDmg } from '@src/domain/scaling'
 import _ from 'lodash'
 import { calcTransformative } from '@src/core/utils/data_format'
 
-const Transformative = (level: number, element: Element, stat: StatsObject, swirl: Element, nilou?: boolean) => {
+const Transformative = (element: Element, stat: StatsObject, swirl: Element, nilou?: boolean) => {
   const emBonus = calcTransformative(stat?.getEM() || 0)
-  const base = BaseReactionDmg[level - 1]
 
   return [
     {
       name: 'Swirl',
       element: swirl,
       show: element === Element.ANEMO,
-      base,
       mult: 0.6,
       emBonus,
       dmg: stat?.getValue(StatsObjectKeys.SWIRL_DMG),
@@ -34,7 +32,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Electro-Charged',
       element: Element.ELECTRO,
       show: _.includes([Element.HYDRO, Element.ELECTRO, Element.ANEMO], element),
-      base,
       // mult: 1.2,
       mult: 2,
       emBonus,
@@ -48,7 +45,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Superconduct',
       element: Element.CRYO,
       show: _.includes([Element.CRYO, Element.ELECTRO, Element.ANEMO], element),
-      base,
       // mult: 0.5,
       mult: 1.5,
       emBonus,
@@ -62,7 +58,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: nilou ? 'Bloom: Bountiful Core' : 'Bloom',
       element: Element.DENDRO,
       show: _.includes([Element.HYDRO, Element.DENDRO, Element.ANEMO], element),
-      base,
       mult: 2,
       emBonus,
       dmg: stat?.getValue(StatsObjectKeys.BLOOM_DMG),
@@ -75,7 +70,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Hyperbloom',
       element: Element.DENDRO,
       show: _.includes([Element.ELECTRO, Element.ANEMO], element),
-      base,
       mult: 3,
       emBonus,
       dmg: stat?.getValue(StatsObjectKeys.HYPERBLOOM_DMG),
@@ -88,7 +82,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Burgeon',
       element: Element.DENDRO,
       show: _.includes([Element.PYRO, Element.ANEMO], element),
-      base,
       mult: 3,
       emBonus,
       dmg: stat?.getValue(StatsObjectKeys.BURGEON_DMG),
@@ -101,7 +94,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Burning',
       element: Element.PYRO,
       show: _.includes([Element.DENDRO, Element.PYRO, Element.ANEMO], element),
-      base,
       mult: 0.25,
       emBonus,
       dmg: stat?.getValue(StatsObjectKeys.BURNING_DMG),
@@ -114,7 +106,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Overloaded',
       element: Element.PYRO,
       show: _.includes([Element.PYRO, Element.ELECTRO, Element.ANEMO], element),
-      base,
       // mult: 2,
       mult: 2.75,
       emBonus,
@@ -128,7 +119,6 @@ const Transformative = (level: number, element: Element, stat: StatsObject, swir
       name: 'Shattered',
       element: Element.PHYSICAL,
       show: true,
-      base,
       // mult: 1.5,
       mult: 3,
       emBonus,
@@ -147,7 +137,6 @@ export type TransformativeT = {
   name: string
   element: Element
   show: boolean
-  base: number
   mult: number
   emBonus: number
   dmg: number

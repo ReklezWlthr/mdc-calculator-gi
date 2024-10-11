@@ -19,6 +19,7 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Lightning Touch`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Violet Arc`,
       content: `Channels the power of lightning to sweep bothersome matters away.
@@ -48,6 +50,7 @@ const Lisa = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Lisa_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Lightning Rose`,
       content: `Summons a Lightning Rose that unleashes powerful lightning bolts, launching surrounding opponents and dealing <b class="text-genshin-electro">Electro DMG</b>.

@@ -19,6 +19,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Word of Wind and Flower`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `White Clouds at Dawn`,
       content: `Xianyun enters the <b class="text-genshin-anemo">Cloud Transmogrification</b> state, in which she will not take Fall DMG, and uses <b>Skyladder</b> once.
@@ -49,6 +51,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Liuyun_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Stars Gather at Dusk`,
       content: `Brings forth a sacred breeze that deals <b class="text-genshin-anemo">AoE Anemo DMG</b> and heals all nearby characters based on Xianyun's ATK. It will also summon the <b>Starwicker</b> mechanism.

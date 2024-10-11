@@ -19,6 +19,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Toss 'N' Turn Spear`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Raphanus Sky Cluster`,
       content: `Calls upon <b class="text-lime-400">Yuegui: Throwing Mode</b> a special device created by a certain adeptus to help Yaoyao solve her problems.
@@ -51,6 +53,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Yaoyao_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Moonjade Descent`,
       content: `At the enjoinment of a certain adeptus, Yuegui's full potential can be unleashed in an emergency, dealing <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents and entering an (in some sense) unsurpassed <b class="text-desc">Adeptal Legacy</b> state.

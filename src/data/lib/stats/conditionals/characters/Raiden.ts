@@ -19,6 +19,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: 'Origin',
       content: `<b>Normal Attack</b>
@@ -34,6 +35,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: 'Transcendence: Baleful Omen',
       content: `The Raiden Shogun unveils a shard of her Euthymia, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents, and granting nearby party members the <b class="text-violet-400">Eye of Stormy Judgment</b>.
@@ -49,6 +51,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Shougun_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: 'Secret Art: Musou Shinsetsu',
       content: `Gathering truths unnumbered and wishes uncounted, the Raiden Shogun unleashes the <b>Musou no Hitotachi</b> and deals <b class="text-genshin-electro">AoE Electro DMG</b>, using <b class="text-indigo-400">Musou Isshin</b> in combat for a certain duration afterward. The DMG dealt by <b>Musou no Hitotachi</b> and <b class="text-indigo-400">Musou Isshin</b>'s attacks will be increased based on the number of <b>Chakra Desiderata</b>'s <b class="text-desc">Resolve</b> stacks consumed when this skill is used.
@@ -255,10 +258,11 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
               property: TalentProperty.NA,
             },
             {
-              name: '4-Hit [x2]',
+              name: '4-Hit',
               value: [{ scaling: calcScaling(0.2898, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 2,
             },
             {
               name: '5-Hit',

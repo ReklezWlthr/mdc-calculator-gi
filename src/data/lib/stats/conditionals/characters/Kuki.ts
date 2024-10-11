@@ -18,6 +18,7 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Shinobu's Shadowsword`,
       content: `<b>Normal Attack</b>
@@ -32,6 +33,7 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Sanctifying Ring`,
       content: `Creates a <b>Grass Ring of Sanctification</b> at the cost of part of her HP, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents.
@@ -44,6 +46,7 @@ const Kuki = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Shinobu_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Gyoei Narukami Kariyama Rite`,
       content: `Stabs an evil-excoriating blade into the ground, creating a field that cleanses the area of all that is foul, dealing continuous <b class="text-genshin-electro">Electro DMG</b> to opponents within its AoE based on Shinobu's Max HP.

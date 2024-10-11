@@ -21,6 +21,7 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `The Classics of Acupuncture`,
       content: `<b>Normal Attack</b>
@@ -35,6 +36,7 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_Catalyst_MD',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Universal Diagnosis`,
       content: `Controls a <b>Gossamer Sprite</b> that cruises and attacks nearby opponents, dealing <b class="text-genshin-dendro">Dendro DMG</b>.
@@ -43,6 +45,7 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Baizhuer_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Holistic Revivification`,
       content: `Enters the Pulsing Clarity state, creating a <b class="text-genshin-dendro">Seamless Shield</b> that absorbs <b class="text-genshin-dendro">Dendro DMG</b> with <span class="text-desc">250%</span> effectiveness.
@@ -170,10 +173,11 @@ const Baizhu = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '3-Hit [x2]',
+          name: '3-Hit',
           value: [{ scaling: calcScaling(0.2254, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.DENDRO,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '4-Hit',

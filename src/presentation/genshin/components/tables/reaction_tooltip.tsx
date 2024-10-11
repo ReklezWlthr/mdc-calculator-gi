@@ -15,7 +15,7 @@ export const ReactionTooltip = observer(
     name,
     element,
     resPen,
-  }: TransformativeT & { name: string; element: Element; resPen: number }) => {
+  }: TransformativeT & { name: string; element: Element; resPen: number; base: number }) => {
     const { calculatorStore } = useStore()
     const resMult = calculatorStore.getResMult(element, resPen || 0)
 
@@ -49,7 +49,7 @@ export const ReactionTooltip = observer(
         }
         style="w-fit"
       >
-        <p className="font-bold text-center text-red">{_.round(calc)}</p>
+        <p className="font-bold text-center text-red">{_.round(calc).toLocaleString()}</p>
       </Tooltip>
     )
   }

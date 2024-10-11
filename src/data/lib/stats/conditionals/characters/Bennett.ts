@@ -19,6 +19,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Strike of Fortune`,
       content: `<b>Normal Attack</b>
@@ -33,6 +34,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_01',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Passion Overload`,
       content: `Bennett puts all his fire and passion for adventuring into his sword. Results may vary based on how fired up he is...
@@ -49,6 +51,7 @@ const Bennett = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Bennett_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Fantastic Voyage`,
       content: `Bennett performs a jumping attack that deals <b class="text-genshin-pyro">Pyro DMG</b>, creating an <b class="text-genshin-pyro">Inspiration Field</b>.

@@ -6,7 +6,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 
 interface ScalingWrapperProps {
-  children: React.ReactNode[]
+  children: React.ReactNode | React.ReactNode[]
   talent: ITalentDisplay
   element: Element
   level?: number

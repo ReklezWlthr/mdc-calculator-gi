@@ -22,6 +22,7 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Cloud-Grazing Strike`,
       content: `<b>Normal Attack</b>
@@ -36,6 +37,7 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Opening Flourish`,
       content: `Ms. Yun may just be acting out fights on stage, but her skills with the spear are real enough to defend against her foes.
@@ -50,6 +52,7 @@ const Yunjin = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       image: 'Skill_S_Yunjin_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Cliffbreaker's Banner`,
       content: `Deals <b class="text-genshin-geo">AoE Geo DMG</b> and grants all nearby party members a <b class="text-desc">Flying Cloud Flag Formation</b>.

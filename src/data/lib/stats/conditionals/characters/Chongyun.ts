@@ -19,6 +19,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Demonbane`,
       content: `<b>Normal Attack</b>
@@ -34,6 +35,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_04',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Spirit Blade: Chonghua's Layered Frost`,
       content: `Chongyun strikes the ground with his greatsword, causing a <b class="text-genshin-cryo">Cryo</b> explosion in a circular AoE in front of him that deals <b class="text-genshin-cryo">Cryo DMG</b>.
@@ -42,6 +44,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Chongyun_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Spirit Blade: Cloud-Parting Star`,
       content: `Performing the secret hand seals, Chongyun summons 3 giant spirit blades in mid-air that fall to the earth one by one after a short delay, exploding as they hit the ground.
@@ -208,11 +211,12 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
       ]
       base.BURST_SCALING = [
         {
-          name: `Skill DMG Per Blade [x${c >= 6 ? 4 : 3}]`,
+          name: `Skill DMG Per Blade`,
           value: [{ scaling: calcScaling(1.424, burst, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.BURST,
           bonus: form.chongyun_c6 ? 0.15 : 0,
+          hit: c >= 6 ? 4 : 3,
         },
       ]
 
@@ -231,7 +235,7 @@ const Chongyun = (c: number, a: number, t: ITalentLevel) => {
 
       if (c >= 1)
         base.BASIC_SCALING.push({
-          name: 'Ice Unleashed DMG [x3]',
+          name: 'Ice Unleashed DMG',
           value: [{ scaling: 0.5, multiplier: Stats.ATK }],
           element: Element.CRYO,
           property: TalentProperty.NA,

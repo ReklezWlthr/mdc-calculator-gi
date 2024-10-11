@@ -19,6 +19,7 @@ const Xiao = (c: number, a: number, t: ITalentLevel) => {
 
   const talents: ITalent = {
     normal: {
+      level: normal,
       trace: `Normal Attack`,
       title: `Whirlwind Thrust`,
       content: `<b>Normal Attack</b>
@@ -34,6 +35,7 @@ const Xiao = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_A_03',
     },
     skill: {
+      level: skill,
       trace: `Elemental Skill`,
       title: `Lemniscatic Wind Cycling`,
       content: `Xiao lunges forward, dealing <b class="text-genshin-anemo">Anemo DMG</b> to opponents in his path.
@@ -43,6 +45,7 @@ const Xiao = (c: number, a: number, t: ITalentLevel) => {
       image: 'Skill_S_Xiao_01',
     },
     burst: {
+      level: burst,
       trace: `Elemental Burst`,
       title: `Bane of All Evil`,
       content: `Xiao dons the <b class="text-genshin-anemo">Yaksha Mask</b> that set gods and demons trembling millennia ago.
@@ -176,10 +179,11 @@ const Xiao = (c: number, a: number, t: ITalentLevel) => {
 
       base.BASIC_SCALING = [
         {
-          name: '1-Hit [x2]',
+          name: '1-Hit',
           value: [{ scaling: calcScaling(0.2754, normal, 'physical', '2'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '2-Hit',
@@ -194,10 +198,11 @@ const Xiao = (c: number, a: number, t: ITalentLevel) => {
           property: TalentProperty.NA,
         },
         {
-          name: '4-Hit [x2]',
+          name: '4-Hit',
           value: [{ scaling: calcScaling(0.3766, normal, 'physical', '2'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NA,
+          hit: 2,
         },
         {
           name: '5-Hit',
