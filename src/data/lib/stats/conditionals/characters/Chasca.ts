@@ -300,7 +300,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
             name: `${e} Shining Shadowhunt Shell DMG`,
             value: [{ scaling: calcScaling(1.9184, skill, 'elemental', '1'), multiplier: Stats.ATK }],
             element: e,
-            property: TalentProperty.ADD,
+            property: TalentProperty.CA,
             cd: form.chasca_c6 ? 1.2 : 0,
           })
         base.BURST_SCALING.push({
@@ -331,7 +331,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
             name: `C4 ${e} Explosion DMG`,
             value: [{ scaling: 4, multiplier: Stats.ATK }],
             element: e,
-            property: TalentProperty.CA,
+            property: TalentProperty.ADD,
           })
         }
       })

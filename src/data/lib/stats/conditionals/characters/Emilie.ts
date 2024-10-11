@@ -44,7 +44,7 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
       <br />- <span class="text-desc">1</span> <b class="text-genshin-dendro">Lumidouce Case</b> created by Emilie herself can exist at any one time. The <b class="text-genshin-dendro">Case</b> starts at Level <span class="text-desc">1</span> and can go up to Level <span class="text-desc">2</span>. If the <b class="text-genshin-dendro">Case</b> does not collect any <b class="text-desc">Scents</b> for <span class="text-desc">8</span>s while it is on the field, it will go back to Level <span class="text-desc">1</span>.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-pneuma">Pneuma</b>
-      <br />At intervals, after Emilie creates a <b class="text-genshin-dendro">Lumidouce Case</b> this way, a <b class="text-genshin-pneuma">Spiritbreath Thorn</b> will descend in front of her and pierce her opponent, dealing Pneuma-aligned <b class="text-genshin-dendro">Dendro DMG</b>.
+      <br />At intervals, after Emilie creates a <b class="text-genshin-dendro">Lumidouce Case</b> this way, a <b class="text-genshin-pneuma">Spiritbreath Thorn</b> will descend in front of her and pierce her opponent, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-dendro">Dendro DMG</b>.
       `,
       image: 'Skill_S_Emilie_01',
     },
@@ -224,7 +224,7 @@ const Emilie = (c: number, a: number, t: ITalentLevel) => {
           name: 'Cleardew Cologne DMG',
           value: [{ scaling: 6, multiplier: Stats.ATK }],
           element: Element.DENDRO,
-          property: TalentProperty.ADD,
+          property: TalentProperty.SKILL,
           bonus: c >= 1 ? 0.2 : 0,
         })
       if (c >= 1)

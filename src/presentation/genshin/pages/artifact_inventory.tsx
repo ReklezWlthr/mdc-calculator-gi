@@ -57,7 +57,7 @@ export const ArtifactInventory = observer(() => {
 
   return (
     <div className="w-full h-full overflow-y-auto">
-      <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto h-full">
+      <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1200px] mx-auto h-full">
         <div className="flex items-center justify-between w-full">
           <p className="text-2xl font-bold text-white w-fit">Artifact Inventory</p>
           <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />

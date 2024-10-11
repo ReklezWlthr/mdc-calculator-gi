@@ -166,7 +166,8 @@ export const formatWeaponString = (
     base: number
     growth: number
   }[],
-  r: number
+  r: number,
+  showMax?: boolean
 ) =>
   _.reduce(
     Array.from(detail?.matchAll(/{{\d+}}\%?/g) || []),
@@ -176,9 +177,15 @@ export const formatWeaponString = (
       return _.replace(
         acc,
         curr[0],
-        `<span class="text-desc">${properties[index].base + properties[index].growth * (r - 1)}${
-          isPercentage ? '%' : ''
-        }</span>`
+        showMax
+          ? `<span class="text-blue">${properties[index].base + properties[index].growth * (r - 1)}${
+              isPercentage ? '%' : ''
+            }</span> <span class="text-desc">(${properties[index].base + properties[index].growth * 4}${
+              isPercentage ? '%' : ''
+            })</span>`
+          : `<span class="text-desc">${properties[index].base + properties[index].growth * (r - 1)}${
+              isPercentage ? '%' : ''
+            }</span>`
       )
     },
     detail

@@ -11,6 +11,7 @@ export interface InventoryStoreType {
   addArtifact: (artifact: IArtifactEquip) => boolean
   editArtifact: (aId: string, artifact: IArtifactEquip) => boolean
   deleteArtifact: (aId: string) => boolean
+  mapData: (aId: string[]) => IArtifactEquip[]
   hydrateArtifacts: (data: IArtifactEquip[]) => void
   hydrate: (data: InventoryStoreType) => void
 }
@@ -54,6 +55,10 @@ export class Inventory {
     this.artifacts.splice(index, 1)
     this.artifacts = [...this.artifacts]
     return true
+  }
+
+  mapData = (aId: string[]) => {
+    return _.map(aId, (item) => _.find(this.artifacts, (a) => a.id === item))
   }
 
   hydrateArtifacts = (data: IArtifactEquip[]) => {

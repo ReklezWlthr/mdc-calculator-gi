@@ -33,7 +33,7 @@ export const WeaponTooltip = ({
   wId,
   refinement,
   children,
-  position = 'bottom',
+  position = 'right',
 }: {
   wId: string
   refinement: number

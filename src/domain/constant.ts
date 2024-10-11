@@ -256,6 +256,8 @@ export const RefinementOptions = [
 ]
 
 export const MainStatOptions = [
+  { name: Stats.ATK, value: Stats.ATK, img: '/icons/stat_atk.png' },
+  { name: Stats.HP, value: Stats.HP, img: '/icons/stat_hp.png' },
   { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
   { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
   { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },

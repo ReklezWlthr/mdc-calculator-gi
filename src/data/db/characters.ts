@@ -453,7 +453,7 @@ export const Characters = [
       ascAtk: 103.2185669,
       ascHp: 3656.467285,
       ascDef: 304.6679993,
-      ascStat: Stats.CRIT_DMG,
+      ascStat: Stats.CRIT_RATE,
       energy: 50,
     },
     rarity: 5,

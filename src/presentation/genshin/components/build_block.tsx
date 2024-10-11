@@ -1,70 +1,79 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IBuild } from '@src/domain/constant'
-import { CommonModal } from '@src/presentation/components/common_modal'
-import { GhostButton } from '@src/presentation/components/ghost.button'
-import { PrimaryButton } from '@src/presentation/components/primary.button'
+import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
-import { useCallback } from 'react'
+import { useState } from 'react'
+import { BuildModalBlock } from './modals/build_modal'
+import _ from 'lodash'
 
 interface BuildBlockProps {
-  build: IBuild
-  onClick: () => void
-  onDelete: () => void
+  owner: string
+  build: IBuild[]
+  onClick: (id: string) => void
+  selected: string
 }
 
-export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProps) => {
-  const { buildStore, modalStore, toastStore } = useStore()
+export const BuildBlock = observer(({ build, owner, onClick, selected }: BuildBlockProps) => {
+  const { settingStore } = useStore()
 
-  const char = findCharacter(build.cId)
+  const char = findCharacter(owner)
 
-  const onOpenConfirmModal = useCallback(() => {
-    modalStore.openModal(
-      <CommonModal
-        icon="fa-solid fa-exclamation-circle text-red"
-        title="Delete Build"
-        desc="Are you sure you want to delete this build? Deleting build will NOT delete designated artifacts."
-        onConfirm={() => {
-          buildStore.deleteBuild(build.id)
-          onDelete()
-          toastStore.openNotification({
-            title: 'Build Deleted Successfully',
-            icon: 'fa-solid fa-circle-check',
-            color: 'green',
-          })
-        }}
-      />
-    )
-  }, [build.id])
+  const [open, setOpen] = useState(false)
+  const characterData = findCharacter(owner)
+  const codeName =
+    characterData?.codeName === 'Player' ? settingStore.settings.travelerGender : characterData?.codeName || ''
 
   return (
-    <div
-      className="flex items-center justify-between w-full px-4 py-3 text-white duration-200 rounded-lg cursor-pointer bg-primary-dark active:scale-95"
-      onClick={onClick}
-    >
-      <div className="w-1/2">
-        <div className="flex items-center gap-2">
-          {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
-          <p className="w-full truncate">{build.name}</p>
+    <div>
+      <div
+        className="flex items-center w-full h-10 overflow-hidden text-white duration-200 rounded-lg cursor-pointer shrink-0 bg-primary-dark"
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        <div className="relative w-16 h-full overflow-hidden shrink-0">
+          <div className="absolute top-0 left-0 z-10 w-full h-full from-8% to-40% bg-gradient-to-l from-primary-dark to-transparent" />
+          <img
+            src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
+            className="object-cover h-16 aspect-square scale-[300%] -ml-0.5"
+          />
         </div>
-        <p className="text-xs text-gray">Equipped By: {char?.name}</p>
+        <div className="flex items-center justify-between w-full px-2">
+          <div className="flex items-center justify-center gap-2">
+            <p className="font-bold text-gray line-clamp-1">{char.name}</p>
+            <p className="flex items-center justify-center w-5 h-5 text-xs font-bold rounded-md bg-primary-light">
+              {_.size(build)}
+            </p>
+          </div>
+          <i
+            className={classNames('duration-150 fa-solid fa-caret-down text-primary-lighter', { 'rotate-180': open })}
+          />
+        </div>
       </div>
-      <div className="flex gap-x-2">
-        <PrimaryButton
-          title="Set Default"
-          onClick={(event) => {
-            event.stopPropagation()
-            buildStore.setDefault(build.id)
-          }}
-          disabled={build.isDefault}
-        />
-        <GhostButton
-          icon="fa-regular fa-trash-alt"
-          onClick={(event) => {
-            event.stopPropagation()
-            onOpenConfirmModal()
-          }}
-        />
+      <div
+        className={classNames(
+          'text-white overflow-hidden duration-200 pl-2 ml-3 border-l-2 border-primary-lighter',
+          open ? 'max-h-screen' : 'max-h-0'
+        )}
+      >
+        {_.map(build, (item) => (
+          <div
+            key={item.id}
+            className="mt-2 duration-150 cursor-pointer active:scale-[98%]"
+            onClick={() => onClick(item.id)}
+          >
+            <BuildModalBlock
+              build={item}
+              button={
+                <i
+                  className={classNames(
+                    'fa-solid fa-caret-right duration-300 mr-1 text-4xl text-primary-light',
+                    selected === item.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+                  )}
+                />
+              }
+            />
+          </div>
+        ))}
       </div>
     </div>
   )

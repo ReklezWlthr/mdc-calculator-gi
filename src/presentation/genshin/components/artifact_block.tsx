@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { ArtifactPiece, IArtifactEquip, Stats } from '@src/domain/constant'
+import { ArtifactPiece, IArtifactEquip, MainStatOptions, Stats } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import React, { useCallback, useMemo } from 'react'
@@ -178,13 +178,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
               <div className="flex items-center gap-1.5 shrink-0">
                 <img
                   className="w-4 h-4"
-                  src={
-                    StatIcons[artifact?.main]
-                      ? `${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[artifact?.main]}`
-                      : `https://cdn.wanderer.moe/genshin-impact/elements/${artifact?.main
-                          ?.split(' ')?.[0]
-                          ?.toLowerCase()}.png`
-                  }
+                  src={_.find(MainStatOptions, (item) => item.value === artifact?.main)?.img}
                 />
                 {artifact?.main}
               </div>

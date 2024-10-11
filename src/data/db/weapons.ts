@@ -695,7 +695,7 @@ export const Weapons = [
     rarity: 5,
     tier: 1,
     ascStat: Stats.CRIT_DMG,
-    baseStat: 0.096,
+    baseStat: 0.192,
     icon: 'UI_EquipIcon_Sword_Needle',
     type: WeaponType.SWORD,
     desc: {
