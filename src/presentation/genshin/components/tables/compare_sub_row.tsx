@@ -192,7 +192,7 @@ export const CompareSubRows = observer(
         <SubDmgBlock obj={sub3} title={setupNames[3]} />
         <div className="flex col-span-2 gap-1 text-xs" title={name}>
           <p className="w-full truncate">{name}</p>
-          <CheckboxInput checked={sum} onClick={setSum} />
+          {/* <CheckboxInput checked={sum} onClick={setSum} /> */}
         </div>
       </div>
     )

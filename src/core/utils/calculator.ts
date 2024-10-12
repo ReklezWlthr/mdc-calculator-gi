@@ -16,6 +16,7 @@ import { findCharacter, findWeapon } from '../utils/finder'
 import { ArtifactSets } from '@src/data/db/artifacts'
 import { baseStatsObject, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import WeaponBonus from '@src/data/lib/stats/conditionals/weapons/weapon_bonus'
+import { isFlat } from '@src/presentation/genshin/components/modals/custom_modal'
 
 export const calculateOutOfCombat = (
   conditionals: StatsObject,
@@ -231,33 +232,25 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
 
   if (form.melt_forward)
     conditionals.PYRO_MULT.push({
-      value:
-        2 *
-        (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
+      value: 2 * (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Forward Melt',
       source: 'Reaction',
     })
   if (form.melt_reverse)
     conditionals.CRYO_MULT.push({
-      value:
-        1.5 *
-        (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
+      value: 1.5 * (1 + conditionals?.getValue(StatsObjectKeys.MELT_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Reverse Melt',
       source: 'Reaction',
     })
   if (form.vape_forward)
     conditionals.HYDRO_MULT.push({
-      value:
-        2 *
-        (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
+      value: 2 * (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Forward Vape',
       source: 'Reaction',
     })
   if (form.vape_reverse)
     conditionals.PYRO_MULT.push({
-      value:
-        1.5 *
-        (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
+      value: 1.5 * (1 + conditionals?.getValue(StatsObjectKeys.VAPE_DMG) + calcAmplifying(conditionals?.getEM() || 0)),
       name: 'Reverse Vape',
       source: 'Reaction',
     })
@@ -275,9 +268,7 @@ export const calculateReaction = (conditionals: StatsObject, form: Record<string
       value:
         1.15 *
         base *
-        (1 +
-          conditionals?.getValue(StatsObjectKeys.AGGRAVATE_DMG) +
-          calcAdditive(conditionals?.getEM() || 0)),
+        (1 + conditionals?.getValue(StatsObjectKeys.AGGRAVATE_DMG) + calcAdditive(conditionals?.getEM() || 0)),
       name: 'Aggravate',
       source: 'Reaction',
     })

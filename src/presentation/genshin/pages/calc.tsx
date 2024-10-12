@@ -1,6 +1,6 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { Stats, TravelerIconName, WeaponIcon } from '@src/domain/constant'
+import { Element, Stats, TravelerIconName, WeaponIcon } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import React, { useCallback, useState } from 'react'
@@ -165,6 +165,10 @@ export const Calculator = observer(({}: {}) => {
                               's Crit DMG caused by Nahida's C2.
                             </p>
                             <p>Burning Reactions can be affected by both.</p>
+                            <p>
+                              Finally, for Crystallize, this represents the shield's Absorption Value against its own{' '}
+                              <b>Elemental Type</b>.
+                            </p>
                           </div>
                         }
                         style="w-[400px]"
@@ -178,7 +182,27 @@ export const Calculator = observer(({}: {}) => {
                       const base = BaseReactionDmg[char.level - 1] * item.mult * (1 + item.emBonus + item.dmg)
                       return (
                         <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
-                          <p className="col-span-3 font-bold">{item.name}</p>
+                          <div className="flex items-center justify-center w-full col-span-3 gap-2 font-bold">
+                            <p>{item.name}</p>
+                            {item.name === 'Shattered' && (
+                              <div className="text-start">
+                                <Tooltip
+                                  title="Shatter Reaction"
+                                  body={
+                                    <div className="font-normal">
+                                      Only Blunt attacks (e.g. Claymore attacks, most Plunging attacks, most{' '}
+                                      <b className="text-genshin-geo">Geo</b> attacks, and explosions) can trigger
+                                      Shatter Reaction. However, for simplicity's sake, this row will be shown on all
+                                      characters, regardless of them having any Blunt attacks.
+                                    </div>
+                                  }
+                                  style="w-[450px]"
+                                >
+                                  <i className="fa-regular fa-question-circle" />
+                                </Tooltip>
+                              </div>
+                            )}
+                          </div>
                           <p className={classNames('col-span-2', ElementColor[item.element])}>{item.element}</p>
                           <div className="col-span-2 text-start">
                             <ReactionTooltip {...item} base={BaseReactionDmg[char.level - 1]} />
@@ -195,19 +219,18 @@ export const Calculator = observer(({}: {}) => {
                         </div>
                       )
                     })}
-                  </div>
-                </div>
-                <div className="flex flex-col col-span-1 text-sm rounded-lg bg-primary-darker h-fit">
-                  <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">Crystallize</p>
-                  <div className="grid w-full py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark items-center">
-                    Raw Shield Value
-                  </div>
-                  <div className="flex justify-center py-1 rounded-b-lg bg-primary-darker">
-                    <CrystallizeTooltip
-                      em={mainComputed?.getEM()}
-                      level={char?.level}
-                      shieldStrength={mainComputed?.getValue(Stats.SHIELD)}
-                    />
+                    {mainComputed?.ELEMENT === Element.GEO && (
+                      <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center">
+                        <p className="col-span-3 font-bold">Crystallize</p>
+                        <p className="col-span-2 text-indigo-300">Shield</p>
+                        <div className="col-span-2 text-start">
+                          <CrystallizeTooltip em={mainComputed?.getEM()} level={char?.level} onElement={false} />
+                        </div>
+                        <div className="col-span-2 text-start">
+                          <CrystallizeTooltip em={mainComputed?.getEM()} level={char?.level} onElement={true} />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

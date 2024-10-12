@@ -61,31 +61,46 @@ export const getMainStat = (main: Stats, quality: number, level: number) => {
   return entry?.values?.[level]
 }
 
-export const findCoefficient = (x: number, y: number, z: number, d: number, precision: number) => {
+export const findCoefficient = (min: number, bonus: number, value: number, precision: number) => {
   const minSum = 1
   const maxSum = 6
 
-  const results: { value: number; co: { a: number; b: number; c: number } }[] = []
+  const margin = 0.02
+
+  const sumCo = (arr: number[]) => _.sum(_.map(arr, (item, index) => item * (min + bonus * index)))
+
+  const results: { value: number; co: { a: number; b: number; c: number; d: number } }[] = []
 
   for (let a = 0; a <= maxSum; a++) {
     for (let b = 0; b <= maxSum; b++) {
       for (let c = 0; c <= maxSum; c++) {
-        if (a + b + c >= minSum && a + b + c <= maxSum) {
-          const rd = _.round(d, precision)
-          const rs = _.round(a * x + b * y + c * z, precision)
-          const fs = _.floor(a * x + b * y + c * z, precision)
-          results.push({ value: fs, co: { a, b, c } })
-          if (_.includes([rs, fs], rd)) {
-            return { a, b, c }
+        for (let d = 0; d <= maxSum; d++) {
+          if (a + b + c + d >= minSum && a + b + c + d <= maxSum) {
+            const rd = _.floor(value, precision)
+            const rs = _.round(sumCo([a, b, c, d]), precision)
+            const fs = _.floor(sumCo([a, b, c, d]), precision)
+            results.push({ value: sumCo([a, b, c, d]), co: { a, b, c, d } })
+            if (_.includes([rs, fs], rd)) {
+              return { a, b, c, d }
+            }
           }
         }
       }
     }
   }
 
-  results.sort((a, b) => a.value - b.value)
+  const sorted = _.orderBy(results, ['value'], ['desc'])
+  const match = _.find(sorted, (v) => _.inRange(value, v.value * (1 - margin), v.value * (1 + margin)))
+  console.log(value, match)
 
-  return _.find(results, (v) => v.value >= d)?.co || { a: 0, b: 0, c: 0 }
+  return (
+    match?.co || {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 0,
+    }
+  )
 }
 
 export const getRolls = (stat: Stats, value: number) => {
@@ -94,7 +109,7 @@ export const getRolls = (stat: Stats, value: number) => {
 
   const roundValue = value / (flat ? 1 : 100)
 
-  return findCoefficient(min, min + bonus, min + bonus * 2, roundValue, flat ? (stat === Stats.EM ? 1 : 0) : 3)
+  return findCoefficient(min, bonus, roundValue, flat ? 0 : 3)
 }
 
 export const correctSubStat = (stat: Stats, value: number) => {
@@ -102,12 +117,13 @@ export const correctSubStat = (stat: Stats, value: number) => {
   const low = data?.min
   const bonus = data?.bonus
 
-  const { a, b, c } = getRolls(stat, value)
+  const { a, b, c, d } = getRolls(stat, value)
   const accLow = low * a
   const accMed = (low + bonus) * b
   const accHigh = (low + bonus * 2) * c
+  const accHighest = (low + bonus * 3) * d
 
-  return accLow + accMed + accHigh
+  return accLow + accMed + accHigh + accHighest
 }
 
 export const getSetCount = (artifacts: IArtifactEquip[]) => {

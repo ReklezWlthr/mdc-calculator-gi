@@ -4,13 +4,13 @@ export const SubStatMap = {
   0: { stat: Stats.ATK, min: 13.62, bonus: 1.95 },
   1: { stat: Stats.HP, min: 209.13, bonus: 29.875 },
   2: { stat: Stats.DEF, min: 16.2, bonus: 2.315 },
-  3: { stat: Stats.P_ATK, min: 0.0408, bonus: 0.00583 },
-  4: { stat: Stats.P_HP, min: 0.0408, bonus: 0.00583 },
+  3: { stat: Stats.P_ATK, min: 0.0408, bonus: 0.00584 },
+  4: { stat: Stats.P_HP, min: 0.0408, bonus: 0.00584 },
   5: { stat: Stats.P_DEF, min: 0.051, bonus: 0.00729 },
   6: { stat: Stats.CRIT_RATE, min: 0.0272, bonus: 0.00389 },
   7: { stat: Stats.CRIT_DMG, min: 0.0544, bonus: 0.00777 },
-  8: { stat: Stats.EM, min: 16.32, bonus: 0.00777 },
-  9: { stat: Stats.ER, min: 0.0453, bonus: 0.00777 },
+  8: { stat: Stats.EM, min: 16.32, bonus: 2.33 },
+  9: { stat: Stats.ER, min: 0.0453, bonus: 0.0065 },
 }
 
 export const SubStatQuality = {

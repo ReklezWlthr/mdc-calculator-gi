@@ -13,6 +13,7 @@ import { SelectTextInput } from '@src/presentation/components/inputs/select_text
 import { findEnemy } from '@src/core/utils/finder'
 import { BaseElementColor } from '@src/core/utils/damageStringConstruct'
 import React from 'react'
+import { Tooltip } from '@src/presentation/components/tooltip'
 
 export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
   const { calculatorStore, teamStore } = useStore()
@@ -123,7 +124,7 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
               <p className="font-bold text-yellow">{_.round(def).toLocaleString()}</p>
               <p>=</p>
               <p>
-                ((<b className="text-red">{level}</b> &#215; 5) + 500)
+                (500 + 5 &#215; <b className="text-red">{level}</b>)
               </p>
               {!!pen && (
                 <p>
@@ -142,10 +143,10 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
                 </p>
               )}
             </div>
-            <p>DEF Multiplier</p>
+            <p className="pt-2">DEF Multiplier</p>
             <div className="flex items-center gap-2 px-2 py-1 text-sm font-normal rounded-lg bg-primary-darker w-fit text-gray">
               <p className="font-bold text-orange-300">{toPercentage(defMult)}</p>
-              <p>=</p>
+              <p>= 1 - </p>
               <div className="flex flex-col gap-y-1">
                 <p className="text-center">
                   <b className="text-yellow">{_.round(def).toLocaleString()}</b>
@@ -159,8 +160,27 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-end gap-y-3">
-          <i className="fa-solid fa-circle-xmark text-red" title="Immune" />
+        <div className="flex flex-col gap-y-3">
+          <div className="flex items-center gap-2 text-sm">
+            <p>Elemental RES</p>
+            <Tooltip
+              title="Elemental RES"
+              body={
+                <div className="font-normal">
+                  <p>Reduces DMG received by a certain percentage.</p>
+                  <p>
+                    RES can become negative but will also become only <span className="text-desc">half</span> as
+                    effective. Similarly, RES above <span className="text-desc">75%</span> will gradually become less
+                    effective as the value increases.
+                  </p>
+                  <p>You can use the toggle to the right of each Element to make the enemy immune to said Element.</p>
+                </div>
+              }
+              style="w-[400px]"
+            >
+              <i className="fa-regular fa-question-circle text-gray" />
+            </Tooltip>
+          </div>
           {_.map(BaseElementColor, (item, key: Element) => (
             <div className="flex items-center gap-3">
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>

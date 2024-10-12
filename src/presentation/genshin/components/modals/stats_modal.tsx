@@ -353,6 +353,23 @@ export const StatsModal = observer(
             </div>
           </div>
         </Collapsible>
+        <Collapsible label="Elemental RES">
+          <div className="grid grid-cols-2 gap-10">
+            <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="All-Type RES" array={stats[StatsObjectKeys.ALL_TYPE_RES]} />
+              <AttributeBlock stats={stats} stat="Physical RES" array={stats[StatsObjectKeys.PHYSICAL_RES]} />
+              <AttributeBlock stats={stats} stat="Pyro RES" array={stats[StatsObjectKeys.PYRO_RES]} />
+              <AttributeBlock stats={stats} stat="Hydro RES" array={stats[StatsObjectKeys.HYDRO_RES]} />
+              <AttributeBlock stats={stats} stat="Cryo RES" array={stats[StatsObjectKeys.CRYO_RES]} />
+            </div>
+            <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="Electro RES" array={stats[StatsObjectKeys.ELECTRO_RES]} />
+              <AttributeBlock stats={stats} stat="Anemo RES" array={stats[StatsObjectKeys.ANEMO_RES]} />
+              <AttributeBlock stats={stats} stat="Geo RES" array={stats[StatsObjectKeys.GEO_RES]} />
+              <AttributeBlock stats={stats} stat="Dendro RES" array={stats[StatsObjectKeys.DENDRO_RES]} />
+            </div>
+          </div>
+        </Collapsible>
         <Collapsible label="Advanced Attributes">
           <div className="grid grid-cols-2 gap-10">
             <div className="space-y-2">

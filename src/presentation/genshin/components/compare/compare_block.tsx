@@ -171,15 +171,15 @@ export const CompareBlock = observer(() => {
             >
               <div className="flex flex-col justify-between gap-4">
                 {renderRow(StatsObjectKeys.BASIC_SCALING, TalentProperty.NA)}
-                <CompareTotalRows type={TalentProperty.NA} />
+                {/* <CompareTotalRows type={TalentProperty.NA} /> */}
               </div>
               <div className="flex flex-col justify-between gap-4 !my-3">
                 {renderRow(StatsObjectKeys.CHARGE_SCALING, TalentProperty.CA)}
-                <CompareTotalRows type={TalentProperty.CA} />
+                {/* <CompareTotalRows type={TalentProperty.CA} /> */}
               </div>
               <div className="flex flex-col justify-between gap-4">
                 {renderRow(StatsObjectKeys.PLUNGE_SCALING, TalentProperty.PA)}
-                <CompareTotalRows type={TalentProperty.PA} />
+                {/* <CompareTotalRows type={TalentProperty.PA} /> */}
               </div>
             </ScalingWrapper>
             <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -191,7 +191,7 @@ export const CompareBlock = observer(() => {
             >
               <div className="flex flex-col justify-between h-full gap-4">
                 {renderRow(StatsObjectKeys.SKILL_SCALING, TalentProperty.SKILL)}
-                <CompareTotalRows type={TalentProperty.SKILL} />
+                {/* <CompareTotalRows type={TalentProperty.SKILL} /> */}
               </div>
             </ScalingWrapper>
             <div className="w-full my-2 border-t-2 border-primary-border" />
@@ -203,7 +203,7 @@ export const CompareBlock = observer(() => {
             >
               <div className="flex flex-col justify-between h-full gap-4 pb-2">
                 {renderRow(StatsObjectKeys.BURST_SCALING, TalentProperty.BURST)}
-                <CompareTotalRows type={TalentProperty.BURST} />
+                {/* <CompareTotalRows type={TalentProperty.BURST} /> */}
               </div>
             </ScalingWrapper>
           </div>
