@@ -294,7 +294,7 @@ export const Characters = [
     weapon: WeaponType.BOW,
     element: Element.CRYO,
     codeName: 'Aloy',
-    tags: [Tags.ON_FIELD, Tags.OFF_FIELD],
+    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.AMP],
   },
   {
     id: '10000021',
@@ -483,7 +483,7 @@ export const Characters = [
     weapon: WeaponType.CLAYMORE,
     element: Element.CRYO,
     codeName: 'Chongyun',
-    tags: [Tags.ON_FIELD, Tags.OFF_FIELD],
+    tags: [Tags.ON_FIELD, Tags.AMP],
   },
   {
     id: '10000067',
@@ -546,7 +546,7 @@ export const Characters = [
     weapon: WeaponType.CLAYMORE,
     element: Element.PYRO,
     codeName: 'Dehya',
-    tags: [Tags.OFF_FIELD, Tags.ON_FIELD],
+    tags: [Tags.AMP, Tags.ON_FIELD],
   },
   {
     id: '10000016',
@@ -756,7 +756,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ANEMO,
     codeName: 'Qin',
-    tags: [Tags.HEAL, Tags.CONTROL, Tags.BURST, Tags.BATTERY],
+    tags: [Tags.HEAL, Tags.CONTROL, Tags.BURST, Tags.BATTERY, Tags.APP],
   },
   {
     id: '10000047',
@@ -777,7 +777,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ANEMO,
     codeName: 'Kazuha',
-    tags: [Tags.AMP, Tags.CONTROL, Tags.APP, Tags.BATTERY],
+    tags: [Tags.AMP, Tags.CONTROL, Tags.APP, Tags.BATTERY, Tags.APP],
   },
   {
     id: '10000015',
@@ -882,7 +882,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ELECTRO,
     codeName: 'Keqing',
-    tags: [Tags.ON_FIELD, Tags.BURST],
+    tags: [Tags.ON_FIELD, Tags.BURST, Tags.EXPLORATION],
   },
   {
     id: '10000029',
@@ -987,7 +987,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.ELECTRO,
     codeName: 'Lisa',
-    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.AMP],
+    tags: [Tags.APP, Tags.OFF_FIELD, Tags.AMP],
   },
   {
     id: '10000083',
@@ -1008,7 +1008,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ANEMO,
     codeName: 'Linette',
-    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.EXPLORATION, Tags.BURST, Tags.CONTROL],
+    tags: [Tags.OFF_FIELD, Tags.EXPLORATION, Tags.BURST, Tags.CONTROL, Tags.APP],
   },
   {
     id: '10000084',
@@ -1176,7 +1176,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.GEO,
     codeName: 'Ningguang',
-    tags: [Tags.ON_FIELD, Tags.AMP],
+    tags: [Tags.ON_FIELD, Tags.BATTERY, Tags.BURST],
   },
   {
     id: '10000034',
@@ -1239,7 +1239,7 @@ export const Characters = [
     weapon: WeaponType.POLEARM,
     element: Element.ELECTRO,
     codeName: 'Shougun',
-    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.BATTERY, Tags.BURST, Tags.APP],
+    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.BATTERY, Tags.BURST, Tags.APP, Tags.AMP],
   },
   {
     id: '10000020',
@@ -1302,7 +1302,7 @@ export const Characters = [
     weapon: WeaponType.CLAYMORE,
     element: Element.ANEMO,
     codeName: 'Sayu',
-    tags: [Tags.OFF_FIELD, Tags.HEAL, Tags.EXPLORATION],
+    tags: [Tags.HEAL, Tags.EXPLORATION, Tags.APP],
   },
   {
     id: '10000063',
@@ -1365,7 +1365,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.ANEMO,
     codeName: 'Sucrose',
-    tags: [Tags.AMP, Tags.CONTROL, Tags.BATTERY],
+    tags: [Tags.AMP, Tags.CONTROL, Tags.BATTERY, Tags.APP],
   },
   {
     id: '10000033',
@@ -1449,7 +1449,7 @@ export const Characters = [
     weapon: WeaponType.BOW,
     element: Element.ANEMO,
     codeName: 'Venti',
-    tags: [Tags.CONTROL, Tags.BATTERY, Tags.EXPLORATION],
+    tags: [Tags.CONTROL, Tags.BATTERY, Tags.EXPLORATION, Tags.APP],
   },
   {
     id: '10000086',
@@ -1575,7 +1575,7 @@ export const Characters = [
     weapon: WeaponType.CLAYMORE,
     element: Element.PYRO,
     codeName: 'Xinyan',
-    tags: [Tags.OFF_FIELD, Tags.SHIELD],
+    tags: [Tags.AMP, Tags.SHIELD],
   },
   {
     id: '10000058',
@@ -1785,7 +1785,7 @@ export const Characters = [
     weapon: WeaponType.BOW,
     element: Element.HYDRO,
     codeName: 'Sigewinne',
-    tags: [Tags.HEAL, Tags.AMP, Tags.ON_FIELD],
+    tags: [Tags.HEAL, Tags.AMP],
   },
   {
     id: '10000099',
@@ -1978,7 +1978,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.GEO,
     codeName: 'Player',
-    tags: [Tags.OFF_FIELD, Tags.EXPLORATION, Tags.BURST, Tags.BATTERY],
+    tags: [Tags.EXPLORATION, Tags.BURST, Tags.BATTERY],
   },
   {
     id: '10000005-507',
@@ -1999,7 +1999,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ELECTRO,
     codeName: 'Player',
-    tags: [Tags.BATTERY],
+    tags: [Tags.BATTERY, Tags.OFF_FIELD, Tags.APP],
   },
   {
     id: '10000005-508',
@@ -2020,7 +2020,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.DENDRO,
     codeName: 'Player',
-    tags: [Tags.OFF_FIELD, Tags.BATTERY, Tags.BURST],
+    tags: [Tags.OFF_FIELD, Tags.BATTERY, Tags.BURST, Tags.APP],
   },
   {
     id: '10000005-503',

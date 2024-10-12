@@ -169,7 +169,7 @@ const Diluc = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 40
+      
 
       if (form.diluc_infusion) {
         base.infuse(Element.PYRO)

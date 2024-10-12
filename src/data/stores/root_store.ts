@@ -1,6 +1,7 @@
 import { Build, BuildStoreType } from './build_store'
 import { CalculatorStore, CalculatorStoreType } from './calculator_store'
 import { CharacterStore, CharacterStoreType } from './character_store'
+import { EnergyStore, EnergyStoreType } from './energy_store'
 import { ImportStore } from './import_store'
 import { InventoryStoreType, Inventory } from './inventory_store'
 import { Modal, ModalStoreType } from './modal_store'
@@ -21,6 +22,7 @@ interface RootStoreType {
   importStore: ImportStore
   toastStore: ToastStoreType
   setupStore: SetupStoreType
+  energyStore: EnergyStoreType
   // userStore: UserType
 }
 
@@ -35,6 +37,7 @@ export class RootStore {
   importStore: ImportStore
   toastStore: ToastStoreType
   setupStore: SetupStoreType
+  energyStore: EnergyStoreType
   // userStore: UserType
 
   constructor() {
@@ -48,6 +51,7 @@ export class RootStore {
     this.importStore = new ImportStore()
     this.toastStore = new Toast()
     this.setupStore = new SetupStore()
+    this.energyStore = new EnergyStore()
     // this.userStore = new User()
   }
 
@@ -63,6 +67,7 @@ export class RootStore {
     this.importStore.hydrate(data.importStore)
     this.toastStore.hydrate(data.toastStore)
     this.setupStore.hydrate(data.setupStore)
+    this.energyStore.hydrate(data.energyStore)
     // this.userStore.hydrate(data.userStore)
   }
 }

@@ -177,7 +177,7 @@ const Ayaka = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 80
+      
 
       if (form.ayaka_infusion) base.infuse(Element.CRYO)
 

@@ -14,8 +14,8 @@ export const ArtifactSets: IArtifact[] = [
       return base
     },
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
-      `If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.`,
+      `ATK <span class="text-desc">+18%</span>.`,
+      `If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by <span class="text-desc">35%</span>.`,
     ],
     set: [
       `Gladiator's Intoxication`,
@@ -38,7 +38,7 @@ export const ArtifactSets: IArtifact[] = [
     },
     desc: [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
-      `Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow.`,
+      `Increases Charged Attack DMG by <span class="text-desc">35%</span> if the character uses a Catalyst or Bow.`,
     ],
     set: [
       `Wanderer's String-Kettle`,
@@ -59,7 +59,7 @@ export const ArtifactSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Elemental Burst DMG <span class="text-desc">+<span class="text-desc">20%</span></span>`,
+      `Elemental Burst DMG <span class="text-desc">+20%</span>`,
       `Using an Elemental Burst increases all party members' ATK by <span class="text-desc">20%</span> for <span class="text-desc">12</span>s. This effect cannot stack.`,
     ],
     set: [`Royal Silver Urn`, `Royal Plume`, `Royal Masque`, `Royal Flora`, `Royal Pocket Watch`],
@@ -71,8 +71,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.PHYSICAL_DMG, value: 0.25 }],
     desc: [
-      `<b>Physical DMG Bonus</b> +<span class="text-desc">25%</span>`,
-      `After defeating an opponent, increases Charged Attack DMG by <span class="text-desc">50%</span>, and reduces its Stamina cost to 0 for <span class="text-desc">10</span>s. Also triggers with wild animals such as boars, squirrels and frogs.`,
+      `<b>Physical DMG Bonus</b> <span class="text-desc">+25%</span>`,
+      `After defeating an opponent, increases Charged Attack DMG by <span class="text-desc">50%</span>, and reduces its Stamina cost to <span class="text-desc">0</span> for <span class="text-desc">10</span>s. Also triggers with wild animals such as boars, squirrels and frogs.`,
     ],
     set: [
       `Bloodstained Chevalier's Goblet`,
@@ -112,7 +112,7 @@ export const ArtifactSets: IArtifact[] = [
     },
     desc: [
       `<b class="text-genshin-anemo">Anemo DMG Bonus</b> <span class="text-desc">+15%</span>`,
-      `Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for <span class="text-desc">10</span>s.`,
+      `Increases Swirl DMG by <span class="text-desc">60%</span>. Decreases opponent's Elemental RES to the element infused in the Swirl by <span class="text-desc">40%</span> for <span class="text-desc">10</span>s.`,
     ],
     set: [
       `Viridescent Venerer's Vessel`,
@@ -130,7 +130,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.GEO_DMG, value: 0.15 }],
     desc: [
       `<b class="text-genshin-geo">Geo DMG Bonus</b> <span class="text-desc">+15%</span>`,
-      `Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% <b>DMG Bonus</b> for that particular element for <span class="text-desc">10</span>s. Only one form of <b>Elemental DMG Bonus</b> can be gained in this manner at any one time.`,
+      `Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain <span class="text-desc">35%</span> <b>DMG Bonus</b> for that particular element for <span class="text-desc">10</span>s. Only one form of <b>Elemental DMG Bonus</b> can be gained in this manner at any one time.`,
     ],
     set: [
       `Goblet of Chiseled Crag`,
@@ -147,8 +147,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.SHIELD, value: 0.35 }],
     desc: [
-      `Increases Shield Strength by 35%.`,
-      `While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.`,
+      `Increases Shield Strength by <span class="text-desc">35%</span>.`,
+      `While protected by a shield, gain an additional <span class="text-desc">40%</span> Normal and Charged Attack DMG.`,
     ],
     set: [
       `Summer Night's Waterballoon`,
@@ -164,9 +164,13 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_14002',
     rarity: [4, 5],
     bonus: [],
+    half: (base) => {
+      base.ELECTRO_RES.push({ value: 0.4, name: '2-Piece', source: 'Thundersoother' })
+      return base
+    },
     desc: [
-      `<b class="text-genshin-electro">Electro RES</b> increased by 40%.`,
-      `Increases DMG against opponents affected by <b class="text-genshin-electro">Electro</b> by 35%.`,
+      `<b class="text-genshin-electro">Electro RES</b> increased by <span class="text-desc">40%</span>.`,
+      `Increases DMG against opponents affected by <b class="text-genshin-electro">Electro</b> by <span class="text-desc">35%</span>.`,
     ],
     set: [
       `Thundersoother's Goblet`,
@@ -192,7 +196,7 @@ export const ArtifactSets: IArtifact[] = [
     },
     desc: [
       `<b class="text-genshin-electro">Electro DMG Bonus</b> <span class="text-desc">+15%</span>`,
-      `Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by <span class="text-desc">20%</span>. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by <span class="text-desc">1</span>s. Can only occur once every 0.<span class="text-desc">8</span>s.`,
+      `Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by <span class="text-desc">40%</span>, and the DMG Bonus conferred by Aggravate is increased by <span class="text-desc">20%</span>. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by <span class="text-desc">1</span>s. Can only occur once every <span class="text-desc">0.8</span>s.`,
     ],
     set: [
       `Omen of Thunderstorm`,
@@ -208,9 +212,13 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_14003',
     rarity: [4, 5],
     bonus: [],
+    half: (base) => {
+      base.PYRO_RES.push({ value: 0.4, name: '2-Piece', source: 'Thundersoother' })
+      return base
+    },
     desc: [
-      `<b class="text-genshin-pyro">Pyro RES</b> increased by 40%.`,
-      `Increases DMG against opponents affected by <b class="text-genshin-pyro">Pyro</b> by 35%.`,
+      `<b class="text-genshin-pyro">Pyro RES</b> increased by <span class="text-desc">40%</span>.`,
+      `Increases DMG against opponents affected by <b class="text-genshin-pyro">Pyro</b> by <span class="text-desc">35%</span>.`,
     ],
     set: [
       `Lavawalker's Epiphany`,
@@ -236,7 +244,7 @@ export const ArtifactSets: IArtifact[] = [
     },
     desc: [
       `<b class="text-genshin-pyro">Pyro DMG Bonus</b> <span class="text-desc">+15%</span>`,
-      `Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by <span class="text-desc">50%</span> of its starting value for <span class="text-desc">10</span>s. Max 3 stacks.`,
+      `Increases Overloaded and Burning, and Burgeon DMG by <span class="text-desc">40%</span>. Increases Vaporize and Melt DMG by <span class="text-desc">15%</span>. Using Elemental Skill increases the 2-Piece Set Bonus by <span class="text-desc">50%</span> of its starting value for <span class="text-desc">10</span>s. Max <span class="text-desc">3</span> stacks.`,
     ],
     set: [
       `Witch's Heart Flames`,
@@ -272,7 +280,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.HYDRO_DMG, value: 0.15 }],
     desc: [
       `<b class="text-genshin-hydro">Hydro DMG Bonus</b> <span class="text-desc">+15%</span>`,
-      `After using an Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for <span class="text-desc">15</span>s.`,
+      `After using an Elemental Skill, increases Normal Attack and Charged Attack DMG by <span class="text-desc">30%</span> for <span class="text-desc">15</span>s.`,
     ],
     set: [
       `Goblet of Thundering Deep`,
@@ -289,8 +297,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_HP, value: 0.2 }],
     desc: [
-      `HP <span class="text-desc">+<span class="text-desc">20%</span></span>`,
-      `When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by <span class="text-desc">20%</span> and their Shield Strength is increased by 30% for <span class="text-desc">3</span>s. This effect can be triggered once every 0.<span class="text-desc">5</span>s. This effect can still be triggered even when the character who is using this artifact set is not on the field.`,
+      `HP <span class="text-desc">+<span class="text-desc">20%</span>`,
+      `When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by <span class="text-desc">20%</span> and their Shield Strength is increased by <span class="text-desc">30%</span> for <span class="text-desc">3</span>s. This effect can be triggered once every <span class="text-desc">0.5</span>s. This effect can still be triggered even when the character who is using this artifact set is not on the field.`,
     ],
     set: [
       `Noble's Pledging Vessel`,
@@ -308,7 +316,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.PHYSICAL_DMG, value: 0.25 }],
     desc: [
       `<b>Physical DMG Bonus</b> +<span class="text-desc">25%</span>`,
-      `When an Elemental Skill hits an opponent, ATK is increased by 9% for <span class="text-desc">7</span>s. This effect stacks up to 2 times and can be triggered once every 0.<span class="text-desc">3</span>s. Once 2 stacks are reached, the 2-set effect is increased by 100%.`,
+      `When an Elemental Skill hits an opponent, ATK is increased by <span class="text-desc">9%</span> for <span class="text-desc">7</span>s. This effect stacks up to <span class="text-desc">2</span> times and can be triggered once every <span class="text-desc">0.3</span>s. Once <span class="text-desc">2</span> stacks are reached, the 2-set effect is increased by <span class="text-desc">100%</span>.`,
     ],
     set: [`Surpassing Cup`, `Wise Doctor's Pinion`, `Mocking Mask`, `Stainless Bloom`, `Moment of Cessation`],
   },
@@ -319,8 +327,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
-      `When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by <span class="text-desc">50%</span> for <span class="text-desc">10</span>s. This effect will not trigger again during that duration.`,
+      `ATK <span class="text-desc">+<span class="text-desc">18%</span>`,
+      `When casting an Elemental Skill, if the character has <span class="text-desc">15</span> or more Energy, they lose <span class="text-desc">15</span> Energy and Normal/Charged/Plunging Attack DMG is increased by <span class="text-desc">50%</span> for <span class="text-desc">10</span>s. This effect will not trigger again during that duration.`,
     ],
     set: [`Hopeful Heart`, `Shaft of Remembrance`, `Capricious Visage`, `Entangling Bloom`, `Morning Dew's Moment`],
   },
@@ -331,8 +339,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.ER, value: 0.2 }],
     desc: [
-      `Energy Recharge <span class="text-desc">+<span class="text-desc">20%</span></span>`,
-      `Increases Elemental Burst DMG by <span class="text-desc">25%</span> of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.`,
+      `Energy Recharge <span class="text-desc">+20%</span>`,
+      `Increases Elemental Burst DMG by <span class="text-desc">25%</span> of Energy Recharge. A maximum of <span class="text-desc">75%</span> bonus DMG can be obtained in this way.`,
     ],
     set: [`Scarlet Vessel`, `Sundered Feather`, `Ornate Kabuto`, `Magnificent Tsuba`, `Storm Cage`],
   },
@@ -343,12 +351,12 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_DEF, value: 0.3 }],
     desc: [
-      `DEF +30%`,
-      `A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions:
-    <br />When on the field, the character gains 1 stack after hitting an opponent with a <b class="text-genshin-geo">Geo</b> attack, triggering a maximum of once every 0.<span class="text-desc">3</span>s.
-    <br />When off the field, the character gains 1 stack every <span class="text-desc">3</span>s.
-    <br />Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus.
-    <br />When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.`,
+      `DEF <span class="text-desc">+30%</span>`,
+      `A character equipped with this Artifact set will obtain the <b>Curiosity</b> effect in the following conditions:
+    <br />When on the field, the character gains <span class="text-desc">1</span> stack after hitting an opponent with a <b class="text-genshin-geo">Geo</b> attack, triggering a maximum of once every <span class="text-desc">0.3</span>s.
+    <br />When off the field, the character gains <span class="text-desc">1</span> stack every <span class="text-desc">3</span>s.
+    <br /><b>Curiosity</b> can stack up to <span class="text-desc">4</span> times, each providing <span class="text-desc">6%</span> DEF and a <span class="text-desc">6%</span> Geo DMG Bonus.
+    <br />When <span class="text-desc">6</span> seconds pass without gaining a <b>Curiosity</b> stack, <span class="text-desc">1</span> stack is lost.`,
     ],
     set: [`Calabash of Awakening`, `Plume of Luxury`, `Skeletal Hat`, `Bloom Times`, `Song of Life`],
   },
@@ -360,12 +368,12 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.HEAL, value: 0.15 }],
     desc: [
       `Healing Bonus <span class="text-desc">+15%</span>.`,
-      `When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing).
-      <br />At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing.
+      `When the character equipping this artifact set heals a character in the party, a <b>Sea-Dyed Foam</b> will appear for <span class="text-desc">3</span> seconds, accumulating the amount of HP recovered from healing (including overflow healing).
+      <br />At the end of the duration, the <b>Sea-Dyed Foam</b> will explode, dealing DMG to nearby opponents based on <span class="text-desc">90%</span> of the accumulated healing.
       <br />(This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses).
-      <br />Only one Sea-Dyed Foam can be produced every 3.5 seconds.
-      <br />Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing).
-      <br />There can be no more than one Sea-Dyed Foam active at any given time.
+      <br />Only one <b>Sea-Dyed Foam</b> can be produced every <span class="text-desc">3.5</span> seconds.
+      <br />Each <b>Sea-Dyed Foam</b> can accumulate up to <span class="text-desc">30,000</span> HP (including overflow healing).
+      <br />There can be no more than one <b>Sea-Dyed Foam</b> active at any given time.
       <br />This effect can still be triggered even when the character who is using this artifact set is not on the field.`,
     ],
     set: [`Pearl Cage`, `Deep Palace's Plume`, `Crown of Watatsumi`, `Sea-Dyed Blossom`, `Cowry of Parting`],
@@ -377,8 +385,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
-      `After using an Elemental Burst, this character will gain the Nascent Light effect, increasing their ATK by 8% for <span class="text-desc">16</span>s. When the character's HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.<span class="text-desc">8</span>s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.`,
+      `ATK <span class="text-desc">+18%</span>.`,
+      `After using an Elemental Burst, this character will gain the <b>Nascent Light</b> effect, increasing their ATK by <span class="text-desc">8%</span> for <span class="text-desc">16</span>s. When the character's HP decreases, their ATK will further increase by <span class="text-desc">10%</span>. This increase can occur this way maximum of <span class="text-desc">4</span> times. This effect can be triggered once every <span class="text-desc">0.8</span>s. <b>Nascent Light</b> will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of <b>Nascent Light</b>, the original <b>Nascent Light</b> will be dispelled.`,
     ],
     set: [`Moment of the Pact`, `Feather of Nascent Light`, `Thundering Poise`, `Flowering Life`, `Solar Relic`],
   },
@@ -389,11 +397,11 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
-      `When Normal Attacks hit opponents, there is a 36% chance that it will trigger Valley Rite, which will increase Normal Attack DMG by 70% of ATK.
-      <br />This effect will be dispelled 0.<span class="text-desc">05</span>s after a Normal Attack deals DMG.
-      <br />If a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by <span class="text-desc">20%</span>.
-      <br />This trigger can occur once every 0.<span class="text-desc">2</span>s.`,
+      `ATK <span class="text-desc">+18%</span>.`,
+      `When Normal Attacks hit opponents, there is a <span class="text-desc">36%</span> chance that it will trigger <b>Valley Rite</b>, which will increase Normal Attack DMG by <span class="text-desc">70%</span> of ATK.
+      <br />This effect will be dispelled <span class="text-desc">0.05</span>s after a Normal Attack deals DMG.
+      <br />If a Normal Attack fails to trigger <b>Valley Rite</b>, the odds of it triggering the next time will increase by <span class="text-desc">20%</span>.
+      <br />This trigger can occur once every <span class="text-desc">0.2</span>s.`,
     ],
     set: [`Chalice of the Font`, `Jade Leaf`, `Flowing Rings`, `Soulscent Bloom`, `Symbol of Felicitation`],
   },
@@ -405,7 +413,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.DENDRO_DMG, value: 0.15 }],
     desc: [
       `<b class="text-genshin-dendro">Dendro DMG Bonus</b> <span class="text-desc">+15%</span>`,
-      `After Elemental Skills or Bursts hit opponents, the targets' <b class="text-genshin-dendro">Dendro RES</b> will be decreased by 30% for <span class="text-desc">8</span>s. This effect can be triggered even if the equipping character is not on the field.`,
+      `After Elemental Skills or Bursts hit opponents, the targets' <b class="text-genshin-dendro">Dendro RES</b> will be decreased by <span class="text-desc">30%</span> for <span class="text-desc">8</span>s. This effect can be triggered even if the equipping character is not on the field.`,
     ],
     set: [`Lamp of the Lost`, `Scholar of Vines`, `Laurel Coronet`, `Labyrinth Wayfarer`, `A Time of Insight`],
   },
@@ -417,7 +425,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.EM, value: 80 }],
     desc: [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
-      `Within <span class="text-desc">8</span>s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every <span class="text-desc">8</span>s. The character who equips this can still trigger its effects when not on the field.`,
+      `Within <span class="text-desc">8</span>s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the <b>Elemental Type</b> of the other party members. ATK is increased by <span class="text-desc">14%</span> for each party member whose <b>Elemental Type</b> is the same as the equipping character, and Elemental Mastery is increased by <span class="text-desc">50</span> for every party member with a different <b>Elemental Type</b>. Each of the aforementioned buffs will count up to <span class="text-desc">3</span> characters. This effect can be triggered once every <span class="text-desc">8</span>s. The character who equips this can still trigger its effects when not on the field.`,
     ],
     set: [
       `Honeyed Final Feast`,
@@ -435,7 +443,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.ANEMO_DMG, value: 0.15 }],
     desc: [
       `<b class="text-genshin-anemo">Anemo DMG Bonus</b> <span class="text-desc">+15%</span>.`,
-      `When Charged Attacks hit opponents, the equipping character's Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for <span class="text-desc">15</span>s.`,
+      `When Charged Attacks hit opponents, the equipping character's Normal Attack SPD will increase by <span class="text-desc">10%</span> while Normal, Charged, and Plunging Attack DMG will increase by <span class="text-desc">40%</span> for <span class="text-desc">15</span>s.`,
     ],
     set: [
       `Defender of the Enchanting Dream`,
@@ -459,7 +467,7 @@ export const ArtifactSets: IArtifact[] = [
     },
     desc: [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
-      `The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another <span class="text-desc">25%</span> bonus to the effect mentioned prior. Each stack of this lasts <span class="text-desc">10</span>s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.`,
+      `The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by <span class="text-desc">40%</span>. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another <span class="text-desc">25%</span> bonus to the effect mentioned prior. Each stack of this lasts <span class="text-desc">10</span>s. Max <span class="text-desc">4</span> stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.`,
     ],
     set: [
       `Secret-Keeper's Magic Bottle`,
@@ -477,7 +485,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.HYDRO_DMG, value: 0.15 }],
     desc: [
       `<b class="text-genshin-hydro">Hydro DMG Bonus</b> <span class="text-desc">+15%</span>`,
-      `After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will triggered, lasting <span class="text-desc">8</span>s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/<span class="text-desc">25%</span>, and <b class="text-genshin-hydro">Hydro DMG</b> will be increased by 4%/9%/15%. Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.`,
+      `After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, <span class="text-desc">1</span> stack of <b>Mirrored Nymph</b> will triggered, lasting <span class="text-desc">8</span>s. When under the effect of <span class="text-desc">1</span>, <span class="text-desc">2</span>, or <span class="text-desc">3</span> or more <b>Mirrored Nymph</b> stacks, ATK will be increased by <span class="text-desc">7%</span>/<span class="text-desc">16%</span>/<span class="text-desc">25%</span>, and <b class="text-genshin-hydro">Hydro DMG</b> will be increased by <span class="text-desc">4%</span>/<span class="text-desc">9%</span>/<span class="text-desc">15%</span>. <b>Mirrored Nymph</b> created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.`,
     ],
     set: [
       `Heroes' Tea Party`,
@@ -499,8 +507,8 @@ export const ArtifactSets: IArtifact[] = [
       return base
     },
     desc: [
-      `HP <span class="text-desc">+<span class="text-desc">20%</span></span>`,
-      `Elemental Skill and Elemental Burst DMG will be increased by 10%. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for <span class="text-desc">5</span>s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.`,
+      `HP <span class="text-desc">+<span class="text-desc">20%</span>`,
+      `Elemental Skill and Elemental Burst DMG will be increased by <span class="text-desc">10%</span>. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by <span class="text-desc">80%</span> for <span class="text-desc">5</span>s. This effect increase can have <span class="text-desc">5</span> stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.`,
     ],
     set: [
       `Feast of Boundless Joy`,
@@ -523,7 +531,7 @@ export const ArtifactSets: IArtifact[] = [
     },
     desc: [
       `Normal and Charged Attack DMG <span class="text-desc">+15%</span>.`,
-      `When current HP increases or decreases, CRIT Rate will be increased by 12% for <span class="text-desc">5</span>s. Max 3 stacks.`,
+      `When current HP increases or decreases, CRIT Rate will be increased by <span class="text-desc">12%</span> for <span class="text-desc">5</span>s. Max <span class="text-desc">3</span> stacks.`,
     ],
     set: [`Forgotten Vessel`, `Masterpiece's Overture`, `Veteran's Visage`, `Hunter's Brooch`, `Moment of Judgment`],
   },
@@ -562,7 +570,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.HEAL, value: 0.15 }],
     desc: [
       `Healing Bonus <span class="text-desc">+15%</span>`,
-      `When the equipping character heals a party member, the Yearning effect will be created for <span class="text-desc">6</span>s, which records the total amount of healing provided (including overflow healing). When the duration expires, the Yearning effect will be transformed into the "Waves of Days Past" effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by 8% of the total healing amount recorded by the Yearning effect. The "Waves of Days Past" effect is removed after it has taken effect 5 times or after <span class="text-desc">10</span>s. A single instance of the Yearning effect can record up to 15,000 healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect.`,
+      `When the equipping character heals a party member, the <b>Yearning</b> effect will be created for <span class="text-desc">6</span>s, which records the total amount of healing provided (including overflow healing). When the duration expires, the <b>Yearning</b> effect will be transformed into the <b>Waves of Days Past</b> effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by <span class="text-desc">8%</span> of the total healing amount recorded by the <b>Yearning</b> effect. The <b>Waves of Days Past</b> effect is removed after it has taken effect <span class="text-desc">5</span> times or after <span class="text-desc">10</span>s. A single instance of the <b>Yearning</b> effect can record up to <span class="text-desc">15,000</span> healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect.`,
     ],
     set: [
       `Promised Dream of Days Past`,
@@ -579,7 +587,7 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
+      `ATK <span class="text-desc">+18%</span>`,
       `After using an Elemental Skill, gain a <span class="text-desc">20%</span> <b class="text-genshin-geo">Geo DMG Bonus</b> for <span class="text-desc">10</span>s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 1<span class="text-desc">50%</span>, and this additional increase disappears <span class="text-desc">1</span>s after that shield is lost.`,
     ],
     set: [
@@ -597,8 +605,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
-      `When the value of a <b class="text-genshin-bol">Bond of Life</b> increases or decreases, this character deals <span class="text-desc">18%</span> increased DMG for <span class="text-desc">6</span>s. Max 3 stacks.`,
+      `ATK <span class="text-desc">+<span class="text-desc">18%</span>`,
+      `When the value of a <b class="text-genshin-bol">Bond of Life</b> increases or decreases, this character deals <span class="text-desc">18%</span> increased DMG for <span class="text-desc">6</span>s. Max <span class="text-desc">3</span> stacks.`,
     ],
     set: [
       `Ichor Shower Rhapsody`,
@@ -615,8 +623,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [4, 5],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>`,
-      `After leaving combat for <span class="text-desc">3</span>s, DMG dealt increased by <span class="text-desc">50%</span>. In combat, if no Burning opponents are nearby for more than <span class="text-desc">6</span>s, this DMG Bonus will decrease by 10% per second until it reaches 0%. When a Burning opponent exists, it will increase by 10% instead until it reaches <span class="text-desc">50%</span>. This effect still triggers if the equipping character is off-field.`,
+      `ATK <span class="text-desc">+<span class="text-desc">18%</span>`,
+      `After leaving combat for <span class="text-desc">3</span>s, DMG dealt increased by <span class="text-desc">50%</span>. In combat, if no Burning opponents are nearby for more than <span class="text-desc">6</span>s, this DMG Bonus will decrease by <span class="text-desc">10%</span> per second until it reaches <span class="text-desc">0%</span>. When a Burning opponent exists, it will increase by <span class="text-desc">10%</span> instead until it reaches <span class="text-desc">50%</span>. This effect still triggers if the equipping character is off-field.`,
     ],
     set: [
       `The Wine-Flask Over Which the Plan Was Hatched`,
@@ -673,8 +681,8 @@ export const ArtifactSets: IArtifact[] = [
       return base
     },
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
-      `Increases Charged Attack CRIT Rate by 30%.`,
+      `ATK <span class="text-desc">+<span class="text-desc">18%</span>.`,
+      `Increases Charged Attack CRIT Rate by <span class="text-desc">30%</span>.`,
     ],
     set: [
       `Goblet of the Sojourner`,
@@ -692,7 +700,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [],
     desc: [
       `<b>All Elemental RES</b> increased by <span class="text-desc">20%</span>.`,
-      `Incoming Elemental DMG increases corresponding <b>Elemental RES</b> by 30% for <span class="text-desc">10</span>s. Can only occur once every <span class="text-desc">10</span>s.`,
+      `Incoming Elemental DMG increases corresponding <b>Elemental RES</b> by <span class="text-desc">30%</span> for <span class="text-desc">10</span>s. Can only occur once every <span class="text-desc">10</span>s.`,
     ],
     set: [
       `Tiny Miracle's Goblet`,
@@ -708,7 +716,7 @@ export const ArtifactSets: IArtifact[] = [
     icon: 'UI_RelicIcon_10005',
     rarity: [3, 4],
     bonus: [{ stat: Stats.CRIT_RATE, value: 0.12 }],
-    desc: [`CRIT Rate +12%`, `When HP is below 70%, CRIT Rate increases by an additional 24%.`],
+    desc: [`CRIT Rate <span class="text-desc">+12%</span>`, `When HP is below <span class="text-desc">70%</span>, CRIT Rate increases by an additional <span class="text-desc">24%</span>.`],
     set: [
       `Berserker's Bone Goblet`,
       `Berserker's Indigo Feather`,
@@ -725,7 +733,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.EM, value: 80 }],
     desc: [
       `Increases Elemental Mastery by <span class="text-desc">80</span>.`,
-      `Upon triggering an Elemental Reaction, increases all party members' Elemental Mastery by 120 for <span class="text-desc">8</span>s.`,
+      `Upon triggering an Elemental Reaction, increases all party members' Elemental Mastery by <span class="text-desc">120</span> for <span class="text-desc">8</span>s.`,
     ],
     set: [
       `Instructor's Tea Cup`,
@@ -742,8 +750,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [3, 4],
     bonus: [{ stat: Stats.ER, value: 0.2 }],
     desc: [
-      `Energy Recharge <span class="text-desc">+<span class="text-desc">20%</span></span>`,
-      `Using an Elemental Burst regenerates 2 Energy for all party members (excluding the wearer) every <span class="text-desc">2</span>s for <span class="text-desc">6</span>s. This effect cannot stack.`,
+      `Energy Recharge <span class="text-desc">+<span class="text-desc">20%</span>`,
+      `Using an Elemental Burst regenerates <span class="text-desc">2</span> Energy for all party members (excluding the wearer) every <span class="text-desc">2</span>s for <span class="text-desc">6</span>s. This effect cannot stack.`,
     ],
     set: [`Exile's Goblet`, `Exile's Feather`, `Exile's Circlet`, `Exile's Flower`, `Exile's Pocket Watch`],
   },
@@ -754,8 +762,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [3, 4],
     bonus: [{ stat: Stats.P_DEF, value: 0.3 }],
     desc: [
-      `DEF +30%`,
-      `For each different element present in your own party, the wearer's <b>Elemental RES</b> to that corresponding element is increased by 30%.`,
+      `DEF <span class="text-desc">+30%</span>`,
+      `For each different element present in your own party, the wearer's <b>Elemental RES</b> to that corresponding element is increased by <span class="text-desc">30%</span>.`,
     ],
     set: [`Guardian's Vessel`, `Guardian's Sigil`, `Guardian's Band`, `Guardian's Flower`, `Guardian's Clock`],
   },
@@ -766,8 +774,8 @@ export const ArtifactSets: IArtifact[] = [
     rarity: [3, 4],
     bonus: [{ stat: Stats.P_ATK, value: 0.18 }],
     desc: [
-      `ATK <span class="text-desc">+<span class="text-desc">18%</span></span>.`,
-      `Increases DMG by 30% against opponents with more than <span class="text-desc">50%</span> HP.`,
+      `ATK <span class="text-desc">+18%</span>.`,
+      `Increases DMG by <span class="text-desc">30%</span> against opponents with more than <span class="text-desc">50%</span> HP.`,
     ],
     set: [
       `Outset of the Brave`,
@@ -803,7 +811,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [],
     desc: [
       `Increases Elemental Skill DMG by <span class="text-desc">20%</span>.`,
-      `Defeating an opponent has a 100% chance to remove Elemental Skill CD. Can only occur once every <span class="text-desc">15</span>s.`,
+      `Defeating an opponent has a <span class="text-desc">100%</span> chance to remove Elemental Skill CD. Can only occur once every <span class="text-desc">15</span>s.`,
     ],
     set: [
       `Gambler's Dice Cup`,
@@ -821,7 +829,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [{ stat: Stats.ER, value: 0.2 }],
     desc: [
       `Energy Recharge <span class="text-desc">+20%</span>`,
-      `Gaining Elemental Particles or Orbs gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every <span class="text-desc">3</span>s.`,
+      `Gaining Elemental Particles or Orbs gives <span class="text-desc">3</span> Energy to all party members who have a bow or a catalyst equipped. Can only occur once every <span class="text-desc">3</span>s.`,
     ],
     set: [`Scholar's Ink Cup`, `Scholar's Quill Pen`, `Scholar's Lens`, `Scholar's Bookmark`, `Scholar's Clock`],
   },

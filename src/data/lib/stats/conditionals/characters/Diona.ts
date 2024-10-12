@@ -161,7 +161,7 @@ const Diona = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [findContentById(content, 'diona_c6_low'), findContentById(content, 'diona_c6_high')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 60
+      
 
       base.BASIC_SCALING = [
         {

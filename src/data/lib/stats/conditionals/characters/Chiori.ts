@@ -159,7 +159,7 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 50
+      
 
       if (form.tailoring) base.infuse(Element.GEO, true)
 

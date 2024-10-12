@@ -22,6 +22,7 @@ export enum Tags {
   CONTROL = 'Control',
   BATTERY = 'Battery',
   EXPLORATION = 'Exploration',
+  // REACTION = 'Reaction',
 }
 
 export interface ICharacterStats {

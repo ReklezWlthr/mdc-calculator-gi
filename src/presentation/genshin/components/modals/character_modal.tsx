@@ -116,13 +116,18 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
             body={
               <div className="font-normal">
                 <BulletPoint>
-                  <b>On-Field DPS</b>: Excels at dealing damage by weaving a series of attacks together. Usually remains
-                  on the field for most of the rotation.
+                  <b>On-Field DPS</b>: Excels at dealing damage by weaving a series of attacks together. Usually deals
+                  damage through Normal, Charged, or Plunging Attacks, and remains on the field for most of the
+                  rotation.
                 </BulletPoint>
                 <BulletPoint>
                   <b>Off-Field DPS</b>: Excels at passively dealing damage through various means even after they left
                   the field. Does not take as much field time as On-Field DPS's.
                 </BulletPoint>
+                {/* <BulletPoint>
+                  <b>Reaction</b>: Excels at dealing damage through Elemental Reactions or heavily relies on them to
+                  scale. Usually has relatively low personal damage.
+                </BulletPoint> */}
                 <BulletPoint>
                   <b>Applicator</b>: Also known as <b>Enabler</b>. Possesses abilities that help them reliably and
                   constantly apply and maintain an Elemental Aura on enemies even while constantly consumed by

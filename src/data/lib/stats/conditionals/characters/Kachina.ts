@@ -160,7 +160,7 @@ const Kachina = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [findContentById(content, 'kachina_c4')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 70
+      
 
       base.BASIC_SCALING = [
         {

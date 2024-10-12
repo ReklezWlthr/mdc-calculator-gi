@@ -166,7 +166,7 @@ const Sethos = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 60
+      
 
       const element = form.seth_burst ? Element.ELECTRO : Element.PHYSICAL
       const type = form.seth_burst ? TalentProperty.CA : TalentProperty.NA

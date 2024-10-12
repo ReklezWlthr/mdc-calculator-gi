@@ -196,7 +196,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     allyContent,
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 80
+      
 
       base.BASIC_SCALING = [
         {

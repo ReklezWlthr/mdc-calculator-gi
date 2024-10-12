@@ -166,7 +166,7 @@ const Zhongli = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 40
+      
 
       const a4Scaling_a = a >= 4 ? [{ scaling: 0.0139, multiplier: Stats.HP }] : []
       const a4Scaling_b = a >= 4 ? [{ scaling: 0.019, multiplier: Stats.HP }] : []

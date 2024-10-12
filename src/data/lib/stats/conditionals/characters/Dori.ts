@@ -159,7 +159,7 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [findContentById(content, 'dori_low_hp'), findContentById(content, 'dori_low_energy')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 40
+      
 
       if (form.diluc_infusion) {
         base.INFUSION = Element.PYRO

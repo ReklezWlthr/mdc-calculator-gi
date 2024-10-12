@@ -174,7 +174,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
     allyContent: [findContentById(content, 'gorou_skill')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 60
+      
 
       base.BASIC_SCALING = [
         {

@@ -1,11 +1,15 @@
+import { ParticleCount } from '@src/data/db/energy'
 import { useStore } from '@src/data/providers/app_store_provider'
+import { EnergyMeta } from '@src/data/stores/energy_store'
 import _ from 'lodash'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { findCharacter } from '../utils/finder'
 
 export const useLocalUpdater = (game: string) => {
   const router = useRouter()
-  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore, setupStore } = useStore()
+  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore, setupStore, energyStore } =
+    useStore()
   const [data, setData] = useState(null)
   const [hydrated, setHydrated] = useState(false)
 
@@ -35,9 +39,33 @@ export const useLocalUpdater = (game: string) => {
     // }
   }, [])
 
-  // useEffect(() => {
-  //   calculatorStore.setValue('team', _.cloneDeep(teamStore?.characters))
-  // }, [...teamStore.characters])
+  useEffect(() => {
+    // calculatorStore.setValue('team', _.cloneDeep(teamStore?.characters))
+    const temp = _.cloneDeep(energyStore.meta)
+    const result: EnergyMeta[] = Array(4).fill(null)
+
+    _.forEach(teamStore.characters, (char, index) => {
+      if (!char) return
+      const oldData = _.find(temp, (item) => item?.cId === char.cId)
+      result[index] = oldData || {
+        cId: char.cId,
+        element: findCharacter(char.cId)?.element,
+        add: 0,
+        favProc: 0,
+        feedFav: char.cId,
+        fieldTime: 5,
+        rpb: 1,
+        skill: _.map(ParticleCount(char.cId, char.cons), (item) => ({
+          ...item,
+          feed: char.cId,
+          percentage: 100,
+          proc: 0,
+        })),
+      }
+    })
+
+    energyStore.setValue('meta', result)
+  }, [...teamStore.characters])
 
   useEffect(() => {
     if (hydrated && settingStore.settings.storeData) {

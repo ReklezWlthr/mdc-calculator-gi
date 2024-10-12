@@ -150,7 +150,7 @@ const Layla = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     allyContent: [findContentById(content, 'layla_a1')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 60
+      
 
       base.BASIC_SCALING = [
         {

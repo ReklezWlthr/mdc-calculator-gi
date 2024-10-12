@@ -171,7 +171,7 @@ const Aloy = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      base.MAX_ENERGY = 60
+      
 
       const infusion = form.rushing_ice ? Element.CRYO : Element.PHYSICAL
 
