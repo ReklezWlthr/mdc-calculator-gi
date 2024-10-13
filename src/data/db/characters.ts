@@ -1092,7 +1092,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.DENDRO,
     codeName: 'Nahida',
-    tags: [Tags.APP, Tags.OFF_FIELD, Tags.EXPLORATION, Tags.AMP],
+    tags: [Tags.APP, Tags.OFF_FIELD, Tags.EXPLORATION, Tags.AMP, Tags.BATTERY],
   },
   {
     id: '10000091',
@@ -1281,7 +1281,7 @@ export const Characters = [
     weapon: WeaponType.POLEARM,
     element: Element.CRYO,
     codeName: 'Rosaria',
-    tags: [Tags.OFF_FIELD, Tags.BURST, Tags.AMP],
+    tags: [Tags.OFF_FIELD, Tags.BURST, Tags.AMP, Tags.BATTERY],
   },
   {
     id: '10000053',
@@ -1596,7 +1596,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.ELECTRO,
     codeName: 'Yae',
-    tags: [Tags.OFF_FIELD],
+    tags: [Tags.OFF_FIELD, Tags.APP],
   },
   {
     id: '10000048',
@@ -2020,7 +2020,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.DENDRO,
     codeName: 'Player',
-    tags: [Tags.OFF_FIELD, Tags.BATTERY, Tags.BURST, Tags.APP],
+    tags: [Tags.OFF_FIELD, Tags.BURST, Tags.APP],
   },
   {
     id: '10000005-503',

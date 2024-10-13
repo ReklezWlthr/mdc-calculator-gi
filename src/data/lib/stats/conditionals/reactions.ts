@@ -4,6 +4,7 @@ import { Element, Stats } from '@src/domain/constant'
 import { BaseReactionDmg } from '@src/domain/scaling'
 import _ from 'lodash'
 import { calcAdditive, calcAmplifying } from '@src/core/utils/data_format'
+import { isSubsetOf } from '@src/core/utils/finder'
 
 const Reactions: (level: number, element: Element, swirl: Element, stat: StatsObject) => IContent[] = (
   level,
@@ -34,7 +35,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
         (2 * (1 + stat?.getValue(StatsObjectKeys.MELT_DMG) + amp)).toFixed(2)
       )}</span> times. Can be applied to Swirl and Burning.`,
-      show: _.includes([element, swirl], Element.PYRO) || element === Element.PYRO,
+      show: _.includes([element, swirl], Element.PYRO),
       default: false,
     },
     {
@@ -67,7 +68,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       content: `Increase <b class="text-genshin-pyro">Pyro DMG</b> by <span class="text-desc">${parseFloat(
         (1.5 * (1 + stat?.getValue(StatsObjectKeys.VAPE_DMG) + amp)).toFixed(2)
       )}</span> times. Can be applied to Swirl and Burning.`,
-      show: _.includes([element, swirl], Element.PYRO) || element === Element.PYRO,
+      show: _.includes([element, swirl], Element.PYRO),
       default: false,
     },
     {
@@ -91,6 +92,16 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       ).toLocaleString()}</span>.`,
       show: _.includes([element, swirl], Element.ELECTRO),
       default: false,
+    },
+    {
+      type: 'toggle',
+      id: 'superconduct',
+      text: `Superconduct`,
+      title: `Superconduct`,
+      content: `Reduces the enemy's <b>Physical RES</b> <span class="text-desc">40%</span> for <span class="text-desc">12</span>s.`,
+      show: _.includes([Element.ELECTRO, Element.CRYO], element),
+      default: false,
+      debuff: true,
     },
   ]
 }

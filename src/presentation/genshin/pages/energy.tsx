@@ -27,14 +27,14 @@ export const EnergyRequirement = observer(() => {
   return (
     <div className="w-full overflow-y-auto">
       <div className="w-full gap-5 p-5 text-white max-w-[1200px] mx-auto text-sm">
-        <div className="mb-2 flex justify-between items-center">
+        <div className="flex items-center justify-between mb-2">
           <p className="text-2xl font-bold">ER Requirement</p>
           <PrimaryButton title="ICDs & Interactions" onClick={onOpenModal} />
         </div>
         <div className="flex w-full font-semibold">
           <div className="w-[17%] shrink-0" />
           <div className="grid grid-cols-12 w-[53%] shrink-0 gap-3 bg-primary-border rounded-tl-lg py-1">
-            <div className="col-span-5 items-center justify-center flex gap-2">
+            <div className="flex items-center justify-center col-span-5 gap-2">
               <p>Skill Uses</p>
               <Tooltip
                 title="Skill Uses"
@@ -66,7 +66,7 @@ export const EnergyRequirement = observer(() => {
                 <i className="fa-regular fa-question-circle" />
               </Tooltip>
             </div>
-            <div className="col-span-7 items-center justify-center flex gap-2">
+            <div className="flex items-center justify-center col-span-7 gap-2">
               <p>Particle Funneling</p>
               <Tooltip
                 title="Particle Funneling"
@@ -173,18 +173,27 @@ export const EnergyRequirement = observer(() => {
                         </>
                       ) : (
                         <div className="flex items-center col-span-7 px-3 text-xs border-l-2 border-dashed border-primary gap-x-2">
-                          <CheckboxInput onClick={(v) => {}} checked />
+                          <CheckboxInput
+                            onClick={(v) => setMetaData(index, `skill[${cIndex}].override`, v)}
+                            checked={meta[index]?.skill?.[cIndex]?.override}
+                          />
                           <div className="flex items-center gap-1 text-gray">
                             <p className="flex items-center justify-center mr-1 text-xs font-semibold text-white shrink-0">
                               Ratio Override
                             </p>
-                            <TextInput small onChange={(v) => {}} value={'0'} />
-                            /
-                            <TextInput small onChange={(v) => {}} value={'0'} />
-                            /
-                            <TextInput small onChange={(v) => {}} value={'0'} />
-                            /
-                            <TextInput small onChange={(v) => {}} value={'0'} />
+                            {_.map(meta[index]?.skill?.[cIndex]?.ratio, (r, ri) => (
+                              <>
+                                {!!ri && <span>/</span>}
+                                <TextInput
+                                  small
+                                  onChange={(v) => setMetaData(index, `skill[${cIndex}].ratio[${ri}]`, parseFloat(v))}
+                                  value={r?.toString()}
+                                  disabled={!meta[index]?.skill?.[cIndex]?.override}
+                                  min={0}
+                                  type="number"
+                                />
+                              </>
+                            ))}
                             <p>%</p>
                           </div>
                         </div>
@@ -236,29 +245,30 @@ export const EnergyRequirement = observer(() => {
                 <div className="w-[10%] bg-primary-darker text-xs rounded-r-lg flex flex-col">
                   <p className="flex items-center justify-center py-1 rounded-tr-lg bg-primary-dark">Energy Gain</p>
                   <Tooltip
-                    title="Energy Gain"
+                    title="Energy Sources"
                     body={
-                      <div className="text-xs space-y-1">
+                      <div className="space-y-1 text-xs">
                         {_.map(teamStore.characters, (c, i) => (
                           <div className="flex items-center justify-between">
                             <b className="mr-2 shrink-0">Energy from {findCharacter(c?.cId)?.name}</b>
-                            <div className="border-t-2 border-primary w-full" />
-                            <span className="text-desc shrink-0 ml-2">
-                              {_.round(
-                                energyStore.getEnergyFrom(i, index) * _.max([1, meta[index]?.rpb]),
-                                1
-                              ).toLocaleString()}
+                            <div className="w-full border-t-2 border-primary" />
+                            <span className="ml-2 text-desc shrink-0">
+                              {_.round(energyStore.getEnergyFrom(i, index), 1).toLocaleString()}
                             </span>
                           </div>
                         ))}
                         <div className="flex items-center justify-between">
-                          <b className="mr-2 shrink-0">HP Particles/Orbs</b>
-                          <div className="border-t-2 border-primary w-full" />
-                          <span className="text-desc shrink-0 ml-2">
-                            {_.round(
-                              energyStore.getAdditionalEnergy(charData?.element) * _.max([1, meta[index]?.rpb]),
-                              1
-                            ).toLocaleString()}
+                          <b className="mr-2 shrink-0">HP Drops</b>
+                          <div className="w-full border-t-2 border-primary" />
+                          <span className="ml-2 text-desc shrink-0">
+                            {_.round(energyStore.getAdditionalPersonal(index)?.additional, 1).toLocaleString()}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <b className="mr-2 shrink-0">Additional Sources</b>
+                          <div className="w-full border-t-2 border-primary" />
+                          <span className="ml-2 text-desc shrink-0">
+                            {_.round(energyStore.getAdditionalPersonal(index)?.electro, 1).toLocaleString()}
                           </span>
                         </div>
                       </div>

@@ -134,7 +134,7 @@ export const useCalculator = ({
             item?.content,
             item?.teammateContent,
             allyContents(index),
-            Reactions(team[index].level, findCharacter(team[index].cId)?.element, Element.PYRO, finalStats?.[index]),
+            Reactions(team[index].level, finalStats?.[index]?.ELEMENT, Element.PYRO, finalStats?.[index]),
             artifactConditionals[index]?.content,
             artifactConditionals[index]?.teamContent,
             ...weaponSelectable(index),

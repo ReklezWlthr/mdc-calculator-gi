@@ -29,6 +29,7 @@ export interface EnergyStoreType {
   getEnergyFrom: (from: number, to: number) => number
   getTotalEnergy: (from: number) => number
   getFixedEnergy: (index: number) => number
+  getAdditionalPersonal: (to: number) => { additional: number; electro: number }
   getAdditionalEnergy: (element: Element) => number
   hydrate: (data: EnergyStoreType) => void
 }
@@ -41,6 +42,8 @@ export interface SkillMeta {
   pps?: number
   variance: number
   duration?: number
+  ratio: number[]
+  override: boolean
 }
 
 export interface EnergyMeta {
@@ -106,81 +109,64 @@ export class EnergyStore {
     const totalRotation = _.sumBy(this.meta, (item) => item.fieldTime)
     const generator = this.meta[from]
     const receiver = this.meta[to]
-    const receiverFieldTime = receiver?.fieldTime / totalRotation
-    const elementMultiplier = receiver?.element === generator?.element ? 3 : 1
+
     const offFieldMultiplier = OffFieldMultiplier[_.size(_.filter(this.meta, (item) => !!item.cId)) - 1]
 
-    //Check if the receiver is fed energy to or actually the generator
-    const onFieldMultiplier = (skill: SkillMeta) =>
-      receiver?.cId === skill?.feed
-        ? skill?.percentage / 100 + (1 - skill?.percentage / 100) * offFieldMultiplier
-        : receiver?.cId === generator?.cId
-        ? 1 - skill?.percentage / 100 + (skill?.percentage / 100) * offFieldMultiplier
-        : offFieldMultiplier
-    //Divide total particle that can be gained per burst use by seconds
-    const particlePerSec = (skill: SkillMeta) =>
-      ((skill?.value * skill?.proc) / totalRotation) * (1 - skill?.variance * varMultiplier)
+    let energy = 0
+    _.forEach(generator?.skill, (skill) => {
+      const receiverFieldTime = skill.override ? skill.ratio[to] / 100 : receiver?.fieldTime / totalRotation
+      const elementMultiplier = receiver?.element === generator?.element ? 3 : 1
 
-    const normalTotal = (skill: SkillMeta) =>
-      totalRotation * (onFieldMultiplier(skill) * (particlePerSec(skill) * elementMultiplier))
+      //Check if the receiver is fed energy to or actually the generator
+      const onFieldMultiplier =
+        receiver?.cId === skill?.feed
+          ? skill?.percentage / 100 + (1 - skill?.percentage / 100) * offFieldMultiplier
+          : receiver?.cId === generator?.cId
+          ? 1 - skill?.percentage / 100 + (skill?.percentage / 100) * offFieldMultiplier
+          : offFieldMultiplier
+      //Divide total particle that can be gained per burst use by seconds
+      const particlePerSec = ((skill?.value * skill?.proc) / totalRotation) * (1 - skill?.variance * varMultiplier)
 
-    const turretUptimePerBurst = (skill: SkillMeta) =>
+      const normalTotal = totalRotation * (onFieldMultiplier * (particlePerSec * elementMultiplier))
+
       //Fischl gains 1 extra proc per Burst which dilutes Particle distribution when RPB goes up
-      _.min([
+      const turretUptimePerBurst = _.min([
         skill?.duration *
           (skill?.proc * _.max([1, generator?.rpb]) + (_.includes(ExtraSkillProc, generator?.cId) ? 1 : 0)),
         totalRotation * _.max([1, generator?.rpb]),
       ])
-    //Dilute total Particle gain during Uptime over total rotation length
-    //Return the same PPS value if the turret has 100% Uptime
-    const turretParticlePerSec = (skill: SkillMeta) =>
-      (skill?.pps * turretUptimePerBurst(skill)) / (totalRotation * _.max([1, generator?.rpb]))
-    //Use diluted PPS to find how much Particle the receiver will receive during their normal rotation
-    //Less than 100% uptime will result in lower PPS
-    const turretTotal = (skill: SkillMeta) =>
-      turretParticlePerSec(skill) *
-      totalRotation *
-      _.max([1, receiver?.rpb]) *
-      (receiverFieldTime + (1 - receiverFieldTime) * offFieldMultiplier) *
-      elementMultiplier *
-      (1 - skill?.variance * varMultiplier)
+      //Dilute total Particle gain during Uptime over total rotation length
+      //Return the same PPS value if the turret has 100% Uptime
+      const turretParticlePerSec = (skill?.pps * turretUptimePerBurst) / (totalRotation * _.max([1, generator?.rpb]))
+      //Use diluted PPS to find how much Particle the receiver will receive during their normal rotation
+      //Less than 100% uptime will result in lower PPS
+      const turretTotal =
+        turretParticlePerSec *
+        totalRotation *
+        (receiverFieldTime + (1 - receiverFieldTime) * offFieldMultiplier) *
+        elementMultiplier *
+        (1 - skill?.variance * varMultiplier)
 
-    let energy = 0
-    _.forEach(generator?.skill, (skill) => {
-      energy += (skill?.value ? normalTotal(skill) : turretTotal(skill)) || 0
+      energy += (skill?.value ? normalTotal : turretTotal) * _.max([1, receiver?.rpb]) || 0
     })
 
     if (generator?.favProc) {
       //Fav gives 3 Clear Particles which equate to 6 Energy
-      energy += generator?.favProc * 6 * (generator?.feedFav === receiver?.cId ? 1 : offFieldMultiplier) || 0
+      energy +=
+        generator?.favProc *
+          6 *
+          (generator?.feedFav === receiver?.cId ? 1 : offFieldMultiplier) *
+          _.max([1, receiver?.rpb]) || 0
     }
 
     return energy
   }
 
   getTotalEnergy = (to: number) => {
-    const totalRotation = _.sumBy(this.meta, (item) => item.fieldTime)
-    const receiver = this.meta[to]
-    const receiverFieldTime = receiver?.fieldTime / totalRotation
-
-    const offFieldMultiplier = OffFieldMultiplier[_.size(_.filter(this.meta, (item) => !!item.cId)) - 1]
-    const onFieldMultiplier = receiverFieldTime + (1 - receiverFieldTime) * offFieldMultiplier
-
-    const rawParticle = this.getAdditionalEnergy(receiver.element) * onFieldMultiplier * _.max([1, receiver?.rpb])
-    const addParticle = this.particleMode === 'chamber' ? (rawParticle / this.clearTime) * totalRotation : rawParticle
-
-    const electro = _.size(_.filter(this.meta, (item) => item?.element === Element.ELECTRO)) >= 2
-    const totalElectro =
-      (totalRotation / this.electroInterval) *
-      onFieldMultiplier *
-      (receiver.element === Element.ELECTRO ? 3 : 1) *
-      (electro ? 1 : 0) *
-      _.max([1, receiver?.rpb])
+    const { additional, electro } = this.getAdditionalPersonal(to)
 
     return (
-      _.sum(_.map(this.meta, (item, index) => (item?.cId ? this.getEnergyFrom(index, to) : 0))) +
-      addParticle +
-      totalElectro
+      _.sum(_.map(this.meta, (item, index) => (item?.cId ? this.getEnergyFrom(index, to) : 0))) + additional + electro
     )
   }
 
@@ -206,7 +192,40 @@ export class EnergyStore {
     return _.sum([clearParticle, onParticle, offParticle, clearOrb, onOrb, offOrb])
   }
 
+  getAdditionalPersonal = (to: number) => {
+    const totalRotation = _.sumBy(this.meta, (item) => item.fieldTime)
+    const receiver = this.meta[to]
+    const receiverFieldTime = receiver?.fieldTime / totalRotation
+
+    const offFieldMultiplier = OffFieldMultiplier[_.size(_.filter(this.meta, (item) => !!item.cId)) - 1]
+    const onFieldMultiplier = receiverFieldTime + (1 - receiverFieldTime) * offFieldMultiplier
+
+    const rawParticle = this.getAdditionalEnergy(receiver.element) * onFieldMultiplier * _.max([1, receiver?.rpb])
+    const addParticle = this.particleMode === 'chamber' ? (rawParticle / this.clearTime) * totalRotation : rawParticle
+
+    const electro = _.size(_.filter(this.meta, (item) => item?.element === Element.ELECTRO)) >= 2
+    const totalElectro =
+      (totalRotation / this.electroInterval) *
+      onFieldMultiplier *
+      (receiver.element === Element.ELECTRO ? 3 : 1) *
+      +electro *
+      _.max([1, receiver?.rpb])
+
+    return {
+      additional: addParticle,
+      electro: totalElectro,
+    }
+  }
+
   hydrate = (data: EnergyStoreType) => {
     if (!data) return
+
+    this.meta = data.meta
+    this.mode = data.mode
+    this.particleMode = data.particleMode
+    this.clearTime = data.clearTime
+    this.electroInterval = data.electroInterval
+    this.particles = data.particles
+    this.orbs = data.orbs
   }
 }

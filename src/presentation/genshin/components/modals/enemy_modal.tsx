@@ -183,15 +183,19 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
           </div>
           {_.map(BaseElementColor, (item, key: Element) => (
             <div className="flex items-center gap-3">
-              <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
+              <p className={classNames('whitespace-nowrap text-sm w-full', item)}>{key} RES</p>
               <TextInput
                 type={res[key] === Infinity ? 'text' : 'number'}
                 value={res[key] === Infinity ? 'Immune' : res[key].toString()}
                 onChange={(value) => store.setRes(key, value as any as number)}
-                style="!w-[75px]"
+                style="!w-[75px] shrink-0"
                 disabled={res[key] === Infinity || !!enemyData}
               />
-              <CheckboxInput checked={res[key] === Infinity} onClick={(v) => store.setRes(key, v ? Infinity : 10)} />
+              <CheckboxInput
+                checked={res[key] === Infinity}
+                onClick={(v) => store.setRes(key, v ? Infinity : 10)}
+                disabled={!!enemyData}
+              />
             </div>
           ))}
         </div>

@@ -18,8 +18,8 @@ export const EnergySettings = observer(() => {
       <div className="col-span-3">
         <div className="py-1 text-base font-bold text-center rounded-t-lg bg-primary-light">Rotation Settings</div>
         <div className="flex text-xs divide-x-2 divide-primary-border">
-          <p className="text-center w-full bg-primary-dark py-1">Total Rotation Length</p>
-          <p className="text-center w-full bg-primary-darker py-1 text-desc">
+          <p className="w-full py-1 text-center bg-primary-dark">Total Rotation Length</p>
+          <p className="w-full py-1 text-center bg-primary-darker text-desc">
             {_.sumBy(meta, (item) => item.fieldTime)}s
           </p>
         </div>
@@ -57,7 +57,7 @@ export const EnergySettings = observer(() => {
         <div className="py-1 text-base font-bold text-center rounded-t-lg bg-primary-light">Additional Settings</div>
         <div className="rounded-b-lg bg-primary-dark">
           <div className="grid grid-cols-6 col-span-4 gap-1.5 px-2 py-1.5 text-xs">
-            <div className="col-span-4 py-1 flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center col-span-4 gap-2 py-1">
               <p>Particle RNG</p>
               <Tooltip
                 title="Particle RNG"
@@ -111,7 +111,7 @@ export const EnergySettings = observer(() => {
                 2
               }
             />
-            <div className="col-span-4 py-1 flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center col-span-4 gap-2 py-1">
               <p>HP Drops Mode</p>
               <Tooltip
                 title="HP Drops Mode"
@@ -168,8 +168,8 @@ export const EnergySettings = observer(() => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-9 gap-1 bg-primary-dark border-t-2 border-primary-border">
-          <p className="text-xs flex items-center justify-center font-semibold">Particles</p>
+        <div className="grid grid-cols-9 gap-1 border-t-2 bg-primary-dark border-primary-border">
+          <p className="flex items-center justify-center text-xs font-semibold">Particle</p>
           {_.map(Element, (item) => (
             <div className={classNames('text-center text-xs p-1 font-semibold', ElementColor[item])}>
               <TextInput
@@ -183,7 +183,7 @@ export const EnergySettings = observer(() => {
           ))}
         </div>
         <div className="grid grid-cols-9 gap-1 bg-primary-dark">
-          <p className="text-xs flex items-center justify-center font-semibold">Orbs</p>
+          <p className="flex items-center justify-center text-xs font-semibold">Orb</p>
           {_.map(Element, (item) => (
             <div className={classNames('text-center text-xs p-1 font-semibold', ElementColor[item])}>
               <TextInput
@@ -196,12 +196,12 @@ export const EnergySettings = observer(() => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-9 gap-1 bg-primary-dark border-t-2 border-primary-border rounded-b-lg">
-          <p className="text-xs flex items-center justify-center font-semibold col-span-2 py-2">Energy Gained</p>
+        <div className="grid grid-cols-9 gap-1 border-t-2 rounded-b-lg bg-primary-dark border-primary-border">
+          <p className="flex items-center justify-center col-span-2 py-2 text-xs font-semibold">Energy Gained</p>
           {_.map(
             _.filter(Element, (item) => item !== Element.PHYSICAL),
             (item) => (
-              <div className="text-center text-xs py-2 font-semibold text-gray">
+              <div className="py-2 text-xs font-semibold text-center text-gray">
                 {energyStore.getAdditionalEnergy(item)}
               </div>
             )

@@ -60,6 +60,8 @@ export const useLocalUpdater = (game: string) => {
           feed: char.cId,
           percentage: 100,
           proc: item.default,
+          ratio: [25, 25, 25, 25],
+          override: false,
         })),
       }
     })

@@ -157,7 +157,7 @@ export const ParticleCount = (id: string, c: number) =>
       { name: 'Hold Level 1', default: 0, value: 2.5, variance: 1 / 5 },
       { name: 'Hold Level 2', default: 0, value: 3, variance: 0 },
     ],
-    '10000030': [{ name: 'Pillar Hit', default: 1, value: 0, variance: 0.5, pps: 0.25, duration: 30 }],
+    '10000030': [{ name: 'Hit Pillar', default: 1, value: 0, variance: 0.5, pps: 0.25, duration: 30 }],
     '10000096': [{ name: 'Skill Cast', default: 1, value: 5, variance: 0 }],
     '10000097': [{ name: 'Skill Cast', default: 1, value: 2, variance: 0 }],
     '10000095': [{ name: 'Skill Cast', default: 1, value: 4, variance: 0 }],
