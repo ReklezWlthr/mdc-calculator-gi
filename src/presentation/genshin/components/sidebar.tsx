@@ -49,7 +49,7 @@ export const Sidebar = ({
         <Pill name="Team Setup" page={GenshinPage.TEAM} icon="fa-solid fa-user" />
         <Pill name="Damage Calculator" page={GenshinPage.DMG} icon="fa-solid fa-chart-simple" />
         <Pill name="Compare" page={GenshinPage.COMPARE} icon="fa-solid fa-arrow-right-arrow-left" />
-        <Pill name="ER Requirement" page={GenshinPage.ER} icon="fa-solid fa-refresh" />
+        <Pill name="ER Requirement" page={GenshinPage.ER} icon="fa-solid fa-rotate-right -rotate-90" />
         <Pill name="Import / Export" page={GenshinPage.IMPORT} icon="fa-solid fa-file-import" />
         <p className="p-2 font-bold text-white">Account</p>
         <Pill name="My Characters" page={GenshinPage.CHAR} icon="fa-solid fa-user-group" />

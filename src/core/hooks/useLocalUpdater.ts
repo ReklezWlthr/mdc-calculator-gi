@@ -53,13 +53,13 @@ export const useLocalUpdater = (game: string) => {
         add: 0,
         favProc: 0,
         feedFav: char.cId,
-        fieldTime: 5,
+        fieldTime: index ? 5 : 15,
         rpb: 1,
         skill: _.map(ParticleCount(char.cId, char.cons), (item) => ({
           ...item,
           feed: char.cId,
           percentage: 100,
-          proc: 0,
+          proc: item.default,
         })),
       }
     })
