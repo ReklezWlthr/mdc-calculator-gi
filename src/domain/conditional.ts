@@ -24,6 +24,7 @@ export interface IEnemyGroup {
   res: (element: Element, stun: boolean, shield: boolean) => number[]
   stun?: string
   shield?: string
+  img: string
 }
 
 export interface IWeaponContent {

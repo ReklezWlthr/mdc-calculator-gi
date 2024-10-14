@@ -26,14 +26,14 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     normal: {
       level: normal,
       trace: `Normal Attack`,
-      title: `-`,
+      title: `Spiritvessel Snapshot`,
       content: `<b>Normal Attack</b>
       <br />Performs up to 3 consecutive shots with a bow.
       <br />
       <br /><b>Charged Attack</b>
       <br />Performs a more precise Aimed Shot with increased DMG.
-      <br />While aiming, crackling lightning will accumulate on the arrowhead. An arrow fully charged with the storm's might will deal <b class="text-genshin-electro">Electro DMG</b>.
-      <br /><b>Special</b>: Capable of scanning runes and graffiti in Natlan, creating different effects based on what was scanned.
+      <br />While aiming, Electro energy will accumulate on the arrowhead. A fully charged arrow will deal high amounts of <b class="text-genshin-electro">Electro DMG</b>.
+      <br />Ororon will also enter the <b>Spiritspeaker</b> state upon holding to aim, which will let him obtain the information and power within <b>Nightspirit Graffiti</b> and <b>Nightspirit Sigils</b>.
       <br />
       <br /><b>Plunging Attack</b>
       <br />Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
@@ -43,35 +43,41 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     skill: {
       level: skill,
       trace: `Elemental Skill`,
-      title: `-`,
-      content: `Tosses a <b>Graffiti Bomb</b> that will ricochet between nearby opponents, attacking them. Deals <b class="text-genshin-electro">Electro DMG</b>.
-      <br />Stops attacking after attacking <span class="text-desc">3</span> times, or when there are no more opponents nearby to attack. Can bounce off each opponent a maximum of once.`,
+      title: `Night's Tightrope`,
+      content: `Ororon manifests an ancient mystical technique from the Masters of the Night-Wind as a <b class="text-genshin-electro">Spirit Oculus</b> of midnight shade and throws it at the foe, dealing Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b>.
+      <br />When other opponents are nearby, the <b class="text-genshin-electro">Spirit Oculus</b> will bounce between them, dealing Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b>. Each time <b>Night's Tightrope</b> is used, each opponent can only be selected as a target once.
+      <br />After <span class="text-desc">3</span> bounces, or if there are no eligible targets left, the <b class="text-genshin-electro">Oculus</b> will disappear. <span class="text-desc">1</span> <b class="text-genshin-electro">Oculus</b> created by Ororon himself can exist at any one time.`,
       image: 'Skill_S_Olorun_01',
     },
     burst: {
       level: burst,
       trace: `Elemental Burst`,
-      title: `-`,
-      content: `Ororon summons a <b class="text-genshin-electro">Psionic Eye</b> that deals <b class="text-genshin-electro">AoE Electro DMG</b>.
+      title: `Dark Voices Echo`,
+      content: `Ororon works an ancient ritual, dealing Nightsoul-aligned <b class="text-genshin-electro">AoE Electro DMG</b>, summoning forth a <b class="text-genshin-electro">Supersonic Oculus</b>.
       <br />
-      <br /><b class="text-genshin-electro">Psionic Eye</b>
-      <br />- Can continually taunt nearby opponents, drawing their attacks.
-      <br />- Can fire soundwaves and continually spins, dealing <b class="text-genshin-electro">Electro DMG</b> to opponents it touches.`,
+      <br /><b class="text-genshin-electro">Supersonic Oculus</b>
+      <br />- Continuously taunts nearby opponents and attracts attacks from them.
+      <br />- Continuously rotates and fires off sonic waves that deal Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b>.`,
       image: 'Skill_E_Olorun_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
-      title: `-`,
-      content: `When party members triggers a <b>Nightsoul Burst</b>, Ororon will recover <span class="text-desc">40</span> <b class="text-genshin-electro">Nightsoul</b> points.
-      <br />For <span class="text-desc">15</span>s after using a Skill, Ororon will recover <span class="text-desc">5</span> <b class="text-genshin-electro">Nightsoul</b> points after characters other than himself hit opponents with <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b>. This can only be triggered up to <span class="text-desc">10</span> times during its duration, and he can recover <b class="text-genshin-electro">Nightsoul</b> points this way once every <span class="text-desc">0.3</span>s.
-      <br /><b class="text-genshin-electro">Nightsoul</b> points can be consumed in the following ways:
-      <br />After nearby opponents are attacked by Electro-Charged or by Nightsoul-aligned attacks (from characters other than Ororon), if he has <span class="text-desc">10</span> or more <b class="text-genshin-electro">Nightsoul</b> points, Ororon will enter the <b class="text-genshin-electro">Nightsoul's Blessing</b> state for <span class="text-desc">6</span>s and trigger the <b class="text-genshin-electro">Electric Induction</b> effect: Deal <b class="text-genshin-electro">Electro DMG</b> equal to <span class="text-desc">130%</span> of his ATK to up to <span class="text-desc">4</span> nearby opponents and consume <span class="text-desc">10</span> <b class="text-genshin-electro">Nightsoul</b> points. This effect can be triggered once every <span class="text-desc">1.8</span>s.`,
+      title: `Nightshade Synesthesia`,
+      content: `When a nearby party member triggers <b>Nightsoul Burst</b>, Ororon will gain <span class="text-desc">40</span> <b class="text-genshin-electro">Nightsoul</b> points. Within <span class="text-desc">15</span>s after using his Elemental Skill, when nearby active characters deal <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b>, Ororon will gain <span class="text-desc">5</span> <b class="text-genshin-electro">Nightsoul</b> points, an effect that can occur every <span class="text-desc">0.3</span>s, and can occur <span class="text-desc">10</span> times during this <span class="text-desc">15</span>s duration.
+      <br />
+      <br />Also, when nearby opponents take Electro-Charged reaction DMG or when nearby characters deal Nightsoul-aligned DMG, Ororon will consume <span class="text-desc">10</span> <b class="text-genshin-electro">Nightsoul</b> points (provided he has at least that amount), entering the <b class="text-genshin-electro">Nightsoul's Blessing</b> state and triggering the <b>Hypersense</b> effect: Deal Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b> based on <span class="text-desc">130%</span> of Ororon's ATK to at most <span class="text-desc">4</span> nearby opponents. The aforementioned effect can trigger once every <span class="text-desc">1.8</span>s.
+      <br />
+      <br /><b class="text-genshin-electro">Nightsoul's Blessing: Ororon</b>
+      <br />Ororon's <b class="text-genshin-electro">Nightsoul's Blessing</b> state lasts <span class="text-desc">6</span>s.`,
       image: 'UI_Talent_S_Olorun_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
-      title: `-`,
-      content: `For <span class="text-desc">15</span>s after his Elemental Skill hits, the active party member restores <span class="text-desc">3</span> Elemental Energy after attacking with <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b>. If Ororon is off-field at the time, Ororon will restore <span class="text-desc">3</span> Elemental Energy as well. This can be triggered once every <span class="text-desc">1</span>s, and can be triggered up to <span class="text-desc">3</span> times during its duration.`,
+      title: `Aspect Catalyst`,
+      content: `After the Elemental Skill <b>Night's Tightrope</b>'s <b class="text-genshin-electro">Spirit Oculus</b> hits an opponent, Ororon will gain the <b>Aspect Sigil</b> effect for <span class="text-desc">15</span>s.
+      <br />
+      <br /><b>Aspect Sigil</b>
+      <br />When nearby active party member deal <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b>, that character will restore <span class="text-desc">3</span> Energy. If Ororon is off-field, Ororon will also restore <span class="text-desc">3</span> Energy. This effect can trigger once every <span class="text-desc">1</span>s, and can trigger <span class="text-desc">3</span> times per duration.`,
       image: 'UI_Talent_S_Olorun_06',
     },
     util: {
@@ -82,48 +88,55 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     bonus: {
       trace: `Night Realm's Gift`,
-      title: `-`,
-      content: `While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, he can use <b>Nightsoul Transmission: Ororon</b>. When the active character is currently sprinting, in a movement mode caused by certain Talents, or at a certain height in the air, the following will trigger when switching to Ororon: Ororon will leap up high. <b>Nightsoul Transmission</b> can be triggered once every <span class="text-desc">10</span>s.`,
+      title: `Flowing Fog, Spritely Shadows`,
+      content: `While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, he can use <b>Nightsoul Transmission: Ororon</b>. When the active character is currently in a movement mode caused by certain Talents, or at a certain height in the air, the following will trigger when switching to Ororon: Ororon will leap up high. <b>Nightsoul Transmission</b> can be triggered once every <span class="text-desc">10</span>s by your party.
+      <br />
+      <br />Additionally, holding the jump button will cause Ororon to consume <span class="text-desc">75</span> Stamina and leap. In areas within Natlan where <b class="text-genshin-pyro">Phlogiston</b> mechanics are present, Ororon will prioritize consuming <span class="text-desc">5</span> <b class="text-genshin-pyro">Phlogiston</b> to leap to a height higher still.`,
       image: 'UI_Talent_S_Olorun_07',
     },
     c1: {
       trace: `Constellation 1`,
-      title: `-`,
-      content: `<b>Graffiti Bomb</b> can attack <span class="text-desc">2</span> more times, and opponents hit take <span class="text-desc">60%</span> more DMG from <b>Electric Induction</b> for <span class="text-desc">12</span>s.
-      <br />Requires Ascension Talent <b>1</b> to be unlocked first.`,
+      title: `Trails Amidst the Forest Fog`,
+      content: `The Elemental Skill <b>Night's Tightrope</b>'s <b class="text-genshin-electro">Spirit Oculus</b> can bounce <span class="text-desc">2</span> additional times.
+      <br />Additionally, after the <b class="text-genshin-electro">Spirit Oculus</b> hits an opponent, it will apply the <b class="text-violet-300">Nighttide</b> effect to them for <span class="text-desc">12</span>s. Opponents affected by <b class="text-violet-300">Nighttide</b> take <span class="text-desc">60%</span> increased DMG from <b>Hypersense</b> triggered by the Passive Talent, <b>Nightshade Synesthesia</b>. Unlock the aforementioned Passive Talent to trigger this effect.`,
       image: 'UI_Talent_S_Olorun_01',
     },
     c2: {
       trace: `Constellation 2`,
-      title: `-`,
-      content: `When Ororon's Elemental Burst hits <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">4</span> or more opponents, his own Electro DMG dealt increases by <span class="text-desc">24%</span>/<span class="text-desc">36%</span>/<span class="text-desc">48%</span>/<span class="text-desc">60%</span> for <span class="text-desc">9</span>s.`,
+      title: `King Bee of the Hidden Honeyed Wine`,
+      content: `After using his Elemental Burst, <b>Dark Voices Echo</b>, Ororon will obtain the <b>Spiritual Supersense</b> effect for 9s.
+      <br />
+      <br /><b>Spiritual Supersense</b>
+      <br />Gain <span class="text-desc">12%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.
+      <br />During this time, every additional opponent hit by the Elemental Burst <b>Dark Voices Echo</b> or <b class="text-genshin-electro">Supersonic Oculus</b> will grant Ororon a further <span class="text-desc">12%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>. The maximum that can be gained this way is <span class="text-desc">60%</span> Electro DMG Bonus.`,
       image: 'UI_Talent_S_Olorun_02',
     },
     c3: {
       trace: `Constellation 3`,
-      title: `-`,
-      content: `Increases the Level of <b>Elemental Burst</b> by <span class="text-desc">3</span>.
+      title: `Roosting Bat's Spiritcage`,
+      content: `Increases the Level of <b>Dark Voices Echo</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
       image: 'UI_Talent_U_Olorun_01',
     },
     c4: {
       trace: `Constellation 4`,
-      title: `-`,
-      content: `The rotation speed of the soundwaves during the Elemental Burst increase by <span class="text-desc">25%</span>.`,
+      title: `As the Mysteries of the Night-Wind`,
+      content: `The <b class="text-genshin-electro">Supersonic Oculus</b> summoned by the Elemental Burst, <b>Dark Voices Echo</b> rotates <span class="text-desc">25%</span> faster.`,
       image: 'UI_Talent_S_Olorun_03',
     },
     c5: {
       trace: `Constellation 5`,
-      title: `-`,
-      content: `Increases the Level of <b>Elemental Skill</b> by <span class="text-desc">3</span>.
+      title: `A Gift For the Soul`,
+      content: `Increases the Level of <b>Night's Tightrope</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
       image: 'UI_Talent_U_Olorun_02',
     },
     c6: {
       trace: `Constellation 6`,
-      title: `-`,
-      content: `After consuming <b class="text-genshin-electro">Nightsoul</b> points to trigger the effect of Ascension Talent 1, the active party member's ATK increases by <span class="text-desc">10%</span> for <span class="text-desc">9</span>s, stacking up to <span class="text-desc">3</span> times. Each stack is counted independently.
-      <br />In addition, when his Elemental Burst is used, an attack that counts as an instance of <b class="text-genshin-electro">Electric Induction</b> that does not consume <b class="text-genshin-electro">Nightsoul</b> points will be triggered, dealing <span class="text-desc">300%</span> of his ATK as <b class="text-genshin-electro">Electro DMG</b>.`,
+      title: `Ode to Deep Springs`,
+      content: `After triggering <b>Hypersense</b> through the Passive Talent, <b>Nightshade Synesthesia</b>, your current active character's ATK is increased by <span class="text-desc">10%</span> for <span class="text-desc">9</span>s. Max <span class="text-desc">3</span> stacks, each stack is counted independently.
+      <br />Additionally, when you use the Elemental Burst <b>Dark Voices Echo</b>, you will trigger one instance of an effect equivalent to <b>Hypersense</b>, dealing <span class="text-desc">200%</span> of its original DMG.
+      You must unlock the Passive Talent <b>Nightshade Synesthesia</b> first.`,
       image: 'UI_Talent_S_Olorun_04',
     },
   }
@@ -132,19 +145,20 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     {
       type: 'toggle',
       id: 'ororon_c1',
-      text: `Enhanced Electric Induction`,
+      text: `Nighttide`,
       ...talents.c1,
       show: c >= 1,
       default: true,
+      debuff: true,
     },
     {
       type: 'number',
       id: 'ororon_c2',
-      text: `C2 Electro DMG Bonus`,
+      text: `Spiritual Supersense`,
       ...talents.c2,
       show: c >= 2,
-      default: 4,
-      max: 4,
+      default: 5,
+      max: 5,
       min: 0,
     },
     {
@@ -231,7 +245,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
       if (a >= 1) {
         base.SKILL_SCALING.push({
-          name: 'Electric Induction DMG',
+          name: 'Hypersense DMG',
           value: [{ scaling: 1.3, multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.ADD,
@@ -240,7 +254,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       }
       if (form.ororon_c2) {
         base[Stats.ELECTRO_DMG].push({
-          value: 0.12 * (form.ororon_c2 + 1),
+          value: 0.12 * form.ororon_c2,
           name: 'Constellation 2',
           source: 'Self',
         })
@@ -254,11 +268,12 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       }
       if (c >= 6) {
         base.SKILL_SCALING.push({
-          name: 'C6 Electric Induction DMG',
-          value: [{ scaling: 3, multiplier: Stats.ATK }],
+          name: 'C6 Hypersense DMG',
+          value: [{ scaling: 1.3, multiplier: Stats.ATK }],
           element: Element.ELECTRO,
           property: TalentProperty.ADD,
           bonus: form.ororon_c1 ? 0.6 : 0,
+          multiplier: 2,
         })
       }
 

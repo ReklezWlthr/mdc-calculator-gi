@@ -57,10 +57,16 @@ export const EnergyRequirement = observer(() => {
                       <b className="text-desc">ICDs & Interactions</b> section or use the given preset(s). You can put
                       in decimals if the Skill does not last its full uptime or misses some hits.
                     </p>
+                    <p>
+                      Although the calculator allows you to customize your rotation to an extend, please be wary of each
+                      character's CD, especially ones with high Skill CD like Fischl, Noelle, or Xingqiu. Total rotation
+                      length should realistically be higher than the characters' CD if you are planning to use one every
+                      rotation.
+                    </p>
                   </div>
                 }
                 position="bottom"
-                style="w-[450px]"
+                style="w-[500px]"
               >
                 <i className="fa-regular fa-question-circle" />
               </Tooltip>
@@ -112,7 +118,7 @@ export const EnergyRequirement = observer(() => {
                       />
                     </div>
                     <p className="font-semibold py-0.5 text-center w-full text-sm px-1">{charData?.name}</p>
-                    <div className="text-xs flex flex-col justify-between h-11 py-1 px-2 font-semibold text-gray bg-primary-dark">
+                    <div className="flex flex-col justify-between px-2 py-1 text-xs font-semibold h-11 text-gray bg-primary-dark">
                       <p>A{item.ascension}</p>
                       <p>C{item.cons}</p>
                     </div>
@@ -133,18 +139,19 @@ export const EnergyRequirement = observer(() => {
                 </div>
                 <div className="w-[53%] bg-primary-darker border-x-2 border-primary-border">
                   {_.map(ParticleCount(item.cId, item.cons), (component, cIndex) => {
-                    const data = meta[index]?.skill?.[cIndex]
-                    const uptime =
-                      (data?.duration * (data?.proc + (_.includes(ExtraSkillProc, item?.cId) ? 1 : 0))) / totalRotation
+                    // const data = meta[index]?.skill?.[cIndex]
+                    // const uptime =
+                    //   (data?.duration * (data?.proc + (_.includes(ExtraSkillProc, item?.cId) && data?.proc ? 1 : 0))) /
+                    //   totalRotation
 
                     return (
                       <div className="grid w-full grid-cols-12 py-1 bg-primary-dark gap-x-3">
-                        <div className="flex col-span-5 gap-x-1 items-center">
+                        <div className="flex items-center col-span-5 gap-x-1">
                           <p className="flex items-center justify-center w-full text-xs font-semibold">
                             {component?.name}
-                            <span className="text-gray font-normal ml-1">
+                            {/* <span className="ml-1 font-normal text-gray">
                               {!!uptime ? `- ${toPercentage(_.min([uptime, 1]))} Uptime` : ''}
-                            </span>
+                            </span> */}
                           </p>
                           <TextInput
                             small
@@ -260,7 +267,7 @@ export const EnergyRequirement = observer(() => {
                 <div className="w-[10%] bg-primary-darker text-xs rounded-r-lg flex flex-col">
                   <p className="flex items-center justify-center py-1 rounded-tr-lg bg-primary-dark">Energy Gain</p>
                   <Tooltip
-                    title="Energy Sources"
+                    title="Energy Gain per Burst"
                     body={
                       <div className="space-y-1 text-xs">
                         {_.map(teamStore.characters, (c, i) => (

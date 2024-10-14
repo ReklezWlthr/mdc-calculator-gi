@@ -100,7 +100,7 @@ export const Weapons = [
     rarity: 4,
     tier: 1,
     ascStat: Stats.ER,
-    baseStat: 0.113,
+    baseStat: 0.133333,
     icon: 'UI_EquipIcon_Sword_Zephyrus',
     type: WeaponType.SWORD,
     desc: {
@@ -491,7 +491,7 @@ export const Weapons = [
     type: WeaponType.SWORD,
     desc: {
       name: 'Smoke-and-Mirror Mystery',
-      detail: `While the equipping character is protected by a Shield, Normal and Charged Attack DMG is increased by {{0}}%, and Normal and Charged Attack CRIT Rate is increased by {{1}}%.`,
+      detail: `While characters are protected by a Shield, DMG dealt by Normal and Charged Attacks is increased by {{0}}%, and Normal and Charged Attack CRIT Rate is increased by {{1}}%.`,
       properties: [
         { base: 20, growth: 5 },
         { base: 8, growth: 2 },
@@ -2315,7 +2315,7 @@ export const Weapons = [
     type: WeaponType.CATALYST,
     desc: {
       name: 'Fangs Flying To and Fro',
-      detail: `Swimming Stamina consumption is decreased by <span class="text-desc">15%</span>. Using a Skill increases the equipping character's Max HP by {{0}}% for <span class="text-desc">10</span>s. This effect can be triggered once every <span class="text-desc">15</span>s. Each <b class="text-genshin-hydro">Hydro</b> character in your party increases the Max HP bonus from the aforementioned effect by an additional {{1}}%. The maximum additional bonus is {{2}}%.`,
+      detail: `Decreases Swimming Stamina consumption by <span class="text-desc">15%</span>. In addition, for <span class="text-desc">10</span>s after using an Elemental Skill, Max HP is increased by {{0}}%. For every <b class="text-genshin-hydro">Hydro</b> <b>Elemental Type</b> character in the party, Max HP is increased by another {{1}}%, and the maximum increase that can be achieved in this way is {{2}}%. Can be triggered once every <span class="text-desc">15</span>s.`,
       properties: [
         { base: 20, growth: 5 },
         { base: 12, growth: 3 },
@@ -3009,7 +3009,7 @@ export const Weapons = [
     type: WeaponType.BOW,
     desc: {
       name: 'Flower-Wreathed Feathers',
-      detail: `Gliding Stamina consumption decreased by <span class="text-desc">15%</span>. While aiming with a Bow, character's Charged Attack DMG will be increased by {{0}}% every <span class="text-desc">0.5</span>s. Max <span class="text-desc">6</span> stacks. This effect will be removed <span class="text-desc">10</span>s after exiting Aiming Mode.`,
+      detail: `Decreases Gliding Stamina consumption by <span class="text-desc">15%</span>. When using Aimed Shots, the DMG dealt by Charged Attacks increases by {{0}}% every <span class="text-desc">0.5</span>s. This effect can stack up to <span class="text-desc">6</span> times and will be removed <span class="text-desc">10</span>s after leaving Aiming Mode.`,
       properties: [{ base: 6, growth: 1.5 }],
     },
     beta: true,
@@ -3223,7 +3223,7 @@ export const Weapons = [
     type: WeaponType.BOW,
     desc: {
       name: `The Moonring Sighted`,
-      detail: `When a character triggers Swirl, their ATK is increased by {{0}}% for <span class="text-desc">12</span>s. When the party contains <span class="text-desc">1</span>/<span class="text-desc">2</span> or more characters of a different <b>Elemental Type</b> from the equipping character, said equipping character's Charged Attack DMG increases by {{1}}%/{{2}}% and Elemental Burst DMG increases by {{3}}%/{{0}}%.`,
+      detail: `For <span class="text-desc">12</span>s after triggering a Swirl reaction, ATK increases by {{0}}%. In addition, when <span class="text-desc">1</span>/<span class="text-desc">2</span> or more characters in the party are of a different <b>Elemental Type</b> from the equipping character, the DMG dealt by the equipping character's Charged Attacks is increased by {{1}}%/{{2}}% and Elemental Burst DMG dealt is increased by {{3}}%/{{0}}%.`,
       properties: [
         { base: 24, growth: 6 },
         { base: 20, growth: 5 },

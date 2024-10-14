@@ -98,13 +98,17 @@ export const InteractionModal = observer(() => {
           any Particles.
         </BulletPoint>
         <BulletPoint>
-          Only <b>Yae Miko</b>'s <b className="text-genshin-electro">First Sesshou Sakura</b> can generate Particles.
+          Only one of <b>Yae Miko</b>'s <b className="text-genshin-electro">Sesshou Sakura</b> can generate Particles.
         </BulletPoint>
         <BulletPoint>
-          <b>Zhongli</b>'s <b className="text-genshin-geo">Stone Steles</b> share a 1.5-second ICD with one another.
+          <b>Zhongli</b>'s <b className="text-genshin-geo">Stone Steles</b> share a{' '}
+          <span className="text-desc">1.5</span>s ICD with one another.
         </BulletPoint>
         <BulletPoint>
-          <b>Fischl</b> Burst also summons <b className="text-genshin-electro">Oz</b> which acts as an extra Skill cast.
+          <b>Fischl</b>'s' Burst also summons <b className="text-genshin-electro">Oz</b> which acts as an extra Skill
+          cast but is not counted towards one. If you use her Burst every other rotation, put{' '}
+          <span className="text-desc">0.5</span> in <b>Skill Cast</b> and <span className="text-desc">2</span> in{' '}
+          <b>Rotation per Burst</b> instead.
         </BulletPoint>
         <BulletPoint>
           <b>Emilie</b>'s Burst briefly replaces her <b className="text-genshin-dendro">Case</b> with a Level-3 one,

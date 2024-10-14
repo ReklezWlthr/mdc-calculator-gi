@@ -46,7 +46,11 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
         <div className="w-full space-y-1">
           <p className="text-sm">Enemy Preset</p>
           <SelectTextInput
-            options={_.map(enemyGroups, (item) => ({ name: item.name, value: item.name }))}
+            options={_.map(enemyGroups, (item) => ({
+              name: item.name,
+              value: item.name,
+              img: `https://homdgcat.wiki/homdgcat-res/monster/${item.img}.png`,
+            }))}
             onChange={(v) => {
               const enemyData = findEnemy(v?.name)
               const variant = _.head(enemyData?.options)?.value || ''

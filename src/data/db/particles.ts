@@ -76,7 +76,7 @@ export const ParticleCount = (id: string, c: number) =>
     ],
     '10000002': [{ name: 'Skill Cast', default: 1, value: 4.5, variance: 1 / 9 }],
     '10000066': [
-      { name: 'Shunsuiken', default: 0, value: 1.5, variance: 1 / 3 },
+      { name: 'Shunsuiken Hit', default: 0, value: 1.5, variance: 1 / 3 },
       { name: 'Full Uptime', default: 1, value: 4.5, variance: 1 / 9 },
     ],
     '10000081': [{ name: 'Skill Cast', default: 1, value: 2, variance: 0 }],
@@ -140,7 +140,11 @@ export const ParticleCount = (id: string, c: number) =>
       { name: 'Skill Press', default: 1, value: 3, variance: 0 },
       { name: 'Skill Hold', default: 0, value: 4, variance: 0 },
     ],
-    '10000075': [{ name: 'Enhanced NA/CA', default: 1, value: 1, variance: 0 }],
+    '10000075': [
+      { name: 'Enhanced NA/CA', default: 0, value: 1, variance: 0 },
+      { name: '6~8s Uptime', default: 0, value: 3, variance: 0 },
+      { name: '8~10s Uptime', default: 1, value: 4, variance: 0 },
+    ],
     '10000086': [{ name: 'Enhanced NA/CA', default: 1, value: 1, variance: 0 }],
     '10000023': [{ name: 'Skill Cast', default: 1, value: 0, variance: 0, pps: 0.5, duration: 7 }],
     '10000093': [{ name: 'Skill Cast', default: 1, value: 5, variance: 0 }],
