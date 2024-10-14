@@ -1,4 +1,4 @@
-import { ParticleCount } from '@src/data/db/energy'
+import { ParticleCount } from '@src/data/db/particles'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { EnergyMeta } from '@src/data/stores/energy_store'
 import _ from 'lodash'
@@ -53,7 +53,7 @@ export const useLocalUpdater = (game: string) => {
         add: 0,
         favProc: 0,
         feedFav: char.cId,
-        fieldTime: index ? 5 : 15,
+        fieldTime: index ? 3 : 11,
         rpb: 1,
         skill: _.map(ParticleCount(char.cId, char.cons), (item) => ({
           ...item,

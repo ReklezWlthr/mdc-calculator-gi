@@ -13,7 +13,7 @@ const VarianceMultiplier = {
 
 const OffFieldMultiplier = [0, 0.8, 0.7, 0.6]
 
-const ExtraSkillProc = ['10000031']
+export const ExtraSkillProc = ['10000031']
 
 export interface EnergyStoreType {
   meta: EnergyMeta[]
@@ -23,6 +23,7 @@ export interface EnergyStoreType {
   clearTime: number
   particles: Record<Element, number>
   orbs: Record<Element, number>
+  fixedEnergy: IFixedEnergy[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setParticle: (type: 'particles' | 'orbs', element: Element, value: any) => void
   setMetaData: (index: number, path: _.PropertyPath, value: any) => void
@@ -32,6 +33,13 @@ export interface EnergyStoreType {
   getAdditionalPersonal: (to: number) => { additional: number; electro: number }
   getAdditionalEnergy: (element: Element) => number
   hydrate: (data: EnergyStoreType) => void
+}
+
+export interface IFixedEnergy {
+  generator: string
+  receiver: string
+  name: string
+  value: number
 }
 
 export interface SkillMeta {
@@ -65,6 +73,7 @@ export class EnergyStore {
   electroInterval: number
   particles: Record<Element, number>
   orbs: Record<Element, number>
+  fixedEnergy: IFixedEnergy[]
 
   constructor() {
     this.meta = Array(4).fill(null)
@@ -88,6 +97,7 @@ export class EnergyStore {
       },
       {} as Record<Element, number>
     )
+    this.fixedEnergy = []
 
     makeAutoObservable(this)
   }
@@ -98,6 +108,7 @@ export class EnergyStore {
 
   setMetaData = (index: number, path: _.PropertyPath, value: any) => {
     _.set(this.meta[index], path, value)
+    this.meta = _.cloneDeep(this.meta)
   }
 
   setParticle = (type: 'particles' | 'orbs', element: Element, value: any) => {
@@ -158,6 +169,11 @@ export class EnergyStore {
           (generator?.feedFav === receiver?.cId ? 1 : offFieldMultiplier) *
           _.max([1, receiver?.rpb]) || 0
     }
+
+    const fixed = _.sumBy(this.fixedEnergy, (item) =>
+      item.generator === generator.cId && item.receiver === receiver.cId ? item.value : 0
+    )
+    energy += fixed
 
     return energy
   }

@@ -1,7 +1,7 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { ElementColor } from '@src/core/utils/damageStringConstruct'
 import { findCharacter } from '@src/core/utils/finder'
-import { ParticleCount } from '@src/data/db/energy'
+import { ParticleCount } from '@src/data/db/particles'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { Element } from '@src/domain/constant'
 import { BulletPoint } from '@src/presentation/components/collapsible'
@@ -16,20 +16,30 @@ import React, { useCallback } from 'react'
 import { EnergySettings } from '../components/energy/energy_settings'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { InteractionModal } from '../components/modals/interaction_modal'
+import { useFixedEnergy } from '@src/core/hooks/useFixedEnergy'
+import { FixedEnergyModal } from '../components/energy/fixed_energy_modal'
+import { ExtraSkillProc } from '@src/data/stores/energy_store'
 
 export const EnergyRequirement = observer(() => {
   const { teamStore, settingStore, energyStore, modalStore } = useStore()
 
   const { meta, setMetaData } = energyStore
+  const totalRotation = _.sumBy(meta, (item) => item.fieldTime)
 
-  const onOpenModal = useCallback(() => modalStore.openModal(<InteractionModal />), [])
+  const onOpenICDModal = useCallback(() => modalStore.openModal(<InteractionModal />), [])
+  const onOpenEnergyModal = useCallback(() => modalStore.openModal(<FixedEnergyModal />), [])
+
+  useFixedEnergy()
 
   return (
     <div className="w-full overflow-y-auto">
       <div className="w-full gap-5 p-5 text-white max-w-[1200px] mx-auto text-sm">
         <div className="flex items-center justify-between mb-2">
           <p className="text-2xl font-bold">ER Requirement</p>
-          <PrimaryButton title="ICDs & Interactions" onClick={onOpenModal} />
+          <div className="flex gap-2">
+            <PrimaryButton title="Fixed Energy Gain" onClick={onOpenEnergyModal} />
+            <PrimaryButton title="ICDs & Interactions" onClick={onOpenICDModal} />
+          </div>
         </div>
         <div className="flex w-full font-semibold">
           <div className="w-[17%] shrink-0" />
@@ -40,28 +50,17 @@ export const EnergyRequirement = observer(() => {
                 title="Skill Uses"
                 body={
                   <div className="space-y-1 font-normal">
+                    <p>The number of times the character uses their Skill in each of their rotation.</p>
                     <p>
-                      The number of times the character uses their Skill in each of their rotation. You can put in
-                      decimals if the Skill does not last its full uptime or misses some hits.
-                    </p>
-                    <p>
-                      Some Talents (notably ones that generate Particles through enhanced attacks) has{' '}
-                      <b>Particle ICD</b>. Please refer to the <b className="text-desc">ICDs & Interactions</b> section
-                      or use the given preset(s).
-                    </p>
-                    <p>
-                      Also, do note that the amount of triggers are to be counted when the Particles are{' '}
-                      <span className="text-desc">CAUGHT</span>, not generated.
-                    </p>
-                    <p>
-                      <b>For example</b>: If Xingqiu with Sacrificial Sword uses a Skill then immediately Burst then
-                      Skill again from the reset, it will count as <span className="text-desc">2</span> Skill casts
-                      because the Particles from the first one are caught after the Burst is cast.
+                      Some Talents that generate Particle(s) over time have <b>Particle ICD</b>. The value given should
+                      only account for hits that generate Particle. Please refer to the{' '}
+                      <b className="text-desc">ICDs & Interactions</b> section or use the given preset(s). You can put
+                      in decimals if the Skill does not last its full uptime or misses some hits.
                     </p>
                   </div>
                 }
                 position="bottom"
-                style="w-[500px]"
+                style="w-[450px]"
               >
                 <i className="fa-regular fa-question-circle" />
               </Tooltip>
@@ -81,13 +80,14 @@ export const EnergyRequirement = observer(() => {
                       them as Off-Field Particles for everyone.
                     </p>
                     <p>
-                      - <b>Turrets</b> are normally Field-Time-Based, but you can manually assign the Particles to each
-                      characters here. Each slot represents a character in the setup in respective order.
+                      - <b>Turrets</b> distribute Particles based on field time by default, but you can manually assign
+                      Particles percentage to each characters here. Each slot represents a character in the setup in
+                      respective order.
                     </p>
                   </div>
                 }
                 position="bottom"
-                style="w-[500px]"
+                style="w-[450px]"
               >
                 <i className="fa-regular fa-question-circle" />
               </Tooltip>
@@ -111,7 +111,11 @@ export const EnergyRequirement = observer(() => {
                         className="object-cover h-full aspect-square scale-[300%] mt-1"
                       />
                     </div>
-                    <p className="font-semibold py-0.5 text-center w-full text-base">{charData?.name}</p>
+                    <p className="font-semibold py-0.5 text-center w-full text-sm px-1">{charData?.name}</p>
+                    <div className="text-xs flex flex-col justify-between h-11 py-1 px-2 font-semibold text-gray bg-primary-dark">
+                      <p>A{item.ascension}</p>
+                      <p>C{item.cons}</p>
+                    </div>
                   </div>
                   <div className="grid grid-cols-3 shrink-0 bg-primary-dark">
                     <p className="col-span-2 py-1 font-semibold text-center">Particle Element</p>
@@ -128,78 +132,89 @@ export const EnergyRequirement = observer(() => {
                   </div>
                 </div>
                 <div className="w-[53%] bg-primary-darker border-x-2 border-primary-border">
-                  {_.map(ParticleCount(item.cId, item.cons), (component, cIndex) => (
-                    <div className="grid w-full grid-cols-12 py-1 bg-primary-dark gap-x-3">
-                      <p className="flex items-center justify-center col-span-3 text-xs font-semibold">
-                        {component?.name}
-                      </p>
-                      <TextInput
-                        small
-                        onChange={(v) => setMetaData(index, `skill[${cIndex}].proc`, parseFloat(v))}
-                        value={meta[index]?.skill?.[cIndex]?.proc?.toString()}
-                        style="col-span-2"
-                        type="number"
-                        min={0}
-                      />
-                      {component.value ? (
-                        <>
-                          <div className="flex items-center col-span-4 gap-3 pl-4 border-l-2 border-dashed border-primary">
-                            <p className="flex items-center justify-center text-xs font-semibold shrink-0">Feed to</p>
-                            <SelectInput
-                              options={[
-                                { name: 'Self', value: charData.id },
-                                ..._.map(
-                                  _.filter(teamStore.characters, (item) => item.cId !== charData.id),
-                                  (item) => ({ name: findCharacter(item.cId)?.name, value: item.cId })
-                                ),
-                                { name: `Don't Know`, value: 'Team' },
-                              ]}
-                              onChange={(v) => setMetaData(index, `skill[${cIndex}].feed`, v)}
-                              value={meta[index]?.skill?.[cIndex]?.feed}
-                              small
-                            />
-                          </div>
-                          <div className="flex items-center col-span-2 gap-1 pr-3">
-                            <TextInput
-                              small
-                              onChange={(v) => setMetaData(index, `skill[${cIndex}].percentage`, parseFloat(v))}
-                              value={meta[index]?.skill?.[cIndex]?.percentage?.toString()}
-                              type="number"
-                              max={100}
-                              min={0}
-                            />
-                            <p className="text-gray">%</p>
-                          </div>
-                        </>
-                      ) : (
-                        <div className="flex items-center col-span-7 px-3 text-xs border-l-2 border-dashed border-primary gap-x-2">
-                          <CheckboxInput
-                            onClick={(v) => setMetaData(index, `skill[${cIndex}].override`, v)}
-                            checked={meta[index]?.skill?.[cIndex]?.override}
+                  {_.map(ParticleCount(item.cId, item.cons), (component, cIndex) => {
+                    const data = meta[index]?.skill?.[cIndex]
+                    const uptime =
+                      (data?.duration * (data?.proc + (_.includes(ExtraSkillProc, item?.cId) ? 1 : 0))) / totalRotation
+
+                    return (
+                      <div className="grid w-full grid-cols-12 py-1 bg-primary-dark gap-x-3">
+                        <div className="flex col-span-5 gap-x-1 items-center">
+                          <p className="flex items-center justify-center w-full text-xs font-semibold">
+                            {component?.name}
+                            <span className="text-gray font-normal ml-1">
+                              {!!uptime ? `- ${toPercentage(_.min([uptime, 1]))} Uptime` : ''}
+                            </span>
+                          </p>
+                          <TextInput
+                            small
+                            onChange={(v) => setMetaData(index, `skill[${cIndex}].proc`, parseFloat(v))}
+                            value={meta[index]?.skill?.[cIndex]?.proc?.toString()}
+                            style="w-[60px] shrink-0"
+                            type="number"
+                            min={0}
                           />
-                          <div className="flex items-center gap-1 text-gray">
-                            <p className="flex items-center justify-center mr-1 text-xs font-semibold text-white shrink-0">
-                              Ratio Override
-                            </p>
-                            {_.map(meta[index]?.skill?.[cIndex]?.ratio, (r, ri) => (
-                              <>
-                                {!!ri && <span>/</span>}
-                                <TextInput
-                                  small
-                                  onChange={(v) => setMetaData(index, `skill[${cIndex}].ratio[${ri}]`, parseFloat(v))}
-                                  value={r?.toString()}
-                                  disabled={!meta[index]?.skill?.[cIndex]?.override}
-                                  min={0}
-                                  type="number"
-                                />
-                              </>
-                            ))}
-                            <p>%</p>
-                          </div>
                         </div>
-                      )}
-                    </div>
-                  ))}
+                        {component.value ? (
+                          <>
+                            <div className="flex items-center col-span-4 gap-3 pl-4 border-l-2 border-dashed border-primary">
+                              <p className="flex items-center justify-center text-xs font-semibold shrink-0">Feed to</p>
+                              <SelectInput
+                                options={[
+                                  { name: 'Self', value: charData.id },
+                                  ..._.map(
+                                    _.filter(teamStore.characters, (item) => item.cId !== charData.id),
+                                    (item) => ({ name: findCharacter(item.cId)?.name, value: item.cId })
+                                  ),
+                                  { name: `Don't Know`, value: 'Team' },
+                                ]}
+                                onChange={(v) => setMetaData(index, `skill[${cIndex}].feed`, v)}
+                                value={meta[index]?.skill?.[cIndex]?.feed}
+                                small
+                              />
+                            </div>
+                            <div className="flex items-center col-span-2 gap-1 pr-3">
+                              <TextInput
+                                small
+                                onChange={(v) => setMetaData(index, `skill[${cIndex}].percentage`, parseFloat(v))}
+                                value={meta[index]?.skill?.[cIndex]?.percentage?.toString()}
+                                type="number"
+                                max={100}
+                                min={0}
+                              />
+                              <p className="text-gray">%</p>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="flex items-center col-span-7 px-3 text-xs border-l-2 border-dashed border-primary gap-x-2">
+                            <CheckboxInput
+                              onClick={(v) => setMetaData(index, `skill[${cIndex}].override`, v)}
+                              checked={meta[index]?.skill?.[cIndex]?.override}
+                            />
+                            <div className="flex items-center gap-1 text-gray">
+                              <p className="flex items-center justify-center mr-1 text-xs font-semibold text-white shrink-0">
+                                Ratio Override
+                              </p>
+                              {_.map(meta[index]?.skill?.[cIndex]?.ratio, (r, ri) => (
+                                <>
+                                  {!!ri && <span>/</span>}
+                                  <TextInput
+                                    small
+                                    onChange={(v) => setMetaData(index, `skill[${cIndex}].ratio[${ri}]`, parseFloat(v))}
+                                    value={r?.toString()}
+                                    disabled={!meta[index]?.skill?.[cIndex]?.override}
+                                    min={0}
+                                    type="number"
+                                  />
+                                </>
+                              ))}
+                              <p>%</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
                 <div className="w-[20%] bg-primary-darker grid grid-cols-3 text-xs pr-3 gap-x-2 border-r-2 border-primary-border">
                   <p className="flex items-center justify-center col-span-2 py-1 bg-primary-dark">Favonius Procs</p>

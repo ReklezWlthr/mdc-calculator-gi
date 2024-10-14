@@ -8,9 +8,9 @@ export const InteractionModal = observer(() => {
       <div className="text-xs text-gray space-y-1.5">
         <b className="text-base text-white">Particle ICDs</b>
         <BulletPoint>
-          <b>Alhaithem</b>'s <b className="text-genshin-dendro">Mirror Attacks</b>:{' '}
-          <span className="text-desc">1.6</span>s; up to <span className="text-desc">7</span> Particles over{' '}
-          <span className="text-desc">12</span>s
+          <b>Alhaitham</b>'s <b className="text-genshin-dendro">Mirror Attacks</b>:{' '}
+          <span className="text-desc">1.6</span>s; up to <span className="text-desc">3/5/8</span> Particles over{' '}
+          <span className="text-desc">4/8/12</span>s
         </BulletPoint>
         <BulletPoint>
           <b>Faruzan</b>'s <b className="text-genshin-anemo">Pressurized Collapse Vortex</b>:{' '}
@@ -63,6 +63,12 @@ export const InteractionModal = observer(() => {
         <BulletPoint>
           <b>Yoimiya</b>'s <b className="text-genshin-pyro">Converted Attacks</b>: <span className="text-desc">2</span>
           s; up to <span className="text-desc">4</span> Particles over <span className="text-desc">10</span>s
+          <div className="mt-1 ml-1">
+            <BulletPoint color="text-desc">
+              Her Skill may generate an extra Particle. To account for this, add <span className="text-desc">0.25</span>{' '}
+              in <b>Full Uptime</b> or <span className="text-desc">1</span> in <b>Enhanced NA</b>.
+            </BulletPoint>
+          </div>
         </BulletPoint>
         <BulletPoint>
           <b>Chevreuse</b>'s <b className="text-genshin-pyro">Skill</b>: <span className="text-desc">10</span>s
@@ -84,6 +90,10 @@ export const InteractionModal = observer(() => {
       <div className="text-xs text-gray space-y-1.5">
         <b className="text-base text-white">Notable Interactions</b>
         <BulletPoint>
+          <b>Qiqi</b>, <b>Noelle</b>, and <b>Barbara</b> are the only 3 characters so far that{' '}
+          <b className="text-red">CANNOT</b> generate Particles with their Skills.
+        </BulletPoint>
+        <BulletPoint>
           <b>Chiori</b>'s <b className="text-genshin-geo">Extra Tamoto</b> does <b className="text-red">NOT</b> generate
           any Particles.
         </BulletPoint>
@@ -97,16 +107,16 @@ export const InteractionModal = observer(() => {
           <b>Fischl</b> Burst also summons <b className="text-genshin-electro">Oz</b> which acts as an extra Skill cast.
         </BulletPoint>
         <BulletPoint>
-          <b>Qiqi</b>, <b>Noelle</b>, and <b>Barbara</b> are the only 3 characters that{' '}
-          <b className="text-red">CANNOT</b> generate Particles with their Skills.
-        </BulletPoint>
-        <BulletPoint>
           <b>Emilie</b>'s Burst briefly replaces her <b className="text-genshin-dendro">Case</b> with a Level-3 one,
           causing her to miss <span className="text-desc">1</span> Particle.
         </BulletPoint>
         <BulletPoint>
           During <b>Dehya</b>'s Burst, her <b className="text-genshin-pyro">Fiery Sanctum</b> will stop generating
           Particles.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Kokomi</b>'s <b>A4 Passive</b> allows her Burst to refresh her <b className="text-genshin-hydro">Kurage</b>
+          's duration, effectively doubling her skill uptime when timed correctly.
         </BulletPoint>
       </div>
     </div>

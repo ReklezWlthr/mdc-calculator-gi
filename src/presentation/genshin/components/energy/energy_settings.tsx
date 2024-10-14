@@ -26,7 +26,7 @@ export const EnergySettings = observer(() => {
         <div className="overflow-hidden rounded-b-lg">
           {_.map(teamStore.characters, (item, index) => (
             <div className="grid grid-cols-6 divide-y-2 divide-primary-border">
-              <p className="flex items-center justify-center col-span-2 px-2 font-semibold bg-primary">
+              <p className="flex items-center justify-center col-span-2 px-2 font-semibold bg-primary text-center">
                 {findCharacter(item.cId)?.name}
               </p>
               <div className="grid grid-cols-6 col-span-4 gap-1.5 px-2 py-1.5 text-xs bg-primary-dark">
@@ -119,8 +119,8 @@ export const EnergySettings = observer(() => {
                   <div className="space-y-1 font-normal">
                     <p>Determines the total span of time all additional HP Particles/Orbs are caught.</p>
                     <p>
-                      - <b>Chamber</b>: Particles/Orbs are caught over the course of the entire Abyss Chamber (or
-                      something similar) clear time. You may adjust your clear time below. The default value is{' '}
+                      - <b>Chamber</b>: Particles/Orbs are caught over the course of the entire Abyss Chamber clear
+                      time. You may adjust your clear time below. The default value is{' '}
                       <span className="text-desc">90s</span> which is half of the time you need to 3-star each Floor-12
                       Chamber.
                     </p>
