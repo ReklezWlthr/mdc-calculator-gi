@@ -106,9 +106,9 @@ export const InteractionModal = observer(() => {
         </BulletPoint>
         <BulletPoint>
           <b>Fischl</b>'s' Burst also summons <b className="text-genshin-electro">Oz</b> which acts as an extra Skill
-          cast but is not counted towards one. If you use her Burst every other rotation, put{' '}
-          <span className="text-desc">0.5</span> in <b>Skill Cast</b> and <span className="text-desc">2</span> in{' '}
-          <b>Rotation per Burst</b> instead.
+          cast but is not counted towards one. Her default preset is <span className="text-desc">0.5</span>{' '}
+          <b>Skill Cast</b> and <span className="text-desc">2</span> <b>Rotations per Burst</b> which means she will
+          alternate Skill and Burst every rotation.
         </BulletPoint>
         <BulletPoint>
           <b>Emilie</b>'s Burst briefly replaces her <b className="text-genshin-dendro">Case</b> with a Level-3 one,

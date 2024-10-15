@@ -1,6 +1,6 @@
 import { ParticleCount } from '@src/data/db/particles'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { EnergyMeta } from '@src/data/stores/energy_store'
+import { EnergyMeta, ExtraSkillProc } from '@src/data/stores/energy_store'
 import _ from 'lodash'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -54,7 +54,7 @@ export const useLocalUpdater = (game: string) => {
         favProc: 0,
         feedFav: char.cId,
         fieldTime: index ? 3 : 11,
-        rpb: 1,
+        rpb: _.includes(ExtraSkillProc, char.cId) ? 2 : 1,
         skill: _.map(ParticleCount(char.cId, char.cons), (item) => ({
           ...item,
           feed: char.cId,
