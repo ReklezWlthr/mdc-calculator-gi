@@ -95,7 +95,8 @@ export const ImportExport = observer(() => {
     char?.cons,
     char?.ascension,
     char?.talents,
-    []
+    [],
+    settingStore.settings.travelerGender
   )
   const equippedArtifacts = _.filter(importStore.artifacts, (item) => _.includes(char?.equipments?.artifacts, item.id))
   const raw = calculateOutOfCombat(
@@ -103,7 +104,8 @@ export const ImportExport = observer(() => {
     selected,
     importStore.characters,
     equippedArtifacts,
-    false
+    false,
+    true
   )
   const stats = calculateFinal(raw)
   const set = getSetCount(equippedArtifacts)

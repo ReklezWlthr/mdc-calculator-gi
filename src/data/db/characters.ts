@@ -231,7 +231,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.HYDRO,
     codeName: 'Furina',
-    tags: [Tags.OFF_FIELD, Tags.HEAL, Tags.AMP, , Tags.EXPLORATION],
+    tags: [Tags.OFF_FIELD, Tags.HEAL, Tags.AMP, Tags.EXPLORATION],
   },
   {
     id: '10000096',
@@ -273,7 +273,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.PYRO,
     codeName: 'Bennett',
-    tags: [Tags.AMP, , Tags.BATTERY, Tags.HEAL],
+    tags: [Tags.AMP, Tags.BATTERY, Tags.HEAL],
   },
   {
     id: '10000062',
@@ -336,7 +336,7 @@ export const Characters = [
     weapon: WeaponType.CLAYMORE,
     element: Element.GEO,
     codeName: 'Itto',
-    tags: [Tags.ON_FIELD, , Tags.CONTROL],
+    tags: [Tags.ON_FIELD, Tags.CONTROL],
   },
   {
     id: '10000082',
@@ -420,7 +420,7 @@ export const Characters = [
     weapon: WeaponType.POLEARM,
     element: Element.HYDRO,
     codeName: 'Candace',
-    tags: [, Tags.AMP, Tags.APP],
+    tags: [Tags.AMP, Tags.APP],
   },
   {
     id: '10000088',
@@ -525,7 +525,7 @@ export const Characters = [
     weapon: WeaponType.POLEARM,
     element: Element.ELECTRO,
     codeName: 'Cyno',
-    tags: [, Tags.ON_FIELD],
+    tags: [Tags.ON_FIELD],
   },
   {
     id: '10000079',
@@ -609,7 +609,7 @@ export const Characters = [
     weapon: WeaponType.CLAYMORE,
     element: Element.ELECTRO,
     codeName: 'Dori',
-    tags: [Tags.BATTERY, , Tags.HEAL],
+    tags: [Tags.BATTERY, Tags.HEAL],
   },
   {
     id: '10000076',
@@ -756,7 +756,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ANEMO,
     codeName: 'Qin',
-    tags: [Tags.HEAL, Tags.CONTROL, , Tags.BATTERY, Tags.APP],
+    tags: [Tags.HEAL, Tags.CONTROL, Tags.BATTERY, Tags.APP],
   },
   {
     id: '10000047',
@@ -777,7 +777,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ANEMO,
     codeName: 'Kazuha',
-    tags: [Tags.AMP, Tags.CONTROL, Tags.APP, Tags.BATTERY, Tags.APP],
+    tags: [Tags.AMP, Tags.CONTROL, Tags.APP, Tags.BATTERY, Tags.EXPLORATION],
   },
   {
     id: '10000015',
@@ -882,7 +882,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ELECTRO,
     codeName: 'Keqing',
-    tags: [Tags.ON_FIELD, , Tags.EXPLORATION],
+    tags: [Tags.ON_FIELD, Tags.EXPLORATION],
   },
   {
     id: '10000029',
@@ -1008,7 +1008,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.ANEMO,
     codeName: 'Linette',
-    tags: [Tags.OFF_FIELD, Tags.EXPLORATION, , Tags.CONTROL, Tags.APP],
+    tags: [Tags.OFF_FIELD, Tags.EXPLORATION, Tags.CONTROL, Tags.APP],
   },
   {
     id: '10000084',
@@ -1071,7 +1071,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.HYDRO,
     codeName: 'Mona',
-    tags: [Tags.AMP, , Tags.CONTROL],
+    tags: [Tags.AMP, Tags.CONTROL],
   },
   {
     id: '10000073',
@@ -1239,7 +1239,7 @@ export const Characters = [
     weapon: WeaponType.POLEARM,
     element: Element.ELECTRO,
     codeName: 'Shougun',
-    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.BATTERY, , Tags.APP, Tags.AMP],
+    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.BATTERY, Tags.APP, Tags.AMP],
   },
   {
     id: '10000020',
@@ -1281,7 +1281,7 @@ export const Characters = [
     weapon: WeaponType.POLEARM,
     element: Element.CRYO,
     codeName: 'Rosaria',
-    tags: [Tags.OFF_FIELD, , Tags.AMP, Tags.BATTERY],
+    tags: [Tags.OFF_FIELD, Tags.AMP, Tags.BATTERY],
   },
   {
     id: '10000053',
@@ -1533,7 +1533,7 @@ export const Characters = [
     weapon: WeaponType.POLEARM,
     element: Element.ANEMO,
     codeName: 'Xiao',
-    tags: [, Tags.ON_FIELD],
+    tags: [Tags.ON_FIELD],
   },
   {
     id: '10000025',
@@ -1659,7 +1659,7 @@ export const Characters = [
     weapon: WeaponType.BOW,
     element: Element.HYDRO,
     codeName: 'Yelan',
-    tags: [Tags.EXPLORATION, Tags.OFF_FIELD, , Tags.APP, Tags.AMP],
+    tags: [Tags.EXPLORATION, Tags.OFF_FIELD, Tags.APP, Tags.AMP],
   },
   {
     id: '10000049',
@@ -1978,7 +1978,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.GEO,
     codeName: 'Player',
-    tags: [Tags.EXPLORATION, , Tags.BATTERY],
+    tags: [Tags.EXPLORATION, Tags.BATTERY],
   },
   {
     id: '10000005-507',
@@ -2020,7 +2020,7 @@ export const Characters = [
     weapon: WeaponType.SWORD,
     element: Element.DENDRO,
     codeName: 'Player',
-    tags: [Tags.OFF_FIELD, , Tags.APP],
+    tags: [Tags.OFF_FIELD, Tags.APP],
   },
   {
     id: '10000005-503',

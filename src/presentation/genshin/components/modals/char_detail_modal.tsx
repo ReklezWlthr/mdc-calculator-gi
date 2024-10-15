@@ -15,7 +15,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
 
 export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId: string }) => {
-  const { charStore, toastStore, modalStore } = useStore()
+  const { charStore, toastStore, modalStore, settingStore } = useStore()
 
   const { params, setParams } = useParams(
     char || {
@@ -43,7 +43,8 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
     params?.cons,
     params?.ascension,
     params?.talents,
-    []
+    [],
+    settingStore.settings.travelerGender
   )
 
   const maxTalentLevel = (asc: number) => _.max([1, (asc - 1) * 2])
@@ -108,12 +109,12 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
   return (
     <div className="w-[500px] p-4 text-white rounded-xl bg-primary-dark space-y-5 font-semibold">
       <div className="flex justify-between gap-x-4">
-        <div className="grid grid-cols-2 gap-4 w-full">
+        <div className="grid w-full grid-cols-2 gap-4">
           <div>
             <p className="text-xs text-gray">Edit Account Data</p>
             <p className="text-lg">{charData?.name}</p>
           </div>
-          <div className="flex w-full gap-2 items-center">
+          <div className="flex items-center w-full gap-2">
             <p className="text-sm font-semibold">Level</p>
             <SelectInput
               onChange={(value) => setParams({ level: parseInt(value) || 0 })}
@@ -146,10 +147,10 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
           </div>
         </div>
       </div>
-      <div className="-mb-2 flex items-center gap-2">
-        <div className="border-t border-primary-border w-full" />
+      <div className="flex items-center gap-2 -mb-2">
+        <div className="w-full border-t border-primary-border" />
         <p className="text-lg font-bold text-center text-white">Talents</p>
-        <div className="border-t border-primary-border w-full" />
+        <div className="w-full border-t border-primary-border" />
       </div>
       <div className="flex items-center justify-center gap-5">
         <div className="flex items-center justify-center gap-4">
@@ -218,7 +219,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
           </div>
         </div>
       </div>
-      <div className="border-t border-primary-border w-full" />
+      <div className="w-full border-t border-primary-border" />
       <div className="flex justify-between">
         {_.find(charStore.characters, (item) => item.cId === cId) ? (
           <PrimaryButton title="Remove" onClick={onDelete} />

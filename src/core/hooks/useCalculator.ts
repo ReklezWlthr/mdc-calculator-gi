@@ -48,7 +48,7 @@ export const useCalculator = ({
   doNotSaveStats,
   initFormFunction,
 }: CalculatorOptions) => {
-  const { teamStore, artifactStore, calculatorStore } = useStore()
+  const { teamStore, artifactStore, calculatorStore, settingStore } = useStore()
 
   const selected = indexOverride ?? calculatorStore?.selected
   const forms = formOverride || calculatorStore.form
@@ -72,10 +72,11 @@ export const useCalculator = ({
             ...item.talents,
             normal: item.talents.normal + (_.includes(_.map(team, 'cId'), '10000033') ? 1 : 0),
           },
-          team
+          team,
+          settingStore?.settings?.travelerGender
         )
       ),
-    [team]
+    [team, settingStore.settings.travelerGender]
   )
   const main = conditionals[selected]
 
@@ -297,7 +298,7 @@ export const useCalculator = ({
     }
     console.log(final)
     setFinalStats(final)
-  }, [baseStats, forms, custom, team])
+  }, [baseStats, forms, custom, team, settingStore.settings.travelerGender])
 
   // =================
   //

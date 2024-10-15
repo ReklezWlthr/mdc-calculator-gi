@@ -137,6 +137,7 @@ export const ConditionalBlock = observer(
                             ]
                           }
                           onChange={(value) => set(content.index, content.id, value)}
+                          placeholder='None'
                           small
                         />
                       </div>

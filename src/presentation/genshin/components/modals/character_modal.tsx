@@ -211,7 +211,11 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
                 </div>
                 <img
-                  src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
+                  src={
+                    item?.codeName === 'Player'
+                      ? `https://api.hakush.in/gi/UI/UI_AvatarIcon_${codeName}.webp`
+                      : `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`
+                  }
                   className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                 />
               </div>

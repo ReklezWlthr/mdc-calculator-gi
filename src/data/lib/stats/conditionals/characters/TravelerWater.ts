@@ -1,13 +1,13 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
+const TravelerWater = (c: number, a: number, t: ITalentLevel, _team: ITeamChar[], gender: string) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -16,6 +16,8 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
   const normal = t.normal + (upgrade.normal ? 3 : 0)
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
+
+  const lumine = gender === 'PlayerGirl'
 
   const talents: ITalent = {
     normal: {
@@ -31,6 +33,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
       <br /><b>Plunging Attack</b>
       <br />Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
       `,
+      image: 'Skill_A_01',
     },
     skill: {
       level: skill,
@@ -39,68 +42,78 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
       content: `Unleashes a torrent that can cleanse the world.
       <br />
       <br /><b>Press</b>
-      <br />Sends a Torrent Surge forward that will deal <b class="text-genshin-hydro">Hydro DMG</b> to opponents it comes into contact with.
+      <br />Sends a <b>Torrent Surge</b> forward that will deal <b class="text-genshin-hydro">Hydro DMG</b> to opponents it comes into contact with.
       <br />
       <br /><b>Hold</b>
-      <br />Enter Aiming Mode and constantly fire off Dewdrops in the direction in which you are aiming, dealing <b class="text-genshin-hydro">Hydro DMG</b> to opponents they hit.
-      <br />When the skill ends, it will send a Torrent Surge forward that will <b class="text-genshin-hydro">Hydro DMG</b> to opponents it comes into contact with.
-      <br />Suffusion: When using the Hold configuration of this skill, if the Traveler's HP is higher than <span class="text-desc">50%</span>, the DMG dealt by Dewdrops will increase based on the Traveler's Max HP, and the Traveler will lose a fixed amount of HP every second.
+      <br />Enter Aiming Mode and constantly fire off <b>Dewdrops</b> in the direction in which you are aiming, dealing <b class="text-genshin-hydro">Hydro DMG</b> to opponents they hit.
+      <br />When the skill ends, it will send a <b>Torrent Surge</b> forward that will <b class="text-genshin-hydro">Hydro DMG</b> to opponents it comes into contact with.
+      <br /><b class="text-genshin-hydro">Suffusion</b>: When using the Hold configuration of this skill, if the Traveler's HP is higher than <span class="text-desc">50%</span>, the DMG dealt by <b>Dewdrops</b> will increase based on the Traveler's Max HP, and the Traveler will lose a fixed amount of HP every second.
       <br />
       <br /><b>Arkhe: </b><b class="text-genshin-pneuma">Pneuma</b>
-      <br />At certain intervals, after using Torrent Surge, this skill will unleash a Spiritbreath Thorn that pierces opponents, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-hydro">Hydro DMG</b>.
+      <br />At certain intervals, after using <b>Torrent Surge</b>, this skill will unleash a <b class="text-genshin-pneuma">Spiritbreath Thorn</b> that pierces opponents, dealing <b class="text-genshin-pneuma">Pneuma</b>-aligned <b class="text-genshin-hydro">Hydro DMG</b>.
       `,
+      image: 'Skill_S_PlayerWater_01',
     },
     burst: {
       level: burst,
       trace: `Elemental Burst`,
       title: `Rising Waters`,
       content: `Unleashes a slow-moving floating bubble that deals continuous <b class="text-genshin-hydro">Hydro DMG</b> to nearby opponents.`,
+      image: 'Skill_E_PlayerWater_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Spotless Waters`,
-      content: `After the Dewdrop fired by the Hold Mode of the Aquacrest Saber hits an opponent, a Sourcewater Droplet will be generated near to the Traveler. If the Traveler picks it up, they will restore <span class="text-desc">7%</span> HP.
-      <br /><span class="text-desc">1</span> Droplet can be created this way every second, and each use of Aquacrest Saber can create <span class="text-desc">4</span> Droplets at most.`,
+      content: `After the <b>Dewdrop</b> fired by the <b>Hold Mode</b> of the <b>Aquacrest Saber</b> hits an opponent, a <b class="text-blue">Sourcewater Droplet</b> will be generated near to the Traveler. If the Traveler picks it up, they will restore <span class="text-desc">7%</span> HP.
+      <br /><span class="text-desc">1</span> <b class="text-blue">Droplet</b> can be created this way every second, and each use of <b>Aquacrest Saber</b> can create <span class="text-desc">4</span> <b class="text-blue">Droplets</b> at most.`,
+      image: 'UI_Talent_S_PlayerWater_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Clear Waters`,
-      content: `If HP has been consumed via Suffusion while using the Hold Mode Aquacrest Saber, the Torrent Surge at the skill's end will deal Bonus DMG equal to <span class="text-desc">45%</span> of the total HP the Traveler has consumed in this skill use via Suffusion.
-      <br />The maximum DMG Bonus that can be gained this way is <span class="text-desc">5,000</span>.`,
+      content: `If HP has been consumed via <b class="text-genshin-hydro">Suffusion</b> while using the <b>Hold Mode Aquacrest Saber</b>, the <b>Torrent Surge</b> at the skill's end will deal <b>Bonus DMG</b> equal to <span class="text-desc">45%</span> of the total HP the Traveler has consumed in this skill use via <b class="text-genshin-hydro">Suffusion</b>.
+      <br />The maximum <b>DMG Bonus</b> that can be gained this way is <span class="text-desc">5,000</span>.`,
+      image: 'UI_Talent_S_PlayerWater_06',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Swelling Lake`,
-      content: `Picking up a Sourcewater Droplet will restore <span class="text-desc">2</span> Energy to the Traveler.
+      content: `Picking up a <b class="text-blue">Sourcewater Droplet</b> will restore <span class="text-desc">2</span> Energy to the Traveler.
       <br />Requires the Passive Talent "Spotless Waters."`,
+      image: 'UI_Talent_S_PlayerWater_01',
     },
     c2: {
       trace: `Constellation 2`,
       title: `Trickling Purity`,
-      content: `The Movement SPD of Rising Waters' bubble will be decreased by <span class="text-desc">30%</span>, and its duration increased by <span class="text-desc">3</span>s.`,
+      content: `The Movement SPD of <b>Rising Waters</b>' bubble will be decreased by <span class="text-desc">30%</span>, and its duration increased by <span class="text-desc">3</span>s.`,
+      image: 'UI_Talent_S_PlayerWater_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Turbulent Ripples`,
-      content: `Increases the Level of Aquacrest Saber by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Aquacrest Saber</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_PlayerWater_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Pouring Descent`,
-      content: `When using Aquacrest Saber, an Aquacrest Aegis that can absorb <span class="text-desc">10%</span> of the Traveler's Max HP in DMG will be created and will absorb <b class="text-genshin-hydro">Hydro DMG</b> with <span class="text-desc">250%</span> effectiveness. It will persist until the Traveler finishes using the skill.
-      <br />Once every <span class="text-desc">2</span>s, after a Dewdrop hits an opponent, if the Traveler is being protected by Aquacrest Aegis, the DMG Absorption of the Aegis will be restored to <span class="text-desc">10%</span> of the Traveler's Max HP. If the Traveler is not presently being protected by an Aegis, one will be redeployed.`,
+      content: `When using <b>Aquacrest Saber</b>, an <b>Aquacrest Aegis</b> that can absorb <span class="text-desc">10%</span> of the Traveler's Max HP in DMG will be created and will absorb <b class="text-genshin-hydro">Hydro DMG</b> with <span class="text-desc">250%</span> effectiveness. It will persist until the Traveler finishes using the skill.
+      <br />Once every <span class="text-desc">2</span>s, after a <b>Dewdrop</b> hits an opponent, if the Traveler is being protected by <b>Aquacrest Aegis</b>, the DMG Absorption of the <b>Aegis</b> will be restored to <span class="text-desc">10%</span> of the Traveler's Max HP. If the Traveler is not presently being protected by an <b>Aegis</b>, one will be redeployed.`,
+      image: 'UI_Talent_S_PlayerWater_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Churning Whirlpool`,
-      content: `Increases the Level of Rising Waters by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Rising Waters</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
+      image: 'UI_Talent_U_PlayerWater_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Tides of Justice`,
-      content: `When the Traveler picks up a Sourcewater Droplet, they will restore HP to the nearest party member with the lowest HP percentage remaining based on <span class="text-desc">6%</span> of their Max HP.`,
+      content: `When the Traveler picks up a <b class="text-blue">Sourcewater Droplet</b>, they will restore HP to the nearest party member with the lowest HP percentage remaining based on <span class="text-desc">6%</span> of their Max HP.`,
+      image: 'UI_Talent_S_PlayerWater_04',
     },
   }
 
@@ -121,7 +134,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
       show: a >= 4,
       default: 0,
       min: 0,
-      max: 5000,
+      max: 11112,
     },
   ]
 
@@ -177,7 +190,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
         },
         {
           name: 'Charged Attack DMG [2]',
-          value: [{ scaling: calcScaling(0.607, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(lumine ? 0.722 : 0.607, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
@@ -190,13 +203,13 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
         {
           name: 'Torrent Surge DMG',
           value: [{ scaling: calcScaling(1.8928, skill, 'elemental', '1'), multiplier: Stats.ATK }],
+          flat: form.hmc_a4 ? _.min([form.hmc_a4 * 0.45, 5000]) : 0,
           element: Element.HYDRO,
           property: TalentProperty.SKILL,
         },
         {
           name: 'Dewdrop DMG',
           value: [{ scaling: calcScaling(0.328, skill, 'elemental', '1'), multiplier: Stats.ATK }, ...suffusion],
-          flat: form.hmc_a4 ? form.hmc_a4 * 0.45 : 0,
           element: Element.HYDRO,
           property: TalentProperty.SKILL,
         },
@@ -227,13 +240,13 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
       if (c >= 4)
         base.SKILL_SCALING.push(
           {
-            name: 'C4 Shield',
+            name: 'Aquacrest Aegis',
             value: [{ scaling: 0.1, multiplier: Stats.HP }],
             element: TalentProperty.SHIELD,
             property: TalentProperty.SHIELD,
           },
           {
-            name: 'C4 Shielded Healing',
+            name: 'Aquacrest Aegis Healing',
             value: [{ scaling: 0.1, multiplier: Stats.HP }],
             element: TalentProperty.HEAL,
             property: TalentProperty.HEAL,
@@ -246,7 +259,7 @@ const TravelerWater = (c: number, a: number, t: ITalentLevel) => {
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (c >= 6)
         base.SKILL_SCALING.push({
-          name: 'C6 Allied Sourcewater Droplet Healing',
+          name: 'C6 HMC Droplet Healing',
           value: [{ scaling: 0.06, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,

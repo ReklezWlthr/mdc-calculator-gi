@@ -28,7 +28,8 @@ export const CharDetail = observer(() => {
     charUpgrade?.cons || 0,
     charUpgrade?.ascension,
     charUpgrade?.talents || { normal: 1, skill: 1, burst: 1 },
-    teamStore.characters
+    teamStore.characters,
+    settingStore.settings.travelerGender
   )
   const talent = cond.talents
 
@@ -37,11 +38,14 @@ export const CharDetail = observer(() => {
   const { params, setParams } = useParams({ asc: 7 })
 
   useEffect(() => {
-    setLoading(true)
     const elms = document.getElementsByClassName('cons')
     _.forEach(elms, (elm: HTMLImageElement) => (elm.style.display = 'none'))
     document.getElementById('detail_container').scrollTo(0, 0)
   }, [charStore.selected])
+
+  useEffect(() => {
+    setLoading(true)
+  }, [data?.codeName])
 
   const onCalcSlider = useCallback(() => {
     const range = document.getElementsByClassName('slider')
@@ -74,6 +78,12 @@ export const CharDetail = observer(() => {
 
   const iconCodeName = data?.codeName === 'Player' ? TravelerIconName[data.element] : data?.codeName
   const fCodeName = data?.codeName === 'Player' ? settingStore.settings.travelerGender : data?.codeName
+  const conName =
+    data?.codeName === 'Player'
+      ? settingStore?.settings?.travelerGender === 'PlayerBoy'
+        ? 'Viator'
+        : 'Viatrix'
+      : data?.constellation
 
   const onOpenEditModal = useCallback(
     () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} />),
@@ -93,7 +103,11 @@ export const CharDetail = observer(() => {
             <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
           </div>
           <img
-            src={`https://homdgcat.wiki/homdgcat-res/Gacha/UI_Gacha_AvatarImg_${fCodeName}.png`}
+            src={
+              data?.codeName === 'Player'
+                ? `https://api.hakush.in/gi/UI/UI_Gacha_AvatarImg_${fCodeName}.webp`
+                : `https://homdgcat.wiki/homdgcat-res/Gacha/UI_Gacha_AvatarImg_${fCodeName}.png`
+            }
             className={
               loading
                 ? 'hidden'
@@ -146,10 +160,7 @@ export const CharDetail = observer(() => {
           </div>
           <div className="relative grid grid-cols-2 gap-2 px-5 py-3 text-xs rounded-lg bg-opacity-80 bg-primary-dark">
             <img
-              src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${data?.constellation?.replaceAll(
-                ' ',
-                '_'
-              )}_Shape.webp`}
+              src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${conName?.replaceAll(' ', '_')}_Shape.webp`}
               className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full opacity-45 h-[170px] top-1/2 left-1/2 saturate-0 brightness-150"
               onError={(e) => (e.currentTarget.style.display = 'none')}
               onLoad={(e) => (e.currentTarget.style.display = 'block')}
@@ -179,7 +190,7 @@ export const CharDetail = observer(() => {
             <b>Nation</b>
             <p className="text-center">{data?.region}</p>
             <b>Constellation</b>
-            <p className="text-center">{data?.constellation}</p>
+            <p className="text-center">{conName}</p>
           </div>
           <div className="flex items-center justify-between">
             <div className="px-3 py-1 rounded-lg bg-opacity-80 bg-primary-dark">
@@ -203,7 +214,7 @@ export const CharDetail = observer(() => {
                   </p>
                 </div>
                 <p className="py-1.5 font-bold text-center">Talents</p>
-                <div className="space-y-1 px-5">
+                <div className="px-5 space-y-1">
                   <div className="flex justify-between">
                     <p>Normal Attack</p>
                     <p className={cond.upgrade?.normal ? 'text-blue' : 'text-desc'}>

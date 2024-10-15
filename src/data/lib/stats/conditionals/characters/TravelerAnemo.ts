@@ -1,13 +1,13 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
+const TravelerWind = (c: number, a: number, t: ITalentLevel, _team: ITeamChar[], gender: string) => {
   const upgrade = {
     normal: false,
     skill: c >= 5,
@@ -16,6 +16,8 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
   const normal = t.normal + (upgrade.normal ? 3 : 0)
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
+
+  const lumine = gender === 'PlayerGirl'
 
   const talents: ITalent = {
     normal: {
@@ -201,7 +203,7 @@ const TravelerWind = (c: number, a: number, t: ITalentLevel) => {
         },
         {
           name: 'Charged Attack DMG [2]',
-          value: [{ scaling: calcScaling(0.607, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(lumine ? 0.722 : 0.607, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },

@@ -1,13 +1,13 @@
 import { findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, getPlungeScaling, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, WeaponType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/data_format'
 
-const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
+const TravelerElectric = (c: number, a: number, t: ITalentLevel, team: ITeamChar[], gender: string) => {
   const upgrade = {
     normal: false,
     skill: c >= 3,
@@ -16,6 +16,8 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
   const normal = t.normal + (upgrade.normal ? 3 : 0)
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
+
+  const lumine = gender === 'PlayerGirl'
 
   const talents: ITalent = {
     normal: {
@@ -184,7 +186,7 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
         },
         {
           name: 'Charged Attack DMG [2]',
-          value: [{ scaling: calcScaling(0.607, normal, 'physical', '1'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(lumine ? 0.722 : 0.607, normal, 'physical', '1'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.CA,
         },
@@ -226,15 +228,23 @@ const TravelerElectric = (c: number, a: number, t: ITalentLevel) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
-      if (form.amulet)
-        base[Stats.ER].push({ value: 0.2, name: '', source: `` }) + (a >= 4 ? own.getValue(Stats.ER) * 0.1 : 0)
       if (form.emc_c2) base.ELECTRO_RES_PEN.push({ value: 0.15, name: 'Constellation 2', source: `Traveler` })
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (form.amulet)
-        base[Stats.ER].push({ value: 0.2, name: '', source: `` }) + (a >= 4 ? base.getValue(Stats.ER) * 0.1 : 0)
+        base.CALLBACK.push(function (x, all) {
+          const index = _.findIndex(team, (item) => _.includes(item.cId, '10000005'))
+          _.forEach(all, (m, i) => {
+            m[Stats.ER].push({
+              value: 0.2 + (a >= 4 ? x.getValue(Stats.ER) * 0.1 : 0),
+              name: 'Abundance Amulet',
+              source: index === i ? `Self` : 'Traveler',
+            })
+          })
+          return x
+        })
 
       return base
     },

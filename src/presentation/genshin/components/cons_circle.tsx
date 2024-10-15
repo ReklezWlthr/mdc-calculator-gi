@@ -6,6 +6,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import getConfig from 'next/config'
 import { TalentIcon } from './tables/scaling_wrapper'
+import { useStore } from '@src/data/providers/app_store_provider'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -69,7 +70,9 @@ export const ConsCircle = observer(
     cons: number
     stats?: StatsObject
   }) => {
-    if (codeName === 'Player') codeName = TravelerIconName[element]
+    const { settingStore } = useStore()
+
+    if (codeName === 'Player') name = settingStore?.settings?.travelerGender === 'PlayerBoy' ? 'Viator' : 'Viatrix'
 
     return (
       <div className="space-y-5">

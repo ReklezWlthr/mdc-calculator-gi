@@ -137,7 +137,8 @@ export const TeamSetup = observer(() => {
     char?.cons,
     char?.ascension,
     char?.talents,
-    teamStore.characters
+    teamStore.characters,
+    settingStore.settings.travelerGender
   )
 
   const maxTalentLevel = _.max([1, (char.ascension - 1) * 2])

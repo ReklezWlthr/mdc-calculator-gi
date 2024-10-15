@@ -178,8 +178,8 @@ export const ParticleCount = (id: string, c: number) =>
     ],
     '10000100': [
       { name: 'Skill Hit', default: 0, value: 2 / 3, variance: 2 / 3 },
-      { name: 'Unmount', default: 1, value: 0, variance: 0.5, pps: 1 / 3, duration: 12 },
-      { name: 'Mount', default: 0, value: 4, variance: 0.5 },
+      { name: 'Unmount', default: 1, value: 0, variance: 0.5, pps: 1 / 3, duration: c >= 2 ? 16 : 12 },
+      { name: 'Mounted Full Uptime', default: 0, value: c >= 2 ? 16 / 3 : 4, variance: 0.5 },
     ],
     '10000102': [{ name: `Skill Cast`, default: 1, value: 4.5, variance: 1 / 9 }],
     '10000101': [{ name: `Skill Cast`, default: 1, value: 5, variance: 0 }],

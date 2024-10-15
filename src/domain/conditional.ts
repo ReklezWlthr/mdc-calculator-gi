@@ -45,7 +45,7 @@ export interface IContent {
   title: string
   content: string
   show: boolean
-  default?: number | boolean | Element | []
+  default?: string | number | boolean | []
   max?: number
   min?: number
   debuff?: boolean
