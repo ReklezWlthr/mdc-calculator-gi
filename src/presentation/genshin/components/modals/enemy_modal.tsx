@@ -23,8 +23,8 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
   const setValue: (key: string, value: any) => void = store.setValue
   const charLevel = compare
     ? setupStore.selected[0] === 0
-      ? setupStore.main[setupStore.selected[1]]
-      : setupStore.team[setupStore.selected[0] - 1][setupStore.selected[1]]
+      ? setupStore.main.char[setupStore.selected[1]].level
+      : setupStore.team[setupStore.selected[0] - 1].char[setupStore.selected[1]].level
     : teamStore.characters[calculatorStore.selected]?.level
   const rawDef = 5 * +level + 500
   const pen = stats?.getValue(StatsObjectKeys.DEF_PEN)
