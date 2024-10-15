@@ -200,6 +200,7 @@ export const TeamSetup = observer(() => {
                 element={charData?.element}
                 size="w-9 h-9"
                 upgraded={talent?.upgrade?.normal}
+                showUpgrade
               />
               <SelectInput
                 value={char?.talents?.normal?.toString()}
@@ -212,6 +213,7 @@ export const TeamSetup = observer(() => {
                 element={charData?.element}
                 size="w-9 h-9"
                 upgraded={talent?.upgrade?.skill}
+                showUpgrade
               />
               <SelectInput
                 value={char?.talents?.skill?.toString()}
@@ -224,6 +226,7 @@ export const TeamSetup = observer(() => {
                 element={charData?.element}
                 size="w-9 h-9"
                 upgraded={talent?.upgrade?.burst}
+                showUpgrade
               />
               <SelectInput
                 value={char?.talents?.burst?.toString()}

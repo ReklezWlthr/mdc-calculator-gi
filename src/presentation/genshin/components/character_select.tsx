@@ -18,7 +18,7 @@ export const CharacterSelect = ({
 
   return (
     <div
-      className={classNames('w-12 h-12 rounded-full bg-primary duration-200 relative shrink-0 overflow-hidden', {
+      className={classNames('w-12 h-12 rounded-full bg-primary duration-200 relative shrink-0', {
         'hover:ring-2 ring-primary-light': onClick && !isSelected,
         [classNames('ring-4', ringColor)]: isSelected,
         'cursor-pointer': onClick,

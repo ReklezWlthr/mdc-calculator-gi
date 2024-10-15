@@ -15,7 +15,7 @@ export enum Tags {
   ON_FIELD = 'On-Field DPS',
   OFF_FIELD = 'Off-Field DPS',
   APP = 'Applicator',
-  BURST = 'Burst Reliant',
+  // BURST = 'Burst Reliant',
   AMP = 'Amplify',
   HEAL = 'Heal',
   SHIELD = 'Shield',
@@ -268,6 +268,7 @@ export const MainStatOptions = [
   { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
   { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
   { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
+  { name: Stats.HEAL, value: Stats.HEAL, img: '/icons/stat_heal.png' },
   { name: Stats.PHYSICAL_DMG, value: Stats.PHYSICAL_DMG, img: '/icons/stat_physical.png' },
   {
     name: Stats.ANEMO_DMG,

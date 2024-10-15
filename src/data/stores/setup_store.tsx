@@ -60,12 +60,11 @@ export interface SetupStoreType {
   res: Record<Element, number>
   level: number | string
   enemy: string
-  hp: number
   scaling: string
-  toughness: number
-  effRes: number
-  broken: boolean
-  weakness: Element[]
+  variant: string
+  stun: boolean
+  shielded: boolean
+  superconduct: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (i: number, initData: Record<string, any>[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
@@ -109,11 +108,10 @@ export class SetupStore {
   res: Record<Element, number>
   level: number | string
   enemy: string
-  hp: number
-  toughness: number
-  effRes: number
-  broken: boolean
-  weakness: Element[]
+  variant: string
+  stun: boolean
+  shielded: boolean
+  superconduct: boolean
   scaling: string
 
   constructor() {
@@ -139,11 +137,10 @@ export class SetupStore {
     }
     this.level = 1
     this.enemy = ''
-    this.hp = 1
-    this.toughness = 30
-    this.effRes = 0
-    this.broken = false
-    this.weakness = []
+    this.variant = ''
+    this.stun = false
+    this.shielded = false
+    this.superconduct = false
 
     makeAutoObservable(this)
   }
@@ -209,25 +206,15 @@ export class SetupStore {
   }
 
   getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
-    const base = _.includes(this.enemy, 'Trot') ? 300 : 200
-    const growth = _.includes(this.enemy, 'Trot') ? 15 : 10
-    const def = (base + growth * (+this.level || 1)) * (1 - defPen - defRed)
-
-    return _.min([1 - def / (def + 200 + 10 * level), 1])
+    return (level + 100) / ((+this.level + 100) * (1 - defPen) * (1 - defRed) + level + 100)
   }
 
   getResMult = (element: Element, resPen: number) => {
-    if (this.res[element] === Infinity) return 0
-    const res = this.res[element] / 100 - resPen
+    const sd = this.superconduct && element === Element.PHYSICAL ? 0.4 : 0
+    const res = this.res[element] / 100 - (resPen + sd)
+    if (res < 0) return 1 - res / 2
+    if (res >= 0.75) return 1 / (4 * res + 1)
     return 1 - res
-  }
-
-  getEffRes = (reduction?: number) => {
-    return this.effRes + (+this.level >= 51 ? _.min([0.1, 0.004 * (+this.level - 50)]) : 0) - reduction
-  }
-
-  getEhr = (reduction?: number) => {
-    return (+this.level >= 51 ? _.min([0.36, 0.008 * (+this.level - 50)]) : 0) - reduction
   }
 
   setComparing = (value: Partial<ITeamChar>) => {

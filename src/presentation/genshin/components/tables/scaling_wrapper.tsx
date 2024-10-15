@@ -82,7 +82,7 @@ export const TalentIcon = observer(
         </div>
         {hideTip && showUpgrade && !!upgraded && (
           <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-2 bg-cyan-600 text-white">
-            +{upgraded}
+            +{upgraded ? 3 : 0}
           </div>
         )}
       </div>
@@ -103,7 +103,7 @@ export const TalentIcon = observer(
                 <p className="text-xs font-normal text-gray">
                   Level:{' '}
                   <span className="text-desc">
-                    {level} {!!upgraded && <span className="text-blue">(+{upgraded})</span>}
+                    {level} {!!upgraded && <span className="text-blue">(+{upgraded ? 3 : 0})</span>}
                   </span>
                 </p>
               )}
@@ -132,7 +132,7 @@ export const TalentIcon = observer(
           )}
           {!showLevel && showUpgrade && !!upgraded && (
             <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-2 bg-cyan-600 text-white">
-              +{upgraded}
+              +{upgraded ? 3 : 0}
             </div>
           )}
         </div>

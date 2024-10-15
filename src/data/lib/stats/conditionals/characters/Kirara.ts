@@ -114,7 +114,7 @@ const Kirara = (c: number, a: number, t: ITalentLevel) => {
     c6: {
       trace: `Constellation 6`,
       title: `Countless Sights to See`,
-      content: `All nearby party members will gain <span class="text-desc">12%</span> All Elemental DMG Bonus within <span class="text-desc">15</span>s after Kirara uses her Elemental Skill or Burst.`,
+      content: `All nearby party members will gain <span class="text-desc">12%</span> <b>All Elemental DMG Bonus</b> within <span class="text-desc">15</span>s after Kirara uses her Elemental Skill or Burst.`,
       image: 'UI_Talent_S_Momoka_03',
     },
   }

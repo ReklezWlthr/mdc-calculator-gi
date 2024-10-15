@@ -46,7 +46,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       content: `Chasca and the will residing in her weapon resonate, dealing Nightsoul-aligned <b class="text-genshin-anemo">AoE Anemo DMG</b>.
       <br />After using this Skill, Chasca gains <span class="text-desc">80</span> <b class="text-genshin-anemo">Nightsoul</b> points and enters the <b class="text-genshin-anemo">Nightsoul's Blessing</b> state.
       <br />
-      <br /><b class="text-genshin-anemo">Nightsoul's Blessing: Chasca</b>
+      <br /><b>Nightsoul's Blessing: Chasca</b>
       <br />Continually consume <b class="text-genshin-anemo">Nightsoul</b> points. When <b class="text-genshin-anemo">Nightsoul</b> points are fully depleted or the skill is used again, Chasca's <b class="text-genshin-anemo">Nightsoul's Blessing</b> state will end. Her <b class="text-genshin-anemo">Nightsoul's Blessing</b> has the following traits:
       <br />- Mounts <b>Soulsniper: Ritual Staff</b>, increasing Chasca's Movement SPD and interruption resistance. In this state, Chasca will continually consume <b class="text-genshin-anemo">Nightsoul</b> points or <b class="text-genshin-pyro">Phlogiston</b>, and stay airborne. When Sprinting or increasing height, extra <b class="text-genshin-anemo">Nightsoul</b> points or <b class="text-genshin-pyro">Phlogiston</b> will be consumed.
       <br />- When using Normal Or Charged Attacks, Tap or Hold to switch between using <b>Multitarget Fire</b> in different ways.
@@ -67,11 +67,11 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       level: burst,
       trace: `Elemental Burst`,
       title: `Soul Reaper's Fatal Round`,
-      content: `Chasca concentrates her will, firing a single <b>Galesplitting Soulseeker Shell</b> that deals Nightsoul-aligned <b class="text-genshin-anemo">AoE Anemo DMG</b>. Afterward, the <b>Galesplitting Soulseeker</b> Shell will split into <span class="text-desc">6</span> <b class="text-violet-300">Soulseeker Shells</b>, which attack nearby opponents.
+      content: `Chasca concentrates her will, firing a single <b>Galesplitting Soulseeker Shell</b> that deals Nightsoul-aligned <b class="text-genshin-anemo">AoE Anemo DMG</b>. Afterward, the <b>Galesplitting Soulseeker Shell</b> will split into <span class="text-desc">6</span> <b class="text-violet-300">Soulseeker Shells</b>, which attack nearby opponents.
       <br />
       <br /><b class="text-violet-300">Soulseeker Shells</b>
       <br />- Deal Nightsoul-aligned <b class="text-genshin-anemo">Anemo DMG</b>.
-      <br />- For each <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> character in the party, two <b class="text-violet-300">Soulseeker Shells</b> will undergo corresponding <b>Elemental Conversions</b> to become <b class="text-violet-300">Radiant Soulseeker Shells</b> which deal Nightsoul-aligned <b>Elemental DMG</b> of the corresponding <b>Elemental Type</b>.`,
+      <br />- For each <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> character in the party, <span class="text-desc">two</span> <b class="text-violet-300">Soulseeker Shells</b> will undergo corresponding <b>Elemental Conversions</b> to become <b class="text-violet-300">Radiant Soulseeker Shells</b> which deal Nightsoul-aligned <b>Elemental DMG</b> of the corresponding <b>Elemental Type</b>.`,
       image: 'Skill_E_Chasca_01',
     },
     a1: {

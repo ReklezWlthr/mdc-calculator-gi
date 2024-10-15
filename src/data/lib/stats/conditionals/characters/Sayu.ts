@@ -52,7 +52,7 @@ const Sayu = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />The longer Sayu remains in her <b>Windwheel</b> state, the longer the CD.
       <br />
       <br /><b>Elemental Absorption</b>
-      <br />If Sayu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> while in her <b>Windwheel</b> state, she will deal additional elemental DMG of that type.
+      <br />If Sayu comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b> while in her <b>Windwheel</b> state, she will deal additional <b>Elemental DMG</b> of that type.
       <br />Elemental Absorption may only occur once per use of this skill.
       `,
       image: 'Skill_S_Sayu_01',

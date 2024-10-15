@@ -106,7 +106,7 @@ const Sucrose = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c6: {
       trace: `Constellation 6`,
       title: `Chaotic Entropy`,
-      content: `If <b>Forbidden Creation - Isomer 75 / Type II</b> triggers an Elemental Absorption, all party members gain a <span class="text-desc">20%</span> Elemental DMG Bonus for the corresponding absorbed element during its duration.`,
+      content: `If <b>Forbidden Creation - Isomer 75 / Type II</b> triggers an Elemental Absorption, all party members gain a <span class="text-desc">20%</span> <b>Elemental DMG Bonus</b> for the corresponding absorbed element during its duration.`,
       image: 'UI_Talent_S_Sucrose_04',
     },
   }

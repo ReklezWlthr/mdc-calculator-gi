@@ -62,7 +62,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />The blade's passage will leave behind a field named <b>Autumn Whirlwind</b> that periodically deals <b class="text-genshin-anemo">AoE Anemo DMG</b> to opponents within its range.
       <br />
       <br /><b>Elemental Absorption</b>
-      <br />If <b>Autumn Whirlwind</b> comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, it will deal additional elemental DMG of that type.
+      <br />If <b>Autumn Whirlwind</b> comes into contact with <b class="text-genshin-hydro">Hydro</b>/<b class="text-genshin-pyro">Pyro</b>/<b class="text-genshin-cryo">Cryo</b>/<b class="text-genshin-electro">Electro</b>, it will deal additional <b>Elemental DMG</b> of that type.
       <br />Elemental Absorption may only occur once per use.`,
       image: 'Skill_E_Kazuha_01',
     },
@@ -76,7 +76,7 @@ const Kazuha = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Poetics of Fuubutsu`,
-      content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-desc">0.04%</span> Elemental DMG Bonus to the element absorbed by Swirl for every point of Elemental Mastery he has for <span class="text-desc">8</span>s. Bonuses for different elements obtained through this method can co-exist.`,
+      content: `Upon triggering a Swirl reaction, Kaedehara Kazuha will grant all party members a <span class="text-desc">0.04%</span> <b>Elemental DMG Bonus</b> to the element absorbed by Swirl for every point of Elemental Mastery he has for <span class="text-desc">8</span>s. Bonuses for different elements obtained through this method can co-exist.`,
       image: 'UI_Talent_S_Kazuha_06',
     },
     util: {

@@ -34,7 +34,7 @@ export const BuildBlock = observer(({ build, owner, onClick, selected }: BuildBl
           <div className="absolute top-0 left-0 z-10 w-full h-full from-8% to-40% bg-gradient-to-l from-primary-dark to-transparent" />
           <img
             src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
-            className="object-cover h-16 aspect-square scale-[300%] -ml-0.5"
+            className="object-cover h-16 aspect-square scale-[300%] -ml-0.5 -mt-0.5"
           />
         </div>
         <div className="flex items-center justify-between w-full px-2">

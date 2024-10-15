@@ -67,7 +67,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br />Also, when nearby opponents take Electro-Charged reaction DMG or when nearby characters deal Nightsoul-aligned DMG, Ororon will consume <span class="text-desc">10</span> <b class="text-genshin-electro">Nightsoul</b> points (provided he has at least that amount), entering the <b class="text-genshin-electro">Nightsoul's Blessing</b> state and triggering the <b>Hypersense</b> effect: Deal Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b> based on <span class="text-desc">130%</span> of Ororon's ATK to at most <span class="text-desc">4</span> nearby opponents. The aforementioned effect can trigger once every <span class="text-desc">1.8</span>s.
       <br />
-      <br /><b class="text-genshin-electro">Nightsoul's Blessing: Ororon</b>
+      <br /><b>Nightsoul's Blessing: Ororon</b>
       <br />Ororon's <b class="text-genshin-electro">Nightsoul's Blessing</b> state lasts <span class="text-desc">6</span>s.`,
       image: 'UI_Talent_S_Olorun_05',
     },

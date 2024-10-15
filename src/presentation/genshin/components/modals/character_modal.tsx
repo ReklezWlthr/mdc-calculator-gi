@@ -130,17 +130,16 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                 </BulletPoint> */}
                 <BulletPoint>
                   <b>Applicator</b>: Also known as <b>Enabler</b>. Possesses abilities that help them reliably and
-                  constantly apply and maintain an Elemental Aura on enemies even while constantly consumed by
-                  Reactions.
+                  consistently apply and maintain an Elemental Aura on enemies for frequent Reactions.
                 </BulletPoint>
-                <BulletPoint>
+                {/* <BulletPoint>
                   <b>Burst Reliant</b>: Heavily relies on their Elemental Burst as an integral part of their
                   kit/rotation. Not having it ready will greatly hinder their performance. Usually requires a lot of
                   Energy Recharge or a Battery.
-                </BulletPoint>
+                </BulletPoint> */}
                 <BulletPoint>
-                  <b>Amplify</b>: Excels at amplifying the damage of their teammates both through enhancing them,
-                  weakening enemies or enabling some playstyles.
+                  <b>Amplify</b>: Excels at amplifying the power of their teammates by directly enhancing them and/or
+                  their playstyle, or weakening enemies.
                 </BulletPoint>
                 <BulletPoint>
                   <b>Heal</b>: Possesses abilities that recovers health for their allies.

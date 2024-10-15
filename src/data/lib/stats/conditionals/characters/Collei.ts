@@ -81,7 +81,7 @@ const Collei = (c: number, a: number, t: ITalentLevel) => {
       trace: `Constellation 2`,
       title: `Through Hill and Copse`,
       content: `The Passive <b>Talent Floral Sidewinder</b> is changed to this:
-      <br />The Floral Ring will grant the character the <b class="text-genshin-dendro">Sprout</b> effect from Floral Sidewinder upon return, dealing <span class="text-desc">40%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents for <span class="text-desc">3</span>s.
+      <br />The Floral Ring will grant the character the <b class="text-genshin-dendro">Sprout</b> effect from <b>Floral Sidewinder</b> upon return, dealing <span class="text-desc">40%</span> of Collei's ATK as <b class="text-genshin-dendro">Dendro DMG</b> to nearby opponents for <span class="text-desc">3</span>s.
       <br />From the moment of using <b>Floral Brush</b> to the moment when this instance of <b class="text-genshin-dendro">Sprout</b> effect ends, if any of your party members triggers Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon reactions, the <b class="text-genshin-dendro">Sprout</b> effect will be extended by <span class="text-desc">3</span>s.
       <br />The <b class="text-genshin-dendro">Sprout</b> effect can only be extended this way once. If another <b class="text-genshin-dendro">Sprout</b> effect is triggered during its initial duration, the initial effect will be removed.
       <br />Requires you to have unlocked the <b>Floral Sidewinder</b> Passive Talent.`,

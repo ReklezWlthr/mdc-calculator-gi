@@ -14,15 +14,21 @@ import { findEnemy } from '@src/core/utils/finder'
 import { BaseElementColor } from '@src/core/utils/damageStringConstruct'
 import React from 'react'
 import { Tooltip } from '@src/presentation/components/tooltip'
+import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
-export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
-  const { calculatorStore, teamStore } = useStore()
-  const store = compare ? calculatorStore : calculatorStore
-  const { res, level, computedStats, selected, enemy } = store
-  const charLevel = teamStore.characters[store.selected]?.level
-  const rawDef = 5 * level + 500
-  const pen = computedStats[selected]?.getValue(StatsObjectKeys.DEF_PEN)
-  const red = computedStats[selected]?.getValue(StatsObjectKeys.DEF_REDUCTION)
+export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; compare?: boolean }) => {
+  const { calculatorStore, teamStore, setupStore } = useStore()
+  const store = compare ? setupStore : calculatorStore
+  const { res, level, enemy, superconduct } = store
+  const setValue: (key: string, value: any) => void = store.setValue
+  const charLevel = compare
+    ? setupStore.selected[0] === 0
+      ? setupStore.main[setupStore.selected[1]]
+      : setupStore.team[setupStore.selected[0] - 1][setupStore.selected[1]]
+    : teamStore.characters[calculatorStore.selected]?.level
+  const rawDef = 5 * +level + 500
+  const pen = stats?.getValue(StatsObjectKeys.DEF_PEN)
+  const red = stats?.getValue(StatsObjectKeys.DEF_REDUCTION)
   const def = rawDef * (1 - pen) * (1 - red)
   const defMult = store.getDefMult(charLevel, pen, red)
 
@@ -55,11 +61,11 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
               const enemyData = findEnemy(v?.name)
               const variant = _.head(enemyData?.options)?.value || ''
               const arr = enemyData?.res(variant as Element, false, false)
-              store.setValue('enemy', v?.value || '')
-              store.setValue('variant', variant || '')
-              store.setValue('stun', false)
-              store.setValue('shielded', false)
-              if (v) store.setValue('res', reduceRes(arr))
+              setValue('enemy', v?.value || '')
+              setValue('variant', variant || '')
+              setValue('stun', false)
+              setValue('shielded', false)
+              if (v) setValue('res', reduceRes(arr))
             }}
             value={enemy}
             placeholder="Custom"
@@ -71,9 +77,9 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
             placeholder="None"
             options={enemyData?.options}
             onChange={(v) => {
-              store.setValue('variant', v)
+              setValue('variant', v)
               const arr = enemyData?.res(v as Element, store.stun, store.shielded)
-              store.setValue('res', reduceRes(arr))
+              setValue('res', reduceRes(arr))
             }}
             value={store.variant}
             disabled={!_.size(enemyData?.options)}
@@ -87,7 +93,7 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
             type="number"
             min={1}
             value={level.toString()}
-            onChange={(value) => store.setValue('level', parseFloat(value) || 0)}
+            onChange={(value) => setValue('level', parseFloat(value) || 0)}
             style="!w-[60px]"
           />
         </div>
@@ -99,8 +105,8 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
                 checked={store.stun}
                 onClick={(v) => {
                   const arr = enemyData?.res(store.variant as Element, v, store.shielded)
-                  store.setValue('stun', v)
-                  store.setValue('res', reduceRes(arr))
+                  setValue('stun', v)
+                  setValue('res', reduceRes(arr))
                 }}
               />
             </>
@@ -112,15 +118,15 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
                 checked={store.shielded}
                 onClick={(v) => {
                   const arr = enemyData?.res(store.variant as Element, store.stun, v)
-                  store.setValue('shielded', v)
-                  store.setValue('res', reduceRes(arr))
+                  setValue('shielded', v)
+                  setValue('res', reduceRes(arr))
                 }}
               />
             </>
           )}
         </div>
       </div>
-      <div className="flex justify-between gap-4">
+      <div className="flex justify-between gap-8">
         <div className="space-y-5">
           <div className="space-y-1">
             <p>DEF</p>
@@ -162,6 +168,15 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
                 </p>
               </div>
             </div>
+            <div className="pt-4 flex items-center gap-4 justify-between">
+              <div className="w-full">
+                <p>Superconduct</p>
+                <p className="text-xs font-normal text-gray">
+                  Reduces the enemy's <b>Physical RES</b> by <span className="text-desc">40%</span>.
+                </p>
+              </div>
+              <ToggleSwitch enabled={superconduct} onClick={(v) => setValue('superconduct', v)} />
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-y-3">
@@ -171,7 +186,10 @@ export const EnemyModal = observer(({ compare }: { compare?: boolean }) => {
               title="Elemental RES"
               body={
                 <div className="font-normal">
-                  <p>Reduces DMG received by a certain percentage.</p>
+                  <p>
+                    Reduces DMG received by a certain percentage. Values shown here are the target's base RES unaffected
+                    by PEN or reductions.
+                  </p>
                   <p>
                     RES can become negative but will also become only <span className="text-desc">half</span> as
                     effective. Similarly, RES above <span className="text-desc">75%</span> will gradually become less

@@ -4,7 +4,6 @@ import { Element, Stats } from '@src/domain/constant'
 import { BaseReactionDmg } from '@src/domain/scaling'
 import _ from 'lodash'
 import { calcAdditive, calcAmplifying } from '@src/core/utils/data_format'
-import { isSubsetOf } from '@src/core/utils/finder'
 
 const Reactions: (level: number, element: Element, swirl: Element, stat: StatsObject) => IContent[] = (
   level,
@@ -18,6 +17,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
 
   return [
     {
+      trace: 'Reaction',
       type: 'element',
       id: 'swirl',
       text: `Swirled Element`,
@@ -28,6 +28,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       default: Element.PYRO,
     },
     {
+      trace: 'Reaction',
       type: 'toggle',
       id: 'melt_forward',
       text: `Forward Melt`,
@@ -39,6 +40,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       default: false,
     },
     {
+      trace: 'Reaction',
       type: 'toggle',
       id: 'melt_reverse',
       text: `Reverse Melt`,
@@ -50,6 +52,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       default: false,
     },
     {
+      trace: 'Reaction',
       type: 'toggle',
       id: 'vape_forward',
       text: `Forward Vaporize`,
@@ -61,6 +64,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       default: false,
     },
     {
+      trace: 'Reaction',
       type: 'toggle',
       id: 'vape_reverse',
       text: `Reverse Vaporize`,
@@ -72,6 +76,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       default: false,
     },
     {
+      trace: 'Reaction',
       type: 'toggle',
       id: 'spread',
       text: `Spread`,
@@ -83,6 +88,7 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       default: false,
     },
     {
+      trace: 'Reaction',
       type: 'toggle',
       id: 'aggravate',
       text: `Aggravate`,
@@ -92,16 +98,6 @@ const Reactions: (level: number, element: Element, swirl: Element, stat: StatsOb
       ).toLocaleString()}</span>.`,
       show: _.includes([element, swirl], Element.ELECTRO),
       default: false,
-    },
-    {
-      type: 'toggle',
-      id: 'superconduct',
-      text: `Superconduct`,
-      title: `Superconduct`,
-      content: `Reduces the enemy's <b>Physical RES</b> <span class="text-desc">40%</span> for <span class="text-desc">12</span>s.`,
-      show: _.includes([Element.ELECTRO, Element.CRYO], element),
-      default: false,
-      debuff: true,
     },
   ]
 }

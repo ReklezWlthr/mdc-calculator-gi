@@ -112,7 +112,7 @@ export const ArtifactInventory = observer(() => {
         {_.size(filteredArtifacts) ? (
           <div className="grid w-full grid-cols-5 gap-4 overflow-y-auto rounded-lg hideScrollbar">
             {_.map(filteredArtifacts, (artifact) => (
-              <ArtifactBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} showWearer />
+              <ArtifactBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} />
             ))}
           </div>
         ) : (

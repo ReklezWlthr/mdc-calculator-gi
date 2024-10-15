@@ -99,7 +99,7 @@ export const CompareBlock = observer(() => {
     [allStats, charData]
   )
   const onOpenEnemyModal = useCallback(
-    () => modalStore.openModal(<EnemyModal compare />),
+    () => modalStore.openModal(<EnemyModal stats={allStats[setupIndex][charIndex]} compare />),
     [allStats, setupIndex, charIndex]
   )
 

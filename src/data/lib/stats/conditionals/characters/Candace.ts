@@ -56,7 +56,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b class="text-genshin-hydro">Prayer of the Crimson Crown</b>
       <br />This effect has the following properties:
-      <br />- Characters deal increased Elemental DMG with their Normal Attacks.
+      <br />- Characters deal increased <b>Elemental DMG</b> with their Normal Attacks.
       <br />- Whenever a character takes the field, they will unleash a rippling wave of water that deals <b class="text-genshin-hydro">Hydro DMG</b> to nearby opponents. There is a limited number of waves that can be triggered in the duration of this skill.
       <br />- Sword, Claymore, and Polearm-wielding characters under this effect will obtain a <b class="text-genshin-hydro">Hydro Infusion</b>.`,
       image: 'Skill_E_Candace_01',
@@ -70,7 +70,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Celestial Dome of Sand`,
-      content: `Characters affected by the <b class="text-genshin-hydro">Prayer of the Crimson Crown</b> caused by <b>Sacred Rite: Wagtail's Tide</b> will deal <span class="text-desc">0.5%</span> increased DMG to opponents for every <span class="text-desc">1,000</span> points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.`,
+      content: `Characters affected by the <b class="text-genshin-hydro">Prayer of the Crimson Crown</b> caused by <b>Sacred Rite: Wagtail's Tide</b> will deal <span class="text-desc">0.5%</span> increased DMG to opponents for every <span class="text-desc">1,000</span> points of Candace's Max HP when they deal <b>Elemental DMG</b> with their Normal Attacks.`,
       image: 'UI_Talent_S_Candace_06',
     },
     util: {
@@ -115,7 +115,7 @@ const Candace = (c: number, a: number, t: ITalentLevel) => {
     c6: {
       trace: `Constellation 6`,
       title: `The Overflow`,
-      content: `When characters (excluding Candace herself) affected by the <b class="text-genshin-hydro">Prayer of the Crimson Crown</b> caused by <b>Sacred Rite: Wagtail's Tide</b> deal Elemental DMG to opponents using Normal Attacks, an attack wave will be unleashed that deals <b class="text-genshin-hydro">AoE Hydro DMG</b> equal to <span class="text-desc">15%</span> of Candace's Max HP.
+      content: `When characters (excluding Candace herself) affected by the <b class="text-genshin-hydro">Prayer of the Crimson Crown</b> caused by <b>Sacred Rite: Wagtail's Tide</b> deal <b>Elemental DMG</b> to opponents using Normal Attacks, an attack wave will be unleashed that deals <b class="text-genshin-hydro">AoE Hydro DMG</b> equal to <span class="text-desc">15%</span> of Candace's Max HP.
       <br />This effect can trigger once every <span class="text-desc">2.3</span>s and is considered Elemental Burst DMG.`,
       image: 'UI_Talent_S_Candace_04',
     },

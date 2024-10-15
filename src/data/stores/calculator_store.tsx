@@ -12,6 +12,8 @@ export interface CalculatorStoreType {
   selected: number
   res: Record<Element, number>
   level: number
+  variant: string
+  superconduct: boolean
   stun: boolean
   shielded: boolean
   mode: string
@@ -34,7 +36,8 @@ export class CalculatorStore {
   mode: string
   computedStats: StatsObject[]
   res: Record<Element, number>
-  level: number
+  level: number | string
+  superconduct: boolean
   selected: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
 
@@ -59,6 +62,7 @@ export class CalculatorStore {
       [Element.PHYSICAL]: 10,
     }
     this.custom = Array(4)
+    this.superconduct = false
 
     makeAutoObservable(this)
   }
@@ -108,11 +112,12 @@ export class CalculatorStore {
   }
 
   getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
-    return (level + 100) / ((this.level + 100) * (1 - defPen) * (1 - defRed) + level + 100)
+    return (level + 100) / ((+this.level + 100) * (1 - defPen) * (1 - defRed) + level + 100)
   }
 
   getResMult = (element: Element, resPen: number) => {
-    const res = this.res[element] / 100 - resPen
+    const sd = this.superconduct && element === Element.PHYSICAL ? 0.4 : 0
+    const res = this.res[element] / 100 - (resPen + sd)
     if (res < 0) return 1 - res / 2
     if (res >= 0.75) return 1 / (4 * res + 1)
     return 1 - res

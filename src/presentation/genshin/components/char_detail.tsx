@@ -15,6 +15,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { getElementImage, getWeaponImage } from '@src/core/utils/fetcher'
 import { AscensionGrowth } from '@src/domain/scaling'
 import getConfig from 'next/config'
+import { CharDetailModal } from './modals/char_detail_modal'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -67,7 +68,6 @@ export const CharDetail = observer(() => {
     T: 'Passive',
   }
 
-  // const id = formatIdIcon(selected, settingStore.settings?.travelerGender)
   const baseLevel = params.asc === 7 ? 90 : findBaseLevel(params.asc)
   const asc = _.min([params.asc, 6])
   const ascStat = _.max([0, asc - 2]) * AscensionGrowth[data?.stat?.ascStat]?.[data?.rarity - 4]
@@ -75,10 +75,10 @@ export const CharDetail = observer(() => {
   const iconCodeName = data?.codeName === 'Player' ? TravelerIconName[data.element] : data?.codeName
   const fCodeName = data?.codeName === 'Player' ? settingStore.settings.travelerGender : data?.codeName
 
-  // const onOpenEditModal = useCallback(
-  //   () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} />),
-  //   [charUpgrade, charStore.selected]
-  // )
+  const onOpenEditModal = useCallback(
+    () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} />),
+    [charUpgrade, charStore.selected]
+  )
 
   return (
     <div className="w-full h-full py-2 pr-5 ml-2 text-white customScrollbar" id="detail_container">
@@ -186,12 +186,12 @@ export const CharDetail = observer(() => {
               <p className="font-bold">Account Data</p>
               <p className="text-[10px] font-normal text-gray">Will be used as Default Data</p>
             </div>
-            <PrimaryButton title="Edit" onClick={() => {}} />
+            <PrimaryButton title="Edit" onClick={onOpenEditModal} />
           </div>
           <div className="px-5 py-3 rounded-lg bg-primary-darker bg-opacity-80">
             {charUpgrade ? (
               <div className="text-xs">
-                <div className="flex justify-around">
+                <div className="flex justify-between">
                   <p>
                     Level{' '}
                     <span className="text-desc">
@@ -203,26 +203,24 @@ export const CharDetail = observer(() => {
                   </p>
                 </div>
                 <p className="py-1.5 font-bold text-center">Talents</p>
-                <div className="grid grid-cols-5 gap-4">
-                  <div className="col-span-3 space-y-1">
-                    <div className="flex justify-between">
-                      <p>Basic ATK</p>
-                      <p className={cond.upgrade?.normal ? 'text-blue' : 'text-desc'}>
-                        {charUpgrade.talents?.normal + (cond.upgrade?.normal ? 3 : 0)}
-                      </p>
-                    </div>
-                    <div className="flex justify-between">
-                      <p>Skill</p>
-                      <p className={cond.upgrade?.skill ? 'text-blue' : 'text-desc'}>
-                        {charUpgrade.talents?.skill + (cond.upgrade?.skill ? 3 : 0)}
-                      </p>
-                    </div>
-                    <div className="flex justify-between">
-                      <p>Ultimate</p>
-                      <p className={cond.upgrade?.burst ? 'text-blue' : 'text-desc'}>
-                        {charUpgrade.talents?.burst + (cond.upgrade?.burst ? 3 : 0)}
-                      </p>
-                    </div>
+                <div className="space-y-1 px-5">
+                  <div className="flex justify-between">
+                    <p>Normal Attack</p>
+                    <p className={cond.upgrade?.normal ? 'text-blue' : 'text-desc'}>
+                      {charUpgrade.talents?.normal + (cond.upgrade?.normal ? 3 : 0)}
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>Elemental Skill</p>
+                    <p className={cond.upgrade?.skill ? 'text-blue' : 'text-desc'}>
+                      {charUpgrade.talents?.skill + (cond.upgrade?.skill ? 3 : 0)}
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>Elemental Burst</p>
+                    <p className={cond.upgrade?.burst ? 'text-blue' : 'text-desc'}>
+                      {charUpgrade.talents?.burst + (cond.upgrade?.burst ? 3 : 0)}
+                    </p>
                   </div>
                 </div>
               </div>

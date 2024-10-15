@@ -700,7 +700,7 @@ export const ArtifactSets: IArtifact[] = [
     bonus: [],
     desc: [
       `<b>All Elemental RES</b> increased by <span class="text-desc">20%</span>.`,
-      `Incoming Elemental DMG increases corresponding <b>Elemental RES</b> by <span class="text-desc">30%</span> for <span class="text-desc">10</span>s. Can only occur once every <span class="text-desc">10</span>s.`,
+      `Incoming <b>Elemental DMG</b> increases corresponding <b>Elemental RES</b> by <span class="text-desc">30%</span> for <span class="text-desc">10</span>s. Can only occur once every <span class="text-desc">10</span>s.`,
     ],
     set: [
       `Tiny Miracle's Goblet`,
