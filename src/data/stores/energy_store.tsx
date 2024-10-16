@@ -84,7 +84,7 @@ export class EnergyStore {
     this.particles = _.reduce(
       Element,
       (acc, curr) => {
-        acc[curr] = curr === Element.PHYSICAL ? 9 : 0
+        acc[curr] = 0
         return acc
       },
       {} as Record<Element, number>
@@ -92,7 +92,7 @@ export class EnergyStore {
     this.orbs = _.reduce(
       Element,
       (acc, curr) => {
-        acc[curr] = 0
+        acc[curr] = curr === Element.PHYSICAL ? 2 : 0
         return acc
       },
       {} as Record<Element, number>
@@ -191,15 +191,15 @@ export class EnergyStore {
   }
 
   getAdditionalEnergy = (element: Element) => {
-    const clearParticle = this.particles[Element.PHYSICAL] * 2
-    const onParticle = this.particles[element] * 3
+    const clearParticle = (this.particles[Element.PHYSICAL] || 0) * 2
+    const onParticle = (this.particles[element] || 0) * 3
     const offParticle = _.sumBy(
       _.filter(Element, (item) => !_.includes([Element.PHYSICAL, element], item)),
       (item) => this.particles[item]
     )
 
-    const clearOrb = this.orbs[Element.PHYSICAL] * 6
-    const onOrb = this.orbs[element] * 9
+    const clearOrb = (this.orbs[Element.PHYSICAL] || 0) * 6
+    const onOrb = (this.orbs[element] || 0) * 9
     const offOrb = _.sumBy(
       _.filter(Element, (item) => !_.includes([Element.PHYSICAL, element], item)),
       (item) => this.orbs[item] * 3
