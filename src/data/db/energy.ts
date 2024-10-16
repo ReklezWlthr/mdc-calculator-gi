@@ -52,7 +52,55 @@ export const AutoEnergy: IAutoEnergy[] = [
     source: '10000014',
     getEnergy: (props) => {
       if (props.receiver.cId !== '10000014' || props.char.cons < 1) return 0
-      return _.floor(props.totalRotation / 10)
+      return _.floor((props.totalRotation * _.max([1, props.generator.rpb])) / 10)
+    },
+  },
+  {
+    name: `Dendro Traveler's C1`,
+    source: '10000005-508',
+    getEnergy: (props) => {
+      if (props.receiver.cId !== '10000005-508' || props.char.cons < 1) return 0
+      return props.generator.skill[0].proc * _.max([1, props.generator.rpb]) * 3.5
+    },
+  },
+  {
+    name: `Diona's C1`,
+    source: '10000039',
+    getEnergy: (props) => {
+      if (props.receiver.cId !== '10000039' || props.char.cons < 1) return 0
+      return 15
+    },
+  },
+  {
+    name: `Dehya's C4`,
+    source: '10000079',
+    getEnergy: (props) => {
+      if (props.receiver.cId !== '10000079' || props.char.cons < 4) return 0
+      return 15
+    },
+  },
+  {
+    name: `Venti's A4`,
+    source: '10000022',
+    getEnergy: (props) => {
+      if (props.receiver.cId !== '10000022' || props.char.ascension < 4) return 0
+      return 15
+    },
+  },
+  {
+    name: `Kaeya's C6`,
+    source: '10000015',
+    getEnergy: (props) => {
+      if (props.receiver.cId !== '10000015' || props.char.cons < 6) return 0
+      return 15
+    },
+  },
+  {
+    name: `Jean's A4`,
+    source: '10000003',
+    getEnergy: (props) => {
+      if (props.receiver.cId !== '10000003' || props.char.ascension < 4) return 0
+      return 16
     },
   },
 ]

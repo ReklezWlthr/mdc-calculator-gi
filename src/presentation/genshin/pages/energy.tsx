@@ -17,7 +17,7 @@ import { EnergySettings } from '../components/energy/energy_settings'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { InteractionModal } from '../components/modals/interaction_modal'
 import { useFixedEnergy } from '@src/core/hooks/useFixedEnergy'
-import { FixedEnergyModal } from '../components/energy/fixed_energy_modal'
+import { FixedEnergyModal } from '../components/energy/energy_source_modal'
 import { ExtraSkillProc } from '@src/data/stores/energy_store'
 
 export const EnergyRequirement = observer(() => {
@@ -37,7 +37,7 @@ export const EnergyRequirement = observer(() => {
         <div className="flex items-center justify-between mb-2">
           <p className="text-2xl font-bold">ER Requirement</p>
           <div className="flex gap-2">
-            <PrimaryButton title="Fixed Energy Gain" onClick={onOpenEnergyModal} />
+            <PrimaryButton title="Energy Source List" onClick={onOpenEnergyModal} />
             <PrimaryButton title="ICDs & Interactions" onClick={onOpenICDModal} />
           </div>
         </div>
@@ -139,19 +139,21 @@ export const EnergyRequirement = observer(() => {
                 </div>
                 <div className="w-[53%] bg-primary-darker border-x-2 border-primary-border">
                   {_.map(ParticleCount(item.cId, item.cons), (component, cIndex) => {
-                    // const data = meta[index]?.skill?.[cIndex]
-                    // const uptime =
-                    //   (data?.duration * (data?.proc + (_.includes(ExtraSkillProc, item?.cId) && data?.proc ? 1 : 0))) /
-                    //   totalRotation
+                    const data = meta[index]?.skill?.[cIndex]
+                    const uptime =
+                      (data?.duration *
+                        (data?.proc * _.max([1, meta[index]?.rpb]) +
+                          (_.includes(ExtraSkillProc, item?.cId) && data?.proc ? 1 : 0))) /
+                      (totalRotation * _.max([1, meta[index]?.rpb]))
 
                     return (
                       <div className="grid w-full grid-cols-12 py-1 bg-primary-dark gap-x-3">
                         <div className="flex items-center col-span-5 gap-x-1">
                           <p className="flex items-center justify-center w-full text-xs font-semibold">
                             {component?.name}
-                            {/* <span className="ml-1 font-normal text-gray">
+                            <span className="ml-1 font-normal text-gray">
                               {!!uptime ? `- ${toPercentage(_.min([uptime, 1]))} Uptime` : ''}
-                            </span> */}
+                            </span>
                           </p>
                           <TextInput
                             small
@@ -266,44 +268,9 @@ export const EnergyRequirement = observer(() => {
                 </div>
                 <div className="w-[10%] bg-primary-darker text-xs rounded-r-lg flex flex-col">
                   <p className="flex items-center justify-center py-1 rounded-tr-lg bg-primary-dark">Energy Gain</p>
-                  <Tooltip
-                    title="Energy Gain per Burst"
-                    body={
-                      <div className="space-y-1 text-xs">
-                        {_.map(teamStore.characters, (c, i) => (
-                          <div className="flex items-center justify-between">
-                            <b className="mr-2 shrink-0">Energy from {findCharacter(c?.cId)?.name}</b>
-                            <div className="w-full border-t-2 border-primary" />
-                            <span className="ml-2 text-desc shrink-0">
-                              {_.round(energyStore.getEnergyFrom(i, index), 1).toLocaleString()}
-                            </span>
-                          </div>
-                        ))}
-                        <div className="flex items-center justify-between">
-                          <b className="mr-2 shrink-0">HP Drops</b>
-                          <div className="w-full border-t-2 border-primary" />
-                          <span className="ml-2 text-desc shrink-0">
-                            {_.round(energyStore.getAdditionalPersonal(index)?.additional, 1).toLocaleString()}
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <b className="mr-2 shrink-0">Additional Sources</b>
-                          <div className="w-full border-t-2 border-primary" />
-                          <span className="ml-2 text-desc shrink-0">
-                            {_.round(energyStore.getAdditionalPersonal(index)?.electro, 1).toLocaleString()}
-                          </span>
-                        </div>
-                      </div>
-                    }
-                    style="w-[250px]"
-                  >
-                    <div className="flex items-center justify-center py-1 text-xs font-bold">
-                      {_.round(
-                        energyStore.getTotalEnergy(index) + energyStore.getFixedEnergy(index),
-                        2
-                      ).toLocaleString()}
-                    </div>
-                  </Tooltip>
+                  <div className="flex items-center justify-center py-1 text-xs font-bold">
+                    {_.round(energyStore.getTotalEnergy(index) + energyStore.getFixedEnergy(index), 2).toLocaleString()}
+                  </div>
                   <p className="flex items-center justify-center py-1 bg-primary-dark">ER Required</p>
                   <div className="flex items-center justify-center w-full text-lg font-bold text-purple">
                     {toPercentage(

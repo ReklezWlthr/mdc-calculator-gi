@@ -2012,7 +2012,7 @@ export const Characters = [
       ascHp: 3262.3718,
       ascDef: 204.75,
       ascStat: Stats.P_ATK,
-      energy: 800,
+      energy: 80,
     },
     rarity: 5,
     region: 'Unknown',

@@ -3,6 +3,14 @@
 
 export const ParticleCount = (id: string, c: number) =>
   ({
+    '10000005-504': [
+      { name: 'Skill Press', default: 1, value: 2, variance: 0 },
+      { name: 'Skill Hold', default: 1, value: 10 / 3, variance: 0.1 },
+    ],
+    '10000005-508': [{ name: 'Skill Cast', default: 1, value: 2.5, variance: 0.2 }],
+    '10000005-507': [{ name: 'Skill Cast', default: 1, value: 1, variance: 0 }],
+    '10000005-506': [{ name: 'Skill Cast', default: 1, value: 10 / 3, variance: 0.1 }],
+    '10000005-503': [{ name: 'Skill Cast', default: 1, value: 10 / 3, variance: 0.1 }],
     '10000038': [{ name: 'Skill Cast', default: 1, value: 0, variance: 0.5, pps: 0.3, duration: 30 }],
     '10000078': [
       { name: 'Projection Attack', default: 0, value: 1, variance: 0 },
