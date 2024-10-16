@@ -17,8 +17,10 @@ import { EnergySettings } from '../components/energy/energy_settings'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { InteractionModal } from '../components/modals/interaction_modal'
 import { useFixedEnergy } from '@src/core/hooks/useFixedEnergy'
-import { FixedEnergyModal } from '../components/energy/energy_source_modal'
+import { EnergySourceModal } from '../components/energy/energy_source_modal'
 import { ExtraSkillProc } from '@src/data/stores/energy_store'
+import { PillInput } from '@src/presentation/components/inputs/pill_input'
+import { FixedEnergyModal } from '../components/energy/fixed_energy_modal'
 
 export const EnergyRequirement = observer(() => {
   const { teamStore, settingStore, energyStore, modalStore } = useStore()
@@ -27,7 +29,11 @@ export const EnergyRequirement = observer(() => {
   const totalRotation = _.sumBy(meta, (item) => item.fieldTime)
 
   const onOpenICDModal = useCallback(() => modalStore.openModal(<InteractionModal />), [])
-  const onOpenEnergyModal = useCallback(() => modalStore.openModal(<FixedEnergyModal />), [])
+  const onOpenEnergyModal = useCallback(() => modalStore.openModal(<EnergySourceModal />), [])
+  const onOpenFixedEnergyModal = useCallback(
+    (index: number) => modalStore.openModal(<FixedEnergyModal index={index} />),
+    []
+  )
 
   useFixedEnergy()
 
@@ -99,7 +105,29 @@ export const EnergyRequirement = observer(() => {
               </Tooltip>
             </div>
           </div>
-          <div className="w-[20%] text-center bg-primary-border rounded-tr-lg py-1">Additional Energy</div>
+          <div className="flex items-center w-[20%] bg-primary-border rounded-tr-lg py-1 gap-2 justify-center">
+            <p>Additional Energy</p>
+            <Tooltip
+              title="Additional Energy"
+              body={
+                <div className="space-y-1 font-normal">
+                  <p>This section is for additional energy that can be gained from other means.</p>
+                  <p>
+                    - <b>Favonius Weapons</b> have a chance to gives <span className="text-desc">3</span> Clear
+                    Particles when crits. You may also funnel the Particles to other characters.
+                  </p>
+                  <p>
+                    - <b>Non-Particle Energy</b> adds or subtracts flat amount of Energy from your character. This
+                    includes flat Energy from Talents, Passives, Constellations, Weapons, or Artifacts.
+                  </p>
+                </div>
+              }
+              position="bottom"
+              style="w-[450px]"
+            >
+              <i className="fa-regular fa-question-circle" />
+            </Tooltip>
+          </div>
         </div>
         <div className="grid w-full grid-flow-row grid-rows-4 gap-y-3">
           {_.map(teamStore.characters, (item, index) => {
@@ -159,12 +187,38 @@ export const EnergyRequirement = observer(() => {
                             small
                             onChange={(v) => setMetaData(index, `skill[${cIndex}].proc`, parseFloat(v))}
                             value={meta[index]?.skill?.[cIndex]?.proc?.toString()}
-                            style="w-[60px] shrink-0"
+                            style="!w-[60px] shrink-0"
                             type="number"
                             min={0}
                           />
                         </div>
-                        {component.value ? (
+                        {component.pps ? (
+                          <div className="flex items-center col-span-7 px-3 text-xs border-l-2 border-dashed border-primary gap-x-2">
+                            <CheckboxInput
+                              onClick={(v) => setMetaData(index, `skill[${cIndex}].override`, v)}
+                              checked={meta[index]?.skill?.[cIndex]?.override}
+                            />
+                            <div className="flex items-center gap-1 text-gray">
+                              <p className="flex items-center justify-center mr-1 text-xs font-semibold text-white shrink-0">
+                                Ratio Override
+                              </p>
+                              {_.map(meta[index]?.skill?.[cIndex]?.ratio, (r, ri) => (
+                                <>
+                                  {!!ri && <span>/</span>}
+                                  <TextInput
+                                    small
+                                    onChange={(v) => setMetaData(index, `skill[${cIndex}].ratio[${ri}]`, parseFloat(v))}
+                                    value={r?.toString()}
+                                    disabled={!meta[index]?.skill?.[cIndex]?.override}
+                                    min={0}
+                                    type="number"
+                                  />
+                                </>
+                              ))}
+                              <p>%</p>
+                            </div>
+                          </div>
+                        ) : (
                           <>
                             <div className="flex items-center col-span-4 gap-3 pl-4 border-l-2 border-dashed border-primary">
                               <p className="flex items-center justify-center text-xs font-semibold shrink-0">Feed to</p>
@@ -194,32 +248,6 @@ export const EnergyRequirement = observer(() => {
                               <p className="text-gray">%</p>
                             </div>
                           </>
-                        ) : (
-                          <div className="flex items-center col-span-7 px-3 text-xs border-l-2 border-dashed border-primary gap-x-2">
-                            <CheckboxInput
-                              onClick={(v) => setMetaData(index, `skill[${cIndex}].override`, v)}
-                              checked={meta[index]?.skill?.[cIndex]?.override}
-                            />
-                            <div className="flex items-center gap-1 text-gray">
-                              <p className="flex items-center justify-center mr-1 text-xs font-semibold text-white shrink-0">
-                                Ratio Override
-                              </p>
-                              {_.map(meta[index]?.skill?.[cIndex]?.ratio, (r, ri) => (
-                                <>
-                                  {!!ri && <span>/</span>}
-                                  <TextInput
-                                    small
-                                    onChange={(v) => setMetaData(index, `skill[${cIndex}].ratio[${ri}]`, parseFloat(v))}
-                                    value={r?.toString()}
-                                    disabled={!meta[index]?.skill?.[cIndex]?.override}
-                                    min={0}
-                                    type="number"
-                                  />
-                                </>
-                              ))}
-                              <p>%</p>
-                            </div>
-                          </div>
                         )}
                       </div>
                     )
@@ -257,12 +285,10 @@ export const EnergyRequirement = observer(() => {
                     Non-Particle Energy
                   </p>
                   <div className="flex items-center justify-center">
-                    <TextInput
+                    <PillInput
+                      value={energyStore.getFixedEnergy(index)?.toLocaleString()}
+                      onClick={() => onOpenFixedEnergyModal(index)}
                       small
-                      onChange={(v) => setMetaData(index, `add`, parseFloat(v))}
-                      value={meta?.[index]?.add?.toString()}
-                      type="number"
-                      style="h-fit"
                     />
                   </div>
                 </div>

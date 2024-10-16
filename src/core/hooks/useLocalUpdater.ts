@@ -50,7 +50,7 @@ export const useLocalUpdater = (game: string) => {
       result[index] = oldData || {
         cId: char.cId,
         element: findCharacter(char.cId)?.element,
-        add: 0,
+        add: { 'Additional Energy': 0 },
         favProc: 0,
         feedFav: char.cId,
         fieldTime: index ? 3 : 11,

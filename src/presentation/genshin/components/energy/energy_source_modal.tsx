@@ -18,7 +18,7 @@ const ArrowRow = ({ name, value, color }: { name: string; value: number; color: 
   </BulletPoint>
 )
 
-export const FixedEnergyModal = observer(() => {
+export const EnergySourceModal = observer(() => {
   const { energyStore, teamStore } = useStore()
 
   return (

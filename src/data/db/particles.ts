@@ -1,7 +1,16 @@
 // PPS is calculated by (Particle per trigger x (Duration / CD) rounded down) / Duration
 // Variance (Modifier on the chance of gaining extra particle) is Particle's decimal / Total Particle
 
-export const ParticleCount = (id: string, c: number) =>
+export interface IParticle {
+  name: string
+  default: number
+  value: number
+  variance: number
+  pps?: number
+  duration?: number
+}
+
+export const ParticleCount: (id: string, c: number) => IParticle[] = (id, c) =>
   ({
     '10000005-504': [
       { name: 'Skill Press', default: 1, value: 2, variance: 0 },
@@ -96,7 +105,7 @@ export const ParticleCount = (id: string, c: number) =>
     '10000029': [{ name: 'Skill Cast', default: 1, value: 4, variance: 0 }],
     '10000056': [{ name: 'Skill Cast', default: 1, value: 3, variance: 0 }],
     '10000065': [
-      { name: 'Skill Cast', default: 1, value: 1, variance: 0, pps: c >= 4 ? 0.39 : 0.3, duration: c >= 2 ? 15 : 12 },
+      { name: 'Skill Cast', default: 1, value: 0, variance: 0.5, pps: c >= 4 ? 0.39 : 0.3, duration: c >= 2 ? 15 : 12 },
     ],
     '10000074': [
       { name: '1 Volleys', default: 0, value: 0, variance: 0.5, pps: 1 / 9, duration: 12 },
@@ -174,7 +183,11 @@ export const ParticleCount = (id: string, c: number) =>
     ],
     '10000030': [{ name: 'Skill (Hit)', default: 1, value: 0, variance: 0.5, pps: 0.25, duration: 30 }],
     '10000096': [{ name: 'Skill Cast', default: 1, value: 5, variance: 0 }],
-    '10000097': [{ name: 'Skill Cast', default: 1, value: 2, variance: 0 }],
+    '10000097': [
+      { name: 'Skill Cast', default: 1, value: 2, variance: 0 },
+      { name: 'Charged Shot', default: 1, value: 0, variance: 0 },
+      { name: 'Partial Charged Shot', default: 0, value: 0, variance: 0 },
+    ],
     '10000095': [{ name: 'Skill Cast', default: 1, value: 4, variance: 0 }],
     '10000098': [
       { name: 'Shot/Lunge Hit', default: 0, value: 1, variance: 0 },

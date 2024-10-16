@@ -115,8 +115,11 @@ export const InteractionModal = observer(() => {
           causing her to miss <span className="text-desc">1</span> Particle.
         </BulletPoint>
         <BulletPoint>
-          During <b>Dehya</b>'s Burst, her <b className="text-genshin-pyro">Fiery Sanctum</b> will stop generating
+          During <b>Dehya</b>'s Burst, her <b className="text-genshin-pyro">Fiery Sanctum</b> will not generate
           Particles.
+        </BulletPoint>
+        <BulletPoint>
+          During <b>Razor</b>'s Burst, his Skill will not generate Particles.
         </BulletPoint>
         <BulletPoint>
           <b>Kokomi</b>'s <b>A4 Passive</b> allows her Burst to refresh her <b className="text-genshin-hydro">Kurage</b>

@@ -61,7 +61,7 @@ export interface EnergyMeta {
   skill: SkillMeta[]
   favProc: number
   feedFav: string
-  add: number
+  add: Record<string, number>
   element: Element
 }
 
@@ -187,7 +187,7 @@ export class EnergyStore {
   }
 
   getFixedEnergy = (index: number) => {
-    return _.sum([this.meta[index]?.add || 0])
+    return _.sum(_.map(this.meta[index]?.add, (item) => item || 0)) * _.max([this.meta[index]?.rpb, 1])
   }
 
   getAdditionalEnergy = (element: Element) => {

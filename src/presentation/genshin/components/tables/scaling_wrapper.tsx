@@ -77,6 +77,7 @@ export const TalentIcon = observer(
           <img
             src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${talent?.image}.png`}
             className="w-full h-full scale-[90%]"
+            loading="lazy"
           />
           <div className="hidden">?</div>
         </div>
