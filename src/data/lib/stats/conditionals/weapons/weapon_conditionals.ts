@@ -1822,9 +1822,9 @@ export const WeaponConditionals: IWeaponContent[] = [
     text: `NA to Skill DMG Bonus`,
     show: true,
     default: true,
-    id: '15406',
+    id: '15412',
     scaling: (base, form, r) => {
-      if (form['15406'])
+      if (form['15412'])
         base.SKILL_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Mitternachts Waltz` })
       return base
     },
@@ -1834,9 +1834,9 @@ export const WeaponConditionals: IWeaponContent[] = [
     text: `Skill to NA DMG Bonus`,
     show: true,
     default: true,
-    id: '15406',
+    id: '15412',
     scaling: (base, form, r) => {
-      if (form['15406'])
+      if (form['15412'])
         base.BASIC_DMG.push({ value: calcRefinement(0.2, 0.05, r), name: 'Passive', source: `Mitternachts Waltz` })
       return base
     },

@@ -162,7 +162,7 @@ export const TeamSetup = observer(() => {
                 />
               ))}
             </div>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-2">
               <Tooltip
                 title="Regarding Character Placement"
                 body={

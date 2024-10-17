@@ -86,7 +86,7 @@ const Yelan = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       trace: `Utiliy Passive`,
       title: `Necessary Calculation`,
       content: `Gains <span class="text-desc">25%</span> more rewards when dispatched on a Liyue Expedition for <span class="text-desc">20</span> hours.`,
-      image: 'UI_Talent_U_Yelan_01',
+      image: 'UI_Talent_Expedition_Liyue',
     },
     c1: {
       trace: `Constellation 1`,
