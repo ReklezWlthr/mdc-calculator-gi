@@ -12,7 +12,7 @@ import { StatIcons, Stats, TravelerIconName } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/converter'
-import { getElementImage, getWeaponImage } from '@src/core/utils/fetcher'
+import { getElementImage, getGachaAvatar, getTalentWeaponImage } from '@src/core/utils/fetcher'
 import { AscensionGrowth } from '@src/domain/scaling'
 import getConfig from 'next/config'
 import { CharDetailModal } from './modals/char_detail_modal'
@@ -103,11 +103,7 @@ export const CharDetail = observer(() => {
             <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
           </div>
           <img
-            src={
-              data?.codeName === 'Player'
-                ? `https://api.hakush.in/gi/UI/UI_Gacha_AvatarImg_${fCodeName}.webp`
-                : `https://homdgcat.wiki/homdgcat-res/Gacha/UI_Gacha_AvatarImg_${fCodeName}.png`
-            }
+            src={getGachaAvatar(fCodeName)}
             className={
               loading
                 ? 'hidden'
@@ -124,7 +120,7 @@ export const CharDetail = observer(() => {
                 className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
               />
               <img
-                src={getWeaponImage(data.weapon)}
+                src={getTalentWeaponImage(data.weapon)}
                 className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
               />
             </div>
@@ -160,7 +156,7 @@ export const CharDetail = observer(() => {
           </div>
           <div className="relative grid grid-cols-2 gap-2 px-5 py-3 text-xs rounded-lg bg-opacity-80 bg-primary-dark">
             <img
-              src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${conName?.replaceAll(' ', '_')}_Shape.webp`}
+              src={`${publicRuntimeConfig.BASE_PATH}/asset/cons/${conName?.replaceAll(' ', '_')}_Shape.webp`}
               className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full opacity-45 h-[170px] top-1/2 left-1/2 saturate-0 brightness-150"
               onError={(e) => (e.currentTarget.style.display = 'none')}
               onLoad={(e) => (e.currentTarget.style.display = 'block')}

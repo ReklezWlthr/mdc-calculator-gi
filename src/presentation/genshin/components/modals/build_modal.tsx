@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
 import { useMemo } from 'react'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { getEmote } from '@src/core/utils/fetcher'
+import { getArtifactImage, getEmote, getWeaponImage } from '@src/core/utils/fetcher'
 import { findArtifactSet, findWeapon } from '@src/core/utils/finder'
 import { findMaxLevel, getSetCount } from '@src/core/utils/data_format'
 import { DefaultWeaponImage, IBuild, WeaponType } from '@src/domain/constant'
@@ -21,9 +21,10 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
           <div className="relative w-24 h-full overflow-hidden shrink-0">
             <div className="absolute top-0 left-0 z-10 w-full h-full from-12% to-60% bg-gradient-to-l from-primary-darker to-transparent" />
             <img
-              src={`https://homdgcat.wiki/homdgcat-res/Weapon/${
-                weapon?.icon || DefaultWeaponImage[weapon?.type || WeaponType.SWORD]
-              }${build.weapon?.ascension >= 2 ? '_Awaken' : ''}.png`}
+              src={getWeaponImage(
+                weapon?.icon || DefaultWeaponImage[weapon?.type || WeaponType.SWORD],
+                build.weapon?.ascension >= 2
+              )}
               className="object-cover h-16 scale-[200%]"
             />
             <div className="absolute z-10 p-1 text-xs text-white rounded-md bottom-1 right-1 bg-primary-dark">
@@ -46,10 +47,7 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
               (value, key) =>
                 value >= 2 && (
                   <div className="relative w-9 h-9">
-                    <img
-                      src={`https://enka.network/ui/${findArtifactSet(key)?.icon}_4.png`}
-                      className="w-full h-full"
-                    />
+                    <img src={getArtifactImage(findArtifactSet(key)?.icon, 4)} className="w-full h-full" />
                     <div className="absolute bottom-0 flex items-center justify-center w-5 h-5 text-xs font-semibold rounded-full -right-2.5 bg-primary-light">
                       {_.floor(value / 2) * 2}
                     </div>

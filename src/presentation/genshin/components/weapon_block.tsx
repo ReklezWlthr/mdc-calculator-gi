@@ -26,6 +26,7 @@ import { findCharacter, findWeapon } from '@src/core/utils/finder'
 import { toPercentage } from '@src/core/utils/converter'
 import { Tooltip, TooltipPositionT } from '@src/presentation/components/tooltip'
 import getConfig from 'next/config'
+import { getWeaponImage } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -126,9 +127,10 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
         <div className="flex gap-2">
           <div className="relative flex flex-col justify-between w-1/2 gap-1">
             <img
-              src={`https://homdgcat.wiki/homdgcat-res/Weapon/${
-                weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD]
-              }${ascension >= 2 ? '_Awaken' : ''}.png`}
+              src={getWeaponImage(
+                weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD],
+                ascension >= 2
+              )}
               className="w-full pt-1 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
               onClick={onOpenModal}
             />
@@ -173,7 +175,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
         <div className="space-y-2.5">
           <div className="flex items-center gap-2 text-xs">
             <div className="flex items-center gap-1.5 shrink-0">
-              <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[Stats.ATK]}`} />
+              <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[Stats.ATK]}`} />
               <p>Base ATK</p>
             </div>
             <hr className="w-full border border-primary-border" />
@@ -184,7 +186,7 @@ export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0
               <div className="flex items-center gap-1.5 shrink-0">
                 <img
                   className="w-4 h-4"
-                  src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[weaponData?.ascStat]}`}
+                  src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[weaponData?.ascStat]}`}
                 />
                 {weaponData?.ascStat || 'N/A'}
               </div>

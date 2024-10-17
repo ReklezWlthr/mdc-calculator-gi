@@ -15,6 +15,7 @@ import getConfig from 'next/config'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { BulletPoint } from '@src/presentation/components/collapsible'
+import { getAvatar, getElementImage, getTalentWeaponImage } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -65,13 +66,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
         onClick={() => setParams({ [type]: checked ? _.without(array, value) : [...array, value] })}
         title={value}
       >
-        <img
-          src={
-            type === 'element'
-              ? `https://cdn.wanderer.moe/genshin-impact/elements/${value?.toLowerCase()}.png`
-              : `https://enka.network/ui/${WeaponIcon[value]}`
-          }
-        />
+        <img src={type === 'element' ? getElementImage(value) : getTalentWeaponImage(value)} />
       </div>
     )
   }
@@ -193,10 +188,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
               key={item.name}
             >
               <div className="relative">
-                <img
-                  src={`https://cdn.wanderer.moe/genshin-impact/elements/${item.element.toLowerCase()}.png`}
-                  className="absolute w-7 h-7 top-1.5 left-1.5"
-                />
+                <img src={getElementImage(item.element)} className="absolute w-7 h-7 top-1.5 left-1.5" />
                 {owned && (
                   <div className="absolute px-1.5 py-1 text-xs rounded-lg top-1 right-1 bg-primary font-bold">
                     C{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
@@ -211,11 +203,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} />
                 </div>
                 <img
-                  src={
-                    item?.codeName === 'Player'
-                      ? `https://api.hakush.in/gi/UI/UI_AvatarIcon_${codeName}.webp`
-                      : `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`
-                  }
+                  src={getAvatar(codeName)}
                   className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                 />
               </div>

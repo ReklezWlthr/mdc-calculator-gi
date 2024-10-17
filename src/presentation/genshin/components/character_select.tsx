@@ -1,3 +1,4 @@
+import { getSideAvatar } from '@src/core/utils/fetcher'
 import { useStore } from '@src/data/providers/app_store_provider'
 import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
@@ -27,16 +28,7 @@ export const CharacterSelect = observer(
         })}
         onClick={onClick}
       >
-        <img
-          src={code ? `https://enka.network/ui/UI_AvatarIcon_Side_${code}.png` : ''}
-          onError={(e) =>
-            (e.target as HTMLElement).setAttribute(
-              'src',
-              code ? `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_Side_${code}.png` : ''
-            )
-          }
-          className="absolute scale-150 bottom-3"
-        />
+        <img src={getSideAvatar(code)} className="absolute scale-150 bottom-3" />
       </div>
     )
   }

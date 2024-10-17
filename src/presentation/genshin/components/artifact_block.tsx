@@ -13,6 +13,7 @@ import classNames from 'classnames'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { ArtifactListModal } from './modals/artifact_list_modal'
 import getConfig from 'next/config'
+import { getArtifactImage, getSideAvatar } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -143,29 +144,20 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
       )}
     >
       <div className="absolute top-0 right-0 flex items-center justify-center h-8 pointer-events-none w-9 rounded-se-lg rounded-es-lg bg-primary-light">
-        <img src={`${publicRuntimeConfig.BASE_PATH}/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
+        <img src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${_.snakeCase(pieceName)}.png`} className="w-5 h-5" />
       </div>
       {props.aId ? (
         <div className="relative w-full">
           <div className="px-3 py-4 space-y-3">
             <div className="flex gap-4">
               <div className="relative w-14 h-14 shrink-0">
-                <img src={`https://enka.network/ui/${setData?.icon}_${artifact?.type}.png`} className="w-full h-full" />
+                <img src={getArtifactImage(setData?.icon, artifact?.type)} className="w-full h-full" />
                 <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                   +{artifact?.level}
                 </div>
                 {charData?.codeName && props.showWearer && (
                   <div className="absolute flex items-center justify-center p-1 text-xs bg-opacity-75 rounded-full -top-1 w-7 h-7 -right-3 bg-primary-light">
-                    <img
-                      src={codeName ? `https://enka.network/ui/UI_AvatarIcon_Side_${codeName}.png` : ''}
-                      onError={(e) =>
-                        (e.target as HTMLElement).setAttribute(
-                          'src',
-                          codeName ? `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_Side_${codeName}.png` : ''
-                        )
-                      }
-                      className="absolute scale-125 bottom-1.5"
-                    />
+                    <img src={getSideAvatar(codeName)} className="absolute scale-125 bottom-1.5" />
                   </div>
                 )}
               </div>
@@ -176,10 +168,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             </div>
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
-                <img
-                  className="w-4 h-4"
-                  src={_.find(MainStatOptions, (item) => item.value === artifact?.main)?.img}
-                />
+                <img className="w-4 h-4" src={_.find(MainStatOptions, (item) => item.value === artifact?.main)?.img} />
                 {artifact?.main}
               </div>
               <hr className="w-full border border-primary-border" />
@@ -193,7 +182,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.stat]}`} />
+                  <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[item.stat]}`} />
                   {item.stat}
                 </div>
                 <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>

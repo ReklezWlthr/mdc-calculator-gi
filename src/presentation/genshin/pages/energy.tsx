@@ -21,6 +21,7 @@ import { EnergySourceModal } from '../components/energy/energy_source_modal'
 import { ExtraSkillProc } from '@src/data/stores/energy_store'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { FixedEnergyModal } from '../components/energy/fixed_energy_modal'
+import { getAvatar } from '@src/core/utils/fetcher'
 
 export const EnergyRequirement = observer(() => {
   const { teamStore, settingStore, energyStore, modalStore } = useStore()
@@ -140,10 +141,7 @@ export const EnergyRequirement = observer(() => {
                   <div className="flex items-center w-full border-b-2 bg-primary border-primary-border">
                     <div className="relative w-16 overflow-hidden h-11 shrink-0">
                       <div className="absolute top-0 left-0 z-10 w-full h-full from-8% to-40% bg-gradient-to-l from-primary to-transparent" />
-                      <img
-                        src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`}
-                        className="object-cover h-full aspect-square scale-[300%] mt-1"
-                      />
+                      <img src={getAvatar(codeName)} className="object-cover h-full aspect-square scale-[300%] mt-1" />
                     </div>
                     <p className="font-semibold py-0.5 text-center w-full text-sm px-1">{charData?.name}</p>
                     <div className="flex flex-col justify-between px-2 py-1 text-xs font-semibold h-11 text-gray bg-primary-dark">

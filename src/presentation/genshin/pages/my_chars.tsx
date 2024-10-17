@@ -13,6 +13,7 @@ import { AscensionGrowth } from '@src/domain/scaling'
 import { Element, TravelerIconName, WeaponIcon, WeaponType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { CharDetail } from '../components/char_detail'
+import { getAvatar, getElementImage, getTalentWeaponImage } from '@src/core/utils/fetcher'
 
 export const MyCharacters = observer(() => {
   const { charStore, settingStore } = useStore()
@@ -53,11 +54,7 @@ export const MyCharacters = observer(() => {
         title={value}
       >
         <img
-          src={
-            type === 'element'
-              ? `https://cdn.wanderer.moe/genshin-impact/elements/${value?.toLowerCase()}.png`
-              : `https://enka.network/ui/${WeaponIcon[value]}`
-          }
+          src={type === 'element' ? getElementImage(value) : getTalentWeaponImage(value)}
           className={classNames({ 'scale-[80%]': type === 'element' })}
         />
       </div>
@@ -110,7 +107,7 @@ export const MyCharacters = observer(() => {
                 >
                   <div className={classNames('relative', owned ? 'opacity-100' : 'opacity-30')}>
                     <img
-                      src={`https://cdn.wanderer.moe/genshin-impact/elements/${item.element.toLowerCase()}.png`}
+                      src={getElementImage(item.element)}
                       className="absolute w-6 h-6 top-1 left-1"
                     />
                     {owned && (
@@ -127,11 +124,7 @@ export const MyCharacters = observer(() => {
                       <RarityGauge rarity={item.rarity} isSpecial={item.region === 'Unknown'} textSize="text-[10px]" />
                     </div>
                     <img
-                      src={
-                        item?.codeName === 'Player'
-                          ? `https://api.hakush.in/gi/UI/UI_AvatarIcon_${codeName}.webp`
-                          : `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`
-                      }
+                      src={getAvatar(codeName)}
                       className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                     />
                   </div>

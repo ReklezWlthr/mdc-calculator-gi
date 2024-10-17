@@ -117,7 +117,7 @@ export const ConsCircle = observer(
               )}
             />
             <img
-              src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${name.replaceAll(' ', '_')}_Shape.webp`}
+              src={`${publicRuntimeConfig.BASE_PATH}/asset/cons/${name.replaceAll(' ', '_')}_Shape.webp`}
               className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 h-[170px] top-1/2 left-1/2 -z-10 overflow-visible"
               onError={(e) => (e.currentTarget.style.display = 'none')}
               onLoad={(e) => (e.currentTarget.style.display = 'block')}

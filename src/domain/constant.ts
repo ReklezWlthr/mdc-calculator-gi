@@ -259,17 +259,17 @@ export const RefinementOptions = [
 ]
 
 export const MainStatOptions = [
-  { name: Stats.ATK, value: Stats.ATK, img: '/icons/stat_atk.png' },
-  { name: Stats.HP, value: Stats.HP, img: '/icons/stat_hp.png' },
-  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
-  { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
-  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
-  { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
-  { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
-  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
-  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
-  { name: Stats.HEAL, value: Stats.HEAL, img: '/icons/stat_heal.png' },
-  { name: Stats.PHYSICAL_DMG, value: Stats.PHYSICAL_DMG, img: '/icons/stat_physical.png' },
+  { name: Stats.ATK, value: Stats.ATK, img: '/asset/icons/stat_atk.png' },
+  { name: Stats.HP, value: Stats.HP, img: '/asset/icons/stat_hp.png' },
+  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/asset/icons/stat_p_atk.png' },
+  { name: Stats.P_HP, value: Stats.P_HP, img: '/asset/icons/stat_p_hp.png' },
+  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/asset/icons/stat_p_def.png' },
+  { name: Stats.EM, value: Stats.EM, img: '/asset/icons/stat_em.png' },
+  { name: Stats.ER, value: Stats.ER, img: '/asset/icons/stat_er.png' },
+  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/asset/icons/stat_crit_rate.png' },
+  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/asset/icons/stat_crit_dmg.png' },
+  { name: Stats.HEAL, value: Stats.HEAL, img: '/asset/icons/stat_heal.png' },
+  { name: Stats.PHYSICAL_DMG, value: Stats.PHYSICAL_DMG, img: '/asset/icons/stat_physical.png' },
   {
     name: Stats.ANEMO_DMG,
     value: Stats.ANEMO_DMG,
@@ -308,16 +308,16 @@ export const MainStatOptions = [
 ]
 
 export const SubStatOptions = [
-  { name: Stats.ATK, value: Stats.ATK, img: '/icons/stat_atk.png' },
-  { name: Stats.HP, value: Stats.HP, img: '/icons/stat_hp.png' },
-  { name: Stats.DEF, value: Stats.DEF, img: '/icons/stat_def.png' },
-  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
-  { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
-  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
-  { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
-  { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
-  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
-  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
+  { name: Stats.ATK, value: Stats.ATK, img: '/asset/icons/stat_atk.png' },
+  { name: Stats.HP, value: Stats.HP, img: '/asset/icons/stat_hp.png' },
+  { name: Stats.DEF, value: Stats.DEF, img: '/asset/icons/stat_def.png' },
+  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/asset/icons/stat_p_atk.png' },
+  { name: Stats.P_HP, value: Stats.P_HP, img: '/asset/icons/stat_p_hp.png' },
+  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/asset/icons/stat_p_def.png' },
+  { name: Stats.EM, value: Stats.EM, img: '/asset/icons/stat_em.png' },
+  { name: Stats.ER, value: Stats.ER, img: '/asset/icons/stat_er.png' },
+  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/asset/icons/stat_crit_rate.png' },
+  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/asset/icons/stat_crit_dmg.png' },
 ]
 
 export const PropMap = {

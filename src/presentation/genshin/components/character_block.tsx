@@ -3,7 +3,7 @@ import React, { useCallback, useMemo } from 'react'
 import { CharacterModal } from './modals/character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
-import { AscensionOptions, ConstellationOptions, ITeamChar, WeaponIcon } from '@src/domain/constant'
+import { AscensionOptions, ConstellationOptions, ITeamChar } from '@src/domain/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { findBaseLevel } from '@src/core/utils/data_format'
 import _ from 'lodash'
@@ -11,7 +11,7 @@ import { findMaxLevel } from '../../../core/utils/data_format'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { DefaultCharacter } from '@src/data/stores/team_store'
 import { findCharacter } from '@src/core/utils/finder'
-import { getElementImage, getWeaponImage } from '@src/core/utils/fetcher'
+import { getAvatar, getElementImage, getTalentWeaponImage } from '@src/core/utils/fetcher'
 
 interface CharacterBlockProps {
   index: number
@@ -60,20 +60,13 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
         >
           {characterData && (
             <>
-              <img
-                src={
-                  characterData?.codeName === 'Player'
-                    ? `https://api.hakush.in/gi/UI/UI_AvatarIcon_${codeName}.webp`
-                    : `https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName}.png`
-                }
-                className="object-cover aspect-square object-[0_20%]"
-              />
+              <img src={getAvatar(codeName)} className="object-cover aspect-square object-[0_20%]" />
               <div className="flex gap-0.5 absolute bottom-1 left-1">
                 <div
                   className="flex items-center justify-center w-8 h-8 p-1 bg-opacity-75 rounded-full bg-primary-darker"
                   title={characterData?.weapon}
                 >
-                  <img src={getWeaponImage(characterData?.weapon)} />
+                  <img src={getTalentWeaponImage(characterData?.weapon)} />
                 </div>
               </div>
               <div className="absolute px-1.5 py-0.5 rounded-lg bottom-1 right-1 bg-primary-darker">

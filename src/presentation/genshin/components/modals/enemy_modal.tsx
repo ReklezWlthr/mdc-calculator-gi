@@ -15,6 +15,7 @@ import { BaseElementColor } from '@src/core/utils/damageStringConstruct'
 import React from 'react'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
+import { getEnemyImage } from '@src/core/utils/fetcher'
 
 export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; compare?: boolean }) => {
   const { calculatorStore, teamStore, setupStore } = useStore()
@@ -55,7 +56,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
             options={_.map(enemyGroups, (item) => ({
               name: item.name,
               value: item.name,
-              img: `https://homdgcat.wiki/homdgcat-res/monster/${item.img}.png`,
+              img: getEnemyImage(item.img),
             }))}
             onChange={(v) => {
               const enemyData = findEnemy(v?.name)

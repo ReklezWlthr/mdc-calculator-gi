@@ -15,6 +15,7 @@ import _ from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import getConfig from 'next/config'
+import { getArtifactImage } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -100,15 +101,15 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
   return (
     <div className="w-[300px] p-4 space-y-4 font-semibold text-white rounded-xl bg-primary-dark">
       <div className="flex justify-center gap-2">
-        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/flower_of_life.png`} buttonType={4} />
-        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/plume_of_death.png`} buttonType={2} />
-        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/sands_of_eon.png`} buttonType={5} />
-        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/goblet_of_eonothem.png`} buttonType={1} />
-        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/icons/circlet_of_logos.png`} buttonType={3} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/flower_of_life.png`} buttonType={4} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/plume_of_death.png`} buttonType={2} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/sands_of_eon.png`} buttonType={5} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/goblet_of_eonothem.png`} buttonType={1} />
+        <TypeButton icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/circlet_of_logos.png`} buttonType={3} />
       </div>
       <div className="flex items-center gap-2">
         <div className="border rounded-full w-9 h-9 bg-primary-darker border-primary-light shrink-0">
-          {setData?.icon && <img src={`https://enka.network/ui/${setData?.icon}_4.png`} className="scale-105" />}
+          {setData?.icon && <img src={getArtifactImage(setData?.icon, 4)} className="scale-105" />}
         </div>
         <Controller
           name="setId"
@@ -120,7 +121,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
               options={_.map(ArtifactSets, (artifact) => ({
                 name: artifact.name,
                 value: artifact.id.toString(),
-                img: `https://enka.network/ui/${artifact.icon}_4.png`,
+                img: getArtifactImage(artifact?.icon, 4),
               }))}
               placeholder="Artifact Set"
               onChange={(value) => field.onChange(value?.value)}

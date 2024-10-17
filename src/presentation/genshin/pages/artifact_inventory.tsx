@@ -13,6 +13,7 @@ import { MainStatOptions, Stats, SubStatOptions } from '@src/domain/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
 import getConfig from 'next/config'
+import { getArtifactImage } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -65,17 +66,17 @@ export const ArtifactInventory = observer(() => {
         <div className="w-full space-y-1">
           <div className="flex items-center w-full gap-3">
             <div className="flex justify-center gap-2">
-              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/flower_of_life.png`} value={4} />
-              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/plume_of_death.png`} value={2} />
-              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/sands_of_eon.png`} value={5} />
+              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/flower_of_life.png`} value={4} />
+              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/plume_of_death.png`} value={2} />
+              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/sands_of_eon.png`} value={5} />
               <TypeButton
                 field="types"
-                icon={`${publicRuntimeConfig.BASE_PATH}/icons/goblet_of_eonothem.png`}
+                icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/goblet_of_eonothem.png`}
                 value={1}
               />
               <TypeButton
                 field="types"
-                icon={`${publicRuntimeConfig.BASE_PATH}/icons/circlet_of_logos.png`}
+                icon={`${publicRuntimeConfig.BASE_PATH}/asset/icons/circlet_of_logos.png`}
                 value={3}
               />
             </div>
@@ -84,7 +85,7 @@ export const ArtifactInventory = observer(() => {
               options={_.map(ArtifactSets, (artifact) => ({
                 name: artifact.name,
                 value: artifact.id.toString(),
-                img: `https://enka.network/ui/${artifact.icon}_4.png`,
+                img: getArtifactImage(artifact.icon, 4),
               }))}
               placeholder="Artifact Set"
               onChange={(value) => setParams({ set: value?.value })}

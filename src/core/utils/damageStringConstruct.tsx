@@ -115,7 +115,7 @@ export const damageStringConstruct = (
   const scalingArray = _.map(
     scaling.value,
     (item) =>
-      `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/icons/${
+      `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/asset/icons/${
         StatIcons[item.multiplier]
       }" />${_.round(
         item.override || statForScale[item.multiplier]
@@ -147,7 +147,7 @@ export const damageStringConstruct = (
     dmg * (1 + totalCd)
   ).toLocaleString()}</b> = <b>${_.round(
     dmg
-  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/icons/stat_crit_dmg.png" />${toPercentage(
+  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/asset/icons/stat_crit_dmg.png" />${toPercentage(
     totalCd
   )}</b>)</span>`
 
@@ -155,9 +155,9 @@ export const damageStringConstruct = (
     dmg * (1 + totalCd * totalCr)
   ).toLocaleString()}</b> = <b>${_.round(
     dmg
-  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/icons/stat_crit_dmg.png" />${toPercentage(
+  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/asset/icons/stat_crit_dmg.png" />${toPercentage(
     totalCd
-  )}</b><span class="ml-1"> \u{00d7} </span><b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/icons/stat_crit_rate.png" />${toPercentage(
+  )}</b><span class="ml-1"> \u{00d7} </span><b class="inline-flex items-center h-4"><img class="w-4 h-4 mx-1" src="/asset/icons/stat_crit_rate.png" />${toPercentage(
     totalCr
   )}</b>)</span>`
 

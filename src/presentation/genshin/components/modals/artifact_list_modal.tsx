@@ -10,6 +10,7 @@ import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_i
 import { ArtifactSets } from '@src/data/db/artifacts'
 import { MainStatOptions, SubStatOptions } from '@src/domain/constant'
 import { isSubsetOf } from '@src/core/utils/finder'
+import { getArtifactImage } from '@src/core/utils/fetcher'
 
 export const ArtifactListModal = observer(({ index, type }: { index: number; type: number }) => {
   const { params, setParams } = useParams({
@@ -40,7 +41,7 @@ export const ArtifactListModal = observer(({ index, type }: { index: number; typ
             options={_.map(ArtifactSets, (artifact) => ({
               name: artifact.name,
               value: artifact.id.toString(),
-              img: `https://enka.network/ui/${artifact.icon}_4.png`,
+              img: getArtifactImage(artifact?.icon, 4),
             }))}
             placeholder="Artifact Set"
             onChange={(value) => setParams({ set: value?.value })}

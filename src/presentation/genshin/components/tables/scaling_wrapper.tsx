@@ -1,3 +1,4 @@
+import { getTalentIcon } from '@src/core/utils/fetcher'
 import { ITalentDisplay } from '@src/domain/conditional'
 import { Element } from '@src/domain/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -74,11 +75,7 @@ export const TalentIcon = observer(
             { 'group-hover:ring-offset-4': !hideTip }
           )}
         >
-          <img
-            src={`https://homdgcat.wiki/homdgcat-res/AvatarSkill/${talent?.image}.png`}
-            className="w-full h-full scale-[90%]"
-            loading="lazy"
-          />
+          <img src={getTalentIcon(talent?.image)} className="w-full h-full scale-[90%]" loading="lazy" />
           <div className="hidden">?</div>
         </div>
         {hideTip && showUpgrade && !!upgraded && (

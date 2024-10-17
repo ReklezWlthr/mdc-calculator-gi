@@ -13,6 +13,7 @@ import getConfig from 'next/config'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { formatWeaponString, getWeaponBase, getWeaponBonus } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
+import { getWeaponImage } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -54,7 +55,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
         onClick={() => setParams({ stat: checked ? _.without(params.stat, stat) : [...params.stat, stat] })}
         title={stat}
       >
-        <img src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[stat]}`} className="p-1" />
+        <img src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[stat]}`} className="p-1" />
       </div>
     )
   }
@@ -123,7 +124,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
                     dangerouslySetInnerHTML={{
                       __html: formatWeaponString(item?.desc?.detail, item?.desc?.properties, 1),
                     }}
-                    className='font-normal'
+                    className="font-normal"
                   />
                 </div>
               }
@@ -140,7 +141,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
               >
                 <div className="relative">
                   <img
-                    src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
+                    src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[item.ascStat]}`}
                     className="absolute w-6 h-6 p-1 rounded-full top-2 left-2 bg-primary"
                     title={item.ascStat}
                   />
@@ -153,7 +154,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
                     <RarityGauge rarity={item.rarity} />
                   </div>
                   <img
-                    src={`https://homdgcat.wiki/homdgcat-res/Weapon/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
+                    src={getWeaponImage(item?.icon || 'UI_EquipIcon_Sword_Blunt', false)}
                     className="object-contain rounded-t-lg bg-primary-darker aspect-square"
                   />
                 </div>

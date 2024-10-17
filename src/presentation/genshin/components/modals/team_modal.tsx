@@ -9,6 +9,7 @@ import { findCharacter } from '@src/core/utils/finder'
 import { useCallback, useMemo, useState } from 'react'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { CommonModal } from '@src/presentation/components/common_modal'
+import { getAvatar } from '@src/core/utils/fetcher'
 
 export interface TeamModalProps {
   onSelect: (team: TSetup) => void
@@ -41,10 +42,7 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
               key={item.cId}
             >
               {!!item.cId && (
-                <img
-                  src={`https://homdgcat.wiki/homdgcat-res/Avatar/UI_AvatarIcon_${codeName(item.cId)}.png`}
-                  className="absolute object-cover scale-[1.75] -mt-2"
-                />
+                <img src={getAvatar(codeName(item.cId))} className="absolute object-cover scale-[1.75] -mt-2" />
               )}
             </div>
           ))}
