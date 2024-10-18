@@ -148,8 +148,9 @@ export const ParticleCount: (id: string, c: number) => IParticle[] = (id, c) =>
     ],
     '10000043': [{ name: 'Skill Cast', default: 1, value: 4, variance: 0 }],
     '10000033': [
-      { name: 'Riptide Slash', default: 1, value: 1, variance: 0 },
-      { name: 'Riptide Flash', default: 1, value: 1, variance: 0 },
+      { name: 'Riptide Flash/Slash', default: 0, value: 1, variance: 0 },
+      { name: '7~9s Melee', default: 0, value: 3, variance: 0 },
+      { name: '11s Melee', default: 1, value: 4, variance: 0 },
     ],
     '10000050': [{ name: 'Skill Cast', default: 1, value: 3.5, variance: 1 / 7 }],
     '10000069': [{ name: 'Skill Cast', default: 1, value: 3.5, variance: 1 / 7 }],
