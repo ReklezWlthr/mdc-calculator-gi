@@ -15,7 +15,7 @@ export const getGachaAvatar = (path: string) => (path ? `/asset/avatar/gacha/UI_
 
 export const getTalentIcon = (path: string) => `/asset/talent/${path}.png`
 
-export const getWeaponImage = (path: string, awaken: boolean) => `/asset/weapon/${path}${awaken ? '_Awaken' : ''}.png`
+export const getWeaponImage = (path: string, awaken: boolean) => `/asset/weapon/${path}${awaken ? '_Awaken' : ''}.webp`
 
 export const getArtifactImage = (path: string, type: number) => `/asset/artifact/${path}_${type}.png`
 

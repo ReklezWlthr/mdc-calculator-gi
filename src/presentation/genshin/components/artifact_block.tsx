@@ -11,7 +11,7 @@ import { StatIcons } from '../../../domain/constant'
 import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
 import classNames from 'classnames'
 import { CommonModal } from '@src/presentation/components/common_modal'
-import { ArtifactListModal } from './modals/artifact_list_modal'
+import { ArtifactListModal, ArtifactSetterT } from './modals/artifact_list_modal'
 import getConfig from 'next/config'
 import { getArtifactImage, getSideAvatar } from '@src/core/utils/fetcher'
 
@@ -23,7 +23,9 @@ interface ArtifactBlockProps {
   aId: string
   showWearer?: boolean
   canEdit?: boolean
+  canSwap?: boolean
   override?: IArtifactEquip[]
+  setArtifact?: ArtifactSetterT
 }
 
 const MenuButton = ({
@@ -78,16 +80,18 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
 
   const onUnEquip = useCallback(() => {
     const oldType = _.find(artifactStore.artifacts, ['id', props.aId])?.type
-    teamStore.setArtifact(props.index, oldType, null)
+    props.setArtifact(props.index, oldType, null)
   }, [props.index, props.aId])
 
   const onOpenEditModal = useCallback(() => {
-    modalStore.openModal(<ArtifactModal type={props.piece} index={props.index} aId={props.aId} />)
-  }, [modalStore, props.index, props.aId])
+    modalStore.openModal(
+      <ArtifactModal type={props.piece} index={props.index} aId={props.aId} setArtifact={props.setArtifact} />
+    )
+  }, [props.index, props.aId, props.setArtifact, artifact, props.piece])
 
   const onOpenSwapModal = useCallback(() => {
-    modalStore.openModal(<ArtifactListModal index={props.index} type={props.piece} />)
-  }, [props.index, props.aId])
+    modalStore.openModal(<ArtifactListModal index={props.index} type={props.piece} setArtifact={props.setArtifact} />)
+  }, [props.index, props.aId, props.setArtifact, artifact, props.piece])
 
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
@@ -112,7 +116,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
     const char = _.findIndex(teamStore.characters, (item) => _.includes(item.equipments?.artifacts, props.aId))
     const build = _.filter(buildStore.builds, (item) => _.includes(item.artifacts, props.aId))
     if (char >= 0) {
-      teamStore.setArtifact(char, oldType, null)
+      props.setArtifact(char, oldType, null)
     }
     _.forEach(build, (item) => {
       buildStore.editBuild(item.id, { artifacts: _.without(item.artifacts, props.aId) })
@@ -182,7 +186,10 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[item.stat]}`} />
+                  <img
+                    className="w-4 h-4"
+                    src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[item.stat]}`}
+                  />
                   {item.stat}
                 </div>
                 <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>
@@ -203,25 +210,28 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
                 onClick={onOpenEditModal}
                 title="Edit"
               />
-              {props.index >= 0 && (
-                <>
+              {props.index >= 0 ||
+                (props.canSwap && (
                   <MenuButton
                     icon="fa-solid fa-repeat"
                     duration="duration-[250ms]"
                     onClick={onOpenSwapModal}
                     title="Swap"
                   />
-                  <MenuButton
-                    icon="fa-solid fa-arrow-right-from-bracket rotate-90"
-                    duration="duration-[300ms]"
-                    onClick={onOpenConfirmModal}
-                    title="Unequip"
-                  />
-                </>
+                ))}
+              {props.index >= 0 && (
+                <MenuButton
+                  icon="fa-solid fa-arrow-right-from-bracket rotate-90"
+                  duration="duration-[300ms]"
+                  onClick={onOpenConfirmModal}
+                  title="Unequip"
+                />
               )}
               <MenuButton
                 icon="fa-solid fa-trash"
-                duration={props.index >= 0 ? 'duration-[350ms]' : 'duration-[250ms]'}
+                duration={
+                  props.index >= 0 ? 'duration-[350ms]' : props.canSwap ? 'duration-[300ms]' : 'duration-[250ms]'
+                }
                 onClick={onOpenDeleteModal}
                 title="Delete"
               />

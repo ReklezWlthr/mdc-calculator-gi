@@ -1137,6 +1137,36 @@ const WeaponBonus: {
       return base
     },
   },
+  {
+    id: '11412',
+    scaling: (base) => {
+      base.BASIC_SCALING.push({
+        name: `Descension DMG`,
+        value: [{ scaling: 2, multiplier: Stats.HP }],
+        element: Element.PHYSICAL,
+        property: TalentProperty.ADD,
+      })
+      if (_.includes(base.NAME, 'Traveler'))
+        base[Stats.ATK].push({
+          value: 66,
+          name: 'Passive',
+          source: `Sword of Descension`,
+        })
+      return base
+    },
+  },
+  {
+    id: '15415',
+    scaling: (base) => {
+      if (base.NAME === 'Aloy')
+        base[Stats.ATK].push({
+          value: 66,
+          name: 'Passive',
+          source: `Predator`,
+        })
+      return base
+    },
+  },
 ]
 
 export default WeaponBonus

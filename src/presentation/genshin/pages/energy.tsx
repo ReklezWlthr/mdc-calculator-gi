@@ -302,9 +302,7 @@ export const EnergyRequirement = observer(() => {
                         (charData?.stat?.energy - energyStore.getFixedEnergy(index)) /
                           energyStore.getTotalEnergy(index),
                         1,
-                      ]),
-                      1,
-                      true
+                      ])
                     )}
                   </div>
                 </div>

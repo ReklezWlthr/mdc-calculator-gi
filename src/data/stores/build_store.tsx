@@ -45,6 +45,7 @@ export class Build {
     if (!build || !bId) return false
     const index = _.findIndex(this.builds, ['id', bId])
     this.builds[index] = { ...this.builds[index], ...build }
+    this.builds = [...this.builds]
     return true
   }
 

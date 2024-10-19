@@ -54,7 +54,13 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
     char?.ascension,
     character?.rarity
   )
-  const weaponBaseAtk = getWeaponBase(weaponData?.tier, weapon?.level, weapon?.ascension, weaponData?.rarity)
+  const weaponBaseAtk = getWeaponBase(
+    weapon?.wId,
+    weaponData?.tier,
+    weapon?.level,
+    weapon?.ascension,
+    weaponData?.rarity
+  )
   const weaponSecondary = getWeaponBonus(weaponData?.baseStat, weapon?.level)
   const weaponBonus = _.find(WeaponBonus, (item) => item.id === weapon?.wId)
 

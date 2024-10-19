@@ -2428,6 +2428,30 @@ export const WeaponConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `Strong Strike Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    id: '15415',
+    scaling: (base, form) => {
+      if (form['15415']) {
+        base.BASIC_DMG.push({
+          value: 0.1 * form['15415'],
+          name: 'Passive',
+          source: `Predator`,
+        })
+        base.CHARGE_DMG.push({
+          value: 0.1 * form['15415'],
+          name: 'Passive',
+          source: `Predator`,
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const WeaponAllyConditionals: IWeaponContent[] = [

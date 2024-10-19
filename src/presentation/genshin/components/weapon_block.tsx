@@ -10,6 +10,8 @@ import {
   AscensionOptions,
   DefaultWeaponImage,
   DefaultWeaponName,
+  ITeamChar,
+  IWeaponEquip,
   RefinementOptions,
   StatIcons,
   Stats,
@@ -19,7 +21,7 @@ import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { WeaponModal } from './modals/weapon_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { findCharacter, findWeapon } from '@src/core/utils/finder'
@@ -29,6 +31,8 @@ import getConfig from 'next/config'
 import { getWeaponImage } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
+
+export const staticWeapons = ['11412', '11416', '15415']
 
 export const WeaponTooltip = ({
   wId,
@@ -70,136 +74,162 @@ interface StatBlockProps {
   level: number
   ascension: number
   refinement: number
+  teamOverride?: ITeamChar[]
+  setWeapon?: (index: number, info: Partial<IWeaponEquip>) => void
+  disabled?: boolean
+  noClear?: boolean
 }
 
-export const WeaponBlock = observer(({ index = -1, wId, level = 1, ascension = 0, refinement = 1 }: StatBlockProps) => {
-  const { modalStore, teamStore } = useStore()
+export const WeaponBlock = observer(
+  ({
+    index = -1,
+    wId,
+    level = 1,
+    ascension = 0,
+    refinement = 1,
+    teamOverride,
+    setWeapon,
+    disabled,
+    noClear,
+  }: StatBlockProps) => {
+    const { modalStore, teamStore } = useStore()
 
-  const weaponData = findWeapon(wId)
-  const weaponType = findCharacter(teamStore.characters[index]?.cId)?.weapon
-  const rarity = weaponData?.rarity
+    const team = teamOverride || teamStore.characters
+    const set = setWeapon || teamStore.setWeapon
 
-  const weaponBaseAtk = getWeaponBase(weaponData?.tier, level, ascension, weaponData?.rarity)
-  const weaponSecondary = getWeaponBonus(weaponData?.baseStat, level)
+    const char = team[index]?.cId
 
-  const canEdit = index >= 0
+    const weaponData = findWeapon(wId)
+    const weaponType = findCharacter(char)?.weapon
+    const rarity = weaponData?.rarity
 
-  const levels = useMemo(
-    () =>
-      _.map(
-        Array(findMaxLevel(ascension) - findBaseLevel(ascension) + 1 || 1).fill(findBaseLevel(ascension)),
-        (item, index) => ({
-          name: _.toString(item + index),
-          value: _.toString(item + index),
-        })
-      ).reverse(),
-    [ascension]
-  )
+    const weaponBaseAtk = getWeaponBase(wId, weaponData?.tier, level, ascension, weaponData?.rarity)
+    const weaponSecondary = getWeaponBonus(weaponData?.baseStat, level)
 
-  const onOpenModal = useCallback(() => {
-    modalStore.openModal(<WeaponModal index={index} />)
-  }, [modalStore, index])
+    const canEdit = index >= 0 || disabled
 
-  return (
-    <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[250px]">
-      <div className="flex justify-center px-5 py-1 text-sm rounded-t-lg bg-primary-light">Weapon</div>
-      <div className="flex flex-col p-3 gap-y-3">
-        <div className="flex items-center gap-2">
-          <PillInput
-            onClick={onOpenModal}
-            onClear={() => teamStore.setWeapon(index, { wId: null, refinement: 1 })}
-            value={weaponData?.name}
-            disabled={!canEdit || !teamStore.characters[index]?.cId}
-            placeholder={DefaultWeaponName[weaponType]}
-          />
-          <SelectInput
-            onChange={(value) =>
-              teamStore.setWeapon(index, {
-                refinement: parseInt(value) || 1,
-              })
-            }
-            options={RefinementOptions}
-            value={refinement?.toString()}
-            style="w-fit"
-            disabled={!canEdit || !weaponData || weaponData?.id === '11416'}
-          />
-        </div>
-        <div className="flex gap-2">
-          <div className="relative flex flex-col justify-between w-1/2 gap-1">
-            <img
-              src={getWeaponImage(
-                weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD],
-                ascension >= 2
-              )}
-              className="w-full pt-1 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
+    const levels = useMemo(
+      () =>
+        _.map(
+          Array(findMaxLevel(ascension) - findBaseLevel(ascension) + 1 || 1).fill(findBaseLevel(ascension)),
+          (item, index) => ({
+            name: _.toString(item + index),
+            value: _.toString(item + index),
+          })
+        ).reverse(),
+      [ascension]
+    )
+
+    const onOpenModal = useCallback(() => {
+      char &&
+        canEdit &&
+        team[index]?.cId &&
+        modalStore.openModal(
+          <WeaponModal index={index} setWeapon={setWeapon} pathOverride={findCharacter(char)?.weapon} />
+        )
+    }, [modalStore, index, char, setWeapon])
+
+    return (
+      <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[250px]">
+        <div className="flex justify-center px-5 py-1 text-sm rounded-t-lg bg-primary-light">Weapon</div>
+        <div className="flex flex-col p-3 gap-y-3">
+          <div className="flex items-center gap-2">
+            <PillInput
               onClick={onOpenModal}
+              onClear={noClear ? null : () => set(index, { wId: null, refinement: 1 })}
+              value={weaponData?.name}
+              disabled={!canEdit || !team[index]?.cId}
+              placeholder={DefaultWeaponName[weaponType]}
             />
-            <div className="absolute px-1 rounded-md pointer-events-none bottom-1 right-1 bg-primary-bg">
-              <RarityGauge rarity={rarity} />
-            </div>
+            <SelectInput
+              onChange={(value) =>
+                set(index, {
+                  refinement: parseInt(value) || 1,
+                })
+              }
+              options={RefinementOptions}
+              value={refinement?.toString()}
+              style="w-fit"
+              disabled={!canEdit || !weaponData || _.includes(staticWeapons, weaponData?.id)}
+            />
           </div>
-          <div className="w-1/2 space-y-3">
-            <div className="space-y-1">
-              <p className="text-sm font-semibold">Level</p>
-              <div className="flex items-center w-full gap-2">
-                <SelectInput
-                  onChange={(value) => teamStore.setWeapon(index, { level: parseInt(value) || 0 })}
-                  options={levels}
-                  value={level?.toString()}
-                  disabled={!canEdit}
-                />
-                <SelectInput
-                  onChange={(value) =>
-                    teamStore.setWeapon(index, {
-                      ascension: parseInt(value) || 0,
-                      level: findMaxLevel(parseInt(value) || 0),
-                    })
-                  }
-                  options={AscensionOptions}
-                  value={ascension?.toString()}
-                  style="w-fit"
-                  disabled={!canEdit}
-                />
+          <div className="flex gap-2">
+            <div className="relative flex flex-col justify-between w-1/2 gap-1">
+              <img
+                src={getWeaponImage(
+                  weaponData?.icon || DefaultWeaponImage[weaponType || WeaponType.SWORD],
+                  ascension >= 2
+                )}
+                className="w-full duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
+                onClick={onOpenModal}
+              />
+              <div className="absolute px-1 rounded-md pointer-events-none bottom-1 right-1 bg-primary-bg">
+                <RarityGauge rarity={rarity} />
               </div>
             </div>
+            <div className="w-1/2 space-y-3">
+              <div className="space-y-1">
+                <p className="text-sm font-semibold">Level</p>
+                <div className="flex items-center w-full gap-2">
+                  <SelectInput
+                    onChange={(value) => set(index, { level: parseInt(value) || 0 })}
+                    options={levels}
+                    value={level?.toString()}
+                    disabled={!canEdit}
+                  />
+                  <SelectInput
+                    onChange={(value) =>
+                      set(index, {
+                        ascension: parseInt(value) || 0,
+                        level: findMaxLevel(parseInt(value) || 0),
+                      })
+                    }
+                    options={AscensionOptions}
+                    value={ascension?.toString()}
+                    style="w-fit"
+                    disabled={!canEdit}
+                  />
+                </div>
+              </div>
+              {weaponData && (
+                <div className="flex items-center w-full gap-x-2">
+                  <p className="text-sm">Passive</p>
+                  <WeaponTooltip wId={wId} refinement={refinement}>
+                    <i className="text-lg fa-regular fa-question-circle" />
+                  </WeaponTooltip>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="space-y-2.5">
+            <div className="flex items-center gap-2 text-xs">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[Stats.ATK]}`} />
+                <p>Base ATK</p>
+              </div>
+              <hr className="w-full border border-primary-border" />
+              <p className="font-normal text-gray">{_.round(weaponBaseAtk)}</p>
+            </div>
             {weaponData && (
-              <div className="flex items-center w-full gap-x-2">
-                <p className="text-sm">Passive</p>
-                <WeaponTooltip wId={wId} refinement={refinement}>
-                  <i className="text-lg fa-regular fa-question-circle" />
-                </WeaponTooltip>
+              <div className="flex items-center gap-2 text-xs">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <img
+                    className="w-4 h-4"
+                    src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[weaponData?.ascStat]}`}
+                  />
+                  {weaponData?.ascStat || 'N/A'}
+                </div>
+                <hr className="w-full border border-primary-border" />
+                <p className="font-normal text-gray">
+                  {weaponData?.ascStat === Stats.EM
+                    ? _.round(weaponSecondary).toLocaleString()
+                    : toPercentage(weaponSecondary || 0)}
+                </p>
               </div>
             )}
           </div>
         </div>
-        <div className="space-y-2.5">
-          <div className="flex items-center gap-2 text-xs">
-            <div className="flex items-center gap-1.5 shrink-0">
-              <img className="w-4 h-4" src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[Stats.ATK]}`} />
-              <p>Base ATK</p>
-            </div>
-            <hr className="w-full border border-primary-border" />
-            <p className="font-normal text-gray">{_.round(weaponBaseAtk)}</p>
-          </div>
-          {weaponData && (
-            <div className="flex items-center gap-2 text-xs">
-              <div className="flex items-center gap-1.5 shrink-0">
-                <img
-                  className="w-4 h-4"
-                  src={`${publicRuntimeConfig.BASE_PATH}/asset/icons/${StatIcons[weaponData?.ascStat]}`}
-                />
-                {weaponData?.ascStat || 'N/A'}
-              </div>
-              <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">
-                {weaponData?.ascStat === Stats.EM
-                  ? _.round(weaponSecondary).toLocaleString()
-                  : toPercentage(weaponSecondary || 0)}
-              </p>
-            </div>
-          )}
-        </div>
       </div>
-    </div>
-  )
-})
+    )
+  }
+)

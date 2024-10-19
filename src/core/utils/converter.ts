@@ -1,13 +1,8 @@
 import { EnkaArtifactTypeMap, EnkaStatsMap, IArtifactEquip, ITeamChar, PropMap, Stats } from '@src/domain/constant'
 import _ from 'lodash'
 
-export const toPercentage = (value: number, precision: number = 1, round?: boolean) => {
-  return (
-    (round
-      ? _.round(value * 100, precision)
-      : _.floor(_.round(value * 100, precision + 1), precision)
-    ).toLocaleString() + '%'
-  )
+export const toPercentage = (value: number, precision: number = 1) => {
+  return _.round(value * 100, precision).toLocaleString() + '%'
 }
 
 export const toLocalStructure = (rawData: Record<string, any>) => {

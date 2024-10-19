@@ -6,7 +6,7 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import { useMemo } from 'react'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
-import { StatIcons, Stats } from '@src/domain/constant'
+import { IWeaponEquip, StatIcons, Stats, WeaponType } from '@src/domain/constant'
 import classNames from 'classnames'
 import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
@@ -14,19 +14,24 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { formatWeaponString, getWeaponBase, getWeaponBonus } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
 import { getWeaponImage } from '@src/core/utils/fetcher'
+import { staticWeapons } from '../weapon_block'
 
 const { publicRuntimeConfig } = getConfig()
 
 interface WeaponModalProps {
   index: number
+  pathOverride?: WeaponType
+  setWeapon?: (index: number, info: Partial<IWeaponEquip>) => void
 }
 
-export const WeaponModal = observer(({ index }: WeaponModalProps) => {
+export const WeaponModal = observer(({ index, setWeapon, pathOverride }: WeaponModalProps) => {
   const { teamStore, modalStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     stat: [],
   })
+
+  const set = setWeapon || teamStore.setWeapon
 
   const filteredWeapon = useMemo(
     () =>
@@ -36,7 +41,7 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           const regex = new RegExp(params.searchWord, 'i')
           const nameMatch = item.name.match(regex)
           const data = findCharacter(teamStore.characters[index]?.cId)
-          const typeMatch = data?.weapon === item.type
+          const typeMatch = (pathOverride || data?.weapon) === item.type
           const statMatch = _.size(params.stat) ? _.includes(params.stat, item.ascStat) : true
 
           return nameMatch && typeMatch && statMatch
@@ -84,8 +89,8 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
       </div>
       <div className="grid w-full grid-cols-11 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredWeapon, (item) => {
-          const minAtk = getWeaponBase(item?.tier, 1, 1, item?.rarity)
-          const maxAtk = getWeaponBase(item?.tier, 90, 6, item?.rarity)
+          const minAtk = getWeaponBase(item?.id, item?.tier, 1, 1, item?.rarity)
+          const maxAtk = getWeaponBase(item?.id, item?.tier, 90, 6, item?.rarity)
           const minStat =
             item?.ascStat === Stats.EM ? _.round(item.baseStat).toLocaleString() : toPercentage(item.baseStat || 0)
           const maxStat =
@@ -133,8 +138,8 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
               <div
                 className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
                 onClick={() => {
-                  teamStore.setWeapon(index, { wId: item.id })
-                  if (item.id === '11416') teamStore.setWeapon(index, { refinement: 1 })
+                  set(index, { wId: item.id })
+                  if (_.includes(staticWeapons, item.id)) set(index, { refinement: 1 })
                   modalStore.closeModal()
                 }}
                 key={item.name}

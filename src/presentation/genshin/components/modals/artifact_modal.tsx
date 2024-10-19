@@ -16,12 +16,25 @@ import { useEffect, useMemo, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import getConfig from 'next/config'
 import { getArtifactImage } from '@src/core/utils/fetcher'
+import { ArtifactSetterT } from './artifact_list_modal'
 
 const { publicRuntimeConfig } = getConfig()
 
-export const ArtifactModal = ({ type, index, aId }: { type: number; index?: number; aId?: string }) => {
+export const ArtifactModal = ({
+  type,
+  index,
+  aId,
+  setArtifact,
+}: {
+  type: number
+  index?: number
+  aId?: string
+  setArtifact?: ArtifactSetterT
+}) => {
   const { teamStore, artifactStore, modalStore, toastStore } = useStore()
   const [error, setError] = useState('')
+
+  const set = setArtifact || teamStore.setArtifact
 
   const { watch, control, setValue, handleSubmit, reset, formState } = useForm({
     defaultValues: {
@@ -92,8 +105,8 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
       color: 'green',
     })
     if (pass && index >= 0) {
-      teamStore.setArtifact(index, rest.type, id)
-      if (rest.type !== oldType && oldType) teamStore.setArtifact(index, oldType, null)
+      set(index, rest.type, id)
+      if (rest.type !== oldType && oldType) set(index, oldType, null)
     }
     modalStore.closeModal()
   })

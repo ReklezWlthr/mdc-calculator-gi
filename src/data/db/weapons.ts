@@ -255,6 +255,21 @@ export const Weapons = [
     },
   },
   {
+    id: '11412',
+    name: 'Sword of Descension',
+    rarity: 4,
+    tier: 1, //Actually use 3-star tier 2
+    ascStat: Stats.P_ATK,
+    baseStat: 0.0766,
+    icon: 'UI_EquipIcon_Sword_Psalmus',
+    type: WeaponType.SWORD,
+    desc: {
+      name: 'Descension',
+      detail: `Hitting opponents with Normal and Charged Attacks grants a <span class="text-desc">50%</span> chance to deal <span class="text-desc">200%</span> ATK as DMG in a small AoE. This effect can only occur once every <span class="text-desc">10</span>s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by <span class="text-desc">66</span>.`,
+      properties: [],
+    },
+  },
+  {
     id: '11413',
     name: 'Festering Desire',
     rarity: 4,
@@ -2864,6 +2879,21 @@ export const Weapons = [
         { base: 16, growth: 4 },
         { base: 12, growth: 3 },
       ],
+    },
+  },
+  {
+    id: '15415',
+    name: 'Predator',
+    rarity: 4,
+    tier: 2,
+    ascStat: Stats.P_ATK,
+    baseStat: 0.09,
+    icon: 'UI_EquipIcon_Bow_Predator',
+    type: WeaponType.BOW,
+    desc: {
+      name: 'Strong Strike',
+      detail: `Dealing <b class="text-genshin-cryo">Cryo DMG</b> to opponents increases this character's Normal and Charged Attack DMG by <span class="text-desc">10%</span>. for <span class="text-desc">6</span>.s. This effect can have a maximum of <span class="text-desc">2</span>. stacks. Additionally, when Aloy equips Predator, ATK is increased by <span class="text-desc">66</span>.`,
+      properties: [],
     },
   },
   {

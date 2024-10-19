@@ -243,7 +243,12 @@ export const TeamSetup = observer(() => {
         </div>
         <div className="w-1/5 space-y-5">
           <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
-          <ArtifactBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
+          <ArtifactBlock
+            index={selected}
+            piece={5}
+            aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]}
+            setArtifact={teamStore.setArtifact}
+          />
           <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
             {_.every(set, (item) => item < 2) ? (
               <p className="text-xs text-white">No Set Bonus</p>
@@ -253,8 +258,18 @@ export const TeamSetup = observer(() => {
           </div>
         </div>
         <div className="w-1/5 space-y-5">
-          <ArtifactBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
-          <ArtifactBlock index={selected} piece={1} aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]} />
+          <ArtifactBlock
+            index={selected}
+            piece={4}
+            aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]}
+            setArtifact={teamStore.setArtifact}
+          />
+          <ArtifactBlock
+            index={selected}
+            piece={1}
+            aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]}
+            setArtifact={teamStore.setArtifact}
+          />
           <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
             {_.isEmpty(resonance) || _.size(_.filter(teamStore.characters, (item) => !!item.cId)) < 4 ? (
               <p className="text-xs text-white">No Resonance Bonus</p>
@@ -266,8 +281,18 @@ export const TeamSetup = observer(() => {
           </div>
         </div>
         <div className="w-1/5 space-y-5">
-          <ArtifactBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
-          <ArtifactBlock index={selected} piece={3} aId={teamStore.characters[selected]?.equipments?.artifacts?.[2]} />
+          <ArtifactBlock
+            index={selected}
+            piece={2}
+            aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]}
+            setArtifact={teamStore.setArtifact}
+          />
+          <ArtifactBlock
+            index={selected}
+            piece={3}
+            aId={teamStore.characters[selected]?.equipments?.artifacts?.[2]}
+            setArtifact={teamStore.setArtifact}
+          />
           <div className="grid grid-cols-2 gap-2">
             <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
             <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
