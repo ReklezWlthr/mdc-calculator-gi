@@ -95,7 +95,7 @@ const Gorou = (c: number, a: number, t: ITalentLevel, ...rest: [ITeamChar[]]) =>
     c1: {
       trace: `Constellation 1`,
       title: `Rushing Hound: Swift as the Wind`,
-      content: `When characters (other than Gorou) within the AoE of Gorou's <b class="text-genshin-geo">General's War Banner</b or <b class="text-desc">General's Glory</b> deal <b class="text-genshin-geo">Geo DMG</b> to opponents, the CD of Gorou's <b>Inuzaka All-Round Defense</b> is decreased by <span class="text-desc">2</span>s. This effect can occur once every <span class="text-desc">10</span>s.`,
+      content: `When characters (other than Gorou) within the AoE of Gorou's <b class="text-genshin-geo">General's War Banner</b> or <b class="text-desc">General's Glory</b> deal <b class="text-genshin-geo">Geo DMG</b> to opponents, the CD of Gorou's <b>Inuzaka All-Round Defense</b> is decreased by <span class="text-desc">2</span>s. This effect can occur once every <span class="text-desc">10</span>s.`,
       image: 'UI_Talent_S_Gorou_01',
     },
     c2: {

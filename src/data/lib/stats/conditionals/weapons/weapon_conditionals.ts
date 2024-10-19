@@ -1710,8 +1710,16 @@ export const WeaponConditionals: IWeaponContent[] = [
     default: true,
     id: '15304',
     scaling: (base, form, r) => {
-      if (form['15304'])
-        base[Stats.ALL_DMG].push({ value: calcRefinement(0.36, 0.06, r), name: 'Passive', source: `Slingshot` })
+      base.BASIC_DMG.push({
+        value: form['15304'] ? calcRefinement(0.36, 0.06, r) : -0.1,
+        name: 'Passive',
+        source: `Slingshot`,
+      })
+      base.CHARGE_DMG.push({
+        value: form['15304'] ? calcRefinement(0.36, 0.06, r) : -0.1,
+        name: 'Passive',
+        source: `Slingshot`,
+      })
       return base
     },
   },

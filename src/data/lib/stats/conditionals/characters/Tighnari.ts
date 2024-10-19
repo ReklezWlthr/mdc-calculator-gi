@@ -151,7 +151,6 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      
 
       base.BASIC_SCALING = [
         {
@@ -255,20 +254,23 @@ const Tighnari = (c: number, a: number, t: ITalentLevel) => {
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
       if (a >= 4) {
-        const a4Bonus = _.min([0.0006 * base.getEM(), 0.6])
-        base.CHARGE_DMG.push({
-          value: a4Bonus,
-          name: 'Ascension 4 Passive',
-          source: 'Self',
-          base: _.min([base.getEM(), 1000]),
-          multiplier: toPercentage(0.0006, 2),
-        })
-        base.BURST_DMG.push({
-          value: a4Bonus,
-          name: 'Ascension 4 Passive',
-          source: 'Self',
-          base: _.min([base.getEM(), 1000]),
-          multiplier: toPercentage(0.0006, 2),
+        base.CALLBACK.push(function P99(x) {
+          const a4Bonus = _.min([0.0006 * x.getEM(), 0.6])
+          x.CHARGE_DMG.push({
+            value: a4Bonus,
+            name: 'Ascension 4 Passive',
+            source: 'Self',
+            base: _.min([x.getEM(), 1000]),
+            multiplier: toPercentage(0.0006, 2),
+          })
+          x.BURST_DMG.push({
+            value: a4Bonus,
+            name: 'Ascension 4 Passive',
+            source: 'Self',
+            base: _.min([x.getEM(), 1000]),
+            multiplier: toPercentage(0.0006, 2),
+          })
+          return x
         })
       }
 
