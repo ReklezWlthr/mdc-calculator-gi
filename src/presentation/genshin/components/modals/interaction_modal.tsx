@@ -13,8 +13,18 @@ export const InteractionModal = observer(() => {
           <span className="text-desc">4/8/12</span>s
         </BulletPoint>
         <BulletPoint>
-          <b>Faruzan</b>'s <b className="text-genshin-anemo">Pressurized Collapse Vortex</b>:{' '}
-          <span className="text-desc">5.5</span>s
+          <b>Clorinde</b>'s <b className="text-genshin-electro">Swift Hunt</b>/
+          <b className="text-genshin-electro">Impale the Night</b>: <span className="text-desc">2</span>s; shared
+          <div className="mt-1 ml-1">
+            <BulletPoint color="text-desc">
+              Also shared with <b className="text-genshin-electro">Nightvigil Shade</b> (C1) and{' '}
+              <b className="text-genshin-electro">Glimbright Shade</b> (C6)
+            </BulletPoint>
+          </div>
+        </BulletPoint>
+        <BulletPoint>
+          <b>Faruzan</b>'s <b className="text-genshin-anemo">Pressurized Collapse</b>:{' '}
+          <span className="text-desc">5.5</span>s; shared with C6
         </BulletPoint>
         <BulletPoint>
           <b>Gaming</b>'s <b className="text-genshin-pyro">Charmed Cloudstrider</b>:{' '}
@@ -23,6 +33,9 @@ export const InteractionModal = observer(() => {
         <BulletPoint>
           <b>Hu Tao</b>'s <b className="text-genshin-pyro">Converted Attacks</b>: <span className="text-desc">5</span>s;
           up to <span className="text-desc">2</span> Particles over <span className="text-desc">9</span>s
+        </BulletPoint>
+        <BulletPoint>
+          <b>Keqing</b>'s <b>Constellation 2</b>: <span className="text-desc">5</span>s
         </BulletPoint>
         <BulletPoint>
           <b>Kirara</b>'s <b className="text-genshin-dendro">Neko Parcel Hit</b>: <span className="text-desc">4</span>s;
@@ -92,6 +105,15 @@ export const InteractionModal = observer(() => {
         <BulletPoint>
           <b>Qiqi</b>, <b>Noelle</b>, and <b>Barbara</b> are the only 3 characters so far that{' '}
           <b className="text-red">CANNOT</b> generate Particles with their Skills.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Amber</b> and <b>Mona</b> generate Particles when their Skill expires/detonates; feed their Particles to
+          whoever is on-field at the time.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Ganyu</b>'s <b className="text-genshin-cryo">Lotus</b> generates Particles twice - once on initial hit and
+          again upon its explosion; feed <span className="text-desc">half</span> the Particles to whoever is on-field at
+          the time of the explosion.
         </BulletPoint>
         <BulletPoint>
           <b>Chiori</b>'s <b className="text-genshin-geo">Extra Tamoto</b> does <b className="text-red">NOT</b> generate

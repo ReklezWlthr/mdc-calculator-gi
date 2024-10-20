@@ -167,7 +167,7 @@ export const ArtifactBlock = observer(({ canEdit = true, ...props }: ArtifactBlo
               </div>
               <div className="flex flex-col items-center w-full gap-1">
                 <RarityGauge rarity={artifact?.quality} textSize="text-sm" />
-                <p className="text-xs text-center">{setData?.set?.[artifact?.type - 1]}</p>
+                <p className="text-xs text-center line-clamp-2">{setData?.set?.[artifact?.type - 1]}</p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-xs">

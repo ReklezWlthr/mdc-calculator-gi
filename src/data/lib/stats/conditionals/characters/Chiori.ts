@@ -137,7 +137,7 @@ const Chiori = (c: number, a: number, t: ITalentLevel) => {
       text: `Tailoring`,
       ...talents.a1,
       show: a >= 1,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',

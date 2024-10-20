@@ -43,8 +43,8 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />- Normal Attacks will be converted to <b>Sharky's Bites</b>, dealing Nightsoul-aligned <b class="text-genshin-hydro">Hydro DMG</b> based on Mualani's Max HP. <b>Sharky's Bites</b> can be used in mid-air. DMG dealt this way is considered Normal Attack DMG.
       <br />- When she makes contact with opponents in this state, Mualani applies <b class="text-genshin-hydro">Marked as Prey</b> to them and gains <span class="text-desc">1</span> <b class="text-genshin-hydro">Wave Momentum</b> stack. Max <span class="text-desc">3</span> stacks. <span class="text-desc">1</span> stack can be gained from the same opponent every <span class="text-desc">0.7</span>s.
       <br /><br /><b class="text-genshin-hydro">Wave Momentum</b> and <b class="text-genshin-hydro">Marked as Prey</b>
-      <br />When Mualani uses <b>Sharky's Bite</b>, her DMG dealt increases based on <b class="text-genshin-hydro">Wave Momentum</b> stacks. When she has <span class="text-desc">3</span> stacks, a Normal Attack will use <b>Sharky's Surging Bite</b> instead, further increasing her DMG and removing all her stacks when hitting an opponent.
-      <br />When <b>Sharky's Bites</b> hit opponents <b class="text-genshin-hydro">Marked as Prey</b>, that mark will be removed, and she will fire <b>Shark Missiles</b> at up to <span class="text-desc">5</span> nearby opponents <b class="text-genshin-hydro">Marked as Prey</b>, dealing DMG to them equal to this <b>Sharky's Bite</b> instance and clearing their Marks. If more than <span class="text-desc">1</span> opponent is the target of <b>Sharky's Bite</b> and <b>Shark Missiles</b>, the DMG dealt will decrease, decreasing to <span class="text-desc">72%</span> of the original DMG when at least <span class="text-desc">3</span> opponents are targeted.`,
+      <br />When Mualani uses <b>Sharky's Bite</b>, her DMG dealt increases based on <b class="text-genshin-hydro">Wave Momentum</b> stacks. When she has <span class="text-desc">3</span> stacks, <b>Sharky's Bite</b> will be converted to <b>Sharky's Surging Bite</b>, further increasing her DMG and removing all her stacks when hitting an opponent.
+      <br />When <b>Sharky's Bite</b> hits an opponent <b class="text-genshin-hydro">Marked as Prey</b>, that mark will be removed, and she will fire <b>Shark Missiles</b> at up to <span class="text-desc">5</span> nearby opponents <b class="text-genshin-hydro">Marked as Prey</b>, dealing DMG to them equal to this <b>Sharky's Bite</b> instance and clearing their Marks. If more than <span class="text-desc">1</span> opponent is the target of <b>Sharky's Bite</b> and <b>Shark Missiles</b>, the DMG dealt will decrease, decreasing at most to <span class="text-desc">72%</span> of the original DMG when at least <span class="text-desc">3</span> opponents are targeted.`,
       image: 'Skill_S_Mualani_01',
     },
     burst: {
@@ -164,7 +164,6 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     allyContent: [],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      
 
       base.BASIC_SCALING = [
         {
@@ -195,25 +194,40 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
       base.PLUNGE_SCALING = getPlungeScaling('catalyst', normal, Element.HYDRO)
+      const c1Buff = form.mualani_c1 ? 0.66 : 0
+      const sharkyScaling = [
+        { scaling: calcScaling(0.0868, skill, 'elemental', '1') + c1Buff, multiplier: Stats.HP },
+        ...(form.wave_momentum
+          ? form.wave_momentum >= 3
+            ? [{ scaling: calcScaling(0.217, skill, 'elemental', '1') + c1Buff, multiplier: Stats.HP }]
+            : [
+                {
+                  scaling: calcScaling(0.0434, skill, 'elemental', '1') * form.wave_momentum,
+                  multiplier: Stats.HP,
+                },
+              ]
+          : []),
+      ]
       base.SKILL_SCALING = [
         {
-          name: `Sharky's Bite DMG`,
-          value: [
-            { scaling: calcScaling(0.0868, skill, 'elemental', '1'), multiplier: Stats.HP },
-            ...(form.wave_momentum
-              ? form.wave_momentum >= 3
-                ? [{ scaling: calcScaling(0.217, skill, 'elemental', '1'), multiplier: Stats.HP }]
-                : [
-                    {
-                      scaling: calcScaling(0.0434, skill, 'elemental', '1') * form.wave_momentum,
-                      multiplier: Stats.HP,
-                    },
-                  ]
-              : []),
-          ],
+          name: `Single-Target Sharky's Bite DMG`,
+          value: sharkyScaling,
           element: Element.HYDRO,
           property: TalentProperty.NA,
-          bonus: form.mualani_c1 ? 0.66 : 0,
+        },
+        {
+          name: `2-Target Sharky's Bite DMG`,
+          value: sharkyScaling,
+          element: Element.HYDRO,
+          property: TalentProperty.NA,
+          multiplier: 0.86,
+        },
+        {
+          name: `3-Target Sharky's Bite DMG`,
+          value: sharkyScaling,
+          element: Element.HYDRO,
+          property: TalentProperty.NA,
+          multiplier: 0.72,
         },
       ]
       base.BURST_SCALING = [

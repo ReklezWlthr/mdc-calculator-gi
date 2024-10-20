@@ -97,7 +97,10 @@ export const ParticleCount: (id: string, c: number) => IParticle[] = (id, c) =>
       { name: 'Full Uptime', default: 1, value: 4.5, variance: 1 / 9 },
     ],
     '10000081': [{ name: 'Skill Cast', default: 1, value: 2, variance: 0 }],
-    '10000042': [{ name: 'Skill Recast', default: 1, value: 2.5, variance: 1 / 5 }],
+    '10000042': [
+      { name: 'Skill Recast', default: 1, value: 2.5, variance: 1 / 5 },
+      { name: 'C2 Proc', default: 0, value: 1, variance: 0 },
+    ],
     '10000061': [
       { name: 'Flipclaw Hit', default: 1, value: 3, variance: 0 },
       { name: 'Neko Parcel Hit', default: 0, value: 1, variance: 0 },

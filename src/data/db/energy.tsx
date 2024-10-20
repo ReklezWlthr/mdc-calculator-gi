@@ -635,7 +635,6 @@ export const TriggerEnergy: ITriggerEnergy[] = [
         <p>
           - <span className="text-desc">25</span> Energy at <span className="text-desc">266.67%</span> ER
         </p>
-        <p className="text-red font-semibold italic">**DO NOT ADD ER MULTIPLIER ON RAIDEN HERSELF**</p>
       </div>
     ),
     source: '10000052',
@@ -661,7 +660,6 @@ export const TriggerEnergy: ITriggerEnergy[] = [
           Gives <span className="text-desc">1.2</span> Energy to <b className="text-blue">everyone</b> for every{' '}
           <span className="text-desc">100%</span> ER she has when her <b>Ambush</b> hits
         </p>
-        <p className="text-red font-semibold italic">**DO NOT ADD ER MULTIPLIER ON SARA HERSELF**</p>
       </div>
     ),
     source: '10000056',
@@ -676,7 +674,7 @@ export const TriggerEnergy: ITriggerEnergy[] = [
           Gains <span className="text-desc">1.2</span> Energy when she Swirls, once every{' '}
           <span className="text-desc">2</span>s
         </p>
-        <p className="text-red font-semibold italic">**ONLY TRIGGERS WHEN SAYU IS ON-FIELD**</p>
+        <p className="italic font-semibold text-red">**ONLY TRIGGERS WHEN SAYU IS ON-FIELD**</p>
       </div>
     ),
     source: '10000053',
@@ -725,7 +723,7 @@ export const TriggerEnergy: ITriggerEnergy[] = [
           Gains <span className="text-desc">4</span> Energy when enemies affected by{' '}
           <b className="text-genshin-hydro">Riptide</b> are defeated
         </p>
-        <p className="text-red font-semibold italic">**DIVIDE THE TOTAL AMOUNT BY ROTATION USED**</p>
+        <p className="italic font-semibold text-red">**DIVIDE THE TOTAL AMOUNT BY ROTATION USED**</p>
       </div>
     ),
     source: '10000033',
@@ -862,7 +860,7 @@ export const TriggerEnergy: ITriggerEnergy[] = [
           Gains <span className="text-desc">3</span> Energy when the equipping character gains a Particle, once every{' '}
           <span className="text-red">3</span>s
         </p>
-        <p className="font-semibold text-red italic">**ONLY BOW AND CATALYST USERS GAIN ENERGY**</p>
+        <p className="italic font-semibold text-red">**ONLY BOW AND CATALYST USERS GAIN ENERGY**</p>
       </div>
     ),
     source: '3618167299_4',
@@ -879,7 +877,7 @@ export const TriggerEnergy: ITriggerEnergy[] = [
         <p>
           - Xilonen's <b>A4</b> can trigger an additional <b>Nightsoul Burst</b>
         </p>
-        <p className="font-semibold text-red italic">**REQUIRES A NATLAN CHARACTER IN A TEAM**</p>
+        <p className="italic font-semibold text-red">**REQUIRES A NATLAN CHARACTER IN A TEAM**</p>
       </div>
     ),
     source: '2949388203_2',
