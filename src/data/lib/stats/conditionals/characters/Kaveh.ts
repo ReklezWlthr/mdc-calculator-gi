@@ -274,7 +274,6 @@ const Kaveh = (c: number, a: number, t: ITalentLevel) => {
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
       if (form.kaveh_burst) {
-        base.infuse(Element.DENDRO, true)
         const bloomDmg = calcScaling(0.2749, burst, 'elemental', '1')
         base.BLOOM_DMG.push({
           value: bloomDmg,

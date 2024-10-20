@@ -104,7 +104,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c2: {
       trace: `Constellation 2`,
       title: `King Bee of the Hidden Honeyed Wine`,
-      content: `After using his Elemental Burst, <b>Dark Voices Echo</b>, Ororon will obtain the <b>Spiritual Supersense</b> effect for 9s.
+      content: `After using his Elemental Burst, <b>Dark Voices Echo</b>, Ororon will obtain the <b>Spiritual Supersense</b> effect for <span class="text-desc">9</span>s.
       <br />
       <br /><b>Spiritual Supersense</b>
       <br />Gain <span class="text-desc">12%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.

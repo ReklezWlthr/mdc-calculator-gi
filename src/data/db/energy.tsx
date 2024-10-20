@@ -596,14 +596,20 @@ export const TriggerEnergy: ITriggerEnergy[] = [
   {
     name: `Ororon's A4`,
     detail: (
-      <p>
-        Gains <span className="text-desc">3</span> Energy when allies deal <b className="text-genshin-hydro">Hydro</b>{' '}
-        or <b className="text-genshin-electro">Electro DMG</b> during <b>Aspect Sigil</b>, once every{' '}
-        <span className="text-desc">1</span>s, up to <span className="text-desc">9</span> per cast
-      </p>
+      <div>
+        <p>
+          Gives <span className="text-desc">3</span> Energy to <b className="text-blue">an active character</b> that
+          deals <b className="text-genshin-hydro">Hydro</b> or <b className="text-genshin-electro">Electro DMG</b>{' '}
+          during <b>Aspect Sigil</b>, once every <span className="text-desc">1</span>s, up to{' '}
+          <span className="text-desc">9</span> per cast
+        </p>
+        <p>
+          - If Ororon is off-field, also gains <span className="text-desc">3</span> Energy himself
+        </p>
+      </div>
     ),
     source: '10000105',
-    type: 'self',
+    type: 'everyone',
     show: (_c, a) => a >= 4,
   },
   {
