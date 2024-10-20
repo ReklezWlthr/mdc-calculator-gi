@@ -15,7 +15,6 @@ import { observer } from 'mobx-react-lite'
 import React, { useCallback } from 'react'
 import { EnergySettings } from '../components/energy/energy_settings'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { InteractionModal } from '../components/modals/interaction_modal'
 import { useFixedEnergy } from '@src/core/hooks/useFixedEnergy'
 import { EnergySourceModal } from '../components/energy/energy_source_modal'
 import { ExtraSkillProc } from '@src/data/stores/energy_store'
@@ -29,7 +28,6 @@ export const EnergyRequirement = observer(() => {
   const { meta, setMetaData } = energyStore
   const totalRotation = _.sumBy(meta, (item) => item.fieldTime)
 
-  const onOpenICDModal = useCallback(() => modalStore.openModal(<InteractionModal />), [])
   const onOpenEnergyModal = useCallback(() => modalStore.openModal(<EnergySourceModal />), [])
   const onOpenFixedEnergyModal = useCallback(
     (index: number) => modalStore.openModal(<FixedEnergyModal index={index} />),
@@ -43,10 +41,7 @@ export const EnergyRequirement = observer(() => {
       <div className="w-full gap-5 p-5 text-white max-w-[1200px] mx-auto text-sm">
         <div className="flex items-center justify-between mb-2">
           <p className="text-2xl font-bold">ER Requirement</p>
-          <div className="flex gap-2">
-            <PrimaryButton title="Energy Source List" onClick={onOpenEnergyModal} />
-            <PrimaryButton title="ICDs & Interactions" onClick={onOpenICDModal} />
-          </div>
+          <PrimaryButton title="Energy Source List" onClick={onOpenEnergyModal} />
         </div>
         <div className="flex w-full font-semibold">
           <div className="w-[17%] shrink-0" />
@@ -60,9 +55,8 @@ export const EnergyRequirement = observer(() => {
                     <p>The number of times the character uses their Skill in each of their rotation.</p>
                     <p>
                       Some Talents that generate Particle(s) over time have <b>Particle ICD</b>. The value given should
-                      only account for hits that generate Particle. Please refer to the{' '}
-                      <b className="text-desc">ICDs & Interactions</b> section or use the given preset(s). You can put
-                      in decimals if the Skill does not last its full uptime or misses some hits.
+                      only account for hits that generate Particle. Please refer to the <b>tooltip</b> or use the given
+                      preset(s). You can put in decimals if the Skill does not last its full uptime or misses some hits.
                     </p>
                     <p>
                       Although the calculator allows you to customize your rotation to an extend, please be wary of each
@@ -84,18 +78,15 @@ export const EnergyRequirement = observer(() => {
                 title="Particle Funneling"
                 body={
                   <div className="space-y-1 font-normal">
-                    <p>
-                      You can choose to funnel Particles from Skill casts here. There are 2 possible types of funnel:
-                    </p>
+                    <p>You can choose to funnel Particles from Skill casts here.</p>
                     <p>
                       - <b>Normal Skills</b> allow you to choose how much Particles will be funneled to the target.{' '}
-                      <b>Self</b> means the character will catch their own Particles, and <b>Don't Know</b> considers
-                      them as Off-Field Particles for everyone.
+                      <b>Don't Know</b> considers them as Off-Field Particles for everyone.
                     </p>
                     <p>
-                      - <b>Turrets</b> distribute Particles based on field time by default, but you can manually assign
-                      Particles percentage to each characters here. Each slot represents a character in the setup in
-                      respective order.
+                      - <b>Field Effects</b> (like Nahida's or Furina's) distribute Particles based on field time by
+                      default, but you can also manually assign Particles percentage to each characters, with slot
+                      representing a character in the setup in respective order.
                     </p>
                   </div>
                 }
@@ -180,6 +171,14 @@ export const EnergyRequirement = observer(() => {
                             <span className="ml-1 font-normal text-gray">
                               {!!uptime ? `- ${toPercentage(_.min([uptime, 1]))} Uptime` : ''}
                             </span>
+                            {component?.tips && (
+                              <Tooltip
+                                body={<div className="text-xs font-normal">{component?.tips}</div>}
+                                style="w-[300px]"
+                              >
+                                <i className="ml-1 text-xs fa-regular fa-question-circle" />
+                              </Tooltip>
+                            )}
                           </p>
                           <TextInput
                             small

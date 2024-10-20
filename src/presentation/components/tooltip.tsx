@@ -15,7 +15,7 @@ export const Tooltip = observer(
     containerStyle,
   }: {
     children: React.ReactElement
-    title: React.ReactNode
+    title?: React.ReactNode
     body: React.ReactNode
     position?: TooltipPositionT
     style?: string
@@ -108,8 +108,12 @@ export const Tooltip = observer(
             style
           )}
         >
-          <div className="text-sm font-bold text-white">{title}</div>
-          <div className="h-0 border-t border-primary-lighter" />
+          {!!title && (
+            <>
+              <div className="text-sm font-bold text-white">{title}</div>
+              <div className="h-0 border-t border-primary-lighter" />
+            </>
+          )}
           {body}
         </Transition>
       </div>
