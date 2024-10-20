@@ -41,7 +41,7 @@ const Raiden = (c: number, a: number, t: ITalentLevel) => {
       content: `The Raiden Shogun unveils a shard of her Euthymia, dealing <b class="text-genshin-electro">Electro DMG</b> to nearby opponents, and granting nearby party members the <b class="text-violet-400">Eye of Stormy Judgment</b>.
       <br />
       <br /><b class="text-violet-400">Eye of Stormy Judgment</b>
-      <br />When characters with this buff attack and deal DMG to opponents, the <b class="text-genshin-electro">Eye</b> will unleash a coordinated attack, dealing <b class="text-genshin-electro">AoE Electro DMG</b> at the opponent's position.
+      <br />When characters with this buff attack and deal DMG to opponents, the <b class="text-violet-400">Eye</b> will unleash a coordinated attack, dealing <b class="text-genshin-electro">AoE Electro DMG</b> at the opponent's position.
       <br />Characters who gain the <b class="text-violet-400">Eye of Stormy Judgment</b> will have their Elemental Burst DMG increased based on the Energy Cost of the Elemental Burst during the <b class="text-violet-400">Eye</b>'s duration.
       <br />
       <br />The <b class="text-violet-400">Eye</b> can initiate one coordinated attack every <span class="text-desc">0.9</span>s per party.

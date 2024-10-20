@@ -109,8 +109,8 @@ export const ComparePage = observer(() => {
                         really want to compare them.
                       </p>
                       <p>
-                        - The calculator only compare damage <span className="text-desc">per hit</span> which may be
-                        inaccurate to live rotation due to aspects like energy gain or speed boosts. Only take it at
+                        - The calculator only compare damage <span className="text-desc">at an instance</span> which may
+                        be inaccurate to live rotation due to aspects like timing or buff durations. Only take it at
                         face value.
                       </p>
                     </div>

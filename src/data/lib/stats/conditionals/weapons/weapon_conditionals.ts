@@ -2177,15 +2177,17 @@ export const WeaponConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'toggle',
+    type: 'number',
     text: `Scorching Summer`,
     show: true,
-    default: true,
+    default: 0,
+    min: 0,
+    max: 4,
     id: '14516',
     scaling: (base, form, r) => {
       if (form['14516']) {
         base.BASIC_DMG.push({
-          value: calcRefinement(0.12, 0.03, r),
+          value: calcRefinement(0.12, 0.03, r) * form['14516'],
           name: `Scorching Summer`,
           source: `Surf's Up`,
         })

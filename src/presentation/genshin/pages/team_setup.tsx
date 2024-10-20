@@ -26,6 +26,7 @@ import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SaveBuildModal } from '../components/modals/save_build_modal'
 import { SaveTeamModal } from '../components/modals/save_team_modal'
 import { TeamModal } from '../components/modals/team_modal'
+import { AbilityBlock } from '../components/ability_block'
 
 export const SetToolTip = observer(({ item, set }: { item: number; set: string }) => {
   const setDetail = _.find(ArtifactSets, ['id', set])
@@ -141,12 +142,6 @@ export const TeamSetup = observer(() => {
     settingStore.settings.travelerGender
   )
 
-  const maxTalentLevel = _.max([1, (char.ascension - 1) * 2])
-  const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
-    name: (index + 1).toString(),
-    value: (index + 1).toString(),
-  })).reverse()
-
   return (
     <div className="w-full overflow-y-auto">
       <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
@@ -195,47 +190,12 @@ export const TeamSetup = observer(() => {
           </div>
           <CharacterBlock index={selected} />
           {charData ? (
-            <div className="flex items-center justify-center gap-3 py-3">
-              <TalentIcon
-                talent={talent?.talents?.normal}
-                element={charData?.element}
-                size="w-9 h-9"
-                upgraded={talent?.upgrade?.normal}
-                showUpgrade
-              />
-              <SelectInput
-                value={char?.talents?.normal?.toString()}
-                onChange={(value) => teamStore.setTalentLevel(selected, 'normal', parseInt(value))}
-                options={talentLevels}
-                style="w-14"
-              />
-              <TalentIcon
-                talent={talent?.talents?.skill}
-                element={charData?.element}
-                size="w-9 h-9"
-                upgraded={talent?.upgrade?.skill}
-                showUpgrade
-              />
-              <SelectInput
-                value={char?.talents?.skill?.toString()}
-                onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
-                options={talentLevels}
-                style="w-14"
-              />
-              <TalentIcon
-                talent={talent?.talents?.burst}
-                element={charData?.element}
-                size="w-9 h-9"
-                upgraded={talent?.upgrade?.burst}
-                showUpgrade
-              />
-              <SelectInput
-                value={char?.talents?.burst?.toString()}
-                onChange={(value) => teamStore.setTalentLevel(selected, 'burst', parseInt(value))}
-                options={talentLevels}
-                style="w-14"
-              />
-            </div>
+            <AbilityBlock
+              char={char}
+              talents={talent?.talents}
+              upgrade={talent?.upgrade}
+              onChange={(key, value) => teamStore.setTalentLevel(selected, key, value)}
+            />
           ) : (
             <div className="h-5" />
           )}

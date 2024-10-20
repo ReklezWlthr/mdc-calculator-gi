@@ -53,6 +53,7 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
       <WeaponConditionalBlock
         contents={content.weapon(charIndex)}
         formOverride={setupStore.forms[setupIndex]}
+        teamOverride={team}
         setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
       />
       <ConditionalBlock

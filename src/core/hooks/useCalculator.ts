@@ -65,7 +65,7 @@ export const useCalculator = ({
   const conditionals = useMemo(
     () =>
       _.map(team, (item) =>
-        _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
+        _.find(ConditionalsObject, (c) => c?.id === item?.cId)?.conditionals(
           item.cons,
           item.ascension,
           {
@@ -368,3 +368,5 @@ export const useCalculator = ({
     transformative,
   }
 }
+
+export type CalculatorT = ReturnType<typeof useCalculator>

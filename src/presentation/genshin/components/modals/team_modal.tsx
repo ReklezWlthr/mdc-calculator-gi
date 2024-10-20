@@ -18,12 +18,15 @@ export interface TeamModalProps {
 }
 
 export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.ReactNode }) => {
-  const { settingStore } = useStore()
+  const { settingStore, setupStore, toastStore } = useStore()
 
   const codeName = (id: string) => {
     const c = findCharacter(id)?.codeName
     return c === 'Player' ? settingStore.settings.travelerGender : c || ''
   }
+
+  const [edit, setEdit] = useState(false)
+  const [name, setName] = useState(team.name || '')
 
   return (
     <div
@@ -31,7 +34,47 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
       key={team.id}
     >
       <div className="w-full space-y-1">
-        <p className="w-full truncate">{team.name}</p>
+        <div className="flex items-center justify-between w-[247px] gap-x-2">
+          {edit && team.id ? (
+            <>
+              <TextInput small placeholder="Enter Setup Name" value={name} onChange={setName} />
+              <i
+                className="flex items-center justify-center w-5 h-5 text-xs rounded-sm cursor-pointer fa-solid fa-times text-red bg-primary shrink-0"
+                onClick={() => {
+                  setEdit(false)
+                  setName(team.name || '')
+                }}
+              />
+              <i
+                className={classNames(
+                  'flex items-center justify-center w-5 h-5 text-xs rounded-sm cursor-pointer fa-solid fa-check shrink-0 duration-200',
+                  name ? 'text-heal bg-primary' : 'text-primary bg-primary-dark'
+                )}
+                onClick={() => {
+                  if (name) {
+                    setupStore.editTeam(team.id, { name })
+                    setEdit(false)
+                    toastStore.openNotification({
+                      title: 'Update Team Successfully',
+                      icon: 'fa-solid fa-circle-check',
+                      color: 'green',
+                    })
+                  }
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <p className="truncate w-fit">{team.name}</p>
+              {!!team.id && (
+                <i
+                  className="flex items-center justify-center w-5 h-5 text-xs rounded-md cursor-pointer text-gray bg-primary-light fa-regular fa-pen-to-square shrink-0"
+                  onClick={() => setEdit(true)}
+                />
+              )}
+            </>
+          )}
+        </div>
         <div className="flex gap-2">
           {_.map(team.char, (item) => (
             <div

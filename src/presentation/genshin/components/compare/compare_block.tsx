@@ -17,6 +17,10 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TalentProperty } from '@src/domain/constant'
 import { CompareTotalRows } from '../tables/compare_total_row'
 import { EnemyModal } from '../modals/enemy_modal'
+import { MiniArtifactBlock } from '../mini_artifact_block'
+import { WeaponBlock } from '../weapon_block'
+import { CompareTraceBlock } from './compare_trace_block'
+import { CompareReactionTable } from './compare_reaction_table'
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -32,7 +36,7 @@ export const CompareBlock = observer(() => {
   const selectedS3 = _.findIndex(setupStore.comparing[2]?.char, (item) => item.cId === setupStore.mainChar)
   const char = setupStore.main?.char?.[selected]
   const charData = findCharacter(setupStore.mainChar)
-  const { finalStats, mainComputed, main, ...mainContent } = useCalculator({
+  const mainCalc = useCalculator({
     teamOverride: setupStore.main?.char,
     doNotSaveStats: true,
     formOverride: setupStore.forms[0],
@@ -40,6 +44,7 @@ export const CompareBlock = observer(() => {
     customOverride: setupStore.custom[0],
     initFormFunction: (f) => setupStore.initForm(0, f),
   })
+  const { finalStats, mainComputed, main, ...mainContent } = mainCalc
   const sub1 = useCalculator({
     teamOverride: setupStore.comparing[0]?.char,
     doNotSaveStats: true,
@@ -126,7 +131,7 @@ export const CompareBlock = observer(() => {
   )
 
   return (
-    <div className="grid grid-cols-3 gap-4 px-5">
+    <div className="grid grid-cols-3 gap-4 px-5 mb-8">
       {_.some(sumStats) && (
         <div className="flex flex-col col-span-2 mb-5 text-sm text-white h-fit">
           <div className="flex items-center justify-between mb-3">
@@ -207,6 +212,9 @@ export const CompareBlock = observer(() => {
               </div>
             </ScalingWrapper>
           </div>
+          <div className="w-[75%] mt-5">
+            <CompareReactionTable meta={[mainCalc, sub1, sub2, sub3]} />
+          </div>
         </div>
       )}
       {_.some(contents) && _.some(sumStats) && (
@@ -286,6 +294,7 @@ export const CompareBlock = observer(() => {
               </>
             )}
           </div>
+          {tab === 'trace' && <CompareTraceBlock team={team} char={focusedChar} />}
           {tab === 'mod' && focusedChar && (
             <CompareConditionalBlock
               stats={allStats[setupIndex]}
@@ -302,6 +311,38 @@ export const CompareBlock = observer(() => {
                 <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
               </div>
               <StatBlock stat={allStats[setupIndex][charIndex]} />
+            </>
+          )}
+          {tab === 'load' && focusedChar && (
+            <>
+              <div className="w-[239px]">
+                <WeaponBlock
+                  {...focusedChar.equipments.weapon}
+                  index={charIndex}
+                  teamOverride={team[setupIndex]}
+                  setWeapon={(i, w) => {
+                    focusedChar.equipments.weapon = { ...focusedChar.equipments.weapon, ...w }
+                    setupStore.setComparing(focusedChar)
+                  }}
+                />
+              </div>
+              <div className="w-full space-y-1 text-white">
+                <p className="font-bold text-center">Artifacts</p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {_.map([3, 1, 4, 0, 2], (item) => (
+                    <MiniArtifactBlock
+                      key={item}
+                      type={item + 1}
+                      aId={focusedChar.equipments.artifacts[item]}
+                      index={selected}
+                      setArtifact={(i, t, a) => {
+                        focusedChar.equipments.artifacts.splice(t - 1, 1, a)
+                        setupStore.setComparing(focusedChar)
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
             </>
           )}
         </div>
