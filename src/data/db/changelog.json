@@ -1,5 +1,14 @@
 [
   {
+    "version": "2.0.0",
+    "date": "October 22th, 2024",
+    "desc": [
+      "<b class=\"text-desc\">NEW</b>: Compare Builds",
+      "<b class=\"text-desc\">NEW</b>: ER Requirements",
+      "And a ton of minor features and bug fixes"
+    ]
+  },
+  {
     "version": "1.0.0",
     "date": "June 8th, 2024",
     "desc": ["Public launch day"]
