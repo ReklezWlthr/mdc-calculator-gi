@@ -134,12 +134,12 @@ export const MyBuilds = observer(() => {
         </div>
         {selected ? (
           <div className="w-full space-y-4">
-            <div className="grid grid-cols-2 items-center gap-5">
+            <div className="grid items-center grid-cols-2 gap-5">
               <div className="w-full">
-                <p className="text-primary-lighter text-sm">{findCharacter(selectedBuild?.cId)?.name}</p>
-                <p className="text-white text-2xl w-full font-bold truncate">{selectedBuild?.name}</p>
+                <p className="text-sm text-primary-lighter">{findCharacter(selectedBuild?.cId)?.name}</p>
+                <p className="w-full text-2xl font-bold text-white truncate">{selectedBuild?.name}</p>
               </div>
-              <div className="flex items-center gap-x-2 shrink-0 justify-end">
+              <div className="flex items-center justify-end gap-x-2 shrink-0">
                 <div className="p-3 space-y-1.5 text-xs rounded-lg text-gray bg-primary-darker w-full">
                   <div className="flex items-center justify-between">
                     <p className="text-sm text-white">Note:</p>

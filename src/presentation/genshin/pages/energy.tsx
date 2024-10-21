@@ -37,7 +37,7 @@ export const EnergyRequirement = observer(() => {
   useFixedEnergy()
 
   return (
-    <div className="w-full overflow-y-auto">
+    <div className="w-full overflow-y-auto customScrollbar">
       <div className="w-full gap-5 p-5 text-white max-w-[1200px] mx-auto text-sm">
         <div className="flex items-center justify-between mb-2">
           <p className="text-2xl font-bold">ER Requirement</p>

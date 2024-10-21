@@ -47,7 +47,7 @@ export const Calculator = observer(({}: {}) => {
   )
 
   return (
-    <div className="w-full overflow-y-auto">
+    <div className="w-full overflow-y-auto customScrollbar">
       <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1200px] mx-auto">
         <div className="col-span-2">
           <div className="flex items-center">
