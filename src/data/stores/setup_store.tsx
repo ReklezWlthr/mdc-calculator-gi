@@ -73,8 +73,6 @@ export interface SetupStoreType {
   setTotal: (key: TalentProperty, index: number, name: string, value: number) => void
   getTotal: (key: TalentProperty, index: number) => number
   setRes: (element: Element, value: number) => void
-  getEffRes: (reduction?: number) => number
-  getEhr: (reduction?: number) => number
   getDefMult: (level: number, defPen: number, defRed: number) => number
   getResMult: (element: Element, resPen: number) => number
   clearTotal: () => void
