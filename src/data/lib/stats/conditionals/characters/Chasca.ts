@@ -48,19 +48,21 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b>Nightsoul's Blessing: Chasca</b>
       <br />Continually consume <b class="text-genshin-anemo">Nightsoul</b> points. When <b class="text-genshin-anemo">Nightsoul</b> points are fully depleted or the skill is used again, Chasca's <b class="text-genshin-anemo">Nightsoul's Blessing</b> state will end. Her <b class="text-genshin-anemo">Nightsoul's Blessing</b> has the following traits:
-      <br />- Mounts <b>Soulsniper: Ritual Staff</b>, increasing Chasca's Movement SPD and interruption resistance. In this state, Chasca will continually consume <b class="text-genshin-anemo">Nightsoul</b> points or <b class="text-genshin-pyro">Phlogiston</b>, and stay airborne. When Sprinting or increasing height, extra <b class="text-genshin-anemo">Nightsoul</b> points or <b class="text-genshin-pyro">Phlogiston</b> will be consumed.
-      <br />- When using Normal Or Charged Attacks, Tap or Hold to switch between using <b>Multitarget Fire</b> in different ways.
+      <br />- Mounts <b>Soulsniper: Ritual Staff</b>, increasing Chasca's Movement SPD and interruption resistance. In this state, Chasca will continually consume <b class="text-genshin-anemo">Nightsoul</b> points or <b class="text-genshin-pyro">Phlogiston</b> to remain airborne. When Sprinting or increasing height, extra <b class="text-genshin-anemo">Nightsoul</b> points or <b class="text-genshin-pyro">Phlogiston</b> will be consumed.
+      <br />- When using Normal or Charged Attacks, Tap or Hold to switch between using <b>Multitarget Fire</b> in different ways.
       <br />
       <br /><b>Multitarget Fire</b>
       <br /><b>Tap</b>
       <br />Deal Nightsoul-aligned <b class="text-genshin-anemo">Anemo DMG</b> to opponents in front. This DMG is considered Normal Attack DMG.
       <br /><b>Hold</b>
-      <br />Enter Aiming Mode, loading bullets into the cylinder's chambers, and choosing a certain number of opponents within a certain range, before firing up to <span class="text-desc">6</span> <b class="text-indigo-300">Shadowhunt Shells</b> at the selected opponents based on the amount of time the attack was charged. After Holding for a certain amount of time, Chasca will finish loading, and directly fire X <b class="text-indigo-300">Shadowhunt Shells</b> at the selected opponents.
+      <br />Enter Aiming Mode and choose a certain number of opponents within a certain range, before loading up to <span class="text-desc">6</span> <b class="text-indigo-300">Shadowhunt Shells</b> based on the duration for which the skill was charged. When <span class="text-desc">6</span> <b class="text-indigo-300">Shells</b> have been loaded or charging is stopped, these <b class="text-indigo-300">Shells</b> will be fired at the chosen opponents in sequence.
       <br />
       <br /><b class="text-indigo-300">Shadowhunt Shells</b>
       <br />- Deal Nightsoul-aligned <b class="text-genshin-anemo">Anemo DMG</b>, which is considered Charged Attack DMG.
-      <br />- The <span class="text-desc">4th</span>, <span class="text-desc">5th</span>, and <span class="text-desc">6th</span> <b class="text-indigo-300">Shells</b> loaded into the cylinder will undergo <b>Elemental Conversion</b> based on the <b>Elemental Types</b> of the other characters in the party: For each <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> character in the party, one <b class="text-indigo-300">Shadowhunt Shell</b> will be converted into a <b class="text-indigo-300">Shining Shadowhunt Shells</b> of the corresponding <b>Elemental Type</b>, dealing Nightsoul-aligned DMG corresponding to that <b>Elemental Type</b>. This DMG is considered Charged Attack DMG.
-      <br />- The <b class="text-indigo-300">Shells</b> loaded into the cylinder are fired starting from the last <b class="text-indigo-300">Shadowhunt Shell</b> to be loaded, in a "last in, first out" order.`,
+      <br />- The <span class="text-desc">4th</span>, <span class="text-desc">5th</span>, and <span class="text-desc">6th</span> <b class="text-indigo-300">Shells</b> loaded into the cylinder will undergo <b>Elemental Conversion</b> based on the <b>Elemental Types</b> of the other characters in the party: For each <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> character in the party, one <b class="text-indigo-300">Shadowhunt Shell</b> will be randomly converted into a <b class="text-indigo-300">Shining Shadowhunt Shells</b> of one of these corresponding <b>Elemental Types</b>, dealing Nightsoul-aligned DMG corresponding to that <b>Elemental Type</b>. This DMG is considered Charged Attack DMG.
+      <br />- The <b class="text-indigo-300">Shells</b> loaded into the cylinder are fired starting from the last <b class="text-indigo-300">Shadowhunt Shell</b> to be loaded, in a "last in, first out" order.
+      <br />
+      <br />Additionally, when Chasca is in the <b class="text-genshin-anemo">Nightsoul's Blessing</b> state, Holding her Elemental Skill <b>Spirit Reins, Shadow Hunt</b> will cause her to execute a Nightsoul-aligned Plunging Attack. Release the Elemental Skill to interrupt this Plunging Attack and maintain her airborne state. Should Chasca hit the ground with her Plunging Attack, her <b class="text-genshin-anemo">Nightsoul's Blessing</b> state will end.`,
       image: 'Skill_S_Chasca_01',
     },
     burst: {
@@ -71,13 +73,15 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b class="text-violet-300">Soulseeker Shells</b>
       <br />- Deal Nightsoul-aligned <b class="text-genshin-anemo">Anemo DMG</b>.
-      <br />- For each <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> character in the party, <span class="text-desc">two</span> <b class="text-violet-300">Soulseeker Shells</b> will undergo corresponding <b>Elemental Conversions</b> to become <b class="text-violet-300">Radiant Soulseeker Shells</b> which deal Nightsoul-aligned <b>Elemental DMG</b> of the corresponding <b>Elemental Type</b>.`,
+      <br />- For each <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> character in the party, <span class="text-desc">two</span> <b class="text-violet-300">Soulseeker Shells</b> will undergo corresponding <b>Elemental Conversions</b> to become <b class="text-violet-300">Radiant Soulseeker Shells</b> which deal Nightsoul-aligned <b>Elemental DMG</b> from a randomly selected one of the corresponding <b>Elemental Types</b>.`,
       image: 'Skill_E_Chasca_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Bullet Trick`,
-      content: `When the Elemental Skill <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b> is used, if the party has <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span> types of <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> characters, then there is a <span class="text-desc">33%</span>/<span class="text-desc">67%</span>/<span class="text-desc">100%</span> chance to trigger <b>Spiritbinding Conversion</b>, causing the <span class="text-desc">3rd</span> <b class="text-indigo-300">Shadowhunt Shell</b> loaded into the cylinder to be converted into a <b class="text-indigo-300">Shining Shadowhunt Shells</b> of the corresponding <b>Elemental Type</b>.`,
+      content: `When the Elemental Skill <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b> is being charged, if there are party members has who meet the <b>Elemental Conversion Type</b> requirements, gain the following effects based on the number of different eligible <b>Elemental Types</b> present:
+      <br />- There is a <span class="text-desc">33.3%</span>/<span class="text-desc">66.7%</span>/<span class="text-desc">100%</span> chance for each <b>Type</b> to trigger <b>Spiritbinding Conversion</b> and causes the <span class="text-desc">3rd</span> <b class="text-indigo-300">Shadowhunt Shell</b> loaded into the cylinder to be randomly converted into a <b class="text-indigo-300">Shining Shadowhunt Shells</b> from one of the corresponding <b>Elemental Types</b>.
+      <br />- Each element type will grant Chasca <span class="text-desc">1</span> stack of <b>Spirit of the Radiant Shadow</b>, increasing the DMG of <b class="text-indigo-300">Shining Shadowhunt Shell</b> by <span class="text-desc">15%</span>/<span class="text-desc">35%</span>/<span class="text-desc">65%</span>. This effect lasts until the current <b>Multitarget Fire</b> ends. Max <span class="text-desc">3</span> stacks`,
       image: 'UI_Talent_S_Chasca_05',
     },
     a4: {
@@ -89,24 +93,23 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
     util: {
       trace: `Utiliy Passive`,
-      title: `-`,
-      content: `-`,
-      image: 'UI_Talent_Explosion_Glide',
+      title: `Mediation's True Meaning`,
+      content: `<span class="text-desc">25</span> <b class="text-genshin-pyro">Phlogiston</b> will be restored when your own party members defeat an opponent. This effect can trigger once every <span class="text-desc">12</span>s.
+      <br />This has no effect in Domains, Trounce Domains, or the Spiral Abyss.`,
+      image: 'UI_Talent_S_Chasca_08',
     },
     bonus: {
       trace: `Night Realm's Gift`,
       title: `Everburning Heart`,
-      content: `After <b class="text-genshin-anemo">Nightsoul</b> points are fully depleted, Chasca will begin consuming <b class="text-genshin-pyro">Phlogiston</b> to stay in <b class="text-genshin-anemo">Nightsoul's Blessing</b> instead.
-      <br />While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, she can use <b>Nightsoul Transmission: Chasca</b>. When the active character is at a certain height in the air, the following will trigger when you switch to Chasca: Chasca will enter <b class="text-genshin-anemo">Nightsoul's Blessing</b> and gain <span class="text-desc">32</span> <b class="text-genshin-anemo">Nightsoul</b> points. <b>Nightsoul Transmission</b> can be triggered once every <span class="text-desc">10</span>s by your own team.
-      <br />
-      <br />In addition, if the Elemental Skill <b>Spirit Rein, Shadow Hunt</b> is Held while in <b class="text-genshin-anemo">Nightsoul's Blessing</b>, Chasca will execute a Nightsoul-aligned Plunging Attack, and when released, the Plunging Attack can be canceled, and she will remain airborne. If she strikes the ground during the Plunging Attack, Chasca's <b class="text-genshin-anemo">Nightsoul's Blessing</b> state will end.`,
+      content: `After her <b class="text-genshin-anemo">Nightsoul</b> points are exhausted, Chasca will switch to consuming <b class="text-genshin-pyro">Phlogiston</b> to maintain her <b class="text-genshin-anemo">Nightsoul's Blessing</b>.
+      <br />While in an area with <b class="text-genshin-pyro">Phlogiston</b> Mechanics within Natlan, she can use <b>Nightsoul Transmission: Chasca</b>. When the active character is at a certain height in the air, the following will occur when switching to Chasca: Chasca will enter the <b class="text-genshin-anemo">Nightsoul's Blessing</b> state and gain <span class="text-desc">32</span> <b class="text-genshin-anemo">Nightsoul</b> points. <b>Nightsoul Transmission</b> can be triggered once every <span class="text-desc">10</span>s by your own team.`,
       image: 'UI_Talent_S_Chasca_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Cylinder, the Restless Roulette`,
-      content: `When triggering the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b>, will additionally cause the <span class="text-desc">2nd</span> <b class="text-indigo-300">Shadowhunt Shell</b> loaded into the cylinder to be converted into a <b class="text-indigo-300">Shining Shadowhunt Shell</b>.
-      <br />In addition, the chance to trigger <b>Spiritbinding Conversion</b> is increased: If the party has <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span> types of <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, <b class="text-genshin-cryo">Cryo</b>, or <b class="text-genshin-electro">Electro</b> characters, then there is a <span class="text-desc">67%</span>/<span class="text-desc">100%</span>/<span class="text-desc">100%</span> chance to trigger <b>Spiritbinding Conversion</b>.
+      content: `When triggering the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b>, the <span class="text-desc">2nd</span> <b class="text-indigo-300">Shadowhunt Shell</b> loaded into the cylinder will be additionally converted into a <b class="text-indigo-300">Shining Shadowhunt Shell</b>.
+      <br />The chance to trigger <b>Spiritbinding Conversion</b> is increased: If there are party members who meet the <b>Elemental Conversion Type</b> requirements, the chance to trigger <b>Spiritbinding Conversion</b> is increased by <span class="text-desc">33.3%</span>, up to a maximum of <span class="text-desc">100%</span>.
       <br />
       <br />You must first unlock the Passive Talent <b>Bullet Trick</b>.
       <br />
@@ -116,7 +119,8 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c2: {
       trace: `Constellation 2`,
       title: `Muzzle, the Searing Smoke`,
-      content: `When the <b class="text-indigo-300">Shining Shadowhunt Shells</b> from <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b> hit opponents, they will deal <b>AoE Elemental DMG</b> of the corresponding <b>Elemental Type</b> of the <b class="text-indigo-300">Shining Shadowhunt Shells</b> equal to <span class="text-desc">400%</span> of Chasca's ATK. This effect can be triggered once each time Chasca uses <b>Multitarget Fire</b>.`,
+      content: `When Chasca takes the field, she will obtain <span class="text-desc">1</span> stack of <b>Spirit of the Radiant Shadow</b> from the Passive Talent <b>Bullet Trick</b>. You must first unlock the Passive Talent <b>Bullet Trick</b> for this effect.
+      <br />In addition, when the <b class="text-indigo-300">Shining Shadowhunt Shells</b> from <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b> hit opponents, they will deal <b>AoE Elemental DMG</b> of the corresponding <b>Elemental Type</b> of the <b class="text-indigo-300">Shining Shadowhunt Shells</b> equal to <span class="text-desc">400%</span> of Chasca's ATK. This DMG is considered Charged Attack DMG. This effect can be triggered once each time Chasca uses <b>Multitarget Fire</b>.`,
       image: 'UI_Talent_S_Chasca_02',
     },
     c3: {
@@ -142,9 +146,9 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c6: {
       trace: `Constellation 6`,
       title: `Showdown, the Glory of Battle`,
-      content: `After the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b> is triggered, Chasca will gain the <b class="text-genshin-anemo">Fatal Rounds</b> state: For the next <span class="text-desc">3</span>s, the next time Chasca uses <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b>, the shots will finish charging instantly, and the CRIT DMG of that instance of <b>Multitarget Fire</b> increases by <span class="text-desc">120%</span>.
+      content: `Chasca's <b>Multitarget Fire</b> charge time is decreased, and after the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b> is triggered, Chasca will gain the <b class="text-genshin-anemo">Fatal Rounds</b> state: For the next <span class="text-desc">3</span>s, the next time Chasca uses <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b>, the shots will finish charging instantly, and the CRIT DMG of that instance of <b>Multitarget Fire</b> increases by <span class="text-desc">120%</span>.
       <br />
-      <br />You must first unlock the Passive Talent <b>Bullet Trick</b>.`,
+      <br />You must first unlock the Passive Talent <b>Bullet Trick</b> to gain access to the above effect.`,
       image: 'UI_Talent_S_Chasca_04',
     },
   }
@@ -212,23 +216,18 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
             },
             {
               name: '4-Hit',
-              value: [{ scaling: calcScaling(0.76402, normal, 'physical', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.25467, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
             },
           ]
+      const size = _.min([_.size(uniqueElements) + (c >= 2 ? 1 : 0), 3])
+      const radiantShadow = size === 1 ? 0.15 : size === 2 ? 0.35 : 0.65
       base.CHARGE_SCALING = form.multitarget
         ? [
             {
               name: 'Shadowhunt Shell DMG',
-              value: [{ scaling: calcScaling(0.608, skill, 'elemental', '1'), multiplier: Stats.ATK }],
-              element: Element.ANEMO,
-              property: TalentProperty.CA,
-              cd: form.chasca_c6 ? 1.2 : 0,
-            },
-            {
-              name: 'Shining Shadowhunt Shell DMG',
-              value: [{ scaling: calcScaling(1.9184, skill, 'elemental', '1'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.488, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.ANEMO,
               property: TalentProperty.CA,
               cd: form.chasca_c6 ? 1.2 : 0,
@@ -252,7 +251,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
 
       base.SKILL_SCALING = [
         {
-          name: 'Skill DMG',
+          name: 'Resonance DMG',
           value: [{ scaling: calcScaling(0.6, skill, 'elemental', '1'), multiplier: Stats.ATK }],
           element: Element.ANEMO,
           property: TalentProperty.SKILL,
@@ -290,6 +289,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
             element: e,
             property: TalentProperty.CA,
             cd: form.chasca_c6 ? 1.2 : 0,
+            bonus: form.multitarget && a >= 1 ? radiantShadow : 0,
           })
         base.BURST_SCALING.push({
           name: `${e} Radiant Soulreaping Shell DMG`,
@@ -311,7 +311,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
             name: `C2 ${e} Explosion DMG`,
             value: [{ scaling: 4, multiplier: Stats.ATK }],
             element: e,
-            property: TalentProperty.ADD,
+            property: TalentProperty.CA,
           })
         }
         if (c >= 4) {

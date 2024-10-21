@@ -79,9 +79,9 @@ export const IntroModal = observer(() => {
       <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
         <p className="text-sm font-bold text-white">Credits</p>
         <div className="space-y-1 overflow-hidden transition-all duration-200">
-          <BulletPoint>
+          <BulletPoint color="text-desc">
             <a
-              className="cursor-pointer focus:outline-none text-desc"
+              className="cursor-pointer focus:outline-none text-blue"
               href="https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki"
               target="_blank"
             >
@@ -89,19 +89,46 @@ export const IntroModal = observer(() => {
             </a>{' '}
             for formulas, descriptions and constellation images.
           </BulletPoint>
-          <BulletPoint>
-            <a className="cursor-pointer focus:outline-none text-desc" href="https://enka.network" target="_blank">
-              EnkaNetwork
+          <BulletPoint color="text-desc">
+            <a className="cursor-pointer focus:outline-none text-blue" href="https://enka.network" target="_blank">
+              Enka.Network
             </a>{' '}
-            for images of characters, talents, weapons and artifacts as well as APIs for in-game data import.
+            for the in-game data import API.
           </BulletPoint>
-          <BulletPoint>
-            <a className="cursor-pointer focus:outline-none text-desc" href="https://wanderer.moe" target="_blank">
+          <BulletPoint color="text-desc">
+            <a className="cursor-pointer focus:outline-none text-blue" href="https://gi18.hakush.in" target="_blank">
+              Hakushi.in
+            </a>{' '}
+            and{' '}
+            <a
+              className="cursor-pointer focus:outline-none text-blue"
+              href="https://homdgcat.wiki/gi/char"
+              target="_blank"
+            >
+              HomDGCat Wiki
+            </a>{' '}
+            for character and weapon details.
+          </BulletPoint>
+          <BulletPoint color="text-desc">
+            <a className="cursor-pointer focus:outline-none text-blue" href="https://wanderer.moe" target="_blank">
               Wanderer.moe
             </a>{' '}
             for images of elements and emotes.
           </BulletPoint>
         </div>
+      </div>
+      <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
+        <p className="text-sm font-bold text-white">You may also like:</p>
+        <BulletPoint color="text-desc">
+          <a
+            className="cursor-pointer focus:outline-none text-blue"
+            href="https://mdc-calculator-hsr.vercel.app"
+            target="_blank"
+          >
+            MDC Calculator for HSR
+          </a>
+          : Damage Calculator for <b>Honkai: Star Rail</b> (also by me!)
+        </BulletPoint>
       </div>
     </div>
   )

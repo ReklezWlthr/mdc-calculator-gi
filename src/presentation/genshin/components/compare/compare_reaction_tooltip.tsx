@@ -63,7 +63,10 @@ export const CompareReactionTooltip = observer(({ meta }: { meta: ReactionToolti
             <div className="flex items-center justify-between gap-2">
               <div className="w-1/2">
                 <p className="w-full text-xs font-normal truncate text-gray">{m.title}</p>
-                <p>{m.name}</p>
+                <p>
+                  {m.name === 'Swirl' ? `${m.element} ` : ''}
+                  {m.name}
+                </p>
               </div>
               {!!i && (
                 <div className="flex flex-col items-end gap-y-1 shrink-0">

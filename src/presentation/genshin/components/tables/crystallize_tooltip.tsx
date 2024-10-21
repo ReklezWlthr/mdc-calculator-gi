@@ -9,46 +9,50 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 
-export const CrystallizeTooltip = observer(
-  ({ em, level, onElement }: { em: number; level: number; onElement: boolean }) => {
-    const { teamStore, calculatorStore } = useStore()
-    const team = _.map(teamStore.characters, (item, i) => ({
-      name: findCharacter(item.cId)?.name,
-      stats: calculatorStore.computedStats[i],
-    }))
+export interface CrystallizeTooltipProps {
+  em: number
+  level: number
+  onElement?: boolean
+}
 
-    const emBonus = 4.44 * (em / (em + 1400))
-    const base = BaseCrystallizeShield[level - 1]
-    const calc = base * (1 + emBonus)
+export const CrystallizeTooltip = observer(({ em, level, onElement }: CrystallizeTooltipProps) => {
+  const { teamStore, calculatorStore } = useStore()
+  const team = _.map(teamStore.characters, (item, i) => ({
+    name: findCharacter(item.cId)?.name,
+    stats: calculatorStore.computedStats[i],
+  }))
 
-    const raw = calc
-    const shieldValue = (shieldStrength: number) => raw * ((onElement ? 2.5 : 1) * (1 + shieldStrength))
+  const emBonus = 4.44 * (em / (em + 1400))
+  const base = BaseCrystallizeShield[level - 1]
+  const calc = base * (1 + emBonus)
 
-    return (
-      <Tooltip
-        title="Teammate Shield Strength"
-        body={
-          <div className="grid grid-cols-2 gap-1 text-xs">
-            {_.map(
-              team,
-              (item) =>
-                item && (
-                  <p key={item.name}>
-                    {item.name}:{' '}
-                    <span className="text-desc">
-                      {_.round(shieldValue(item.stats.getValue(Stats.SHIELD))).toLocaleString()}
-                    </span>
-                  </p>
-                )
-            )}
-          </div>
-        }
-        style="w-[300px]"
-      >
-        <p className={classNames('w-full font-bold text-center', onElement ? 'text-desc' : 'text-indigo-300')}>
-          {_.round(raw * (onElement ? 2.5 : 1)).toLocaleString()}
-        </p>
-      </Tooltip>
-    )
-  }
-)
+  const raw = calc
+  const shieldValue = (shieldStrength: number) => raw * ((onElement ? 2.5 : 1) * (1 + shieldStrength))
+
+  return (
+    <Tooltip
+      title="Teammate Shield Strength"
+      body={
+        <div className="grid grid-cols-2 gap-1 text-xs">
+          {_.map(
+            team,
+            (item) =>
+              item && (
+                <p key={item.name}>
+                  {item.name}:{' '}
+                  <span className="text-desc">
+                    {_.round(shieldValue(item.stats.getValue(Stats.SHIELD))).toLocaleString()}
+                  </span>
+                </p>
+              )
+          )}
+        </div>
+      }
+      style="w-[300px]"
+    >
+      <p className={classNames('w-full font-bold text-center', onElement ? 'text-desc' : 'text-indigo-300')}>
+        {_.round(raw * (onElement ? 2.5 : 1)).toLocaleString()}
+      </p>
+    </Tooltip>
+  )
+})

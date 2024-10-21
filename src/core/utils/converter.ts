@@ -13,11 +13,16 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
     const weaponId = weapon?.itemId?.toString()
     const talents = _.map<number>(item.skillLevelMap)
     const artifacts = _.map(_.filter(item.equipList, 'reliquary'), (a) => (a ? crypto.randomUUID() : null))
+    const travelerId = [503, 504, 506, 507, 508, 703, 704, 706, 707, 708]
     return {
       level: parseInt(item.propMap[PropMap.level].val),
       ascension: parseInt(item.propMap[PropMap.ascension].val),
       cons: _.size(item.talentIdList || []),
-      cId: item.avatarId.toString(),
+      cId: _.includes(travelerId, item.skillDepotId)
+        ? item.skillDepotId > 700
+          ? `${item.avatarId - 2}-${item.skillDepotId - 200}`
+          : `${item.avatarId}-${item.skillDepotId}`
+        : item.avatarId.toString(),
       equipments: {
         weapon: {
           wId: weaponId,

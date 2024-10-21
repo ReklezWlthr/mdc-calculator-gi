@@ -3,13 +3,14 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { BaseReactionDmg } from '@src/domain/scaling'
-import { Element } from '@src/domain/constant'
+import { Element, Stats } from '@src/domain/constant'
 import { ElementColor } from '@src/core/utils/damageStringConstruct'
 import { CalculatorT, useCalculator } from '@src/core/hooks/useCalculator'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CrystallizeTooltip } from '../tables/crystallize_tooltip'
 import { ReactionTooltip } from '../tables/reaction_tooltip'
 import { CompareReactionTooltip } from './compare_reaction_tooltip'
+import { CompareCrystallizeTooltip } from './compare_crystallize_tooltip'
 
 export const CompareReactionTable = observer(({ meta }: { meta: CalculatorT[] }) => {
   const { setupStore } = useStore()
@@ -27,6 +28,7 @@ export const CompareReactionTable = observer(({ meta }: { meta: CalculatorT[] })
       </div>
       <div className="py-1 rounded-b-lg bg-primary-darker">
         {_.map(meta?.[0]?.transformative, (item, oi) => {
+          const element = _.filter(_.uniq(_.map(meta, (item) => item.transformative[oi]?.element)))
           return (
             <div className="grid w-full grid-cols-8 gap-2 py-0.5 pr-2 text-sm text-center" key={item.name}>
               <div className="flex items-center justify-center w-full col-span-3 gap-2 font-bold">
@@ -50,7 +52,9 @@ export const CompareReactionTable = observer(({ meta }: { meta: CalculatorT[] })
                   </div>
                 )}
               </div>
-              <p className={classNames('col-span-1', ElementColor[item.element])}>{item.element}</p>
+              <p className={classNames('col-span-1', _.size(element) > 1 ? 'text-gray' : ElementColor[item.element])}>
+                {_.size(element) > 1 ? 'Various' : item.element}
+              </p>
               <CompareReactionTooltip
                 meta={_.map(meta, (m, i) => {
                   const team = i ? setupStore.comparing[i - 1] : setupStore.main
@@ -65,24 +69,24 @@ export const CompareReactionTable = observer(({ meta }: { meta: CalculatorT[] })
           )
         })}
         {meta?.[0]?.mainComputed?.ELEMENT === Element.GEO && (
-          <div className="grid w-full grid-cols-9 gap-2 py-0.5 pr-2 text-sm text-center">
+          <div className="grid w-full grid-cols-8 gap-2 py-0.5 pr-2 text-sm text-center">
             <p className="col-span-3 font-bold">Crystallize</p>
-            <p className="col-span-2 text-indigo-300">Shield</p>
-            {_.map(meta, (m, i) => {
-              if (!(i ? setupStore.comparing[i - 1]?.name : setupStore.main.name))
-                return <div className="col-span-1 text-center">-</div>
+            <p className="col-span-1 text-indigo-300">Shield</p>
+            <CompareCrystallizeTooltip
+              meta={_.map(meta, (m, i) => {
+                const team = i ? setupStore.comparing[i - 1] : setupStore.main
+                const char = _.find(team?.char, (item) => item.cId === setupStore.mainChar)
 
-              const char = _.find(
-                i ? setupStore.comparing[i - 1]?.char : setupStore.main.char,
-                (item) => item.cId === setupStore.mainChar
-              )
+                if (!char) return null
 
-              return (
-                <div className="col-span-1 text-start">
-                  <CrystallizeTooltip em={m?.mainComputed?.getEM()} level={char?.level} onElement={false} />
-                </div>
-              )
-            })}
+                return {
+                  title: team?.name,
+                  em: m?.mainComputed?.getEM(),
+                  level: char?.level,
+                  shieldStrength: m?.mainComputed?.getValue(Stats.SHIELD),
+                }
+              })}
+            />
           </div>
         )}
       </div>

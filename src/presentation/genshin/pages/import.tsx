@@ -24,6 +24,7 @@ import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
 import { ImportModal } from '../components/modals/import_modal'
 import dayjs from 'dayjs'
+import { Tooltip } from '@src/presentation/components/tooltip'
 
 export const ImportExport = observer(() => {
   const { modalStore, settingStore, importStore, toastStore } = useStore()
@@ -213,7 +214,29 @@ export const ImportExport = observer(() => {
             />
           </div>
           <div className="w-1/4 space-y-2">
-            <div className="font-bold">Method 2: UID</div>
+            <div className="flex items-center font-bold">
+              Method 2: UID
+              <Tooltip
+                title="Import via UID"
+                body={
+                  <div className="space-y-1 font-normal">
+                    <p>
+                      This method is powered by API from <b className="text-blue">Enka.Network</b>. It is required that
+                      you had used their website first.
+                    </p>
+                    <p>
+                      Additionally, the imported data for the Traveler will always be saved as <b>Aether</b> (Male) for
+                      simplicity's sake, with their actual appearance be based on what gender you chose in the{' '}
+                      <b>Settings</b> with <b>Aether</b> as default. However, each Element of the Traveler will have
+                      their own save slot.
+                    </p>
+                  </div>
+                }
+                style="w-[450px]"
+              >
+                <i className="ml-2 fa-regular fa-question-circle" />
+              </Tooltip>
+            </div>
             <div className="flex gap-2">
               <TextInput value={uid} onChange={(v) => setUid(v)} placeholder="Enter Your UID" />
               <PrimaryButton title="Submit" onClick={onFetchUID} loading={isFetching} />
@@ -244,12 +267,7 @@ export const ImportExport = observer(() => {
                 {_.size(importStore.characters) ? (
                   <div className="flex items-center justify-center gap-6 py-3">
                     <div className="relative">
-                      <TalentIcon
-                        talent={talent?.talents?.normal}
-                        element={selectedCharData?.element}
-                        icon={`https://enka.network/ui${WeaponIcon[selectedCharData?.weapon]}`}
-                        size="w-9 h-9"
-                      />
+                      <TalentIcon talent={talent?.talents?.normal} element={selectedCharData?.element} size="w-9 h-9" />
                       <div
                         className={classNames(
                           'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 text-white',
@@ -260,16 +278,7 @@ export const ImportExport = observer(() => {
                       </div>
                     </div>
                     <div className="relative ml-3">
-                      <TalentIcon
-                        talent={talent?.talents?.skill}
-                        element={selectedCharData?.element}
-                        icon={`https://enka.network/ui/Skill_${
-                          iconCodeName === 'PlayerGrass' ? 'E' : 'S'
-                        }_${iconCodeName}${iconCodeName === 'Qin' ? '_02' : '_01'}${
-                          iconCodeName === 'Diluc' ? '_01' : ''
-                        }.png`}
-                        size="w-9 h-9"
-                      />
+                      <TalentIcon talent={talent?.talents?.skill} element={selectedCharData?.element} size="w-9 h-9" />
                       <div
                         className={classNames(
                           'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 text-white',
@@ -280,14 +289,7 @@ export const ImportExport = observer(() => {
                       </div>
                     </div>
                     <div className="relative ml-3">
-                      <TalentIcon
-                        talent={talent?.talents?.burst}
-                        element={selectedCharData?.element}
-                        icon={`https://enka.network/ui/Skill_${
-                          iconCodeName === 'PlayerGrass' ? 'S' : 'E'
-                        }_${iconCodeName}${_.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'}.png`}
-                        size="w-9 h-9"
-                      />
+                      <TalentIcon talent={talent?.talents?.burst} element={selectedCharData?.element} size="w-9 h-9" />
                       <div
                         className={classNames(
                           'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 text-white',
@@ -301,7 +303,7 @@ export const ImportExport = observer(() => {
                 ) : (
                   <div className="h-5" />
                 )}
-                <StatBlock index={selected} stat={stats} />
+                <StatBlock stat={stats} />
               </div>
               <div className="w-1/5 space-y-5">
                 <WeaponBlock {...char?.equipments?.weapon} />
