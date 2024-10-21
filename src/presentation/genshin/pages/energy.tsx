@@ -126,6 +126,12 @@ export const EnergyRequirement = observer(() => {
             const charData = findCharacter(item.cId)
             const codeName =
               charData?.codeName === 'Player' ? settingStore.settings.travelerGender : charData?.codeName || ''
+            if (!charData)
+              return (
+                <div className="flex items-center justify-center w-full text-lg font-semibold rounded-lg ring-2 ring-primary bg-primary-dark text-gray h-[100px]">
+                  No Character Selected
+                </div>
+              )
             return (
               <div className="flex w-full rounded-lg ring-2 ring-primary">
                 <div className="w-[17%] shrink-0 rounded-l-lg overflow-hidden">

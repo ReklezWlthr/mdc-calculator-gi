@@ -120,9 +120,6 @@ export const ComparePage = observer(() => {
                   <i className="fa-regular fa-question-circle" />
                 </Tooltip>
               </p>
-              {setupStore.main && !setupStore.mainChar && (
-                <p className="text-xs text-red">Click the icon to compare the character.</p>
-              )}
             </div>
             {setupStore.main && (
               <i
@@ -132,6 +129,9 @@ export const ComparePage = observer(() => {
               />
             )}
           </div>
+          {setupStore.main && !setupStore.mainChar && (
+            <p className="text-xs text-red">Click the icon to compare the character.</p>
+          )}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3 px-2 py-2 rounded-lg bg-primary-dark h-[64px] w-[244px]">
               {setupStore.main?.char ? (
@@ -159,7 +159,7 @@ export const ComparePage = observer(() => {
                             }
                           : null
                       }
-                      isSelected={main[index]?.cId === setupStore.mainChar}
+                      isSelected={main[index]?.cId && main[index]?.cId === setupStore.mainChar}
                       codeName={findCharacter(main[index]?.cId)?.codeName}
                     />
                   )

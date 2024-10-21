@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite'
 
 const ArrowRow = ({ name, value, color }: { name: string; value: number; color: string }) => (
   <BulletPoint color={color}>
-    <span className="text-gray text-xs">
+    <span className="text-xs text-gray">
       <span className="font-semibold">
         {name}
         <i className="fa-solid fa-arrow-right mx-1.5" />
@@ -27,16 +27,21 @@ export const EnergySourceModal = observer(() => {
       <div className="grid grid-cols-2 gap-4">
         {_.map(teamStore.characters, (item, index) => {
           const { additional, electro } = energyStore.getAdditionalPersonal(index)
+          if (!item.cId) return <></>
           return (
             <div>
-              <p className="font-bold text-sm">{findCharacter(item.cId)?.name}</p>
-              {_.map(teamStore.characters, (c, i) => (
-                <ArrowRow
-                  name={`${findCharacter(c?.cId)?.name}'s Particles`}
-                  value={energyStore.getEnergyFrom(i, index)}
-                  color={ElementColor[findCharacter(c?.cId)?.element]}
-                />
-              ))}
+              <p className="text-sm font-bold">{findCharacter(item.cId)?.name}</p>
+              {_.map(teamStore.characters, (c, i) =>
+                c.cId ? (
+                  <ArrowRow
+                    name={`${findCharacter(c?.cId)?.name}'s Particles`}
+                    value={energyStore.getEnergyFrom(i, index)}
+                    color={ElementColor[findCharacter(c?.cId)?.element]}
+                  />
+                ) : (
+                  <></>
+                )
+              )}
               {!!electro && (
                 <ArrowRow name="Electro Resonance Particles" value={electro} color="text-genshin-electro" />
               )}
