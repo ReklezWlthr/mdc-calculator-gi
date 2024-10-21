@@ -152,9 +152,23 @@ export const CompareBlock = observer(() => {
             </div>
             <PrimaryButton onClick={onOpenEnemyModal} title="Enemy Setting" style="whitespace-nowrap" />
           </div>
-          <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
-            <p>Damage Comparison</p>
-            {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}
+          <div className="flex items-center justify-between px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
+            <div className="w-full" />
+            <p className="shrink-0">Damage Calculation</p>
+            <div className="flex items-center justify-end w-full gap-1">
+              <p className="text-sm font-semibold">Mode:</p>
+              <SelectInput
+                small
+                options={[
+                  { name: 'Single-Hit', value: 'single' },
+                  { name: 'Total DMG', value: 'total' },
+                ]}
+                onChange={(v) => setupStore.setValue('dmgMode', v)}
+                value={setupStore.dmgMode}
+                style="w-fit"
+                placeholder="Select Mode"
+              />
+            </div>
           </div>
           <div className="flex justify-end w-full bg-primary-dark">
             <div className="grid w-4/5 grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">

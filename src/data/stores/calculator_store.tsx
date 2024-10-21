@@ -16,7 +16,7 @@ export interface CalculatorStoreType {
   superconduct: boolean
   stun: boolean
   shielded: boolean
-  mode: string
+  dmgMode: string
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
@@ -33,7 +33,7 @@ export class CalculatorStore {
   variant: string
   stun: boolean
   shielded: boolean
-  mode: string
+  dmgMode: string
   computedStats: StatsObject[]
   res: Record<Element, number>
   level: number | string
@@ -48,7 +48,7 @@ export class CalculatorStore {
     this.stun = false
     this.shielded = false
     this.computedStats = Array(4)
-    this.mode = 'total'
+    this.dmgMode = 'total'
     this.selected = 0
     this.level = 1
     this.res = {

@@ -77,8 +77,8 @@ export const Calculator = observer(({}: {}) => {
                         { name: 'Single-Hit', value: 'single' },
                         { name: 'Total DMG', value: 'total' },
                       ]}
-                      onChange={(v) => calculatorStore.setValue('mode', v)}
-                      value={calculatorStore.mode}
+                      onChange={(v) => calculatorStore.setValue('dmgMode', v)}
+                      value={calculatorStore.dmgMode}
                       style="w-fit"
                       placeholder="Select Mode"
                     />

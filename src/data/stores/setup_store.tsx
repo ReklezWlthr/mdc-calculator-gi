@@ -43,6 +43,7 @@ export type TotalT = {
 
 export interface SetupStoreType {
   mode: string
+  dmgMode: string
   team: TSetup[]
   tab: string
   selected: number[]
@@ -89,6 +90,7 @@ export interface SetupStoreType {
 
 export class SetupStore {
   mode: string
+  dmgMode: string
   selected: number[]
   tab: string
   team: TSetup[]
@@ -114,6 +116,7 @@ export class SetupStore {
 
   constructor() {
     this.mode = 'avg'
+    this.dmgMode = 'total'
     this.team = []
     this.tab = 'mod'
     this.selected = [0, 0]

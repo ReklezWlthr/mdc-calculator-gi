@@ -97,7 +97,7 @@ export const damageStringConstruct = (
     (scaling.multiplier || 1) *
     elementMult *
     enemyMod *
-    (calculatorStore.mode === 'total' ? scaling.hit || 1 : 1)
+    (calculatorStore.dmgMode === 'total' ? scaling.hit || 1 : 1)
 
   const totalCr =
     scaling.property === TalentProperty.CRIT
@@ -128,7 +128,7 @@ export const damageStringConstruct = (
   const formulaString = `<b class="${PropertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg
   ).toLocaleString()}</b> = ${shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
-    scaling.hit && calculatorStore.mode === 'total'
+    scaling.hit && calculatorStore.dmgMode === 'total'
       ? ` \u{00d7} <b class="text-desc">${scaling.hit}</b> <i class="text-[10px]">HITS</i>`
       : ''
   }${bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''}${
