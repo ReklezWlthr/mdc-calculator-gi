@@ -184,7 +184,7 @@ export const EnergyRequirement = observer(() => {
                             small
                             onChange={(v) => setMetaData(index, `skill[${cIndex}].proc`, parseFloat(v))}
                             value={meta[index]?.skill?.[cIndex]?.proc?.toString()}
-                            style="!w-[60px] shrink-0"
+                            style="!w-[45px] shrink-0"
                             type="number"
                             min={0}
                           />

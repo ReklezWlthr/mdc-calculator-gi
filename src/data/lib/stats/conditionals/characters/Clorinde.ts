@@ -311,7 +311,7 @@ const Clorinde = (c: number, a: number, t: ITalentLevel) => {
 
       if (form.clorinde_a4)
         base[Stats.CRIT_RATE].push({ value: form.clorinde_a4 * 0.1, name: 'Ascension 4 Passive', source: 'Self' })
-      if (c >= 1 && form.clorinde_skill)
+      if (c >= 1 && form.night_vigil)
         base.BASIC_SCALING.push({
           name: 'Nightvigil Shade DMG',
           value: [{ scaling: 0.3, multiplier: Stats.ATK }],
