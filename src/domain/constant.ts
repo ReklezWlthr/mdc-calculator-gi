@@ -355,6 +355,36 @@ export const EnkaArtifactTypeMap = {
   EQUIP_DRESS: 3,
 }
 
+export const ScannerStatsMap = {
+  hp: Stats.HP,
+  atk: Stats.ATK,
+  def: Stats.DEF,
+  hp_: Stats.P_HP,
+  atk_: Stats.P_ATK,
+  def_: Stats.P_DEF,
+  critRate_: Stats.CRIT_RATE,
+  critDMG_: Stats.CRIT_DMG,
+  enerRech_: Stats.ER,
+  heal_: Stats.HEAL,
+  eleMas: Stats.EM,
+  physical_dmg_: Stats.PHYSICAL_DMG,
+  anemo_dmg_: Stats.ANEMO_DMG,
+  geo_dmg_: Stats.GEO_DMG,
+  electro_dmg_: Stats.ELECTRO_DMG,
+  hydro_dmg_: Stats.HYDRO_DMG,
+  pyro_dmg_: Stats.PYRO_DMG,
+  cryo_dmg_: Stats.CRYO_DMG,
+  dendro_dmg_: Stats.DENDRO_DMG,
+}
+
+export const ScannerArtifactTypeMap = {
+  flower: 4,
+  plume: 2,
+  sands: 5,
+  goblet: 1,
+  circlet: 3,
+}
+
 export const TravelerIconName = {
   [Element.ANEMO]: 'PlayerWind',
   [Element.GEO]: 'PlayerRock',

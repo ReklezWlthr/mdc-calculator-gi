@@ -79,6 +79,7 @@ export const useLocalUpdater = (game: string) => {
           builds: buildStore.builds,
           characters: charStore.characters,
           setup: setupStore.team,
+          format: 'MDC',
         })
       )
     }

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import _ from 'lodash'
 import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
-import { toLocalStructure } from '@src/core/utils/converter'
+import { fromScanner, toLocalStructure } from '@src/core/utils/converter'
 import { useGetGenshinData } from '@src/data/api/genshin'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
@@ -25,6 +25,7 @@ import { getSetCount } from '@src/core/utils/data_format'
 import { ImportModal } from '../components/modals/import_modal'
 import dayjs from 'dayjs'
 import { Tooltip } from '@src/presentation/components/tooltip'
+import { DefaultCharacter } from '@src/data/stores/team_store'
 
 export const ImportExport = observer(() => {
   const { modalStore, settingStore, importStore, toastStore } = useStore()
@@ -166,7 +167,7 @@ export const ImportExport = observer(() => {
     <div className="w-full h-full pb-5 overflow-y-auto">
       <div
         className={classNames(
-          'flex flex-col w-full gap-5 p-5 text-white max-w-[1240px] mx-auto',
+          'flex flex-col w-full gap-5 p-5 text-white max-w-[1200px] mx-auto',
           _.size(importStore.characters) ? 'h-fit' : 'h-full'
         )}
       >
@@ -184,7 +185,7 @@ export const ImportExport = observer(() => {
                 title="Export to File"
                 onClick={() => {
                   const blob = new Blob([data], { type: 'text/json;charset=utf-8' })
-                  saveFile(blob, 'export.json')
+                  saveFile(blob, 'mdc_gi_export.json')
                 }}
               />
             </div>
@@ -199,6 +200,12 @@ export const ImportExport = observer(() => {
                 const reader = new FileReader()
                 reader.addEventListener('load', (event) => {
                   const data = JSON.parse(event.target.result.toString())
+                  if (data?.format !== 'MDC')
+                    return toastStore.openNotification({
+                      title: 'No Data Found or JSON Format Mismatched',
+                      icon: 'fa-solid fa-exclamation-circle',
+                      color: 'red',
+                    })
                   onOpenConfirmModal(data?.characters?.length, data?.builds?.length, data?.artifacts?.length, () => {
                     localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
                     updateData(event.target.result.toString())
@@ -213,9 +220,86 @@ export const ImportExport = observer(() => {
               }}
             />
           </div>
+          <div className="w-4/12 space-y-2">
+            <div className="flex items-center gap-2 font-bold">
+              Method 2: GOOD JSON
+              <Tooltip
+                title="Import Data from Scanner"
+                body={
+                  <span className="text-sm font-normal">
+                    This method supports any output files that follows <b>GOOD</b> JSON structure.
+                    <br />- The resulting data may include owned characters and artifacts. Builds are also automatically
+                    created with currently equipped weapons and artifacts when importing characters. Builds will not be
+                    created for characters without weapon equipped.
+                    <br />
+                    <br />
+                    <b className="text-red">IMPORTANT</b>: Importing artifacts will{' '}
+                    <span className="text-red">COMPLETELY WIPE</span> all of your saved builds to avoid data conflicts.
+                    Please proceed with caution.
+                  </span>
+                }
+                style="w-[450px]"
+              >
+                <i className="fa-regular fa-question-circle" />
+              </Tooltip>
+            </div>
+            <div className="flex gap-x-2">
+              <PrimaryButton
+                title="Upload Data File"
+                onClick={() => {
+                  document.getElementById('scanner').click()
+                }}
+              />
+              <PrimaryButton
+                title="Download Scanners"
+                onClick={() => {
+                  window.open('https://genshin-optimizer-prs.github.io/pr/beta/frontend/#/scanner', '_blank')
+                }}
+              />
+            </div>
+            <input
+              id="scanner"
+              className="hidden"
+              type="file"
+              multiple={false}
+              accept=".json"
+              onChange={(event) => {
+                const file = event.target.files[0]
+                const reader = new FileReader()
+                reader.addEventListener('load', (event) => {
+                  const result = fromScanner(JSON.parse(event.target.result.toString()))
+                  if (!result)
+                    return toastStore.openNotification({
+                      title: 'No Data Found or JSON Format Mismatched',
+                      icon: 'fa-solid fa-exclamation-circle',
+                      color: 'red',
+                    })
+                  const { charData, artifactData, buildData } = result
+                  onOpenConfirmModal(charData?.length || 0, buildData?.length || 0, artifactData?.length || 0, () => {
+                    const oldData = JSON.parse(localStorage.getItem(`genshin_local_storage`))
+                    const dataString = JSON.stringify({
+                      characters: _.size(charData) ? charData : oldData.characters || [],
+                      artifacts: _.size(artifactData) ? artifactData : oldData.artifacts || [],
+                      builds: _.size(buildData) ? (_.size(artifactData) ? [] : buildData) : [],
+                      team: Array(4).fill(DefaultCharacter),
+                      setup: [],
+                    })
+                    localStorage.setItem(`genshin_local_storage`, dataString)
+                    updateData(dataString)
+                    toastStore.openNotification({
+                      title: 'Data Imported Successfully',
+                      icon: 'fa-solid fa-circle-check',
+                      color: 'green',
+                    })
+                  })
+                })
+                reader.readAsText(file)
+              }}
+            />
+          </div>
           <div className="w-1/4 space-y-2">
             <div className="flex items-center font-bold">
-              Method 2: UID
+              Method 3: UID
               <Tooltip
                 title="Import via UID"
                 body={
