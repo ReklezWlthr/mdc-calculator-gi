@@ -172,7 +172,7 @@ export const ImportExport = observer(() => {
       >
         <div className="flex gap-5">
           <div className="w-1/4 space-y-2">
-            <div className="font-bold">Method 1: File</div>
+            <div className="font-bold">Method 1: Calculator Data</div>
             <div className="flex gap-x-2">
               <PrimaryButton
                 title="Import from File"
