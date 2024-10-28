@@ -497,7 +497,7 @@ export const Weapons = [
   },
   {
     id: '11432',
-    name: 'The Calamity of the Blighted Springs',
+    name: 'Calamity of Eshu',
     rarity: 4,
     tier: 3,
     ascStat: Stats.P_ATK,

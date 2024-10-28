@@ -42,10 +42,10 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     skill: {
       level: skill,
       trace: `Elemental Skill`,
-      title: `Night's Tightrope`,
+      title: `Night's Sling`,
       content: `Ororon manifests an ancient mystical technique from the Masters of the Night-Wind as a <b class="text-genshin-electro">Spirit Orb</b> of midnight shade and throws it at his foe, dealing Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b>.
-      <br />When other opponents are nearby, the <b class="text-genshin-electro">Spirit Orb</b> will bounce between them, dealing Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b>. Each time <b>Night's Tightrope</b> is used, each opponent can only be selected as a target once.
-      <br />After <span class="text-desc">3</span> bounces, or if there are no eligible targets left, the <b class="text-genshin-electro">Oculus</b> will disappear. Only <span class="text-desc">1</span> <b class="text-genshin-electro">Oculus</b> created by Ororon himself can exist at any one time.`,
+      <br />When other opponents are nearby, the <b class="text-genshin-electro">Spirit Orb</b> will bounce between them, dealing Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b>. Each time <b>Night's Sling</b> is used, each opponent can only be selected as a target once.
+      <br />After <span class="text-desc">3</span> bounces, or if there are no eligible targets left, the <b class="text-genshin-electro">Oculus</b> will disappear.`,
       image: 'Skill_S_Olorun_01',
     },
     burst: {
@@ -62,7 +62,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Nightshade Synesthesia`,
-      content: `When a nearby party member triggers <b>Nightsoul Burst</b>, Ororon will gain <span class="text-desc">40</span> <b class="text-genshin-electro">Nightsoul</b> points. Within <span class="text-desc">15</span>s after using his Elemental Skill, when other characters deal <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b>, Ororon will gain <span class="text-desc">5</span> <b class="text-genshin-electro">Nightsoul</b> points, an effect that can occur every <span class="text-desc">0.3</span>s for a maximum of <span class="text-desc">10</span> times during this <span class="text-desc">15</span>s duration.
+      content: `After a nearby party member triggers <b>Nightsoul Burst</b>, Ororon will gain <span class="text-desc">40</span> <b class="text-genshin-electro">Nightsoul</b> points. Within <span class="text-desc">15</span>s after using his Elemental Skill, when other party members deal <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b>, Ororon will gain <span class="text-desc">5</span> <b class="text-genshin-electro">Nightsoul</b> points, an effect that can occur every <span class="text-desc">0.3</span>s for a maximum of <span class="text-desc">10</span> times during this <span class="text-desc">15</span>s duration.
       <br />
       <br />Also, when nearby opponents take Electro-Charged reaction DMG or Nightsoul-aligned DMG dealt by other nearby characters, Ororon will consume <span class="text-desc">10</span> <b class="text-genshin-electro">Nightsoul</b> points (provided he has at least that amount), entering the <b class="text-genshin-electro">Nightsoul's Blessing</b> state and triggering the <b>Hypersense</b> effect: Deal Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b> based on <span class="text-desc">160%</span> of Ororon's ATK to at most <span class="text-desc">4</span> nearby opponents. The aforementioned effect can trigger once every <span class="text-desc">1.8</span>s.
       <br />
@@ -73,10 +73,10 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     a4: {
       trace: `Ascension 4 Passive`,
       title: `Aspect Catalyst`,
-      content: `After the Elemental Skill <b>Night's Tightrope</b>'s <b class="text-genshin-electro">Spirit Orb</b> hits an opponent, Ororon will gain the <b>Aspect Sigil</b> effect for <span class="text-desc">15</span>s.
+      content: `After the Elemental Skill <b>Night's Sling</b>'s <b class="text-genshin-electro">Spirit Orb</b> hits an opponent, Ororon will gain the <b>Aspect Sigil</b> effect for <span class="text-desc">15</span>s.
       <br />
       <br /><b>Aspect Sigil</b>
-      <br />When a nearby active party member Normal Attack, Charged Attack or Plunge Attack hits an opponent, that character will restore <span class="text-desc">3</span> Energy. If Ororon is off-field, Ororon will also restore <span class="text-desc">3</span> Energy. This effect can trigger once every <span class="text-desc">1</span>s, and can trigger <span class="text-desc">3</span> times per duration.`,
+      <br />When a nearby active party member hits an opponent with Normal, Charged, or Plunging Attacks, that character will restore <span class="text-desc">3</span> Energy. If Ororon is off-field, Ororon will also restore <span class="text-desc">3</span> Energy. This effect can trigger once every <span class="text-desc">1</span>s, and can trigger <span class="text-desc">3</span> times per duration.`,
       image: 'UI_Talent_S_Olorun_06',
     },
     util: {
@@ -94,13 +94,13 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />Holding Aiming Mode will cause Ororon to enter the <b>Spiritspeaker</b> state, which will allow him to interact with <b>Nightspirit Graffiti</b> and <b>Nightspirit Bodies</b>, extracting information and power from them. The rules for interacting with these objects follow the same rules as those governing Iktomisaurus interactions.
       <br />
       <br />Additionally, holding the jump button will cause Ororon to consume <span class="text-desc">75</span> Stamina and leap. In areas within Natlan where <b class="text-genshin-pyro">Phlogiston</b> mechanics are present, Ororon will prioritize consuming <span class="text-desc">5</span> <b class="text-genshin-pyro">Phlogiston</b> to leap to a height higher still.
-      <br />While in the air, hold Ororon's Normal Attack to aim, consuming <b class="text-genshin-pyro">Phlogiston</b> or Stamina.`,
+      <br />When in the air, Ororon can hold his Normal Attack to consume <b class="text-genshin-pyro">Phlogiston</b> or Stamina and enter Aiming Mode.`,
       image: 'UI_Talent_S_Olorun_07',
     },
     c1: {
       trace: `Constellation 1`,
       title: `Trails Amidst the Forest Fog`,
-      content: `The Elemental Skill <b>Night's Tightrope</b>'s <b class="text-genshin-electro">Spirit Orb</b> can bounce <span class="text-desc">2</span> additional times.
+      content: `The Elemental Skill <b>Night's Sling</b>'s <b class="text-genshin-electro">Spirit Orb</b> can bounce <span class="text-desc">2</span> additional times.
       <br />Additionally, after the <b class="text-genshin-electro">Spirit Orb</b> hits an opponent, it will apply the <b class="text-violet-300">Nighttide</b> effect to them for <span class="text-desc">12</span>s. Opponents affected by <b class="text-violet-300">Nighttide</b> take <span class="text-desc">50%</span> increased DMG from <b>Hypersense</b> triggered by the Passive Talent, <b>Nightshade Synesthesia</b>. Unlock the aforementioned Passive Talent to trigger this effect.`,
       image: 'UI_Talent_S_Olorun_01',
     },
@@ -130,7 +130,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c5: {
       trace: `Constellation 5`,
       title: `A Gift For the Soul`,
-      content: `Increases the Level of <b>Night's Tightrope</b> by <span class="text-desc">3</span>.
+      content: `Increases the Level of <b>Night's Sling</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
       image: 'UI_Talent_U_Olorun_02',
     },

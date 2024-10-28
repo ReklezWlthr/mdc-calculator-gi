@@ -62,7 +62,7 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
         setId: artifact.flat.setNameTextMapHash,
         level: artifact.reliquary.level - 1,
         type: EnkaArtifactTypeMap[artifact.flat.equipType],
-        main: EnkaStatsMap[artifact.flat.reliquarymainStatKey.mainPropId],
+        main: EnkaStatsMap[artifact.flat.reliquaryMainstat.mainPropId],
         quality: artifact.flat.rankLevel,
         subList: _.map(artifact.flat.reliquarySubstats, (sub) => ({
           stat: EnkaStatsMap[sub.appendPropId],

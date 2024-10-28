@@ -219,6 +219,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
               value: [{ scaling: calcScaling(0.25467, normal, 'physical', '1'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NA,
+              hit: 3,
             },
           ]
       const size = _.min([_.size(uniqueElements) + (c >= 2 ? 1 : 0), 3])
