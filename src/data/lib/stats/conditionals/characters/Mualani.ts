@@ -198,14 +198,15 @@ const Mualani = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       const sharkyScaling = [
         { scaling: calcScaling(0.0868, skill, 'elemental', '1') + c1Buff, multiplier: Stats.HP },
         ...(form.wave_momentum
-          ? form.wave_momentum >= 3
-            ? [{ scaling: calcScaling(0.217, skill, 'elemental', '1') + c1Buff, multiplier: Stats.HP }]
-            : [
-                {
-                  scaling: calcScaling(0.0434, skill, 'elemental', '1') * form.wave_momentum,
-                  multiplier: Stats.HP,
-                },
-              ]
+          ? [
+              ...(form.wave_momentum >= 3
+                ? [{ scaling: calcScaling(0.217, skill, 'elemental', '1') + c1Buff, multiplier: Stats.HP }]
+                : []),
+              {
+                scaling: calcScaling(0.0434, skill, 'elemental', '1') * form.wave_momentum,
+                multiplier: Stats.HP,
+              },
+            ]
           : []),
       ]
       base.SKILL_SCALING = [
