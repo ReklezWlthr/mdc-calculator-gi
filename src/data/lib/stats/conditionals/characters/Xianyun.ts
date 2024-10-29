@@ -160,7 +160,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'xianyun_a4')]
+  const teammateContent: IContent[] = [findContentById(content, 'storm_pinion'), findContentById(content, 'xianyun_a4')]
 
   return {
     upgrade,
@@ -265,7 +265,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
         },
       ]
       if (form.storm_pinion)
-        base[Stats.CRIT_RATE].push({ value: form.storm_pinion * 0.2 + 0.2, name: 'Storm Pinion', source: 'Self' })
+        base.PLUNGE_CR.push({ value: form.storm_pinion * 0.02 + 0.02, name: 'Storm Pinion', source: 'Self' })
       if (c >= 2 && form.skyladder) base[Stats.P_ATK].push({ value: 0.2, name: 'Constellation 2', source: `Self` })
 
       if (c >= 6 && form.skyladder)
@@ -284,6 +284,8 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>) => {
+      if (form.storm_pinion)
+        base.PLUNGE_CR.push({ value: form.storm_pinion * 0.02 + 0.02, name: 'Storm Pinion', source: 'Xianyun' })
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>, allBase: StatsObject[]) => {
@@ -296,7 +298,7 @@ const Xianyun = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
               name: 'Ascension 4 Passive',
               source: item === i ? 'Self' : 'Xianyun',
               base: _.min([a[index].getAtk(), 4500]),
-              multiplier: 2 * (c >= 2 ? 2 : 1),
+              multiplier: toPercentage(2 * (c >= 2 ? 2 : 1)),
             })
           })
           return x

@@ -276,6 +276,7 @@ const Sigewinne = (c: number, a: number, t: ITalentLevel) => {
           value: [{ scaling: calcScaling(0.118, burst, 'elemental', '1'), multiplier: Stats.HP }],
           element: Element.HYDRO,
           property: TalentProperty.BURST,
+          hit: 6,
         },
       ]
 
