@@ -2510,7 +2510,7 @@ export const Weapons = [
     type: WeaponType.CATALYST,
     desc: {
       name: 'Golden Blood-Tide',
-      detail: `ATK is increased by {{0}}%. When current HP increases or decreases, Normal Attack DMG will be increased by {{0}}% and Charged Attack DMG will be increased by {{1}}% for <span class="text-desc">4</span>s. Max <span class="text-desc">3</span>3 stacks. This effect can be triggered once every <span class="text-desc">0.3</span>s. When the wielder has <span class="text-desc">3</span> stacks, ATK SPD will be increased by {{2}}%.`,
+      detail: `ATK is increased by {{0}}%. When current HP increases or decreases, Normal Attack DMG will be increased by {{0}}% and Charged Attack DMG will be increased by {{1}}% for <span class="text-desc">4</span>s. Max <span class="text-desc">3</span> stacks. This effect can be triggered once every <span class="text-desc">0.3</span>s. When the wielder has <span class="text-desc">3</span> stacks, ATK SPD will be increased by {{2}}%.`,
       properties: [
         { base: 16, growth: 4 },
         { base: 14, growth: 3.5 },

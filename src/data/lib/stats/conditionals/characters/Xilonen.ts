@@ -191,7 +191,7 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     {
       type: 'toggle',
       id: 'xilonen_a1',
-      text: `A1 Pure Geo Nightsoul`,
+      text: `A1 NA/PA DMG Bonus`,
       ...talents.a1,
       show: a >= 1 && _.size(elements) - 1 < 2,
       default: true,
@@ -342,10 +342,11 @@ const Xilonen = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
           property: TalentProperty.HEAL,
         },
         {
-          name: 'Follow-Up Beat DMG',
+          name: 'Total Beat DMG',
           value: [{ scaling: calcScaling(2.8128, burst, 'elemental', '1'), multiplier: Stats.DEF }],
           element: Element.GEO,
           property: TalentProperty.BURST,
+          hit: 3,
         },
       ]
 

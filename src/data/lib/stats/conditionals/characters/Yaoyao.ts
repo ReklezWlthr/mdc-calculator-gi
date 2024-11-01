@@ -137,7 +137,7 @@ const Yaoyao = (c: number, a: number, t: ITalentLevel) => {
       text: `C1 Dendro DMG Bonus`,
       ...talents.c1,
       show: c >= 1,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',

@@ -1,5 +1,12 @@
 [
   {
+    "version": "2.0.2-1",
+    "date": "November 1st, 2024",
+    "desc": [
+      "<b class=\"text-heal\">Fixed</b>: Incorrect <span class=\"text-desc\">Raiden Shogun</span>'s <b>Burst</b> formula"
+    ]
+  },
+  {
     "version": "2.0.2",
     "date": "October 28th, 2024",
     "desc": [
