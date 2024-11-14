@@ -16,12 +16,6 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
   const skill = t.skill + (upgrade.skill ? 3 : 0)
   const burst = t.burst + (upgrade.burst ? 3 : 0)
 
-  const teamElements = _.filter(
-    _.map(team, (item) => findCharacter(item.cId)?.element),
-    (item) => _.includes([Element.PYRO, Element.HYDRO, Element.ELECTRO, Element.CRYO], item)
-  )
-  const uniqueElements = _.uniq(teamElements)
-
   const talents: ITalent = {
     normal: {
       level: normal,
@@ -62,7 +56,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Nightshade Synesthesia`,
-      content: `After a nearby party member triggers <b>Nightsoul Burst</b>, Ororon will gain <span class="text-desc">40</span> <b class="text-genshin-electro">Nightsoul</b> points. Within <span class="text-desc">15</span>s after using his Elemental Skill, when other party members deal <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b>, Ororon will gain <span class="text-desc">5</span> <b class="text-genshin-electro">Nightsoul</b> points, an effect that can occur every <span class="text-desc">0.3</span>s for a maximum of <span class="text-desc">10</span> times during this <span class="text-desc">15</span>s duration.
+      content: `After a nearby party member triggers <b>Nightsoul Burst</b>, Ororon will gain <span class="text-desc">40</span> <b class="text-genshin-electro">Nightsoul</b> points. Within <span class="text-desc">15</span>s after using his Elemental Skill, when attacks from other party members who are <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-electro">Electro DMG</b> hit opponents, Ororon will gain <span class="text-desc">5</span> <b class="text-genshin-electro">Nightsoul</b> points, an effect that can occur every <span class="text-desc">0.3</span>s for a maximum of <span class="text-desc">10</span> times during this <span class="text-desc">15</span>s duration. Ororon can have a maximum of <span class="text-desc">80</span> <b class="text-genshin-electro">Nightsoul</b> points
       <br />
       <br />Also, when nearby opponents take Electro-Charged reaction DMG or Nightsoul-aligned DMG dealt by other nearby characters, Ororon will consume <span class="text-desc">10</span> <b class="text-genshin-electro">Nightsoul</b> points (provided he has at least that amount), entering the <b class="text-genshin-electro">Nightsoul's Blessing</b> state and triggering the <b>Hypersense</b> effect: Deal Nightsoul-aligned <b class="text-genshin-electro">Electro DMG</b> based on <span class="text-desc">160%</span> of Ororon's ATK to at most <span class="text-desc">4</span> nearby opponents. The aforementioned effect can trigger once every <span class="text-desc">1.8</span>s.
       <br />
@@ -111,7 +105,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       <br />
       <br /><b>Spiritual Supersense</b>
       <br />Gain <span class="text-desc">8%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.
-      <br />During this time, every additional opponent hit by the Elemental Burst <b>Dark Voices Echo</b> or <b class="text-genshin-electro">Supersonic Oculus</b> will grant Ororon a further <span class="text-desc">8%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>. The maximum that can be gained this way is <span class="text-desc">40%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.`,
+      <br />Additionally, during this time, every additional opponent hit by the Elemental Burst <b>Dark Voices Echo</b> or <b class="text-genshin-electro">Supersonic Oculus</b> will grant Ororon a further <span class="text-desc">8%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>. The maximum that can be gained this way is <span class="text-desc">40%</span> <b class="text-genshin-electro">Electro DMG Bonus</b>.`,
       image: 'UI_Talent_S_Olorun_02',
     },
     c3: {
@@ -124,7 +118,8 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c4: {
       trace: `Constellation 4`,
       title: `As the Mysteries of the Night-Wind`,
-      content: `The <b class="text-genshin-electro">Supersonic Oculus</b> summoned by the Elemental Burst, <b>Dark Voices Echo</b> rotates <span class="text-desc">25%</span> faster.`,
+      content: `The <b class="text-genshin-electro">Supersonic Oculus</b> summoned by the Elemental Burst <b>Dark Voices Echo</b> rotates <span class="text-desc">25%</span> faster.
+      <br />Additionally, Ororon will restore <span class="text-desc">8</span> Energy to himself after using <b>Dark Voices Echo</b>.`,
       image: 'UI_Talent_S_Olorun_03',
     },
     c5: {
@@ -139,7 +134,7 @@ const Ororon = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `Ode to Deep Springs`,
       content: `After triggering <b>Hypersense</b> through the Passive Talent, <b>Nightshade Synesthesia</b>, your current active character's ATK is increased by <span class="text-desc">10%</span> for <span class="text-desc">9</span>s. Max <span class="text-desc">3</span> stacks, each stack is counted independently.
       <br />Additionally, when you use the Elemental Burst <b>Dark Voices Echo</b>, you will trigger one instance of an effect equivalent to <b>Hypersense</b>, dealing <span class="text-desc">200%</span> of its original DMG.
-      You must unlock the Passive Talent <b>Nightshade Synesthesia</b> first.`,
+      <br />You must unlock the Passive Talent <b>Nightshade Synesthesia</b> first.`,
       image: 'UI_Talent_S_Olorun_04',
     },
   }

@@ -155,6 +155,14 @@ export const AutoEnergy: IAutoEnergy[] = [
       return 15
     },
   },
+  {
+    name: `Ororon's C4`,
+    source: '10000105',
+    getEnergy: (props) => {
+      if (props.receiver.cId !== '10000105' || props.char.cons < 4) return 0
+      return 8
+    },
+  },
 ]
 
 export const TriggerEnergy: ITriggerEnergy[] = [

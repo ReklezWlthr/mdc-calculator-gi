@@ -133,7 +133,8 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c4: {
       trace: `Constellation 4`,
       title: `Sparks, the Sudden Shot`,
-      content: `When the <b class="text-violet-300">Radiant Soulseeker Shells</b> from <b>Soul Reaper's Fatal Round</b> hit opponents, they will restore <span class="text-desc">1.5</span> Elemental Energy to Chasca, and deal <b>AoE Elemental DMG</b> of the corresponding <b>Elemental Type</b> of the <b class="text-violet-300">Radiant Soulseeker Shells</b> equal to <span class="text-desc">400%</span> of Chasca's ATK. This effect can be triggered once each time Chasca uses <b>Soul Reaper's Fatal Round</b>.`,
+      content: `When the <b class="text-violet-300">Radiant Soulseeker Shells</b> from <b>Soul Reaper's Fatal Round</b> hit opponents, they will restore <span class="text-desc">1.5</span> Elemental Energy to Chasca, and deal <b>AoE Elemental DMG</b> of the corresponding <b>Elemental Type</b> of the <b class="text-violet-300">Radiant Soulseeker Shells</b> equal to <span class="text-desc">400%</span> of Chasca's ATK. This DMG is considered Charged Attack DMG.
+      <br />The aforementioned corresponding elemental AoE DMG effect can be triggered once each time Chasca uses <b>Soul Reaper's Fatal Round</b>.`,
       image: 'UI_Talent_S_Chasca_03',
     },
     c5: {
@@ -146,7 +147,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c6: {
       trace: `Constellation 6`,
       title: `Showdown, the Glory of Battle`,
-      content: `Chasca's <b>Multitarget Fire</b> charge time is decreased, and after the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b> is triggered, Chasca will gain the <b class="text-genshin-anemo">Fatal Rounds</b> state: For the next <span class="text-desc">3</span>s, the next time Chasca uses <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b>, the shots will finish charging instantly, and the CRIT DMG of that instance of <b>Multitarget Fire</b> increases by <span class="text-desc">120%</span>.
+      content: `Chasca's <b>Multitarget Fire</b> charge time is decreased, and after the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b> is triggered, Chasca will gain the <b class="text-genshin-anemo">Fatal Rounds</b> state: For the next <span class="text-desc">3</span>s, the next time Chasca uses <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b>, the shots will finish charging instantly, and the CRIT DMG of that instance of <b>Multitarget Fire</b> increases by <span class="text-desc">120%</span>. <span class="text-desc">1</span> <b class="text-genshin-anemo">Fatal Rounds</b> effect can be gained once every <span class="text-desc">3</span>s.
       <br />
       <br />You must first unlock the Passive Talent <b>Bullet Trick</b> to gain access to the above effect.`,
       image: 'UI_Talent_S_Chasca_04',
@@ -320,7 +321,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
             name: `C4 ${e} Explosion DMG`,
             value: [{ scaling: 4, multiplier: Stats.ATK }],
             element: e,
-            property: TalentProperty.ADD,
+            property: TalentProperty.CA,
           })
         }
       })
