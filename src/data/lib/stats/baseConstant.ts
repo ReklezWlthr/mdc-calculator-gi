@@ -109,6 +109,8 @@ export const baseStatsObject = {
   [Stats.ALL_DMG]: [] as StatsArray[],
   [Stats.ELEMENTAL_DMG]: [] as StatsArray[],
 
+  ADD_BASE_ATK: [] as StatsArray[], // Mavuika Only
+
   PHYSICAL_CD: [] as StatsArray[],
   PYRO_CD: [] as StatsArray[],
   HYDRO_CD: [] as StatsArray[],
@@ -233,7 +235,7 @@ export const baseStatsObject = {
 
   getAtk: function (exclude?: boolean) {
     return (
-      this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) +
+      (this.BASE_ATK + _.sumBy(this.ADD_BASE_TAK, 'value')) * (1 + _.sumBy(this[Stats.P_ATK], 'value')) +
       _.sumBy(this[Stats.ATK], 'value') +
       (exclude ? 0 : this.getValue('X_ATK'))
     )

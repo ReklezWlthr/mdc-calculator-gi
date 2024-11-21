@@ -1371,6 +1371,26 @@ export const Weapons = [
     },
   },
   {
+    id: '12514',
+    name: 'A Thousand Blazing Suns',
+    rarity: 5,
+    tier: 4,
+    ascStat: Stats.CRIT_RATE,
+    baseStat: 0.024,
+    icon: 'UI_EquipIcon_Claymore_RadianceSword',
+    type: WeaponType.CLAYMORE,
+    desc: {
+      name: 'Sunset Reignites the Dawn',
+      detail: `Gain the <b>Scorching Brilliance</b> effect when using an Elemental Skill or Burst: CRIT DMG increased by {{0}}% and ATK increased by {{1}}% for <span class="text-desc">6</span>s. This effect can trigger once every <span class="text-desc">10</span>s.
+      <br />While a <b>Scorching Brilliance</b> instance is active, its duration is increased by <span class="text-desc">2</span>s after Normal or Charged attacks deal Elemental DMG. This effect can trigger once every second, and the max duration increase is <span class="text-desc">6</span>s.
+      <br />Additionally, when the equipping character is in the <b>Nightsoul's Blessing</b> state, <b>Scorching Brilliance</b> effects are increased by <span class="text-desc">75%</span>, and its duration will only count down when the equipping character is on the field.`,
+      properties: [
+        { base: 20, growth: 5 },
+        { base: 28, growth: 7 },
+      ],
+    },
+  },
+  {
     id: '13301',
     name: 'White Tassel',
     rarity: 3,
@@ -2337,7 +2357,6 @@ export const Weapons = [
         { base: 24, growth: 6 },
       ],
     },
-    beta: true,
   },
   {
     id: '14431',
@@ -2572,6 +2591,25 @@ export const Weapons = [
         { base: 12, growth: 3 },
       ],
     },
+  },
+  {
+    id: '14517',
+    name: "Starcaller's Watch",
+    rarity: 5,
+    tier: 1,
+    ascStat: Stats.EM,
+    baseStat: 58,
+    icon: 'UI_EquipIcon_Catalyst_Figurines',
+    type: WeaponType.CATALYST,
+    desc: {
+      name: 'Offering Unto Wind and Sun',
+      detail: `Increases Elemental Mastery by {{0}}. Gain the <b>Mirror of Night</b> effect within <span class="text-desc">15</span>s after the equipping character creates a shield: The current active party member deals {{0}}% increased DMG to nearby opponents. You can gain the <b>Mirror of Night</b> effect once every <span class="text-desc">14</span>s.`,
+      properties: [
+        { base: 100, growth: 25 },
+        { base: 28, growth: 7 },
+      ],
+    },
+    beta: true,
   },
   {
     id: '15301',

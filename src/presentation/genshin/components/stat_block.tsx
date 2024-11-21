@@ -36,6 +36,8 @@ export const StatBlock = observer(({ stat }: StatBlockProps) => {
     )
   }
 
+  const baseAtk = stat?.BASE_ATK + stat?.getValue(StatsObjectKeys.ADD_BASE_ATK)
+
   return (
     <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-11 gap-y-1 gap-x-5 bg-primary-dark">
       <ExtraDataRow
@@ -45,8 +47,8 @@ export const StatBlock = observer(({ stat }: StatBlockProps) => {
       />
       <ExtraDataRow
         title="ATK"
-        base={stat?.BASE_ATK}
-        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_ATK) + stat?.getValue(Stats.ATK)}
+        base={baseAtk}
+        bonus={baseAtk * stat?.getValue(Stats.P_ATK) + stat?.getValue(Stats.ATK)}
       />
       <ExtraDataRow
         title="DEF"

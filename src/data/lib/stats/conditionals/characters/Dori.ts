@@ -159,12 +159,6 @@ const Dori = (c: number, a: number, t: ITalentLevel) => {
     allyContent: [findContentById(content, 'dori_low_hp'), findContentById(content, 'dori_low_energy')],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
-      
-
-      if (form.diluc_infusion) {
-        base.INFUSION = Element.PYRO
-        if (a >= 4) base[Stats.PYRO_DMG].push({ value: 0.2, name: '', source: `` })
-      }
 
       base.BASIC_SCALING = [
         {

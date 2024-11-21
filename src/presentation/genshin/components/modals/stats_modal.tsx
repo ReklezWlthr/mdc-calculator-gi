@@ -20,6 +20,7 @@ interface ExtraBlockProps {
   totalValue: string
   cBase: number
   lBase?: number
+  addBase?: StatsArray[]
   pArray: StatsArray[]
   fArray: StatsArray[]
   round?: number
@@ -87,7 +88,16 @@ export const StatsModal = observer(
   ({ stats, weapon, compare }: { stats: StatsObject; weapon: WeaponType; compare?: boolean }) => {
     const { calculatorStore } = useStore()
 
-    const ExtraBlock = ({ stats, totalValue, cBase, lBase = 0, pArray, fArray, round = 0 }: ExtraBlockProps) => (
+    const ExtraBlock = ({
+      stats,
+      totalValue,
+      cBase,
+      lBase = 0,
+      addBase,
+      pArray,
+      fArray,
+      round = 0,
+    }: ExtraBlockProps) => (
       <div className="space-y-1">
         <p className="font-bold text-white">
           {stats} <span className="text-red">{totalValue}</span>
@@ -101,13 +111,23 @@ export const StatsModal = observer(
               Weapon Base {stats} <span className="text-desc">{_.round(lBase, round).toLocaleString()}</span>
             </BulletPoint>
           )}
+          {_.map(
+            mergeBuffs(addBase),
+            (item) =>
+              !!item.value && (
+                <BulletPoint key={item.source + item.name}>
+                  {item.source} / {item.name}{' '}
+                  <span className={item.value < 0 ? 'text-red' : 'text-desc'}>{item.value}</span>
+                </BulletPoint>
+              )
+          )}
           {_.map(mergeBuffs(pArray), (item) => {
-            const c = _.round((cBase + lBase) * item.value, round).toLocaleString()
+            const c = _.round((cBase + lBase + _.sumBy(addBase, 'value')) * item.value, round).toLocaleString()
             return (
               !!item.value && (
                 <BulletPoint key={item.source + item.name}>
                   {item.source} / {item.name} <span className={item.value < 0 ? 'text-red' : 'text-desc'}>{c}</span> ={' '}
-                  {_.round(cBase + lBase, round).toLocaleString()} {`\u{00d7}`}{' '}
+                  {_.round(cBase + lBase + _.sumBy(addBase, 'value'), round).toLocaleString()} {`\u{00d7}`}{' '}
                   <span className="text-blue">{toPercentage(item.value)}</span>
                 </BulletPoint>
               )
@@ -166,6 +186,7 @@ export const StatsModal = observer(
                 stats="ATK"
                 cBase={stats.BASE_ATK_C}
                 lBase={stats.BASE_ATK_L}
+                addBase={stats.ADD_BASE_ATK}
                 totalValue={_.round(stats.getAtk()).toLocaleString()}
                 pArray={stats[Stats.P_ATK]}
                 fArray={stats[Stats.ATK]}

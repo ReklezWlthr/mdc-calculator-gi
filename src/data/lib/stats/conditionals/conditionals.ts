@@ -16,6 +16,7 @@ import Chevreuse from './characters/Chevreuse'
 import Childe from './characters/Childe'
 import Chiori from './characters/Chiori'
 import Chongyun from './characters/Chongyun'
+import Citlali from './characters/Citlali'
 import Clorinde from './characters/Clorinde'
 import Collei from './characters/Collei'
 import Cyno from './characters/Cyno'
@@ -50,6 +51,7 @@ import Layla from './characters/Layla'
 import Lisa from './characters/Lisa'
 import Lynette from './characters/Lynette'
 import Lyney from './characters/Lyney'
+import Mavuika from './characters/Mavuika'
 import Mika from './characters/Mika'
 import Mona from './characters/Mona'
 import Mualani from './characters/Mualani'
@@ -185,6 +187,8 @@ export default [
   { id: '10000103', conditionals: Xilonen },
   { id: '10000104', conditionals: Chasca },
   { id: '10000105', conditionals: Ororon },
+  { id: '10000106', conditionals: Mavuika },
+  { id: '10000107', conditionals: Citlali },
   // Travelers
   { id: '10000005-504', conditionals: TravelerWind },
   { id: '10000005-506', conditionals: TravelerRock },
