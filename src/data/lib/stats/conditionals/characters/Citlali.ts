@@ -29,7 +29,7 @@ const Citlali = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br /><b>Plunging Attack</b>
       <br />Plunges towards the ground from mid-air, damaging all opponents in her path. Deals <b class="text-genshin-cryo">AoE Cryo DMG</b> upon impact with the ground.`,
-      image: 'Skill_A_04',
+      image: 'Skill_A_Catalyst_MD',
     },
     skill: {
       level: skill,
@@ -43,31 +43,31 @@ const Citlali = (c: number, a: number, t: ITalentLevel) => {
       <br />When <b class="text-blue">Itzpapa</b> leaves the field, Citlali exits the <b class="text-genshin-cryo">Nightsoul's Blessing</b> state.
       <br />
       <br /><b class="text-blue">Itzpapa</b>
-      <br />- Itzpapa will follow the character.
+      <br />- <b class="text-blue">Itzpapa</b> will follow the character.
       <br />- If Citlali has at least <span class="text-desc">50</span> <b class="text-genshin-cryo">Nightsoul</b> points, <b class="text-blue">Itzpapa</b> enters the <b>Opal Fire</b> state and continuously consumes <b class="text-genshin-cryo">Nightsoul</b> points to whip up a <b>Frostfall Storm</b> that attacks opponents within its AoE, dealing Nightsoul-aligned <b class="text-genshin-cryo">Cryo DMG</b>.
       <br />- When Citlali's <b class="text-genshin-cryo">Nightsoul</b> points are fully depleted, <b class="text-blue">Itzpapa</b>'s <b>Opal Fire</b> state also ends.
       `,
-      image: 'Skill_S_Mavuika_01',
+      image: 'Skill_S_Citlali_01',
     },
     burst: {
       level: burst,
       trace: `Elemental Burst`,
       title: `Edict of Entwined Splendor`,
       content: `Summons forth "allies" from the starry skies and the vast earth, hurling an icy storm to bombard the area in front that deals Nightsoul-aligned <b class="text-genshin-cryo">AoE Cryo DMG</b>, restores a fixed amount of <b class="text-genshin-cryo">Nightsoul</b> points to Citlali, and also summons <span class="text-desc">1</span> <b>Spiritvessel Skulls</b> near a maximum of <span class="text-desc">3</span> opponents within the AoE. <b>Spiritvessel Skulls</b> explode after a period of time, dealing Nightsoul-aligned <b class="text-genshin-cryo">Cryo DMG</b> and restoring a fixed amount of <b class="text-genshin-cryo">Nightsoul</b> points to Citlali.`,
-      image: 'Skill_E_Mavuika_01',
+      image: 'Skill_E_Citlali_01',
     },
     a1: {
       trace: `Ascension 1 Passive`,
       title: `Five Days of Frigid Rain`,
       content: `When Citlali is in the <b class="text-genshin-cryo">Nightsoul's Blessing</b> state, after nearby party members trigger the Frozen or Melt reactions, the <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-hydro">Hydro RES</b> of opponents affected by that reaction decreases by <span class="text-desc">20%</span> for <span class="text-desc">12</span>s. Additionally, Citlali will regain <span class="text-desc">16</span> <b class="text-genshin-cryo">Nightsoul</b> points. <b class="text-genshin-cryo">Nightsoul</b> points can be restored this way once every <span class="text-desc">8</span>s.`,
-      image: 'UI_Talent_S_Mavuika_05',
+      image: 'UI_Talent_S_Citlali_05',
     },
     a4: {
       trace: `Ascension 4 Passive`,
       title: `White Butterfly's Star Garments`,
       content: `During the Elemental Skill <b>Dawnfrost Darkstar</b>, <b class="text-blue">Itzpapa</b>'s <b>Frostfall Storm</b> DMG is increased by <span class="text-desc">90%</span> of Citlali's Elemental Mastery. During the Elemental Burst <b>Edict of Entwined Splendor</b>, <b>Ice Storm</b> DMG is increased by <span class="text-desc">2400%</span> of Citlali's Elemental Mastery.
       <br />In addition, when nearby party members trigger <b>Nightsoul Bursts</b>, Citlali regains <span class="text-desc">4</span> <b class="text-genshin-cryo">Nightsoul</b> points.`,
-      image: 'UI_Talent_S_Mavuika_06',
+      image: 'UI_Talent_S_Citlali_06',
     },
     util: {
       trace: `Utiliy Passive`,
@@ -84,7 +84,7 @@ const Citlali = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br />Additionally, holding the jump button will cause Citlali to consume <span class="text-desc">75</span> Stamina and leap. In areas within Natlan where <b class="text-genshin-pyro">Phlogiston</b> mechanics are present, Citlali will prioritize consuming <span class="text-desc">5</span> <b class="text-genshin-pyro">Phlogiston</b> to leap to a height higher still.
       <br />When in the air, Citlali can Hold her Normal Attack to consume <b class="text-genshin-pyro">Phlogiston</b> or Stamina and enter Aiming Mode and trigger Charged Attacks: When initiating Charged Attacks in mid-air, Citlali will prioritize consuming <span class="text-desc">20</span> <b class="text-genshin-pyro">Phlogiston</b>.`,
-      image: 'UI_Talent_S_Mavuika_07',
+      image: 'UI_Talent_S_Citlali_08',
     },
     c1: {
       trace: `Constellation 1`,
@@ -93,7 +93,7 @@ const Citlali = (c: number, a: number, t: ITalentLevel) => {
       <br />After nearby party members trigger Frozen or Melt, Citlali will gain another <span class="text-desc">3</span> <b class="text-blue">Stellar Blades</b>. This effect can trigger once every <span class="text-desc">8</span>s.
       <br />Using the Elemental Skill <b>Dawnfrost Darkstar</b> will reset <b class="text-blue">Stellar Blade</b> stacks.
       <br />Additionally, when Citlali is using her leap, or is Aiming or using her Charged Attack in mid-air, her <b class="text-genshin-pyro">Phlogiston</b> consumption is decreased by <span class="text-desc">45%</span>.`,
-      image: 'UI_Talent_S_Mavuika_01',
+      image: 'UI_Talent_S_Citlali_01',
     },
     c2: {
       trace: `Constellation 2`,
@@ -103,107 +103,75 @@ const Citlali = (c: number, a: number, t: ITalentLevel) => {
       <br />
       <br />Also, the Passive Talent <b>Five Days of Frigid Rain</b> has its effects enhanced:
       <br />When Citlali is in the <b class="text-genshin-cryo">Nightsoul's Blessing</b> state, after nearby party members trigger Frozen or Melt, the opponent(s) affected by this reaction will have their <b class="text-genshin-pyro">Pyro</b> and <b class="text-genshin-hydro">Hydro RES</b> additionally decreased by <span class="text-desc">20%</span> for <span class="text-desc">12</span>s. You must first unlock the Passive Talent <b>Five Days of Frigid Rain</b> to gain access to the above effect.`,
-      image: 'UI_Talent_S_Mavuika_02',
+      image: 'UI_Talent_S_Citlali_02',
     },
     c3: {
       trace: `Constellation 3`,
       title: `Cloud Serpent's Feathered Crown`,
       content: `Increases the Level of <b>Dawnfrost Darkstar</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
-      image: 'UI_Talent_U_Mavuika_02',
+      image: 'UI_Talent_U_Citlali_01',
     },
     c4: {
       trace: `Constellation 4`,
       title: `Heart Devourer's Travail`,
       content: `While the Elemental Skill <b>Dawnfrost Darkstar</b> is active, when <b class="text-blue">Itzpapa</b>'s <b>Frostfall Storm</b> hits opponents, an additional <b>Obsidian Spiritvessel Skull</b> is summoned. When a <b>Spiritvessel Skull</b> summoned this way explodes, it deals <span class="text-desc">1200%</span> of Citlali's Elemental Mastery as Nightsoul-aligned <b class="text-genshin-cryo">Cryo DMG</b> and restores <span class="text-desc">16</span> <b class="text-genshin-cryo">Nightsoul</b> points to Citlali. This effect can trigger once every <span class="text-desc">8</span>s. This DMG is not considered Elemental Burst DMG.`,
-      image: 'UI_Talent_S_Mavuika_03',
+      image: 'UI_Talent_S_Citlali_03',
     },
     c5: {
       trace: `Constellation 5`,
       title: `Five-Balestar Hex`,
       content: `Increases the Level of <b>Edict of Entwined Splendor</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
-      image: 'UI_Talent_U_Mavuika_01',
+      image: 'UI_Talent_U_Citlali_02',
     },
     c6: {
       trace: `Constellation 6`,
       title: `Secret Pact of Wisdom`,
       content: `The <b class="text-blue">Itzpapa</b> summoned by Elemental Skill <b>Dawnfrost Darkstar</b> will always be in the <b>Opal Fire</b> state, and when <b class="text-genshin-cryo">Nightsoul</b> points are exhausted, this state will not end.
       <br />Additionally, <b>Dawnfrost Darkstar</b> is used, <b class="text-blue">Itzpapa</b> will consume all <b class="text-genshin-cryo">Nightsoul</b> points, and while it is on the field, it will continuously consume <b class="text-genshin-cryo">Nightsoul</b> points to grant all nearby party members <b class="text-genshin-pyro">Pyro</b>, <b class="text-genshin-hydro">Hydro</b>, and <b class="text-genshin-cryo">Cryo DMG Bonuses</b>, with each consumed <b class="text-genshin-cryo">Nightsoul</b> point granting <span class="text-desc">1.5%</span> of the corresponding DMG Bonus. The maximum DMG Bonus that can be gained this way is <span class="text-desc">60%</span>.`,
-      image: 'UI_Talent_S_Mavuika_04',
+      image: 'UI_Talent_S_Citlali_04',
     },
   }
 
   const content: IContent[] = [
     {
       type: 'toggle',
-      id: 'flamestrider',
-      text: `Flamestrider Mode`,
-      ...talents.skill,
-      show: true,
-      default: true,
-      sync: true,
-    },
-    {
-      type: 'number',
-      id: 'fighting_spirit',
-      text: `Fighting Spirit`,
-      ...talents.burst,
-      show: true,
-      default: 100,
-      min: 0,
-      max: 200,
-    },
-    {
-      type: 'toggle',
-      id: 'mavuika_a1',
-      text: `A1 ATK Bonus`,
+      id: 'citlali_a1',
+      text: `A1 RES Shred`,
       ...talents.a1,
       show: a >= 1,
       default: true,
     },
     {
-      type: 'toggle',
-      id: 'mavuika_a4',
-      text: `"Kiongozi" DMG Bonus`,
-      ...talents.a4,
-      show: a >= 4,
-      default: false,
-    },
-    {
-      type: 'toggle',
-      id: 'mavuika_c1',
-      text: `C1 ATK Bonus`,
-      ...talents.c1,
-      show: c >= 1,
-      default: true,
-    },
-    {
-      type: 'toggle',
-      id: 'mavuika_c2',
-      text: `C2 Base ATK & DMG Bonus`,
-      ...talents.c2,
-      show: c >= 2,
-      default: true,
-    },
-    {
-      type: 'toggle',
-      id: 'mavuika_c2_2',
-      text: `C2 DEF Shred`,
-      ...talents.c2,
-      show: c >= 2,
-      default: true,
+      type: 'number',
+      id: 'citlali_c6',
+      text: `C6 DMG Bonus`,
+      ...talents.c6,
+      show: c >= 6,
+      default: 1,
+      min: 0,
+      max: 40,
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'mavuika_c2_2')]
+  const teammateContent: IContent[] = [findContentById(content, 'citlali_a1'), findContentById(content, 'citlali_c6')]
 
   return {
     upgrade,
     talents,
     content,
     teammateContent,
-    allyContent: [findContentById(content, 'mavuika_a4')],
+    allyContent: [
+      {
+        type: 'toggle',
+        id: 'citlali_c2',
+        text: `C2 Shield EM Share`,
+        ...talents.c2,
+        show: c >= 2,
+        default: false,
+      },
+    ],
     preCompute: (x: StatsObject, form: Record<string, any>) => {
       const base = _.cloneDeep(x)
 
@@ -248,10 +216,16 @@ const Citlali = (c: number, a: number, t: ITalentLevel) => {
         },
         {
           name: 'Opal Shield DMG Absorption',
-          value: [{ scaling: calcScaling(5.76, skill, 'special', 'flat'), multiplier: Stats.EM }],
-          flat: calcScaling(1387, skill, 'elemental', '1'),
+          value: [{ scaling: calcScaling(5.76, skill, 'elemental', '1'), multiplier: Stats.EM }],
+          flat: calcScaling(1387, skill, 'special', 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
+        },
+        {
+          name: 'Frostfall Storm DMG',
+          value: [{ scaling: calcScaling(0.17, skill, 'elemental', '1'), multiplier: Stats.ATK }],
+          element: Element.CRYO,
+          property: TalentProperty.SKILL,
         },
       ]
       base.BURST_SCALING = [
@@ -269,68 +243,71 @@ const Citlali = (c: number, a: number, t: ITalentLevel) => {
         },
       ]
 
-      if (form.mavuika_a1) {
-        base[Stats.P_ATK].push({ value: 0.35, name: 'Ascension 1 Passive', source: `Self` })
+      if (form.citlali_a1) {
+        base.PYRO_RES_PEN.push({ value: 0.2 * (c >= 2 ? 2 : 1), name: 'Ascension 1 Passive', source: `Self` })
+        base.HYDRO_RES_PEN.push({ value: 0.2 * (c >= 2 ? 2 : 1), name: 'Ascension 1 Passive', source: `Self` })
       }
-      if (form.mavuika_a4) {
-        base[Stats.ALL_DMG].push({
-          value: _.min([0.0025 * form.fighting_spirit, 0.5]),
-          name: 'Asecnsion 4 Passive',
-          source: `Self`,
+      if (a >= 4) {
+        base.SKILL_SCALING.push({
+          name: `Enhanced Frostfall Storm DMG`,
+          value: [
+            { scaling: calcScaling(0.17, skill, 'elemental', '1'), multiplier: Stats.ATK },
+            { scaling: 0.9, multiplier: Stats.EM },
+          ],
+          element: Element.CRYO,
+          property: TalentProperty.SKILL,
+        })
+        base.BURST_SCALING.push({
+          name: `Enhanced Ice Storm DMG`,
+          value: [
+            { scaling: calcScaling(5.376, burst, 'elemental', '1'), multiplier: Stats.ATK },
+            { scaling: 24, multiplier: Stats.EM },
+          ],
+          element: Element.CRYO,
+          property: TalentProperty.BURST,
         })
       }
-      if (form.mavuika_c1) {
-        base[Stats.P_ATK].push({ value: 0.4, name: 'Constellation 1', source: `Self` })
+      if (c >= 1) {
+        base.SKILL_SCALING.push({
+          name: `Stellar Blade DMG`,
+          value: [{ scaling: 2, multiplier: Stats.EM }],
+          element: Element.CRYO,
+          property: TalentProperty.SKILL,
+        })
       }
-      if (form.mavuika_c2_2) {
-        base.DEF_REDUCTION.push({ value: 0.2, name: 'Constellation 2', source: `Self` })
+      if (c >= 4) {
+        base.SKILL_SCALING.push({
+          name: `Obsidian Spiritvessel Skull DMG`,
+          value: [{ scaling: 12, multiplier: Stats.EM }],
+          element: Element.CRYO,
+          property: TalentProperty.ADD,
+        })
       }
-      if (c >= 6) {
-        base.SKILL_SCALING.push(
-          {
-            name: 'C6 Assisted Flamestrider DMG',
-            value: [{ scaling: 2, multiplier: Stats.ATK }],
-            element: Element.PYRO,
-            property: TalentProperty.SKILL,
-          },
-          {
-            name: 'C6 Assisted Rings DMG',
-            value: [{ scaling: 4, multiplier: Stats.ATK }],
-            element: Element.PYRO,
-            property: TalentProperty.SKILL,
-          }
-        )
+      if (form.citlali_c6) {
+        base[Stats.PYRO_DMG].push({ value: 0.015 * form.citlali_c6, name: 'Constellation 6', source: `Self` })
+        base[Stats.HYDRO_DMG].push({ value: 0.015 * form.citlali_c6, name: 'Constellation 6', source: `Self` })
+        base[Stats.CRYO_DMG].push({ value: 0.015 * form.citlali_c6, name: 'Constellation 6', source: `Self` })
       }
 
       return base
     },
     preComputeShared: (own: StatsObject, base: StatsObject, form: Record<string, any>, aForm: Record<string, any>) => {
-      if (aForm.mavuika_a4) {
-        base[Stats.ALL_DMG].push({
-          value: _.min([0.0025 * form.fighting_spirit, 0.5]),
-          name: 'Asecnsion 4 Passive',
-          source: `Mavuika`,
-        })
+      if (form.citlali_a1) {
+        base.PYRO_RES_PEN.push({ value: 0.2 * (c >= 2 ? 2 : 1), name: 'Ascension 1 Passive', source: `Citlali` })
+        base.HYDRO_RES_PEN.push({ value: 0.2 * (c >= 2 ? 2 : 1), name: 'Ascension 1 Passive', source: `Citlali` })
       }
-      if (form.mavuika_c2_2) {
-        base.DEF_REDUCTION.push({ value: 0.2, name: 'Constellation 2', source: `Mavuika` })
+      if (aForm.citlali_c2) {
+        base[Stats.EM].push({ value: 250, name: 'Constellation 2', source: `Citlali` })
+      }
+      if (form.citlali_c6) {
+        base[Stats.PYRO_DMG].push({ value: 0.015 * form.citlali_c6, name: 'Constellation 6', source: `Citlali` })
+        base[Stats.HYDRO_DMG].push({ value: 0.015 * form.citlali_c6, name: 'Constellation 6', source: `Citlali` })
+        base[Stats.CRYO_DMG].push({ value: 0.015 * form.citlali_c6, name: 'Constellation 6', source: `Citlali` })
       }
 
       return base
     },
     postCompute: (base: StatsObject, form: Record<string, any>) => {
-      if (form.mavuika_c2) {
-        base.ADD_BASE_ATK.push({ value: 300, name: 'Constellation 2', source: `Add Base ATK` })
-        base.BASIC_F_DMG.push({ value: base.getAtk(), name: 'Constellation 2', source: `Self` })
-        base.CHARGE_F_DMG.push({
-          value: 1.5 * base.getAtk(),
-          name: 'Constellation 2',
-          source: `Self`,
-          base: base.getAtk(),
-          multiplier: '150%',
-        })
-      }
-
       return base
     },
   }

@@ -2462,6 +2462,54 @@ export const WeaponConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Scorching Brilliance`,
+    show: true,
+    default: true,
+    id: '12514',
+    scaling: (base, form, r) => {
+      if (form['12514']) {
+        base[Stats.CRIT_DMG].push({
+          value: calcRefinement(0.2, 0.05, r) * (form['12514_2'] ? 1.75 : 1),
+          name: 'Scorching Brilliance',
+          source: `A Thousand Blazing Suns`,
+        })
+        base[Stats.P_ATK].push({
+          value: calcRefinement(0.28, 0.07, r) * (form['12514_2'] ? 1.75 : 1),
+          name: 'Scorching Brilliance',
+          source: `A Thousand Blazing Suns`,
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Nightsoul's Blessing`,
+    show: true,
+    default: false,
+    id: '12514_2',
+    scaling: (base) => {
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Mirror of Night`,
+    show: true,
+    default: false,
+    id: '14517',
+    scaling: (base, form, r) => {
+      if (form['14517'])
+        base[Stats.ALL_DMG].push({
+          value: calcRefinement(0.28, 0.07, r),
+          name: 'Mirror of Night',
+          source: `Starcaller's Watch`,
+        })
+      return base
+    },
+  },
 ]
 
 export const WeaponAllyConditionals: IWeaponContent[] = [
@@ -2524,6 +2572,22 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
     scaling: (base, form, r, { owner }) => {
       if (form['13417_a_' + owner])
         base[Stats.P_ATK].push({ value: calcRefinement(0.16, 0.04, r), name: 'Leaf of Revival', source: `Moonpiercer` })
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Mirror of Night`,
+    show: true,
+    default: false,
+    id: '14517_a',
+    scaling: (base, form, r, { owner }) => {
+      if (form['14517_a_' + owner])
+        base[Stats.ALL_DMG].push({
+          value: calcRefinement(0.28, 0.07, r),
+          name: 'Mirror of Night',
+          source: `Starcaller's Watch`,
+        })
       return base
     },
   },

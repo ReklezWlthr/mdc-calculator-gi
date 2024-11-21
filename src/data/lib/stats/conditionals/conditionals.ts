@@ -47,6 +47,7 @@ import Kirara from './characters/Kirara'
 import Klee from './characters/Klee'
 import Kokomi from './characters/Kokomi'
 import Kuki from './characters/Kuki'
+import Lanyan from './characters/Lanyan'
 import Layla from './characters/Layla'
 import Lisa from './characters/Lisa'
 import Lynette from './characters/Lynette'
@@ -76,6 +77,7 @@ import Thoma from './characters/Thoma'
 import Tighnari from './characters/Tighnari'
 import TravelerWind from './characters/TravelerAnemo'
 import TravelerElectric from './characters/TravelerElectric'
+import TravelerFire from './characters/TravelerFire'
 import TravelerGrass from './characters/TravelerGrass'
 import TravelerRock from './characters/TravelerRock'
 import TravelerWater from './characters/TravelerWater'
@@ -189,10 +191,12 @@ export default [
   { id: '10000105', conditionals: Ororon },
   { id: '10000106', conditionals: Mavuika },
   { id: '10000107', conditionals: Citlali },
+  { id: '10000108', conditionals: Lanyan },
   // Travelers
   { id: '10000005-504', conditionals: TravelerWind },
   { id: '10000005-506', conditionals: TravelerRock },
   { id: '10000005-507', conditionals: TravelerElectric },
   { id: '10000005-508', conditionals: TravelerGrass },
   { id: '10000005-503', conditionals: TravelerWater },
+  { id: '10000005-502', conditionals: TravelerFire },
 ]

@@ -1167,6 +1167,17 @@ const WeaponBonus: {
       return base
     },
   },
+  {
+    id: '14517',
+    scaling: (base, r) => {
+      base[Stats.ATK].push({
+        value: calcRefinement(100, 25, r),
+        name: 'Passive',
+        source: `Starcaller's Watch`,
+      })
+      return base
+    },
+  },
 ]
 
 export default WeaponBonus

@@ -121,7 +121,7 @@ const Mavuika = (c: number, a: number, t: ITalentLevel) => {
       title: `The Burning Sun`,
       content: `Increases the Level of <b>Hour of Burning Skies</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
-      image: 'UI_Talent_U_Mavuika_02',
+      image: 'UI_Talent_U_Mavuika_01',
     },
     c4: {
       trace: `Constellation 4`,
@@ -136,7 +136,7 @@ const Mavuika = (c: number, a: number, t: ITalentLevel) => {
       title: `The Meaning of Truth`,
       content: `Increases the Level of <b>The Named Moment</b> by <span class="text-desc">3</span>.
       <br />Maximum upgrade level is <span class="text-desc">15</span>.`,
-      image: 'UI_Talent_U_Mavuika_01',
+      image: 'UI_Talent_U_Mavuika_02',
     },
     c6: {
       trace: `Constellation 6`,

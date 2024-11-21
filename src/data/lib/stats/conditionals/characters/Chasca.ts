@@ -81,7 +81,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       title: `Bullet Trick`,
       content: `When the Elemental Skill <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b> is being charged, if there are party members has who meet the <b>Elemental Conversion Type</b> requirements, gain the following effects based on the number of different eligible <b>Elemental Types</b> present:
       <br />- There is a <span class="text-desc">33.3%</span>/<span class="text-desc">66.7%</span>/<span class="text-desc">100%</span> chance for each <b>Type</b> to trigger <b>Spiritbinding Conversion</b> and causes the <span class="text-desc">3rd</span> <b class="text-indigo-300">Shadowhunt Shell</b> loaded into the cylinder to be randomly converted into a <b class="text-indigo-300">Shining Shadowhunt Shells</b> from one of the corresponding <b>Elemental Types</b>.
-      <br />- Each element type will grant Chasca <span class="text-desc">1</span> stack of <b>Spirit of the Radiant Shadow</b>, increasing the DMG of <b class="text-indigo-300">Shining Shadowhunt Shell</b> by <span class="text-desc">15%</span>/<span class="text-desc">35%</span>/<span class="text-desc">65%</span>. This effect lasts until the current <b>Multitarget Fire</b> ends. Max <span class="text-desc">3</span> stacks`,
+      <br />- Each <b>Elemental Type</b> will grant Chasca <span class="text-desc">1</span> stack of <b>Spirit of the Radiant Shadow</b>, increasing the DMG of <b class="text-indigo-300">Shining Shadowhunt Shell</b> by <span class="text-desc">15%</span>/<span class="text-desc">35%</span>/<span class="text-desc">65%</span>. This effect lasts until the current <b>Multitarget Fire</b> ends. Max <span class="text-desc">3</span> stacks`,
       image: 'UI_Talent_S_Chasca_05',
     },
     a4: {
@@ -147,7 +147,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
     c6: {
       trace: `Constellation 6`,
       title: `Showdown, the Glory of Battle`,
-      content: `Chasca's <b>Multitarget Fire</b> charge time is decreased, and after the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b> is triggered, Chasca will gain the <b class="text-genshin-anemo">Fatal Rounds</b> state: For the next <span class="text-desc">3</span>s, the next time Chasca uses <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b>, the shots will finish charging instantly, and the CRIT DMG of that instance of <b>Multitarget Fire</b> increases by <span class="text-desc">120%</span>. <span class="text-desc">1</span> <b class="text-genshin-anemo">Fatal Rounds</b> effect can be gained once every <span class="text-desc">3</span>s.
+      content: `Chasca's <b>Multitarget Fire</b> charge time is decreased, and after the Passive Talent <b>Bullet Trick</b>'s <b>Spiritbinding Conversion</b> is triggered, Chasca will gain the <b class="text-genshin-anemo">Fatal Rounds</b> state: For the next <span class="text-desc">3</span>s, the next time Chasca uses <b>Spirit Reins, Shadow Hunt</b>'s <b>Multitarget Fire</b>, the shots will finish charging instantly, and the CRIT DMG of that instance of <b>Multitarget Fire</b>'s <b class="text-indigo-300">Shadowhunt Shells</b> and <b class="text-indigo-300">Shining Shadowhunt Shells</b> increases by <span class="text-desc">120%</span>. <span class="text-desc">1</span> <b class="text-genshin-anemo">Fatal Rounds</b> effect can be gained once every <span class="text-desc">3</span>s.
       <br />
       <br />You must first unlock the Passive Talent <b>Bullet Trick</b> to gain access to the above effect.`,
       image: 'UI_Talent_S_Chasca_04',
@@ -188,7 +188,7 @@ const Chasca = (c: number, a: number, t: ITalentLevel, team: ITeamChar[]) => {
       base.BASIC_SCALING = form.multitarget
         ? [
             {
-              name: 'Multitarget Fire Press DMG',
+              name: 'Multitarget Fire Tap DMG',
               value: [{ scaling: calcScaling(0.36, skill, 'elemental', '1'), multiplier: Stats.ATK }],
               element: Element.ANEMO,
               property: TalentProperty.NA,

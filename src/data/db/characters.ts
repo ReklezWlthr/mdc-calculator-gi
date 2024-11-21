@@ -1955,7 +1955,7 @@ export const Characters = [
     weapon: WeaponType.CLAYMORE,
     element: Element.PYRO,
     codeName: 'Mavuika',
-    tags: [Tags.ON_FIELD, Tags.EXPLORATION],
+    tags: [Tags.ON_FIELD, Tags.OFF_FIELD, Tags.APP, Tags.AMP, Tags.EXPLORATION],
     beta: true,
   },
   {
@@ -1977,7 +1977,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.CRYO,
     codeName: 'Citlali',
-    tags: [Tags.SHIELD],
+    tags: [Tags.SHIELD, Tags.OFF_FIELD, Tags.EXPLORATION, Tags.AMP],
     beta: true,
   },
   {
@@ -1999,7 +1999,7 @@ export const Characters = [
     weapon: WeaponType.CATALYST,
     element: Element.ANEMO,
     codeName: 'Lanyan',
-    tags: [Tags.SHIELD],
+    tags: [Tags.SHIELD, Tags.CONTROL],
     beta: true,
   },
 

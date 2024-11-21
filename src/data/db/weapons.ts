@@ -1389,6 +1389,7 @@ export const Weapons = [
         { base: 28, growth: 7 },
       ],
     },
+    beta: true,
   },
   {
     id: '13301',
@@ -2603,7 +2604,7 @@ export const Weapons = [
     type: WeaponType.CATALYST,
     desc: {
       name: 'Offering Unto Wind and Sun',
-      detail: `Increases Elemental Mastery by {{0}}. Gain the <b>Mirror of Night</b> effect within <span class="text-desc">15</span>s after the equipping character creates a shield: The current active party member deals {{0}}% increased DMG to nearby opponents. You can gain the <b>Mirror of Night</b> effect once every <span class="text-desc">14</span>s.`,
+      detail: `Increases Elemental Mastery by {{0}}. Gain the <b>Mirror of Night</b> effect within <span class="text-desc">15</span>s after the equipping character creates a shield: The current active party member deals {{1}}% increased DMG to nearby opponents. You can gain the <b>Mirror of Night</b> effect once every <span class="text-desc">14</span>s.`,
       properties: [
         { base: 100, growth: 25 },
         { base: 28, growth: 7 },

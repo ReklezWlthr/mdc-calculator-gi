@@ -134,6 +134,15 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
     })
   }
 
+  // Citlali C2
+  if (character?.id === '10000107' && char?.cons >= 2) {
+    conditionals[Stats.EM].push({
+      value: 125,
+      source: 'Self',
+      name: 'Constellation 2',
+    })
+  }
+
   return conditionals
 }
 
